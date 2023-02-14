@@ -13,6 +13,6 @@ C++ Libraries and Framework Source Code
 ***(Need to be built via CMAKE)***  
 &nbsp;&nbsp;&nbsp;&nbsp;Simplify code about socket connection between two endpoint
 
-**4. Cryptography, Asymmetric and Symmetric (work in progress)**
+4. **Cryptography, Asymmetric and Symmetric (work in progress)**
 
-**5. HTTP/HTTPS Parser (work in progress, waiting for Cryptography)**
+5. **HTTP/HTTPS Parser (work in progress, waiting for Cryptography)**

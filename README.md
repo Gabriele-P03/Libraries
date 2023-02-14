@@ -1,7 +1,7 @@
 # Libraries
 ##C++ Libraries and Framework Source Code
 
-[^1] **JSON Parser**  
+1. **JSON Parser**  
 (Need to be built via CMAKE)  
 &nbsp;&nbsp;&nbsp;&nbsp;Read and write in/on a JSON file
 

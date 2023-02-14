@@ -3,7 +3,7 @@
 
 **JSON Parser**  
 (Need to be built via CMAKE)  
-    > Read and write in/on a JSON file
+&nbsp;&nbsp;&nbsp;&nbsp;Read and write in/on a JSON file
 
 **Logger**
 (Need to be built via CMAKE if you wanna write on log file, too)

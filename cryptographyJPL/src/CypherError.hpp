@@ -23,19 +23,24 @@ namespace jpl{
          * You oughta opt to check _error_cypher_jpl similar to CYPHER_JPL_NO_ERROR before any function call,
          * since this one will throw an exception
          */
-        inline void checkExceptionAfterCall(){
-            jpl::print("Checking for any excetion before to encrypt/decrypt...");
+        inline bool checkExceptionAfterCall(){
             if(_error_cypher_jpl){
                 jpl::print("There's an error in queue...", jpl::logger::ERR);
-                throw new std::bad_function_call();
+                return false;
             }
-            jpl::print("No errors in queue...");
+            return true;
         }
     }
 }
 
 #define CYPHER_JPL_NO_ERROR  0
-#define CYPHER_JPL_KEY_ERROR  1
-#define CYPHER_JPL_CLEARTEXT_SYNTAX_ERROR  2
+#define CYPHER_JPL_KEY_SIZE_ERROR 1
+#define CYPHER_JPL_KEY_SYNTAX_ERROR 2
+#define CYPHER_JPL_CLEARTEXT_SYNTAX_ERROR  3
+#define CYPHER_JPL_XOR_ARGUMENT_SIZE_NOT_EQUAL 4 //
+#define CYPHER_JPL_CHECK_PARITY_ERROR 5 //Error about parity bit of a byte
+#define CYPHER_JPL_DES_PC1_0 6  //DES#_pc1(). Error Size. Bytes of key withouth parity bits != key.size() - 1
+#define CYPHER_JPL_IV_UNIN_ERROR 7   //IV not iniziatilzed altough a CBC mode encryption/decryption has been called
+#define CYPHER_JPL_IV_SIZE_ERROR 8   //IV does not respect the size supplied by the cypher
 
 #endif

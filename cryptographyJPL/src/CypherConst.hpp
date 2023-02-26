@@ -10,5 +10,8 @@
 #define SYM_6_JPL   SYM_4_JPL/2
 #define SYM_7_JPL   SYM_5_JPL/2
 
+#define SYM_8_JPL   ((unsigned int)('0'))
+#define SYM_9_JPL   ((unsigned int)('9'))
+
 
 #endif

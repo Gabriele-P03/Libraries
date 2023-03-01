@@ -23,6 +23,12 @@ namespace jpl{
             class TDES{
 
                 private:
+
+                    //It says if the IV has been set via set_CBC_IV()
+                    bool iv_initialized;
+                    //It contains the IV
+                    bool* IV;
+
                     DES *first, *second, *third;
 
                 public:

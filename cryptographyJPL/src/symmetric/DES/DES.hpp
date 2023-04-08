@@ -5,7 +5,7 @@
  * all ASCII chars can be used with this framework.
  * 
  * A nullptr is returned by those function whenever an error is previously occurred or during the called one.
- * You can check the last error calling jpl::_cypher::checkExceptionAfterCall().
+ * You can check the last error calling jpl::_cypher::checkError().
  * 
  * Due to what has been said above, you must call set_CBC_IV() before any call to CBC mode or a nullptr will be returned.
  * 
@@ -34,7 +34,7 @@
 #define DES_JPL_ROUND 16
 
 #include <string.h> //For memcpy(), used in _pc2()
-
+#include <vector>
 #include "../../CypherError.hpp"
 #include "DESMatrixUtils.hpp"
 #include <jpl/utils/ConversionUtils.hpp>

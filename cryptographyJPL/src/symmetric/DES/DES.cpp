@@ -140,7 +140,7 @@ bool* jpl::_cypher::_symmetric::DES::mangler(bool* buffer, unsigned short round)
 }
 
 std::string* jpl::_cypher::_symmetric::DES::ecb_encrypt(std::string plain_text){
-    if(!jpl::_cypher::checkExceptionAfterCall()){
+    if(!jpl::_cypher::checkError()){
         return nullptr;
     }
     std::string* cyphered = new std::string("");
@@ -214,7 +214,7 @@ bool* jpl::_cypher::_symmetric::DES::enc_sub_block(bool* plain_block_bits){
 }
 
 std::string* jpl::_cypher::_symmetric::DES::ecb_decrypt(std::string cyphered_text){
-    if(!jpl::_cypher::checkExceptionAfterCall()){
+    if(!jpl::_cypher::checkError()){
         return nullptr;
     }
     //Reverse keys
@@ -238,7 +238,7 @@ std::string* jpl::_cypher::_symmetric::DES::ecb_decrypt(std::string cyphered_tex
 
 void jpl::_cypher::_symmetric::DES::set_CBC_IV(std::string IV){
 
-    if(!jpl::_cypher::checkExceptionAfterCall()){
+    if(!jpl::_cypher::checkError()){
         return;
     }
 
@@ -256,7 +256,7 @@ std::string* jpl::_cypher::_symmetric::DES::cbc_encrypt(std::string plain_text){
         jpl::_cypher::_error_cypher_jpl = CYPHER_JPL_IV_UNIN_ERROR;
     }
 
-    if(!jpl::_cypher::checkExceptionAfterCall()){
+    if(!jpl::_cypher::checkError()){
         return nullptr;
     }
     
@@ -301,7 +301,9 @@ std::string* jpl::_cypher::_symmetric::DES::cbc_decrypt(std::string cyphered_tex
     if(!this->iv_initialized){
         jpl::_cypher::_error_cypher_jpl = CYPHER_JPL_IV_UNIN_ERROR;
     }
-    jpl::_cypher::checkExceptionAfterCall();
+    if(!jpl::_cypher::checkError()){
+        return nullptr;
+    }
 
     //Inverting keys
     for(unsigned short i = 0; i < 8; i++){

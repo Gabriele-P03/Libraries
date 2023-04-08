@@ -63,12 +63,32 @@ namespace jpl{
 		    memcpy(&dst, src, 4);
 		}
 
-		inline void b_cc(bool src, const char* &dst, unsigned short offset){
-		    ((dst[0] << offset) | src);
+		inline char b_cc(bool src, unsigned short offset){
+		    char tmp = ((dst[0] << offset) | src);
+			return tmp;
 		}
-		inline void cc_b(const char* src, bool &dst, unsigned short offset){
-		    dst = (( (src[0] >> offset) << sizeof(char) - 1 - offset));
+
+		/**
+		 * It checks if a certain bit into the given src is set to 1 
+		 * 
+		 * @param src 
+		 * @param dst 
+		 * @param offset right shift which represents the index of the bit to check into src
+		 */
+		inline bool cc_b(const char src, bool &dst, unsigned short offset){
+		    return  (( (src[0] >> offset) << sizeof(char) - 1 - offset)) == 0x01;
 		}
+
+		/**
+        * It retrieves two integers number from the given _src
+        * 
+        * The first one is got from the 4 most left digits as well the second one (4 most right)
+        * @param _src 
+        * @return int[2] the first one (left digits) and second one (right digits)
+        */
+        inline int* split_cc_ii(const char _src){
+            return new int[2]{ ((_src >> 4) & 0xFF), (_src & 0x0F) };
+        } 
 
 	}
 }

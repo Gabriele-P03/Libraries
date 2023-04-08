@@ -37,6 +37,7 @@
 #include <jpl/logger/PrintLogger.hpp>
 #include "../CypherConst.hpp"
 #include "../CypherError.hpp"
+#include <jpl/utils/CharUtils.hpp>
 #include <string>
 
 #ifdef _USE_ASCII_CYPHER_JPL
@@ -108,7 +109,13 @@ namespace jpl{
                      * 
                      * @param key 
                      */
-                    Ceaser(unsigned int key);
+                    Ceaser(unsigned int key){
+                        if(key >= MAX_KEY_CYPHER_JPL){
+                            jpl::_cypher::_error_cypher_jpl = CYPHER_JPL_KEY_SIZE_ERROR;
+                        }
+                                            
+                        this->key = key;
+                    }
 
                     /**
                      * Encrypt the given clear-text using the Ceaser Cypher and the key passed to the constructor
@@ -120,7 +127,9 @@ namespace jpl{
                      * @return 0 success or -1
                      */
                     inline int encrypt(const char* clearText, std::size_t clearTextSize, char* &buffer, std::size_t &bufferSize){
-                        jpl::_cypher::checkExceptionAfterCall();
+                        if( !jpl::_cypher::checkError()){
+                            return -1;
+                        }
 
                         bufferSize = clearTextSize;
                         buffer = new char[bufferSize];
@@ -135,7 +144,7 @@ namespace jpl{
                                 if(dec >= MAX_KEY_CYPHER_JPL)
                                         dec -= MAX_KEY_CYPHER_JPL;
                                 buffer[i] = (char)dec;
-                            #else
+                            #elif defined(_USE_ALPHABET_CYPHER_JPL) || defined(_USE_NUMBERS_CYPHER_JPL)
 
                                 #ifndef _USE_ALPHABET_CYPHER_JPL
                                     if(jpl::_utils::isLetter(current)){
@@ -185,13 +194,14 @@ namespace jpl{
                                 if(dec < 0)
                                         dec += MAX_KEY_CYPHER_JPL;
                                 buffer[i] = (char)dec;                            
-                            #else
+                            #elif defined(_USE_ALPHABET_CYPHER_JPL) || defined(_USE_NUMBERS_CYPHER_JPL)
 
                                 #ifndef _USE_ALPHABET_CYPHER_JPL
                                     if(jpl::_utils::isLetter(current)){
                                         buffer[i] = current;
                                         continue;
                                     }
+
                                 #endif
 
                                 #ifndef _USE_NUMBERS_CYPHER_JPL 

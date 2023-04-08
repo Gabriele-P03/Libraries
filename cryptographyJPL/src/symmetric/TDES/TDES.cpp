@@ -35,7 +35,7 @@ std::string* jpl::_cypher::_symmetric::TDES::cbc_encrypt(std::string plain_text)
         jpl::_cypher::_error_cypher_jpl = CYPHER_JPL_IV_UNIN_ERROR;
     }
 
-    if(!jpl::_cypher::checkExceptionAfterCall()){
+    if(!jpl::_cypher::checkError()){
         return nullptr;
     }
     /*
@@ -81,7 +81,7 @@ std::string* jpl::_cypher::_symmetric::TDES::cbc_decrypt(std::string cyphered_te
         jpl::_cypher::_error_cypher_jpl = CYPHER_JPL_IV_UNIN_ERROR;
     }
 
-    if(!jpl::_cypher::checkExceptionAfterCall()){
+    if(!jpl::_cypher::checkError()){
         return nullptr;
     }
     /*

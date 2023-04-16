@@ -1,0 +1,27 @@
+IT IS REALLY SUGGESTED TO HAVE ALREADY READ RFC 7540 BEFORE THIS READING...
+https://www.rfc-editor.org/rfc/rfc7540 
+
+Premises:
+
+FrameWork used in this one:
+    - SocketClientJPL 1.0
+
+This is meant to be an HTTP bridge between two endpoint: the target server (HOST) and the actual machine which will use this framework.
+This is meant to be respectful of HTTP/2.0 according to the RFC 7540
+An encrypted connection https is available using TLS with the Application-Layer Protocol Negotiation (ALPN)
+
+As you can read in RFC 7540 (Section 3.1), the string "h2" identifies whenever HTTP/2.0 uses TLS meanwhile whilst the string "h2c" is used
+to identify a cleartext connection.
+
+
+______________
+
+Read Section 3.2 - Starting HTTP/2 for "http" URIs
+
+The first control done by this framework whenever you have initialized a new connection via either HttpConnection() or HttpsConnection() (if you meant to use an
+encrypted connection) it to check if the HOST is able to communicate with the 2.0 version of HTTP.
+This control is done sending an HTTP/1.1 request with
+
+p.s.
+    Most of all server nowadays use HTTP 2.0 as communcation protocol, then you should not encounter any errors; despite we're gonna developing server that
+    accept HTTP 3.0; anyway, it is further land...

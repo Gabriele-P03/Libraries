@@ -2,19 +2,14 @@
     "tasks": [
         {
             "type": "cppbuild",
-            "label": "Linux Server",
+            "label": "Linux",
             "command": "/usr/bin/g++",
             "args": [
                 "-g",
                 "-std=c++20",
-                "${workspaceFolder}/src/socket/server/MainServerSocket.cpp",
-                "${workspaceFolder}/src/socket/server/ClientListController.cpp",
-                "${workspaceFolder}/src/socket/server/Client.cpp",
-                "${workspaceFolder}/src/socket/MainSocket.cpp",
-                "${workspaceFolder}/src/packet/DataPacket.cpp",
-                "${workspaceFolder}/src/Main.cpp",
+                "${workspaceFolder}/Main.cpp",
                 "-o",
-                "${workspaceFolder}/out/linux/MainServer"
+                "${workspaceFolder}/out/linux/Main"
             ],
             "options": {
                 "cwd": "${fileDirname}"
@@ -36,12 +31,9 @@
             "args": [
                 "-g",
                 "-std=c++20",
-                "${workspaceFolder}/src/socket/MainSocket.cpp",
-                "${workspaceFolder}/src/packet/DataPacket.cpp",
-                "${workspaceFolder}/src/Main.cpp",
-                "-lws2_32",
+                "${workspaceFolder}/Main.cpp",
                 "-o",
-                "${workspaceFolder}/out/windows/MainClient.exe"
+                "${workspaceFolder}/out/window/Main.exe"
             ],
             "options": {
                 "cwd": "${fileDirname}"

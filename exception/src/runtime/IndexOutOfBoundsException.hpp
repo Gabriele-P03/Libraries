@@ -1,6 +1,6 @@
 /**
- * An IndexOutOfBounds exception is thrown whenever a substraction of an element out from a stack is attempted 
- * but it is already empty
+ * An IndexOutOfBounds exception is thrown whenever getting an element whose index is out-of-range of a list is attempted.
+ * It throws an IllegalArgumentException if Max is greater than Attempted
  * 
  * As explained into AbstractException's documentation, altough constructors are declared as public, you should avoid to call them.
  * it can be thrown by macro-constructor with 3 parameters (as you can see at the end of this file)

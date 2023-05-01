@@ -1,5 +1,5 @@
 /**
- * A NotFoundException is thrown whenever a field had not been found into a list of objects.
+ * A NotFoundException is thrown whenever a field has not been found into a list of objects.
  * 
  * As explained into AbstractException's documentation, altough constructors are declared as public, you should avoid to call them.
  * it can be thrown by macro-constructor with 2 parameters (as you can see at the end of this file)
@@ -52,6 +52,7 @@ namespace jpl{
 /**
  * @brief object will be stringified
  * 
+ * @param object object attempted to get 
  * @param msg describer message
  */
 #define NotFoundException(object, msg) jpl::_exception::NotFoundException(STRINGIFY(object), msg,  __FILENAME__, __func__, __LINE__)

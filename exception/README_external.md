@@ -43,15 +43,32 @@ The message of thrown exception can be retrieved via <span style="color:orange">
 >> - Thrown whenever a field has not been found into a list of objects
 >> <br><br>1. <span style="color:orange">*object*</span> item which has been attempted to get from list
 <br><br>
->> 6. ### <a href="https://github.com/Gabriele-P03/Libraries/blob/main/exception/src/runtime/NotFoundException.hpp" style="color:yellow">NullPointerException</a>
+>> 6. ### <a href="https://github.com/Gabriele-P03/Libraries/blob/main/exception/src/runtime/FileNotFoundException.hpp" style="color:yellow">FileNotFoundException</a>
+>> - Thrown whenever a file has not been found
+>> <br><br>1. <span style="color:orange">*file*</span> which has been looked for
+<br><br>
+>> 7. ### <a href="https://github.com/Gabriele-P03/Libraries/blob/main/exception/src/runtime/NotFoundException.hpp" style="color:yellow">NullPointerException</a>
 >> - Thrown when an operation is attempted either a NULL field or on a nullptr
 <br><br>
->> 7. ### <a href="https://github.com/Gabriele-P03/Libraries/blob/main/exception/src/runtime/NotFoundException.hpp" style="color:yellow">ArithmeticException</a>
+>> 8. ### <a href="https://github.com/Gabriele-P03/Libraries/blob/main/exception/src/runtime/NotFoundException.hpp" style="color:yellow">ArithmeticException</a>
 >> - Thrown when an invalid operation is attempted on a wrong math value
 >> <br><br>1. <span style="color:orange">*object*</span> is the invalid math variable
 <br><br>
->> 8. ### <a href="https://github.com/Gabriele-P03/Libraries/blob/main/exception/src/runtime/NotFoundException.hpp" style="color:yellow">IllegalCastException</a>
+>> 9. ### <a href="https://github.com/Gabriele-P03/Libraries/blob/main/exception/src/runtime/NotFoundException.hpp" style="color:yellow">IllegalCastException</a>
 >> - Thrown whenever an invalid cast on an object is attempted
 >><br><br> 1. <span style="color:orange">*object*</span> is the object which the invalid cast has been attempted on
 >> <br>&nbsp;2. <span style="color:orange">*cast_attempted*</span> type which object has been cast to 
 >> <br>&nbsp;3. <span style="color:orange">*cast_needed*</span> cast required 
+<br><br>
+> ### Reflection (<span style="color:brown">reflection</span>)
+> - Thrown by an error occurred during a reflective operation
+>> 1. ### <a href="https://github.com/Gabriele-P03/Libraries/blob/main/exception/src/reflection/IllegalAccessException.hpp" style="color:yellow">IllegalAccessException</a>
+>> - Thrown whenever either a private field or method has been attempted to be accessed
+>><br><br>&nbsp;1. <span style="color:orange">object</span> which has been attempted to be accessed
+>> 2. ### <a href="https://github.com/Gabriele-P03/Libraries/blob/main/exception/src/reflection/NoSuchFieldException.hpp" style="color:yellow">NoSuchFieldException</a>
+>> - Thrown whenever a field has not been found
+>><br><br>&nbsp;1. <span style="color:orange">object</span> which has not been found
+>><br><br>&nbsp;2. <span style="color:orange">class</span> the class where the object has been looked for into
+>> 3. ### <a href="https://github.com/Gabriele-P03/Libraries/blob/main/exception/src/reflection/NoSuchMethodException.hpp" style="color:yellow">NoSuchMethodException</a>
+>> - Thrown whenever a method has not been found
+>><br><br>&nbsp;1. <span style="color:orange">method</span> which has not been found

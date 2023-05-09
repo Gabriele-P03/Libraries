@@ -1,5 +1,5 @@
 /**
- * A NotFoundException is thrown whenever a field has not been found into a list of objects.
+ * A FileNotFoundException is thrown whenever a file has not been found.
  * 
  * As explained into AbstractException's documentation, altough constructors are declared as public, you should avoid to call them.
  * it can be thrown by macro-constructor with 2 parameters (as you can see at the end of this file)
@@ -10,8 +10,8 @@
  * @copyright Copyright (c) 2023
  * @author Gabriele-P03
  */
-#ifndef NOT_FOUND_EXCEPTION_JPL
-#define NOT_FOUND_EXCEPTION_JPL
+#ifndef FILE_NOT_FOUND_EXCEPTION_JPL
+#define FILE_NOT_FOUND_EXCEPTION_JPL
 
 #include "../AbstractException.hpp"
 
@@ -20,7 +20,7 @@ namespace jpl{
 
     namespace _exception{
 
-        class NotFoundException : public AbstractException{
+        class FileNotFoundException : public AbstractException{
 
             private:
 
@@ -28,8 +28,8 @@ namespace jpl{
             
             public:
 
-                NotFoundException(const char* const _cause, const char* file_name, const char* function_name, const int line) : 
-                    AbstractException("NotFoundException", "", file_name, function_name, line), _cause(_cause){}
+                FileNotFoundException(const char* const _cause, const char* file_name, const char* function_name, const int line) : 
+                    AbstractException("FileNotFoundException", "", file_name, function_name, line), _cause(_cause){}
 
                 inline const char* what() const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW override{
                     std::string buffer = 
@@ -52,9 +52,9 @@ namespace jpl{
 /**
  * @brief object will be stringified
  * 
- * @param object object attempted to get 
+ * @param file file attempted to get 
  */
-#define NotFoundException(object) jpl::_exception::NotFoundException(STRINGIFY(object),  __FILENAME__, __func__, __LINE__)
+#define FileNotFoundException(file) jpl::_exception::FileNotFoundException(STRINGIFY(file),  __FILENAME__, __func__, __LINE__)
 
 
 #endif

@@ -1,7 +1,7 @@
 /**
- * This header file contains some functions spread off the whole jpl framework, they do operation at lower-level on bits.
- * Since a bit cannot be explictly represented, it is done by a boolean value 
- * 
+ * This header file contains some functions about bit operation.
+ * Since there's no bit-type in C++, it is associated as a boolean value
+ *  
  * @date 2023-04-16
  * @copyright Copyright (c) 2023
  * @author Gabriele-P03
@@ -16,6 +16,14 @@ namespace jpl{
 
         namespace _bits{
 
+            /**
+             * Performs xor operation between two array of bits 
+             * 
+             * @param _src1 first array
+             * @param _src2 second array
+             * @param _size size of _src1 and _src2
+             * @return xored array
+             */
             inline bool* _xor_bits(bool* _src1, bool* _src2, unsigned long _size){
                 bool* _buffer = new bool[_size];
 

@@ -1,10 +1,13 @@
-#include "src/ConversionUtils.hpp"
+#include "src/ErrorUtils.hpp"
 
 #include <iostream>
 
 int main(){
 
-    const char* tmp = "1";
-    bool* buffer = jpl::_utils::_conversions::cc_bits(tmp, 1);  
-    tmp = jpl::_utils::_conversions::bits_cc(buffer, 8); 
+    std::string s = jpl::_utils::_error::_GetLastErrorAsString();
+
+    std::cout<<s;
+
+
+    return 0;
 }

@@ -12,7 +12,6 @@
  * @copyright Copyright (c) 2022
  * @author Gabriele-P03
  */
-
 #ifndef LOGGER_JPL
 #define LOGGER_JPL
 
@@ -24,95 +23,79 @@
         #include <windows.h>
     #endif
 
+    #include <string>
+    #include <fstream>
+    #include <iostream>
+    #include <ctime>
 
+    #include "FilesUtils.hpp"
 
     namespace jpl{
 
         namespace _logger{
 
-            typedef const char* LOG_STATUS;
+            class Logger{
 
-            //No errors occurred
-            extern const LOG_STATUS OK;
-            //Warning message
-            extern const LOG_STATUS WARNING;
-            //Error message. Program may be closed
-            extern const LOG_STATUS ERR;
+                protected:
 
-        }
-    }
+                    //Return the file name of today e.g. dd-mm-yyyy_hh-mm-ss.txt
+                    static std::string getFileNameOfInstance();
 
-#include <string>
-#include <fstream>
-#include <iostream>
-#include <ctime>
+                    static inline std::tm* getTM(){
+                        std::time_t now = std::time(0);
+                        return std::localtime(&now);
+                    }
 
-namespace jpl{
-
-    namespace _logger{
-    
-        class Logger{
-
-            private:
-                /**
-                 * Return the standard representation of the path to the logger's file
-                 * path_to_your_project/logs/getFileNameOfInstancce()
-                 * 
-                 * @return std::string 
-                 */
-                static std::string getStandardPathToFile();
-
-            protected:
-
-                //Return the file name of today e.g. dd-mm-yyyy_hh-mm-ss.txt
-                static std::string getFileNameOfInstance();
-
-                static inline std::tm* getTM(){
-                    std::time_t now = std::time(0);
+                    std::fstream* file;
                     
-                    return std::localtime(&now);
-                }
+                public:
 
-                std::fstream* file;
+                    /**
+                     * Create a new instance of Logger associated with the output file at the given path
+                     * 
+                     * @param pathToFile 
+                     */
+                    Logger(std::string pathToFile){
+                        this->file = new std::fstream();
+                        this->file->open(pathToFile, std::ios_base::out);
 
-                
-            public:
+                        if(!file){
+                            #ifdef OMI_LOGGER_JPL
+                                //permit only printing
+                            #else
+                                //Exception and then exit
+                            #endif
+                        }
+                    }
 
-                /**
-                 * Create a new instance of Logger associated with the output file at the given path
-                 * 
-                 * @param pathToFile 
-                 */
-                Logger(std::string pathToFile);
+                    static Logger* INSTANCE;
 
-                static Logger* INSTANCE;
+                    /**
+                     * Print on terminal @msg
+                     * Write on file the @msg and flushes it.
+                     * It is implicit an ok status
+                     * @param msg 
+                     */
+                    void print(std::string msg);
 
-                /**
-                 * Print on terminal @msg
-                 * Write on file the @msg and flushes it.
-                 * It is implicit an ok status
-                 * @param msg 
-                 */
-                void print(std::string msg);
+                    /**
+                     * Print on terminal @msg
+                     * Write on file the @msg and flushes it.
+                     * It is implicit a log status
+                     * @param msg 
+                     */
+                    void print(std::string msg, LOG_STATUS status);
 
-                /**
-                 * Print on terminal @msg
-                 * Write on file the @msg and flushes it.
-                 * It is implicit a log status
-                 * @param msg 
-                 */
-                void print(std::string msg, LOG_STATUS status);
+                    /**
+                     * Close file of printing
+                     */
+                    void closeLogger();
 
-                /**
-                 * Close file of printing
-                 */
-                void closeLogger();
+                    ~Logger();
+            };
+        }
+    } 
 
-                ~Logger();
-        };
-
-    }
-
-} 
+#undef INITING_LOGGER_JPL
 
 #endif

@@ -1,6 +1,6 @@
 /**
- * This header file contains some functions about bit operation.
- * Since there's no bit-type in C++, it is associated as a boolean value
+ * This header file contains some functions about bit-operation.
+ * Since there's no bit-type in C++, it is associated as a boolean value (true value means 1 otherwise 0)
  *  
  * @date 2023-04-16
  * @copyright Copyright (c) 2023

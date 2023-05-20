@@ -1,5 +1,15 @@
 /**
- * This headewr file contains some function about type-conversion
+ * This header file contains some function about type-conversion.
+ *
+ * Type Legend:
+ * 
+ * 	- cc: 		const char*
+ * 	- int/i: 	integer
+ * 	- uint: 	unsigned integer
+ * 	- d: 		double
+ * 	- f:		float
+ * 	- b:		boolean
+ * 	- bit:		boolean(bit)
  *
  * @date 2023-02-04
  * @copyright Copyright (c) 2023

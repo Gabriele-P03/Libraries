@@ -1,11 +1,9 @@
 /**
+ * @file
+ * 
  * An IndexOutOfBounds exception is thrown whenever getting an element whose index is out-of-range of a list is attempted.
  * It throws an IllegalArgumentException if Max is greater than Attempted
  * 
- * As explained into AbstractException's documentation, altough constructors are declared as public, you should avoid to call them.
- * it can be thrown by macro-constructor with 3 parameters (as you can see at the end of this file)
- * 
- * In this exception what() is overriden in order to print the fielde which are illegal.
  * 
  * @date 2023-04-23
  * @copyright Copyright (c) 2023
@@ -24,8 +22,18 @@ namespace jpl{
         class IndexOutOfBoundsException : public AbstractException{
 
             private:
+                /**
+                 * the list which the operation had been performed on
+                 */
                 const char* _object;
-                const unsigned int max, attempted;
+                /**
+                 * size of list
+                 */
+                const unsigned int max;
+                /**
+                 * the index attempted
+                 */
+                const unsigned int attempted;
 
                 void catchIllegalMaxAttempted(){
                     if(this->max >= this->attempted){
@@ -47,14 +55,6 @@ namespace jpl{
                 }
 
             public:
-
-                /**
-                 * Create a new IndexOutOfBoundsException
-                 * 
-                 * @param max size of the object
-                 * @param attempted current index attempted to insert at
-                 * @throw 
-                 */
                 IndexOutOfBoundsException(const char* _object, const unsigned int max, const unsigned int attempted, const char* file_name, const char* function_name, const unsigned int line) :
                     AbstractException("IndexOutOfBoundsException", "", file_name, function_name, line), max(max), attempted(attempted), _object(_object){
 
@@ -85,9 +85,10 @@ namespace jpl{
  * @brief object will be stringified
  * 
  * @param object the list which the operation had been performed on
- * @param max size of object
+ * @param max size of list
  * @param attempted the index attempted
  * 
+ * @throw IllegalArgumentException if max is greater or equal than attempted
  */
 #define IndexOutOfBoundsException(object, max, attempted) jpl::_exception::IndexOutOfBoundsException(STRINGIFY(object), max, attempted, __FILENAME__, __func__, __LINE__)
 

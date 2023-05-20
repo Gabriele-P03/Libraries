@@ -1,8 +1,7 @@
 /**
- * A RuntimeException is thrown when an error is occurred in runtime but its cause cannot be enstabilished 
+ * @file
  * 
- * As explained into AbstractException's documentation, altough constructors are declared as public, you should avoid to call them.
- * it can be thrown by macro-constructor with 1 parameters (as you can see at the end of this file)
+ * A RuntimeException is thrown when an error is occurred in runtime but its cause cannot be enstabilished 
  * 
  * @date 2023-04-30
  * @copyright Copyright (c) 2023
@@ -33,6 +32,5 @@ namespace jpl{
  * 
  */
 #define RuntimeException(msg) jpl::_exception::RuntimeException(msg, __FILENAME__, __func__, __LINE__)
-
 
 #endif

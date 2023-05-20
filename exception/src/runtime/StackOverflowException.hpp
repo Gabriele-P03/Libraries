@@ -1,11 +1,8 @@
 /**
+ * @file
+ * 
  * A StackOverflow exception is thrown whenever an addition of an element into a stack is attempted 
  * but the capacity of the LIFO structure does not permit it
- * 
- * As explained into AbstractException's documentation, altough constructors are declared as public, you should avoid to call them.
- * it can be thrown by macro-constructor with 2 parameters (as you can see at the end of this file)
- * 
- * In this exception what() is overriden in order to print the field which is illegal. 
  * 
  * @date 2023-04-23
  * @copyright Copyright (c) 2023
@@ -15,7 +12,7 @@
 #ifndef STACKOVERFLOW_EXCEPTION_JPL
 #define STACKOVERFLOW_EXCEPTION_JPL
 
-#include "AbstractException.hpp"
+#include "../AbstractException.hpp"
 
 namespace jpl{
 
@@ -24,6 +21,10 @@ namespace jpl{
         class StackOverflowException : public AbstractException{
 
             private:
+
+                /**
+                 * The name of the list which caused this exception
+                 */
                 const char* _cause;
 
             public:
@@ -49,7 +50,7 @@ namespace jpl{
 /**
  * @brief object will be stringified
  * 
- * @param object the empty list
+ * @param object the full list
  */
 #define StackOverflowException(object) StackOverflowException(STRINGIFY(object), "", __FILENAME__, __func__, __LINE__)
 

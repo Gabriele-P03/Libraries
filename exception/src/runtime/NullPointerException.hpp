@@ -1,11 +1,9 @@
 /**
+ * @file
+ * 
  * A NullPointerException is thrown whenever an operation had been attempted on a nullptr pointer
  * or NULL field.
  * 
- * As explained into AbstractException's documentation, altough constructors are declared as public, you should avoid to call them.
- * it can be thrown by macro-constructor with 2 parameters (as you can see at the end of this file)
- * 
- * In this exception what() is overriden in order to print the field which is illegal.
  * 
  * @date 2023-04-22
  * @copyright Copyright (c) 2023
@@ -25,6 +23,9 @@ namespace jpl{
 
             private:
 
+                /**
+                 * The null field which caused this exception
+                 */
                 const char* _cause;
             
             public:
@@ -49,7 +50,7 @@ namespace jpl{
 }
 
 
-#define STRINGIFY(arg) #arg
+
 /**
  * @brief object will be stringified
  * 

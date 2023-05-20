@@ -1,13 +1,11 @@
 /**
+ * @file 
+ * 
  * A NoSuchMethodException is thrown whenever a method which had been attempted to be get via reflexpr TS
  * or any other kind of reflection feature that will be implemented later in C++, has not been found.
  * 
  * Since reflexpr TS is experimental this exception could seem as useless, indeed it is though for a later feature.
  * 
- * As explained in AbstractException's documentation, altough constructors are declared as public, you should avoid to call them.
- * It can be thrown by constructor with 2 parameters (as you can see by the macro defined at the end of this file)
- *
- * In this exception what() is overriden in order to print the Method which is illegal.
  * 
  * @date 2023-04-22
  * @copyright Copyright (c) 2023
@@ -27,7 +25,13 @@ namespace jpl{
 
             private:
 
+                /**
+                 * It is the method which caused the exception
+                 */
                 const char* _cause;
+                /**
+                 * It is the class which _cause had been looking for into
+                 */
                 const char* _class_name;
             
             public:
@@ -53,14 +57,15 @@ namespace jpl{
 }
 
 
-#define STRINGIFY(arg) #arg
+
 /**
- * @brief object will be stringified
+ * @brief method will be stringified
+ * @brief class will be stringified
  * 
- * @param object the Method looking for
- * @param class the class where the Method had been looked for into
+ * @param method the method which had been looking for
+ * @param class the class where the method had been looked for into
  */
-#define NoSuchMethodException(object, class) jpl::_exception::NoSuchMethodException(STRINGIFY(object), STRINGIFY(class), "",  __FILENAME__, __func__, __LINE__)
+#define NoSuchMethodException(method, class) jpl::_exception::NoSuchMethodException(STRINGIFY(method), STRINGIFY(class), "",  __FILENAME__, __func__, __LINE__)
 
 
 #endif

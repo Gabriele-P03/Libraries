@@ -1,10 +1,9 @@
 /**
+ * @file
+ * 
  * A NotFoundException is thrown whenever a field has not been found into a list of objects.
  * 
- * As explained into AbstractException's documentation, altough constructors are declared as public, you should avoid to call them.
- * it can be thrown by macro-constructor with 2 parameters (as you can see at the end of this file)
- * 
- * In this exception what() is overriden in order to print the field which is illegal.
+ * This exception is a bit abstract. There are some extended version of it  
  * 
  * @date 2023-04-22
  * @copyright Copyright (c) 2023
@@ -15,7 +14,6 @@
 
 #include "../AbstractException.hpp"
 
-
 namespace jpl{
 
     namespace _exception{
@@ -24,6 +22,9 @@ namespace jpl{
 
             private:
 
+                /**
+                 * The object which has not been found
+                 */
                 const char* _cause;
             
             public:
@@ -48,7 +49,6 @@ namespace jpl{
 }
 
 
-#define STRINGIFY(arg) #arg
 /**
  * @brief object will be stringified
  * 

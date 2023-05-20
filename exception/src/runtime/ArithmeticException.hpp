@@ -1,11 +1,8 @@
 /**
+ * @file
+ * 
  * An ArithmeticException is thrown whenever an invalid operation is attempted on a wrong math value;
  * for instance, value/0
- * 
- * As explained in AbstractException's documentation, altough constructors are declared as public, you should avoid to call them.
- * It can be thrown by constructor with 2 parameters (as you can see by the macro defined at the end of this file)
- *
- * In this exception what() is overriden in order to print the field which is illegal.
  * 
  * @date 2023-04-22
  * @copyright Copyright (c) 2023
@@ -25,6 +22,9 @@ namespace jpl{
 
             private:
 
+                /**
+                 * The cause of this exception
+                 */
                 const char* _cause;
             
             public:
@@ -50,7 +50,12 @@ namespace jpl{
 }
 
 
-#define STRINGIFY(arg) #arg
+/**
+ * @brief object will be stringified
+ * 
+ * @param object the operator which cause the exception
+ * @param msg message
+ */
 #define ArithmeticException(object, msg) jpl::_exception::ArithmeticException(STRINGIFY(object), msg,  __FILENAME__, __func__, __LINE__)
 
 

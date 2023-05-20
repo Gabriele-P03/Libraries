@@ -1,10 +1,7 @@
 /**
+ * @file
+ * 
  * A FileNotFoundException is thrown whenever a file has not been found.
- * 
- * As explained into AbstractException's documentation, altough constructors are declared as public, you should avoid to call them.
- * it can be thrown by macro-constructor with 2 parameters (as you can see at the end of this file)
- * 
- * In this exception what() is overriden in order to print the field which is illegal.
  * 
  * @date 2023-04-22
  * @copyright Copyright (c) 2023
@@ -24,6 +21,9 @@ namespace jpl{
 
             private:
 
+                /**
+                 * name of the file wich could not be found
+                 */
                 const char* _cause;
             
             public:
@@ -48,13 +48,11 @@ namespace jpl{
 }
 
 
-#define STRINGIFY(arg) #arg
+
 /**
- * @brief object will be stringified
- * 
- * @param file file attempted to get 
+ * @param file name of the file attempted to get 
  */
-#define FileNotFoundException(file) jpl::_exception::FileNotFoundException(STRINGIFY(file),  __FILENAME__, __func__, __LINE__)
+#define FileNotFoundException(file) jpl::_exception::FileNotFoundException(file,  __FILENAME__, __func__, __LINE__)
 
 
 #endif

@@ -1,4 +1,6 @@
 /**
+ * @file
+ * 
  * An IllegalStateException is thrown whenever any function is called at a bad time, 
  * i.e. wheter an another function had to be called before the one which threw this exception
  * 
@@ -11,9 +13,6 @@
  *          throw new IllegalStateException()
  *      }
  *  }
- * 
- * As explained into AbstractException's documentation, altough constructors are declared as public, you should avoid to call them.
- * it can be thrown by macro-constructor with 1 parameters (as you can see at the end of this file)
  * 
  * @date 2023-04-22
  * @copyright Copyright (c) 2023

@@ -1,4 +1,6 @@
 /**
+ * @file
+ * 
  * An AbstractException is a template used by JPL's exception to be thrown as following a certain syntax.
  * It is extended by each of those exceptions, giving to the constructor of this class its class name in order to
  * print, once thrown, an error as the below one:
@@ -14,7 +16,7 @@
  * This class, as its children, do not call any destructor, neither they're declared, since they are thought to work with
  * string literals; therefore, if you have passed an allocated const char*, you have to take care about free it.
  * 
- * Some of the provided exception override what() function and do not offer a constructor with @message parameter
+ * Some of the provided exception override what() function and do not offer a constructor with message parameter
  * because it is useless for it; for instance, in IndexOutOfBounds you just pass Max, Attempted and Object (this last will be talked about later)
  * 
  * Some others offer constructor which you can pass anything you want to, since it will be stringified. That parameter should be used to
@@ -50,13 +52,32 @@ namespace jpl{
         class AbstractException : protected std::exception{
 
             protected:
-
+                
+                /**
+                 * This is a description of the exception which has been thrown. It is passed by constructor
+                 * and it is as the exception name
+                 * 
+                 */
                 const char* type_ex;
+
+                /**
+                 * It is a description of what has just happened. For some exception it may be a template
+                 * of stuff (usually when constructor does not need any msg)
+                 */
                 const char* msg;
 
-                const char* file_name;              //File which contains the call to function_name
-                const char* function_name;          //Name of the function which has caused the exception
-                const int line;            //Line where exception is thrown
+                /** 
+                 * File which contains the call to function_name. Get by __FILENAME__ preprocessor
+                 */
+                const char* file_name; 
+                /**
+                 * Name of the function which has caused the exception. Get by __func__ preprocessor   
+                 */         
+                const char* function_name; 
+                /**
+                 * Line where exception is thrown. Get by __LINE__ preprocessor
+                 */          
+                const int line;            
                 
                 AbstractException(const char* type_ex, const char* msg, const char* file_name, const char* function_name, const int line) : 
                     type_ex(type_ex), msg(msg), file_name(file_name), function_name(function_name), line(line){
@@ -67,6 +88,7 @@ namespace jpl{
                     AbstractException(type_ex, "", file_name, function_name, line){}
             
             public:
+                
                 
                 inline virtual const char* what() const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW override{
                     std::string buffer = 
@@ -81,7 +103,14 @@ namespace jpl{
                     return c_buffer;
                 }
 
-                inline friend std::ostream& operator<<(std::ostream& os, const AbstractException& iae){
+                /**
+                 * @brief 
+                 * 
+                 * @param os 
+                 * @param iae 
+                 * @return std::ostream& 
+                 */
+                inline friend std::ostream& operator<<(std::ostream& os, const AbstractException &iae){
 
                     const char* buffer = iae.what();
                     os<<buffer;
@@ -92,5 +121,11 @@ namespace jpl{
     }
 }
 
+/**
+ * @brief Stringify the arg
+ * 
+ * @param arg anything you want
+ */
+#define STRINGIFY(arg) #arg
 
 #endif

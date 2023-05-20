@@ -1,13 +1,11 @@
 /**
+ * @file
+ * 
  * An IllegalAccessException is thrown whenever a non-public field is attempted to be get via reflexpr TS
  * or any other kind of reflection feature that will be implemented later in C++.
  * 
  * Since reflexpr TS is experimental this exception could seem as useless, indeed it is though for a later feature.
  * 
- * As explained in AbstractException's documentation, altough constructors are declared as public, you should avoid to call them.
- * It can be thrown by constructor with 1 parameter (as you can see by the macro defined at the end of this file)
- *
- * In this exception what() is overriden in order to print the field which is illegal.
  * 
  * @date 2023-04-22
  * @copyright Copyright (c) 2023
@@ -27,6 +25,9 @@ namespace jpl{
 
             private:
 
+                /**
+                 * It is the private field name which caused the exception
+                 */
                 const char* _cause;
             
             public:
@@ -51,7 +52,7 @@ namespace jpl{
 }
 
 
-#define STRINGIFY(arg) #arg
+
 /**
  * @brief object will be stringified
  * 

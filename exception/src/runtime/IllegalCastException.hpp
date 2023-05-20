@@ -1,10 +1,7 @@
 /**
- * An IllegalCastException is thrown whenever an invalid cast on an object is attempted
+ * @file
  * 
- * As explained in AbstractException's documentation, altough constructors are declared as public, you should avoid to call them.
- * It can be thrown by constructor with 2 parameters (as you can see by the macro defined at the end of this file)
- *
- * In this exception what() is overriden in order to print the field which is illegal.
+ * An IllegalCastException is thrown whenever an invalid cast on an object is attempted
  * 
  * @date 2023-04-22
  * @copyright Copyright (c) 2023
@@ -24,8 +21,17 @@ namespace jpl{
 
             private:
 
+                /**
+                 * The class which the field has been attempted to be cast to
+                 */
                 const char* _cast_attempted;
+                /**
+                 * The class supplied
+                 */
                 const char* _cast_needed;
+                /**
+                 * The field casted
+                 */
                 const char* _cause;
             
             public:
@@ -52,7 +58,15 @@ namespace jpl{
 }
 
 
-#define STRINGIFY(arg) #arg
+/**
+ * @brief object will be stringified
+ * @brief cast_attempted will be stringified
+ * @brief cast_needed will be stringified
+ * 
+ * @param object the field attempted to be cast
+ * @param cast_needed the class supplied
+ * @param cast_attempted the class which the field has been attempted to be cast to
+ */
 #define IllegalCastException(object, cast_attempted, cast_needed) jpl::_exception::IllegalCastException(STRINGIFY(object), STRINGIFY(cast_attempted), STRINGIFY(cast_needed), "",  __FILENAME__, __func__, __LINE__)
 
 

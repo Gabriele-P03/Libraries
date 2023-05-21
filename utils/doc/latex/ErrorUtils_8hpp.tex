@@ -1,0 +1,42 @@
+\doxysection{src/\+Error\+Utils.hpp File Reference}
+\hypertarget{ErrorUtils_8hpp}{}\label{ErrorUtils_8hpp}\index{src/ErrorUtils.hpp@{src/ErrorUtils.hpp}}
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$errhandlingapi.\+h$>$}\newline
+{\ttfamily \#include $<$windows.\+h$>$}\newline
+{\ttfamily \#include $<$errno.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacejpl}{jpl}}
+\item 
+namespace \mbox{\hyperlink{namespacejpl_1_1__utils}{jpl\+::\+\_\+utils}}
+\item 
+namespace \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__error}{jpl\+::\+\_\+utils\+::\+\_\+error}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+unsigned int \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__error_a44f404968c3125d1daece4a6eaeb136a}{jpl\+::\+\_\+utils\+::\+\_\+error\+::\+\_\+\+Get\+Last\+Error}} ()
+\item 
+std\+::string \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__error_a6cbe14b27e3f1858a240c79bf0cafa87}{jpl\+::\+\_\+utils\+::\+\_\+error\+::\+\_\+\+Get\+Last\+Error\+As\+String}} (unsigned int \+\_\+error\+\_\+code)
+\item 
+std\+::string \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__error_a2a97dbdbe0ec32ee92e186241ef4bff7}{jpl\+::\+\_\+utils\+::\+\_\+error\+::\+\_\+\+Get\+Last\+Error\+As\+String}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Error\+Utils is a wrapper to let you retireve the last error occurred which is saved into \begin{DoxyVerb} errno, on a linux kernel
+ GetLastError(), on windows kernel
+\end{DoxyVerb}
+ This wrapper provides a unqiue defined macro as a cross-\/platform one
+
+\begin{DoxyDate}{Date}
+2023-\/05-\/20 
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2023 
+\end{DoxyCopyright}
+\begin{DoxyAuthor}{Author}
+Gabriele-\/\+P03 
+\end{DoxyAuthor}

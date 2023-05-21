@@ -1,12 +1,8 @@
 /**
- * A logger provides writing on terminal - and once the game has been closed, also in a file -
- * everything that happens during gaming: resource loading, settings loading, errors ecc...
+ * A logger provides writing log-program on terminal and in a file both.
+ *  
  * 
- * Since it oughta write the messagges on a file, it needs an instance of fstream.
- * Any errors about the creating of this file cannot be written on it, just since it could not be created; then, FilesUtils 
- * cannot be integrated within this class. 
- * 
- * Althought that, functions about load the files are gonna be copied by FilesUtils' ones and edited a bit;
+ * If OMI_LOGGER_JPL macro is defined, an Optional 
  * 
  * @date 2022-08-01
  * @copyright Copyright (c) 2022
@@ -47,6 +43,14 @@
                     }
 
                     std::fstream* file;
+
+                    /**
+                     * @brief If the fstream could be created, this flag is set to true,
+                     * otherwise to false.
+                     * Is is used to check, when OMI_LOGGER_JPL macro is defined, if logger
+                     * is able to write on the file the message, too 
+                     */
+                    bool flag;
                     
                 public:
 
@@ -60,11 +64,13 @@
                         this->file->open(pathToFile, std::ios_base::out);
 
                         if(!file){
-                            #ifdef OMI_LOGGER_JPL
-                                //permit only printing
+                            #ifndef OMI_LOGGER_JPL                           
+                                exit(EXIT_FAILURE);   
                             #else
-                                //Exception and then exit
+                                this->flag = false;
                             #endif
+                        }else{
+                            this->flag = true;
                         }
                     }
 
@@ -95,7 +101,5 @@
             };
         }
     } 
-
-#undef INITING_LOGGER_JPL
 
 #endif

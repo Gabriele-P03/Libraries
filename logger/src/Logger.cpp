@@ -8,20 +8,24 @@ void jpl::_logger::Logger::print(std::string msg){
 void jpl::_logger::Logger::print(std::string msg, jpl::_logger::LOG_STATUS status){
 
     msg = "[ " + this->getFileNameOfInstance() + " -> " + status + " ]: " + msg + "\n";
-    this->file->write(msg.c_str(), msg.size());
-    this->file->flush();
-
     std::cout<<msg;
+    if(flag){
+        this->file->write(msg.c_str(), msg.size());
+        this->file->flush();
+    }
 }
 
 void jpl::_logger::Logger::closeLogger(){
 
-    this->print("Logger closed");
     this->file->close();
+    this->flag = false;
+    this->print("Logger closed");
 }
 
 jpl::_logger::Logger::~Logger(){
-    //Include Exception and call IllegalState Logger has not been closed, then delete this instance
+    if(flag){
+    
+    }
 }
 
 std::string jpl::_logger::Logger::getFileNameOfInstance(){

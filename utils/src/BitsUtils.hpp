@@ -1,7 +1,12 @@
 /**
- * This header file contains some functions about bit-operation.
+ * @file
+ * 
+ * There are some functions about bit-operation.
  * Since there's no bit-type in C++, it is associated as a boolean value (true value means 1 otherwise 0)
  *  
+ * Into ConversionUtils.hpp you can figure out some function which could help you to convert 
+ * chars to bits (boolean array)
+ * 
  * @date 2023-04-16
  * @copyright Copyright (c) 2023
  * @author Gabriele-P03

@@ -1,4 +1,5 @@
 /**
+ * @file 
  * There are some static non-member function useful to check some prioprieties about a char of a string
  * 
  * @date 2023-02-11
@@ -8,7 +9,6 @@
 
 #ifndef CHAR_UTILS_CYPHER_JPL
 #define CHAR_UTILS_CYPHER_JPL
-
 
 namespace jpl{
 

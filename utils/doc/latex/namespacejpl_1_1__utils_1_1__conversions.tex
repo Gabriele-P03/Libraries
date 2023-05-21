@@ -1,0 +1,241 @@
+\doxysection{jpl\+::\+\_\+utils\+::\+\_\+conversions Namespace Reference}
+\hypertarget{namespacejpl_1_1__utils_1_1__conversions}{}\label{namespacejpl_1_1__utils_1_1__conversions}\index{jpl::\_utils::\_conversions@{jpl::\_utils::\_conversions}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__conversions_aa2e4b520a5aa4aa325f94d98bcdaa77d}{int\+\_\+cc}} (int src, const char \texorpdfstring{$\ast$}{*}\&dst)
+\item 
+void \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__conversions_ad5a91e43eb0b29ef603dac125cbe8abd}{cc\+\_\+int}} (const char \texorpdfstring{$\ast$}{*}src, int \&dst)
+\item 
+void \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__conversions_a950743c37941639764d7517a80d306f3}{uint\+\_\+cc}} (unsigned int src, const char \texorpdfstring{$\ast$}{*}\&dst)
+\item 
+void \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__conversions_acbf128a2e6f54d3fef217d4bc6805bb1}{cc\+\_\+uint}} (const char \texorpdfstring{$\ast$}{*}src, unsigned int \&dst)
+\item 
+void \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__conversions_a4b76000ce845b7da77f9345a8f5f9328}{f\+\_\+cc}} (float src, const char \texorpdfstring{$\ast$}{*}\&dst)
+\item 
+void \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__conversions_a58a87e27474ba114c8f7b7e760775bbd}{cc\+\_\+f}} (const char \texorpdfstring{$\ast$}{*}src, float \&dst)
+\item 
+void \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__conversions_a8006bad9a3d9ca9da98163182f39940e}{d\+\_\+cc}} (double src, const char \texorpdfstring{$\ast$}{*}\&dst)
+\item 
+void \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__conversions_a4d39bb8acb7df7e5c7c2a389ab0109c4}{cc\+\_\+d}} (const char \texorpdfstring{$\ast$}{*}src, double \&dst)
+\item 
+char \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__conversions_a142a97d937bf5b583e39de961437e600}{b\+\_\+cc}} (bool src, unsigned short offset)
+\item 
+bool \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__conversions_a786994bde6120e5af03f04633e76520e}{cc\+\_\+b}} (const char \texorpdfstring{$\ast$}{*}src, bool \&dst, unsigned short offset)
+\item 
+int \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__conversions_a643606b39a979f246b02d0cf5d4d2748}{split\+\_\+cc\+\_\+ii}} (const char \+\_\+src)
+\item 
+bool \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__conversions_afbbcb6f132ffbbc65d95115520b05379}{cc\+\_\+bits}} (const char \texorpdfstring{$\ast$}{*}src, unsigned int \+\_\+size)
+\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__conversions_af81c23513f8914b12aaa4a864d815f69}{bits\+\_\+cc}} (bool \texorpdfstring{$\ast$}{*}src, unsigned int \+\_\+size)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespacejpl_1_1__utils_1_1__conversions_a142a97d937bf5b583e39de961437e600}\label{namespacejpl_1_1__utils_1_1__conversions_a142a97d937bf5b583e39de961437e600} 
+\index{jpl::\_utils::\_conversions@{jpl::\_utils::\_conversions}!b\_cc@{b\_cc}}
+\index{b\_cc@{b\_cc}!jpl::\_utils::\_conversions@{jpl::\_utils::\_conversions}}
+\doxysubsubsection{\texorpdfstring{b\_cc()}{b\_cc()}}
+{\footnotesize\ttfamily char jpl\+::\+\_\+utils\+::\+\_\+conversions\+::b\+\_\+cc (\begin{DoxyParamCaption}\item[{bool}]{src,  }\item[{unsigned short}]{offset }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Store into a char the given bit (seen as boolean value)
+
+
+\begin{DoxyParams}{Parameters}
+{\em src} & \\
+\hline
+{\em offset} & index of the digit into returned char \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+char (if offset is greater than 6, it returns 0x00 ) 
+\end{DoxyReturn}
+\Hypertarget{namespacejpl_1_1__utils_1_1__conversions_af81c23513f8914b12aaa4a864d815f69}\label{namespacejpl_1_1__utils_1_1__conversions_af81c23513f8914b12aaa4a864d815f69} 
+\index{jpl::\_utils::\_conversions@{jpl::\_utils::\_conversions}!bits\_cc@{bits\_cc}}
+\index{bits\_cc@{bits\_cc}!jpl::\_utils::\_conversions@{jpl::\_utils::\_conversions}}
+\doxysubsubsection{\texorpdfstring{bits\_cc()}{bits\_cc()}}
+{\footnotesize\ttfamily char \texorpdfstring{$\ast$}{*} jpl\+::\+\_\+utils\+::\+\_\+conversions\+::bits\+\_\+cc (\begin{DoxyParamCaption}\item[{bool \texorpdfstring{$\ast$}{*}}]{src,  }\item[{unsigned int}]{\+\_\+size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+It converts a bits array (seen as boolean array) into a const char array Each 8 bits (a byte) is stored into a char
+
+
+\begin{DoxyParams}{Parameters}
+{\em src} & \\
+\hline
+{\em \+\_\+size} & size of src \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+const char\texorpdfstring{$\ast$}{*} (its size is \+\_\+size/8). If \+\_\+size mod 8 is not 0, it returns nullptr 
+\end{DoxyReturn}
+\Hypertarget{namespacejpl_1_1__utils_1_1__conversions_a786994bde6120e5af03f04633e76520e}\label{namespacejpl_1_1__utils_1_1__conversions_a786994bde6120e5af03f04633e76520e} 
+\index{jpl::\_utils::\_conversions@{jpl::\_utils::\_conversions}!cc\_b@{cc\_b}}
+\index{cc\_b@{cc\_b}!jpl::\_utils::\_conversions@{jpl::\_utils::\_conversions}}
+\doxysubsubsection{\texorpdfstring{cc\_b()}{cc\_b()}}
+{\footnotesize\ttfamily bool jpl\+::\+\_\+utils\+::\+\_\+conversions\+::cc\+\_\+b (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{src,  }\item[{bool \&}]{dst,  }\item[{unsigned short}]{offset }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+It checks if a certain bit into the given src is set to 1
+
+
+\begin{DoxyParams}{Parameters}
+{\em src} & \\
+\hline
+{\em dst} & \\
+\hline
+{\em offset} & right shift which represents the index of the bit to check into src (if it is greater than 7, false is returned) \\
+\hline
+\end{DoxyParams}
+\Hypertarget{namespacejpl_1_1__utils_1_1__conversions_afbbcb6f132ffbbc65d95115520b05379}\label{namespacejpl_1_1__utils_1_1__conversions_afbbcb6f132ffbbc65d95115520b05379} 
+\index{jpl::\_utils::\_conversions@{jpl::\_utils::\_conversions}!cc\_bits@{cc\_bits}}
+\index{cc\_bits@{cc\_bits}!jpl::\_utils::\_conversions@{jpl::\_utils::\_conversions}}
+\doxysubsubsection{\texorpdfstring{cc\_bits()}{cc\_bits()}}
+{\footnotesize\ttfamily bool \texorpdfstring{$\ast$}{*} jpl\+::\+\_\+utils\+::\+\_\+conversions\+::cc\+\_\+bits (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{src,  }\item[{unsigned int}]{\+\_\+size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+It converts the src into an array of bits (seen as boolean array)
+
+
+\begin{DoxyParams}{Parameters}
+{\em src} & \\
+\hline
+{\em \+\_\+size} & size of src \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean array (its size will be \+\_\+size\texorpdfstring{$\ast$}{*}8) 
+\end{DoxyReturn}
+\Hypertarget{namespacejpl_1_1__utils_1_1__conversions_a4d39bb8acb7df7e5c7c2a389ab0109c4}\label{namespacejpl_1_1__utils_1_1__conversions_a4d39bb8acb7df7e5c7c2a389ab0109c4} 
+\index{jpl::\_utils::\_conversions@{jpl::\_utils::\_conversions}!cc\_d@{cc\_d}}
+\index{cc\_d@{cc\_d}!jpl::\_utils::\_conversions@{jpl::\_utils::\_conversions}}
+\doxysubsubsection{\texorpdfstring{cc\_d()}{cc\_d()}}
+{\footnotesize\ttfamily void jpl\+::\+\_\+utils\+::\+\_\+conversions\+::cc\+\_\+d (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{src,  }\item[{double \&}]{dst }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Converts the given const char\texorpdfstring{$\ast$}{*} (src) into a double
+
+
+\begin{DoxyParams}{Parameters}
+{\em src} & of sizeof(double) \\
+\hline
+{\em dst} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{namespacejpl_1_1__utils_1_1__conversions_a58a87e27474ba114c8f7b7e760775bbd}\label{namespacejpl_1_1__utils_1_1__conversions_a58a87e27474ba114c8f7b7e760775bbd} 
+\index{jpl::\_utils::\_conversions@{jpl::\_utils::\_conversions}!cc\_f@{cc\_f}}
+\index{cc\_f@{cc\_f}!jpl::\_utils::\_conversions@{jpl::\_utils::\_conversions}}
+\doxysubsubsection{\texorpdfstring{cc\_f()}{cc\_f()}}
+{\footnotesize\ttfamily void jpl\+::\+\_\+utils\+::\+\_\+conversions\+::cc\+\_\+f (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{src,  }\item[{float \&}]{dst }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Converts the given const char\texorpdfstring{$\ast$}{*} (src) into a float
+
+
+\begin{DoxyParams}{Parameters}
+{\em src} & of sizeof(float) \\
+\hline
+{\em dst} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{namespacejpl_1_1__utils_1_1__conversions_ad5a91e43eb0b29ef603dac125cbe8abd}\label{namespacejpl_1_1__utils_1_1__conversions_ad5a91e43eb0b29ef603dac125cbe8abd} 
+\index{jpl::\_utils::\_conversions@{jpl::\_utils::\_conversions}!cc\_int@{cc\_int}}
+\index{cc\_int@{cc\_int}!jpl::\_utils::\_conversions@{jpl::\_utils::\_conversions}}
+\doxysubsubsection{\texorpdfstring{cc\_int()}{cc\_int()}}
+{\footnotesize\ttfamily void jpl\+::\+\_\+utils\+::\+\_\+conversions\+::cc\+\_\+int (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{src,  }\item[{int \&}]{dst }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Converts the given const char\texorpdfstring{$\ast$}{*} (src) into a integer
+
+
+\begin{DoxyParams}{Parameters}
+{\em src} & of sizeof(int) \\
+\hline
+{\em dst} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{namespacejpl_1_1__utils_1_1__conversions_acbf128a2e6f54d3fef217d4bc6805bb1}\label{namespacejpl_1_1__utils_1_1__conversions_acbf128a2e6f54d3fef217d4bc6805bb1} 
+\index{jpl::\_utils::\_conversions@{jpl::\_utils::\_conversions}!cc\_uint@{cc\_uint}}
+\index{cc\_uint@{cc\_uint}!jpl::\_utils::\_conversions@{jpl::\_utils::\_conversions}}
+\doxysubsubsection{\texorpdfstring{cc\_uint()}{cc\_uint()}}
+{\footnotesize\ttfamily void jpl\+::\+\_\+utils\+::\+\_\+conversions\+::cc\+\_\+uint (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{src,  }\item[{unsigned int \&}]{dst }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Converts the given const char\texorpdfstring{$\ast$}{*} (src) into an unsigned integer
+
+
+\begin{DoxyParams}{Parameters}
+{\em src} & of sizeof(unsigned int) \\
+\hline
+{\em dst} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{namespacejpl_1_1__utils_1_1__conversions_a8006bad9a3d9ca9da98163182f39940e}\label{namespacejpl_1_1__utils_1_1__conversions_a8006bad9a3d9ca9da98163182f39940e} 
+\index{jpl::\_utils::\_conversions@{jpl::\_utils::\_conversions}!d\_cc@{d\_cc}}
+\index{d\_cc@{d\_cc}!jpl::\_utils::\_conversions@{jpl::\_utils::\_conversions}}
+\doxysubsubsection{\texorpdfstring{d\_cc()}{d\_cc()}}
+{\footnotesize\ttfamily void jpl\+::\+\_\+utils\+::\+\_\+conversions\+::d\+\_\+cc (\begin{DoxyParamCaption}\item[{double}]{src,  }\item[{const char \texorpdfstring{$\ast$}{*}\&}]{dst }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Converts the given double (src) into a const char
+
+
+\begin{DoxyParams}{Parameters}
+{\em src} & \\
+\hline
+{\em dst} & const char of size(double) already allocated \\
+\hline
+\end{DoxyParams}
+\Hypertarget{namespacejpl_1_1__utils_1_1__conversions_a4b76000ce845b7da77f9345a8f5f9328}\label{namespacejpl_1_1__utils_1_1__conversions_a4b76000ce845b7da77f9345a8f5f9328} 
+\index{jpl::\_utils::\_conversions@{jpl::\_utils::\_conversions}!f\_cc@{f\_cc}}
+\index{f\_cc@{f\_cc}!jpl::\_utils::\_conversions@{jpl::\_utils::\_conversions}}
+\doxysubsubsection{\texorpdfstring{f\_cc()}{f\_cc()}}
+{\footnotesize\ttfamily void jpl\+::\+\_\+utils\+::\+\_\+conversions\+::f\+\_\+cc (\begin{DoxyParamCaption}\item[{float}]{src,  }\item[{const char \texorpdfstring{$\ast$}{*}\&}]{dst }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Converts the given float (src) into a const char
+
+
+\begin{DoxyParams}{Parameters}
+{\em src} & \\
+\hline
+{\em dst} & const char of size(float) already allocated \\
+\hline
+\end{DoxyParams}
+\Hypertarget{namespacejpl_1_1__utils_1_1__conversions_aa2e4b520a5aa4aa325f94d98bcdaa77d}\label{namespacejpl_1_1__utils_1_1__conversions_aa2e4b520a5aa4aa325f94d98bcdaa77d} 
+\index{jpl::\_utils::\_conversions@{jpl::\_utils::\_conversions}!int\_cc@{int\_cc}}
+\index{int\_cc@{int\_cc}!jpl::\_utils::\_conversions@{jpl::\_utils::\_conversions}}
+\doxysubsubsection{\texorpdfstring{int\_cc()}{int\_cc()}}
+{\footnotesize\ttfamily void jpl\+::\+\_\+utils\+::\+\_\+conversions\+::int\+\_\+cc (\begin{DoxyParamCaption}\item[{int}]{src,  }\item[{const char \texorpdfstring{$\ast$}{*}\&}]{dst }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Converts the given integer (src) into a const char
+
+
+\begin{DoxyParams}{Parameters}
+{\em src} & \\
+\hline
+{\em dst} & const char of size(int) already allocated \\
+\hline
+\end{DoxyParams}
+\Hypertarget{namespacejpl_1_1__utils_1_1__conversions_a643606b39a979f246b02d0cf5d4d2748}\label{namespacejpl_1_1__utils_1_1__conversions_a643606b39a979f246b02d0cf5d4d2748} 
+\index{jpl::\_utils::\_conversions@{jpl::\_utils::\_conversions}!split\_cc\_ii@{split\_cc\_ii}}
+\index{split\_cc\_ii@{split\_cc\_ii}!jpl::\_utils::\_conversions@{jpl::\_utils::\_conversions}}
+\doxysubsubsection{\texorpdfstring{split\_cc\_ii()}{split\_cc\_ii()}}
+{\footnotesize\ttfamily int \texorpdfstring{$\ast$}{*} jpl\+::\+\_\+utils\+::\+\_\+conversions\+::split\+\_\+cc\+\_\+ii (\begin{DoxyParamCaption}\item[{const char}]{\+\_\+src }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+It retrieves two integers number from the given \+\_\+src
+
+The first one is got from the 4 most left digits as well the second one (4 most right) 
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+src} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int\mbox{[}2\mbox{]} the first one (left digits) and second one (right digits) 
+\end{DoxyReturn}
+\Hypertarget{namespacejpl_1_1__utils_1_1__conversions_a950743c37941639764d7517a80d306f3}\label{namespacejpl_1_1__utils_1_1__conversions_a950743c37941639764d7517a80d306f3} 
+\index{jpl::\_utils::\_conversions@{jpl::\_utils::\_conversions}!uint\_cc@{uint\_cc}}
+\index{uint\_cc@{uint\_cc}!jpl::\_utils::\_conversions@{jpl::\_utils::\_conversions}}
+\doxysubsubsection{\texorpdfstring{uint\_cc()}{uint\_cc()}}
+{\footnotesize\ttfamily void jpl\+::\+\_\+utils\+::\+\_\+conversions\+::uint\+\_\+cc (\begin{DoxyParamCaption}\item[{unsigned int}]{src,  }\item[{const char \texorpdfstring{$\ast$}{*}\&}]{dst }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Converts the given unsigned integer (src) into a const char
+
+
+\begin{DoxyParams}{Parameters}
+{\em src} & \\
+\hline
+{\em dst} & const char of size(unsigned int) already allocated \\
+\hline
+\end{DoxyParams}

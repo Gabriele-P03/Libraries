@@ -1,0 +1,63 @@
+\doxysection{src/\+Conversion\+Utils.hpp File Reference}
+\hypertarget{ConversionUtils_8hpp}{}\label{ConversionUtils_8hpp}\index{src/ConversionUtils.hpp@{src/ConversionUtils.hpp}}
+{\ttfamily \#include $<$string.\+h$>$}\newline
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacejpl}{jpl}}
+\item 
+namespace \mbox{\hyperlink{namespacejpl_1_1__utils}{jpl\+::\+\_\+utils}}
+\item 
+namespace \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__conversions}{jpl\+::\+\_\+utils\+::\+\_\+conversions}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__conversions_aa2e4b520a5aa4aa325f94d98bcdaa77d}{jpl\+::\+\_\+utils\+::\+\_\+conversions\+::int\+\_\+cc}} (int src, const char \texorpdfstring{$\ast$}{*}\&dst)
+\item 
+void \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__conversions_ad5a91e43eb0b29ef603dac125cbe8abd}{jpl\+::\+\_\+utils\+::\+\_\+conversions\+::cc\+\_\+int}} (const char \texorpdfstring{$\ast$}{*}src, int \&dst)
+\item 
+void \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__conversions_a950743c37941639764d7517a80d306f3}{jpl\+::\+\_\+utils\+::\+\_\+conversions\+::uint\+\_\+cc}} (unsigned int src, const char \texorpdfstring{$\ast$}{*}\&dst)
+\item 
+void \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__conversions_acbf128a2e6f54d3fef217d4bc6805bb1}{jpl\+::\+\_\+utils\+::\+\_\+conversions\+::cc\+\_\+uint}} (const char \texorpdfstring{$\ast$}{*}src, unsigned int \&dst)
+\item 
+void \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__conversions_a4b76000ce845b7da77f9345a8f5f9328}{jpl\+::\+\_\+utils\+::\+\_\+conversions\+::f\+\_\+cc}} (float src, const char \texorpdfstring{$\ast$}{*}\&dst)
+\item 
+void \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__conversions_a58a87e27474ba114c8f7b7e760775bbd}{jpl\+::\+\_\+utils\+::\+\_\+conversions\+::cc\+\_\+f}} (const char \texorpdfstring{$\ast$}{*}src, float \&dst)
+\item 
+void \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__conversions_a8006bad9a3d9ca9da98163182f39940e}{jpl\+::\+\_\+utils\+::\+\_\+conversions\+::d\+\_\+cc}} (double src, const char \texorpdfstring{$\ast$}{*}\&dst)
+\item 
+void \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__conversions_a4d39bb8acb7df7e5c7c2a389ab0109c4}{jpl\+::\+\_\+utils\+::\+\_\+conversions\+::cc\+\_\+d}} (const char \texorpdfstring{$\ast$}{*}src, double \&dst)
+\item 
+char \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__conversions_a142a97d937bf5b583e39de961437e600}{jpl\+::\+\_\+utils\+::\+\_\+conversions\+::b\+\_\+cc}} (bool src, unsigned short offset)
+\item 
+bool \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__conversions_a786994bde6120e5af03f04633e76520e}{jpl\+::\+\_\+utils\+::\+\_\+conversions\+::cc\+\_\+b}} (const char \texorpdfstring{$\ast$}{*}src, bool \&dst, unsigned short offset)
+\item 
+int \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__conversions_a643606b39a979f246b02d0cf5d4d2748}{jpl\+::\+\_\+utils\+::\+\_\+conversions\+::split\+\_\+cc\+\_\+ii}} (const char \+\_\+src)
+\item 
+bool \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__conversions_afbbcb6f132ffbbc65d95115520b05379}{jpl\+::\+\_\+utils\+::\+\_\+conversions\+::cc\+\_\+bits}} (const char \texorpdfstring{$\ast$}{*}src, unsigned int \+\_\+size)
+\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__conversions_af81c23513f8914b12aaa4a864d815f69}{jpl\+::\+\_\+utils\+::\+\_\+conversions\+::bits\+\_\+cc}} (bool \texorpdfstring{$\ast$}{*}src, unsigned int \+\_\+size)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This header file contains some function about type-\/conversion.
+
+Type Legend\+: \begin{DoxyVerb}- cc:       const char*
+- int/i:    integer
+- uint:     unsigned integer
+- d:        double
+- f:        float
+- b:        boolean
+- bit:      boolean(bit)
+\end{DoxyVerb}
+ \begin{DoxyDate}{Date}
+2023-\/02-\/04 
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2023 
+\end{DoxyCopyright}
+\begin{DoxyAuthor}{Author}
+Gabriele-\/\+P03 
+\end{DoxyAuthor}

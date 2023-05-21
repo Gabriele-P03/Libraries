@@ -1,0 +1,40 @@
+\doxysection{src/\+Files\+Utils.hpp File Reference}
+\hypertarget{FilesUtils_8hpp}{}\label{FilesUtils_8hpp}\index{src/FilesUtils.hpp@{src/FilesUtils.hpp}}
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$filesystem$>$}\newline
+{\ttfamily \#include $<$windows.\+h$>$}\newline
+{\ttfamily \#include $<$libgen.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$linux/limits.\+h$>$}\newline
+{\ttfamily \#include $<$jpl/utils/\+Error\+Utils.\+hpp$>$}\newline
+{\ttfamily \#include $<$jpl/exception/runtime/\+File\+Not\+Found\+Exception.\+hpp$>$}\newline
+{\ttfamily \#include $<$jpl/exception/runtime/\+Runtime\+Exception.\+hpp$>$}\newline
+{\ttfamily \#include $<$jpl/exception/runtime/\+Permission\+Exception.\+hpp$>$}\newline
+{\ttfamily \#include $<$jpl/exception/runtime/\+Illegal\+Argument\+Exception.\+hpp$>$}\newline
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacejpl}{jpl}}
+\item 
+namespace \mbox{\hyperlink{namespacejpl_1_1__utils}{jpl\+::\+\_\+utils}}
+\item 
+namespace \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__files}{jpl\+::\+\_\+utils\+::\+\_\+files}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__files_af10bf976a3d610f68c2544b96e171fd5}{jpl\+::\+\_\+utils\+::\+\_\+files\+::get\+Root\+Path}} () noexcept
+\item 
+void \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__files_a9d53acbe3217f7e98fd6c69085e0e149}{jpl\+::\+\_\+utils\+::\+\_\+files\+::get\+Local\+File}} (std\+::string path\+To\+File, std\+::ios\+\_\+base\+::openmode \+\_\+mode, std\+::fstream \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}file)
+\item 
+void \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__files_a8a9f2f7307b0e58f1279ef48a2616860}{jpl\+::\+\_\+utils\+::\+\_\+files\+::get\+Internal\+File}} (std\+::string path\+To\+File, std\+::ios\+\_\+base\+::openmode \+\_\+mode, std\+::fstream \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}file)
+\item 
+std\+::string \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__files_a4458d73ab8b0c99afcbfdcab84f226ea}{jpl\+::\+\_\+utils\+::\+\_\+files\+::get\+Internal\+Path}} (std\+::string path) noexcept
+\item 
+std\+::string \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__files_a123c0fa5c108e68a7a602f3ee126382c}{jpl\+::\+\_\+utils\+::\+\_\+files\+::get\+Local\+Path}} (std\+::string path) noexcept
+\item 
+void \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__files_a61bead3cfc6ffbf459b6bb322ca07b8b}{jpl\+::\+\_\+utils\+::\+\_\+files\+::read\+File}} (std\+::fstream \texorpdfstring{$\ast$}{*}file, char \texorpdfstring{$\ast$}{*}\&buffer, unsigned long \&\+\_\+size)
+\item 
+void \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__files_a68e52cbace34b3c991b90aaa3d8f87b8}{jpl\+::\+\_\+utils\+::\+\_\+files\+::read\+File}} (std\+::string path\+To\+File, char \texorpdfstring{$\ast$}{*}\&buffer, unsigned long \&\+\_\+size)
+\end{DoxyCompactItemize}

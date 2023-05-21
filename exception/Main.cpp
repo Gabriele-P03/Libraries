@@ -1,8 +1,7 @@
-#include "src/reflection/NoSuchFieldException.hpp"
+#include "src/runtime/FileNotFoundException.hpp"
 
 void f(){
-    
-    throw new NoSuchFieldException(divider,a);
+    throw new FileNotFoundException("ok");
 }
 
 int main(){

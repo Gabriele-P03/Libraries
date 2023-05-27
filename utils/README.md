@@ -1,5 +1,5 @@
 # **Utils (CM)**
-## Utils Function
+<h2><i>Utils Function</i></h2>
 <br>
 This module provides you several useful function which are used
 through all JPL's module.
@@ -13,24 +13,24 @@ Since all its headers can be considered as sub-modules, you can download those o
 <br>
 
 ## List of Sub-Modules:
-> BitsUtils
+> <span style="color:yellow">BitsUtils</span> 
 >> To operate on bits (boolean array)
 
-> CharUtils
+> <span style="color:yellow">CharUtils</span> 
 >> To manage chars array
 
-> ConversionUtils
+> <span style="color:yellow">ConversionUtils</span> 
 >> To perform conversion between data-type
 
-> ErrorUtils
+> <span style="color:yellow">ErrorUtils</span> 
 >> To enhance checking of last error occurred
 
-> FilesUtils
+> <span style="color:yellow">FilesUtils</span> 
 >> To reading/getting file and path<br><br>
->> <span style="color:orange">*Required Sub-Modules:*</span> 
->>> ErrorUtils 
+>> <span style="color:aqua">*Required Sub-Modules:*</span> 
+>>> <span style="color:yellow">ErrorUtils</span>
 
-> DebugUtils
+> <span style="color:yellow">DebugUtils</span> 
 >> To provides some function whilst debugger is attached<br><br>
->> <span style="color:orange">*Required Sub-Modules:*</span> 
->>> ErrorUtils 
+>> <span style="color:aqua">*Required Sub-Modules:*</span> 
+>>> <span style="color:yellow">ErrorUtils</span> 

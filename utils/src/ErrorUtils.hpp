@@ -11,7 +11,7 @@
  * @copyright Copyright (c) 2023
  * @author Gabriele-P03
  */
-
+#pragma once
 #ifndef ERROR_UTILS_JPL
 #define ERROR_UTILS_JPL
 
@@ -33,13 +33,13 @@
                     /**
                      * @return the error code of the last occurred one
                      */
-                    unsigned int _GetLastError(){return errno;}
+                    inline unsigned int _GetLastError(){return errno;}
 
-                    std::string _GetLastErrorAsString(unsigned int _error_code){return std::string(strerror(_error_code));}
+                    inline std::string _GetLastErrorAsString(unsigned int _error_code){return std::string(strerror(_error_code));}
                     /**
                      * @return the description of the last error occurred
                      */
-                    std::string _GetLastErrorAsString(){ return _GetLastErrorAsString(_GetLastError()); }
+                    inline std::string _GetLastErrorAsString(){ return _GetLastErrorAsString(_GetLastError()); }
                 }
             }
         }
@@ -50,9 +50,9 @@
             namespace _utils{
                 namespace _error{
                     
-                    unsigned int _GetLastError(){return GetLastError();}
+                    inline unsigned int _GetLastError(){return GetLastError();}
 
-                    std::string _GetLastErrorAsString(DWORD errorMessageID)
+                    inline std::string _GetLastErrorAsString(DWORD errorMessageID)
                     {   
                         LPSTR messageBuffer = nullptr;
 
@@ -72,7 +72,7 @@
                         return message;
                     }
 
-                    std::string _GetLastErrorAsString(){return _GetLastErrorAsString(_GetLastError());}
+                    inline std::string _GetLastErrorAsString(){return _GetLastErrorAsString(_GetLastError());}
                 }
             }
         }

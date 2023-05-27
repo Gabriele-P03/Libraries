@@ -10,14 +10,14 @@
 #ifndef FILE_NOT_FOUND_EXCEPTION_JPL
 #define FILE_NOT_FOUND_EXCEPTION_JPL
 
-#include "../AbstractException.hpp"
+#include "RuntimeException.hpp"
 
 
 namespace jpl{
 
     namespace _exception{
 
-        class FileNotFoundException : public AbstractException{
+        class FileNotFoundException : public RuntimeException{
 
             private:
 
@@ -29,14 +29,14 @@ namespace jpl{
             public:
 
                 FileNotFoundException(const char* const _cause, const char* file_name, const char* function_name, const int line) : 
-                    AbstractException("FileNotFoundException", "", file_name, function_name, line), _cause(_cause){}
+                    RuntimeException("FileNotFoundException", "", file_name, function_name, line), _cause(_cause){}
 
                 inline const char* what() const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW override{
                     std::string buffer = 
                         std::string(this->type_ex) + " thrown by " + std::string(this->function_name) + 
                                                      " at line "   + std::to_string(this->line) + 
                                                      " of "        + std::string(this->file_name) +
-                                                     ": "   + std::string(this->_cause) + "\n";
+                                                     ": "   + std::string(this->_cause) + "\0";
 
 
                     char* c_buffer = new char[buffer.size()];

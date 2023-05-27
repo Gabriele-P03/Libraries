@@ -1,12 +1,10 @@
-#include "src/ErrorUtils.hpp"
+#include "src/DebugUtils.hpp"
 
 #include <iostream>
 
 int main(){
 
-    std::string s = jpl::_utils::_error::_GetLastErrorAsString();
-
-    std::cout<<s;
+    std::cout<<jpl::_utils::_debug::isDebugging();
 
 
     return 0;

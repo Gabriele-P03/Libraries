@@ -1,10 +1,8 @@
 var searchData=
 [
-  ['_5fbits_0',['_bits',['../namespacejpl_1_1__utils_1_1__bits.html',1,'jpl::_utils']]],
-  ['_5fchars_1',['_chars',['../namespacejpl_1_1__utils_1_1__chars.html',1,'jpl::_utils']]],
-  ['_5fconversions_2',['_conversions',['../namespacejpl_1_1__utils_1_1__conversions.html',1,'jpl::_utils']]],
-  ['_5ferror_3',['_error',['../namespacejpl_1_1__utils_1_1__error.html',1,'jpl::_utils']]],
-  ['_5ffiles_4',['_files',['../namespacejpl_1_1__utils_1_1__files.html',1,'jpl::_utils']]],
-  ['_5futils_5',['_utils',['../namespacejpl_1_1__utils.html',1,'jpl']]],
-  ['jpl_6',['jpl',['../namespacejpl.html',1,'']]]
+  ['int_5fcc_0',['int_cc',['../namespacejpl_1_1__utils_1_1__conversions.html#aa2e4b520a5aa4aa325f94d98bcdaa77d',1,'jpl::_utils::_conversions']]],
+  ['isdebugging_1',['isDebugging',['../namespacejpl_1_1__utils_1_1__debug.html#ab89da3400c6b5f204e113f75dce388eb',1,'jpl::_utils::_debug']]],
+  ['isletter_2',['isLetter',['../namespacejpl_1_1__utils_1_1__chars.html#a3a14d3a77cfad048c7bbae9a2aa909bc',1,'jpl::_utils::_chars']]],
+  ['islowercaseletter_3',['isLowercaseLetter',['../namespacejpl_1_1__utils_1_1__chars.html#ab06df0264b13fd571f52378e42c46275',1,'jpl::_utils::_chars']]],
+  ['isuppercaseletter_4',['isUppercaseLetter',['../namespacejpl_1_1__utils_1_1__chars.html#a217131510616f483798902483a6debac',1,'jpl::_utils::_chars']]]
 ];

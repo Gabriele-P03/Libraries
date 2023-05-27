@@ -19,7 +19,7 @@ namespace jpl{
 
     namespace _exception{
 
-        class IndexOutOfBoundsException : public AbstractException{
+        class IndexOutOfBoundsException : public RuntimeException{
 
             private:
                 /**
@@ -45,7 +45,7 @@ namespace jpl{
                                                         " of "        + std::string(this->file_name) +
                                                         ": "          + std::string(this->_object) + 
                                                         ". Index "    + std::to_string(this->attempted) +   
-                                                        " attempted against max available as "          + std::to_string(this->max) + "\n";
+                                                        " attempted against max available as "          + std::to_string(this->max) + "\0";
 
 
                         this->msg = new char[buffer.size()];
@@ -56,7 +56,7 @@ namespace jpl{
 
             public:
                 IndexOutOfBoundsException(const char* _object, const unsigned int max, const unsigned int attempted, const char* file_name, const char* function_name, const unsigned int line) :
-                    AbstractException("IndexOutOfBoundsException", "", file_name, function_name, line), max(max), attempted(attempted), _object(_object){
+                    RuntimeException("IndexOutOfBoundsException", "", file_name, function_name, line), max(max), attempted(attempted), _object(_object){
 
                     try{
                         this->catchIllegalMaxAttempted();
@@ -65,7 +65,7 @@ namespace jpl{
                                                         " thrown by " + std::string(this->function_name) + 
                                                         " at line "   + std::to_string(this->line) + 
                                                         " of "        + std::string(this->file_name) + 
-                                                        " could not be evaluated due to an internal IllegalArgumentException: Max is greater than Attempted\n";
+                                                        " could not be evaluated due to an internal IllegalArgumentException: Max is greater than Attempted\0";
 
 
                         this->msg = new char[buffer.size()];

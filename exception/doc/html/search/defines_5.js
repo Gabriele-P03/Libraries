@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['runtimeexception_0',['RuntimeException',['../RuntimeException_8hpp.html#ad0aa91d607f7af8872f23650d8a58389',1,'RuntimeException.hpp']]]
+  ['permissionexception_0',['PermissionException',['../PermissionException_8hpp.html#ad075bfe5789a8df0be18e1041a593d6d',1,'PermissionException.hpp']]]
 ];

@@ -3,6 +3,7 @@
 \mbox{\hyperlink{ErrorUtils_8hpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#pragma\ once}}
 \DoxyCodeLine{00015\ \textcolor{preprocessor}{\#ifndef\ ERROR\_UTILS\_JPL}}
 \DoxyCodeLine{00016\ \textcolor{preprocessor}{\#define\ ERROR\_UTILS\_JPL}}
 \DoxyCodeLine{00017\ }
@@ -21,10 +22,10 @@
 \DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{namespace\ }\_utils\{}
 \DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{namespace\ }\_error\{}
 \DoxyCodeLine{00032\ }
-\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__error_a44f404968c3125d1daece4a6eaeb136a}{\_GetLastError}}()\{\textcolor{keywordflow}{return}\ errno;\}}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__error_a44f404968c3125d1daece4a6eaeb136a}{\_GetLastError}}()\{\textcolor{keywordflow}{return}\ errno;\}}
 \DoxyCodeLine{00037\ }
-\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__error_a2a97dbdbe0ec32ee92e186241ef4bff7}{\_GetLastErrorAsString}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \_error\_code)\{\textcolor{keywordflow}{return}\ std::string(strerror(\_error\_code));\}}
-\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__error_a2a97dbdbe0ec32ee92e186241ef4bff7}{\_GetLastErrorAsString}}()\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__error_a2a97dbdbe0ec32ee92e186241ef4bff7}{\_GetLastErrorAsString}}(\mbox{\hyperlink{namespacejpl_1_1__utils_1_1__error_a44f404968c3125d1daece4a6eaeb136a}{\_GetLastError}}());\ \}}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ std::string\ \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__error_a2a97dbdbe0ec32ee92e186241ef4bff7}{\_GetLastErrorAsString}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \_error\_code)\{\textcolor{keywordflow}{return}\ std::string(strerror(\_error\_code));\}}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ std::string\ \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__error_a2a97dbdbe0ec32ee92e186241ef4bff7}{\_GetLastErrorAsString}}()\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__error_a2a97dbdbe0ec32ee92e186241ef4bff7}{\_GetLastErrorAsString}}(\mbox{\hyperlink{namespacejpl_1_1__utils_1_1__error_a44f404968c3125d1daece4a6eaeb136a}{\_GetLastError}}());\ \}}
 \DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \}}
@@ -35,9 +36,9 @@
 \DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{namespace\ }\_utils\{}
 \DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{namespace\ }\_error\{}
 \DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__error_a44f404968c3125d1daece4a6eaeb136a}{\_GetLastError}}()\{\textcolor{keywordflow}{return}\ GetLastError();\}}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__error_a44f404968c3125d1daece4a6eaeb136a}{\_GetLastError}}()\{\textcolor{keywordflow}{return}\ GetLastError();\}}
 \DoxyCodeLine{00054\ }
-\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__error_a2a97dbdbe0ec32ee92e186241ef4bff7}{\_GetLastErrorAsString}}(DWORD\ errorMessageID)}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ std::string\ \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__error_a2a97dbdbe0ec32ee92e186241ef4bff7}{\_GetLastErrorAsString}}(DWORD\ errorMessageID)}
 \DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \ \ }
 \DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ LPSTR\ messageBuffer\ =\ \textcolor{keyword}{nullptr};}
 \DoxyCodeLine{00058\ }
@@ -57,7 +58,7 @@
 \DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ message;}
 \DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00074\ }
-\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__error_a2a97dbdbe0ec32ee92e186241ef4bff7}{\_GetLastErrorAsString}}()\{\textcolor{keywordflow}{return}\ \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__error_a2a97dbdbe0ec32ee92e186241ef4bff7}{\_GetLastErrorAsString}}(\mbox{\hyperlink{namespacejpl_1_1__utils_1_1__error_a44f404968c3125d1daece4a6eaeb136a}{\_GetLastError}}());\}}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ std::string\ \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__error_a2a97dbdbe0ec32ee92e186241ef4bff7}{\_GetLastErrorAsString}}()\{\textcolor{keywordflow}{return}\ \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__error_a2a97dbdbe0ec32ee92e186241ef4bff7}{\_GetLastErrorAsString}}(\mbox{\hyperlink{namespacejpl_1_1__utils_1_1__error_a44f404968c3125d1daece4a6eaeb136a}{\_GetLastError}}());\}}
 \DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \}}

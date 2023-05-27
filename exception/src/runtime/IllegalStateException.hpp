@@ -22,20 +22,17 @@
 #ifndef ILLEGAL_STATE_EXCEPTION_JPL
 #define ILLEGAL_STATE_EXCEPTION_JPL
 
-#include "../AbstractException.hpp"
+#include "RuntimeException.hpp"
 
 namespace jpl{
 
     namespace _exception{
         
-        class IllegalStateException : public AbstractException{
+        class IllegalStateException : public RuntimeException{
 
             public:
                 IllegalStateException(const char* msg, const char* file_name, const char* function_name, const int line) : 
-                    AbstractException(msg, file_name, function_name, line){
-                        this->type_ex = "IllegalStateException";
-                    }
-
+                    RuntimeException("IllegalStateException", msg, file_name, function_name, line){}
         };
     }
 }

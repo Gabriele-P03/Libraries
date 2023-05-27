@@ -45,7 +45,7 @@ namespace jpl{
                                                      " at line "   + std::to_string(this->line) + 
                                                      " of "        + std::string(this->file_name) +
                                                      ": there's no "   + std::string(this->_cause) + 
-                                                     " into "       + std::string(this->_class_name) + "\n";
+                                                     " into "       + std::string(this->_class_name) + "\0";
 
 
                     char* c_buffer = new char[buffer.size()];

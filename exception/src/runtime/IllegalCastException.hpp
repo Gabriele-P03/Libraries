@@ -10,14 +10,14 @@
 #ifndef ILLEGAL_CAST_EXCEPTION_JPL
 #define ILLEGAL_CAST_EXCEPTION_JPL
 
-#include "../AbstractException.hpp"
+#include "RuntimeException.hpp"
 
 
 namespace jpl{
 
     namespace _exception{
 
-        class IllegalCastException : public AbstractException{
+        class IllegalCastException : public RuntimeException{
 
             private:
 
@@ -37,7 +37,7 @@ namespace jpl{
             public:
 
                 IllegalCastException(const char* const _cause, const char* _cast_attempted, const char* _cast_needed, const char* msg, const char* file_name, const char* function_name, const int line) : 
-                    AbstractException("IllegalCastException", msg, file_name, function_name, line), _cause(_cause), _cast_attempted(_cast_attempted), _cast_needed(_cast_needed){}
+                    RuntimeException("IllegalCastException", msg, file_name, function_name, line), _cause(_cause), _cast_attempted(_cast_attempted), _cast_needed(_cast_needed){}
 
                 inline const char* what() const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW override{
                     std::string buffer = 
@@ -46,7 +46,7 @@ namespace jpl{
                                                      " of "        + std::string(this->file_name) +
                                                      ": "   + std::string(this->_cause) + 
                                                      ". Attempted Cast: " + std::string(this->_cast_attempted) +
-                                                     ". Required Cast: " + std::string(this->_cast_needed) + "\n";
+                                                     ". Required Cast: " + std::string(this->_cast_needed) + "\0";
 
 
                     char* c_buffer = new char[buffer.size()];

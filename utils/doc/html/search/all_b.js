@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['tolower_0',['toLower',['../namespacejpl_1_1__utils_1_1__chars.html#a036fb1f5204c51a46e9d9f4109922b75',1,'jpl::_utils::_chars']]],
-  ['toupper_1',['toUpper',['../namespacejpl_1_1__utils_1_1__chars.html#a7c7e154b4f590a98537df2965ac38c25',1,'jpl::_utils::_chars']]]
+  ['readfile_0',['readFile',['../namespacejpl_1_1__utils_1_1__files.html#a61bead3cfc6ffbf459b6bb322ca07b8b',1,'jpl::_utils::_files::readFile(std::fstream *file, char *&amp;buffer, unsigned long &amp;_size)'],['../namespacejpl_1_1__utils_1_1__files.html#a68e52cbace34b3c991b90aaa3d8f87b8',1,'jpl::_utils::_files::readFile(std::string pathToFile, char *&amp;buffer, unsigned long &amp;_size)']]],
+  ['readme_2emd_1',['README.md',['../README_8md.html',1,'']]]
 ];

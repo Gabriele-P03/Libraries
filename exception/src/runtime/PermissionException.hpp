@@ -11,17 +11,17 @@
 #ifndef PERMISSION_EXCEPTION_JPL
 #define PERMISSION_EXCEPTION_JPL
 
-#include "../AbstractException.hpp"
+#include "RuntimeException.hpp"
 
 namespace jpl{
 
     namespace _exception{
 
-        class PermissionException : public AbstractException{
+        class PermissionException : public RuntimeException{
 
             public:
                 PermissionException(const char* msg, const char* file_name, const char* function_name, const int line) : 
-                    AbstractException("RuntimeException", msg, file_name, function_name, line){}
+                    RuntimeException("RuntimeException", msg, file_name, function_name, line){}
 
         };
     }

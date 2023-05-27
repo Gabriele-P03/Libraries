@@ -95,7 +95,7 @@ namespace jpl{
                         std::string(this->type_ex) + " thrown by " + std::string(this->function_name) + 
                                                      " at line "   + std::to_string(this->line) + 
                                                      " of "        + std::string(this->file_name) +  
-                                                     ": "         + std::string(this->msg) + "\n";
+                                                     ": "         + std::string(this->msg);
 
 
                     char* c_buffer = new char[buffer.size()];

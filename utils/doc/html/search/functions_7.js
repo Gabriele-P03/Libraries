@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['readfile_0',['readFile',['../namespacejpl_1_1__utils_1_1__files.html#a61bead3cfc6ffbf459b6bb322ca07b8b',1,'jpl::_utils::_files::readFile(std::fstream *file, char *&amp;buffer, unsigned long &amp;_size)'],['../namespacejpl_1_1__utils_1_1__files.html#a68e52cbace34b3c991b90aaa3d8f87b8',1,'jpl::_utils::_files::readFile(std::string pathToFile, char *&amp;buffer, unsigned long &amp;_size)']]]
+  ['main_0',['main',['../Main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'Main.cpp']]]
 ];

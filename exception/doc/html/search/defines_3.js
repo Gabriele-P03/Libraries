@@ -1,7 +1,8 @@
 var searchData=
 [
-  ['nosuchfieldexception_0',['NoSuchFieldException',['../NoSuchFieldException_8hpp.html#abce84ca0269536594ee718d6ffa1d847',1,'NoSuchFieldException.hpp']]],
-  ['nosuchmethodexception_1',['NoSuchMethodException',['../NoSuchMethodException_8hpp.html#acc4b756b34e9971b62223dfd3f06fe79',1,'NoSuchMethodException.hpp']]],
-  ['notfoundexception_2',['NotFoundException',['../NotFoundException_8hpp.html#aac8121597ce44a4dc9f0eb6e26e653a8',1,'NotFoundException.hpp']]],
-  ['nullpointerexception_3',['NullPointerException',['../NullPointerException_8hpp.html#af053da1c9e5cec53faf37e08923062c0',1,'NullPointerException.hpp']]]
+  ['illegalaccessexception_0',['IllegalAccessException',['../IllegalAccessException_8hpp.html#af86922c2466d349ca4586d92e5965268',1,'IllegalAccessException.hpp']]],
+  ['illegalargumentexception_1',['IllegalArgumentException',['../IllegalArgumentException_8hpp.html#a5a1ab27d625b7321e698f5c18b7e8d94',1,'IllegalArgumentException.hpp']]],
+  ['illegalcastexception_2',['IllegalCastException',['../IllegalCastException_8hpp.html#ac9338ad786b2e15d6e9140341723ee09',1,'IllegalCastException.hpp']]],
+  ['illegalstateexception_3',['IllegalStateException',['../IllegalStateException_8hpp.html#a58f21719835651e00b841a9558d288f8',1,'IllegalStateException.hpp']]],
+  ['indexoutofboundsexception_4',['IndexOutOfBoundsException',['../IndexOutOfBoundsException_8hpp.html#a60653e5c55ed28874fc9d9c7e6e7d631',1,'IndexOutOfBoundsException.hpp']]]
 ];

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['b_5fcc_0',['b_cc',['../namespacejpl_1_1__utils_1_1__conversions.html#a142a97d937bf5b583e39de961437e600',1,'jpl::_utils::_conversions']]],
-  ['bits_5fcc_1',['bits_cc',['../namespacejpl_1_1__utils_1_1__conversions.html#af81c23513f8914b12aaa4a864d815f69',1,'jpl::_utils::_conversions']]],
-  ['bitsutils_2ehpp_2',['BitsUtils.hpp',['../BitsUtils_8hpp.html',1,'']]]
+  ['_5fgetlasterror_0',['_GetLastError',['../namespacejpl_1_1__utils_1_1__error.html#a44f404968c3125d1daece4a6eaeb136a',1,'jpl::_utils::_error']]],
+  ['_5fgetlasterrorasstring_1',['_GetLastErrorAsString',['../namespacejpl_1_1__utils_1_1__error.html#a6cbe14b27e3f1858a240c79bf0cafa87',1,'jpl::_utils::_error::_GetLastErrorAsString(unsigned int _error_code)'],['../namespacejpl_1_1__utils_1_1__error.html#a2a97dbdbe0ec32ee92e186241ef4bff7',1,'jpl::_utils::_error::_GetLastErrorAsString()']]],
+  ['_5fxor_5fbits_2',['_xor_bits',['../namespacejpl_1_1__utils_1_1__bits.html#a9eb70fe2b6bbe105ea437628d0a5426b',1,'jpl::_utils::_bits']]]
 ];

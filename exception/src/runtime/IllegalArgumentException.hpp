@@ -11,14 +11,14 @@
 #ifndef ILLEGAL_ARGUMENT_EXCEPTION_JPL
 #define ILLEGAL_ARGUMENT_EXCEPTION_JPL
 
-#include "../AbstractException.hpp"
+#include "RuntimeException.hpp"
 
 
 namespace jpl{
 
     namespace _exception{
 
-        class IllegalArgumentException : public AbstractException{
+        class IllegalArgumentException : public RuntimeException{
 
             private:
 
@@ -33,7 +33,7 @@ namespace jpl{
             public:
 
                 IllegalArgumentException(const char* const _cause, const char* msg, const char* file_name, const char* function_name, const int line) : 
-                    AbstractException("IllegalArgumentException", msg, file_name, function_name, line), _cause(_cause){}
+                    RuntimeException("IllegalArgumentException", msg, file_name, function_name, line), _cause(_cause){}
 
                 inline const char* what() const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW override{
                     std::string buffer = 
@@ -41,7 +41,7 @@ namespace jpl{
                                                      " at line "   + std::to_string(this->line) + 
                                                      " of "        + std::string(this->file_name) +
                                                      ": "   + std::string(this->_cause) +   
-                                                     " "          + std::string(this->msg) + "\n";
+                                                     " "          + std::string(this->msg) + "\0";
 
 
                     char* c_buffer = new char[buffer.size()];

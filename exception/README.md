@@ -1,4 +1,4 @@
-# **Module: Exception**
+# **Exception (CM)**
 <h2><i>Java similar exception</i></h2>
 <br>
 This module provides you some exception which could be useful in order to give more information about errors encourented during the life of your program. 

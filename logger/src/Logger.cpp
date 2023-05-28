@@ -1,9 +1,15 @@
 #include "Logger.hpp"
 
 #ifndef CUSTOM_LOGGER_JPL
-    jpl::_logger::Logger* jpl::_logger::Logger::INSTANCE = new jpl::_logger::Logger(
-        jpl::_utils::_files::getLocalPath("/logs/" + jpl::_logger::Logger::getFileNameOfInstance() + ".txt")
-    );
+    #ifdef QUIET_MODULES_LOGGER_JPL
+        jpl::_logger::Logger* jpl::_logger::Logger::INSTANCE = new jpl::_logger::Logger(
+            jpl::_utils::_files::getLocalPath("/logs/" + jpl::_logger::Logger::getFileNameOfInstance() + ".txt"), true
+        );
+    #else
+        jpl::_logger::Logger* jpl::_logger::Logger::INSTANCE = new jpl::_logger::Logger(
+            jpl::_utils::_files::getLocalPath("/logs/" + jpl::_logger::Logger::getFileNameOfInstance() + ".txt"), false
+        );
+    #endif
 #endif
 
 
@@ -19,6 +25,10 @@ void jpl::_logger::Logger::print(std::string msg){
 
 void jpl::_logger::Logger::print(std::string msg, jpl::_logger::LOG_STATUS status){
 
+    if(status == jpl::_logger::DEBUG && !jpl::_utils::_debug::isDebugging()){
+        return;
+    }
+
     msg = "[" + this->getFileNameOfInstance() + " -> " + status + "]: " + msg + "\n";
     std::cout<<msg;
     if(flag){
@@ -32,6 +42,10 @@ void jpl::_logger::Logger::closeLogger(){
     this->print("Closing Logger...");
     this->file->close();
     this->flag = false;
+}
+
+jpl::_logger::Logger::~Logger(){
+    this->closeLogger();
 }
 
 std::string jpl::_logger::Logger::getFileNameOfInstance(){

@@ -2,20 +2,6 @@
  * @file
  * A logger provides writing log-program on terminal and even on a file
  *  
- * If OI_LOGGER_JPL macro is defined, an Optional Induction is performed with this module.
- * An OI with this Logger will not let your program exit with a FAILURE_STATUS whenever it has not
- * been able to create a log file
- * 
- * CUSTOM_LOGGER_JPL definition will not delegate the creation of the static instance (INSTANCE) to Logger.
- * It will be your duty to define it later, but be carefull since JPL module use INSTANCE instance to print stuff.
- *
- * If any call to jpl:_logger::Logger#print() will be done before have defined INSTANCE, the message will be only print on terminal
- * but will not be written on file
- * 
- * Therefore, if you wanna use your own instance of this class and you do not need to print any errors of other module,
- * you could opt to define only CUSTOM_LOGGER_JPL
- *   
- * The usage of CUSTOM_LOGGER_JPL and OI_LOGGER_JPL is available 
  * 
  * @date 2022-08-01
  * @copyright Copyright (c) 2022
@@ -38,13 +24,29 @@
     #include <ctime>
     
     #include <jpl/utils/FilesUtils.hpp>
+    #include <jpl/utils/DebugUtils.hpp>
 
     namespace jpl{
 
         namespace _logger{
-
+            
             typedef const char* const LOG_STATUS;
-            extern LOG_STATUS INFO, WARNING, ERROR, DEBUG;
+            /**
+             * @brief Information message
+             */
+            extern LOG_STATUS INFO;
+            /**
+             * @brief Warning message
+             */
+            extern LOG_STATUS WARNING;
+            /**
+             * @brief Error message
+             */
+            extern LOG_STATUS ERROR;
+            /**
+             * @brief Debug message (not visible unless process has a debugger attached) 
+             */
+            extern LOG_STATUS DEBUG;
 
             class Logger{
 
@@ -71,33 +73,45 @@
                     /**
                      * @brief If the fstream could be created, this flag is set to true,
                      * otherwise to false.
-                     * Is is used to check, when OMI_LOGGER_JPL macro is defined, if logger
-                     * is able to write on the file the message, too 
+                     * Is is used to check, when UFW_LOGGER_JPL macro is defined, if logger
+                     * is able to write on file, too.
                      */
                     bool flag;
                     
                 public:
 
                     /**
-                     * Create a new instance of Logger associated with the output file at the given path
+                     * Create a new instance of Logger associated with the output file at the given path.
+                     * Quiet mode is implicitly set to false
                      * 
                      * @param pathToFile aboslute path of the file which is wanted to be used as output one
                      */
-                    Logger(std::string pathToFile){
-                        this->file = new std::fstream();
-                        this->file->open(pathToFile, std::ios_base::out);
+                    Logger(std::string pathToFile) : Logger(pathToFile, false){}
+
+                    /**
+                     * Create a new instance of Logger associated with the output file at the given path
+                     * 
+                     * @param pathToFile aboslute path of the file which is wanted to be used as output one
+                     * @param quiet quiet mode 
+                     */
+                    Logger(std::string pathToFile, bool quiet){
                         
                         this->flag = false;
 
-                        if(file->fail()){
-                            #ifndef OI_LOGGER_JPL   
-                                this->print("Logger File could not be created and OI is not performed. Exiting...", jpl::_logger::ERROR);                       
-                                exit(EXIT_FAILURE);   
-                            #else
-                                this->print("Logger File could not be created but OI has been performed. Log file will not be written", jpl::_logger::WARNING);
-                            #endif
-                        }else{
-                            this->flag = true;
+                        if(!quiet){
+                            this->file = new std::fstream();
+                            this->file->open(pathToFile, std::ios_base::out);
+
+                            if(file->fail()){
+                                #ifndef UFW_LOGGER_JPL   
+                                    this->print("Logger File could not be created and OI is not performed. Exiting...", jpl::_logger::ERROR);                       
+                                    exit(EXIT_FAILURE);   
+                                #else
+                                    this->print("Logger File could not be created but OI has been performed. Log file will not be written", jpl::_logger::WARNING);
+                                #endif
+                            }else{
+                                this->flag = true;
+                            }
                         }
                     }
 
@@ -106,35 +120,36 @@
                     #endif
 
                     /**
-                     * Print on terminal msg
-                     * Write on file the msg and flushes it.
-                     * It is implicit an ok status
-                     * @param msg 
+                     * @brief Print msg on terminal
+                     * Write msg on file and flushes it.
+                     * 
+                     * @param msg message
                      */
                     void print(std::string msg);
 
                     /**
-                     * Print on terminal @msg
-                     * Write on file the @msg and flushes it.
-                     * It is implicit a log status
-                     * @param msg 
+                     * @brief write msg on terminal
+                     * Write msg on file and flushes it.
+                     * 
+                     * @param msg message
+                     * @param status status of the message
                      */
                     void print(std::string msg, const LOG_STATUS status);
 
                     /**
-                     * Close file of printing
+                     * Close logger and its file
                      */
                     void closeLogger();
 
                     /**
                      * @brief this check-function is useless to call unless you have defined
-                     * OI_LOGGER_JPL 
+                     * UFW_LOGGER_JPL 
                      * 
-                     * @return if Logger is writing on file, too
+                     * @return if Logger is able to write on file
                      */
                     inline bool isWriting(){ return this->flag; }
 
-                    ~Logger() noexcept(false);
+                    ~Logger();
             };
         }
     } 

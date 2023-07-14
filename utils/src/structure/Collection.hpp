@@ -1,9 +1,7 @@
 /**
  * @file 
  * 
- * This class file can be assimilated as an interface.
- * There are some function declarations which will be used by all collection-structure-type, such as 
- * ArrayList, LinkedList, Stack and Queue.
+ * This is an interface.
  * 
  * Since JPL provides Exception module, and, as an elephant in the room, it cannot be used into
  * pre-existing structure provided by std, this sub-module provides the same kinda of structures but
@@ -14,17 +12,26 @@
  * @author Gabriele-P03
  */
 
-#ifndef COLLECTION_STRUCTURE_JPL
-#define COLLECTION_STRUCTURE_JPL
+#ifndef COLLECTIONI_JPL
+#define COLLECTIONI_JPL
+
+/*
+
+    IMMETTERE IN INCLUDE L'ATTUALE VERSIONE DELLA JPL
+
+*/
+
+#include "Iterable.hpp"
+#include "../functional/predicate/Predicate.hpp"
 
 namespace jpl{
 
     namespace _utils{
 
-        namespace _structure{
+        namespace _collections{
             
             template <typename T>
-            class Collection{
+            class Collection : public Iterable<T>{
 
                 protected:
                     
@@ -33,25 +40,29 @@ namespace jpl{
                      */
                     unsigned long size;
 
-                    
-                    unsigned long max;
 
-                pubic:
+                    void assertIndex(unsigned long index){
+                        if(index >= this->size){
+
+                        }
+                    }
+
+                public:
 
                     /**
                      * @brief Insert t into the structure. The position where t is pushed depends
                      * by the type of structure
                      * 
                      * @param t 
-                     * @return t in case of success otherwise nullptr
+                     * 
                      */
-                    virtual inline T add(T t);
+                    virtual inline bool add(T t);
                     /**
                      * @brief Insert into the structure all items contained into list
                      * 
                      * @param list 
                      */
-                    virtual inline void addAll(List<T> *list);
+                    virtual inline bool addAll(List<T> *list);
 
 
                     /**
@@ -81,9 +92,19 @@ namespace jpl{
                      * @brief remove all collection's items from this collection
                      * 
                      * @param list collection of items to remove
-                     * @throw NotFoundException at the first item not found
+                     * @throw NotFoundException if at least one item into list has not been found
                      */
                     virtual void inline removeAll(Collection<T> list);
+                    /**
+                     * @brief Remove all elements which respect the given predicate
+                    */
+                    virtual inline void removeAllIf(_functional::Predicate<T> predicate);
+                    /**
+                     * @brief Remove all elements from the collection
+                    */
+                    virtual inline void clear();
+
+
 
                     /**
                      * @return if the structure is empty

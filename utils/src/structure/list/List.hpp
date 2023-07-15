@@ -18,6 +18,7 @@
 #include "../Collection.hpp"
 
 #include <jpl/exception/runtime/IndexOutOfBoundsException.hpp>
+#include <jpl/exception/runtime/OutOfMemoryException.hpp>
 
 namespace jpl{
 
@@ -26,11 +27,8 @@ namespace jpl{
         namespace _collections{
             
             template <typename T>
-            class List : protected Collection<T>{
-
-                private:
-                    bool nullableElements;
-
+            class List : public Collection<T>{
+                    
                 protected:
 
                     /**
@@ -39,11 +37,7 @@ namespace jpl{
                      * @param size size of the list
                      * @param nullableElements if this list allow null elements
                     */
-                    List(unsigned long size, bool nullableElements){
-                        this->size = size;
-                        this->nullableElements = nullableElements;
-                    }
-
+                    List(unsigned long size, bool nullableElements) : Collection<T>(size, size, nullableElements){}
                     List(unsigned long size) : List<T> (size, true){}
                     List() : List<T> (0, true){}
 
@@ -64,8 +58,14 @@ namespace jpl{
                      * @param index
                      * @param collection
                     */
-                    virtual void addAll(unsigned long index, Collection<T> collection) = 0;
-            
+                    virtual void addAll(unsigned long index, Collection<T> *collection) = 0;
+                    /**
+                    * @brief Insert into the structure all items contained into list at the end
+                    * if the array list
+                    * 
+                    * @param list 
+                    */
+                    virtual void addAll(Collection<T> *list) = 0;          
 
                     /**
                      * @return the element at the given index
@@ -95,7 +95,13 @@ namespace jpl{
                      * @throw IndexOutOfBounds if index is graeter than length()-1 or less than 0
                     */
                     virtual void remove(unsigned long index) = 0;
-
+                    /**
+                     * @brief remove all collection's items from this collection
+                     * 
+                     * @param list collection of items to remove
+                     * @throw NotFoundException if at least one item into list has not been found
+                     */
+                    virtual void removeAll(Collection<T*> list) = 0;
 
                     /**
                      * Set t at the given index (which was already occuped)

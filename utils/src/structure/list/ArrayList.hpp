@@ -5,11 +5,16 @@
  * 
  * This type of list is resizeable, but, being an array, if the size exceeds, the whole list is reallocated.
  * When a collection is attempted to being inserted, in order to prevent several reallocating, a unique call is done based on size of the 
- * collection which is going to be inserted
+ * collection which is going to be inserted.
+ * If you know that several amount of calls are going to be done to either add() or addAll() - and you know how many 
+ * elements are going to be insert - then you should call reallocate() by yourself, preventing the same several amount
+ * of calls to the function 
  * 
  * If you need a list which will be manipulated frequently, you should opt to use a LinkedList in order to not perform any reallocating.
  * 
- * Null elements are allowd into this list.
+ * Null elements are allowed into this list.
+ * 
+ * ArrayList does not implements any borderline about max amount of elements which can be contained into it
  * 
  * @date 2023-07-12
  * @copyright Copyright (c) 2023
@@ -30,101 +35,110 @@ namespace jpl{
             namespace _list{
 
                 template <typename T>
-                class ArrayList : protected List<T>{
+                class ArrayList : public List<T>{
 
                     protected:
                         T* t;
 
-                        /**
-                         * @brief It performs the reallocating of memory of the current array list
-                         * 
-                         * @param size amount of elements which will be insert
-                        */
-                        virtual inline void reallocate(unsigned long size){
-                            this->t = (T*)realloc(this->t, (this->size+size)*sizeof(*this->t));
-                        }
-
                     public:
 
                         ArrayList(unsigned long size) : List<T>(size){
-                            if(size > 0){
+                            if(size > 0)   
                                 this->t = new T[size];
-                            }
+                            else
+                                this->t = NULL; //Since realloc, if ptr is NULL, behavies as malloc
                         } 
                         ArrayList() : ArrayList<T>(0){} 
-                        ArrayList( const ArrayList<T> &arrayList ) : List<T>(arrayList.length()){
-
-                        }
+                        ArrayList( const ArrayList<T> &arrayList ) : List<T>(arrayList.length()){}
 
                         /**
-                         * Insert the given t 
+                         * @brief Insert t into the structure. The position where t is pushed depends
+                         * by the type of structure
                          * 
-                         * @param t new element
-                        */
-                        virtual const void add(T* t) noexcept {
-                            this->add(0, t);
+                         * @param t 
+                         * 
+                         */
+                        virtual void add(T* t) override{
+                            if(this->size+1 > this->max){
+                                this->reallocate(this->max+1);
+                            }
+                            this->size += 1;
+                            this->t[this->size] = t;
                         }
-
                         /**
                          * Insert the given t at index
                          * 
                          * @param index index
                          * @param t new element
                          * 
-                         * @throw IndexOutOfBounds if index is greater or equal to list's size
+                         * @throw NullPointerException if list does not permit null elements and t it is
                         */
-                        virtual const void add(unsigned long index, T* t){
-                            
-                            if(index >= this->size()){
-                                throw new IndexOutOfBoundsException(ArrayList, this->size, index);
+                        virtual void add(unsigned long index, T* t) override{
+                            if(index > this->max){
+                                this->reallocate(this->max+this->max-index);
+                            }else if(this->size+1 > this->max){
+                                this->reallocate(this->max+1);
                             }
 
-                            this->reallocate(1);
-
-                            T next = this->t[index];
-                            this->t = t;
-                            this->t[index+1] = next;
                         }
-                                                /**
-                         * Insert the given t at index
+                        /**
+                         * @brief Insert into the structure all items contained into list at the end
+                         * if the array list
                          * 
-                         * @param index index
-                         * @param t collection of new elements
-                         * 
-                         * @throw IndexOutOfBounds if index is greater or equal to list's size
-                        */
-                        virtual const void addAll(unsigned long index, Collection<T>* list){
-                            
-                            if(index >= this->size()){
-                                throw new IndexOutOfBoundsException(ArrayList, this->size, index);
+                         * @param list 
+                         */
+                        virtual void addAll(Collection<T> *list){
+                            unsigned long max1 = this->max+list->size;
+                            if(list->size > max1){
+                                this->reallocate(max1);
                             }
+                        };
 
-                            this->reallocate(list->size());
 
-                            T next = this->t[index];
-                            this->t = list;
-                            this->t[index+1] = next;
+                        virtual void removeAllIf(_functional::Predicate<T>* predicate) override{
+                            for(unsigned long i = 0; i < this->size; i++){
+                                if(predicate->test(this->t[i])){
+                                    delete this->t[i];
+                                }
+                            }
+                                  
                         }
 
+
+                        virtual void clear() override{
+                            if(this->size > 0){
+                                delete[] this->t;
+                            }
+                        }
+
+                        virtual const T* toArray() override{
+                            T* buffer = nullptr;
+                            if(this->size > 0){
+                                buffer = new T[this->size];
+                                memcpy(buffer, this->t, this->size*sizeof(this->t));
+                            }
+                            return buffer;
+                        }
+
+                        virtual void forEach(_functional::Consumer<T*>* consumer) override{
+                            for(unsigned long i = 0; i < this->size; i++)
+                                consumer->test(this->t[i]);                  
+                        }
 
 
                         /**
-                         * @return the element at the given index
+                         * @brief Reallocate the arrayList
                          * 
-                         * @throw IndexOutOfBounds if index is graeter than length()-1 or less than 0
+                         * @param size new size of the list (set, not added)
                         */
-                        virtual inline T* get(unsigned long index) override{
+                        virtual void reallocate(unsigned long size){
+                            this->max = size;
+                            T* tmp = (T*)realloc(this->t, this->max*sizeof(t));
 
-                            if(index >= this->size){
-                                throw new IndexOutOfBoundsException(ArrayList, this->size, index);
-                            }
-
-                            return &this->t[index];
-                        }
-
-                        virtual void forEach(_functional::Consumer<T*> consumer){
-                            for(unsigned int i = 0; i < this->size; i++){
-                                consumer.test(&this->t[i]);
+                            if(tmp == nullptr){
+                                throw new OutOfMemoryException(ArrayList, " could not be reallocated");
+                            }else{
+                                this->t = tmp;
                             }
                         }
                 };

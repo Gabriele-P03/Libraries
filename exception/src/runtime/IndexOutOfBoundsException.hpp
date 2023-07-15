@@ -36,7 +36,7 @@ namespace jpl{
                 const unsigned int attempted;
 
                 void catchIllegalMaxAttempted(){
-                    if(this->max >= this->attempted){
+                    if(this->max > this->attempted){
                         throw new IllegalArgumentException(o, "cannot be thrown with a MAX greater than ATTEMPTED");
                     }else{
                         std::string buffer =            std::string(this->type_ex) + 

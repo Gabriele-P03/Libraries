@@ -56,13 +56,13 @@ namespace jpl{
                      * @param t 
                      * 
                      */
-                    virtual inline bool add(T t);
+                    virtual bool add(T* t) = 0;
                     /**
                      * @brief Insert into the structure all items contained into list
                      * 
                      * @param list 
                      */
-                    virtual inline bool addAll(List<T> *list);
+                    virtual bool addAll(Collection<T> *list) = 0;
 
 
                     /**
@@ -71,14 +71,14 @@ namespace jpl{
                      * @param t 
                      * @return if t is present
                      */
-                    virtual bool inline contains(T t);
+                    virtual bool contains(T* t) = 0;
                     /**
                      * @brief Check if all collection's items are stored into this one
                      * 
                      * @param collection to compare with this one
                      * @return if all collection's items are present
                      */
-                    virtual bool inline containsAll(Collection<T> collection);
+                    virtual bool containsAll(Collection<T*> collection) = 0;
 
 
                     /**
@@ -87,42 +87,42 @@ namespace jpl{
                      * @param t item to remove
                      * @throw NotFoundException if t has not been found into this collection
                      */
-                    virtual void inline remove(T t);
+                    virtual void remove(T t) = 0;
                     /**
                      * @brief remove all collection's items from this collection
                      * 
                      * @param list collection of items to remove
                      * @throw NotFoundException if at least one item into list has not been found
                      */
-                    virtual void inline removeAll(Collection<T> list);
+                    virtual void removeAll(Collection<T*> list) = 0;
                     /**
                      * @brief Remove all elements which respect the given predicate
                     */
-                    virtual inline void removeAllIf(_functional::Predicate<T> predicate);
+                    virtual void removeAllIf(_functional::Predicate<T*> predicate) = 0;
                     /**
                      * @brief Remove all elements from the collection
                     */
-                    virtual inline void clear();
+                    virtual void clear() = 0;
 
 
 
                     /**
                      * @return if the structure is empty
                      */
-                    virtual bool inline isEmpty(){return this->size == 0;}
+                    virtual bool isEmpty(){return this->size == 0;}
 
                     /**
                      * @return the current amount of items contained into this collection
                      */
-                    virtual unsigned long inline size(){return this->size;};
+                    virtual unsigned long length(){return this->size;}
 
                     /**
                      * @brief In order to offers you the most available compatibility to any others
                      * type of structures (even not JPL's), a collection can be copied into an array
                      * 
-                     * @return T* (get its size by size())
+                     * @return T* (get its size by length())
                      */
-                    virtual T* toArray();
+                    virtual T* toArray() = 0;
 
             };
         } 

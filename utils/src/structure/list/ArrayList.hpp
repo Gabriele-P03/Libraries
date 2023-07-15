@@ -41,19 +41,28 @@ namespace jpl{
                          * @param size amount of elements which will be insert
                         */
                         virtual inline void reallocate(unsigned long size){
-                            this->t = realloc(this->t, (this->size*size)*sizeof(*this->t));
+                            this->t = (T*)realloc(this->t, (this->size+size)*sizeof(*this->t));
                         }
 
                     public:
 
-                        template <typename T> ArrayList<T>(unsigned long size) : List<T>(size){
+                        ArrayList(unsigned long size) : List<T>(size){
                             if(size > 0){
                                 this->t = new T[size];
                             }
                         } 
-                        template <typename T> ArrayList<T>() : ArrayList<T>(0){} 
-                        template <typename T> ArrayList<T>( ArrayList<T> arrayList ) : List<T>(arrayList.size()){
+                        ArrayList() : ArrayList<T>(0){} 
+                        ArrayList( const ArrayList<T> &arrayList ) : List<T>(arrayList.length()){
 
+                        }
+
+                        /**
+                         * Insert the given t 
+                         * 
+                         * @param t new element
+                        */
+                        virtual const void add(T* t) noexcept {
+                            this->add(0, t);
                         }
 
                         /**
@@ -62,22 +71,62 @@ namespace jpl{
                          * @param index index
                          * @param t new element
                          * 
+                         * @throw IndexOutOfBounds if index is greater or equal to list's size
                         */
-                        virtual void add(unsigned long index, T* t) noexcept{
+                        virtual const void add(unsigned long index, T* t){
                             
+                            if(index >= this->size()){
+                                throw new IndexOutOfBoundsException(ArrayList, this->size, index);
+                            }
+
                             this->reallocate(1);
 
-                            T* next = this->t[index];
+                            T next = this->t[index];
+                            this->t = t;
+                            this->t[index+1] = next;
                         }
+                                                /**
+                         * Insert the given t at index
+                         * 
+                         * @param index index
+                         * @param t collection of new elements
+                         * 
+                         * @throw IndexOutOfBounds if index is greater or equal to list's size
+                        */
+                        virtual const void addAll(unsigned long index, Collection<T>* list){
+                            
+                            if(index >= this->size()){
+                                throw new IndexOutOfBoundsException(ArrayList, this->size, index);
+                            }
+
+                            this->reallocate(list->size());
+
+                            T next = this->t[index];
+                            this->t = list;
+                            this->t[index+1] = next;
+                        }
+
+
 
                         /**
                          * @return the element at the given index
                          * 
-                         * @throw IndexOutOfBounds if index is graeter than size()-1 or less than 0
+                         * @throw IndexOutOfBounds if index is graeter than length()-1 or less than 0
                         */
-                        virtual inline T* get(unsigned long index){
+                        virtual inline T* get(unsigned long index) override{
+
+                            if(index >= this->size){
+                                throw new IndexOutOfBoundsException(ArrayList, this->size, index);
+                            }
+
+                            return &this->t[index];
                         }
 
+                        virtual void forEach(_functional::Consumer<T*> consumer){
+                            for(unsigned int i = 0; i < this->size; i++){
+                                consumer.test(&this->t[i]);
+                            }
+                        }
                 };
             }
         }

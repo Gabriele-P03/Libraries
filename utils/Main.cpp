@@ -1,22 +1,10 @@
 
-#include "src/functional/supplier/Supplier.hpp"
-
-#include <iostream>
-#include <string>
-
-using namespace jpl;
-using namespace _utils;
-
-int supplier( _functional::Supplier<int> supplier ){
-
-    return supplier.test();
-}
-
+#include "src/structure/list/ArrayList.hpp"
 
 
 int main(){
 
-    std::cout<<supplier( [] () {return 6;} );
+    jpl::_utils::_collections::_list::ArrayList<int>();
 
     return 0;
 }

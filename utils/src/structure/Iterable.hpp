@@ -24,7 +24,7 @@ namespace jpl{
 
             public:
 
-                void forEach(_functional::Consumer<T> consumer);
+                virtual void forEach(_functional::Consumer<T*> consumer) = 0;
         };
     }
 } 

@@ -17,6 +17,8 @@
 
 #include "../Collection.hpp"
 
+#include <jpl/exception/runtime/IndexOutOfBoundsException.hpp>
+
 namespace jpl{
 
     namespace _utils{
@@ -37,13 +39,13 @@ namespace jpl{
                      * @param size size of the list
                      * @param nullableElements if this list allow null elements
                     */
-                    template <typename T> List<T>(unsigned long size, bool nullableElements){
+                    List(unsigned long size, bool nullableElements){
                         this->size = size;
                         this->nullableElements = nullableElements;
                     }
 
-                    template <typename T> List<T>(unsigned long size) : List<T> (size, true){}
-                    template <typename T> List<T>() : List<T> (0, true){}
+                    List(unsigned long size) : List<T> (size, true){}
+                    List() : List<T> (0, true){}
 
                 public:
 
@@ -55,22 +57,22 @@ namespace jpl{
                      * 
                      * @throw NullPointerException if list does not permit null elements and t it is
                     */
-                    virtual void add(unsigned long index, T* t);
+                    virtual void add(unsigned long index, T* t) = 0;
                     /**
                      * Insert the whole given list at index
                      * 
                      * @param index
                      * @param collection
                     */
-                    virtual void addAll(unsigned long index, Collection<T> collection);
+                    virtual void addAll(unsigned long index, Collection<T> collection) = 0;
             
 
                     /**
                      * @return the element at the given index
                      * 
-                     * @throw IndexOutOfBounds if index is graeter than size()-1 or less than 0
+                     * @throw IndexOutOfBounds if index is graeter than length()-1 or less than 0
                     */
-                    virtual T* get(unsigned long index);
+                    virtual T* get(unsigned long index) = 0;
 
 
                     /**
@@ -78,21 +80,21 @@ namespace jpl{
                      * 
                      * @throw NullPointerException if list does not permit null elements and t it is
                     */
-                    virtual unsigned long firstOccurrence(T t);
+                    virtual unsigned long firstOccurrence(T t) = 0;
                     /**
                      * @return the index of the last occurrence of t. If t is not found into the list, it returns -1
                      * 
                      * @throw NullPointerException if list does not permit null elements and t it is
                     */
-                    virtual unsigned long lastOccurrence(T t);
+                    virtual unsigned long lastOccurrence(T t) = 0;
 
                     
                     /**
                      * @brief remove the element at the given index
                      * 
-                     * @throw IndexOutOfBounds if index is graeter than size()-1 or less than 0
+                     * @throw IndexOutOfBounds if index is graeter than length()-1 or less than 0
                     */
-                    virtual void remove(unsigned long index);
+                    virtual void remove(unsigned long index) = 0;
 
 
                     /**
@@ -100,18 +102,18 @@ namespace jpl{
                      * 
                      * @return the previous element which was at index
                      * 
-                     * @throw IndexOutOfBounds if index is graeter than size()-1 or less than 0
+                     * @throw IndexOutOfBounds if index is graeter than length()-1 or less than 0
                      * @throw NullPointerException if list does not permit null elements and t it is
                     */
-                    virtual T set(unsigned long index, T t);
+                    virtual T set(unsigned long index, T t) = 0;
 
                     /**
                      * @return a sub list of the current one
                      * 
-                     * @throw IndexOutOfBounds if start is graeter than size()-1 or less than 0
-                     * @throw IndexOutOfBounds if end is graeter than size()-1 or less than 0
+                     * @throw IndexOutOfBounds if start is graeter than length()-1 or less than 0
+                     * @throw IndexOutOfBounds if end is graeter than length()-1 or less than 0
                     */
-                    virtual List<T> subList(unsigned long start, unsigned long end);
+                    virtual List<T> subList(unsigned long start, unsigned long end) = 0;
             };
         }
     }

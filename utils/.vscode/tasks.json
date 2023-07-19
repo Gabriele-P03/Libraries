@@ -27,13 +27,13 @@
         {
             "type": "cppbuild",
             "label": "Windows Client",
-            "command": "x86_64-w64-mingw32-g++",
+            "command": "C:\\mingw64\\bin\\g++.exe",
             "args": [
                 "-g",
                 "-std=c++20",
                 "${workspaceFolder}/Main.cpp",
                 "-o",
-                "${workspaceFolder}/out/window/Main.exe"
+                "${workspaceFolder}/out/windows/Main.exe"
                 
             ],
             "options": {

@@ -5,7 +5,9 @@
  * 
  * Since JPL provides Exception module, and, as an elephant in the room, it cannot be used into
  * pre-existing structure provided by std, this sub-module provides the same kinda of structures but
- * with the auxiliary use of Exception module   
+ * with the auxiliary use of Exception module  
+ * 
+ *  
  * 
  * @date 2023-05-28
  * @copyright Copyright (c) 2023
@@ -14,12 +16,6 @@
 
 #ifndef COLLECTIONI_JPL
 #define COLLECTIONI_JPL
-
-/*
-
-    IMMETTERE IN INCLUDE L'ATTUALE VERSIONE DELLA JPL
-
-*/
 
 #include "Iterable.hpp"
 #include "../functional/predicate/Predicate.hpp"
@@ -34,17 +30,28 @@ namespace jpl{
             class Collection : public Iterable<T>{
 
                 protected:
+
+                    /**
+                     * @brief It stores the max amount of items which can be contained into the collection
+                     * 
+                     * A collection is by itselves increaseable, a data-structure could set it as final in its own scope.
+                    */
+                    unsigned long max;
                     
                     /**
                      * @brief It stores the current amount of items into the structure
                      */
                     unsigned long size;
 
+                    /**
+                     * @brief if null elements are allowd to be inserted into the collection
+                    */
+                    bool nullableElements;
 
-                    void assertIndex(unsigned long index){
-                        if(index >= this->size){
-
-                        }
+                    Collection(unsigned long max, unsigned long size, bool nullableElements){
+                        this->max = max;
+                        this->size = size;
+                        this->nullableElements = nullableElements;
                     }
 
                 public:
@@ -56,13 +63,7 @@ namespace jpl{
                      * @param t 
                      * 
                      */
-                    virtual bool add(T* t) = 0;
-                    /**
-                     * @brief Insert into the structure all items contained into list
-                     * 
-                     * @param list 
-                     */
-                    virtual bool addAll(Collection<T> *list) = 0;
+                    virtual void add(T* t) = 0;
 
 
                     /**
@@ -71,7 +72,7 @@ namespace jpl{
                      * @param t 
                      * @return if t is present
                      */
-                    virtual bool contains(T* t) = 0;
+                    virtual bool contains(T* t) noexcept = 0;
                     /**
                      * @brief Check if all collection's items are stored into this one
                      * 
@@ -89,16 +90,9 @@ namespace jpl{
                      */
                     virtual void remove(T t) = 0;
                     /**
-                     * @brief remove all collection's items from this collection
-                     * 
-                     * @param list collection of items to remove
-                     * @throw NotFoundException if at least one item into list has not been found
-                     */
-                    virtual void removeAll(Collection<T*> list) = 0;
-                    /**
                      * @brief Remove all elements which respect the given predicate
                     */
-                    virtual void removeAllIf(_functional::Predicate<T*> predicate) = 0;
+                    virtual void removeAllIf(_functional::Predicate<T>* predicate) = 0;
                     /**
                      * @brief Remove all elements from the collection
                     */
@@ -109,20 +103,32 @@ namespace jpl{
                     /**
                      * @return if the structure is empty
                      */
-                    virtual bool isEmpty(){return this->size == 0;}
+                    virtual bool isEmpty() noexcept {return this->size == 0;}
 
                     /**
-                     * @return the current amount of items contained into this collection
+                     * @return the max amount of items which can contained into the collection
                      */
-                    virtual unsigned long length(){return this->size;}
+                    virtual unsigned long length() noexcept {return this->max;}
+                    /**
+                     * @return the current amount of items which are contained into the collection 
+                    */
+                   virtual unsigned long getAmount() noexcept {return this->size;}
+                    /**
+                     * @return if the collection allows null elements
+                    */
+                   virtual bool allowNull() noexcept {return this->nullableElements;}
 
                     /**
                      * @brief In order to offers you the most available compatibility to any others
-                     * type of structures (even not JPL's), a collection can be copied into an array
+                     * type of structures (even not JPL's), any collection can be copied into an array
+                     * 
+                     * Every array returned by a collection will be a copy of the original one: no changes
+                     * performed on the returned array will be done even on the collection.
+                     * The array returned will be as length as size field.
                      * 
                      * @return T* (get its size by length())
                      */
-                    virtual T* toArray() = 0;
+                    virtual const T* toArray() = 0;
 
             };
         } 

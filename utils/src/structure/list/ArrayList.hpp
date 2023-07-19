@@ -9,12 +9,17 @@
  * 
  * If you need a list which will be manipulated frequently, you should opt to use a LinkedList in order to not perform any reallocating.
  * 
- * Null elements are allowd into this list.
+ * Null elements are allowed into this list.
+ * 
+ * A copy of the element which is going to be insert is NOT performed, therefore, you oughta do it by yourself
  * 
  * @date 2023-07-12
  * @copyright Copyright (c) 2023
  * @author Gabriele-P03
 */
+
+
+CONTROLLA LE ADD, POI REMOVE
 
 #ifndef ARRAYLIST_JPL
 #define ARRAYLIST_JPL
@@ -40,8 +45,31 @@ namespace jpl{
                          * 
                          * @param size amount of elements which will be insert
                         */
-                        virtual inline void reallocate(unsigned long size){
-                            this->t = (T*)realloc(this->t, (this->size+size)*sizeof(*this->t));
+                        virtual void reallocate(unsigned long size){
+                            this->max = size;
+                            this->t = (T*)realloc(this->t, this->max*sizeof(this->t));
+                        }
+
+                        /**
+                         * @brief Right Shift a part of the array list which begins from start 'till last element.
+                         * It is used by add(s) function.
+                         * 
+                         * This function is out-of-warnings even on the first insert operation
+                         * 
+                         * @param start first element to be shift. 
+                         * @param offset amount of cell to shift
+                         * 
+                         * @throw IndexOutOfBounds if start + offset is greater than list's max
+                         */
+                        virtual void rightShiftItems(unsigned int start, unsigned int offset){
+                            
+                            if(this->size + offset > this->max){
+                                throw new IndexOutOfBoundsException(ArrayList, this->max, this->size+offset);
+                            }
+
+                            for(unsigned int i = this->size; i > start; i--){
+                                this->t[i+offset-1] = this->t[i-1];
+                            }
                         }
 
                     public:
@@ -52,19 +80,16 @@ namespace jpl{
                             }
                         } 
                         ArrayList() : ArrayList<T>(0){} 
-                        ArrayList( const ArrayList<T> &arrayList ) : List<T>(arrayList.length()){
-
-                        }
+                        ArrayList( const ArrayList<T> &arrayList ) : List<T>(arrayList.length()){}
 
                         /**
-                         * Insert the given t 
+                         * Insert the given t at the end of the list
                          * 
                          * @param t new element
                         */
                         virtual const void add(T* t) noexcept {
-                            this->add(0, t);
+                            this->add(this->size, t);
                         }
-
                         /**
                          * Insert the given t at index
                          * 
@@ -73,19 +98,21 @@ namespace jpl{
                          * 
                          * @throw IndexOutOfBounds if index is greater or equal to list's size
                         */
-                        virtual const void add(unsigned long index, T* t){
+                        virtual void add(unsigned long index, T* t) override{
                             
-                            if(index >= this->size()){
-                                throw new IndexOutOfBoundsException(ArrayList, this->size, index);
-                            }
+                            if(index > this->max)
+                                throw new IndexOutOfBoundsException(ArrayList, this->size, index);                   
+                            if(index == this->max)
+                                this->reallocate(this->max+1);
 
-                            this->reallocate(1);
-
-                            T next = this->t[index];
-                            this->t = t;
-                            this->t[index+1] = next;
+                            this->rightShiftItems(index, 1);
+                            this->t[index] = t;
+                            this->size++;
                         }
-                                                /**
+                        virtual void addAll(List<T>* list) override{
+                            this->addAll(this->size, list);
+                        }
+                        /**
                          * Insert the given t at index
                          * 
                          * @param index index
@@ -93,17 +120,20 @@ namespace jpl{
                          * 
                          * @throw IndexOutOfBounds if index is greater or equal to list's size
                         */
-                        virtual const void addAll(unsigned long index, Collection<T>* list){
+                        virtual void addAll(unsigned long index, List<T>* list) override{
                             
-                            if(index >= this->size()){
-                                throw new IndexOutOfBoundsException(ArrayList, this->size, index);
+                            if(index > this->max)
+                                throw new IndexOutOfBoundsException(ArrayList, this->size, index); 
+
+                            unsigned long listSize = list->size();                  
+                            if(index == this->max)
+                                this->reallocate(this->max+listSize);
+
+                            this->rightShiftItems(index, listSize);
+                            for(unsigned int i = index; i < index + listSize; i++){
+                                this->t[i] = list->get(i);
                             }
-
-                            this->reallocate(list->size());
-
-                            T next = this->t[index];
-                            this->t = list;
-                            this->t[index+1] = next;
+                            this->size += listSize;
                         }
 
 

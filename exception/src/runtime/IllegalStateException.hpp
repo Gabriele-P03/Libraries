@@ -31,16 +31,12 @@ namespace jpl{
         class IllegalStateException : public RuntimeException{
 
             public:
-                IllegalStateException(const char* msg, const char* file_name, const char* function_name, const int line) : 
-                    RuntimeException("IllegalStateException", msg, file_name, function_name, line){}
+                IllegalStateException(std::string msg) : RuntimeException("IllegalStateException", msg){}
+                IllegalStateException() : IllegalStateException(""){}
         };
     }
 }
 
-/**
- * @param msg describer message
- */
-#define IllegalStateException(msg) jpl::_exception::IllegalStateException(msg, __FILENAME__, __func__, __LINE__)
 
 
 #endif

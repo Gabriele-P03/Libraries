@@ -1,10 +1,18 @@
+#include "src/debug/stacktrace/Stacktrace.hpp" 
+#include <jpl/exception/runtime/RuntimeException.hpp>
 
-#include "src/structure/list/ArrayList.hpp"
-
+void f(){
+    throw new std::exception;
+}
 
 int main(){
 
-    jpl::_utils::_collections::_list::ArrayList<int>();
+    try{
+        f();
+    }catch( std::exception* ex ){
+        std::cout<<"Bah"<<std::endl;
+        jpl::_utils::_debug::Stacktrace st(0, 10);
+        }
 
     return 0;
 }

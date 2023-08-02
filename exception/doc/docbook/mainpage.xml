@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<chapter xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_mainpage" xml:lang="en-US">
+<title>&lt;strong&gt;Exception (CM)&lt;/strong&gt;</title>
+<indexterm><primary>&lt;strong&gt;Exception (CM)&lt;/strong&gt;</primary></indexterm>
+
+<para><anchor xml:id="_index_1md__r_e_a_d_m_e"/><formalpara><title><emphasis>Java similar exception</emphasis></title></formalpara>
+</para>
+
+<para><?linebreak?> This module provides you some exception which could be useful in order to give more information about errors encourented during the life of your program. <?linebreak?>All exception extends the same parent class, i.e. AbstractException, although there is a defined hierarchy - packaging - as you can see below. <?linebreak?> <?linebreak?><?linebreak?> Keep in mind that, although JPL provide <link xlink:href="https://github.com/Gabriele-P03/Libraries/tree/main/logger">Logger</link>, it is not used in this module to print messages of occurred exception, it will be your duty to perform it. <?linebreak?><?linebreak?> The message of thrown exception can be retrieved via what() function. Some of these exception override it in order to take out a template message composed by different argumentd passed to constructors. </para>
+</chapter>

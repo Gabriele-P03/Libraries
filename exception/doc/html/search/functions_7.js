@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['runtimeexception_0',['RuntimeException',['../classjpl_1_1__exception_1_1RuntimeException.html#a2b973e3588666eeec46cbdcd60003bce',1,'jpl::_exception::RuntimeException::RuntimeException(const char *type_ex, const char *msg, const char *file_name, const char *function_name, const int line)'],['../classjpl_1_1__exception_1_1RuntimeException.html#a0de2f6384f82aa9ac82c8c78cd65dbb9',1,'jpl::_exception::RuntimeException::RuntimeException(const char *msg, const char *file_name, const char *function_name, const int line)']]]
+  ['runtimeexception_0',['RuntimeException',['../d1/d60/classjpl_1_1__exception_1_1_runtime_exception.html#a03edc87ffaaa4c5dfb651cd4aa924ade',1,'jpl::_exception::RuntimeException::RuntimeException(const char *type_ex, const char *msg)'],['../d1/d60/classjpl_1_1__exception_1_1_runtime_exception.html#ae493ccae676b5f4364b1a9a3250b34ab',1,'jpl::_exception::RuntimeException::RuntimeException(const char *msg)']]]
 ];

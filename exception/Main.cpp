@@ -1,21 +1,16 @@
-#include "src/runtime/SocketException.hpp"
-#include <sys/socket.h>
+#include "src/runtime/IOException.hpp"
 
 void f(){
     
-    char* buffer = new char[2];
-
-    recv(1, buffer, 2, 0);
-
-    throw new SocketException(1);
+    throw new jpl::_exception::IOException();
 }
 
 int main(){
 
     try{
         f();
-    }catch(const jpl::_exception::SocketException* ex){
-        std::cout<<*ex;
+    }catch( jpl::_exception::IOException* ex){
+        std::cout<<ex->what();
     }
 
     return 0;

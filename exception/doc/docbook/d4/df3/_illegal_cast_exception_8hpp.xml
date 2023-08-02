@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__illegal_cast_exception_8hpp" xml:lang="en-US">
+<title>src/runtime/IllegalCastException.hpp File Reference</title>
+<indexterm><primary>src/runtime/IllegalCastException.hpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &quot;RuntimeException.hpp&quot;<?linebreak?></programlisting><simplesect>
+    <title>Data Structures    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_classjpl_1_1__exception_1_1_illegal_cast_exception">jpl::_exception::IllegalCastException</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Namespaces    </title>
+        <itemizedlist>
+            <listitem><para>namespace <link linkend="_namespacejpl">jpl</link></para>
+</listitem>
+            <listitem><para>namespace <link linkend="_namespacejpl_1_1__exception">jpl::_exception</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>An IllegalCastException is thrown whenever an invalid cast on an object is attempted</para>
+
+<para><formalpara><title>Date</title>
+
+<para>2023-04-22 </para>
+</formalpara>
+<formalpara><title>Copyright</title>
+
+<para>Copyright (c) 2023 </para>
+</formalpara>
+<formalpara><title>Author</title>
+
+<para>Gabriele-P03 </para>
+</formalpara>
+</para>
+<para>
+Definition in file <link linkend="__illegal_cast_exception_8hpp_source">IllegalCastException.hpp</link>.</para>
+</section>
+</section>

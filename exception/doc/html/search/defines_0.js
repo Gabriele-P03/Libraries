@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['arithmeticexception_0',['ArithmeticException',['../ArithmeticException_8hpp.html#ab34c4d28c29e03ecfd9a1556ed1187e4',1,'ArithmeticException.hpp']]]
+  ['stringify_0',['STRINGIFY',['../db/d0b/_abstract_exception_8hpp.html#ae4fd3f8792e038acc9f1c0703205f8b0',1,'AbstractException.hpp']]]
 ];

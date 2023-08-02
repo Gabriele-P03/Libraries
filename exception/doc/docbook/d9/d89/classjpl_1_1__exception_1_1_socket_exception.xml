@@ -1,0 +1,143 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classjpl_1_1__exception_1_1_socket_exception" xml:lang="en-US">
+<title>jpl::_exception::SocketException Class Reference</title>
+<indexterm><primary>jpl::_exception::SocketException</primary></indexterm>
+<para>
+<computeroutput>#include &lt;SocketException.hpp&gt;</computeroutput>
+</para>
+<para>Inheritance diagram for jpl::_exception::SocketException:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d9/d89/classjpl_1_1__exception_1_1_socket_exception.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_classjpl_1_1__exception_1_1_socket_exception_1add1eac013e3ef1edf91d71f3b11a2638">SocketException</link> (const unsigned int <link linkend="_classjpl_1_1__exception_1_1_socket_exception_1a055df1ec945a77de0c750399b38e1ed6">fd</link>, const unsigned int <link linkend="_classjpl_1_1__exception_1_1_socket_exception_1adc56852307aceab48ef989e21bf9325c">error_code</link>, const char *<link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1a8a40d27a336fcfeb26e7fd7b6c8522ec">msg</link>)</para>
+</listitem>
+            <listitem><para><link linkend="_classjpl_1_1__exception_1_1_socket_exception_1a20e5523f0f6fe3d0484aea9a5fb54320">SocketException</link> (const unsigned int <link linkend="_classjpl_1_1__exception_1_1_socket_exception_1a055df1ec945a77de0c750399b38e1ed6">fd</link>, const unsigned int <link linkend="_classjpl_1_1__exception_1_1_socket_exception_1adc56852307aceab48ef989e21bf9325c">error_code</link>)</para>
+</listitem>
+            <listitem><para><link linkend="_classjpl_1_1__exception_1_1_socket_exception_1ab8ea35201c19d524ee061ffa474f6c8a">SocketException</link> (const unsigned int <link linkend="_classjpl_1_1__exception_1_1_socket_exception_1a055df1ec945a77de0c750399b38e1ed6">fd</link>)</para>
+</listitem>
+            <listitem><para>virtual const char * <link linkend="_classjpl_1_1__exception_1_1_socket_exception_1abd14ed90cb038701b335bc72fa8eeb4d">what</link> () const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW override</para>
+
+<para>Print the type of the exception which has been thrown with the message that has been passed, too. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+Public Member Functions inherited from <link linkend="_classjpl_1_1__exception_1_1_runtime_exception">jpl::_exception::RuntimeException</link>        <itemizedlist>
+            <listitem><para><link linkend="_classjpl_1_1__exception_1_1_runtime_exception_1a03edc87ffaaa4c5dfb651cd4aa924ade">RuntimeException</link> (const char *<link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1add4642360b0286f49d367e431b6473fa">type_ex</link>, const char *<link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1a8a40d27a336fcfeb26e7fd7b6c8522ec">msg</link>)</para>
+</listitem>
+            <listitem><para><link linkend="_classjpl_1_1__exception_1_1_runtime_exception_1ae493ccae676b5f4364b1a9a3250b34ab">RuntimeException</link> (const char *<link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1a8a40d27a336fcfeb26e7fd7b6c8522ec">msg</link>)</para>
+</listitem>
+        </itemizedlist>
+Public Member Functions inherited from <link linkend="_classjpl_1_1__exception_1_1_abstract_exception">jpl::_exception::AbstractException</link>        <itemizedlist>
+            <listitem><para>virtual const char * <link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1ae17527e3192e5afdb01a90f199dbafe5">what</link> () const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW override</para>
+
+<para>Print the type of the exception which has been thrown with the message that has been passed, too. </para>
+</listitem>
+            <listitem><para>virtual const char * <link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1a763c7353208d799125dc4d871f510cef">getStacktrace</link> () const</para>
+</listitem>
+        </itemizedlist>
+<simplesect>
+    <title>Protected Attributes    </title>
+        <itemizedlist>
+            <listitem><para>const unsigned int <link linkend="_classjpl_1_1__exception_1_1_socket_exception_1adc56852307aceab48ef989e21bf9325c">error_code</link></para>
+</listitem>
+            <listitem><para>const unsigned int <link linkend="_classjpl_1_1__exception_1_1_socket_exception_1a055df1ec945a77de0c750399b38e1ed6">fd</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+Protected Attributes inherited from <link linkend="_classjpl_1_1__exception_1_1_abstract_exception">jpl::_exception::AbstractException</link>        <itemizedlist>
+            <listitem><para>const char * <link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1add4642360b0286f49d367e431b6473fa">type_ex</link></para>
+</listitem>
+            <listitem><para>const char * <link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1a8a40d27a336fcfeb26e7fd7b6c8522ec">msg</link></para>
+</listitem>
+        </itemizedlist>
+<simplesect>
+    <title>Additional Inherited Members    </title>
+Protected Member Functions inherited from <link linkend="_classjpl_1_1__exception_1_1_abstract_exception">jpl::_exception::AbstractException</link>        <itemizedlist>
+            <listitem><para><link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1ab1e5aa0f3b5106e72cb9de93f93e3a8c">AbstractException</link> (const char *<link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1add4642360b0286f49d367e431b6473fa">type_ex</link>)</para>
+</listitem>
+            <listitem><para><link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1af2dafed1749e2d7cb0097172f5974c0d">AbstractException</link> (const char *<link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1add4642360b0286f49d367e431b6473fa">type_ex</link>, const char *<link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1a8a40d27a336fcfeb26e7fd7b6c8522ec">msg</link>)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+<para>
+Definition at line <link linkend="__socket_exception_8hpp_source_1l00024">24</link> of file <link linkend="__socket_exception_8hpp_source">SocketException.hpp</link>.</para>
+</section>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_classjpl_1_1__exception_1_1_socket_exception_1add1eac013e3ef1edf91d71f3b11a2638"/><section>
+    <title>SocketException()<computeroutput>[1/3]</computeroutput></title>
+<indexterm><primary>SocketException</primary><secondary>jpl::_exception::SocketException</secondary></indexterm>
+<indexterm><primary>jpl::_exception::SocketException</primary><secondary>SocketException</secondary></indexterm>
+<para><computeroutput>jpl::_exception::SocketException::SocketException (const unsigned int fd, const unsigned int error_code, const char * msg)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__socket_exception_8hpp_source_1l00038">38</link> of file <link linkend="__socket_exception_8hpp_source">SocketException.hpp</link>.</para>
+</section>
+<anchor xml:id="_classjpl_1_1__exception_1_1_socket_exception_1a20e5523f0f6fe3d0484aea9a5fb54320"/><section>
+    <title>SocketException()<computeroutput>[2/3]</computeroutput></title>
+<indexterm><primary>SocketException</primary><secondary>jpl::_exception::SocketException</secondary></indexterm>
+<indexterm><primary>jpl::_exception::SocketException</primary><secondary>SocketException</secondary></indexterm>
+<para><computeroutput>jpl::_exception::SocketException::SocketException (const unsigned int fd, const unsigned int error_code)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__socket_exception_8hpp_source_1l00039">39</link> of file <link linkend="__socket_exception_8hpp_source">SocketException.hpp</link>.</para>
+</section>
+<anchor xml:id="_classjpl_1_1__exception_1_1_socket_exception_1ab8ea35201c19d524ee061ffa474f6c8a"/><section>
+    <title>SocketException()<computeroutput>[3/3]</computeroutput></title>
+<indexterm><primary>SocketException</primary><secondary>jpl::_exception::SocketException</secondary></indexterm>
+<indexterm><primary>jpl::_exception::SocketException</primary><secondary>SocketException</secondary></indexterm>
+<para><computeroutput>jpl::_exception::SocketException::SocketException (const unsigned int fd)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__socket_exception_8hpp_source_1l00044">44</link> of file <link linkend="__socket_exception_8hpp_source">SocketException.hpp</link>.</para>
+</section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_classjpl_1_1__exception_1_1_socket_exception_1abd14ed90cb038701b335bc72fa8eeb4d"/><section>
+    <title>what()</title>
+<indexterm><primary>what</primary><secondary>jpl::_exception::SocketException</secondary></indexterm>
+<indexterm><primary>jpl::_exception::SocketException</primary><secondary>what</secondary></indexterm>
+<para><computeroutput>virtual const char * jpl::_exception::SocketException::what ( ) const<computeroutput>[inline]</computeroutput>, <computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+
+<para>Print the type of the exception which has been thrown with the message that has been passed, too. </para>
+</para>
+
+<para><formalpara><title>Returns</title>
+
+<para>const char* </para>
+</formalpara>
+</para>
+<para>
+Reimplemented from <link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1ae17527e3192e5afdb01a90f199dbafe5">jpl::_exception::AbstractException</link>.</para>
+<para>
+Definition at line <link linkend="__socket_exception_8hpp_source_1l00051">51</link> of file <link linkend="__socket_exception_8hpp_source">SocketException.hpp</link>.</para>
+</section>
+</section>
+<section>
+<title>Field Documentation</title>
+<anchor xml:id="_classjpl_1_1__exception_1_1_socket_exception_1adc56852307aceab48ef989e21bf9325c"/><section>
+    <title>error_code</title>
+<indexterm><primary>error_code</primary><secondary>jpl::_exception::SocketException</secondary></indexterm>
+<indexterm><primary>jpl::_exception::SocketException</primary><secondary>error_code</secondary></indexterm>
+<para><computeroutput>const unsigned int jpl::_exception::SocketException::error_code<computeroutput>[protected]</computeroutput></computeroutput></para>
+<para>The occurred error&apos;s code </para>
+<para>
+Definition at line <link linkend="__socket_exception_8hpp_source_1l00031">31</link> of file <link linkend="__socket_exception_8hpp_source">SocketException.hpp</link>.</para>
+</section>
+<anchor xml:id="_classjpl_1_1__exception_1_1_socket_exception_1a055df1ec945a77de0c750399b38e1ed6"/><section>
+    <title>fd</title>
+<indexterm><primary>fd</primary><secondary>jpl::_exception::SocketException</secondary></indexterm>
+<indexterm><primary>jpl::_exception::SocketException</primary><secondary>fd</secondary></indexterm>
+<para><computeroutput>const unsigned int jpl::_exception::SocketException::fd<computeroutput>[protected]</computeroutput></computeroutput></para>
+<para>The file descriptor of the socket which has caused this exception </para>
+<para>
+Definition at line <link linkend="__socket_exception_8hpp_source_1l00035">35</link> of file <link linkend="__socket_exception_8hpp_source">SocketException.hpp</link>.</para>
+</section>
+<para>
+The documentation for this class was generated from the following file:</para>
+src/runtime/<link linkend="__socket_exception_8hpp">SocketException.hpp</link></section>
+</section>

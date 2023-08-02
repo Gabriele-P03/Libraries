@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__stack_overflow_exception_8hpp" xml:lang="en-US">
+<title>src/runtime/StackOverflowException.hpp File Reference</title>
+<indexterm><primary>src/runtime/StackOverflowException.hpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &quot;RuntimeException.hpp&quot;<?linebreak?></programlisting><simplesect>
+    <title>Data Structures    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_classjpl_1_1__exception_1_1_stack_overflow_exception">jpl::_exception::StackOverflowException</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Namespaces    </title>
+        <itemizedlist>
+            <listitem><para>namespace <link linkend="_namespacejpl">jpl</link></para>
+</listitem>
+            <listitem><para>namespace <link linkend="_namespacejpl_1_1__exception">jpl::_exception</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>A StackOverflow exception is thrown whenever an addition of an element into a stack is attempted but the capacity of the LIFO structure does not permit it</para>
+
+<para><formalpara><title>Date</title>
+
+<para>2023-04-23 </para>
+</formalpara>
+<formalpara><title>Copyright</title>
+
+<para>Copyright (c) 2023 </para>
+</formalpara>
+<formalpara><title>Author</title>
+
+<para>Gabriele-P03 </para>
+</formalpara>
+</para>
+<para>
+Definition in file <link linkend="__stack_overflow_exception_8hpp_source">StackOverflowException.hpp</link>.</para>
+</section>
+</section>

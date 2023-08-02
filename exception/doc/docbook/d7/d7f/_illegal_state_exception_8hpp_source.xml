@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__illegal_state_exception_8hpp_source" xml:lang="en-US">
+<title>IllegalStateException.hpp</title>
+<indexterm><primary>src/runtime/IllegalStateException.hpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="__illegal_state_exception_8hpp_source_1l00001"/>00001 
+<anchor xml:id="__illegal_state_exception_8hpp_source_1l00022"/>00022 <emphasis role="preprocessor">#ifndef&#32;ILLEGAL_STATE_EXCEPTION_JPL</emphasis>
+<anchor xml:id="__illegal_state_exception_8hpp_source_1l00023"/>00023 <emphasis role="preprocessor">#define&#32;ILLEGAL_STATE_EXCEPTION_JPL</emphasis>
+<anchor xml:id="__illegal_state_exception_8hpp_source_1l00024"/>00024 
+<anchor xml:id="__illegal_state_exception_8hpp_source_1l00025"/>00025 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__runtime_exception_8hpp">RuntimeException.hpp</link>&quot;</emphasis>
+<anchor xml:id="__illegal_state_exception_8hpp_source_1l00026"/>00026 
+<anchor xml:id="__illegal_state_exception_8hpp_source_1l00027"/>00027 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_namespacejpl">jpl</link>{
+<anchor xml:id="__illegal_state_exception_8hpp_source_1l00028"/>00028 
+<anchor xml:id="__illegal_state_exception_8hpp_source_1l00029"/>00029 &#32;&#32;&#32;&#32;<emphasis role="keyword">namespace&#32;</emphasis>_exception{
+<anchor xml:id="__illegal_state_exception_8hpp_source_1l00030"/>00030 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__illegal_state_exception_8hpp_source_1l00031"/><link linkend="_classjpl_1_1__exception_1_1_illegal_state_exception">00031</link> &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_classjpl_1_1__exception_1_1_illegal_state_exception">IllegalStateException</link>&#32;:&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_classjpl_1_1__exception_1_1_runtime_exception">RuntimeException</link>{
+<anchor xml:id="__illegal_state_exception_8hpp_source_1l00032"/>00032 
+<anchor xml:id="__illegal_state_exception_8hpp_source_1l00033"/>00033 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>:
+<anchor xml:id="__illegal_state_exception_8hpp_source_1l00034"/><link linkend="_classjpl_1_1__exception_1_1_illegal_state_exception_1a80176371ee0b0b4395718574579aa638">00034</link> &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classjpl_1_1__exception_1_1_illegal_state_exception_1a80176371ee0b0b4395718574579aa638">IllegalStateException</link>(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>*&#32;<link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1a8a40d27a336fcfeb26e7fd7b6c8522ec">msg</link>)&#32;:&#32;<link linkend="_classjpl_1_1__exception_1_1_runtime_exception">RuntimeException</link>(<emphasis role="stringliteral">&quot;IllegalStateException&quot;</emphasis>,&#32;<link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1a8a40d27a336fcfeb26e7fd7b6c8522ec">msg</link>){}
+<anchor xml:id="__illegal_state_exception_8hpp_source_1l00035"/><link linkend="_classjpl_1_1__exception_1_1_illegal_state_exception_1aeee7bba27ed319f9d0b563487b6aefd2">00035</link> &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classjpl_1_1__exception_1_1_illegal_state_exception_1aeee7bba27ed319f9d0b563487b6aefd2">IllegalStateException</link>()&#32;:&#32;<link linkend="_classjpl_1_1__exception_1_1_illegal_state_exception">IllegalStateException</link>(<emphasis role="stringliteral">&quot;&quot;</emphasis>){}
+<anchor xml:id="__illegal_state_exception_8hpp_source_1l00036"/>00036 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+<anchor xml:id="__illegal_state_exception_8hpp_source_1l00037"/>00037 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__illegal_state_exception_8hpp_source_1l00038"/>00038 }
+<anchor xml:id="__illegal_state_exception_8hpp_source_1l00039"/>00039 
+<anchor xml:id="__illegal_state_exception_8hpp_source_1l00040"/>00040 
+<anchor xml:id="__illegal_state_exception_8hpp_source_1l00041"/>00041 
+<anchor xml:id="__illegal_state_exception_8hpp_source_1l00042"/>00042 <emphasis role="preprocessor">#endif</emphasis>
+</programlisting></section>

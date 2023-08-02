@@ -35,61 +35,28 @@ namespace jpl{
                  */
                 const unsigned int attempted;
 
-                void catchIllegalMaxAttempted(){
-                    if(this->max > this->attempted){
-                        throw new IllegalArgumentException(o, "cannot be thrown with a MAX greater than ATTEMPTED");
-                    }else{
-                        std::string buffer =            std::string(this->type_ex) + 
-                                                        " thrown by " + std::string(this->function_name) + 
-                                                        " at line "   + std::to_string(this->line) + 
-                                                        " of "        + std::string(this->file_name) +
-                                                        ": "          + std::string(this->_object) + 
-                                                        ". Index "    + std::to_string(this->attempted) +   
-                                                        " attempted against max available as "          + std::to_string(this->max) + "\0";
-
-
-                        this->msg = new char[buffer.size()];
-                        char* tmp = (char*)&msg[0];
-                        memcpy(tmp, buffer.c_str(), buffer.size());
-                    }
-                }
 
             public:
-                IndexOutOfBoundsException(const char* _object, const unsigned int max, const unsigned int attempted, const char* file_name, const char* function_name, const unsigned int line) :
-                    RuntimeException("IndexOutOfBoundsException", "", file_name, function_name, line), max(max), attempted(attempted), _object(_object){
-
-                    try{
-                        this->catchIllegalMaxAttempted();
-                    }catch(const IllegalArgumentException* ex){
-                        std::string buffer =            std::string(this->type_ex) + 
-                                                        " thrown by " + std::string(this->function_name) + 
-                                                        " at line "   + std::to_string(this->line) + 
-                                                        " of "        + std::string(this->file_name) + 
-                                                        " could not be evaluated due to an internal IllegalArgumentException: Max is greater than Attempted\0";
-
-
-                        this->msg = new char[buffer.size()];
-                        char* tmp = (char*)&msg[0];
-                        memcpy(tmp, buffer.c_str(), buffer.size());
-                    }
-                }
+                IndexOutOfBoundsException(const unsigned int max, const unsigned int attempted, std::string msg) : 
+                    RuntimeException("IndexOutOfBoundsException", msg), max(max), attempted(attempted) {}
+                IndexOutOfBoundsException(const unsigned int max, const unsigned int attempted) :
+                    IndexOutOfBoundsException(max, attempted, ""){}
 
                 inline const char* what() const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW override{
+
+                    std::string buffer =    std::string(this->type_ex) + 
+                                            " Max: " + std::to_string(this->max) + 
+                                            " Attempted: " + std::to_string(this->attempted) + 
+                                            ". " + std::string(this->msg) + "\0";
+
+                    this->msg = new char[buffer.size()];
+                    char* tmp = (char*)&msg[0];
+                    memcpy(tmp, buffer.c_str(), buffer.size());
+
                     return this->msg;
                 }
         };
     }
 }
-
-/**
- * @brief object will be stringified
- * 
- * @param object the list which the operation had been performed on
- * @param max size of list
- * @param attempted the index attempted
- * 
- * @throw IllegalArgumentException if max is greater or equal than attempted
- */
-#define IndexOutOfBoundsException(object, max, attempted) jpl::_exception::IndexOutOfBoundsException(STRINGIFY(object), max, attempted, __FILENAME__, __func__, __LINE__)
 
 #endif

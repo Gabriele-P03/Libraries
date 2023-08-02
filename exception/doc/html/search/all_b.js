@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['main_0',['main',['../Main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'Main.cpp']]],
-  ['main_2ecpp_1',['Main.cpp',['../Main_8cpp.html',1,'']]],
-  ['max_2',['max',['../classjpl_1_1__exception_1_1IndexOutOfBoundsException.html#ac0882c823642a569f9fb1c81a71b0119',1,'jpl::_exception::IndexOutOfBoundsException']]],
-  ['msg_3',['msg',['../classjpl_1_1__exception_1_1AbstractException.html#a8a40d27a336fcfeb26e7fd7b6c8522ec',1,'jpl::_exception::AbstractException']]]
+  ['permissionexception_0',['PermissionException',['../d8/d57/classjpl_1_1__exception_1_1_permission_exception.html',1,'jpl::_exception::PermissionException'],['../d8/d57/classjpl_1_1__exception_1_1_permission_exception.html#ae2b11b87bf1cb94499c65c3cad14f0ac',1,'jpl::_exception::PermissionException::PermissionException(const char *msg)'],['../d8/d57/classjpl_1_1__exception_1_1_permission_exception.html#aff32f86be750c56bc278e37b3623c1ae',1,'jpl::_exception::PermissionException::PermissionException()']]],
+  ['permissionexception_2ehpp_1',['PermissionException.hpp',['../d6/db2/_permission_exception_8hpp.html',1,'']]]
 ];

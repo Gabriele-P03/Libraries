@@ -1,0 +1,173 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classjpl_1_1__exception_1_1_abstract_exception" xml:lang="en-US">
+<title>jpl::_exception::AbstractException Class Reference</title>
+<indexterm><primary>jpl::_exception::AbstractException</primary></indexterm>
+<para>
+<computeroutput>#include &lt;AbstractException.hpp&gt;</computeroutput>
+</para>
+<para>Inheritance diagram for jpl::_exception::AbstractException:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d6/d02/classjpl_1_1__exception_1_1_abstract_exception.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>virtual const char * <link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1ae17527e3192e5afdb01a90f199dbafe5">what</link> () const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW override</para>
+
+<para>Print the type of the exception which has been thrown with the message that has been passed, too. </para>
+</listitem>
+            <listitem><para>virtual const char * <link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1a763c7353208d799125dc4d871f510cef">getStacktrace</link> () const</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Protected Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1ab1e5aa0f3b5106e72cb9de93f93e3a8c">AbstractException</link> (const char *<link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1add4642360b0286f49d367e431b6473fa">type_ex</link>)</para>
+</listitem>
+            <listitem><para><link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1af2dafed1749e2d7cb0097172f5974c0d">AbstractException</link> (const char *<link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1add4642360b0286f49d367e431b6473fa">type_ex</link>, const char *<link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1a8a40d27a336fcfeb26e7fd7b6c8522ec">msg</link>)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Protected Attributes    </title>
+        <itemizedlist>
+            <listitem><para>const char * <link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1add4642360b0286f49d367e431b6473fa">type_ex</link></para>
+</listitem>
+            <listitem><para>const char * <link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1a8a40d27a336fcfeb26e7fd7b6c8522ec">msg</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Friends    </title>
+        <itemizedlist>
+            <listitem><para>std::ostream &amp; <link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1acc66a0e9cac563660a670782749334c3">operator&lt;&lt;</link> (std::ostream &amp;os, const <link linkend="_classjpl_1_1__exception_1_1_abstract_exception">AbstractException</link> &amp;iae)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+<para>
+Definition at line <link linkend="__abstract_exception_8hpp_source_1l00027">27</link> of file <link linkend="__abstract_exception_8hpp_source">AbstractException.hpp</link>.</para>
+</section>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_classjpl_1_1__exception_1_1_abstract_exception_1ab1e5aa0f3b5106e72cb9de93f93e3a8c"/><section>
+    <title>AbstractException()<computeroutput>[1/2]</computeroutput></title>
+<indexterm><primary>AbstractException</primary><secondary>jpl::_exception::AbstractException</secondary></indexterm>
+<indexterm><primary>jpl::_exception::AbstractException</primary><secondary>AbstractException</secondary></indexterm>
+<para><computeroutput>jpl::_exception::AbstractException::AbstractException (const char * type_ex)<computeroutput>[inline]</computeroutput>, <computeroutput>[protected]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__abstract_exception_8hpp_source_1l00044">44</link> of file <link linkend="__abstract_exception_8hpp_source">AbstractException.hpp</link>.</para>
+</section>
+<anchor xml:id="_classjpl_1_1__exception_1_1_abstract_exception_1af2dafed1749e2d7cb0097172f5974c0d"/><section>
+    <title>AbstractException()<computeroutput>[2/2]</computeroutput></title>
+<indexterm><primary>AbstractException</primary><secondary>jpl::_exception::AbstractException</secondary></indexterm>
+<indexterm><primary>jpl::_exception::AbstractException</primary><secondary>AbstractException</secondary></indexterm>
+<para><computeroutput>jpl::_exception::AbstractException::AbstractException (const char * type_ex, const char * msg)<computeroutput>[inline]</computeroutput>, <computeroutput>[protected]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__abstract_exception_8hpp_source_1l00045">45</link> of file <link linkend="__abstract_exception_8hpp_source">AbstractException.hpp</link>.</para>
+</section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_classjpl_1_1__exception_1_1_abstract_exception_1a763c7353208d799125dc4d871f510cef"/><section>
+    <title>getStacktrace()</title>
+<indexterm><primary>getStacktrace</primary><secondary>jpl::_exception::AbstractException</secondary></indexterm>
+<indexterm><primary>jpl::_exception::AbstractException</primary><secondary>getStacktrace</secondary></indexterm>
+<para><computeroutput>virtual const char * jpl::_exception::AbstractException::getStacktrace ( ) const<computeroutput>[inline]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para>
+<para><formalpara><title>Returns</title>
+
+<para>the Stacktrace of the thrown exception </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="__abstract_exception_8hpp_source_1l00067">67</link> of file <link linkend="__abstract_exception_8hpp_source">AbstractException.hpp</link>.</para>
+</section>
+<anchor xml:id="_classjpl_1_1__exception_1_1_abstract_exception_1ae17527e3192e5afdb01a90f199dbafe5"/><section>
+    <title>what()</title>
+<indexterm><primary>what</primary><secondary>jpl::_exception::AbstractException</secondary></indexterm>
+<indexterm><primary>jpl::_exception::AbstractException</primary><secondary>what</secondary></indexterm>
+<para><computeroutput>virtual const char * jpl::_exception::AbstractException::what ( ) const<computeroutput>[inline]</computeroutput>, <computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+
+<para>Print the type of the exception which has been thrown with the message that has been passed, too. </para>
+</para>
+
+<para><formalpara><title>Returns</title>
+
+<para>const char* </para>
+</formalpara>
+</para>
+<para>
+Reimplemented in <link linkend="_classjpl_1_1__exception_1_1_illegal_cast_exception_1a1a3a798cacf8456d77cd291b32c33e01">jpl::_exception::IllegalCastException</link>, <link linkend="_classjpl_1_1__exception_1_1_index_out_of_bounds_exception_1af6f4ef79c0585fb2a32b80d8991c7758">jpl::_exception::IndexOutOfBoundsException</link>, and <link linkend="_classjpl_1_1__exception_1_1_socket_exception_1abd14ed90cb038701b335bc72fa8eeb4d">jpl::_exception::SocketException</link>.</para>
+<para>
+Definition at line <link linkend="__abstract_exception_8hpp_source_1l00054">54</link> of file <link linkend="__abstract_exception_8hpp_source">AbstractException.hpp</link>.</para>
+</section>
+</section>
+<section>
+<title>Friends And Related Symbol Documentation</title>
+<anchor xml:id="_classjpl_1_1__exception_1_1_abstract_exception_1acc66a0e9cac563660a670782749334c3"/><section>
+    <title>operator&lt;&lt;</title>
+<indexterm><primary>operator&lt;&lt;</primary><secondary>jpl::_exception::AbstractException</secondary></indexterm>
+<indexterm><primary>jpl::_exception::AbstractException</primary><secondary>operator&lt;&lt;</secondary></indexterm>
+<para><computeroutput>std::ostream &amp; operator&lt;&lt; (std::ostream &amp; os, const <link linkend="_classjpl_1_1__exception_1_1_abstract_exception">AbstractException</link> &amp; iae)<computeroutput>[friend]</computeroutput></computeroutput></para>
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>os</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                            <row>
+<entry>iae</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>std::ostream&amp; </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="__abstract_exception_8hpp_source_1l00091">91</link> of file <link linkend="__abstract_exception_8hpp_source">AbstractException.hpp</link>.</para>
+</section>
+</section>
+<section>
+<title>Field Documentation</title>
+<anchor xml:id="_classjpl_1_1__exception_1_1_abstract_exception_1a8a40d27a336fcfeb26e7fd7b6c8522ec"/><section>
+    <title>msg</title>
+<indexterm><primary>msg</primary><secondary>jpl::_exception::AbstractException</secondary></indexterm>
+<indexterm><primary>jpl::_exception::AbstractException</primary><secondary>msg</secondary></indexterm>
+<para><computeroutput>const char* jpl::_exception::AbstractException::msg<computeroutput>[protected]</computeroutput></computeroutput></para>
+<para>It is a description of what has just happened. For some exception it may be a template of stuff (usually when constructor does not need any msg) </para>
+<para>
+Definition at line <link linkend="__abstract_exception_8hpp_source_1l00042">42</link> of file <link linkend="__abstract_exception_8hpp_source">AbstractException.hpp</link>.</para>
+</section>
+<anchor xml:id="_classjpl_1_1__exception_1_1_abstract_exception_1add4642360b0286f49d367e431b6473fa"/><section>
+    <title>type_ex</title>
+<indexterm><primary>type_ex</primary><secondary>jpl::_exception::AbstractException</secondary></indexterm>
+<indexterm><primary>jpl::_exception::AbstractException</primary><secondary>type_ex</secondary></indexterm>
+<para><computeroutput>const char* jpl::_exception::AbstractException::type_ex<computeroutput>[protected]</computeroutput></computeroutput></para>
+<para>This is a description of the exception which has been thrown. It is passed by constructor and it is as the exception name </para>
+<para>
+Definition at line <link linkend="__abstract_exception_8hpp_source_1l00036">36</link> of file <link linkend="__abstract_exception_8hpp_source">AbstractException.hpp</link>.</para>
+</section>
+<para>
+The documentation for this class was generated from the following file:</para>
+src/<link linkend="__abstract_exception_8hpp">AbstractException.hpp</link></section>
+</section>

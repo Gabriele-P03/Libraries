@@ -1,0 +1,130 @@
+.TH "jpl::_exception::IndexOutOfBoundsException" 3Version 1.0.0" "Exception" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+jpl::_exception::IndexOutOfBoundsException
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <IndexOutOfBoundsException\&.hpp>\fP
+.PP
+Inherits \fBjpl::_exception::RuntimeException\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBIndexOutOfBoundsException\fP (const unsigned int \fBmax\fP, const unsigned int \fBattempted\fP, const char *\fBmsg\fP)"
+.br
+.ti -1c
+.RI "\fBIndexOutOfBoundsException\fP (const unsigned int \fBmax\fP, const unsigned int \fBattempted\fP)"
+.br
+.ti -1c
+.RI "const char * \fBwhat\fP () const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW override"
+.br
+.RI "Print the type of the exception which has been thrown with the message that has been passed, too\&. "
+.in -1c
+
+Public Member Functions inherited from \fBjpl::_exception::RuntimeException\fP
+.in +1c
+.ti -1c
+.RI "\fBRuntimeException\fP (const char *\fBtype_ex\fP, const char *\fBmsg\fP)"
+.br
+.ti -1c
+.RI "\fBRuntimeException\fP (const char *\fBmsg\fP)"
+.br
+.in -1c
+
+Public Member Functions inherited from \fBjpl::_exception::AbstractException\fP
+.in +1c
+.ti -1c
+.RI "virtual const char * \fBwhat\fP () const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW override"
+.br
+.RI "Print the type of the exception which has been thrown with the message that has been passed, too\&. "
+.ti -1c
+.RI "virtual const char * \fBgetStacktrace\fP () const"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "const char * \fB_object\fP"
+.br
+.ti -1c
+.RI "const unsigned int \fBmax\fP"
+.br
+.ti -1c
+.RI "const unsigned int \fBattempted\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+
+
+Protected Member Functions inherited from \fBjpl::_exception::AbstractException\fP
+.in +1c
+.ti -1c
+.RI "\fBAbstractException\fP (const char *\fBtype_ex\fP)"
+.br
+.ti -1c
+.RI "\fBAbstractException\fP (const char *\fBtype_ex\fP, const char *\fBmsg\fP)"
+.br
+.in -1c
+
+Protected Attributes inherited from \fBjpl::_exception::AbstractException\fP
+.in +1c
+.ti -1c
+.RI "const char * \fBtype_ex\fP"
+.br
+.ti -1c
+.RI "const char * \fBmsg\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line \fB22\fP of file \fBIndexOutOfBoundsException\&.hpp\fP\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "jpl::_exception::IndexOutOfBoundsException::IndexOutOfBoundsException (const unsigned int max, const unsigned int attempted, const char * msg)\fC [inline]\fP"
+
+.PP
+Definition at line \fB40\fP of file \fBIndexOutOfBoundsException\&.hpp\fP\&.
+.SS "jpl::_exception::IndexOutOfBoundsException::IndexOutOfBoundsException (const unsigned int max, const unsigned int attempted)\fC [inline]\fP"
+
+.PP
+Definition at line \fB42\fP of file \fBIndexOutOfBoundsException\&.hpp\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "const char * jpl::_exception::IndexOutOfBoundsException::what () const\fC [inline]\fP, \fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Print the type of the exception which has been thrown with the message that has been passed, too\&. 
+.PP
+\fBReturns\fP
+.RS 4
+const char* 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBjpl::_exception::AbstractException\fP\&.
+.PP
+Definition at line \fB45\fP of file \fBIndexOutOfBoundsException\&.hpp\fP\&.
+.SH "Field Documentation"
+.PP 
+.SS "const char* jpl::_exception::IndexOutOfBoundsException::_object\fC [private]\fP"
+the list which the operation had been performed on 
+.PP
+Definition at line \fB28\fP of file \fBIndexOutOfBoundsException\&.hpp\fP\&.
+.SS "const unsigned int jpl::_exception::IndexOutOfBoundsException::attempted\fC [private]\fP"
+the index attempted 
+.PP
+Definition at line \fB36\fP of file \fBIndexOutOfBoundsException\&.hpp\fP\&.
+.SS "const unsigned int jpl::_exception::IndexOutOfBoundsException::max\fC [private]\fP"
+size of list 
+.PP
+Definition at line \fB32\fP of file \fBIndexOutOfBoundsException\&.hpp\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Exception from the source code\&.

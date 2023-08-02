@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classjpl_1_1__exception_1_1_no_such_method_exception" xml:lang="en-US">
+<title>jpl::_exception::NoSuchMethodException Class Reference</title>
+<indexterm><primary>jpl::_exception::NoSuchMethodException</primary></indexterm>
+<para>
+<computeroutput>#include &lt;NoSuchMethodException.hpp&gt;</computeroutput>
+</para>
+<para>Inheritance diagram for jpl::_exception::NoSuchMethodException:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d3/d97/classjpl_1_1__exception_1_1_no_such_method_exception.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_classjpl_1_1__exception_1_1_no_such_method_exception_1ad88129f819806a7c9928893a795d0f01">NoSuchMethodException</link> (const char *<link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1a8a40d27a336fcfeb26e7fd7b6c8522ec">msg</link>)</para>
+</listitem>
+            <listitem><para><link linkend="_classjpl_1_1__exception_1_1_no_such_method_exception_1ac7dcfb2f5f09e251cb02dd169549fdbe">NoSuchMethodException</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+Public Member Functions inherited from <link linkend="_classjpl_1_1__exception_1_1_abstract_exception">jpl::_exception::AbstractException</link>        <itemizedlist>
+            <listitem><para>virtual const char * <link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1ae17527e3192e5afdb01a90f199dbafe5">what</link> () const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW override</para>
+
+<para>Print the type of the exception which has been thrown with the message that has been passed, too. </para>
+</listitem>
+            <listitem><para>virtual const char * <link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1a763c7353208d799125dc4d871f510cef">getStacktrace</link> () const</para>
+</listitem>
+        </itemizedlist>
+<simplesect>
+    <title>Additional Inherited Members    </title>
+Protected Member Functions inherited from <link linkend="_classjpl_1_1__exception_1_1_abstract_exception">jpl::_exception::AbstractException</link>        <itemizedlist>
+            <listitem><para><link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1ab1e5aa0f3b5106e72cb9de93f93e3a8c">AbstractException</link> (const char *<link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1add4642360b0286f49d367e431b6473fa">type_ex</link>)</para>
+</listitem>
+            <listitem><para><link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1af2dafed1749e2d7cb0097172f5974c0d">AbstractException</link> (const char *<link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1add4642360b0286f49d367e431b6473fa">type_ex</link>, const char *<link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1a8a40d27a336fcfeb26e7fd7b6c8522ec">msg</link>)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+Protected Attributes inherited from <link linkend="_classjpl_1_1__exception_1_1_abstract_exception">jpl::_exception::AbstractException</link>        <itemizedlist>
+            <listitem><para>const char * <link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1add4642360b0286f49d367e431b6473fa">type_ex</link></para>
+</listitem>
+            <listitem><para>const char * <link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1a8a40d27a336fcfeb26e7fd7b6c8522ec">msg</link></para>
+</listitem>
+        </itemizedlist>
+<section>
+<title>Detailed Description</title>
+<para>
+Definition at line <link linkend="__no_such_method_exception_8hpp_source_1l00024">24</link> of file <link linkend="__no_such_method_exception_8hpp_source">NoSuchMethodException.hpp</link>.</para>
+</section>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_classjpl_1_1__exception_1_1_no_such_method_exception_1ad88129f819806a7c9928893a795d0f01"/><section>
+    <title>NoSuchMethodException()<computeroutput>[1/2]</computeroutput></title>
+<indexterm><primary>NoSuchMethodException</primary><secondary>jpl::_exception::NoSuchMethodException</secondary></indexterm>
+<indexterm><primary>jpl::_exception::NoSuchMethodException</primary><secondary>NoSuchMethodException</secondary></indexterm>
+<para><computeroutput>jpl::_exception::NoSuchMethodException::NoSuchMethodException (const char * msg)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__no_such_method_exception_8hpp_source_1l00028">28</link> of file <link linkend="__no_such_method_exception_8hpp_source">NoSuchMethodException.hpp</link>.</para>
+</section>
+<anchor xml:id="_classjpl_1_1__exception_1_1_no_such_method_exception_1ac7dcfb2f5f09e251cb02dd169549fdbe"/><section>
+    <title>NoSuchMethodException()<computeroutput>[2/2]</computeroutput></title>
+<indexterm><primary>NoSuchMethodException</primary><secondary>jpl::_exception::NoSuchMethodException</secondary></indexterm>
+<indexterm><primary>jpl::_exception::NoSuchMethodException</primary><secondary>NoSuchMethodException</secondary></indexterm>
+<para><computeroutput>jpl::_exception::NoSuchMethodException::NoSuchMethodException ( )<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__no_such_method_exception_8hpp_source_1l00029">29</link> of file <link linkend="__no_such_method_exception_8hpp_source">NoSuchMethodException.hpp</link>.</para>
+</section>
+<para>
+The documentation for this class was generated from the following file:</para>
+src/reflection/<link linkend="__no_such_method_exception_8hpp">NoSuchMethodException.hpp</link></section>
+</section>

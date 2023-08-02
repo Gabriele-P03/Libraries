@@ -1,0 +1,145 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classjpl_1_1__exception_1_1_index_out_of_bounds_exception" xml:lang="en-US">
+<title>jpl::_exception::IndexOutOfBoundsException Class Reference</title>
+<indexterm><primary>jpl::_exception::IndexOutOfBoundsException</primary></indexterm>
+<para>
+<computeroutput>#include &lt;IndexOutOfBoundsException.hpp&gt;</computeroutput>
+</para>
+<para>Inheritance diagram for jpl::_exception::IndexOutOfBoundsException:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../d9/d87/classjpl_1_1__exception_1_1_index_out_of_bounds_exception.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_classjpl_1_1__exception_1_1_index_out_of_bounds_exception_1aeb0bcb09e77996ea8a130a27b094ec1e">IndexOutOfBoundsException</link> (const unsigned int <link linkend="_classjpl_1_1__exception_1_1_index_out_of_bounds_exception_1ac0882c823642a569f9fb1c81a71b0119">max</link>, const unsigned int <link linkend="_classjpl_1_1__exception_1_1_index_out_of_bounds_exception_1aa6e6399749e932b47c329cb94c9197ab">attempted</link>, const char *<link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1a8a40d27a336fcfeb26e7fd7b6c8522ec">msg</link>)</para>
+</listitem>
+            <listitem><para><link linkend="_classjpl_1_1__exception_1_1_index_out_of_bounds_exception_1ac8465ee80e5d630cee03296ec404a8f6">IndexOutOfBoundsException</link> (const unsigned int <link linkend="_classjpl_1_1__exception_1_1_index_out_of_bounds_exception_1ac0882c823642a569f9fb1c81a71b0119">max</link>, const unsigned int <link linkend="_classjpl_1_1__exception_1_1_index_out_of_bounds_exception_1aa6e6399749e932b47c329cb94c9197ab">attempted</link>)</para>
+</listitem>
+            <listitem><para>const char * <link linkend="_classjpl_1_1__exception_1_1_index_out_of_bounds_exception_1af6f4ef79c0585fb2a32b80d8991c7758">what</link> () const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW override</para>
+
+<para>Print the type of the exception which has been thrown with the message that has been passed, too. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+Public Member Functions inherited from <link linkend="_classjpl_1_1__exception_1_1_runtime_exception">jpl::_exception::RuntimeException</link>        <itemizedlist>
+            <listitem><para><link linkend="_classjpl_1_1__exception_1_1_runtime_exception_1a03edc87ffaaa4c5dfb651cd4aa924ade">RuntimeException</link> (const char *<link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1add4642360b0286f49d367e431b6473fa">type_ex</link>, const char *<link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1a8a40d27a336fcfeb26e7fd7b6c8522ec">msg</link>)</para>
+</listitem>
+            <listitem><para><link linkend="_classjpl_1_1__exception_1_1_runtime_exception_1ae493ccae676b5f4364b1a9a3250b34ab">RuntimeException</link> (const char *<link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1a8a40d27a336fcfeb26e7fd7b6c8522ec">msg</link>)</para>
+</listitem>
+        </itemizedlist>
+Public Member Functions inherited from <link linkend="_classjpl_1_1__exception_1_1_abstract_exception">jpl::_exception::AbstractException</link>        <itemizedlist>
+            <listitem><para>virtual const char * <link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1ae17527e3192e5afdb01a90f199dbafe5">what</link> () const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW override</para>
+
+<para>Print the type of the exception which has been thrown with the message that has been passed, too. </para>
+</listitem>
+            <listitem><para>virtual const char * <link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1a763c7353208d799125dc4d871f510cef">getStacktrace</link> () const</para>
+</listitem>
+        </itemizedlist>
+<simplesect>
+    <title>Private Attributes    </title>
+        <itemizedlist>
+            <listitem><para>const char * <link linkend="_classjpl_1_1__exception_1_1_index_out_of_bounds_exception_1a281f1750014de7d5fb20e373f3833d04">_object</link></para>
+</listitem>
+            <listitem><para>const unsigned int <link linkend="_classjpl_1_1__exception_1_1_index_out_of_bounds_exception_1ac0882c823642a569f9fb1c81a71b0119">max</link></para>
+</listitem>
+            <listitem><para>const unsigned int <link linkend="_classjpl_1_1__exception_1_1_index_out_of_bounds_exception_1aa6e6399749e932b47c329cb94c9197ab">attempted</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Additional Inherited Members    </title>
+Protected Member Functions inherited from <link linkend="_classjpl_1_1__exception_1_1_abstract_exception">jpl::_exception::AbstractException</link>        <itemizedlist>
+            <listitem><para><link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1ab1e5aa0f3b5106e72cb9de93f93e3a8c">AbstractException</link> (const char *<link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1add4642360b0286f49d367e431b6473fa">type_ex</link>)</para>
+</listitem>
+            <listitem><para><link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1af2dafed1749e2d7cb0097172f5974c0d">AbstractException</link> (const char *<link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1add4642360b0286f49d367e431b6473fa">type_ex</link>, const char *<link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1a8a40d27a336fcfeb26e7fd7b6c8522ec">msg</link>)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+Protected Attributes inherited from <link linkend="_classjpl_1_1__exception_1_1_abstract_exception">jpl::_exception::AbstractException</link>        <itemizedlist>
+            <listitem><para>const char * <link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1add4642360b0286f49d367e431b6473fa">type_ex</link></para>
+</listitem>
+            <listitem><para>const char * <link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1a8a40d27a336fcfeb26e7fd7b6c8522ec">msg</link></para>
+</listitem>
+        </itemizedlist>
+<section>
+<title>Detailed Description</title>
+<para>
+Definition at line <link linkend="__index_out_of_bounds_exception_8hpp_source_1l00022">22</link> of file <link linkend="__index_out_of_bounds_exception_8hpp_source">IndexOutOfBoundsException.hpp</link>.</para>
+</section>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_classjpl_1_1__exception_1_1_index_out_of_bounds_exception_1aeb0bcb09e77996ea8a130a27b094ec1e"/><section>
+    <title>IndexOutOfBoundsException()<computeroutput>[1/2]</computeroutput></title>
+<indexterm><primary>IndexOutOfBoundsException</primary><secondary>jpl::_exception::IndexOutOfBoundsException</secondary></indexterm>
+<indexterm><primary>jpl::_exception::IndexOutOfBoundsException</primary><secondary>IndexOutOfBoundsException</secondary></indexterm>
+<para><computeroutput>jpl::_exception::IndexOutOfBoundsException::IndexOutOfBoundsException (const unsigned int max, const unsigned int attempted, const char * msg)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__index_out_of_bounds_exception_8hpp_source_1l00040">40</link> of file <link linkend="__index_out_of_bounds_exception_8hpp_source">IndexOutOfBoundsException.hpp</link>.</para>
+</section>
+<anchor xml:id="_classjpl_1_1__exception_1_1_index_out_of_bounds_exception_1ac8465ee80e5d630cee03296ec404a8f6"/><section>
+    <title>IndexOutOfBoundsException()<computeroutput>[2/2]</computeroutput></title>
+<indexterm><primary>IndexOutOfBoundsException</primary><secondary>jpl::_exception::IndexOutOfBoundsException</secondary></indexterm>
+<indexterm><primary>jpl::_exception::IndexOutOfBoundsException</primary><secondary>IndexOutOfBoundsException</secondary></indexterm>
+<para><computeroutput>jpl::_exception::IndexOutOfBoundsException::IndexOutOfBoundsException (const unsigned int max, const unsigned int attempted)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__index_out_of_bounds_exception_8hpp_source_1l00042">42</link> of file <link linkend="__index_out_of_bounds_exception_8hpp_source">IndexOutOfBoundsException.hpp</link>.</para>
+</section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_classjpl_1_1__exception_1_1_index_out_of_bounds_exception_1af6f4ef79c0585fb2a32b80d8991c7758"/><section>
+    <title>what()</title>
+<indexterm><primary>what</primary><secondary>jpl::_exception::IndexOutOfBoundsException</secondary></indexterm>
+<indexterm><primary>jpl::_exception::IndexOutOfBoundsException</primary><secondary>what</secondary></indexterm>
+<para><computeroutput>const char * jpl::_exception::IndexOutOfBoundsException::what ( ) const<computeroutput>[inline]</computeroutput>, <computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+
+<para>Print the type of the exception which has been thrown with the message that has been passed, too. </para>
+</para>
+
+<para><formalpara><title>Returns</title>
+
+<para>const char* </para>
+</formalpara>
+</para>
+<para>
+Reimplemented from <link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1ae17527e3192e5afdb01a90f199dbafe5">jpl::_exception::AbstractException</link>.</para>
+<para>
+Definition at line <link linkend="__index_out_of_bounds_exception_8hpp_source_1l00045">45</link> of file <link linkend="__index_out_of_bounds_exception_8hpp_source">IndexOutOfBoundsException.hpp</link>.</para>
+</section>
+</section>
+<section>
+<title>Field Documentation</title>
+<anchor xml:id="_classjpl_1_1__exception_1_1_index_out_of_bounds_exception_1a281f1750014de7d5fb20e373f3833d04"/><section>
+    <title>_object</title>
+<indexterm><primary>_object</primary><secondary>jpl::_exception::IndexOutOfBoundsException</secondary></indexterm>
+<indexterm><primary>jpl::_exception::IndexOutOfBoundsException</primary><secondary>_object</secondary></indexterm>
+<para><computeroutput>const char* jpl::_exception::IndexOutOfBoundsException::_object<computeroutput>[private]</computeroutput></computeroutput></para>
+<para>the list which the operation had been performed on </para>
+<para>
+Definition at line <link linkend="__index_out_of_bounds_exception_8hpp_source_1l00028">28</link> of file <link linkend="__index_out_of_bounds_exception_8hpp_source">IndexOutOfBoundsException.hpp</link>.</para>
+</section>
+<anchor xml:id="_classjpl_1_1__exception_1_1_index_out_of_bounds_exception_1aa6e6399749e932b47c329cb94c9197ab"/><section>
+    <title>attempted</title>
+<indexterm><primary>attempted</primary><secondary>jpl::_exception::IndexOutOfBoundsException</secondary></indexterm>
+<indexterm><primary>jpl::_exception::IndexOutOfBoundsException</primary><secondary>attempted</secondary></indexterm>
+<para><computeroutput>const unsigned int jpl::_exception::IndexOutOfBoundsException::attempted<computeroutput>[private]</computeroutput></computeroutput></para>
+<para>the index attempted </para>
+<para>
+Definition at line <link linkend="__index_out_of_bounds_exception_8hpp_source_1l00036">36</link> of file <link linkend="__index_out_of_bounds_exception_8hpp_source">IndexOutOfBoundsException.hpp</link>.</para>
+</section>
+<anchor xml:id="_classjpl_1_1__exception_1_1_index_out_of_bounds_exception_1ac0882c823642a569f9fb1c81a71b0119"/><section>
+    <title>max</title>
+<indexterm><primary>max</primary><secondary>jpl::_exception::IndexOutOfBoundsException</secondary></indexterm>
+<indexterm><primary>jpl::_exception::IndexOutOfBoundsException</primary><secondary>max</secondary></indexterm>
+<para><computeroutput>const unsigned int jpl::_exception::IndexOutOfBoundsException::max<computeroutput>[private]</computeroutput></computeroutput></para>
+<para>size of list </para>
+<para>
+Definition at line <link linkend="__index_out_of_bounds_exception_8hpp_source_1l00032">32</link> of file <link linkend="__index_out_of_bounds_exception_8hpp_source">IndexOutOfBoundsException.hpp</link>.</para>
+</section>
+<para>
+The documentation for this class was generated from the following file:</para>
+src/runtime/<link linkend="__index_out_of_bounds_exception_8hpp">IndexOutOfBoundsException.hpp</link></section>
+</section>

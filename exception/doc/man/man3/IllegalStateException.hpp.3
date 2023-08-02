@@ -1,0 +1,59 @@
+.TH "src/runtime/IllegalStateException.hpp" 3Version 1.0.0" "Exception" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+src/runtime/IllegalStateException.hpp
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'RuntimeException\&.hpp'\fP
+.br
+
+.SS "Data Structures"
+
+.in +1c
+.ti -1c
+.RI "class \fBjpl::_exception::IllegalStateException\fP"
+.br
+.in -1c
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI "namespace \fBjpl\fP"
+.br
+.ti -1c
+.RI "namespace \fBjpl::_exception\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+An IllegalStateException is thrown whenever any function is called at a bad time, i\&.e\&. wheter an another function had to be called before the one which threw this exception
+.PP
+e\&.g\&.
+.PP
+The foo() function must be called after have set flag as true, then:
+.PP
+void foo(){ if(!flag){ throw new IllegalStateException() } }
+.PP
+\fBDate\fP
+.RS 4
+2023-04-22 
+.RE
+.PP
+\fBCopyright\fP
+.RS 4
+Copyright (c) 2023 
+.RE
+.PP
+\fBAuthor\fP
+.RS 4
+Gabriele-P03 
+.RE
+.PP
+
+.PP
+Definition in file \fBIllegalStateException\&.hpp\fP\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Exception from the source code\&.

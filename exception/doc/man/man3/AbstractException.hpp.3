@@ -1,0 +1,83 @@
+.TH "src/AbstractException.hpp" 3Version 1.0.0" "Exception" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+src/AbstractException.hpp
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <iostream>\fP
+.br
+\fC#include <boost/stacktrace\&.hpp>\fP
+.br
+\fC#include <boost/stacktrace/frame\&.hpp>\fP
+.br
+
+.SS "Data Structures"
+
+.in +1c
+.ti -1c
+.RI "class \fBjpl::_exception::AbstractException\fP"
+.br
+.in -1c
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI "namespace \fBjpl\fP"
+.br
+.ti -1c
+.RI "namespace \fBjpl::_exception\fP"
+.br
+.in -1c
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBSTRINGIFY\fP(arg)   #arg"
+.br
+.RI "Stringify the arg\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+An AbstractException is a template of a basic exception used by JPL to have theirs to be thrown\&.
+.PP
+This class does not include JPL's Logger, therefore it will not print the exception by itselves\&. It provides, beyond what() function, even one that returns the stacktrace as const char* and which you can print - by yourself - through JPL's Logger 
+.br
+.PP
+\fBDate\fP
+.RS 4
+2023-04-16 
+.RE
+.PP
+\fBCopyright\fP
+.RS 4
+Copyright (c) 2023 
+.RE
+.PP
+\fBAuthor\fP
+.RS 4
+Gabriele-P03 
+.RE
+.PP
+
+.PP
+Definition in file \fBAbstractException\&.hpp\fP\&.
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define STRINGIFY(arg)   #arg"
+
+.PP
+Stringify the arg\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIarg\fP anything you want 
+.RE
+.PP
+
+.PP
+Definition at line \fB107\fP of file \fBAbstractException\&.hpp\fP\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Exception from the source code\&.

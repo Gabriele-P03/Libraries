@@ -1,0 +1,127 @@
+.TH "jpl::_exception::AbstractException" 3Version 1.0.0" "Exception" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+jpl::_exception::AbstractException
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <AbstractException\&.hpp>\fP
+.PP
+Inherits std::exception\&.
+.PP
+Inherited by \fBjpl::_exception::IllegalAccessException\fP, \fBjpl::_exception::NoSuchFieldException\fP, \fBjpl::_exception::NoSuchMethodException\fP, and \fBjpl::_exception::RuntimeException\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual const char * \fBwhat\fP () const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW override"
+.br
+.RI "Print the type of the exception which has been thrown with the message that has been passed, too\&. "
+.ti -1c
+.RI "virtual const char * \fBgetStacktrace\fP () const"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBAbstractException\fP (const char *\fBtype_ex\fP)"
+.br
+.ti -1c
+.RI "\fBAbstractException\fP (const char *\fBtype_ex\fP, const char *\fBmsg\fP)"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "const char * \fBtype_ex\fP"
+.br
+.ti -1c
+.RI "const char * \fBmsg\fP"
+.br
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "std::ostream & \fBoperator<<\fP (std::ostream &os, const \fBAbstractException\fP &iae)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line \fB27\fP of file \fBAbstractException\&.hpp\fP\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "jpl::_exception::AbstractException::AbstractException (const char * type_ex)\fC [inline]\fP, \fC [protected]\fP"
+
+.PP
+Definition at line \fB44\fP of file \fBAbstractException\&.hpp\fP\&.
+.SS "jpl::_exception::AbstractException::AbstractException (const char * type_ex, const char * msg)\fC [inline]\fP, \fC [protected]\fP"
+
+.PP
+Definition at line \fB45\fP of file \fBAbstractException\&.hpp\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual const char * jpl::_exception::AbstractException::getStacktrace () const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+\fBReturns\fP
+.RS 4
+the Stacktrace of the thrown exception 
+.RE
+.PP
+
+.PP
+Definition at line \fB67\fP of file \fBAbstractException\&.hpp\fP\&.
+.SS "virtual const char * jpl::_exception::AbstractException::what () const\fC [inline]\fP, \fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Print the type of the exception which has been thrown with the message that has been passed, too\&. 
+.PP
+\fBReturns\fP
+.RS 4
+const char* 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBjpl::_exception::IllegalCastException\fP, \fBjpl::_exception::IndexOutOfBoundsException\fP, and \fBjpl::_exception::SocketException\fP\&.
+.PP
+Definition at line \fB54\fP of file \fBAbstractException\&.hpp\fP\&.
+.SH "Friends And Related Symbol Documentation"
+.PP 
+.SS "std::ostream & operator<< (std::ostream & os, const \fBAbstractException\fP & iae)\fC [friend]\fP"
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIos\fP 
+.br
+\fIiae\fP 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+std::ostream& 
+.RE
+.PP
+
+.PP
+Definition at line \fB91\fP of file \fBAbstractException\&.hpp\fP\&.
+.SH "Field Documentation"
+.PP 
+.SS "const char* jpl::_exception::AbstractException::msg\fC [protected]\fP"
+It is a description of what has just happened\&. For some exception it may be a template of stuff (usually when constructor does not need any msg) 
+.PP
+Definition at line \fB42\fP of file \fBAbstractException\&.hpp\fP\&.
+.SS "const char* jpl::_exception::AbstractException::type_ex\fC [protected]\fP"
+This is a description of the exception which has been thrown\&. It is passed by constructor and it is as the exception name 
+.PP
+Definition at line \fB36\fP of file \fBAbstractException\&.hpp\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Exception from the source code\&.

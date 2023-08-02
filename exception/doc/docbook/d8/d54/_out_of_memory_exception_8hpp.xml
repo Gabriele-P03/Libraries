@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__out_of_memory_exception_8hpp" xml:lang="en-US">
+<title>src/runtime/OutOfMemoryException.hpp File Reference</title>
+<indexterm><primary>src/runtime/OutOfMemoryException.hpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &quot;RuntimeException.hpp&quot;<?linebreak?></programlisting><simplesect>
+    <title>Data Structures    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_classjpl_1_1__exception_1_1_out_of_memory_exception">jpl::_exception::OutOfMemoryException</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Namespaces    </title>
+        <itemizedlist>
+            <listitem><para>namespace <link linkend="_namespacejpl">jpl</link></para>
+</listitem>
+            <listitem><para>namespace <link linkend="_namespacejpl_1_1__exception">jpl::_exception</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>An OutOfMemory exception can be thrown when a program has not enough memory available in order to instance new objects</para>
+
+<para><formalpara><title>Date</title>
+
+<para>2023-04-23 </para>
+</formalpara>
+<formalpara><title>Copyright</title>
+
+<para>Copyright (c) 2023 </para>
+</formalpara>
+<formalpara><title>Author</title>
+
+<para>Gabriele-P03 </para>
+</formalpara>
+</para>
+<para>
+Definition in file <link linkend="__out_of_memory_exception_8hpp_source">OutOfMemoryException.hpp</link>.</para>
+</section>
+</section>

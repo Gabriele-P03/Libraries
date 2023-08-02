@@ -22,43 +22,14 @@ namespace jpl{
     namespace _exception{
 
         class IllegalAccessException : public AbstractException{
-
-            private:
-
-                /**
-                 * It is the private field name which caused the exception
-                 */
-                const char* _cause;
             
             public:
 
-                IllegalAccessException(const char* const _cause, const char* msg, const char* file_name, const char* function_name, const int line) : 
-                    AbstractException("IllegalAccessException", msg, file_name, function_name, line), _cause(_cause){}
+                IllegalAccessException(std::string msg) : AbstractException("ArithmeticException", msg){}
+                IllegalAccessException() : IllegalAccessException(""){}
 
-                inline const char* what() const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW override{
-                    std::string buffer = 
-                        std::string(this->type_ex) + " thrown by " + std::string(this->function_name) + 
-                                                     " at line "   + std::to_string(this->line) + 
-                                                     " of "        + std::string(this->file_name) +
-                                                     ": "   + std::string(this->_cause) + "\0";
-
-
-                    char* c_buffer = new char[buffer.size()];
-                    memcpy(c_buffer, buffer.c_str(), buffer.size());
-                    return c_buffer;
-                }
         };
     }
 }
-
-
-
-/**
- * @brief object will be stringified
- * 
- * @param object the non-public field
- */
-#define IllegalAccessException(object) jpl::_exception::IllegalAccessException(STRINGIFY(object), "",  __FILENAME__, __func__, __LINE__)
-
 
 #endif

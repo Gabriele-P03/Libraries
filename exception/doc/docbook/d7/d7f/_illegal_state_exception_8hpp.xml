@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__illegal_state_exception_8hpp" xml:lang="en-US">
+<title>src/runtime/IllegalStateException.hpp File Reference</title>
+<indexterm><primary>src/runtime/IllegalStateException.hpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &quot;RuntimeException.hpp&quot;<?linebreak?></programlisting><simplesect>
+    <title>Data Structures    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_classjpl_1_1__exception_1_1_illegal_state_exception">jpl::_exception::IllegalStateException</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Namespaces    </title>
+        <itemizedlist>
+            <listitem><para>namespace <link linkend="_namespacejpl">jpl</link></para>
+</listitem>
+            <listitem><para>namespace <link linkend="_namespacejpl_1_1__exception">jpl::_exception</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>An IllegalStateException is thrown whenever any function is called at a bad time, i.e. wheter an another function had to be called before the one which threw this exception</para>
+
+<para>e.g.</para>
+
+<para>The foo() function must be called after have set flag as true, then:</para>
+
+<para>void foo(){ if(!flag){ throw new IllegalStateException() } }</para>
+
+<para><formalpara><title>Date</title>
+
+<para>2023-04-22 </para>
+</formalpara>
+<formalpara><title>Copyright</title>
+
+<para>Copyright (c) 2023 </para>
+</formalpara>
+<formalpara><title>Author</title>
+
+<para>Gabriele-P03 </para>
+</formalpara>
+</para>
+<para>
+Definition in file <link linkend="__illegal_state_exception_8hpp_source">IllegalStateException.hpp</link>.</para>
+</section>
+</section>

@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__abstract_exception_8hpp" xml:lang="en-US">
+<title>src/AbstractException.hpp File Reference</title>
+<indexterm><primary>src/AbstractException.hpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &lt;iostream&gt;<?linebreak?>#include &lt;boost/stacktrace.hpp&gt;<?linebreak?>#include &lt;boost/stacktrace/frame.hpp&gt;<?linebreak?></programlisting><simplesect>
+    <title>Data Structures    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_classjpl_1_1__exception_1_1_abstract_exception">jpl::_exception::AbstractException</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Namespaces    </title>
+        <itemizedlist>
+            <listitem><para>namespace <link linkend="_namespacejpl">jpl</link></para>
+</listitem>
+            <listitem><para>namespace <link linkend="_namespacejpl_1_1__exception">jpl::_exception</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Macros    </title>
+        <itemizedlist>
+            <listitem><para>#define <link linkend="__abstract_exception_8hpp_1ae4fd3f8792e038acc9f1c0703205f8b0">STRINGIFY</link>(arg)&#160;&#160;&#160;#arg</para>
+
+<para>Stringify the arg. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>An AbstractException is a template of a basic exception used by JPL to have theirs to be thrown.</para>
+
+<para>This class does not include JPL&apos;s Logger, therefore it will not print the exception by itselves. It provides, beyond what() function, even one that returns the stacktrace as const char* and which you can print - by yourself - through JPL&apos;s Logger <?linebreak?></para>
+
+<para><formalpara><title>Date</title>
+
+<para>2023-04-16 </para>
+</formalpara>
+<formalpara><title>Copyright</title>
+
+<para>Copyright (c) 2023 </para>
+</formalpara>
+<formalpara><title>Author</title>
+
+<para>Gabriele-P03 </para>
+</formalpara>
+</para>
+<para>
+Definition in file <link linkend="__abstract_exception_8hpp_source">AbstractException.hpp</link>.</para>
+</section>
+<section>
+<title>Macro Definition Documentation</title>
+<anchor xml:id="__abstract_exception_8hpp_1ae4fd3f8792e038acc9f1c0703205f8b0"/><section>
+    <title>STRINGIFY</title>
+<indexterm><primary>STRINGIFY</primary><secondary>AbstractException.hpp</secondary></indexterm>
+<indexterm><primary>AbstractException.hpp</primary><secondary>STRINGIFY</secondary></indexterm>
+<para><computeroutput>#define STRINGIFY( arg)&#160;&#160;&#160;#arg</computeroutput></para><para>
+
+<para>Stringify the arg. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>arg</entry><entry>
+<para>anything you want </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="__abstract_exception_8hpp_source_1l00107">107</link> of file <link linkend="__abstract_exception_8hpp_source">AbstractException.hpp</link>.</para>
+</section>
+</section>
+</section>

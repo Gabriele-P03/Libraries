@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__stack_underflow_exception_8hpp_source" xml:lang="en-US">
+<title>StackUnderflowException.hpp</title>
+<indexterm><primary>src/runtime/StackUnderflowException.hpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="__stack_underflow_exception_8hpp_source_1l00001"/>00001 
+<anchor xml:id="__stack_underflow_exception_8hpp_source_1l00012"/>00012 <emphasis role="preprocessor">#ifndef&#32;STACKUNDERFLOW_EXCEPTION_JPL</emphasis>
+<anchor xml:id="__stack_underflow_exception_8hpp_source_1l00013"/>00013 <emphasis role="preprocessor">#define&#32;STACKUNDERFLOW_EXCEPTION_JPL</emphasis>
+<anchor xml:id="__stack_underflow_exception_8hpp_source_1l00014"/>00014 
+<anchor xml:id="__stack_underflow_exception_8hpp_source_1l00015"/>00015 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__runtime_exception_8hpp">RuntimeException.hpp</link>&quot;</emphasis>
+<anchor xml:id="__stack_underflow_exception_8hpp_source_1l00016"/>00016 
+<anchor xml:id="__stack_underflow_exception_8hpp_source_1l00017"/>00017 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_namespacejpl">jpl</link>{
+<anchor xml:id="__stack_underflow_exception_8hpp_source_1l00018"/>00018 
+<anchor xml:id="__stack_underflow_exception_8hpp_source_1l00019"/>00019 &#32;&#32;&#32;&#32;<emphasis role="keyword">namespace&#32;</emphasis>_exception{
+<anchor xml:id="__stack_underflow_exception_8hpp_source_1l00020"/>00020 
+<anchor xml:id="__stack_underflow_exception_8hpp_source_1l00021"/><link linkend="_classjpl_1_1__exception_1_1_stack_underflow_exception">00021</link> &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_classjpl_1_1__exception_1_1_stack_underflow_exception">StackUnderflowException</link>&#32;:&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_classjpl_1_1__exception_1_1_runtime_exception">RuntimeException</link>{
+<anchor xml:id="__stack_underflow_exception_8hpp_source_1l00022"/>00022 
+<anchor xml:id="__stack_underflow_exception_8hpp_source_1l00023"/>00023 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>:
+<anchor xml:id="__stack_underflow_exception_8hpp_source_1l00024"/><link linkend="_classjpl_1_1__exception_1_1_stack_underflow_exception_1ad649b6c457fc0cb33761ae9792537e25">00024</link> &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classjpl_1_1__exception_1_1_stack_underflow_exception_1ad649b6c457fc0cb33761ae9792537e25">StackUnderflowException</link>(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>*&#32;<link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1a8a40d27a336fcfeb26e7fd7b6c8522ec">msg</link>)&#32;:&#32;<link linkend="_classjpl_1_1__exception_1_1_runtime_exception">RuntimeException</link>(<emphasis role="stringliteral">&quot;StackUnderflowException&quot;</emphasis>,&#32;<link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1a8a40d27a336fcfeb26e7fd7b6c8522ec">msg</link>){}
+<anchor xml:id="__stack_underflow_exception_8hpp_source_1l00025"/><link linkend="_classjpl_1_1__exception_1_1_stack_underflow_exception_1a2cc7d3bc2327c83e644ba5e766d478de">00025</link> &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classjpl_1_1__exception_1_1_stack_underflow_exception_1a2cc7d3bc2327c83e644ba5e766d478de">StackUnderflowException</link>()&#32;:&#32;<link linkend="_classjpl_1_1__exception_1_1_stack_underflow_exception">StackUnderflowException</link>(<emphasis role="stringliteral">&quot;&quot;</emphasis>){}
+<anchor xml:id="__stack_underflow_exception_8hpp_source_1l00026"/>00026 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+<anchor xml:id="__stack_underflow_exception_8hpp_source_1l00027"/>00027 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__stack_underflow_exception_8hpp_source_1l00028"/>00028 }
+<anchor xml:id="__stack_underflow_exception_8hpp_source_1l00029"/>00029 
+<anchor xml:id="__stack_underflow_exception_8hpp_source_1l00030"/>00030 
+<anchor xml:id="__stack_underflow_exception_8hpp_source_1l00031"/>00031 <emphasis role="preprocessor">#endif</emphasis>
+</programlisting></section>

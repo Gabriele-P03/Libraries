@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__no_such_field_exception_8hpp_source" xml:lang="en-US">
+<title>NoSuchFieldException.hpp</title>
+<indexterm><primary>src/reflection/NoSuchFieldException.hpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="__no_such_field_exception_8hpp_source_1l00001"/>00001 
+<anchor xml:id="__no_such_field_exception_8hpp_source_1l00014"/>00014 <emphasis role="preprocessor">#ifndef&#32;NO_SUCH_FIELD_EXCEPTION_JPL</emphasis>
+<anchor xml:id="__no_such_field_exception_8hpp_source_1l00015"/>00015 <emphasis role="preprocessor">#define&#32;NO_SUCH_FIELD_EXCEPTION_JPL</emphasis>
+<anchor xml:id="__no_such_field_exception_8hpp_source_1l00016"/>00016 
+<anchor xml:id="__no_such_field_exception_8hpp_source_1l00017"/>00017 <emphasis role="preprocessor">#include&#32;&quot;../AbstractException.hpp&quot;</emphasis>
+<anchor xml:id="__no_such_field_exception_8hpp_source_1l00018"/>00018 
+<anchor xml:id="__no_such_field_exception_8hpp_source_1l00019"/>00019 
+<anchor xml:id="__no_such_field_exception_8hpp_source_1l00020"/>00020 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_namespacejpl">jpl</link>{
+<anchor xml:id="__no_such_field_exception_8hpp_source_1l00021"/>00021 
+<anchor xml:id="__no_such_field_exception_8hpp_source_1l00022"/>00022 &#32;&#32;&#32;&#32;<emphasis role="keyword">namespace&#32;</emphasis>_exception{
+<anchor xml:id="__no_such_field_exception_8hpp_source_1l00023"/>00023 
+<anchor xml:id="__no_such_field_exception_8hpp_source_1l00024"/><link linkend="_classjpl_1_1__exception_1_1_no_such_field_exception">00024</link> &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_classjpl_1_1__exception_1_1_no_such_field_exception">NoSuchFieldException</link>&#32;:&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_classjpl_1_1__exception_1_1_abstract_exception">AbstractException</link>{
+<anchor xml:id="__no_such_field_exception_8hpp_source_1l00025"/>00025 
+<anchor xml:id="__no_such_field_exception_8hpp_source_1l00026"/>00026 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>:
+<anchor xml:id="__no_such_field_exception_8hpp_source_1l00027"/>00027 
+<anchor xml:id="__no_such_field_exception_8hpp_source_1l00028"/><link linkend="_classjpl_1_1__exception_1_1_no_such_field_exception_1afb6774a1587b13d92568b055675cd556">00028</link> &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classjpl_1_1__exception_1_1_no_such_field_exception_1afb6774a1587b13d92568b055675cd556">NoSuchFieldException</link>(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>*&#32;<link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1a8a40d27a336fcfeb26e7fd7b6c8522ec">msg</link>)&#32;:&#32;<link linkend="_classjpl_1_1__exception_1_1_abstract_exception">AbstractException</link>(<emphasis role="stringliteral">&quot;ArithmeticException&quot;</emphasis>,&#32;<link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1a8a40d27a336fcfeb26e7fd7b6c8522ec">msg</link>){}
+<anchor xml:id="__no_such_field_exception_8hpp_source_1l00029"/><link linkend="_classjpl_1_1__exception_1_1_no_such_field_exception_1a3c49037e22d7030f3fce4483513ce836">00029</link> &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classjpl_1_1__exception_1_1_no_such_field_exception_1a3c49037e22d7030f3fce4483513ce836">NoSuchFieldException</link>()&#32;:&#32;<link linkend="_classjpl_1_1__exception_1_1_no_such_field_exception">NoSuchFieldException</link>(<emphasis role="stringliteral">&quot;&quot;</emphasis>){}
+<anchor xml:id="__no_such_field_exception_8hpp_source_1l00030"/>00030 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+<anchor xml:id="__no_such_field_exception_8hpp_source_1l00031"/>00031 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__no_such_field_exception_8hpp_source_1l00032"/>00032 }
+<anchor xml:id="__no_such_field_exception_8hpp_source_1l00033"/>00033 
+<anchor xml:id="__no_such_field_exception_8hpp_source_1l00034"/>00034 <emphasis role="preprocessor">#endif</emphasis>
+</programlisting></section>

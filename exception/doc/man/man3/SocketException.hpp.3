@@ -1,0 +1,57 @@
+.TH "src/runtime/SocketException.hpp" 3Version 1.0.0" "Exception" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+src/runtime/SocketException.hpp
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'RuntimeException\&.hpp'\fP
+.br
+\fC#include <jpl/utils/ErrorUtils\&.hpp>\fP
+.br
+
+.SS "Data Structures"
+
+.in +1c
+.ti -1c
+.RI "class \fBjpl::_exception::SocketException\fP"
+.br
+.in -1c
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI "namespace \fBjpl\fP"
+.br
+.ti -1c
+.RI "namespace \fBjpl::_exception\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+A SocketException is thrown whenever a socket error is occurred in runtime\&.
+.PP
+You may even call the constructor with the FD of the socket and let JPL retrieve the last error code and its meaning via _utils:_GetLastError() and _utils::_GetLastErrorAsString
+.PP
+\fBDate\fP
+.RS 4
+2023-05-27 
+.RE
+.PP
+\fBCopyright\fP
+.RS 4
+Copyright (c) 2023 
+.RE
+.PP
+\fBAuthor\fP
+.RS 4
+Gabriele-P03 
+.RE
+.PP
+
+.PP
+Definition in file \fBSocketException\&.hpp\fP\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Exception from the source code\&.

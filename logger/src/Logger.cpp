@@ -13,19 +13,19 @@
 #endif
 
 
-jpl::_logger::LOG_STATUS jpl::_logger::INFO = "INF";
-jpl::_logger::LOG_STATUS jpl::_logger::WARNING = "WAR";
-jpl::_logger::LOG_STATUS jpl::_logger::ERROR = "ERR";
-jpl::_logger::LOG_STATUS jpl::_logger::DEBUG = "DBG";
+jpl::_logger::LOG_STATUS jpl::_logger::INFO_JPL = "INF";
+jpl::_logger::LOG_STATUS jpl::_logger::WARNING_JPL = "WAR";
+jpl::_logger::LOG_STATUS jpl::_logger::ERROR_JPL = "ERR";
+jpl::_logger::LOG_STATUS jpl::_logger::DEBUG_JPL = "DBG";
 
 void jpl::_logger::Logger::print(std::string msg){
 
-    this->print(msg, jpl::_logger::INFO);
+    this->print(msg, jpl::_logger::INFO_JPL);
 }
 
 void jpl::_logger::Logger::print(std::string msg, jpl::_logger::LOG_STATUS status){
 
-    if(status == jpl::_logger::DEBUG && !jpl::_utils::_debug::isDebugging()){
+    if(status == jpl::_logger::DEBUG_JPL && !jpl::_utils::_debug::isDebugging()){
         return;
     }
 

@@ -70,7 +70,12 @@
         "typeinfo": "cpp",
         "valarray": "cpp",
         "variant": "cpp",
-        "*.ipp": "cpp"
+        "*.ipp": "cpp",
+        "stacktrace": "cpp",
+        "source_location": "cpp",
+        "shared_mutex": "cpp"
     },
-    "cmake.configureOnOpen": false
+    "cmake.configureOnOpen": false,
+    "C_Cpp.default.compilerPath": "C:\\msys64\\ming64\\bin\\g++.exe",
+    "C_Cpp.errorSquiggles": "disabled"
 }

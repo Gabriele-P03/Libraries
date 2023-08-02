@@ -1,0 +1,74 @@
+.TH "jpl::_exception::RuntimeException" 3Version 1.0.0" "Exception" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+jpl::_exception::RuntimeException
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <RuntimeException\&.hpp>\fP
+.PP
+Inherits \fBjpl::_exception::AbstractException\fP\&.
+.PP
+Inherited by \fBjpl::_exception::ArithmeticException\fP, \fBjpl::_exception::FileNotFoundException\fP, \fBjpl::_exception::IllegalArgumentException\fP, \fBjpl::_exception::IllegalCastException\fP, \fBjpl::_exception::IllegalStateException\fP, \fBjpl::_exception::IndexOutOfBoundsException\fP, \fBjpl::_exception::NotFoundException\fP, \fBjpl::_exception::NullPointerException\fP, \fBjpl::_exception::OutOfMemoryException\fP, \fBjpl::_exception::PermissionException\fP, \fBjpl::_exception::SocketException\fP, \fBjpl::_exception::StackOverflowException\fP, and \fBjpl::_exception::StackUnderflowException\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBRuntimeException\fP (const char *\fBtype_ex\fP, const char *\fBmsg\fP)"
+.br
+.ti -1c
+.RI "\fBRuntimeException\fP (const char *\fBmsg\fP)"
+.br
+.in -1c
+
+Public Member Functions inherited from \fBjpl::_exception::AbstractException\fP
+.in +1c
+.ti -1c
+.RI "virtual const char * \fBwhat\fP () const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW override"
+.br
+.RI "Print the type of the exception which has been thrown with the message that has been passed, too\&. "
+.ti -1c
+.RI "virtual const char * \fBgetStacktrace\fP () const"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+
+
+Protected Member Functions inherited from \fBjpl::_exception::AbstractException\fP
+.in +1c
+.ti -1c
+.RI "\fBAbstractException\fP (const char *\fBtype_ex\fP)"
+.br
+.ti -1c
+.RI "\fBAbstractException\fP (const char *\fBtype_ex\fP, const char *\fBmsg\fP)"
+.br
+.in -1c
+
+Protected Attributes inherited from \fBjpl::_exception::AbstractException\fP
+.in +1c
+.ti -1c
+.RI "const char * \fBtype_ex\fP"
+.br
+.ti -1c
+.RI "const char * \fBmsg\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line \fB20\fP of file \fBRuntimeException\&.hpp\fP\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "jpl::_exception::RuntimeException::RuntimeException (const char * type_ex, const char * msg)\fC [inline]\fP"
+
+.PP
+Definition at line \fB23\fP of file \fBRuntimeException\&.hpp\fP\&.
+.SS "jpl::_exception::RuntimeException::RuntimeException (const char * msg)\fC [inline]\fP"
+
+.PP
+Definition at line \fB24\fP of file \fBRuntimeException\&.hpp\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Exception from the source code\&.

@@ -1,0 +1,137 @@
+.TH "jpl::_exception::IllegalCastException" 3Version 1.0.0" "Exception" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+jpl::_exception::IllegalCastException
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <IllegalCastException\&.hpp>\fP
+.PP
+Inherits \fBjpl::_exception::RuntimeException\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBIllegalCastException\fP (const char *\fB_cast_attempted\fP, const char *\fB_cast_needed\fP, const char *\fBmsg\fP)"
+.br
+.ti -1c
+.RI "\fBIllegalCastException\fP (const char *\fB_cast_attempted\fP, const char *\fB_cast_needed\fP)"
+.br
+.ti -1c
+.RI "\fBIllegalCastException\fP (const char *\fBmsg\fP)"
+.br
+.ti -1c
+.RI "\fBIllegalCastException\fP ()"
+.br
+.ti -1c
+.RI "const char * \fBwhat\fP () const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW override"
+.br
+.RI "Print the type of the exception which has been thrown with the message that has been passed, too\&. "
+.in -1c
+
+Public Member Functions inherited from \fBjpl::_exception::RuntimeException\fP
+.in +1c
+.ti -1c
+.RI "\fBRuntimeException\fP (const char *\fBtype_ex\fP, const char *\fBmsg\fP)"
+.br
+.ti -1c
+.RI "\fBRuntimeException\fP (const char *\fBmsg\fP)"
+.br
+.in -1c
+
+Public Member Functions inherited from \fBjpl::_exception::AbstractException\fP
+.in +1c
+.ti -1c
+.RI "virtual const char * \fBwhat\fP () const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW override"
+.br
+.RI "Print the type of the exception which has been thrown with the message that has been passed, too\&. "
+.ti -1c
+.RI "virtual const char * \fBgetStacktrace\fP () const"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "const char * \fB_cast_attempted\fP"
+.br
+.ti -1c
+.RI "const char * \fB_cast_needed\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+
+
+Protected Member Functions inherited from \fBjpl::_exception::AbstractException\fP
+.in +1c
+.ti -1c
+.RI "\fBAbstractException\fP (const char *\fBtype_ex\fP)"
+.br
+.ti -1c
+.RI "\fBAbstractException\fP (const char *\fBtype_ex\fP, const char *\fBmsg\fP)"
+.br
+.in -1c
+
+Protected Attributes inherited from \fBjpl::_exception::AbstractException\fP
+.in +1c
+.ti -1c
+.RI "const char * \fBtype_ex\fP"
+.br
+.ti -1c
+.RI "const char * \fBmsg\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line \fB20\fP of file \fBIllegalCastException\&.hpp\fP\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "jpl::_exception::IllegalCastException::IllegalCastException (const char * _cast_attempted, const char * _cast_needed, const char * msg)\fC [inline]\fP"
+
+.PP
+Definition at line \fB35\fP of file \fBIllegalCastException\&.hpp\fP\&.
+.SS "jpl::_exception::IllegalCastException::IllegalCastException (const char * _cast_attempted, const char * _cast_needed)\fC [inline]\fP"
+
+.PP
+Definition at line \fB37\fP of file \fBIllegalCastException\&.hpp\fP\&.
+.SS "jpl::_exception::IllegalCastException::IllegalCastException (const char * msg)\fC [inline]\fP"
+
+.PP
+Definition at line \fB38\fP of file \fBIllegalCastException\&.hpp\fP\&.
+.SS "jpl::_exception::IllegalCastException::IllegalCastException ()\fC [inline]\fP"
+
+.PP
+Definition at line \fB39\fP of file \fBIllegalCastException\&.hpp\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "const char * jpl::_exception::IllegalCastException::what () const\fC [inline]\fP, \fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Print the type of the exception which has been thrown with the message that has been passed, too\&. 
+.PP
+\fBReturns\fP
+.RS 4
+const char* 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBjpl::_exception::AbstractException\fP\&.
+.PP
+Definition at line \fB41\fP of file \fBIllegalCastException\&.hpp\fP\&.
+.SH "Field Documentation"
+.PP 
+.SS "const char* jpl::_exception::IllegalCastException::_cast_attempted\fC [private]\fP"
+The class which the field has been attempted to be cast to 
+.PP
+Definition at line \fB27\fP of file \fBIllegalCastException\&.hpp\fP\&.
+.SS "const char* jpl::_exception::IllegalCastException::_cast_needed\fC [private]\fP"
+The class supplied 
+.PP
+Definition at line \fB31\fP of file \fBIllegalCastException\&.hpp\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Exception from the source code\&.

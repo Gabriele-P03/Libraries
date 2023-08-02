@@ -1,0 +1,65 @@
+\doxysection{src/\+Abstract\+Exception.hpp File Reference}
+\hypertarget{_abstract_exception_8hpp}{}\label{_abstract_exception_8hpp}\index{src/AbstractException.hpp@{src/AbstractException.hpp}}
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$boost/stacktrace.\+hpp$>$}\newline
+{\ttfamily \#include $<$boost/stacktrace/frame.\+hpp$>$}\newline
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classjpl_1_1__exception_1_1_abstract_exception}{jpl\+::\+\_\+exception\+::\+Abstract\+Exception}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacejpl}{jpl}}
+\item 
+namespace \mbox{\hyperlink{namespacejpl_1_1__exception}{jpl\+::\+\_\+exception}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_abstract_exception_8hpp_ae4fd3f8792e038acc9f1c0703205f8b0}{STRINGIFY}}(arg)~\#arg
+\begin{DoxyCompactList}\small\item\em Stringify the arg. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+An Abstract\+Exception is a template of a basic exception used by JPL to have theirs to be thrown.
+
+This class does not include JPL\textquotesingle{}s Logger, therefore it will not print the exception by itselves. It provides, beyond what() function, even one that returns the stacktrace as const char\texorpdfstring{$\ast$}{*} and which you can print -\/ by yourself -\/ through JPL\textquotesingle{}s Logger ~\newline
+
+
+\begin{DoxyDate}{Date}
+2023-\/04-\/16 
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2023 
+\end{DoxyCopyright}
+\begin{DoxyAuthor}{Author}
+Gabriele-\/\+P03 
+\end{DoxyAuthor}
+
+
+Definition in file \mbox{\hyperlink{_abstract_exception_8hpp_source}{Abstract\+Exception.\+hpp}}.
+
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{_abstract_exception_8hpp_ae4fd3f8792e038acc9f1c0703205f8b0}\label{_abstract_exception_8hpp_ae4fd3f8792e038acc9f1c0703205f8b0} 
+\index{AbstractException.hpp@{AbstractException.hpp}!STRINGIFY@{STRINGIFY}}
+\index{STRINGIFY@{STRINGIFY}!AbstractException.hpp@{AbstractException.hpp}}
+\doxysubsubsection{\texorpdfstring{STRINGIFY}{STRINGIFY}}
+{\footnotesize\ttfamily \#define STRINGIFY(\begin{DoxyParamCaption}\item[{}]{arg }\end{DoxyParamCaption})~\#arg}
+
+
+
+Stringify the arg. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em arg} & anything you want \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_abstract_exception_8hpp_source_l00107}{107}} of file \mbox{\hyperlink{_abstract_exception_8hpp_source}{Abstract\+Exception.\+hpp}}.
+

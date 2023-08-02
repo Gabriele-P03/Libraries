@@ -24,7 +24,7 @@
     #include <ctime>
     
     #include <jpl/utils/FilesUtils.hpp>
-    #include <jpl/utils/DebugUtils.hpp>
+    #include <jpl/utils/debug/DebugUtils.hpp>
 
     namespace jpl{
 
@@ -34,19 +34,19 @@
             /**
              * @brief Information message
              */
-            extern LOG_STATUS INFO;
+            extern LOG_STATUS INFO_JPL;
             /**
              * @brief Warning message
              */
-            extern LOG_STATUS WARNING;
+            extern LOG_STATUS WARNING_JPL;
             /**
              * @brief Error message
              */
-            extern LOG_STATUS ERROR;
+            extern LOG_STATUS ERROR_JPL;
             /**
              * @brief Debug message (not visible unless process has a debugger attached) 
              */
-            extern LOG_STATUS DEBUG;
+            extern LOG_STATUS DEBUG_JPL;
 
             class Logger{
 
@@ -104,7 +104,7 @@
 
                             if(file->fail()){
                                 #ifndef UFW_LOGGER_JPL   
-                                    this->print("Logger File could not be created and OI is not performed. Exiting...", jpl::_logger::ERROR);                       
+                                    this->print("Logger File could not be created and OI is not performed. Exiting...", jpl::_logger::ERROR_JPL);                       
                                     exit(EXIT_FAILURE);   
                                 #else
                                     this->print("Logger File could not be created but OI has been performed. Log file will not be written", jpl::_logger::WARNING);

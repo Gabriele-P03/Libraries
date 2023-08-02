@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_namespacejpl_1_1__exception" xml:lang="en-US">
+<title>jpl::_exception Namespace Reference</title>
+<indexterm><primary>jpl::_exception</primary></indexterm>
+<simplesect>
+    <title>Data Structures    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_classjpl_1_1__exception_1_1_abstract_exception">AbstractException</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classjpl_1_1__exception_1_1_arithmetic_exception">ArithmeticException</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classjpl_1_1__exception_1_1_file_not_found_exception">FileNotFoundException</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classjpl_1_1__exception_1_1_illegal_access_exception">IllegalAccessException</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classjpl_1_1__exception_1_1_illegal_argument_exception">IllegalArgumentException</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classjpl_1_1__exception_1_1_illegal_cast_exception">IllegalCastException</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classjpl_1_1__exception_1_1_illegal_state_exception">IllegalStateException</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classjpl_1_1__exception_1_1_index_out_of_bounds_exception">IndexOutOfBoundsException</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classjpl_1_1__exception_1_1_no_such_field_exception">NoSuchFieldException</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classjpl_1_1__exception_1_1_no_such_method_exception">NoSuchMethodException</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classjpl_1_1__exception_1_1_not_found_exception">NotFoundException</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classjpl_1_1__exception_1_1_null_pointer_exception">NullPointerException</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classjpl_1_1__exception_1_1_out_of_memory_exception">OutOfMemoryException</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classjpl_1_1__exception_1_1_permission_exception">PermissionException</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classjpl_1_1__exception_1_1_runtime_exception">RuntimeException</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classjpl_1_1__exception_1_1_socket_exception">SocketException</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classjpl_1_1__exception_1_1_stack_overflow_exception">StackOverflowException</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classjpl_1_1__exception_1_1_stack_underflow_exception">StackUnderflowException</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

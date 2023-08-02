@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['runtimeexception_0',['RuntimeException',['../classjpl_1_1__exception_1_1RuntimeException.html',1,'jpl::_exception']]]
+  ['permissionexception_0',['PermissionException',['../d8/d57/classjpl_1_1__exception_1_1_permission_exception.html',1,'jpl::_exception']]]
 ];

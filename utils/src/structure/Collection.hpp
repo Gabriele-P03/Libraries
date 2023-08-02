@@ -63,7 +63,7 @@ namespace jpl{
                      * @param t 
                      * 
                      */
-                    virtual void add(T* t) = 0;
+                    virtual void add(T t) = 0;
 
 
                     /**
@@ -73,26 +73,8 @@ namespace jpl{
                      * @return if t is present
                      */
                     virtual bool contains(T* t) noexcept = 0;
-                    /**
-                     * @brief Check if all collection's items are stored into this one
-                     * 
-                     * @param collection to compare with this one
-                     * @return if all collection's items are present
-                     */
-                    virtual bool containsAll(Collection<T*> collection) = 0;
 
 
-                    /**
-                     * @brief remove t from this collection
-                     * 
-                     * @param t item to remove
-                     * @throw NotFoundException if t has not been found into this collection
-                     */
-                    virtual void remove(T t) = 0;
-                    /**
-                     * @brief Remove all elements which respect the given predicate
-                    */
-                    virtual void removeAllIf(_functional::Predicate<T>* predicate) = 0;
                     /**
                      * @brief Remove all elements from the collection
                     */
@@ -108,11 +90,11 @@ namespace jpl{
                     /**
                      * @return the max amount of items which can contained into the collection
                      */
-                    virtual unsigned long length() noexcept {return this->max;}
+                    virtual unsigned long getMax() noexcept {return this->max;}
                     /**
                      * @return the current amount of items which are contained into the collection 
                     */
-                   virtual unsigned long getAmount() noexcept {return this->size;}
+                   virtual unsigned long getSize() noexcept {return this->size;}
                     /**
                      * @return if the collection allows null elements
                     */

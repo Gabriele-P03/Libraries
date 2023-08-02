@@ -16,9 +16,8 @@
 #define LISTI_JPL
 
 #include "../Collection.hpp"
-
 #include <jpl/exception/runtime/IndexOutOfBoundsException.hpp>
-#include <jpl/exception/runtime/OutOfMemoryException.hpp>
+#include <jpl/exception/runtime/NotFoundException.hpp>
 
 namespace jpl{
 
@@ -51,21 +50,21 @@ namespace jpl{
                      * 
                      * @throw NullPointerException if list does not permit null elements and t it is
                     */
-                    virtual void add(unsigned long index, T* t) = 0;
+                    virtual void add(unsigned long index, T t) = 0;
                     /**
                      * Insert the whole given list at index
                      * 
                      * @param index
                      * @param collection
                     */
-                    virtual void addAll(unsigned long index, Collection<T> *collection) = 0;
+                    virtual void addAll(unsigned long index, List<T> *list) = 0;
                     /**
                     * @brief Insert into the structure all items contained into list at the end
                     * if the array list
                     * 
                     * @param list 
                     */
-                    virtual void addAll(Collection<T> *list) = 0;          
+                    virtual void addAll(List<T> *list) = 0;          
 
                     /**
                      * @return the element at the given index
@@ -76,17 +75,19 @@ namespace jpl{
 
 
                     /**
-                     * @return the index of the first occurrence of t. If t is not found into the list, it returns -1
+                     * @return the index of the first occurrence of t. 
+                     * If t is not found into the list, it returns max
                      * 
                      * @throw NullPointerException if list does not permit null elements and t it is
                     */
-                    virtual unsigned long firstOccurrence(T t) = 0;
+                    virtual unsigned long firstOccurrence(T* t) = 0;
                     /**
-                     * @return the index of the last occurrence of t. If t is not found into the list, it returns -1
+                     * @return the index of the last occurrence of t.
+                     * If t is not found into the list, it returns max
                      * 
                      * @throw NullPointerException if list does not permit null elements and t it is
                     */
-                    virtual unsigned long lastOccurrence(T t) = 0;
+                    virtual unsigned long lastOccurrence(T* t) = 0;
 
                     
                     /**
@@ -96,12 +97,23 @@ namespace jpl{
                     */
                     virtual void remove(unsigned long index) = 0;
                     /**
+                     * @brief remove t from this collection
+                     * 
+                     * @param t item to remove
+                     * @throw NotFoundException if t has not been found into this collection
+                     */
+                    virtual void remove(T* t) = 0;                    
+                    /**
                      * @brief remove all collection's items from this collection
                      * 
                      * @param list collection of items to remove
                      * @throw NotFoundException if at least one item into list has not been found
                      */
-                    virtual void removeAll(Collection<T*> list) = 0;
+                    virtual void removeAll(List<T>* list) = 0;
+                    /**
+                     * @brief Remove all elements which respect the given predicate
+                    */
+                    virtual void removeAllIf(_functional::Predicate<T>* predicate) noexcept = 0;
 
                     /**
                      * Set t at the given index (which was already occuped)
@@ -111,15 +123,18 @@ namespace jpl{
                      * @throw IndexOutOfBounds if index is graeter than length()-1 or less than 0
                      * @throw NullPointerException if list does not permit null elements and t it is
                     */
-                    virtual T set(unsigned long index, T t) = 0;
+                    virtual T* set(unsigned long index, T t) = 0;
 
                     /**
-                     * @return a sub list of the current one
+                     * @return a sub list of the current one. If start is equals to end, am empty list is returned
                      * 
-                     * @throw IndexOutOfBounds if start is graeter than length()-1 or less than 0
-                     * @throw IndexOutOfBounds if end is graeter than length()-1 or less than 0
+                     * @param start index of the first element to copy
+                     * @param end index of the last element to copy (included) 
+                     * 
+                     * @throw IndexOutOfBounds if start is graeter or equals than max
+                     * @throw IndexOutOfBounds if end is graeter or equals than max
                     */
-                    virtual List<T> subList(unsigned long start, unsigned long end) = 0;
+                    virtual List<T>* subList(unsigned long start, unsigned long end) = 0;
             };
         }
     }

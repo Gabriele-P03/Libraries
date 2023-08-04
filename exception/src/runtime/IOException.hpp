@@ -3,6 +3,9 @@
  * 
  * An IOException is thrown when an error is occurred in runtime during an I/O operation either on a socket or a file
  * 
+ * It is able to catch the last error occurred via _utils::_error::_GetLastError() if you instance via the default constructor;
+ * it even get the description of the error code via _utils::_error::_GetLastErrorAsString(unsigned int)
+ * 
  * @date 2023-08-01
  * @copyright Copyright (c) 2023
  * @author Gabriele-P03
@@ -37,8 +40,11 @@ namespace jpl{
                     buffer += std::to_string(this->error_code);
                     buffer += " -> ";
                     buffer += this->description;
-                    buffer += " ";
-                    buffer += this->msg;
+
+                    if(!this->msg.empty()){
+                        buffer += " ";
+                        buffer += this->msg;
+                    }
 
                     char* c_buffer = new char[buffer.size()];
                     memcpy(c_buffer, buffer.c_str(), buffer.size());

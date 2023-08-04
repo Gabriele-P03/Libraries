@@ -22,15 +22,14 @@ Since all its headers can be considered as sub-modules, you can download those o
 > <span style="color:yellow">ConversionUtils</span> 
 >> To perform conversion between data-type
 
-> <span style="color:yellow">ErrorUtils</span> 
->> To enhance checking of last error occurred
-
 > <span style="color:yellow">FilesUtils</span> 
 >> To reading/getting file and path<br><br>
->> <span style="color:aqua">*Required Sub-Modules:*</span> 
->>> <span style="color:yellow">ErrorUtils</span>
 
 > <span style="color:yellow">DebugUtils</span> 
->> To provides some function whilst debugger is attached<br><br>
->> <span style="color:aqua">*Required Sub-Modules:*</span> 
->>> <span style="color:yellow">ErrorUtils</span> 
+>> To provides some function whilst debugger is attached or about stacktrace and errors occurred<br><br>
+
+> <span style="color:yellow">StructureUtils</span> 
+>> To provide several Data-Structure<br><br>
+
+> <span style="color:yellow">FunctionalUtils</span> 
+>> To provide funtional interfaces which can be used through StructureUtils

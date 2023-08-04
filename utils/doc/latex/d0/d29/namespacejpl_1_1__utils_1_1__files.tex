@@ -1,0 +1,161 @@
+\doxysection{jpl\+::\+\_\+utils\+::\+\_\+files Namespace Reference}
+\hypertarget{namespacejpl_1_1__utils_1_1__files}{}\label{namespacejpl_1_1__utils_1_1__files}\index{jpl::\_utils::\_files@{jpl::\_utils::\_files}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__files_af10bf976a3d610f68c2544b96e171fd5}{get\+Root\+Path}} () noexcept
+\item 
+void \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__files_a9d53acbe3217f7e98fd6c69085e0e149}{get\+Local\+File}} (std\+::string path\+To\+File, std\+::ios\+\_\+base\+::openmode \+\_\+mode, std\+::fstream \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}file)
+\item 
+void \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__files_a8a9f2f7307b0e58f1279ef48a2616860}{get\+Internal\+File}} (std\+::string path\+To\+File, std\+::ios\+\_\+base\+::openmode \+\_\+mode, std\+::fstream \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}file)
+\item 
+std\+::string \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__files_a4458d73ab8b0c99afcbfdcab84f226ea}{get\+Internal\+Path}} (std\+::string path) noexcept
+\item 
+std\+::string \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__files_a123c0fa5c108e68a7a602f3ee126382c}{get\+Local\+Path}} (std\+::string path) noexcept
+\item 
+void \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__files_a61bead3cfc6ffbf459b6bb322ca07b8b}{read\+File}} (std\+::fstream \texorpdfstring{$\ast$}{*}file, char \texorpdfstring{$\ast$}{*}\&buffer, unsigned long \&\+\_\+size)
+\item 
+void \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__files_a68e52cbace34b3c991b90aaa3d8f87b8}{read\+File}} (std\+::string path\+To\+File, char \texorpdfstring{$\ast$}{*}\&buffer, unsigned long \&\+\_\+size)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespacejpl_1_1__utils_1_1__files_a8a9f2f7307b0e58f1279ef48a2616860}\label{namespacejpl_1_1__utils_1_1__files_a8a9f2f7307b0e58f1279ef48a2616860} 
+\index{jpl::\_utils::\_files@{jpl::\_utils::\_files}!getInternalFile@{getInternalFile}}
+\index{getInternalFile@{getInternalFile}!jpl::\_utils::\_files@{jpl::\_utils::\_files}}
+\doxysubsubsection{\texorpdfstring{getInternalFile()}{getInternalFile()}}
+{\footnotesize\ttfamily void jpl\+::\+\_\+utils\+::\+\_\+files\+::get\+Internal\+File (\begin{DoxyParamCaption}\item[{std\+::string}]{path\+To\+File,  }\item[{std\+::ios\+\_\+base\+::openmode}]{\+\_\+mode,  }\item[{std\+::fstream \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{file }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Open a file which is contained in the resources folder
+
+
+\begin{DoxyParams}{Parameters}
+{\em path\+To\+File} & relative to resource path (contained into root one) \\
+\hline
+{\em \+\_\+mode} & mode \\
+\hline
+{\em file} & instance of fstream already allocated\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em File\+Not\+Found\+Exception} & if file has not been found \\
+\hline
+{\em Permission\+Exception} & if a special permission has been needed to open file \\
+\hline
+{\em Runtime\+Exception} & for any other errors \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{namespacejpl_1_1__utils_1_1__files_a4458d73ab8b0c99afcbfdcab84f226ea}\label{namespacejpl_1_1__utils_1_1__files_a4458d73ab8b0c99afcbfdcab84f226ea} 
+\index{jpl::\_utils::\_files@{jpl::\_utils::\_files}!getInternalPath@{getInternalPath}}
+\index{getInternalPath@{getInternalPath}!jpl::\_utils::\_files@{jpl::\_utils::\_files}}
+\doxysubsubsection{\texorpdfstring{getInternalPath()}{getInternalPath()}}
+{\footnotesize\ttfamily std\+::string jpl\+::\+\_\+utils\+::\+\_\+files\+::get\+Internal\+Path (\begin{DoxyParamCaption}\item[{std\+::string}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the given path concatenate to the resources folder\textquotesingle{}s one. 
+\end{DoxyReturn}
+\Hypertarget{namespacejpl_1_1__utils_1_1__files_a9d53acbe3217f7e98fd6c69085e0e149}\label{namespacejpl_1_1__utils_1_1__files_a9d53acbe3217f7e98fd6c69085e0e149} 
+\index{jpl::\_utils::\_files@{jpl::\_utils::\_files}!getLocalFile@{getLocalFile}}
+\index{getLocalFile@{getLocalFile}!jpl::\_utils::\_files@{jpl::\_utils::\_files}}
+\doxysubsubsection{\texorpdfstring{getLocalFile()}{getLocalFile()}}
+{\footnotesize\ttfamily void jpl\+::\+\_\+utils\+::\+\_\+files\+::get\+Local\+File (\begin{DoxyParamCaption}\item[{std\+::string}]{path\+To\+File,  }\item[{std\+::ios\+\_\+base\+::openmode}]{\+\_\+mode,  }\item[{std\+::fstream \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{file }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Open a file which is contained into the root folder
+
+
+\begin{DoxyParams}{Parameters}
+{\em path\+To\+File} & relative to root path \\
+\hline
+{\em \+\_\+mode} & mode \\
+\hline
+{\em file} & instance of fstream already allocated\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em File\+Not\+Found\+Exception} & if file has not been found \\
+\hline
+{\em Permission\+Exception} & if a special permission has been needed to open file \\
+\hline
+{\em Runtime\+Exception} & for any other errors \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{namespacejpl_1_1__utils_1_1__files_a123c0fa5c108e68a7a602f3ee126382c}\label{namespacejpl_1_1__utils_1_1__files_a123c0fa5c108e68a7a602f3ee126382c} 
+\index{jpl::\_utils::\_files@{jpl::\_utils::\_files}!getLocalPath@{getLocalPath}}
+\index{getLocalPath@{getLocalPath}!jpl::\_utils::\_files@{jpl::\_utils::\_files}}
+\doxysubsubsection{\texorpdfstring{getLocalPath()}{getLocalPath()}}
+{\footnotesize\ttfamily std\+::string jpl\+::\+\_\+utils\+::\+\_\+files\+::get\+Local\+Path (\begin{DoxyParamCaption}\item[{std\+::string}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the given path concatenate to the root folder\textquotesingle{}s one 
+\end{DoxyReturn}
+\Hypertarget{namespacejpl_1_1__utils_1_1__files_af10bf976a3d610f68c2544b96e171fd5}\label{namespacejpl_1_1__utils_1_1__files_af10bf976a3d610f68c2544b96e171fd5} 
+\index{jpl::\_utils::\_files@{jpl::\_utils::\_files}!getRootPath@{getRootPath}}
+\index{getRootPath@{getRootPath}!jpl::\_utils::\_files@{jpl::\_utils::\_files}}
+\doxysubsubsection{\texorpdfstring{getRootPath()}{getRootPath()}}
+{\footnotesize\ttfamily std\+::string jpl\+::\+\_\+utils\+::\+\_\+files\+::get\+Root\+Path (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+\begin{DoxyReturn}{Returns}
+absolute path of your root folder (i.\+e. where the program is located) 
+\end{DoxyReturn}
+\Hypertarget{namespacejpl_1_1__utils_1_1__files_a61bead3cfc6ffbf459b6bb322ca07b8b}\label{namespacejpl_1_1__utils_1_1__files_a61bead3cfc6ffbf459b6bb322ca07b8b} 
+\index{jpl::\_utils::\_files@{jpl::\_utils::\_files}!readFile@{readFile}}
+\index{readFile@{readFile}!jpl::\_utils::\_files@{jpl::\_utils::\_files}}
+\doxysubsubsection{\texorpdfstring{readFile()}{readFile()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void jpl\+::\+\_\+utils\+::\+\_\+files\+::read\+File (\begin{DoxyParamCaption}\item[{std\+::fstream \texorpdfstring{$\ast$}{*}}]{file,  }\item[{char \texorpdfstring{$\ast$}{*}\&}]{buffer,  }\item[{unsigned long \&}]{\+\_\+size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Read an fstream If the whole file could not be read, buffer will contain only read bytes. In this case, buffer will be reallocated as it needs
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & to be read \\
+\hline
+{\em buffer} & where read bytes will be stored \\
+\hline
+{\em \+\_\+size} & of the buffer\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Illegal\+Argument\+Exception} & if file had not been opened before have called this function \\
+\hline
+{\em Runtime\+Exception} & if file could not be fully read \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{namespacejpl_1_1__utils_1_1__files_a68e52cbace34b3c991b90aaa3d8f87b8}\label{namespacejpl_1_1__utils_1_1__files_a68e52cbace34b3c991b90aaa3d8f87b8} 
+\index{jpl::\_utils::\_files@{jpl::\_utils::\_files}!readFile@{readFile}}
+\index{readFile@{readFile}!jpl::\_utils::\_files@{jpl::\_utils::\_files}}
+\doxysubsubsection{\texorpdfstring{readFile()}{readFile()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void jpl\+::\+\_\+utils\+::\+\_\+files\+::read\+File (\begin{DoxyParamCaption}\item[{std\+::string}]{path\+To\+File,  }\item[{char \texorpdfstring{$\ast$}{*}\&}]{buffer,  }\item[{unsigned long \&}]{\+\_\+size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Read the file at the given path and store read data into buffer. buffer\textquotesingle{}s size will be stored into \+\_\+size
+
+
+\begin{DoxyParams}{Parameters}
+{\em path\+To\+File} & \\
+\hline
+{\em buffer} & \\
+\hline
+{\em \+\_\+size} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em File\+Not\+Found\+Exception} & if file has not been found \\
+\hline
+{\em Permission\+Exception} & if a special permission has been needed to open file \\
+\hline
+{\em Runtime\+Exception} & for any other errors \\
+\hline
+\end{DoxyExceptions}

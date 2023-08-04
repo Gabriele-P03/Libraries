@@ -37,9 +37,7 @@
                 "-static",
                 "-std=c++23",
                 "${workspaceFolder}/Main.cpp",
-                "-no-pie",
-                "-fno-pie",
-                "-lbacktrace",
+                "-ldbghelp",
                 "-o",
                 "${workspaceFolder}/out/windows/Main.exe"
                 

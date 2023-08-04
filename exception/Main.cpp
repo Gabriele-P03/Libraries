@@ -10,7 +10,7 @@ int main(){
     try{
         f();
     }catch( jpl::_exception::IOException* ex){
-        std::cout<<ex->what();
+        std::cout<<ex;
     }
 
     return 0;

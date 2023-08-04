@@ -1,0 +1,42 @@
+\doxysection{Function.\+hpp}
+\hypertarget{_function_8hpp_source}{}\label{_function_8hpp_source}\index{C:/Users/paceg/Personale/JPL/utils/src/functional/function/Function.hpp@{C:/Users/paceg/Personale/JPL/utils/src/functional/function/Function.hpp}}
+\mbox{\hyperlink{_function_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#ifndef\ FUNCTION\_FUNCTIONAL\_INTERFACE\_JPL}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ FUNCTION\_FUNCTIONAL\_INTERFACE\_JPL}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}../FunctionalInterface.hpp"{}}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacejpl}{jpl}}\{}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{namespace\ }\_utils\{}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keyword}{namespace\ }\_functional\{}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ R>}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classjpl_1_1__utils_1_1__functional_1_1_function}{Function}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__functional_1_1_functional_i}{FunctionalI}}\{}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::function<R(T)>\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__functional_1_1_function_a3213772d57dad6258e18289acc76925e}{function}};}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ FunctionType>}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classjpl_1_1__utils_1_1__functional_1_1_function_abbd0e2d1b1dcf4c1e601967846539604}{Function}}(FunctionType\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__functional_1_1_function_a3213772d57dad6258e18289acc76925e}{function}})\ :\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__functional_1_1_function_a3213772d57dad6258e18289acc76925e}{function}}\{std::move(\mbox{\hyperlink{classjpl_1_1__utils_1_1__functional_1_1_function_a3213772d57dad6258e18289acc76925e}{function}})\}}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ R\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__functional_1_1_function_ab92e556cd15bb81aa0f6b9b1413a0d6d}{test}}(T\ t)\{}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__functional_1_1_function_a3213772d57dad6258e18289acc76925e}{function}}(t);}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00055\ \ \ \ \ \}}
+\DoxyCodeLine{00056\ \}}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

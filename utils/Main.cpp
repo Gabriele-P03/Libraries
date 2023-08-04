@@ -1,18 +1,25 @@
 #include "src/debug/stacktrace/Stacktrace.hpp" 
-#include <jpl/exception/runtime/RuntimeException.hpp>
+
+void f1(){
+    jpl::_utils::_debug::Stacktrace sta;
+    std::cout<<sta;
+}
+
+void f2(){
+
+}
 
 void f(){
-    throw new std::exception;
+
+    f1();
+    
+    f2();
 }
 
 int main(){
 
-    try{
-        f();
-    }catch( std::exception* ex ){
-        std::cout<<"Bah"<<std::endl;
-        jpl::_utils::_debug::Stacktrace st(0, 10);
-        }
+    f();
+
 
     return 0;
 }

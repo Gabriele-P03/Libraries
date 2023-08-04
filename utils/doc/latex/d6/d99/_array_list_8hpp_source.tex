@@ -1,0 +1,238 @@
+\doxysection{Array\+List.\+hpp}
+\hypertarget{_array_list_8hpp_source}{}\label{_array_list_8hpp_source}\index{C:/Users/paceg/Personale/JPL/utils/src/structure/list/ArrayList.hpp@{C:/Users/paceg/Personale/JPL/utils/src/structure/list/ArrayList.hpp}}
+\mbox{\hyperlink{_array_list_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#ifndef\ ARRAYLIST\_JPL}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ ARRAYLIST\_JPL}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_list_8hpp}{List.hpp}}"{}}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacejpl}{jpl}}\{}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{namespace\ }\_utils\{}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keyword}{namespace\ }\_collections\{}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{namespace\ }\_list\{}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list}{ArrayList}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_list}{List}}<T>\{}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T*\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list_a2718f88a8941bdadae99b72c90834595}{t}};}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list_a60817114f7d7eddef6f31dce8bbd052c}{rightShiftItems}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ start,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ offset)\{}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection_a383f38e782ffdfb92c05b23ca4a861fe}{size}}\ +\ offset\ >\ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection_a1baf49842978ed56115f3c17b653ed99}{max}})\{}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \textcolor{keyword}{new}\ IndexOutOfBoundsException(\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list}{ArrayList}},\ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection_a1baf49842978ed56115f3c17b653ed99}{max}},\ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection_a383f38e782ffdfb92c05b23ca4a861fe}{size}}+offset);}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ i\ =\ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection_a383f38e782ffdfb92c05b23ca4a861fe}{size}};\ i\ >\ start;\ i-\/-\/)\{}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>t[i+offset-\/1]\ =\ this-\/>t[i-\/1];}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list_a12df8e6670ad3b78a3b1e8d1e0257c55}{leftShiftItems}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ start,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ offset)\{}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(start\ -\/\ offset\ <\ 0)\{}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \textcolor{keyword}{new}\ IndexOutOfBoundsException(\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list}{ArrayList}},\ 0,\ start\ -\/\ offset);}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ i\ =\ start;\ i\ <\ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection_a383f38e782ffdfb92c05b23ca4a861fe}{size}}-\/1;\ i++)\{}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>t[i]\ =\ this-\/>t[i+1];}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list_a51318054ff70fc9bc64679b9126d815a}{ArrayList}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection_a383f38e782ffdfb92c05b23ca4a861fe}{size}})\ :\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_list}{List}}<T>(\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection_a383f38e782ffdfb92c05b23ca4a861fe}{size}})\{}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection_a383f38e782ffdfb92c05b23ca4a861fe}{size}}\ >\ 0)\ \ \ }
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>t\ =\ \textcolor{keyword}{new}\ T[\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection_a383f38e782ffdfb92c05b23ca4a861fe}{size}}];}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>t\ =\ NULL;\ \textcolor{comment}{//Since\ realloc,\ if\ ptr\ is\ NULL,\ behavies\ as\ malloc}}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list_a2f8cf4038d0f5148e7aa0f1b1c4c392f}{ArrayList}}()\ :\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list}{ArrayList}}<T>(0)\{\}\ }
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list_aa38a4b51febb193eb78307ea2e9dcd47}{ArrayList}}(\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list}{ArrayList<T>}}\ \&arrayList\ )\ :\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_list}{List}}<T>(arrayList.length())\{}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list_aa76ef24e62ab065b011d0c438846fa9e}{addAll}}(arrayList);}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list_a219ee9ad044527a873806e42b5adfebf}{reallocate}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection_a383f38e782ffdfb92c05b23ca4a861fe}{size}})\{}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection_a1baf49842978ed56115f3c17b653ed99}{max}}\ =\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection_a383f38e782ffdfb92c05b23ca4a861fe}{size}};}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>t\ =\ (T*)realloc(this-\/>t,\ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection_a1baf49842978ed56115f3c17b653ed99}{max}}*\textcolor{keyword}{sizeof}(*this-\/>t));}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ T*\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list_a21831cd386cb468af4a627d36f8c3fc1}{get}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ index)\textcolor{keyword}{\ override}\{}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(index\ >=\ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection_a383f38e782ffdfb92c05b23ca4a861fe}{size}})}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \textcolor{keyword}{new}\ IndexOutOfBoundsException(\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list}{ArrayList}},\ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection_a383f38e782ffdfb92c05b23ca4a861fe}{size}},\ index);}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \&this-\/>t[index];}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list_a44ae5d58c379ebbfa946736eedb78eac}{add}}(T\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list_a2718f88a8941bdadae99b72c90834595}{t}})\ \textcolor{keyword}{noexcept}\ \{}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list_a44ae5d58c379ebbfa946736eedb78eac}{add}}(this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection_a383f38e782ffdfb92c05b23ca4a861fe}{size}},\ t);}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list_a6632c683e9d783cbe6d2a3d2ed554022}{add}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ index,\ T\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list_a2718f88a8941bdadae99b72c90834595}{t}})\textcolor{keyword}{\ override}\{}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(index\ >\ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection_a1baf49842978ed56115f3c17b653ed99}{max}})}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \textcolor{keyword}{new}\ IndexOutOfBoundsException(\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list}{ArrayList}},\ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection_a1baf49842978ed56115f3c17b653ed99}{max}},\ index);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(index\ ==\ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection_a1baf49842978ed56115f3c17b653ed99}{max}})}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list_a219ee9ad044527a873806e42b5adfebf}{reallocate}}(this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection_a1baf49842978ed56115f3c17b653ed99}{max}}+1);}
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list_a60817114f7d7eddef6f31dce8bbd052c}{rightShiftItems}}(index,\ 1);}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>t[index]\ =\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list_a2718f88a8941bdadae99b72c90834595}{t}};}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection_a383f38e782ffdfb92c05b23ca4a861fe}{size}}++;}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list_aa76ef24e62ab065b011d0c438846fa9e}{addAll}}(\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_list}{List<T>}}*\ list)\ \textcolor{keyword}{noexcept}\ \textcolor{keyword}{override}\{}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list_aa76ef24e62ab065b011d0c438846fa9e}{addAll}}(this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection_a383f38e782ffdfb92c05b23ca4a861fe}{size}},\ list);}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list_affad213e855a48998a9b9646460b3cd9}{addAll}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ index,\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_list}{List<T>}}*\ list)\textcolor{keyword}{\ override}\{}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(index\ >\ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection_a1baf49842978ed56115f3c17b653ed99}{max}})}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \textcolor{keyword}{new}\ IndexOutOfBoundsException(\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list}{ArrayList}},\ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection_a383f38e782ffdfb92c05b23ca4a861fe}{size}},\ index);\ }
+\DoxyCodeLine{00167\ }
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ listSize\ =\ list-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection_a9723628cb2cb86a23e56105b735c9b79}{getSize}}();\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(index\ +\ listSize\ -\/\ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection_a1baf49842978ed56115f3c17b653ed99}{max}}\ >\ 0)\{}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list_a219ee9ad044527a873806e42b5adfebf}{reallocate}}(index\ +\ listSize\ -\/\ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection_a1baf49842978ed56115f3c17b653ed99}{max}});\ \ \ \ \textcolor{comment}{//Reallocate\ as\ enough}}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00172\ }
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list_a60817114f7d7eddef6f31dce8bbd052c}{rightShiftItems}}(index,\ listSize);}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ i\ =\ index;\ i\ <\ index\ +\ listSize;\ i++)\{}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list_a2322c99dae4676eec3dddfaf5a105999}{set}}(i,\ *list-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_list_a88e71f8f65bd33aba20d3598ce0504a4}{get}}(i-\/index));}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection_a383f38e782ffdfb92c05b23ca4a861fe}{size}}\ +=\ listSize;}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00179\ }
+\DoxyCodeLine{00180\ }
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list_ad790b9d7106a5de2daa7483a86cee47b}{contains}}(T*\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list_a2718f88a8941bdadae99b72c90834595}{t}})\ \textcolor{keyword}{noexcept}\ \textcolor{keyword}{override}\{}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ i\ =\ 0;\ i\ <\ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection_a383f38e782ffdfb92c05b23ca4a861fe}{size}};\ i++)}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list_a2718f88a8941bdadae99b72c90834595}{t}}\ ==\ \&this-\/>t[i])\ \textcolor{comment}{//Address\ check}}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \ \ }
+\DoxyCodeLine{00193\ }
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list_ab3efad6782ef6929ce3a2083ce77ec6b}{remove}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ index)\textcolor{keyword}{\ override}\{}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(index\ >=\ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection_a383f38e782ffdfb92c05b23ca4a861fe}{size}})}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \textcolor{keyword}{new}\ IndexOutOfBoundsException(\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list}{ArrayList}},\ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection_a1baf49842978ed56115f3c17b653ed99}{max}}-\/1,\ index);}
+\DoxyCodeLine{00204\ }
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T*\ tmp\ =\ \&this-\/>t[index];}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ tmp;}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(index\ !=\ 0\ \&\&\ index\ !=\ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection_a383f38e782ffdfb92c05b23ca4a861fe}{size}}-\/1)}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list_a12df8e6670ad3b78a3b1e8d1e0257c55}{leftShiftItems}}(index,\ 1);}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection_a383f38e782ffdfb92c05b23ca4a861fe}{size}}-\/-\/;}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list_a219ee9ad044527a873806e42b5adfebf}{reallocate}}(this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection_a383f38e782ffdfb92c05b23ca4a861fe}{size}}-\/1);}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list_aa02b2ec9e82a85b3acf1ec43f3a37050}{remove}}(T*\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list_a2718f88a8941bdadae99b72c90834595}{t}})\textcolor{keyword}{\ override}\{}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ i\ =\ 0;\ i\ <\ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection_a383f38e782ffdfb92c05b23ca4a861fe}{size}};\ i++)\{}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list_a2718f88a8941bdadae99b72c90834595}{t}}\ ==\ \&this-\/>t[i])\{}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list_a2718f88a8941bdadae99b72c90834595}{t}};}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(i\ ==\ 0\ \&\&\ this-\/>size\ >\ 1)}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list_a12df8e6670ad3b78a3b1e8d1e0257c55}{leftShiftItems}}(i+1,\ 1);}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>size-\/-\/;}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list_a219ee9ad044527a873806e42b5adfebf}{reallocate}}(this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection_a1baf49842978ed56115f3c17b653ed99}{max}}-\/1);}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \ \ \ }
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \textcolor{keyword}{new}\ NotFoundException();}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list_a6adbdb3aeb4d132428b1b7af7e104af4}{removeAll}}(\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_list}{List<T>}}*\ list)\textcolor{keyword}{\ override}\{}
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ i\ =\ 0;\ i\ <\ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection_a383f38e782ffdfb92c05b23ca4a861fe}{size}};\ i++)\{}
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list_a2718f88a8941bdadae99b72c90834595}{t}}\ ==\ \&this-\/>t[i])\{}
+\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list_a2718f88a8941bdadae99b72c90834595}{t}};}
+\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(i\ ==\ 0\ \&\&\ this-\/>size\ >\ 1)}
+\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list_a12df8e6670ad3b78a3b1e8d1e0257c55}{leftShiftItems}}(i+1,\ 1);}
+\DoxyCodeLine{00242\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>size-\/-\/;}
+\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list_a219ee9ad044527a873806e42b5adfebf}{reallocate}}(this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection_a1baf49842978ed56115f3c17b653ed99}{max}}-\/1);}
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \ \ \ }
+\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \textcolor{keyword}{new}\ NotFoundException();}
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list_a804a25ce42634c9b73e91bb55d9a8906}{removeAllIf}}(\mbox{\hyperlink{classjpl_1_1__utils_1_1__functional_1_1_predicate}{\_functional::Predicate<T>}}*\ predicate)\ \textcolor{keyword}{noexcept}\ \textcolor{keyword}{override}\{}
+\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ count\ =\ 0;}
+\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ i\ =\ 0;\ i\ <\ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection_a383f38e782ffdfb92c05b23ca4a861fe}{size}};\ i++)\{}
+\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(predicate-\/>test(this-\/>t[i]))\{}
+\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list_a2718f88a8941bdadae99b72c90834595}{t}};}
+\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>t\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \ \ \ }
+\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Re-\/ordering:\ substitution\ all\ nullptr}}
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ i\ =\ 0;\ i\ <\ this-\/>size-\/1;\ i++)\{}
+\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\&this-\/>t[i]\ ==\ \textcolor{keyword}{nullptr})\{}
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>t[i]\ =\ this-\/>t[i+1];}
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00264\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00265\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>size\ -\/=\ count;}
+\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list_a219ee9ad044527a873806e42b5adfebf}{reallocate}}(this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection_a1baf49842978ed56115f3c17b653ed99}{max}}-\/count);}
+\DoxyCodeLine{00267\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00268\ }
+\DoxyCodeLine{00273\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list_aa76eef3a6c0783b15f4ebf3cd08eec50}{firstOccurrence}}(T*\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list_a2718f88a8941bdadae99b72c90834595}{t}})\textcolor{keyword}{\ override}\{}
+\DoxyCodeLine{00274\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ i\ =\ 0;\ i\ <\ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection_a383f38e782ffdfb92c05b23ca4a861fe}{size}};\ i++)\{}
+\DoxyCodeLine{00275\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(this-\/>t\ ==\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list_a2718f88a8941bdadae99b72c90834595}{t}})}
+\DoxyCodeLine{00276\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ i;}
+\DoxyCodeLine{00277\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00278\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection_a1baf49842978ed56115f3c17b653ed99}{max}};}
+\DoxyCodeLine{00279\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00284\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list_acf57adc6e06527e635036b1e5699cad9}{lastOccurrence}}(T*\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list_a2718f88a8941bdadae99b72c90834595}{t}})\textcolor{keyword}{\ override}\{}
+\DoxyCodeLine{00285\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ i\ =\ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection_a383f38e782ffdfb92c05b23ca4a861fe}{size}}-\/1;\ i\ >=\ 0;\ i-\/-\/)\{}
+\DoxyCodeLine{00286\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(this-\/>t\ ==\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list_a2718f88a8941bdadae99b72c90834595}{t}})}
+\DoxyCodeLine{00287\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ i;}
+\DoxyCodeLine{00288\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00289\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection_a1baf49842978ed56115f3c17b653ed99}{max}};}
+\DoxyCodeLine{00290\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00291\ }
+\DoxyCodeLine{00300\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ T*\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list_a2322c99dae4676eec3dddfaf5a105999}{set}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ index,\ T\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list_a2718f88a8941bdadae99b72c90834595}{t}})\textcolor{keyword}{\ override}\{}
+\DoxyCodeLine{00301\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(index\ >=\ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection_a1baf49842978ed56115f3c17b653ed99}{max}})}
+\DoxyCodeLine{00302\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \textcolor{keyword}{new}\ IndexOutOfBoundsException(\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list}{ArrayList}},\ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection_a1baf49842978ed56115f3c17b653ed99}{max}}-\/1,\ index);}
+\DoxyCodeLine{00303\ }
+\DoxyCodeLine{00304\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T*\ tmp\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00305\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(index\ <\ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection_a383f38e782ffdfb92c05b23ca4a861fe}{size}})}
+\DoxyCodeLine{00306\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ memcpy(tmp,\ \&this-\/>t[index],\ \textcolor{keyword}{sizeof}(*this-\/>t));}
+\DoxyCodeLine{00307\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00308\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>t[index]\ =\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list_a2718f88a8941bdadae99b72c90834595}{t}};}
+\DoxyCodeLine{00309\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ tmp;}
+\DoxyCodeLine{00310\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00311\ }
+\DoxyCodeLine{00315\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list_aa144f66a6fa71488af5b750b385a6ca9}{clear}}()\textcolor{keyword}{\ override}\{}
+\DoxyCodeLine{00316\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection_a383f38e782ffdfb92c05b23ca4a861fe}{size}}\ >\ 0)\{}
+\DoxyCodeLine{00317\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}[]\ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list_a2718f88a8941bdadae99b72c90834595}{t}};}
+\DoxyCodeLine{00318\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection_a383f38e782ffdfb92c05b23ca4a861fe}{size}}\ =\ 0;}
+\DoxyCodeLine{00319\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00320\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection_a1baf49842978ed56115f3c17b653ed99}{max}}\ =\ 0;}
+\DoxyCodeLine{00321\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00325\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keyword}{const}\ T*\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list_a0100f7b4831cb4647290d33a7f57e781}{toArray}}()\textcolor{keyword}{\ override}\{}
+\DoxyCodeLine{00326\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T*\ buffer\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00327\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection_a383f38e782ffdfb92c05b23ca4a861fe}{size}}\ >\ 0)\{}
+\DoxyCodeLine{00328\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ buffer\ =\ \textcolor{keyword}{new}\ T[this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection_a383f38e782ffdfb92c05b23ca4a861fe}{size}}];}
+\DoxyCodeLine{00329\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ memcpy(buffer,\ this-\/>t,\ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection_a383f38e782ffdfb92c05b23ca4a861fe}{size}}*\textcolor{keyword}{sizeof}(*this-\/>t));}
+\DoxyCodeLine{00330\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00331\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ buffer;}
+\DoxyCodeLine{00332\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00333\ }
+\DoxyCodeLine{00343\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list}{ArrayList<T>}}*\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list_ae387cf1ca917d24120a370a7b7ea98ec}{subList}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ start,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ end)\textcolor{keyword}{\ override}\{}
+\DoxyCodeLine{00344\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00345\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(end\ >=\ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection_a1baf49842978ed56115f3c17b653ed99}{max}})\{}
+\DoxyCodeLine{00346\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \textcolor{keyword}{new}\ IndexOutOfBoundsException(\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list}{ArrayList}},\ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection_a1baf49842978ed56115f3c17b653ed99}{max}}-\/1,\ end);}
+\DoxyCodeLine{00347\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00348\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(start\ >\ end)\{}
+\DoxyCodeLine{00349\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \textcolor{keyword}{new}\ IndexOutOfBoundsException(\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list}{ArrayList}},\ end,\ start);}
+\DoxyCodeLine{00350\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00351\ }
+\DoxyCodeLine{00352\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list}{ArrayList<T>}}*\ newOne\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list}{ArrayList<T>}}(end\ -\/\ start);}
+\DoxyCodeLine{00353\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ i\ =\ 0;\ i\ <\ newOne-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection_a9723628cb2cb86a23e56105b735c9b79}{getSize}}();\ i++)\{}
+\DoxyCodeLine{00354\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ newOne-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list_a2322c99dae4676eec3dddfaf5a105999}{set}}(i,\ this-\/>t[i+start]);}
+\DoxyCodeLine{00355\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00356\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ newOne;}
+\DoxyCodeLine{00357\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00358\ }
+\DoxyCodeLine{00359\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list_a70a221fbc301af962dbb5221d229fdd1}{forEach}}(\mbox{\hyperlink{classjpl_1_1__utils_1_1__functional_1_1_consumer}{\_functional::Consumer<T*>}}*\ consumer)\textcolor{keyword}{\ override}\{}
+\DoxyCodeLine{00360\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ i\ =\ 0;\ i\ <\ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection_a383f38e782ffdfb92c05b23ca4a861fe}{size}};\ i++)}
+\DoxyCodeLine{00361\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ consumer-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__functional_1_1_consumer_a2b4b556512c25cf18cbc0738353e9807}{test}}(\&this-\/>t[i]);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00362\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00363\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00364\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00365\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00366\ \ \ \ \ \}}
+\DoxyCodeLine{00367\ \}}
+\DoxyCodeLine{00368\ }
+\DoxyCodeLine{00369\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

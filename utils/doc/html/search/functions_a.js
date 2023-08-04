@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['tolower_0',['toLower',['../namespacejpl_1_1__utils_1_1__chars.html#a036fb1f5204c51a46e9d9f4109922b75',1,'jpl::_utils::_chars']]],
-  ['toupper_1',['toUpper',['../namespacejpl_1_1__utils_1_1__chars.html#a7c7e154b4f590a98537df2965ac38c25',1,'jpl::_utils::_chars']]]
+  ['operator_3d_0',['operator=',['../d8/db7/structjpl_1_1__utils_1_1__debug_1_1_frame.html#a446af52188e151a1199acdd31ad05830',1,'jpl::_utils::_debug::Frame']]]
 ];

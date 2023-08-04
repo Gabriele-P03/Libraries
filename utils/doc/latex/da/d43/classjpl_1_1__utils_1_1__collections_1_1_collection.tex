@@ -1,0 +1,230 @@
+\doxysection{jpl\+::\+\_\+utils\+::\+\_\+collections\+::Collection\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{classjpl_1_1__utils_1_1__collections_1_1_collection}{}\label{classjpl_1_1__utils_1_1__collections_1_1_collection}\index{jpl::\_utils::\_collections::Collection$<$ T $>$@{jpl::\_utils::\_collections::Collection$<$ T $>$}}
+
+
+{\ttfamily \#include $<$Collection.\+hpp$>$}
+
+Inheritance diagram for jpl\+::\+\_\+utils\+::\+\_\+collections\+::Collection\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{da/d43/classjpl_1_1__utils_1_1__collections_1_1_collection}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection_ac6cb1c5c7d8c719b1605f35d834686ab}{add}} (T t)=0
+\begin{DoxyCompactList}\small\item\em Insert t into the structure. The position where t is pushed depends by the type of structure. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection_af3f9b8e512c8c74bd603cd9002014b6b}{contains}} (T \texorpdfstring{$\ast$}{*}t) noexcept=0
+\begin{DoxyCompactList}\small\item\em Check into the whole collection if t is present. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection_a04d0ed85cd480377e05f5f12bf0c5e87}{clear}} ()=0
+\begin{DoxyCompactList}\small\item\em Remove all elements from the collection. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection_ae88f9be09662cff82daf35c31f52cf37}{is\+Empty}} () noexcept
+\item 
+virtual unsigned long \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection_a66b306e6892e51de00350b983de8da39}{get\+Max}} () noexcept
+\item 
+virtual unsigned long \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection_a9723628cb2cb86a23e56105b735c9b79}{get\+Size}} () noexcept
+\item 
+virtual bool \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection_a4f30e689f599f6db2faf068f17111960}{allow\+Null}} () noexcept
+\item 
+virtual const T \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection_a0ead1741ca4170f29b0123df96b45d86}{to\+Array}} ()=0
+\begin{DoxyCompactList}\small\item\em In order to offers you the most available compatibility to any others type of structures (even not JPL\textquotesingle{}s), any collection can be copied into an array. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classjpl_1_1__utils_1_1_iterable_a2dcaf937ab59df9c0d0578e11f473518}{for\+Each}} (\mbox{\hyperlink{classjpl_1_1__utils_1_1__functional_1_1_consumer}{\+\_\+functional\+::\+Consumer}}$<$ T \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*}consumer)=0
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection_a35be88f7e59c65afaeaaedbe48c75185}{Collection}} (unsigned long \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection_a1baf49842978ed56115f3c17b653ed99}{max}}, unsigned long \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection_a383f38e782ffdfb92c05b23ca4a861fe}{size}}, bool \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection_aada92f182e92c7e3cc3e3aebf6d9d45f}{nullable\+Elements}})
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+unsigned long \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection_a1baf49842978ed56115f3c17b653ed99}{max}}
+\begin{DoxyCompactList}\small\item\em It stores the max amount of items which can be contained into the collection. \end{DoxyCompactList}\item 
+unsigned long \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection_a383f38e782ffdfb92c05b23ca4a861fe}{size}}
+\begin{DoxyCompactList}\small\item\em It stores the current amount of items into the structure. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection_aada92f182e92c7e3cc3e3aebf6d9d45f}{nullable\+Elements}}
+\begin{DoxyCompactList}\small\item\em if null elements are allowd to be inserted into the collection \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classjpl_1_1__utils_1_1__collections_1_1_collection_a35be88f7e59c65afaeaaedbe48c75185}\label{classjpl_1_1__utils_1_1__collections_1_1_collection_a35be88f7e59c65afaeaaedbe48c75185} 
+\index{jpl::\_utils::\_collections::Collection$<$ T $>$@{jpl::\_utils::\_collections::Collection$<$ T $>$}!Collection@{Collection}}
+\index{Collection@{Collection}!jpl::\_utils::\_collections::Collection$<$ T $>$@{jpl::\_utils::\_collections::Collection$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Collection()}{Collection()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection}{jpl\+::\+\_\+utils\+::\+\_\+collections\+::\+Collection}}$<$ T $>$\+::\+Collection (\begin{DoxyParamCaption}\item[{unsigned long}]{max,  }\item[{unsigned long}]{size,  }\item[{bool}]{nullable\+Elements }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classjpl_1_1__utils_1_1__collections_1_1_collection_ac6cb1c5c7d8c719b1605f35d834686ab}\label{classjpl_1_1__utils_1_1__collections_1_1_collection_ac6cb1c5c7d8c719b1605f35d834686ab} 
+\index{jpl::\_utils::\_collections::Collection$<$ T $>$@{jpl::\_utils::\_collections::Collection$<$ T $>$}!add@{add}}
+\index{add@{add}!jpl::\_utils::\_collections::Collection$<$ T $>$@{jpl::\_utils::\_collections::Collection$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{add()}{add()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+virtual void \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection}{jpl\+::\+\_\+utils\+::\+\_\+collections\+::\+Collection}}$<$ T $>$\+::add (\begin{DoxyParamCaption}\item[{T}]{t }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Insert t into the structure. The position where t is pushed depends by the type of structure. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list_a44ae5d58c379ebbfa946736eedb78eac}{jpl\+::\+\_\+utils\+::\+\_\+collections\+::\+\_\+list\+::\+Array\+List$<$ T $>$}}.
+
+\Hypertarget{classjpl_1_1__utils_1_1__collections_1_1_collection_a4f30e689f599f6db2faf068f17111960}\label{classjpl_1_1__utils_1_1__collections_1_1_collection_a4f30e689f599f6db2faf068f17111960} 
+\index{jpl::\_utils::\_collections::Collection$<$ T $>$@{jpl::\_utils::\_collections::Collection$<$ T $>$}!allowNull@{allowNull}}
+\index{allowNull@{allowNull}!jpl::\_utils::\_collections::Collection$<$ T $>$@{jpl::\_utils::\_collections::Collection$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{allowNull()}{allowNull()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+virtual bool \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection}{jpl\+::\+\_\+utils\+::\+\_\+collections\+::\+Collection}}$<$ T $>$\+::allow\+Null (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}, {\ttfamily [noexcept]}}
+
+\begin{DoxyReturn}{Returns}
+if the collection allows null elements 
+\end{DoxyReturn}
+\Hypertarget{classjpl_1_1__utils_1_1__collections_1_1_collection_a04d0ed85cd480377e05f5f12bf0c5e87}\label{classjpl_1_1__utils_1_1__collections_1_1_collection_a04d0ed85cd480377e05f5f12bf0c5e87} 
+\index{jpl::\_utils::\_collections::Collection$<$ T $>$@{jpl::\_utils::\_collections::Collection$<$ T $>$}!clear@{clear}}
+\index{clear@{clear}!jpl::\_utils::\_collections::Collection$<$ T $>$@{jpl::\_utils::\_collections::Collection$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+virtual void \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection}{jpl\+::\+\_\+utils\+::\+\_\+collections\+::\+Collection}}$<$ T $>$\+::clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Remove all elements from the collection. 
+
+
+
+Implemented in \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list_aa144f66a6fa71488af5b750b385a6ca9}{jpl\+::\+\_\+utils\+::\+\_\+collections\+::\+\_\+list\+::\+Array\+List$<$ T $>$}}.
+
+\Hypertarget{classjpl_1_1__utils_1_1__collections_1_1_collection_af3f9b8e512c8c74bd603cd9002014b6b}\label{classjpl_1_1__utils_1_1__collections_1_1_collection_af3f9b8e512c8c74bd603cd9002014b6b} 
+\index{jpl::\_utils::\_collections::Collection$<$ T $>$@{jpl::\_utils::\_collections::Collection$<$ T $>$}!contains@{contains}}
+\index{contains@{contains}!jpl::\_utils::\_collections::Collection$<$ T $>$@{jpl::\_utils::\_collections::Collection$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{contains()}{contains()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+virtual bool \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection}{jpl\+::\+\_\+utils\+::\+\_\+collections\+::\+Collection}}$<$ T $>$\+::contains (\begin{DoxyParamCaption}\item[{T \texorpdfstring{$\ast$}{*}}]{t }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}, {\ttfamily [noexcept]}}
+
+
+
+Check into the whole collection if t is present. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+if t is present 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list_ad790b9d7106a5de2daa7483a86cee47b}{jpl\+::\+\_\+utils\+::\+\_\+collections\+::\+\_\+list\+::\+Array\+List$<$ T $>$}}.
+
+\Hypertarget{classjpl_1_1__utils_1_1_iterable_a2dcaf937ab59df9c0d0578e11f473518}\label{classjpl_1_1__utils_1_1_iterable_a2dcaf937ab59df9c0d0578e11f473518} 
+\index{jpl::\_utils::\_collections::Collection$<$ T $>$@{jpl::\_utils::\_collections::Collection$<$ T $>$}!forEach@{forEach}}
+\index{forEach@{forEach}!jpl::\_utils::\_collections::Collection$<$ T $>$@{jpl::\_utils::\_collections::Collection$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{forEach()}{forEach()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+virtual void \mbox{\hyperlink{classjpl_1_1__utils_1_1_iterable}{jpl\+::\+\_\+utils\+::\+Iterable}}$<$ T $>$\+::for\+Each (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classjpl_1_1__utils_1_1__functional_1_1_consumer}{\+\_\+functional\+::\+Consumer}}$<$ T \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*}}]{consumer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}, {\ttfamily [inherited]}}
+
+
+
+Implemented in \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list_a70a221fbc301af962dbb5221d229fdd1}{jpl\+::\+\_\+utils\+::\+\_\+collections\+::\+\_\+list\+::\+Array\+List$<$ T $>$}}.
+
+\Hypertarget{classjpl_1_1__utils_1_1__collections_1_1_collection_a66b306e6892e51de00350b983de8da39}\label{classjpl_1_1__utils_1_1__collections_1_1_collection_a66b306e6892e51de00350b983de8da39} 
+\index{jpl::\_utils::\_collections::Collection$<$ T $>$@{jpl::\_utils::\_collections::Collection$<$ T $>$}!getMax@{getMax}}
+\index{getMax@{getMax}!jpl::\_utils::\_collections::Collection$<$ T $>$@{jpl::\_utils::\_collections::Collection$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{getMax()}{getMax()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+virtual unsigned long \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection}{jpl\+::\+\_\+utils\+::\+\_\+collections\+::\+Collection}}$<$ T $>$\+::get\+Max (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}, {\ttfamily [noexcept]}}
+
+\begin{DoxyReturn}{Returns}
+the max amount of items which can contained into the collection 
+\end{DoxyReturn}
+\Hypertarget{classjpl_1_1__utils_1_1__collections_1_1_collection_a9723628cb2cb86a23e56105b735c9b79}\label{classjpl_1_1__utils_1_1__collections_1_1_collection_a9723628cb2cb86a23e56105b735c9b79} 
+\index{jpl::\_utils::\_collections::Collection$<$ T $>$@{jpl::\_utils::\_collections::Collection$<$ T $>$}!getSize@{getSize}}
+\index{getSize@{getSize}!jpl::\_utils::\_collections::Collection$<$ T $>$@{jpl::\_utils::\_collections::Collection$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{getSize()}{getSize()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+virtual unsigned long \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection}{jpl\+::\+\_\+utils\+::\+\_\+collections\+::\+Collection}}$<$ T $>$\+::get\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}, {\ttfamily [noexcept]}}
+
+\begin{DoxyReturn}{Returns}
+the current amount of items which are contained into the collection 
+\end{DoxyReturn}
+\Hypertarget{classjpl_1_1__utils_1_1__collections_1_1_collection_ae88f9be09662cff82daf35c31f52cf37}\label{classjpl_1_1__utils_1_1__collections_1_1_collection_ae88f9be09662cff82daf35c31f52cf37} 
+\index{jpl::\_utils::\_collections::Collection$<$ T $>$@{jpl::\_utils::\_collections::Collection$<$ T $>$}!isEmpty@{isEmpty}}
+\index{isEmpty@{isEmpty}!jpl::\_utils::\_collections::Collection$<$ T $>$@{jpl::\_utils::\_collections::Collection$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{isEmpty()}{isEmpty()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+virtual bool \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection}{jpl\+::\+\_\+utils\+::\+\_\+collections\+::\+Collection}}$<$ T $>$\+::is\+Empty (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}, {\ttfamily [noexcept]}}
+
+\begin{DoxyReturn}{Returns}
+if the structure is empty 
+\end{DoxyReturn}
+\Hypertarget{classjpl_1_1__utils_1_1__collections_1_1_collection_a0ead1741ca4170f29b0123df96b45d86}\label{classjpl_1_1__utils_1_1__collections_1_1_collection_a0ead1741ca4170f29b0123df96b45d86} 
+\index{jpl::\_utils::\_collections::Collection$<$ T $>$@{jpl::\_utils::\_collections::Collection$<$ T $>$}!toArray@{toArray}}
+\index{toArray@{toArray}!jpl::\_utils::\_collections::Collection$<$ T $>$@{jpl::\_utils::\_collections::Collection$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{toArray()}{toArray()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+virtual const T \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection}{jpl\+::\+\_\+utils\+::\+\_\+collections\+::\+Collection}}$<$ T $>$\+::to\+Array (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+In order to offers you the most available compatibility to any others type of structures (even not JPL\textquotesingle{}s), any collection can be copied into an array. 
+
+Every array returned by a collection will be a copy of the original one\+: no changes performed on the returned array will be done even on the collection. The array returned will be as length as size field.
+
+\begin{DoxyReturn}{Returns}
+T\texorpdfstring{$\ast$}{*} (get its size by length()) 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1_array_list_a0100f7b4831cb4647290d33a7f57e781}{jpl\+::\+\_\+utils\+::\+\_\+collections\+::\+\_\+list\+::\+Array\+List$<$ T $>$}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classjpl_1_1__utils_1_1__collections_1_1_collection_a1baf49842978ed56115f3c17b653ed99}\label{classjpl_1_1__utils_1_1__collections_1_1_collection_a1baf49842978ed56115f3c17b653ed99} 
+\index{jpl::\_utils::\_collections::Collection$<$ T $>$@{jpl::\_utils::\_collections::Collection$<$ T $>$}!max@{max}}
+\index{max@{max}!jpl::\_utils::\_collections::Collection$<$ T $>$@{jpl::\_utils::\_collections::Collection$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{max}{max}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+unsigned long \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection}{jpl\+::\+\_\+utils\+::\+\_\+collections\+::\+Collection}}$<$ T $>$\+::max\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+It stores the max amount of items which can be contained into the collection. 
+
+A collection is by itselves increaseable, a data-\/structure could set it as final in its own scope. \Hypertarget{classjpl_1_1__utils_1_1__collections_1_1_collection_aada92f182e92c7e3cc3e3aebf6d9d45f}\label{classjpl_1_1__utils_1_1__collections_1_1_collection_aada92f182e92c7e3cc3e3aebf6d9d45f} 
+\index{jpl::\_utils::\_collections::Collection$<$ T $>$@{jpl::\_utils::\_collections::Collection$<$ T $>$}!nullableElements@{nullableElements}}
+\index{nullableElements@{nullableElements}!jpl::\_utils::\_collections::Collection$<$ T $>$@{jpl::\_utils::\_collections::Collection$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{nullableElements}{nullableElements}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+bool \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection}{jpl\+::\+\_\+utils\+::\+\_\+collections\+::\+Collection}}$<$ T $>$\+::nullable\+Elements\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+if null elements are allowd to be inserted into the collection 
+
+\Hypertarget{classjpl_1_1__utils_1_1__collections_1_1_collection_a383f38e782ffdfb92c05b23ca4a861fe}\label{classjpl_1_1__utils_1_1__collections_1_1_collection_a383f38e782ffdfb92c05b23ca4a861fe} 
+\index{jpl::\_utils::\_collections::Collection$<$ T $>$@{jpl::\_utils::\_collections::Collection$<$ T $>$}!size@{size}}
+\index{size@{size}!jpl::\_utils::\_collections::Collection$<$ T $>$@{jpl::\_utils::\_collections::Collection$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{size}{size}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+unsigned long \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1_collection}{jpl\+::\+\_\+utils\+::\+\_\+collections\+::\+Collection}}$<$ T $>$\+::size\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+It stores the current amount of items into the structure. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/paceg/\+Personale/\+JPL/utils/src/structure/\mbox{\hyperlink{_collection_8hpp}{Collection.\+hpp}}\end{DoxyCompactItemize}

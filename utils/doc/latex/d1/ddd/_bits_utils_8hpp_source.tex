@@ -1,0 +1,32 @@
+\doxysection{Bits\+Utils.\+hpp}
+\hypertarget{_bits_utils_8hpp_source}{}\label{_bits_utils_8hpp_source}\index{C:/Users/paceg/Personale/JPL/utils/src/BitsUtils.hpp@{C:/Users/paceg/Personale/JPL/utils/src/BitsUtils.hpp}}
+\mbox{\hyperlink{_bits_utils_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#ifndef\ BITS\_UTILS\_JPL}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#define\ BITS\_UTILS\_JPL}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacejpl}{jpl}}\{}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{namespace\ }\_utils\{}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keyword}{namespace\ }\_bits\{}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}*\ \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__bits_a9eb70fe2b6bbe105ea437628d0a5426b}{\_xor\_bits}}(\textcolor{keywordtype}{bool}*\ \_src1,\ \textcolor{keywordtype}{bool}*\ \_src2,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \_size)\{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}*\ \_buffer\ =\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{bool}[\_size];}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ i\ =\ 0;\ i\ <\ \_size;\ i++)\{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_buffer[i]\ =\ (\_src1[i]\ !=\ \_src2[i]);}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_buffer;}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00042\ \ \ \ \ \}}
+\DoxyCodeLine{00043\ \}}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

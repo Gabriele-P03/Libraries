@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['error_5futils_5fjpl_0',['ERROR_UTILS_JPL',['../ErrorUtils_8hpp.html#af934c4742571283d72bf87b43cc0c153',1,'ErrorUtils.hpp']]]
+  ['default_5fskip_5fstackframes_5fjpl_0',['DEFAULT_SKIP_STACKFRAMES_JPL',['../d7/db0/_stacktrace_wrapper_8hpp.html#a113d30a0049fc544862b8a8a6e6cb3ae',1,'StacktraceWrapper.hpp']]]
 ];

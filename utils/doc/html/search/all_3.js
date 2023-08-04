@@ -1,11 +1,15 @@
 var searchData=
 [
-  ['cc_5fb_0',['cc_b',['../namespacejpl_1_1__utils_1_1__conversions.html#a786994bde6120e5af03f04633e76520e',1,'jpl::_utils::_conversions']]],
-  ['cc_5fbits_1',['cc_bits',['../namespacejpl_1_1__utils_1_1__conversions.html#afbbcb6f132ffbbc65d95115520b05379',1,'jpl::_utils::_conversions']]],
-  ['cc_5fd_2',['cc_d',['../namespacejpl_1_1__utils_1_1__conversions.html#a4d39bb8acb7df7e5c7c2a389ab0109c4',1,'jpl::_utils::_conversions']]],
-  ['cc_5ff_3',['cc_f',['../namespacejpl_1_1__utils_1_1__conversions.html#a58a87e27474ba114c8f7b7e760775bbd',1,'jpl::_utils::_conversions']]],
-  ['cc_5fint_4',['cc_int',['../namespacejpl_1_1__utils_1_1__conversions.html#ad5a91e43eb0b29ef603dac125cbe8abd',1,'jpl::_utils::_conversions']]],
-  ['cc_5fuint_5',['cc_uint',['../namespacejpl_1_1__utils_1_1__conversions.html#acbf128a2e6f54d3fef217d4bc6805bb1',1,'jpl::_utils::_conversions']]],
-  ['charutils_2ehpp_6',['CharUtils.hpp',['../CharUtils_8hpp.html',1,'']]],
-  ['conversionutils_2ehpp_7',['ConversionUtils.hpp',['../ConversionUtils_8hpp.html',1,'']]]
+  ['b_5fcc_0',['b_cc',['../de/d84/namespacejpl_1_1__utils_1_1__conversions.html#a142a97d937bf5b583e39de961437e600',1,'jpl::_utils::_conversions']]],
+  ['biconsumer_1',['BiConsumer',['../d2/d9f/classjpl_1_1__utils_1_1__functional_1_1_bi_consumer.html#a4c0e405df77b07e0538e95a82c780bfc',1,'jpl::_utils::_functional::BiConsumer::BiConsumer()'],['../d2/d9f/classjpl_1_1__utils_1_1__functional_1_1_bi_consumer.html',1,'jpl::_utils::_functional::BiConsumer&lt; T, E &gt;']]],
+  ['biconsumer_2ehpp_2',['BiConsumer.hpp',['../d9/df2/_bi_consumer_8hpp.html',1,'']]],
+  ['bifunction_3',['BiFunction',['../d3/d11/classjpl_1_1__utils_1_1__functional_1_1_bi_function.html#a30199fe4f3e5cec1545361ae3ee22d02',1,'jpl::_utils::_functional::BiFunction::BiFunction()'],['../d3/d11/classjpl_1_1__utils_1_1__functional_1_1_bi_function.html',1,'jpl::_utils::_functional::BiFunction&lt; T, E, R &gt;']]],
+  ['bifunction_2ehpp_4',['BiFunction.hpp',['../d7/d42/_bi_function_8hpp.html',1,'']]],
+  ['bifunction_3c_20t_2c_20t_2c_20t_20_3e_5',['BiFunction&lt; T, T, T &gt;',['../d3/d11/classjpl_1_1__utils_1_1__functional_1_1_bi_function.html',1,'jpl::_utils::_functional']]],
+  ['binaryoperator_6',['BinaryOperator',['../dd/d2f/classjpl_1_1__utils_1_1__functional_1_1_binary_operator.html#aea0bb0d37cf7190b2cdfe9e6c38d7dd7',1,'jpl::_utils::_functional::BinaryOperator::BinaryOperator()'],['../dd/d2f/classjpl_1_1__utils_1_1__functional_1_1_binary_operator.html',1,'jpl::_utils::_functional::BinaryOperator&lt; T &gt;']]],
+  ['binaryoperator_2ehpp_7',['BinaryOperator.hpp',['../d4/d9a/_binary_operator_8hpp.html',1,'']]],
+  ['bipredicate_8',['BiPredicate',['../da/ddb/classjpl_1_1__utils_1_1__functional_1_1_bi_predicate.html#ae9f43ba672c72b667ff2be40c43a57a7',1,'jpl::_utils::_functional::BiPredicate::BiPredicate()'],['../da/ddb/classjpl_1_1__utils_1_1__functional_1_1_bi_predicate.html',1,'jpl::_utils::_functional::BiPredicate&lt; T, E &gt;']]],
+  ['bipredicate_2ehpp_9',['BiPredicate.hpp',['../df/d75/_bi_predicate_8hpp.html',1,'']]],
+  ['bits_5fcc_10',['bits_cc',['../de/d84/namespacejpl_1_1__utils_1_1__conversions.html#af81c23513f8914b12aaa4a864d815f69',1,'jpl::_utils::_conversions']]],
+  ['bitsutils_2ehpp_11',['BitsUtils.hpp',['../d1/ddd/_bits_utils_8hpp.html',1,'']]]
 ];

@@ -1,0 +1,42 @@
+\doxysection{Consumer.\+hpp}
+\hypertarget{_consumer_8hpp_source}{}\label{_consumer_8hpp_source}\index{C:/Users/paceg/Personale/JPL/utils/src/functional/consumer/Consumer.hpp@{C:/Users/paceg/Personale/JPL/utils/src/functional/consumer/Consumer.hpp}}
+\mbox{\hyperlink{_consumer_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#ifndef\ CONSUMER\_FUNCTIONAL\_INTERFACE\_JPL}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ CONSUMER\_FUNCTIONAL\_INTERFACE\_JPL}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}../FunctionalInterface.hpp"{}}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacejpl}{jpl}}\{}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{namespace\ }\_utils\{}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keyword}{namespace\ }\_functional\{}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classjpl_1_1__utils_1_1__functional_1_1_consumer}{Consumer}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__functional_1_1_functional_i}{FunctionalI}}\{}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::function<void(T)>\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__functional_1_1_consumer_a6a5280efc537fa8de2757b3584b9da54}{consumer}};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ ConsumeType>}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classjpl_1_1__utils_1_1__functional_1_1_consumer_a7b01e1e38eb863cb445568de4d68cf8c}{Consumer}}(ConsumeType\ consume)\ :\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__functional_1_1_consumer_a6a5280efc537fa8de2757b3584b9da54}{consumer}}\{std::move(consume)\}}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__functional_1_1_consumer_a2b4b556512c25cf18cbc0738353e9807}{test}}(T\ t)\{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__functional_1_1_consumer_a6a5280efc537fa8de2757b3584b9da54}{consumer}}(t);}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00052\ \ \ \ \ \}}
+\DoxyCodeLine{00053\ \}}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

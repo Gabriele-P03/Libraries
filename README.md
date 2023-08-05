@@ -5,6 +5,7 @@ All modules have own README.md which is only a brief documentation. If you are i
 <br><br><br>
 There's a chromatic protocol in order to understand the documentation of the whole project:
 <br>![#7b4039](https://placehold.co/15x15/7b4039/7b4039.png) Brown: Package
+<br>![#808000](https://placehold.co/15x15/808000/808000.png) Olive: Header of Source file
 <br>![#ffff00](https://placehold.co/15x15/ffff00/ffff00.png) Yellow: Class
 <br>![#ffa8e2](https://placehold.co/15x15/ffa8e2/ffa8e2.png) Pink: Constructor
 <br>![#0000ff](https://placehold.co/15x15/0000ff/0000ff.png) Blue: Field
@@ -12,7 +13,7 @@ There's a chromatic protocol in order to understand the documentation of the who
 <br>![#ff5500](https://placehold.co/15x15/ff5500/ff5500.png) Orange: Argument
 <br>![#ff0000](https://placehold.co/15x15/ff0000/ff0000.png) Red: Exception
 <br>![#80fdf8](https://placehold.co/15x15/80fdf8/80fdf8.png) Aqua: Module
-<br>![#8810ff](https://placehold.co/15x15/8810ff/8810ff.png) Lilac: Macro
+<br>![#8810ff](https://placehold.co/15x15/8810ff/8810ff.png) Purple: Macro
 <br><br>
 Tip: Colors may cause an annoying color contrast if your browser/pdf application is in light mode
 <br>

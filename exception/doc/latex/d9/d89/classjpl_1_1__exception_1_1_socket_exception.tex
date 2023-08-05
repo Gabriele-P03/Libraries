@@ -13,7 +13,7 @@ Inheritance diagram for jpl\+::\+\_\+exception\+::Socket\+Exception\+:\begin{fig
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classjpl_1_1__exception_1_1_socket_exception_add1eac013e3ef1edf91d71f3b11a2638}{Socket\+Exception}} (const unsigned int \mbox{\hyperlink{classjpl_1_1__exception_1_1_socket_exception_a055df1ec945a77de0c750399b38e1ed6}{fd}}, const unsigned int \mbox{\hyperlink{classjpl_1_1__exception_1_1_socket_exception_adc56852307aceab48ef989e21bf9325c}{error\+\_\+code}}, const char \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classjpl_1_1__exception_1_1_abstract_exception_a8a40d27a336fcfeb26e7fd7b6c8522ec}{msg}})
+\mbox{\hyperlink{classjpl_1_1__exception_1_1_socket_exception_a359eb630ec1420043cb22dcffe5e6a2b}{Socket\+Exception}} (const unsigned int \mbox{\hyperlink{classjpl_1_1__exception_1_1_socket_exception_a055df1ec945a77de0c750399b38e1ed6}{fd}}, const unsigned int \mbox{\hyperlink{classjpl_1_1__exception_1_1_socket_exception_adc56852307aceab48ef989e21bf9325c}{error\+\_\+code}}, std\+::string \mbox{\hyperlink{classjpl_1_1__exception_1_1_abstract_exception_a2aa9aba38aab837ce8eee9552dd2f1fb}{msg}})
 \item 
 \mbox{\hyperlink{classjpl_1_1__exception_1_1_socket_exception_a20e5523f0f6fe3d0484aea9a5fb54320}{Socket\+Exception}} (const unsigned int \mbox{\hyperlink{classjpl_1_1__exception_1_1_socket_exception_a055df1ec945a77de0c750399b38e1ed6}{fd}}, const unsigned int \mbox{\hyperlink{classjpl_1_1__exception_1_1_socket_exception_adc56852307aceab48ef989e21bf9325c}{error\+\_\+code}})
 \item 
@@ -24,17 +24,16 @@ virtual const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classjpl_1_1__exc
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classjpl_1_1__exception_1_1_runtime_exception}{jpl\+::\+\_\+exception\+::\+Runtime\+Exception}}}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classjpl_1_1__exception_1_1_runtime_exception_a03edc87ffaaa4c5dfb651cd4aa924ade}{Runtime\+Exception}} (const char \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classjpl_1_1__exception_1_1_abstract_exception_add4642360b0286f49d367e431b6473fa}{type\+\_\+ex}}, const char \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classjpl_1_1__exception_1_1_abstract_exception_a8a40d27a336fcfeb26e7fd7b6c8522ec}{msg}})
+\mbox{\hyperlink{classjpl_1_1__exception_1_1_runtime_exception_a8d490df819fb051b3500520f5943aa1f}{Runtime\+Exception}} (std\+::string \mbox{\hyperlink{classjpl_1_1__exception_1_1_abstract_exception_ac135cf56b3dc4fdb4bc558d345d0f436}{type\+\_\+ex}}, std\+::string \mbox{\hyperlink{classjpl_1_1__exception_1_1_abstract_exception_a2aa9aba38aab837ce8eee9552dd2f1fb}{msg}})
 \item 
-\mbox{\hyperlink{classjpl_1_1__exception_1_1_runtime_exception_ae493ccae676b5f4364b1a9a3250b34ab}{Runtime\+Exception}} (const char \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classjpl_1_1__exception_1_1_abstract_exception_a8a40d27a336fcfeb26e7fd7b6c8522ec}{msg}})
+\mbox{\hyperlink{classjpl_1_1__exception_1_1_runtime_exception_a2e67f85fd1fb47b71bd4262cfd88f0cb}{Runtime\+Exception}} (std\+::string \mbox{\hyperlink{classjpl_1_1__exception_1_1_abstract_exception_a2aa9aba38aab837ce8eee9552dd2f1fb}{msg}})
+\item 
+\mbox{\hyperlink{classjpl_1_1__exception_1_1_runtime_exception_a4c11326f9e408343ecf9d714c71508e9}{Runtime\+Exception}} ()
 \end{DoxyCompactItemize}
-\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classjpl_1_1__exception_1_1_abstract_exception}{jpl\+::\+\_\+exception\+::\+Abstract\+Exception}}}
 \begin{DoxyCompactItemize}
 \item 
 virtual const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classjpl_1_1__exception_1_1_abstract_exception_ae17527e3192e5afdb01a90f199dbafe5}{what}} () const \+\_\+\+GLIBCXX\+\_\+\+TXN\+\_\+\+SAFE\+\_\+\+DYN \+\_\+\+GLIBCXX\+\_\+\+NOTHROW override
-\begin{DoxyCompactList}\small\item\em Print the type of the exception which has been thrown with the message that has been passed, too. \end{DoxyCompactList}\item 
-virtual const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classjpl_1_1__exception_1_1_abstract_exception_a763c7353208d799125dc4d871f510cef}{get\+Stacktrace}} () const
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Print the type of the exception which has been thrown with the message that has been passed, too. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -45,17 +44,17 @@ const unsigned int \mbox{\hyperlink{classjpl_1_1__exception_1_1_socket_exception
 \doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classjpl_1_1__exception_1_1_abstract_exception}{jpl\+::\+\_\+exception\+::\+Abstract\+Exception}}}
 \begin{DoxyCompactItemize}
 \item 
-const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classjpl_1_1__exception_1_1_abstract_exception_add4642360b0286f49d367e431b6473fa}{type\+\_\+ex}}
+std\+::string \mbox{\hyperlink{classjpl_1_1__exception_1_1_abstract_exception_ac135cf56b3dc4fdb4bc558d345d0f436}{type\+\_\+ex}}
 \item 
-const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classjpl_1_1__exception_1_1_abstract_exception_a8a40d27a336fcfeb26e7fd7b6c8522ec}{msg}}
+std\+::string \mbox{\hyperlink{classjpl_1_1__exception_1_1_abstract_exception_a2aa9aba38aab837ce8eee9552dd2f1fb}{msg}}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Additional Inherited Members}
 \doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classjpl_1_1__exception_1_1_abstract_exception}{jpl\+::\+\_\+exception\+::\+Abstract\+Exception}}}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classjpl_1_1__exception_1_1_abstract_exception_ab1e5aa0f3b5106e72cb9de93f93e3a8c}{Abstract\+Exception}} (const char \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classjpl_1_1__exception_1_1_abstract_exception_add4642360b0286f49d367e431b6473fa}{type\+\_\+ex}})
+\mbox{\hyperlink{classjpl_1_1__exception_1_1_abstract_exception_a705351cb7a55d23909e49c9f447d5a8e}{Abstract\+Exception}} (std\+::string \mbox{\hyperlink{classjpl_1_1__exception_1_1_abstract_exception_ac135cf56b3dc4fdb4bc558d345d0f436}{type\+\_\+ex}})
 \item 
-\mbox{\hyperlink{classjpl_1_1__exception_1_1_abstract_exception_af2dafed1749e2d7cb0097172f5974c0d}{Abstract\+Exception}} (const char \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classjpl_1_1__exception_1_1_abstract_exception_add4642360b0286f49d367e431b6473fa}{type\+\_\+ex}}, const char \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classjpl_1_1__exception_1_1_abstract_exception_a8a40d27a336fcfeb26e7fd7b6c8522ec}{msg}})
+\mbox{\hyperlink{classjpl_1_1__exception_1_1_abstract_exception_af4f36b532a1cd3916101e10216f5d8e2}{Abstract\+Exception}} (std\+::string \mbox{\hyperlink{classjpl_1_1__exception_1_1_abstract_exception_ac135cf56b3dc4fdb4bc558d345d0f436}{type\+\_\+ex}}, std\+::string \mbox{\hyperlink{classjpl_1_1__exception_1_1_abstract_exception_a2aa9aba38aab837ce8eee9552dd2f1fb}{msg}})
 \end{DoxyCompactItemize}
 
 
@@ -67,11 +66,11 @@ Definition at line \mbox{\hyperlink{_socket_exception_8hpp_source_l00024}{24}} o
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\Hypertarget{classjpl_1_1__exception_1_1_socket_exception_add1eac013e3ef1edf91d71f3b11a2638}\label{classjpl_1_1__exception_1_1_socket_exception_add1eac013e3ef1edf91d71f3b11a2638} 
+\Hypertarget{classjpl_1_1__exception_1_1_socket_exception_a359eb630ec1420043cb22dcffe5e6a2b}\label{classjpl_1_1__exception_1_1_socket_exception_a359eb630ec1420043cb22dcffe5e6a2b} 
 \index{jpl::\_exception::SocketException@{jpl::\_exception::SocketException}!SocketException@{SocketException}}
 \index{SocketException@{SocketException}!jpl::\_exception::SocketException@{jpl::\_exception::SocketException}}
 \doxysubsubsection{\texorpdfstring{SocketException()}{SocketException()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
-{\footnotesize\ttfamily jpl\+::\+\_\+exception\+::\+Socket\+Exception\+::\+Socket\+Exception (\begin{DoxyParamCaption}\item[{const unsigned int}]{fd,  }\item[{const unsigned int}]{error\+\_\+code,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily jpl\+::\+\_\+exception\+::\+Socket\+Exception\+::\+Socket\+Exception (\begin{DoxyParamCaption}\item[{const unsigned int}]{fd,  }\item[{const unsigned int}]{error\+\_\+code,  }\item[{std\+::string}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -119,7 +118,7 @@ Reimplemented from \mbox{\hyperlink{classjpl_1_1__exception_1_1_abstract_excepti
 
 
 
-Definition at line \mbox{\hyperlink{_socket_exception_8hpp_source_l00051}{51}} of file \mbox{\hyperlink{_socket_exception_8hpp_source}{Socket\+Exception.\+hpp}}.
+Definition at line \mbox{\hyperlink{_socket_exception_8hpp_source_l00046}{46}} of file \mbox{\hyperlink{_socket_exception_8hpp_source}{Socket\+Exception.\+hpp}}.
 
 
 

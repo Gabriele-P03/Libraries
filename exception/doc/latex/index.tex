@@ -2,13 +2,19 @@
 \hypertarget{index}{}\label{index}\index{$<$strong$>$Exception (CM)$<$/strong$>$@{$<$strong$>$Exception (CM)$<$/strong$>$}}
 \label{index_md__r_e_a_d_m_e}%
 \Hypertarget{index_md__r_e_a_d_m_e}%
-\doxysubsection*{{\itshape Java similar exception}}
+\doxysubsection*{{\itshape Exception}}
 
 ~\newline
  This module provides you some exception which could be useful in order to give more information about errors encourented during the life of your program. ~\newline
-All exception extends the same parent class, i.\+e. Abstract\+Exception, although there is a defined hierarchy -\/ packaging -\/ as you can see below. ~\newline
- ~\newline
+All exception are extended as an hierarchy which as you can read in this documentation ~\newline
 ~\newline
- Keep in mind that, although JPL provide \href{https://github.com/Gabriele-P03/Libraries/tree/main/logger}{\texttt{ Logger}}, it is not used in this module to print messages of occurred exception, it will be your duty to perform it. ~\newline
+ Keep in mind that, although JPL provide \href{https://github.com/Gabriele-P03/Libraries/tree/main/logger}{\texttt{ Logger}}, it is not used in this module to print messages of occurred exception, it will be your duty to do it.~\newline
+ Otherwise, you have to define USE\+\_\+\+EXCEPTION\+\_\+\+W\+\_\+\+LOGGER\+\_\+\+JPL before to include \href{https://github.com/Gabriele-P03/JPL/blob/main/logger/src/LoggerWrapper.hpp}{\texttt{ Logger\+Wrapper.\+hpp}} ~\newline
 ~\newline
- The message of thrown exception can be retrieved via what() function. Some of these exception override it in order to take out a template message composed by different argumentd passed to constructors. 
+ The message of the thrown exception can be retrieved via what() function.~\newline
+ Some of those override this function in order to take out a template message composed by different arguments.~\newline
+ Check each of them to get more information. ~\newline
+~\newline
+ This module can be involved into using JPL\textquotesingle{}s Stacktrace feature -\/ provided by \href{https://github.com/Gabriele-P03/Libraries/tree/main/utils}{\texttt{ Utils}} (into debug) -\/ defining USE\+\_\+\+STACKTRACE\+\_\+\+W\+\_\+\+EXCEPTION\+\_\+\+JPL, then you will be able to get stacktrace of the thrown exception via get\+Stacktrace(). ~\newline
+ Also, defining that macro, the stacktrace will be printed when the exception instance is passed to std\+::cout ~\newline
+ 

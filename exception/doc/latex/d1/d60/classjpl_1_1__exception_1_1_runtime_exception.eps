@@ -5,7 +5,7 @@
 %%For: 
 %Magnification: 1.00
 %%Orientation: Portrait
-%%BoundingBox: 0 0 500 599.250916
+%%BoundingBox: 0 0 500 636.704102
 %%Pages: 0
 %%BeginSetup
 %%EndSetup
@@ -19,12 +19,12 @@
 /marginwidth 10 def
 /distx 20 def
 /disty 40 def
-/boundaspect 0.834375 def  % aspect ratio of the BoundingBox (width/height)
+/boundaspect 0.785294 def  % aspect ratio of the BoundingBox (width/height)
 /boundx 500 def
 /boundy boundx boundaspect div def
 /xspacing 0 def
 /yspacing 0 def
-/rows 16 def
+/rows 17 def
 /cols 2 def
 /scalefactor 0 def
 /boxfont /Times-Roman findfont fontheight scalefont def
@@ -178,6 +178,7 @@ boxfont setfont
 (std::exception) cw
 (jpl::_exception::ArithmeticException) cw
 (jpl::_exception::FileNotFoundException) cw
+(jpl::_exception::IOException) cw
 (jpl::_exception::IllegalArgumentException) cw
 (jpl::_exception::IllegalCastException) cw
 (jpl::_exception::IllegalStateException) cw
@@ -200,11 +201,12 @@ boundx scalefactor div boundy scalefactor div scale
 
 % ----- classes -----
 
- (jpl::_exception::RuntimeException) 0.000000 13.000000 box
- (jpl::_exception::AbstractException) 0.000000 14.000000 box
- (std::exception) 0.000000 15.000000 box
- (jpl::_exception::ArithmeticException) 1.000000 12.000000 box
- (jpl::_exception::FileNotFoundException) 1.000000 11.000000 box
+ (jpl::_exception::RuntimeException) 0.000000 14.000000 box
+ (jpl::_exception::AbstractException) 0.000000 15.000000 box
+ (std::exception) 0.000000 16.000000 box
+ (jpl::_exception::ArithmeticException) 1.000000 13.000000 box
+ (jpl::_exception::FileNotFoundException) 1.000000 12.000000 box
+ (jpl::_exception::IOException) 1.000000 11.000000 box
  (jpl::_exception::IllegalArgumentException) 1.000000 10.000000 box
  (jpl::_exception::IllegalCastException) 1.000000 9.000000 box
  (jpl::_exception::IllegalStateException) 1.000000 8.000000 box
@@ -220,15 +222,17 @@ boundx scalefactor div boundy scalefactor div scale
 % ----- relations -----
 
 solid
-0 0.000000 13.000000 out
-solid
-1 0.000000 14.000000 in
-dashed
 0 0.000000 14.000000 out
-dashed
-1 0.000000 15.000000 in
 solid
-1 0.000000 12.250000 out
+1 0.000000 15.000000 in
+dashed
+0 0.000000 15.000000 out
+dashed
+1 0.000000 16.000000 in
+solid
+1 0.000000 13.250000 out
+solid
+0 0.000000 13.500000 hedge
 solid
 0 0.000000 12.500000 hedge
 solid
@@ -256,4 +260,4 @@ solid
 solid
 0 0.000000 0.500000 hedge
 solid
-0.000000 13.000000 0.500000 vedge
+0.000000 14.000000 0.500000 vedge

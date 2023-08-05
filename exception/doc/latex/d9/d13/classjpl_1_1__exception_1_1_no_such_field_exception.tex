@@ -13,7 +13,7 @@ Inheritance diagram for jpl\+::\+\_\+exception\+::No\+Such\+Field\+Exception\+:\
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classjpl_1_1__exception_1_1_no_such_field_exception_afb6774a1587b13d92568b055675cd556}{No\+Such\+Field\+Exception}} (const char \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classjpl_1_1__exception_1_1_abstract_exception_a8a40d27a336fcfeb26e7fd7b6c8522ec}{msg}})
+\mbox{\hyperlink{classjpl_1_1__exception_1_1_no_such_field_exception_ac8a65d01c4c04ddedd46549a86d71e5b}{No\+Such\+Field\+Exception}} (std\+::string \mbox{\hyperlink{classjpl_1_1__exception_1_1_abstract_exception_a2aa9aba38aab837ce8eee9552dd2f1fb}{msg}})
 \item 
 \mbox{\hyperlink{classjpl_1_1__exception_1_1_no_such_field_exception_a3c49037e22d7030f3fce4483513ce836}{No\+Such\+Field\+Exception}} ()
 \end{DoxyCompactItemize}
@@ -21,23 +21,21 @@ Inheritance diagram for jpl\+::\+\_\+exception\+::No\+Such\+Field\+Exception\+:\
 \begin{DoxyCompactItemize}
 \item 
 virtual const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classjpl_1_1__exception_1_1_abstract_exception_ae17527e3192e5afdb01a90f199dbafe5}{what}} () const \+\_\+\+GLIBCXX\+\_\+\+TXN\+\_\+\+SAFE\+\_\+\+DYN \+\_\+\+GLIBCXX\+\_\+\+NOTHROW override
-\begin{DoxyCompactList}\small\item\em Print the type of the exception which has been thrown with the message that has been passed, too. \end{DoxyCompactList}\item 
-virtual const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classjpl_1_1__exception_1_1_abstract_exception_a763c7353208d799125dc4d871f510cef}{get\+Stacktrace}} () const
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Print the type of the exception which has been thrown with the message that has been passed, too. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Additional Inherited Members}
 \doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classjpl_1_1__exception_1_1_abstract_exception}{jpl\+::\+\_\+exception\+::\+Abstract\+Exception}}}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classjpl_1_1__exception_1_1_abstract_exception_ab1e5aa0f3b5106e72cb9de93f93e3a8c}{Abstract\+Exception}} (const char \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classjpl_1_1__exception_1_1_abstract_exception_add4642360b0286f49d367e431b6473fa}{type\+\_\+ex}})
+\mbox{\hyperlink{classjpl_1_1__exception_1_1_abstract_exception_a705351cb7a55d23909e49c9f447d5a8e}{Abstract\+Exception}} (std\+::string \mbox{\hyperlink{classjpl_1_1__exception_1_1_abstract_exception_ac135cf56b3dc4fdb4bc558d345d0f436}{type\+\_\+ex}})
 \item 
-\mbox{\hyperlink{classjpl_1_1__exception_1_1_abstract_exception_af2dafed1749e2d7cb0097172f5974c0d}{Abstract\+Exception}} (const char \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classjpl_1_1__exception_1_1_abstract_exception_add4642360b0286f49d367e431b6473fa}{type\+\_\+ex}}, const char \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classjpl_1_1__exception_1_1_abstract_exception_a8a40d27a336fcfeb26e7fd7b6c8522ec}{msg}})
+\mbox{\hyperlink{classjpl_1_1__exception_1_1_abstract_exception_af4f36b532a1cd3916101e10216f5d8e2}{Abstract\+Exception}} (std\+::string \mbox{\hyperlink{classjpl_1_1__exception_1_1_abstract_exception_ac135cf56b3dc4fdb4bc558d345d0f436}{type\+\_\+ex}}, std\+::string \mbox{\hyperlink{classjpl_1_1__exception_1_1_abstract_exception_a2aa9aba38aab837ce8eee9552dd2f1fb}{msg}})
 \end{DoxyCompactItemize}
 \doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classjpl_1_1__exception_1_1_abstract_exception}{jpl\+::\+\_\+exception\+::\+Abstract\+Exception}}}
 \begin{DoxyCompactItemize}
 \item 
-const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classjpl_1_1__exception_1_1_abstract_exception_add4642360b0286f49d367e431b6473fa}{type\+\_\+ex}}
+std\+::string \mbox{\hyperlink{classjpl_1_1__exception_1_1_abstract_exception_ac135cf56b3dc4fdb4bc558d345d0f436}{type\+\_\+ex}}
 \item 
-const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classjpl_1_1__exception_1_1_abstract_exception_a8a40d27a336fcfeb26e7fd7b6c8522ec}{msg}}
+std\+::string \mbox{\hyperlink{classjpl_1_1__exception_1_1_abstract_exception_a2aa9aba38aab837ce8eee9552dd2f1fb}{msg}}
 \end{DoxyCompactItemize}
 
 
@@ -49,11 +47,11 @@ Definition at line \mbox{\hyperlink{_no_such_field_exception_8hpp_source_l00024}
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\Hypertarget{classjpl_1_1__exception_1_1_no_such_field_exception_afb6774a1587b13d92568b055675cd556}\label{classjpl_1_1__exception_1_1_no_such_field_exception_afb6774a1587b13d92568b055675cd556} 
+\Hypertarget{classjpl_1_1__exception_1_1_no_such_field_exception_ac8a65d01c4c04ddedd46549a86d71e5b}\label{classjpl_1_1__exception_1_1_no_such_field_exception_ac8a65d01c4c04ddedd46549a86d71e5b} 
 \index{jpl::\_exception::NoSuchFieldException@{jpl::\_exception::NoSuchFieldException}!NoSuchFieldException@{NoSuchFieldException}}
 \index{NoSuchFieldException@{NoSuchFieldException}!jpl::\_exception::NoSuchFieldException@{jpl::\_exception::NoSuchFieldException}}
 \doxysubsubsection{\texorpdfstring{NoSuchFieldException()}{NoSuchFieldException()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily jpl\+::\+\_\+exception\+::\+No\+Such\+Field\+Exception\+::\+No\+Such\+Field\+Exception (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily jpl\+::\+\_\+exception\+::\+No\+Such\+Field\+Exception\+::\+No\+Such\+Field\+Exception (\begin{DoxyParamCaption}\item[{std\+::string}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 

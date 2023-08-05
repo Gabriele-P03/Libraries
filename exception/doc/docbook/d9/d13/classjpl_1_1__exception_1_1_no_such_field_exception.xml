@@ -16,7 +16,7 @@
 <simplesect>
     <title>Public Member Functions    </title>
         <itemizedlist>
-            <listitem><para><link linkend="_classjpl_1_1__exception_1_1_no_such_field_exception_1afb6774a1587b13d92568b055675cd556">NoSuchFieldException</link> (const char *<link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1a8a40d27a336fcfeb26e7fd7b6c8522ec">msg</link>)</para>
+            <listitem><para><link linkend="_classjpl_1_1__exception_1_1_no_such_field_exception_1ac8a65d01c4c04ddedd46549a86d71e5b">NoSuchFieldException</link> (std::string <link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1a2aa9aba38aab837ce8eee9552dd2f1fb">msg</link>)</para>
 </listitem>
             <listitem><para><link linkend="_classjpl_1_1__exception_1_1_no_such_field_exception_1a3c49037e22d7030f3fce4483513ce836">NoSuchFieldException</link> ()</para>
 </listitem>
@@ -27,22 +27,20 @@ Public Member Functions inherited from <link linkend="_classjpl_1_1__exception_1
 
 <para>Print the type of the exception which has been thrown with the message that has been passed, too. </para>
 </listitem>
-            <listitem><para>virtual const char * <link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1a763c7353208d799125dc4d871f510cef">getStacktrace</link> () const</para>
-</listitem>
         </itemizedlist>
 <simplesect>
     <title>Additional Inherited Members    </title>
 Protected Member Functions inherited from <link linkend="_classjpl_1_1__exception_1_1_abstract_exception">jpl::_exception::AbstractException</link>        <itemizedlist>
-            <listitem><para><link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1ab1e5aa0f3b5106e72cb9de93f93e3a8c">AbstractException</link> (const char *<link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1add4642360b0286f49d367e431b6473fa">type_ex</link>)</para>
+            <listitem><para><link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1a705351cb7a55d23909e49c9f447d5a8e">AbstractException</link> (std::string <link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1ac135cf56b3dc4fdb4bc558d345d0f436">type_ex</link>)</para>
 </listitem>
-            <listitem><para><link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1af2dafed1749e2d7cb0097172f5974c0d">AbstractException</link> (const char *<link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1add4642360b0286f49d367e431b6473fa">type_ex</link>, const char *<link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1a8a40d27a336fcfeb26e7fd7b6c8522ec">msg</link>)</para>
+            <listitem><para><link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1af4f36b532a1cd3916101e10216f5d8e2">AbstractException</link> (std::string <link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1ac135cf56b3dc4fdb4bc558d345d0f436">type_ex</link>, std::string <link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1a2aa9aba38aab837ce8eee9552dd2f1fb">msg</link>)</para>
 </listitem>
         </itemizedlist>
 </simplesect>
 Protected Attributes inherited from <link linkend="_classjpl_1_1__exception_1_1_abstract_exception">jpl::_exception::AbstractException</link>        <itemizedlist>
-            <listitem><para>const char * <link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1add4642360b0286f49d367e431b6473fa">type_ex</link></para>
+            <listitem><para>std::string <link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1ac135cf56b3dc4fdb4bc558d345d0f436">type_ex</link></para>
 </listitem>
-            <listitem><para>const char * <link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1a8a40d27a336fcfeb26e7fd7b6c8522ec">msg</link></para>
+            <listitem><para>std::string <link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1a2aa9aba38aab837ce8eee9552dd2f1fb">msg</link></para>
 </listitem>
         </itemizedlist>
 <section>
@@ -52,11 +50,11 @@ Definition at line <link linkend="__no_such_field_exception_8hpp_source_1l00024"
 </section>
 <section>
 <title>Constructor &amp; Destructor Documentation</title>
-<anchor xml:id="_classjpl_1_1__exception_1_1_no_such_field_exception_1afb6774a1587b13d92568b055675cd556"/><section>
+<anchor xml:id="_classjpl_1_1__exception_1_1_no_such_field_exception_1ac8a65d01c4c04ddedd46549a86d71e5b"/><section>
     <title>NoSuchFieldException()<computeroutput>[1/2]</computeroutput></title>
 <indexterm><primary>NoSuchFieldException</primary><secondary>jpl::_exception::NoSuchFieldException</secondary></indexterm>
 <indexterm><primary>jpl::_exception::NoSuchFieldException</primary><secondary>NoSuchFieldException</secondary></indexterm>
-<para><computeroutput>jpl::_exception::NoSuchFieldException::NoSuchFieldException (const char * msg)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+<para><computeroutput>jpl::_exception::NoSuchFieldException::NoSuchFieldException (std::string msg)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
 Definition at line <link linkend="__no_such_field_exception_8hpp_source_1l00028">28</link> of file <link linkend="__no_such_field_exception_8hpp_source">NoSuchFieldException.hpp</link>.</para>
 </section>
 <anchor xml:id="_classjpl_1_1__exception_1_1_no_such_field_exception_1a3c49037e22d7030f3fce4483513ce836"/><section>

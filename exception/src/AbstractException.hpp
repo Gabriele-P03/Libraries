@@ -8,7 +8,6 @@
  * print - by yourself - through JPL's Logger   
  *  
  * 
- * Finisci di scrivere la doc circa USE_STACKTRACE_W_EXCEPTION_JPL
  * 
  * 
  * @date 2023-04-16
@@ -57,7 +56,7 @@
                     AbstractException(std::string type_ex) : AbstractException(type_ex, ""){}
                     AbstractException(std::string type_ex, std::string msg) : type_ex(type_ex), msg(msg){
                         #ifdef USE_STACKTRACE_W_EXCEPTION_JPL
-                            this->stacktrace = new _utils::_debug::Stacktrace(0, 0);
+                            this->stacktrace = new _utils::_debug::Stacktrace(DEFAULT_SKIP_STACKFRAMES_JPL);
                         #endif
                     }
                     
@@ -92,14 +91,14 @@
                      * @param iae 
                      * @return std::ostream& 
                      */
-                    inline friend std::ostream& operator<<(std::ostream& os, const AbstractException &iae){
+                    inline friend std::ostream& operator<<(std::ostream& os, const AbstractException &ex){
 
-                        const char* buffer = iae.what();
+                        const char* buffer = ex.what();
                         os<<buffer<<std::endl;
                         delete[] buffer;
 
                         #ifdef USE_STACKTRACE_W_EXCEPTION_JPL
-                            os<<iae.getStacktrace()<<std::endl;
+                            os<<*ex.getStacktrace();
                         #endif
 
                         return os;

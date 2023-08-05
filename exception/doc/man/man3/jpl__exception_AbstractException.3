@@ -19,28 +19,25 @@ Inherited by \fBjpl::_exception::IllegalAccessException\fP, \fBjpl::_exception::
 .RI "virtual const char * \fBwhat\fP () const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW override"
 .br
 .RI "Print the type of the exception which has been thrown with the message that has been passed, too\&. "
-.ti -1c
-.RI "virtual const char * \fBgetStacktrace\fP () const"
-.br
 .in -1c
 .SS "Protected Member Functions"
 
 .in +1c
 .ti -1c
-.RI "\fBAbstractException\fP (const char *\fBtype_ex\fP)"
+.RI "\fBAbstractException\fP (std::string \fBtype_ex\fP)"
 .br
 .ti -1c
-.RI "\fBAbstractException\fP (const char *\fBtype_ex\fP, const char *\fBmsg\fP)"
+.RI "\fBAbstractException\fP (std::string \fBtype_ex\fP, std::string \fBmsg\fP)"
 .br
 .in -1c
 .SS "Protected Attributes"
 
 .in +1c
 .ti -1c
-.RI "const char * \fBtype_ex\fP"
+.RI "std::string \fBtype_ex\fP"
 .br
 .ti -1c
-.RI "const char * \fBmsg\fP"
+.RI "std::string \fBmsg\fP"
 .br
 .in -1c
 .SS "Friends"
@@ -52,30 +49,19 @@ Inherited by \fBjpl::_exception::IllegalAccessException\fP, \fBjpl::_exception::
 .in -1c
 .SH "Detailed Description"
 .PP 
-Definition at line \fB27\fP of file \fBAbstractException\&.hpp\fP\&.
+Definition at line \fB35\fP of file \fBAbstractException\&.hpp\fP\&.
 .SH "Constructor & Destructor Documentation"
 .PP 
-.SS "jpl::_exception::AbstractException::AbstractException (const char * type_ex)\fC [inline]\fP, \fC [protected]\fP"
+.SS "jpl::_exception::AbstractException::AbstractException (std::string type_ex)\fC [inline]\fP, \fC [protected]\fP"
 
 .PP
-Definition at line \fB44\fP of file \fBAbstractException\&.hpp\fP\&.
-.SS "jpl::_exception::AbstractException::AbstractException (const char * type_ex, const char * msg)\fC [inline]\fP, \fC [protected]\fP"
+Definition at line \fB56\fP of file \fBAbstractException\&.hpp\fP\&.
+.SS "jpl::_exception::AbstractException::AbstractException (std::string type_ex, std::string msg)\fC [inline]\fP, \fC [protected]\fP"
 
 .PP
-Definition at line \fB45\fP of file \fBAbstractException\&.hpp\fP\&.
+Definition at line \fB57\fP of file \fBAbstractException\&.hpp\fP\&.
 .SH "Member Function Documentation"
 .PP 
-.SS "virtual const char * jpl::_exception::AbstractException::getStacktrace () const\fC [inline]\fP, \fC [virtual]\fP"
-
-.PP
-\fBReturns\fP
-.RS 4
-the Stacktrace of the thrown exception 
-.RE
-.PP
-
-.PP
-Definition at line \fB67\fP of file \fBAbstractException\&.hpp\fP\&.
 .SS "virtual const char * jpl::_exception::AbstractException::what () const\fC [inline]\fP, \fC [override]\fP, \fC [virtual]\fP"
 
 .PP
@@ -88,9 +74,9 @@ const char*
 .PP
 
 .PP
-Reimplemented in \fBjpl::_exception::IllegalCastException\fP, \fBjpl::_exception::IndexOutOfBoundsException\fP, and \fBjpl::_exception::SocketException\fP\&.
+Reimplemented in \fBjpl::_exception::IllegalCastException\fP, \fBjpl::_exception::IndexOutOfBoundsException\fP, \fBjpl::_exception::IOException\fP, and \fBjpl::_exception::SocketException\fP\&.
 .PP
-Definition at line \fB54\fP of file \fBAbstractException\&.hpp\fP\&.
+Definition at line \fB70\fP of file \fBAbstractException\&.hpp\fP\&.
 .SH "Friends And Related Symbol Documentation"
 .PP 
 .SS "std::ostream & operator<< (std::ostream & os, const \fBAbstractException\fP & iae)\fC [friend]\fP"
@@ -110,17 +96,17 @@ std::ostream&
 .PP
 
 .PP
-Definition at line \fB91\fP of file \fBAbstractException\&.hpp\fP\&.
+Definition at line \fB94\fP of file \fBAbstractException\&.hpp\fP\&.
 .SH "Field Documentation"
 .PP 
-.SS "const char* jpl::_exception::AbstractException::msg\fC [protected]\fP"
+.SS "std::string jpl::_exception::AbstractException::msg\fC [protected]\fP"
 It is a description of what has just happened\&. For some exception it may be a template of stuff (usually when constructor does not need any msg) 
 .PP
-Definition at line \fB42\fP of file \fBAbstractException\&.hpp\fP\&.
-.SS "const char* jpl::_exception::AbstractException::type_ex\fC [protected]\fP"
+Definition at line \fB50\fP of file \fBAbstractException\&.hpp\fP\&.
+.SS "std::string jpl::_exception::AbstractException::type_ex\fC [protected]\fP"
 This is a description of the exception which has been thrown\&. It is passed by constructor and it is as the exception name 
 .PP
-Definition at line \fB36\fP of file \fBAbstractException\&.hpp\fP\&.
+Definition at line \fB44\fP of file \fBAbstractException\&.hpp\fP\&.
 
 .SH "Author"
 .PP 

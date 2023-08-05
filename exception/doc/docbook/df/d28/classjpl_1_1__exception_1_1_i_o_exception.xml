@@ -1,0 +1,157 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classjpl_1_1__exception_1_1_i_o_exception" xml:lang="en-US">
+<title>jpl::_exception::IOException Class Reference</title>
+<indexterm><primary>jpl::_exception::IOException</primary></indexterm>
+<para>
+<computeroutput>#include &lt;IOException.hpp&gt;</computeroutput>
+</para>
+<para>Inheritance diagram for jpl::_exception::IOException:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../df/d28/classjpl_1_1__exception_1_1_i_o_exception.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_classjpl_1_1__exception_1_1_i_o_exception_1aadb4c8d0d5b8d79caf82dd6b4f629041">IOException</link> (unsigned int <link linkend="_classjpl_1_1__exception_1_1_i_o_exception_1a54984e0bfb4841a76e8b321ca74d7566">error_code</link>, std::string <link linkend="_classjpl_1_1__exception_1_1_i_o_exception_1ad607d16487c1edd5446c191394a9fca9">description</link>, std::string <link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1a2aa9aba38aab837ce8eee9552dd2f1fb">msg</link>)</para>
+</listitem>
+            <listitem><para><link linkend="_classjpl_1_1__exception_1_1_i_o_exception_1a5cafc7c4e00e3fcb8204e5ded96041a4">IOException</link> (unsigned int <link linkend="_classjpl_1_1__exception_1_1_i_o_exception_1a54984e0bfb4841a76e8b321ca74d7566">error_code</link>, std::string <link linkend="_classjpl_1_1__exception_1_1_i_o_exception_1ad607d16487c1edd5446c191394a9fca9">description</link>)</para>
+</listitem>
+            <listitem><para><link linkend="_classjpl_1_1__exception_1_1_i_o_exception_1ada9a43c3919fea21c54b5a0777286029">IOException</link> (unsigned int <link linkend="_classjpl_1_1__exception_1_1_i_o_exception_1a54984e0bfb4841a76e8b321ca74d7566">error_code</link>)</para>
+</listitem>
+            <listitem><para><link linkend="_classjpl_1_1__exception_1_1_i_o_exception_1a4bd5e3ac045e767b0dbabd535b32664a">IOException</link> (std::string <link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1a2aa9aba38aab837ce8eee9552dd2f1fb">msg</link>)</para>
+</listitem>
+            <listitem><para><link linkend="_classjpl_1_1__exception_1_1_i_o_exception_1a39a2329b2a3c9d2639dc6adff38c3e03">IOException</link> ()</para>
+</listitem>
+            <listitem><para>const char * <link linkend="_classjpl_1_1__exception_1_1_i_o_exception_1a99b59a19d9d9165575e98678db8602f5">what</link> () const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW override</para>
+
+<para>Print the type of the exception which has been thrown with the message that has been passed, too. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+Public Member Functions inherited from <link linkend="_classjpl_1_1__exception_1_1_runtime_exception">jpl::_exception::RuntimeException</link>        <itemizedlist>
+            <listitem><para><link linkend="_classjpl_1_1__exception_1_1_runtime_exception_1a8d490df819fb051b3500520f5943aa1f">RuntimeException</link> (std::string <link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1ac135cf56b3dc4fdb4bc558d345d0f436">type_ex</link>, std::string <link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1a2aa9aba38aab837ce8eee9552dd2f1fb">msg</link>)</para>
+</listitem>
+            <listitem><para><link linkend="_classjpl_1_1__exception_1_1_runtime_exception_1a2e67f85fd1fb47b71bd4262cfd88f0cb">RuntimeException</link> (std::string <link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1a2aa9aba38aab837ce8eee9552dd2f1fb">msg</link>)</para>
+</listitem>
+            <listitem><para><link linkend="_classjpl_1_1__exception_1_1_runtime_exception_1a4c11326f9e408343ecf9d714c71508e9">RuntimeException</link> ()</para>
+</listitem>
+        </itemizedlist>
+        <itemizedlist>
+            <listitem><para>virtual const char * <link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1ae17527e3192e5afdb01a90f199dbafe5">what</link> () const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW override</para>
+
+<para>Print the type of the exception which has been thrown with the message that has been passed, too. </para>
+</listitem>
+        </itemizedlist>
+<simplesect>
+    <title>Protected Attributes    </title>
+        <itemizedlist>
+            <listitem><para>const unsigned int <link linkend="_classjpl_1_1__exception_1_1_i_o_exception_1a54984e0bfb4841a76e8b321ca74d7566">error_code</link></para>
+</listitem>
+            <listitem><para>std::string <link linkend="_classjpl_1_1__exception_1_1_i_o_exception_1ad607d16487c1edd5446c191394a9fca9">description</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+Protected Attributes inherited from <link linkend="_classjpl_1_1__exception_1_1_abstract_exception">jpl::_exception::AbstractException</link>        <itemizedlist>
+            <listitem><para>std::string <link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1ac135cf56b3dc4fdb4bc558d345d0f436">type_ex</link></para>
+</listitem>
+            <listitem><para>std::string <link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1a2aa9aba38aab837ce8eee9552dd2f1fb">msg</link></para>
+</listitem>
+        </itemizedlist>
+<simplesect>
+    <title>Additional Inherited Members    </title>
+Protected Member Functions inherited from <link linkend="_classjpl_1_1__exception_1_1_abstract_exception">jpl::_exception::AbstractException</link>        <itemizedlist>
+            <listitem><para><link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1a705351cb7a55d23909e49c9f447d5a8e">AbstractException</link> (std::string <link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1ac135cf56b3dc4fdb4bc558d345d0f436">type_ex</link>)</para>
+</listitem>
+            <listitem><para><link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1af4f36b532a1cd3916101e10216f5d8e2">AbstractException</link> (std::string <link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1ac135cf56b3dc4fdb4bc558d345d0f436">type_ex</link>, std::string <link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1a2aa9aba38aab837ce8eee9552dd2f1fb">msg</link>)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+<para>
+Definition at line <link linkend="__i_o_exception_8hpp_source_1l00024">24</link> of file <link linkend="__i_o_exception_8hpp_source">IOException.hpp</link>.</para>
+</section>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_classjpl_1_1__exception_1_1_i_o_exception_1aadb4c8d0d5b8d79caf82dd6b4f629041"/><section>
+    <title>IOException()<computeroutput>[1/5]</computeroutput></title>
+<indexterm><primary>IOException</primary><secondary>jpl::_exception::IOException</secondary></indexterm>
+<indexterm><primary>jpl::_exception::IOException</primary><secondary>IOException</secondary></indexterm>
+<para><computeroutput>jpl::_exception::IOException::IOException (unsigned int error_code, std::string description, std::string msg)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__i_o_exception_8hpp_source_1l00031">31</link> of file <link linkend="__i_o_exception_8hpp_source">IOException.hpp</link>.</para>
+</section>
+<anchor xml:id="_classjpl_1_1__exception_1_1_i_o_exception_1a5cafc7c4e00e3fcb8204e5ded96041a4"/><section>
+    <title>IOException()<computeroutput>[2/5]</computeroutput></title>
+<indexterm><primary>IOException</primary><secondary>jpl::_exception::IOException</secondary></indexterm>
+<indexterm><primary>jpl::_exception::IOException</primary><secondary>IOException</secondary></indexterm>
+<para><computeroutput>jpl::_exception::IOException::IOException (unsigned int error_code, std::string description)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__i_o_exception_8hpp_source_1l00032">32</link> of file <link linkend="__i_o_exception_8hpp_source">IOException.hpp</link>.</para>
+</section>
+<anchor xml:id="_classjpl_1_1__exception_1_1_i_o_exception_1ada9a43c3919fea21c54b5a0777286029"/><section>
+    <title>IOException()<computeroutput>[3/5]</computeroutput></title>
+<indexterm><primary>IOException</primary><secondary>jpl::_exception::IOException</secondary></indexterm>
+<indexterm><primary>jpl::_exception::IOException</primary><secondary>IOException</secondary></indexterm>
+<para><computeroutput>jpl::_exception::IOException::IOException (unsigned int error_code)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__i_o_exception_8hpp_source_1l00033">33</link> of file <link linkend="__i_o_exception_8hpp_source">IOException.hpp</link>.</para>
+</section>
+<anchor xml:id="_classjpl_1_1__exception_1_1_i_o_exception_1a4bd5e3ac045e767b0dbabd535b32664a"/><section>
+    <title>IOException()<computeroutput>[4/5]</computeroutput></title>
+<indexterm><primary>IOException</primary><secondary>jpl::_exception::IOException</secondary></indexterm>
+<indexterm><primary>jpl::_exception::IOException</primary><secondary>IOException</secondary></indexterm>
+<para><computeroutput>jpl::_exception::IOException::IOException (std::string msg)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__i_o_exception_8hpp_source_1l00034">34</link> of file <link linkend="__i_o_exception_8hpp_source">IOException.hpp</link>.</para>
+</section>
+<anchor xml:id="_classjpl_1_1__exception_1_1_i_o_exception_1a39a2329b2a3c9d2639dc6adff38c3e03"/><section>
+    <title>IOException()<computeroutput>[5/5]</computeroutput></title>
+<indexterm><primary>IOException</primary><secondary>jpl::_exception::IOException</secondary></indexterm>
+<indexterm><primary>jpl::_exception::IOException</primary><secondary>IOException</secondary></indexterm>
+<para><computeroutput>jpl::_exception::IOException::IOException ( )<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__i_o_exception_8hpp_source_1l00035">35</link> of file <link linkend="__i_o_exception_8hpp_source">IOException.hpp</link>.</para>
+</section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_classjpl_1_1__exception_1_1_i_o_exception_1a99b59a19d9d9165575e98678db8602f5"/><section>
+    <title>what()</title>
+<indexterm><primary>what</primary><secondary>jpl::_exception::IOException</secondary></indexterm>
+<indexterm><primary>jpl::_exception::IOException</primary><secondary>what</secondary></indexterm>
+<para><computeroutput>const char * jpl::_exception::IOException::what ( ) const<computeroutput>[inline]</computeroutput>, <computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+
+<para>Print the type of the exception which has been thrown with the message that has been passed, too. </para>
+</para>
+
+<para><formalpara><title>Returns</title>
+
+<para>const char* </para>
+</formalpara>
+</para>
+<para>
+Reimplemented from <link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1ae17527e3192e5afdb01a90f199dbafe5">jpl::_exception::AbstractException</link>.</para>
+<para>
+Definition at line <link linkend="__i_o_exception_8hpp_source_1l00037">37</link> of file <link linkend="__i_o_exception_8hpp_source">IOException.hpp</link>.</para>
+</section>
+</section>
+<section>
+<title>Field Documentation</title>
+<anchor xml:id="_classjpl_1_1__exception_1_1_i_o_exception_1ad607d16487c1edd5446c191394a9fca9"/><section>
+    <title>description</title>
+<indexterm><primary>description</primary><secondary>jpl::_exception::IOException</secondary></indexterm>
+<indexterm><primary>jpl::_exception::IOException</primary><secondary>description</secondary></indexterm>
+<para><computeroutput>std::string jpl::_exception::IOException::description<computeroutput>[protected]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__i_o_exception_8hpp_source_1l00028">28</link> of file <link linkend="__i_o_exception_8hpp_source">IOException.hpp</link>.</para>
+</section>
+<anchor xml:id="_classjpl_1_1__exception_1_1_i_o_exception_1a54984e0bfb4841a76e8b321ca74d7566"/><section>
+    <title>error_code</title>
+<indexterm><primary>error_code</primary><secondary>jpl::_exception::IOException</secondary></indexterm>
+<indexterm><primary>jpl::_exception::IOException</primary><secondary>error_code</secondary></indexterm>
+<para><computeroutput>const unsigned int jpl::_exception::IOException::error_code<computeroutput>[protected]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__i_o_exception_8hpp_source_1l00027">27</link> of file <link linkend="__i_o_exception_8hpp_source">IOException.hpp</link>.</para>
+</section>
+<para>
+The documentation for this class was generated from the following file:</para>
+src/runtime/<link linkend="__i_o_exception_8hpp">IOException.hpp</link></section>
+</section>

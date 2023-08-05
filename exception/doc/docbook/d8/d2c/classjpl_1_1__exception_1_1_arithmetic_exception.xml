@@ -16,16 +16,18 @@
 <simplesect>
     <title>Public Member Functions    </title>
         <itemizedlist>
-            <listitem><para><link linkend="_classjpl_1_1__exception_1_1_arithmetic_exception_1a77e674921809476c80e4ec7938cf6f1d">ArithmeticException</link> (const char *<link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1a8a40d27a336fcfeb26e7fd7b6c8522ec">msg</link>)</para>
+            <listitem><para><link linkend="_classjpl_1_1__exception_1_1_arithmetic_exception_1a688c59db20e0b009dc1e09ea298002e2">ArithmeticException</link> (std::string <link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1a2aa9aba38aab837ce8eee9552dd2f1fb">msg</link>)</para>
 </listitem>
             <listitem><para><link linkend="_classjpl_1_1__exception_1_1_arithmetic_exception_1aae632cd5cb0fd2e4eb960e1a72db3bcb">ArithmeticException</link> ()</para>
 </listitem>
         </itemizedlist>
 </simplesect>
 Public Member Functions inherited from <link linkend="_classjpl_1_1__exception_1_1_runtime_exception">jpl::_exception::RuntimeException</link>        <itemizedlist>
-            <listitem><para><link linkend="_classjpl_1_1__exception_1_1_runtime_exception_1a03edc87ffaaa4c5dfb651cd4aa924ade">RuntimeException</link> (const char *<link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1add4642360b0286f49d367e431b6473fa">type_ex</link>, const char *<link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1a8a40d27a336fcfeb26e7fd7b6c8522ec">msg</link>)</para>
+            <listitem><para><link linkend="_classjpl_1_1__exception_1_1_runtime_exception_1a8d490df819fb051b3500520f5943aa1f">RuntimeException</link> (std::string <link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1ac135cf56b3dc4fdb4bc558d345d0f436">type_ex</link>, std::string <link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1a2aa9aba38aab837ce8eee9552dd2f1fb">msg</link>)</para>
 </listitem>
-            <listitem><para><link linkend="_classjpl_1_1__exception_1_1_runtime_exception_1ae493ccae676b5f4364b1a9a3250b34ab">RuntimeException</link> (const char *<link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1a8a40d27a336fcfeb26e7fd7b6c8522ec">msg</link>)</para>
+            <listitem><para><link linkend="_classjpl_1_1__exception_1_1_runtime_exception_1a2e67f85fd1fb47b71bd4262cfd88f0cb">RuntimeException</link> (std::string <link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1a2aa9aba38aab837ce8eee9552dd2f1fb">msg</link>)</para>
+</listitem>
+            <listitem><para><link linkend="_classjpl_1_1__exception_1_1_runtime_exception_1a4c11326f9e408343ecf9d714c71508e9">RuntimeException</link> ()</para>
 </listitem>
         </itemizedlist>
 Public Member Functions inherited from <link linkend="_classjpl_1_1__exception_1_1_abstract_exception">jpl::_exception::AbstractException</link>        <itemizedlist>
@@ -33,22 +35,20 @@ Public Member Functions inherited from <link linkend="_classjpl_1_1__exception_1
 
 <para>Print the type of the exception which has been thrown with the message that has been passed, too. </para>
 </listitem>
-            <listitem><para>virtual const char * <link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1a763c7353208d799125dc4d871f510cef">getStacktrace</link> () const</para>
-</listitem>
         </itemizedlist>
 <simplesect>
     <title>Additional Inherited Members    </title>
 Protected Member Functions inherited from <link linkend="_classjpl_1_1__exception_1_1_abstract_exception">jpl::_exception::AbstractException</link>        <itemizedlist>
-            <listitem><para><link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1ab1e5aa0f3b5106e72cb9de93f93e3a8c">AbstractException</link> (const char *<link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1add4642360b0286f49d367e431b6473fa">type_ex</link>)</para>
+            <listitem><para><link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1a705351cb7a55d23909e49c9f447d5a8e">AbstractException</link> (std::string <link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1ac135cf56b3dc4fdb4bc558d345d0f436">type_ex</link>)</para>
 </listitem>
-            <listitem><para><link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1af2dafed1749e2d7cb0097172f5974c0d">AbstractException</link> (const char *<link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1add4642360b0286f49d367e431b6473fa">type_ex</link>, const char *<link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1a8a40d27a336fcfeb26e7fd7b6c8522ec">msg</link>)</para>
+            <listitem><para><link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1af4f36b532a1cd3916101e10216f5d8e2">AbstractException</link> (std::string <link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1ac135cf56b3dc4fdb4bc558d345d0f436">type_ex</link>, std::string <link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1a2aa9aba38aab837ce8eee9552dd2f1fb">msg</link>)</para>
 </listitem>
         </itemizedlist>
 </simplesect>
 Protected Attributes inherited from <link linkend="_classjpl_1_1__exception_1_1_abstract_exception">jpl::_exception::AbstractException</link>        <itemizedlist>
-            <listitem><para>const char * <link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1add4642360b0286f49d367e431b6473fa">type_ex</link></para>
+            <listitem><para>std::string <link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1ac135cf56b3dc4fdb4bc558d345d0f436">type_ex</link></para>
 </listitem>
-            <listitem><para>const char * <link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1a8a40d27a336fcfeb26e7fd7b6c8522ec">msg</link></para>
+            <listitem><para>std::string <link linkend="_classjpl_1_1__exception_1_1_abstract_exception_1a2aa9aba38aab837ce8eee9552dd2f1fb">msg</link></para>
 </listitem>
         </itemizedlist>
 <section>
@@ -58,11 +58,11 @@ Definition at line <link linkend="__arithmetic_exception_8hpp_source_1l00021">21
 </section>
 <section>
 <title>Constructor &amp; Destructor Documentation</title>
-<anchor xml:id="_classjpl_1_1__exception_1_1_arithmetic_exception_1a77e674921809476c80e4ec7938cf6f1d"/><section>
+<anchor xml:id="_classjpl_1_1__exception_1_1_arithmetic_exception_1a688c59db20e0b009dc1e09ea298002e2"/><section>
     <title>ArithmeticException()<computeroutput>[1/2]</computeroutput></title>
 <indexterm><primary>ArithmeticException</primary><secondary>jpl::_exception::ArithmeticException</secondary></indexterm>
 <indexterm><primary>jpl::_exception::ArithmeticException</primary><secondary>ArithmeticException</secondary></indexterm>
-<para><computeroutput>jpl::_exception::ArithmeticException::ArithmeticException (const char * msg)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+<para><computeroutput>jpl::_exception::ArithmeticException::ArithmeticException (std::string msg)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
 Definition at line <link linkend="__arithmetic_exception_8hpp_source_1l00027">27</link> of file <link linkend="__arithmetic_exception_8hpp_source">ArithmeticException.hpp</link>.</para>
 </section>
 <anchor xml:id="_classjpl_1_1__exception_1_1_arithmetic_exception_1aae632cd5cb0fd2e4eb960e1a72db3bcb"/><section>

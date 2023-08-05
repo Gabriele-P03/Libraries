@@ -19,6 +19,7 @@
     <xi:include href="d7/dc7/classjpl_1_1__exception_1_1_illegal_cast_exception.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="da/dac/classjpl_1_1__exception_1_1_illegal_state_exception.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="d9/d87/classjpl_1_1__exception_1_1_index_out_of_bounds_exception.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="df/d28/classjpl_1_1__exception_1_1_i_o_exception.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="d9/d13/classjpl_1_1__exception_1_1_no_such_field_exception.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="d3/d97/classjpl_1_1__exception_1_1_no_such_method_exception.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="d2/d5b/classjpl_1_1__exception_1_1_not_found_exception.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
@@ -53,6 +54,8 @@
     <xi:include href="d7/d7f/_illegal_state_exception_8hpp_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="d8/d85/_index_out_of_bounds_exception_8hpp.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="d8/d85/_index_out_of_bounds_exception_8hpp_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="d7/d25/_i_o_exception_8hpp.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="d7/d25/_i_o_exception_8hpp_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="d8/d62/_not_found_exception_8hpp.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="d8/d62/_not_found_exception_8hpp_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="d8/d85/_null_pointer_exception_8hpp.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>

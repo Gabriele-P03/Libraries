@@ -139,21 +139,27 @@ Version 1.0.0\par\page\page\vertalt
 <strong>Exception (CM)</strong>\par \pard\plain 
 {\tc\tcl1 \v <strong>Exception (CM)</strong>}
 {\xe \v <strong>Exception (CM)</strong>}
-{\bkmkstart AAAAAAAAEL}
-{\bkmkend AAAAAAAAEL}
+{\bkmkstart AAAAAAAAEW}
+{\bkmkend AAAAAAAAEW}
 {
 \pard\plain \s17\sa60\sb30\widctlpar\qj \fs22\cgrid {\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
-{\bkmkstart AAAAAAAAEM}
-{\bkmkend AAAAAAAAEM}
-{\pard\plain \s1\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs36\kerning36\cgrid {\tc\tcl1 {\i Java similar exception} } \par}
+{\bkmkstart AAAAAAAAEX}
+{\bkmkend AAAAAAAAEX}
+{\pard\plain \s1\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs36\kerning36\cgrid {\tc\tcl1 {\i Exception} } \par}
 \par
  This module provides you some exception which could be useful in order to give more information about errors encourented during the life of your program. \par
-All exception extends the same parent class, i.e. AbstractException, although there is a defined hierarchy - packaging - as you can see below. \par
+All exception are extended as an hierarchy which as you can read in this documentation \par
+\par
+ Keep in mind that, although JPL provide {\f2 Logger}, it is not used in this module to print messages of occurred exception, it will be your duty to do it.\par
+ Otherwise, you have to define USE_EXCEPTION_W_LOGGER_JPL before to include {\f2 LoggerWrapper.hpp} \par
+\par
+ The message of the thrown exception can be retrieved via what() function.\par
+ Some of those override this function in order to take out a template message composed by different arguments.\par
+ Check each of them to get more information. \par
+\par
+ This module can be involved into using JPL's Stacktrace feature - provided by {\f2 Utils} (into debug) - defining USE_STACKTRACE_W_EXCEPTION_JPL, then you will be able to get stacktrace of the thrown exception via getStacktrace(). \par
+ Also, defining that macro, the stacktrace will be printed when the exception instance is passed to std::cout \par
  \par
-\par
- Keep in mind that, although JPL provide {\f2 Logger}, it is not used in this module to print messages of occurred exception, it will be your duty to perform it. \par
-\par
- The message of thrown exception can be retrieved via what() function. Some of these exception override it in order to take out a template message composed by different argumentd passed to constructors. \par
 }}
 
 \pard\plain \sect\sbkpage
@@ -167,9 +173,9 @@ Namespace List\par \pard\plain
 {
 \par
 \pard\plain \s101\li360\sa27\sb27\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid 
-{\b {\b jpl} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAABM \\*MERGEFORMAT}{\fldrslt pagenum}}
+{\b {\b jpl} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAABO \\*MERGEFORMAT}{\fldrslt pagenum}}
 \par
-{\b {\b jpl::_exception} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAABN \\*MERGEFORMAT}{\fldrslt pagenum}}
+{\b {\b jpl::_exception} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAABP \\*MERGEFORMAT}{\fldrslt pagenum}}
 \par
 \par}
 \pard\plain \sect\sbkpage
@@ -187,45 +193,47 @@ std::exception
 {
 \par
 \pard\plain \s102\li720\sa24\sb24\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid 
-jpl::_exception::AbstractException\tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAABO \\*MERGEFORMAT}{\fldrslt pagenum}}
+jpl::_exception::AbstractException\tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAABQ \\*MERGEFORMAT}{\fldrslt pagenum}}
 {
 \par
 \pard\plain \s103\li1080\sa21\sb21\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid 
-jpl::_exception::IllegalAccessException\tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAACF \\*MERGEFORMAT}{\fldrslt pagenum}}
+jpl::_exception::IllegalAccessException\tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAACH \\*MERGEFORMAT}{\fldrslt pagenum}}
 \par
-jpl::_exception::NoSuchFieldException\tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAADB \\*MERGEFORMAT}{\fldrslt pagenum}}
+jpl::_exception::NoSuchFieldException\tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAADL \\*MERGEFORMAT}{\fldrslt pagenum}}
 \par
-jpl::_exception::NoSuchMethodException\tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAADE \\*MERGEFORMAT}{\fldrslt pagenum}}
+jpl::_exception::NoSuchMethodException\tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAADO \\*MERGEFORMAT}{\fldrslt pagenum}}
 \par
-jpl::_exception::RuntimeException\tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAADT \\*MERGEFORMAT}{\fldrslt pagenum}}
+jpl::_exception::RuntimeException\tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAAED \\*MERGEFORMAT}{\fldrslt pagenum}}
 {
 \par
 \pard\plain \s104\li1440\sa18\sb18\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid 
-jpl::_exception::ArithmeticException\tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAABZ \\*MERGEFORMAT}{\fldrslt pagenum}}
+jpl::_exception::ArithmeticException\tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAACB \\*MERGEFORMAT}{\fldrslt pagenum}}
 \par
-jpl::_exception::FileNotFoundException\tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAACC \\*MERGEFORMAT}{\fldrslt pagenum}}
+jpl::_exception::FileNotFoundException\tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAACE \\*MERGEFORMAT}{\fldrslt pagenum}}
 \par
-jpl::_exception::IllegalArgumentException\tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAACI \\*MERGEFORMAT}{\fldrslt pagenum}}
+jpl::_exception::IOException\tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAADD \\*MERGEFORMAT}{\fldrslt pagenum}}
 \par
-jpl::_exception::IllegalCastException\tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAACL \\*MERGEFORMAT}{\fldrslt pagenum}}
+jpl::_exception::IllegalArgumentException\tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAACK \\*MERGEFORMAT}{\fldrslt pagenum}}
 \par
-jpl::_exception::IllegalStateException\tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAACS \\*MERGEFORMAT}{\fldrslt pagenum}}
+jpl::_exception::IllegalCastException\tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAACN \\*MERGEFORMAT}{\fldrslt pagenum}}
 \par
-jpl::_exception::IndexOutOfBoundsException\tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAACV \\*MERGEFORMAT}{\fldrslt pagenum}}
+jpl::_exception::IllegalStateException\tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAACU \\*MERGEFORMAT}{\fldrslt pagenum}}
 \par
-jpl::_exception::NotFoundException\tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAADH \\*MERGEFORMAT}{\fldrslt pagenum}}
+jpl::_exception::IndexOutOfBoundsException\tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAACX \\*MERGEFORMAT}{\fldrslt pagenum}}
 \par
-jpl::_exception::NullPointerException\tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAADK \\*MERGEFORMAT}{\fldrslt pagenum}}
+jpl::_exception::NotFoundException\tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAADR \\*MERGEFORMAT}{\fldrslt pagenum}}
 \par
-jpl::_exception::OutOfMemoryException\tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAADN \\*MERGEFORMAT}{\fldrslt pagenum}}
+jpl::_exception::NullPointerException\tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAADU \\*MERGEFORMAT}{\fldrslt pagenum}}
 \par
-jpl::_exception::PermissionException\tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAADQ \\*MERGEFORMAT}{\fldrslt pagenum}}
+jpl::_exception::OutOfMemoryException\tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAADX \\*MERGEFORMAT}{\fldrslt pagenum}}
 \par
-jpl::_exception::SocketException\tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAADW \\*MERGEFORMAT}{\fldrslt pagenum}}
+jpl::_exception::PermissionException\tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAAEA \\*MERGEFORMAT}{\fldrslt pagenum}}
 \par
-jpl::_exception::StackOverflowException\tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAAEC \\*MERGEFORMAT}{\fldrslt pagenum}}
+jpl::_exception::SocketException\tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAAEH \\*MERGEFORMAT}{\fldrslt pagenum}}
 \par
-jpl::_exception::StackUnderflowException\tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAAEF \\*MERGEFORMAT}{\fldrslt pagenum}}
+jpl::_exception::StackOverflowException\tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAAEN \\*MERGEFORMAT}{\fldrslt pagenum}}
+\par
+jpl::_exception::StackUnderflowException\tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAAEQ \\*MERGEFORMAT}{\fldrslt pagenum}}
 \par
 }\par
 }\par
@@ -242,41 +250,43 @@ Data Structures\par \pard\plain
 {
 \par
 \pard\plain \s101\li360\sa27\sb27\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid 
-{\b {\b jpl::_exception::AbstractException} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAABO \\*MERGEFORMAT}{\fldrslt pagenum}}
+{\b {\b jpl::_exception::AbstractException} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAABQ \\*MERGEFORMAT}{\fldrslt pagenum}}
 \par
-{\b {\b jpl::_exception::ArithmeticException} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAABZ \\*MERGEFORMAT}{\fldrslt pagenum}}
+{\b {\b jpl::_exception::ArithmeticException} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAACB \\*MERGEFORMAT}{\fldrslt pagenum}}
 \par
-{\b {\b jpl::_exception::FileNotFoundException} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAACC \\*MERGEFORMAT}{\fldrslt pagenum}}
+{\b {\b jpl::_exception::FileNotFoundException} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAACE \\*MERGEFORMAT}{\fldrslt pagenum}}
 \par
-{\b {\b jpl::_exception::IllegalAccessException} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAACF \\*MERGEFORMAT}{\fldrslt pagenum}}
+{\b {\b jpl::_exception::IllegalAccessException} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAACH \\*MERGEFORMAT}{\fldrslt pagenum}}
 \par
-{\b {\b jpl::_exception::IllegalArgumentException} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAACI \\*MERGEFORMAT}{\fldrslt pagenum}}
+{\b {\b jpl::_exception::IllegalArgumentException} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAACK \\*MERGEFORMAT}{\fldrslt pagenum}}
 \par
-{\b {\b jpl::_exception::IllegalCastException} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAACL \\*MERGEFORMAT}{\fldrslt pagenum}}
+{\b {\b jpl::_exception::IllegalCastException} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAACN \\*MERGEFORMAT}{\fldrslt pagenum}}
 \par
-{\b {\b jpl::_exception::IllegalStateException} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAACS \\*MERGEFORMAT}{\fldrslt pagenum}}
+{\b {\b jpl::_exception::IllegalStateException} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAACU \\*MERGEFORMAT}{\fldrslt pagenum}}
 \par
-{\b {\b jpl::_exception::IndexOutOfBoundsException} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAACV \\*MERGEFORMAT}{\fldrslt pagenum}}
+{\b {\b jpl::_exception::IndexOutOfBoundsException} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAACX \\*MERGEFORMAT}{\fldrslt pagenum}}
 \par
-{\b {\b jpl::_exception::NoSuchFieldException} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAADB \\*MERGEFORMAT}{\fldrslt pagenum}}
+{\b {\b jpl::_exception::IOException} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAADD \\*MERGEFORMAT}{\fldrslt pagenum}}
 \par
-{\b {\b jpl::_exception::NoSuchMethodException} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAADE \\*MERGEFORMAT}{\fldrslt pagenum}}
+{\b {\b jpl::_exception::NoSuchFieldException} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAADL \\*MERGEFORMAT}{\fldrslt pagenum}}
 \par
-{\b {\b jpl::_exception::NotFoundException} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAADH \\*MERGEFORMAT}{\fldrslt pagenum}}
+{\b {\b jpl::_exception::NoSuchMethodException} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAADO \\*MERGEFORMAT}{\fldrslt pagenum}}
 \par
-{\b {\b jpl::_exception::NullPointerException} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAADK \\*MERGEFORMAT}{\fldrslt pagenum}}
+{\b {\b jpl::_exception::NotFoundException} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAADR \\*MERGEFORMAT}{\fldrslt pagenum}}
 \par
-{\b {\b jpl::_exception::OutOfMemoryException} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAADN \\*MERGEFORMAT}{\fldrslt pagenum}}
+{\b {\b jpl::_exception::NullPointerException} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAADU \\*MERGEFORMAT}{\fldrslt pagenum}}
 \par
-{\b {\b jpl::_exception::PermissionException} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAADQ \\*MERGEFORMAT}{\fldrslt pagenum}}
+{\b {\b jpl::_exception::OutOfMemoryException} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAADX \\*MERGEFORMAT}{\fldrslt pagenum}}
 \par
-{\b {\b jpl::_exception::RuntimeException} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAADT \\*MERGEFORMAT}{\fldrslt pagenum}}
+{\b {\b jpl::_exception::PermissionException} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAAEA \\*MERGEFORMAT}{\fldrslt pagenum}}
 \par
-{\b {\b jpl::_exception::SocketException} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAADW \\*MERGEFORMAT}{\fldrslt pagenum}}
+{\b {\b jpl::_exception::RuntimeException} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAAED \\*MERGEFORMAT}{\fldrslt pagenum}}
 \par
-{\b {\b jpl::_exception::StackOverflowException} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAAEC \\*MERGEFORMAT}{\fldrslt pagenum}}
+{\b {\b jpl::_exception::SocketException} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAAEH \\*MERGEFORMAT}{\fldrslt pagenum}}
 \par
-{\b {\b jpl::_exception::StackUnderflowException} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAAEF \\*MERGEFORMAT}{\fldrslt pagenum}}
+{\b {\b jpl::_exception::StackOverflowException} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAAEN \\*MERGEFORMAT}{\fldrslt pagenum}}
+\par
+{\b {\b jpl::_exception::StackUnderflowException} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAAEQ \\*MERGEFORMAT}{\fldrslt pagenum}}
 \par
 \par}
 \pard\plain \sect\sbkpage
@@ -290,41 +300,43 @@ File List\par \pard\plain
 {
 \par
 \pard\plain \s101\li360\sa27\sb27\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid 
-{\b src/{\b AbstractException.hpp} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAAAT \\*MERGEFORMAT}{\fldrslt pagenum}}
+{\b src/{\b AbstractException.hpp} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAAAU \\*MERGEFORMAT}{\fldrslt pagenum}}
 \par
-{\b src/reflection/{\b IllegalAccessException.hpp} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAAAV \\*MERGEFORMAT}{\fldrslt pagenum}}
+{\b src/reflection/{\b IllegalAccessException.hpp} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAAAW \\*MERGEFORMAT}{\fldrslt pagenum}}
 \par
-{\b src/reflection/{\b NoSuchFieldException.hpp} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAAAW \\*MERGEFORMAT}{\fldrslt pagenum}}
+{\b src/reflection/{\b NoSuchFieldException.hpp} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAAAX \\*MERGEFORMAT}{\fldrslt pagenum}}
 \par
-{\b src/reflection/{\b NoSuchMethodException.hpp} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAAAX \\*MERGEFORMAT}{\fldrslt pagenum}}
+{\b src/reflection/{\b NoSuchMethodException.hpp} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAAAY \\*MERGEFORMAT}{\fldrslt pagenum}}
 \par
-{\b src/runtime/{\b ArithmeticException.hpp} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAAAY \\*MERGEFORMAT}{\fldrslt pagenum}}
+{\b src/runtime/{\b ArithmeticException.hpp} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAAAZ \\*MERGEFORMAT}{\fldrslt pagenum}}
 \par
-{\b src/runtime/{\b FileNotFoundException.hpp} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAAAZ \\*MERGEFORMAT}{\fldrslt pagenum}}
+{\b src/runtime/{\b FileNotFoundException.hpp} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAABA \\*MERGEFORMAT}{\fldrslt pagenum}}
 \par
-{\b src/runtime/{\b IllegalArgumentException.hpp} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAABA \\*MERGEFORMAT}{\fldrslt pagenum}}
+{\b src/runtime/{\b IllegalArgumentException.hpp} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAABB \\*MERGEFORMAT}{\fldrslt pagenum}}
 \par
-{\b src/runtime/{\b IllegalCastException.hpp} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAABB \\*MERGEFORMAT}{\fldrslt pagenum}}
+{\b src/runtime/{\b IllegalCastException.hpp} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAABC \\*MERGEFORMAT}{\fldrslt pagenum}}
 \par
-{\b src/runtime/{\b IllegalStateException.hpp} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAABC \\*MERGEFORMAT}{\fldrslt pagenum}}
+{\b src/runtime/{\b IllegalStateException.hpp} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAABD \\*MERGEFORMAT}{\fldrslt pagenum}}
 \par
-{\b src/runtime/{\b IndexOutOfBoundsException.hpp} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAABD \\*MERGEFORMAT}{\fldrslt pagenum}}
+{\b src/runtime/{\b IndexOutOfBoundsException.hpp} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAABE \\*MERGEFORMAT}{\fldrslt pagenum}}
 \par
-{\b src/runtime/{\b NotFoundException.hpp} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAABE \\*MERGEFORMAT}{\fldrslt pagenum}}
+{\b src/runtime/{\b IOException.hpp} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAABF \\*MERGEFORMAT}{\fldrslt pagenum}}
 \par
-{\b src/runtime/{\b NullPointerException.hpp} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAABF \\*MERGEFORMAT}{\fldrslt pagenum}}
+{\b src/runtime/{\b NotFoundException.hpp} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAABG \\*MERGEFORMAT}{\fldrslt pagenum}}
 \par
-{\b src/runtime/{\b OutOfMemoryException.hpp} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAABG \\*MERGEFORMAT}{\fldrslt pagenum}}
+{\b src/runtime/{\b NullPointerException.hpp} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAABH \\*MERGEFORMAT}{\fldrslt pagenum}}
 \par
-{\b src/runtime/{\b PermissionException.hpp} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAABH \\*MERGEFORMAT}{\fldrslt pagenum}}
+{\b src/runtime/{\b OutOfMemoryException.hpp} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAABI \\*MERGEFORMAT}{\fldrslt pagenum}}
 \par
-{\b src/runtime/{\b RuntimeException.hpp} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAABI \\*MERGEFORMAT}{\fldrslt pagenum}}
+{\b src/runtime/{\b PermissionException.hpp} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAABJ \\*MERGEFORMAT}{\fldrslt pagenum}}
 \par
-{\b src/runtime/{\b SocketException.hpp} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAABJ \\*MERGEFORMAT}{\fldrslt pagenum}}
+{\b src/runtime/{\b RuntimeException.hpp} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAABK \\*MERGEFORMAT}{\fldrslt pagenum}}
 \par
-{\b src/runtime/{\b StackOverflowException.hpp} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAABK \\*MERGEFORMAT}{\fldrslt pagenum}}
+{\b src/runtime/{\b SocketException.hpp} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAABL \\*MERGEFORMAT}{\fldrslt pagenum}}
 \par
-{\b src/runtime/{\b StackUnderflowException.hpp} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAABL \\*MERGEFORMAT}{\fldrslt pagenum}}
+{\b src/runtime/{\b StackOverflowException.hpp} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAABM \\*MERGEFORMAT}{\fldrslt pagenum}}
+\par
+{\b src/runtime/{\b StackUnderflowException.hpp} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAABN \\*MERGEFORMAT}{\fldrslt pagenum}}
 \par
 \par}
 \pard\plain \sect\sbkpage
@@ -334,8 +346,8 @@ Namespace Documentation\par \pard\plain
 jpl Namespace Reference\par \pard\plain 
 {\tc\tcl2 \v jpl}
 {\xe \v jpl}
-{\bkmkstart AAAAAAAABM}
-{\bkmkend AAAAAAAABM}
+{\bkmkstart AAAAAAAABO}
+{\bkmkend AAAAAAAABO}
 \pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
 Namespaces\par
 \pard\plain 
@@ -352,8 +364,8 @@ namespace {\b _exception}\par
 jpl::_exception Namespace Reference\par \pard\plain 
 {\tc\tcl2 \v jpl::_exception}
 {\xe \v jpl::_exception}
-{\bkmkstart AAAAAAAABN}
-{\bkmkend AAAAAAAABN}
+{\bkmkstart AAAAAAAABP}
+{\bkmkend AAAAAAAABP}
 \pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
 Data Structures\par
 \pard\plain 
@@ -374,6 +386,8 @@ class {\b IllegalCastException}\par
 class {\b IllegalStateException}\par
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
 class {\b IndexOutOfBoundsException}\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+class {\b IOException}\par
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
 class {\b NoSuchFieldException}\par
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
@@ -404,8 +418,8 @@ Data Structure Documentation{\tc \v Data Structure Documentation}
 jpl::_exception::AbstractException Class Reference\par \pard\plain 
 {\tc\tcl2 \v jpl::_exception::AbstractException}
 {\xe \v jpl::_exception::AbstractException}
-{\bkmkstart AAAAAAAABO}
-{\bkmkend AAAAAAAABO}
+{\bkmkstart AAAAAAAABQ}
+{\bkmkend AAAAAAAABQ}
 \par
 {
 {\f2 #include <AbstractException.hpp>}}\par
@@ -425,8 +439,6 @@ virtual const char * {\b what} () const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW o
 Print the type of the exception which has been thrown with the message that has been passed, too. }{
 }\par
 }\par}
-\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-virtual const char * {\b getStacktrace} () const\par
 }
 \pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
 Protected Member Functions\par
@@ -434,9 +446,9 @@ Protected Member Functions\par
 
 {
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b AbstractException} (const char *{\b type_ex})\par
+{\b AbstractException} (std::string {\b type_ex})\par
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b AbstractException} (const char *{\b type_ex}, const char *{\b msg})\par
+{\b AbstractException} (std::string {\b type_ex}, std::string {\b msg})\par
 }
 \pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
 Protected Attributes\par
@@ -444,9 +456,9 @@ Protected Attributes\par
 
 {
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-const char * {\b type_ex}\par
+std::string {\b type_ex}\par
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-const char * {\b msg}\par
+std::string {\b msg}\par
 }
 \pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
 Friends\par
@@ -462,7 +474,7 @@ Detailed Description\par
 \pard\plain 
 {
 \pard\plain \s17\sa60\sb30\widctlpar\qj \fs22\cgrid {
-Definition at line {\b 27} of file {\b AbstractException.hpp}.}\par
+Definition at line {\b 35} of file {\b AbstractException.hpp}.}\par
 }
 {\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
 \pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
@@ -472,60 +484,42 @@ Constructor & Destructor Documentation\par
 {\xe \v jpl::_exception::AbstractException\:AbstractException}
 \pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
 {\b 
-jpl::_exception::AbstractException::AbstractException (const char *  {\i type_ex}){\f2 [inline]}, {\f2 [protected]}}}
-\par
-{\bkmkstart AAAAAAAABP}
-{\bkmkend AAAAAAAABP}
-{
-\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
-\par
-{
-Definition at line {\b 44} of file {\b AbstractException.hpp}.}\par
-}
-{\xe \v AbstractException\:jpl::_exception::AbstractException}
-{\xe \v jpl::_exception::AbstractException\:AbstractException}
-\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
-{\b 
-jpl::_exception::AbstractException::AbstractException (const char *  {\i type_ex}, const char *  {\i msg}){\f2 [inline]}, {\f2 [protected]}}}
-\par
-{\bkmkstart AAAAAAAABQ}
-{\bkmkend AAAAAAAABQ}
-{
-\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
-\par
-{
-Definition at line {\b 45} of file {\b AbstractException.hpp}.}\par
-}
-{\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
-\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
-Member Function Documentation\par
-\pard\plain 
-{\xe \v getStacktrace\:jpl::_exception::AbstractException}
-{\xe \v jpl::_exception::AbstractException\:getStacktrace}
-\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
-{\b 
-virtual const char * jpl::_exception::AbstractException::getStacktrace () const{\f2 [inline]}, {\f2 [virtual]}}}
+jpl::_exception::AbstractException::AbstractException (std::string  {\i type_ex}){\f2 [inline]}, {\f2 [protected]}}}
 \par
 {\bkmkstart AAAAAAAABR}
 {\bkmkend AAAAAAAABR}
 {
 \pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
-{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
 \par
-{{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
-Returns\par}\pard\plain \s82\li720\widctlpar\ql\adjustright \fs20\cgrid {\s17 \sa60 \sb30
-the Stacktrace of the thrown exception \par
-}}}{
-Definition at line {\b 67} of file {\b AbstractException.hpp}.}\par
+{
+Definition at line {\b 56} of file {\b AbstractException.hpp}.}\par
 }
+{\xe \v AbstractException\:jpl::_exception::AbstractException}
+{\xe \v jpl::_exception::AbstractException\:AbstractException}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+jpl::_exception::AbstractException::AbstractException (std::string  {\i type_ex}, std::string  {\i msg}){\f2 [inline]}, {\f2 [protected]}}}
+\par
+{\bkmkstart AAAAAAAABS}
+{\bkmkend AAAAAAAABS}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+\par
+{
+Definition at line {\b 57} of file {\b AbstractException.hpp}.}\par
+}
+{\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Member Function Documentation\par
+\pard\plain 
 {\xe \v what\:jpl::_exception::AbstractException}
 {\xe \v jpl::_exception::AbstractException\:what}
 \pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
 {\b 
 virtual const char * jpl::_exception::AbstractException::what () const{\f2 [inline]}, {\f2 [override]}, {\f2 [virtual]}}}
 \par
-{\bkmkstart AAAAAAAABS}
-{\bkmkend AAAAAAAABS}
+{\bkmkstart AAAAAAAABT}
+{\bkmkend AAAAAAAABT}
 {
 \pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
 \par
@@ -538,9 +532,9 @@ Print the type of the exception which has been thrown with the message that has 
 Returns\par}\pard\plain \s82\li720\widctlpar\ql\adjustright \fs20\cgrid {\s17 \sa60 \sb30
 const char* \par
 }}}{
-Reimplemented in {\b jpl::_exception::IllegalCastException} ({\i p.{\field\fldedit {\*\fldinst PAGEREF AAAAAAAABT \\*MERGEFORMAT}{\fldrslt pagenum}}}), {\b jpl::_exception::IndexOutOfBoundsException} ({\i p.{\field\fldedit {\*\fldinst PAGEREF AAAAAAAABU \\*MERGEFORMAT}{\fldrslt pagenum}}}), and {\b jpl::_exception::SocketException} ({\i p.{\field\fldedit {\*\fldinst PAGEREF AAAAAAAABV \\*MERGEFORMAT}{\fldrslt pagenum}}}).}\par
+Reimplemented in {\b jpl::_exception::IllegalCastException} ({\i p.{\field\fldedit {\*\fldinst PAGEREF AAAAAAAABU \\*MERGEFORMAT}{\fldrslt pagenum}}}), {\b jpl::_exception::IndexOutOfBoundsException} ({\i p.{\field\fldedit {\*\fldinst PAGEREF AAAAAAAABV \\*MERGEFORMAT}{\fldrslt pagenum}}}), {\b jpl::_exception::IOException} ({\i p.{\field\fldedit {\*\fldinst PAGEREF AAAAAAAABW \\*MERGEFORMAT}{\fldrslt pagenum}}}), and {\b jpl::_exception::SocketException} ({\i p.{\field\fldedit {\*\fldinst PAGEREF AAAAAAAABX \\*MERGEFORMAT}{\fldrslt pagenum}}}).}\par
 {
-Definition at line {\b 54} of file {\b AbstractException.hpp}.}\par
+Definition at line {\b 70} of file {\b AbstractException.hpp}.}\par
 }
 {\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
 \pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
@@ -552,8 +546,8 @@ Friends And Related Symbol Documentation\par
 {\b 
 std::ostream & operator<< (std::ostream &  {\i os}, const {\b AbstractException} &  {\i iae}){\f2 [friend]}}}
 \par
-{\bkmkstart AAAAAAAABW}
-{\bkmkend AAAAAAAABW}
+{\bkmkstart AAAAAAAABY}
+{\bkmkend AAAAAAAABY}
 {
 \pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
 {\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
@@ -577,7 +571,7 @@ Parameters\par}
 Returns\par}\pard\plain \s82\li720\widctlpar\ql\adjustright \fs20\cgrid {\s17 \sa60 \sb30
 std::ostream& \par
 }}}{
-Definition at line {\b 91} of file {\b AbstractException.hpp}.}\par
+Definition at line {\b 94} of file {\b AbstractException.hpp}.}\par
 }
 {\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
 \pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
@@ -587,31 +581,31 @@ Field Documentation\par
 {\xe \v jpl::_exception::AbstractException\:msg}
 \pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
 {\b 
-const char* jpl::_exception::AbstractException::msg{\f2 [protected]}}}
+std::string jpl::_exception::AbstractException::msg{\f2 [protected]}}}
 \par
-{\bkmkstart AAAAAAAABX}
-{\bkmkend AAAAAAAABX}
+{\bkmkstart AAAAAAAABZ}
+{\bkmkend AAAAAAAABZ}
 {
 \pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
 {\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
 It is a description of what has just happened. For some exception it may be a template of stuff (usually when constructor does not need any msg) \par
 }{
-Definition at line {\b 42} of file {\b AbstractException.hpp}.}\par
+Definition at line {\b 50} of file {\b AbstractException.hpp}.}\par
 }
 {\xe \v type_ex\:jpl::_exception::AbstractException}
 {\xe \v jpl::_exception::AbstractException\:type_ex}
 \pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
 {\b 
-const char* jpl::_exception::AbstractException::type_ex{\f2 [protected]}}}
+std::string jpl::_exception::AbstractException::type_ex{\f2 [protected]}}}
 \par
-{\bkmkstart AAAAAAAABY}
-{\bkmkend AAAAAAAABY}
+{\bkmkstart AAAAAAAACA}
+{\bkmkend AAAAAAAACA}
 {
 \pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
 {\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
 This is a description of the exception which has been thrown. It is passed by constructor and it is as the exception name \par
 }{
-Definition at line {\b 36} of file {\b AbstractException.hpp}.}\par
+Definition at line {\b 44} of file {\b AbstractException.hpp}.}\par
 }
 {\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
 The documentation for this class was generated from the following file:{\par
@@ -625,8 +619,8 @@ src/{\b AbstractException.hpp}\par
 jpl::_exception::ArithmeticException Class Reference\par \pard\plain 
 {\tc\tcl2 \v jpl::_exception::ArithmeticException}
 {\xe \v jpl::_exception::ArithmeticException}
-{\bkmkstart AAAAAAAABZ}
-{\bkmkend AAAAAAAABZ}
+{\bkmkstart AAAAAAAACB}
+{\bkmkend AAAAAAAACB}
 \par
 {
 {\f2 #include <ArithmeticException.hpp>}}\par
@@ -640,7 +634,7 @@ Public Member Functions\par
 
 {
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b ArithmeticException} (const char *{\b msg})\par
+{\b ArithmeticException} (std::string {\b msg})\par
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
 {\b ArithmeticException} ()\par
 }
@@ -650,9 +644,11 @@ Public Member Functions inherited from {\b jpl::_exception::RuntimeException}\pa
 
 {
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b RuntimeException} (const char *{\b type_ex}, const char *{\b msg})\par
+{\b RuntimeException} (std::string {\b type_ex}, std::string {\b msg})\par
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b RuntimeException} (const char *{\b msg})\par
+{\b RuntimeException} (std::string {\b msg})\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\b RuntimeException} ()\par
 }
 \pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
 Public Member Functions inherited from {\b jpl::_exception::AbstractException}\par
@@ -666,8 +662,6 @@ virtual const char * {\b what} () const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW o
 Print the type of the exception which has been thrown with the message that has been passed, too. }{
 }\par
 }\par}
-\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-virtual const char * {\b getStacktrace} () const\par
 }
 \pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
 Additional Inherited Members\par
@@ -678,9 +672,9 @@ Protected Member Functions inherited from {\b jpl::_exception::AbstractException
 
 {
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b AbstractException} (const char *{\b type_ex})\par
+{\b AbstractException} (std::string {\b type_ex})\par
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b AbstractException} (const char *{\b type_ex}, const char *{\b msg})\par
+{\b AbstractException} (std::string {\b type_ex}, std::string {\b msg})\par
 }
 \pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
 Protected Attributes inherited from {\b jpl::_exception::AbstractException}\par
@@ -688,9 +682,9 @@ Protected Attributes inherited from {\b jpl::_exception::AbstractException}\par
 
 {
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-const char * {\b type_ex}\par
+std::string {\b type_ex}\par
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-const char * {\b msg}\par
+std::string {\b msg}\par
 }
 {\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
 \pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
@@ -708,10 +702,10 @@ Constructor & Destructor Documentation\par
 {\xe \v jpl::_exception::ArithmeticException\:ArithmeticException}
 \pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
 {\b 
-jpl::_exception::ArithmeticException::ArithmeticException (const char *  {\i msg}){\f2 [inline]}}}
+jpl::_exception::ArithmeticException::ArithmeticException (std::string  {\i msg}){\f2 [inline]}}}
 \par
-{\bkmkstart AAAAAAAACA}
-{\bkmkend AAAAAAAACA}
+{\bkmkstart AAAAAAAACC}
+{\bkmkend AAAAAAAACC}
 {
 \pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
 \par
@@ -724,8 +718,8 @@ Definition at line {\b 27} of file {\b ArithmeticException.hpp}.}\par
 {\b 
 jpl::_exception::ArithmeticException::ArithmeticException (){\f2 [inline]}}}
 \par
-{\bkmkstart AAAAAAAACB}
-{\bkmkend AAAAAAAACB}
+{\bkmkstart AAAAAAAACD}
+{\bkmkend AAAAAAAACD}
 {
 \pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
 \par
@@ -744,8 +738,8 @@ src/runtime/{\b ArithmeticException.hpp}\par
 jpl::_exception::FileNotFoundException Class Reference\par \pard\plain 
 {\tc\tcl2 \v jpl::_exception::FileNotFoundException}
 {\xe \v jpl::_exception::FileNotFoundException}
-{\bkmkstart AAAAAAAACC}
-{\bkmkend AAAAAAAACC}
+{\bkmkstart AAAAAAAACE}
+{\bkmkend AAAAAAAACE}
 \par
 {
 {\f2 #include <FileNotFoundException.hpp>}}\par
@@ -759,7 +753,7 @@ Public Member Functions\par
 
 {
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b FileNotFoundException} (const char *{\b msg})\par
+{\b FileNotFoundException} (std::string {\b msg})\par
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
 {\b FileNotFoundException} ()\par
 }
@@ -769,9 +763,11 @@ Public Member Functions inherited from {\b jpl::_exception::RuntimeException}\pa
 
 {
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b RuntimeException} (const char *{\b type_ex}, const char *{\b msg})\par
+{\b RuntimeException} (std::string {\b type_ex}, std::string {\b msg})\par
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b RuntimeException} (const char *{\b msg})\par
+{\b RuntimeException} (std::string {\b msg})\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\b RuntimeException} ()\par
 }
 \pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
 Public Member Functions inherited from {\b jpl::_exception::AbstractException}\par
@@ -785,8 +781,6 @@ virtual const char * {\b what} () const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW o
 Print the type of the exception which has been thrown with the message that has been passed, too. }{
 }\par
 }\par}
-\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-virtual const char * {\b getStacktrace} () const\par
 }
 \pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
 Additional Inherited Members\par
@@ -797,9 +791,9 @@ Protected Member Functions inherited from {\b jpl::_exception::AbstractException
 
 {
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b AbstractException} (const char *{\b type_ex})\par
+{\b AbstractException} (std::string {\b type_ex})\par
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b AbstractException} (const char *{\b type_ex}, const char *{\b msg})\par
+{\b AbstractException} (std::string {\b type_ex}, std::string {\b msg})\par
 }
 \pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
 Protected Attributes inherited from {\b jpl::_exception::AbstractException}\par
@@ -807,9 +801,9 @@ Protected Attributes inherited from {\b jpl::_exception::AbstractException}\par
 
 {
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-const char * {\b type_ex}\par
+std::string {\b type_ex}\par
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-const char * {\b msg}\par
+std::string {\b msg}\par
 }
 {\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
 \pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
@@ -827,10 +821,10 @@ Constructor & Destructor Documentation\par
 {\xe \v jpl::_exception::FileNotFoundException\:FileNotFoundException}
 \pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
 {\b 
-jpl::_exception::FileNotFoundException::FileNotFoundException (const char *  {\i msg}){\f2 [inline]}}}
+jpl::_exception::FileNotFoundException::FileNotFoundException (std::string  {\i msg}){\f2 [inline]}}}
 \par
-{\bkmkstart AAAAAAAACD}
-{\bkmkend AAAAAAAACD}
+{\bkmkstart AAAAAAAACF}
+{\bkmkend AAAAAAAACF}
 {
 \pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
 \par
@@ -843,8 +837,8 @@ Definition at line {\b 25} of file {\b FileNotFoundException.hpp}.}\par
 {\b 
 jpl::_exception::FileNotFoundException::FileNotFoundException (){\f2 [inline]}}}
 \par
-{\bkmkstart AAAAAAAACE}
-{\bkmkend AAAAAAAACE}
+{\bkmkstart AAAAAAAACG}
+{\bkmkend AAAAAAAACG}
 {
 \pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
 \par
@@ -863,8 +857,8 @@ src/runtime/{\b FileNotFoundException.hpp}\par
 jpl::_exception::IllegalAccessException Class Reference\par \pard\plain 
 {\tc\tcl2 \v jpl::_exception::IllegalAccessException}
 {\xe \v jpl::_exception::IllegalAccessException}
-{\bkmkstart AAAAAAAACF}
-{\bkmkend AAAAAAAACF}
+{\bkmkstart AAAAAAAACH}
+{\bkmkend AAAAAAAACH}
 \par
 {
 {\f2 #include <IllegalAccessException.hpp>}}\par
@@ -878,7 +872,7 @@ Public Member Functions\par
 
 {
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b IllegalAccessException} (const char *{\b msg})\par
+{\b IllegalAccessException} (std::string {\b msg})\par
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
 {\b IllegalAccessException} ()\par
 }
@@ -894,8 +888,6 @@ virtual const char * {\b what} () const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW o
 Print the type of the exception which has been thrown with the message that has been passed, too. }{
 }\par
 }\par}
-\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-virtual const char * {\b getStacktrace} () const\par
 }
 \pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
 Additional Inherited Members\par
@@ -906,9 +898,9 @@ Protected Member Functions inherited from {\b jpl::_exception::AbstractException
 
 {
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b AbstractException} (const char *{\b type_ex})\par
+{\b AbstractException} (std::string {\b type_ex})\par
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b AbstractException} (const char *{\b type_ex}, const char *{\b msg})\par
+{\b AbstractException} (std::string {\b type_ex}, std::string {\b msg})\par
 }
 \pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
 Protected Attributes inherited from {\b jpl::_exception::AbstractException}\par
@@ -916,9 +908,9 @@ Protected Attributes inherited from {\b jpl::_exception::AbstractException}\par
 
 {
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-const char * {\b type_ex}\par
+std::string {\b type_ex}\par
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-const char * {\b msg}\par
+std::string {\b msg}\par
 }
 {\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
 \pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
@@ -936,10 +928,10 @@ Constructor & Destructor Documentation\par
 {\xe \v jpl::_exception::IllegalAccessException\:IllegalAccessException}
 \pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
 {\b 
-jpl::_exception::IllegalAccessException::IllegalAccessException (const char *  {\i msg}){\f2 [inline]}}}
+jpl::_exception::IllegalAccessException::IllegalAccessException (std::string  {\i msg}){\f2 [inline]}}}
 \par
-{\bkmkstart AAAAAAAACG}
-{\bkmkend AAAAAAAACG}
+{\bkmkstart AAAAAAAACI}
+{\bkmkend AAAAAAAACI}
 {
 \pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
 \par
@@ -952,8 +944,8 @@ Definition at line {\b 28} of file {\b IllegalAccessException.hpp}.}\par
 {\b 
 jpl::_exception::IllegalAccessException::IllegalAccessException (){\f2 [inline]}}}
 \par
-{\bkmkstart AAAAAAAACH}
-{\bkmkend AAAAAAAACH}
+{\bkmkstart AAAAAAAACJ}
+{\bkmkend AAAAAAAACJ}
 {
 \pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
 \par
@@ -972,8 +964,8 @@ src/reflection/{\b IllegalAccessException.hpp}\par
 jpl::_exception::IllegalArgumentException Class Reference\par \pard\plain 
 {\tc\tcl2 \v jpl::_exception::IllegalArgumentException}
 {\xe \v jpl::_exception::IllegalArgumentException}
-{\bkmkstart AAAAAAAACI}
-{\bkmkend AAAAAAAACI}
+{\bkmkstart AAAAAAAACK}
+{\bkmkend AAAAAAAACK}
 \par
 {
 {\f2 #include <IllegalArgumentException.hpp>}}\par
@@ -987,7 +979,7 @@ Public Member Functions\par
 
 {
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b IllegalArgumentException} (const char *{\b msg})\par
+{\b IllegalArgumentException} (std::string {\b msg})\par
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
 {\b IllegalArgumentException} ()\par
 }
@@ -997,9 +989,11 @@ Public Member Functions inherited from {\b jpl::_exception::RuntimeException}\pa
 
 {
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b RuntimeException} (const char *{\b type_ex}, const char *{\b msg})\par
+{\b RuntimeException} (std::string {\b type_ex}, std::string {\b msg})\par
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b RuntimeException} (const char *{\b msg})\par
+{\b RuntimeException} (std::string {\b msg})\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\b RuntimeException} ()\par
 }
 \pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
 Public Member Functions inherited from {\b jpl::_exception::AbstractException}\par
@@ -1013,8 +1007,6 @@ virtual const char * {\b what} () const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW o
 Print the type of the exception which has been thrown with the message that has been passed, too. }{
 }\par
 }\par}
-\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-virtual const char * {\b getStacktrace} () const\par
 }
 \pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
 Additional Inherited Members\par
@@ -1025,9 +1017,9 @@ Protected Member Functions inherited from {\b jpl::_exception::AbstractException
 
 {
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b AbstractException} (const char *{\b type_ex})\par
+{\b AbstractException} (std::string {\b type_ex})\par
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b AbstractException} (const char *{\b type_ex}, const char *{\b msg})\par
+{\b AbstractException} (std::string {\b type_ex}, std::string {\b msg})\par
 }
 \pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
 Protected Attributes inherited from {\b jpl::_exception::AbstractException}\par
@@ -1035,9 +1027,9 @@ Protected Attributes inherited from {\b jpl::_exception::AbstractException}\par
 
 {
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-const char * {\b type_ex}\par
+std::string {\b type_ex}\par
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-const char * {\b msg}\par
+std::string {\b msg}\par
 }
 {\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
 \pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
@@ -1055,10 +1047,10 @@ Constructor & Destructor Documentation\par
 {\xe \v jpl::_exception::IllegalArgumentException\:IllegalArgumentException}
 \pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
 {\b 
-jpl::_exception::IllegalArgumentException::IllegalArgumentException (const char *  {\i msg}){\f2 [inline]}}}
+jpl::_exception::IllegalArgumentException::IllegalArgumentException (std::string  {\i msg}){\f2 [inline]}}}
 \par
-{\bkmkstart AAAAAAAACJ}
-{\bkmkend AAAAAAAACJ}
+{\bkmkstart AAAAAAAACL}
+{\bkmkend AAAAAAAACL}
 {
 \pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
 \par
@@ -1071,8 +1063,8 @@ Definition at line {\b 25} of file {\b IllegalArgumentException.hpp}.}\par
 {\b 
 jpl::_exception::IllegalArgumentException::IllegalArgumentException (){\f2 [inline]}}}
 \par
-{\bkmkstart AAAAAAAACK}
-{\bkmkend AAAAAAAACK}
+{\bkmkstart AAAAAAAACM}
+{\bkmkend AAAAAAAACM}
 {
 \pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
 \par
@@ -1091,8 +1083,8 @@ src/runtime/{\b IllegalArgumentException.hpp}\par
 jpl::_exception::IllegalCastException Class Reference\par \pard\plain 
 {\tc\tcl2 \v jpl::_exception::IllegalCastException}
 {\xe \v jpl::_exception::IllegalCastException}
-{\bkmkstart AAAAAAAACL}
-{\bkmkend AAAAAAAACL}
+{\bkmkstart AAAAAAAACN}
+{\bkmkend AAAAAAAACN}
 \par
 {
 {\f2 #include <IllegalCastException.hpp>}}\par
@@ -1106,11 +1098,11 @@ Public Member Functions\par
 
 {
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b IllegalCastException} (const char *{\b _cast_attempted}, const char *{\b _cast_needed}, const char *{\b msg})\par
+{\b IllegalCastException} (const char *{\b _cast_attempted}, const char *{\b _cast_needed}, std::string {\b msg})\par
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
 {\b IllegalCastException} (const char *{\b _cast_attempted}, const char *{\b _cast_needed})\par
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b IllegalCastException} (const char *{\b msg})\par
+{\b IllegalCastException} (std::string {\b msg})\par
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
 {\b IllegalCastException} ()\par
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
@@ -1127,13 +1119,12 @@ Public Member Functions inherited from {\b jpl::_exception::RuntimeException}\pa
 
 {
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b RuntimeException} (const char *{\b type_ex}, const char *{\b msg})\par
+{\b RuntimeException} (std::string {\b type_ex}, std::string {\b msg})\par
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b RuntimeException} (const char *{\b msg})\par
+{\b RuntimeException} (std::string {\b msg})\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\b RuntimeException} ()\par
 }
-\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
-Public Member Functions inherited from {\b jpl::_exception::AbstractException}\par
-\pard\plain 
 
 {
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
@@ -1143,8 +1134,6 @@ virtual const char * {\b what} () const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW o
 Print the type of the exception which has been thrown with the message that has been passed, too. }{
 }\par
 }\par}
-\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-virtual const char * {\b getStacktrace} () const\par
 }
 \pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
 Private Attributes\par
@@ -1165,9 +1154,9 @@ Protected Member Functions inherited from {\b jpl::_exception::AbstractException
 
 {
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b AbstractException} (const char *{\b type_ex})\par
+{\b AbstractException} (std::string {\b type_ex})\par
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b AbstractException} (const char *{\b type_ex}, const char *{\b msg})\par
+{\b AbstractException} (std::string {\b type_ex}, std::string {\b msg})\par
 }
 \pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
 Protected Attributes inherited from {\b jpl::_exception::AbstractException}\par
@@ -1175,9 +1164,9 @@ Protected Attributes inherited from {\b jpl::_exception::AbstractException}\par
 
 {
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-const char * {\b type_ex}\par
+std::string {\b type_ex}\par
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-const char * {\b msg}\par
+std::string {\b msg}\par
 }
 {\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
 \pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
@@ -1195,10 +1184,10 @@ Constructor & Destructor Documentation\par
 {\xe \v jpl::_exception::IllegalCastException\:IllegalCastException}
 \pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
 {\b 
-jpl::_exception::IllegalCastException::IllegalCastException (const char *  {\i _cast_attempted}, const char *  {\i _cast_needed}, const char *  {\i msg}){\f2 [inline]}}}
+jpl::_exception::IllegalCastException::IllegalCastException (const char *  {\i _cast_attempted}, const char *  {\i _cast_needed}, std::string  {\i msg}){\f2 [inline]}}}
 \par
-{\bkmkstart AAAAAAAACM}
-{\bkmkend AAAAAAAACM}
+{\bkmkstart AAAAAAAACO}
+{\bkmkend AAAAAAAACO}
 {
 \pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
 \par
@@ -1211,8 +1200,8 @@ Definition at line {\b 35} of file {\b IllegalCastException.hpp}.}\par
 {\b 
 jpl::_exception::IllegalCastException::IllegalCastException (const char *  {\i _cast_attempted}, const char *  {\i _cast_needed}){\f2 [inline]}}}
 \par
-{\bkmkstart AAAAAAAACN}
-{\bkmkend AAAAAAAACN}
+{\bkmkstart AAAAAAAACP}
+{\bkmkend AAAAAAAACP}
 {
 \pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
 \par
@@ -1223,10 +1212,10 @@ Definition at line {\b 37} of file {\b IllegalCastException.hpp}.}\par
 {\xe \v jpl::_exception::IllegalCastException\:IllegalCastException}
 \pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
 {\b 
-jpl::_exception::IllegalCastException::IllegalCastException (const char *  {\i msg}){\f2 [inline]}}}
+jpl::_exception::IllegalCastException::IllegalCastException (std::string  {\i msg}){\f2 [inline]}}}
 \par
-{\bkmkstart AAAAAAAACO}
-{\bkmkend AAAAAAAACO}
+{\bkmkstart AAAAAAAACQ}
+{\bkmkend AAAAAAAACQ}
 {
 \pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
 \par
@@ -1239,8 +1228,8 @@ Definition at line {\b 38} of file {\b IllegalCastException.hpp}.}\par
 {\b 
 jpl::_exception::IllegalCastException::IllegalCastException (){\f2 [inline]}}}
 \par
-{\bkmkstart AAAAAAAACP}
-{\bkmkend AAAAAAAACP}
+{\bkmkstart AAAAAAAACR}
+{\bkmkend AAAAAAAACR}
 {
 \pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
 \par
@@ -1257,8 +1246,8 @@ Member Function Documentation\par
 {\b 
 const char * jpl::_exception::IllegalCastException::what () const{\f2 [inline]}, {\f2 [override]}, {\f2 [virtual]}}}
 \par
-{\bkmkstart AAAAAAAABT}
-{\bkmkend AAAAAAAABT}
+{\bkmkstart AAAAAAAABU}
+{\bkmkend AAAAAAAABU}
 {
 \pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
 \par
@@ -1271,7 +1260,7 @@ Print the type of the exception which has been thrown with the message that has 
 Returns\par}\pard\plain \s82\li720\widctlpar\ql\adjustright \fs20\cgrid {\s17 \sa60 \sb30
 const char* \par
 }}}{
-Reimplemented from {\b jpl::_exception::AbstractException} ({\i p.{\field\fldedit {\*\fldinst PAGEREF AAAAAAAABS \\*MERGEFORMAT}{\fldrslt pagenum}}}).}\par
+Reimplemented from {\b jpl::_exception::AbstractException} ({\i p.{\field\fldedit {\*\fldinst PAGEREF AAAAAAAABT \\*MERGEFORMAT}{\fldrslt pagenum}}}).}\par
 {
 Definition at line {\b 41} of file {\b IllegalCastException.hpp}.}\par
 }
@@ -1285,8 +1274,8 @@ Field Documentation\par
 {\b 
 const char* jpl::_exception::IllegalCastException::_cast_attempted{\f2 [private]}}}
 \par
-{\bkmkstart AAAAAAAACQ}
-{\bkmkend AAAAAAAACQ}
+{\bkmkstart AAAAAAAACS}
+{\bkmkend AAAAAAAACS}
 {
 \pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
 {\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
@@ -1300,8 +1289,8 @@ Definition at line {\b 27} of file {\b IllegalCastException.hpp}.}\par
 {\b 
 const char* jpl::_exception::IllegalCastException::_cast_needed{\f2 [private]}}}
 \par
-{\bkmkstart AAAAAAAACR}
-{\bkmkend AAAAAAAACR}
+{\bkmkstart AAAAAAAACT}
+{\bkmkend AAAAAAAACT}
 {
 \pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
 {\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
@@ -1321,8 +1310,8 @@ src/runtime/{\b IllegalCastException.hpp}\par
 jpl::_exception::IllegalStateException Class Reference\par \pard\plain 
 {\tc\tcl2 \v jpl::_exception::IllegalStateException}
 {\xe \v jpl::_exception::IllegalStateException}
-{\bkmkstart AAAAAAAACS}
-{\bkmkend AAAAAAAACS}
+{\bkmkstart AAAAAAAACU}
+{\bkmkend AAAAAAAACU}
 \par
 {
 {\f2 #include <IllegalStateException.hpp>}}\par
@@ -1336,7 +1325,7 @@ Public Member Functions\par
 
 {
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b IllegalStateException} (const char *{\b msg})\par
+{\b IllegalStateException} (std::string {\b msg})\par
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
 {\b IllegalStateException} ()\par
 }
@@ -1346,9 +1335,11 @@ Public Member Functions inherited from {\b jpl::_exception::RuntimeException}\pa
 
 {
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b RuntimeException} (const char *{\b type_ex}, const char *{\b msg})\par
+{\b RuntimeException} (std::string {\b type_ex}, std::string {\b msg})\par
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b RuntimeException} (const char *{\b msg})\par
+{\b RuntimeException} (std::string {\b msg})\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\b RuntimeException} ()\par
 }
 \pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
 Public Member Functions inherited from {\b jpl::_exception::AbstractException}\par
@@ -1362,8 +1353,6 @@ virtual const char * {\b what} () const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW o
 Print the type of the exception which has been thrown with the message that has been passed, too. }{
 }\par
 }\par}
-\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-virtual const char * {\b getStacktrace} () const\par
 }
 \pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
 Additional Inherited Members\par
@@ -1374,9 +1363,9 @@ Protected Member Functions inherited from {\b jpl::_exception::AbstractException
 
 {
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b AbstractException} (const char *{\b type_ex})\par
+{\b AbstractException} (std::string {\b type_ex})\par
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b AbstractException} (const char *{\b type_ex}, const char *{\b msg})\par
+{\b AbstractException} (std::string {\b type_ex}, std::string {\b msg})\par
 }
 \pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
 Protected Attributes inherited from {\b jpl::_exception::AbstractException}\par
@@ -1384,9 +1373,9 @@ Protected Attributes inherited from {\b jpl::_exception::AbstractException}\par
 
 {
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-const char * {\b type_ex}\par
+std::string {\b type_ex}\par
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-const char * {\b msg}\par
+std::string {\b msg}\par
 }
 {\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
 \pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
@@ -1404,10 +1393,10 @@ Constructor & Destructor Documentation\par
 {\xe \v jpl::_exception::IllegalStateException\:IllegalStateException}
 \pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
 {\b 
-jpl::_exception::IllegalStateException::IllegalStateException (const char *  {\i msg}){\f2 [inline]}}}
+jpl::_exception::IllegalStateException::IllegalStateException (std::string  {\i msg}){\f2 [inline]}}}
 \par
-{\bkmkstart AAAAAAAACT}
-{\bkmkend AAAAAAAACT}
+{\bkmkstart AAAAAAAACV}
+{\bkmkend AAAAAAAACV}
 {
 \pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
 \par
@@ -1420,8 +1409,8 @@ Definition at line {\b 34} of file {\b IllegalStateException.hpp}.}\par
 {\b 
 jpl::_exception::IllegalStateException::IllegalStateException (){\f2 [inline]}}}
 \par
-{\bkmkstart AAAAAAAACU}
-{\bkmkend AAAAAAAACU}
+{\bkmkstart AAAAAAAACW}
+{\bkmkend AAAAAAAACW}
 {
 \pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
 \par
@@ -1440,8 +1429,8 @@ src/runtime/{\b IllegalStateException.hpp}\par
 jpl::_exception::IndexOutOfBoundsException Class Reference\par \pard\plain 
 {\tc\tcl2 \v jpl::_exception::IndexOutOfBoundsException}
 {\xe \v jpl::_exception::IndexOutOfBoundsException}
-{\bkmkstart AAAAAAAACV}
-{\bkmkend AAAAAAAACV}
+{\bkmkstart AAAAAAAACX}
+{\bkmkend AAAAAAAACX}
 \par
 {
 {\f2 #include <IndexOutOfBoundsException.hpp>}}\par
@@ -1455,7 +1444,7 @@ Public Member Functions\par
 
 {
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b IndexOutOfBoundsException} (const unsigned int {\b max}, const unsigned int {\b attempted}, const char *{\b msg})\par
+{\b IndexOutOfBoundsException} (const unsigned int {\b max}, const unsigned int {\b attempted}, std::string {\b msg})\par
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
 {\b IndexOutOfBoundsException} (const unsigned int {\b max}, const unsigned int {\b attempted})\par
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
@@ -1472,13 +1461,12 @@ Public Member Functions inherited from {\b jpl::_exception::RuntimeException}\pa
 
 {
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b RuntimeException} (const char *{\b type_ex}, const char *{\b msg})\par
+{\b RuntimeException} (std::string {\b type_ex}, std::string {\b msg})\par
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b RuntimeException} (const char *{\b msg})\par
+{\b RuntimeException} (std::string {\b msg})\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\b RuntimeException} ()\par
 }
-\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
-Public Member Functions inherited from {\b jpl::_exception::AbstractException}\par
-\pard\plain 
 
 {
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
@@ -1488,8 +1476,6 @@ virtual const char * {\b what} () const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW o
 Print the type of the exception which has been thrown with the message that has been passed, too. }{
 }\par
 }\par}
-\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-virtual const char * {\b getStacktrace} () const\par
 }
 \pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
 Private Attributes\par
@@ -1512,9 +1498,9 @@ Protected Member Functions inherited from {\b jpl::_exception::AbstractException
 
 {
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b AbstractException} (const char *{\b type_ex})\par
+{\b AbstractException} (std::string {\b type_ex})\par
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b AbstractException} (const char *{\b type_ex}, const char *{\b msg})\par
+{\b AbstractException} (std::string {\b type_ex}, std::string {\b msg})\par
 }
 \pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
 Protected Attributes inherited from {\b jpl::_exception::AbstractException}\par
@@ -1522,9 +1508,9 @@ Protected Attributes inherited from {\b jpl::_exception::AbstractException}\par
 
 {
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-const char * {\b type_ex}\par
+std::string {\b type_ex}\par
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-const char * {\b msg}\par
+std::string {\b msg}\par
 }
 {\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
 \pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
@@ -1542,10 +1528,10 @@ Constructor & Destructor Documentation\par
 {\xe \v jpl::_exception::IndexOutOfBoundsException\:IndexOutOfBoundsException}
 \pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
 {\b 
-jpl::_exception::IndexOutOfBoundsException::IndexOutOfBoundsException (const unsigned int  {\i max}, const unsigned int  {\i attempted}, const char *  {\i msg}){\f2 [inline]}}}
+jpl::_exception::IndexOutOfBoundsException::IndexOutOfBoundsException (const unsigned int  {\i max}, const unsigned int  {\i attempted}, std::string  {\i msg}){\f2 [inline]}}}
 \par
-{\bkmkstart AAAAAAAACW}
-{\bkmkend AAAAAAAACW}
+{\bkmkstart AAAAAAAACY}
+{\bkmkend AAAAAAAACY}
 {
 \pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
 \par
@@ -1558,8 +1544,8 @@ Definition at line {\b 40} of file {\b IndexOutOfBoundsException.hpp}.}\par
 {\b 
 jpl::_exception::IndexOutOfBoundsException::IndexOutOfBoundsException (const unsigned int  {\i max}, const unsigned int  {\i attempted}){\f2 [inline]}}}
 \par
-{\bkmkstart AAAAAAAACX}
-{\bkmkend AAAAAAAACX}
+{\bkmkstart AAAAAAAACZ}
+{\bkmkend AAAAAAAACZ}
 {
 \pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
 \par
@@ -1576,8 +1562,8 @@ Member Function Documentation\par
 {\b 
 const char * jpl::_exception::IndexOutOfBoundsException::what () const{\f2 [inline]}, {\f2 [override]}, {\f2 [virtual]}}}
 \par
-{\bkmkstart AAAAAAAABU}
-{\bkmkend AAAAAAAABU}
+{\bkmkstart AAAAAAAABV}
+{\bkmkend AAAAAAAABV}
 {
 \pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
 \par
@@ -1590,7 +1576,7 @@ Print the type of the exception which has been thrown with the message that has 
 Returns\par}\pard\plain \s82\li720\widctlpar\ql\adjustright \fs20\cgrid {\s17 \sa60 \sb30
 const char* \par
 }}}{
-Reimplemented from {\b jpl::_exception::AbstractException} ({\i p.{\field\fldedit {\*\fldinst PAGEREF AAAAAAAABS \\*MERGEFORMAT}{\fldrslt pagenum}}}).}\par
+Reimplemented from {\b jpl::_exception::AbstractException} ({\i p.{\field\fldedit {\*\fldinst PAGEREF AAAAAAAABT \\*MERGEFORMAT}{\fldrslt pagenum}}}).}\par
 {
 Definition at line {\b 45} of file {\b IndexOutOfBoundsException.hpp}.}\par
 }
@@ -1604,8 +1590,8 @@ Field Documentation\par
 {\b 
 const char* jpl::_exception::IndexOutOfBoundsException::_object{\f2 [private]}}}
 \par
-{\bkmkstart AAAAAAAACY}
-{\bkmkend AAAAAAAACY}
+{\bkmkstart AAAAAAAADA}
+{\bkmkend AAAAAAAADA}
 {
 \pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
 {\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
@@ -1619,8 +1605,8 @@ Definition at line {\b 28} of file {\b IndexOutOfBoundsException.hpp}.}\par
 {\b 
 const unsigned int jpl::_exception::IndexOutOfBoundsException::attempted{\f2 [private]}}}
 \par
-{\bkmkstart AAAAAAAACZ}
-{\bkmkend AAAAAAAACZ}
+{\bkmkstart AAAAAAAADB}
+{\bkmkend AAAAAAAADB}
 {
 \pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
 {\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
@@ -1634,8 +1620,8 @@ Definition at line {\b 36} of file {\b IndexOutOfBoundsException.hpp}.}\par
 {\b 
 const unsigned int jpl::_exception::IndexOutOfBoundsException::max{\f2 [private]}}}
 \par
-{\bkmkstart AAAAAAAADA}
-{\bkmkend AAAAAAAADA}
+{\bkmkstart AAAAAAAADC}
+{\bkmkend AAAAAAAADC}
 {
 \pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
 {\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
@@ -1652,11 +1638,252 @@ src/runtime/{\b IndexOutOfBoundsException.hpp}\par
 \pard\plain \sect\sbkpage
 \s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
 \pard\plain \s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+jpl::_exception::IOException Class Reference\par \pard\plain 
+{\tc\tcl2 \v jpl::_exception::IOException}
+{\xe \v jpl::_exception::IOException}
+{\bkmkstart AAAAAAAADD}
+{\bkmkend AAAAAAAADD}
+\par
+{
+{\f2 #include <IOException.hpp>}}\par
+Inheritance diagram for jpl::_exception::IOException:{
+\pard\plain 
+\par\pard \qc {\field\flddirty {\*\fldinst INCLUDEPICTURE "df/d28/classjpl_1_1__exception_1_1_i_o_exception.png" \\d \\*MERGEFORMAT}{\fldrslt IMAGE}}\par
+}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Public Member Functions\par
+\pard\plain 
+
+{
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\b IOException} (unsigned int {\b error_code}, std::string {\b description}, std::string {\b msg})\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\b IOException} (unsigned int {\b error_code}, std::string {\b description})\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\b IOException} (unsigned int {\b error_code})\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\b IOException} (std::string {\b msg})\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\b IOException} ()\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+const char * {\b what} () const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW override\par
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid {\i {\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+Print the type of the exception which has been thrown with the message that has been passed, too. }{
+}\par
+}\par}
+}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
+Public Member Functions inherited from {\b jpl::_exception::RuntimeException}\par
+\pard\plain 
+
+{
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\b RuntimeException} (std::string {\b type_ex}, std::string {\b msg})\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\b RuntimeException} (std::string {\b msg})\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\b RuntimeException} ()\par
+}
+
+{
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+virtual const char * {\b what} () const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW override\par
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid {\i {\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+Print the type of the exception which has been thrown with the message that has been passed, too. }{
+}\par
+}\par}
+}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Protected Attributes\par
+\pard\plain 
+
+{
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+const unsigned int {\b error_code}\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+std::string {\b description}\par
+}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
+Protected Attributes inherited from {\b jpl::_exception::AbstractException}\par
+\pard\plain 
+
+{
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+std::string {\b type_ex}\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+std::string {\b msg}\par
+}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Additional Inherited Members\par
+\pard\plain 
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
+Protected Member Functions inherited from {\b jpl::_exception::AbstractException}\par
+\pard\plain 
+
+{
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\b AbstractException} (std::string {\b type_ex})\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\b AbstractException} (std::string {\b type_ex}, std::string {\b msg})\par
+}
+{\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Detailed Description\par
+\pard\plain 
+{
+\pard\plain \s17\sa60\sb30\widctlpar\qj \fs22\cgrid {
+Definition at line {\b 24} of file {\b IOException.hpp}.}\par
+}
+{\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Constructor & Destructor Documentation\par
+\pard\plain 
+{\xe \v IOException\:jpl::_exception::IOException}
+{\xe \v jpl::_exception::IOException\:IOException}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+jpl::_exception::IOException::IOException (unsigned int  {\i error_code}, std::string  {\i description}, std::string  {\i msg}){\f2 [inline]}}}
+\par
+{\bkmkstart AAAAAAAADE}
+{\bkmkend AAAAAAAADE}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+\par
+{
+Definition at line {\b 31} of file {\b IOException.hpp}.}\par
+}
+{\xe \v IOException\:jpl::_exception::IOException}
+{\xe \v jpl::_exception::IOException\:IOException}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+jpl::_exception::IOException::IOException (unsigned int  {\i error_code}, std::string  {\i description}){\f2 [inline]}}}
+\par
+{\bkmkstart AAAAAAAADF}
+{\bkmkend AAAAAAAADF}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+\par
+{
+Definition at line {\b 32} of file {\b IOException.hpp}.}\par
+}
+{\xe \v IOException\:jpl::_exception::IOException}
+{\xe \v jpl::_exception::IOException\:IOException}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+jpl::_exception::IOException::IOException (unsigned int  {\i error_code}){\f2 [inline]}}}
+\par
+{\bkmkstart AAAAAAAADG}
+{\bkmkend AAAAAAAADG}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+\par
+{
+Definition at line {\b 33} of file {\b IOException.hpp}.}\par
+}
+{\xe \v IOException\:jpl::_exception::IOException}
+{\xe \v jpl::_exception::IOException\:IOException}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+jpl::_exception::IOException::IOException (std::string  {\i msg}){\f2 [inline]}}}
+\par
+{\bkmkstart AAAAAAAADH}
+{\bkmkend AAAAAAAADH}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+\par
+{
+Definition at line {\b 34} of file {\b IOException.hpp}.}\par
+}
+{\xe \v IOException\:jpl::_exception::IOException}
+{\xe \v jpl::_exception::IOException\:IOException}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+jpl::_exception::IOException::IOException (){\f2 [inline]}}}
+\par
+{\bkmkstart AAAAAAAADI}
+{\bkmkend AAAAAAAADI}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+\par
+{
+Definition at line {\b 35} of file {\b IOException.hpp}.}\par
+}
+{\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Member Function Documentation\par
+\pard\plain 
+{\xe \v what\:jpl::_exception::IOException}
+{\xe \v jpl::_exception::IOException\:what}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+const char * jpl::_exception::IOException::what () const{\f2 [inline]}, {\f2 [override]}, {\f2 [virtual]}}}
+\par
+{\bkmkstart AAAAAAAABW}
+{\bkmkend AAAAAAAABW}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+\par
+{
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+Print the type of the exception which has been thrown with the message that has been passed, too. }}\par
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+\par
+{{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
+Returns\par}\pard\plain \s82\li720\widctlpar\ql\adjustright \fs20\cgrid {\s17 \sa60 \sb30
+const char* \par
+}}}{
+Reimplemented from {\b jpl::_exception::AbstractException} ({\i p.{\field\fldedit {\*\fldinst PAGEREF AAAAAAAABT \\*MERGEFORMAT}{\fldrslt pagenum}}}).}\par
+{
+Definition at line {\b 37} of file {\b IOException.hpp}.}\par
+}
+{\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Field Documentation\par
+\pard\plain 
+{\xe \v description\:jpl::_exception::IOException}
+{\xe \v jpl::_exception::IOException\:description}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+std::string jpl::_exception::IOException::description{\f2 [protected]}}}
+\par
+{\bkmkstart AAAAAAAADJ}
+{\bkmkend AAAAAAAADJ}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+\par
+{
+Definition at line {\b 28} of file {\b IOException.hpp}.}\par
+}
+{\xe \v error_code\:jpl::_exception::IOException}
+{\xe \v jpl::_exception::IOException\:error_code}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+const unsigned int jpl::_exception::IOException::error_code{\f2 [protected]}}}
+\par
+{\bkmkstart AAAAAAAADK}
+{\bkmkend AAAAAAAADK}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+\par
+{
+Definition at line {\b 27} of file {\b IOException.hpp}.}\par
+}
+{\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
+The documentation for this class was generated from the following file:{\par
+\pard\plain \s121\fi-360\li720\widctlpar\jclisttab\tx720{\*\pn \pnlvlbody\ilvl0\ls2\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+src/runtime/{\b IOException.hpp}\par
+}\par \pard\plain 
+
+\pard\plain \sect\sbkpage
+\s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+\pard\plain \s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
 jpl::_exception::NoSuchFieldException Class Reference\par \pard\plain 
 {\tc\tcl2 \v jpl::_exception::NoSuchFieldException}
 {\xe \v jpl::_exception::NoSuchFieldException}
-{\bkmkstart AAAAAAAADB}
-{\bkmkend AAAAAAAADB}
+{\bkmkstart AAAAAAAADL}
+{\bkmkend AAAAAAAADL}
 \par
 {
 {\f2 #include <NoSuchFieldException.hpp>}}\par
@@ -1670,7 +1897,7 @@ Public Member Functions\par
 
 {
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b NoSuchFieldException} (const char *{\b msg})\par
+{\b NoSuchFieldException} (std::string {\b msg})\par
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
 {\b NoSuchFieldException} ()\par
 }
@@ -1686,8 +1913,6 @@ virtual const char * {\b what} () const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW o
 Print the type of the exception which has been thrown with the message that has been passed, too. }{
 }\par
 }\par}
-\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-virtual const char * {\b getStacktrace} () const\par
 }
 \pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
 Additional Inherited Members\par
@@ -1698,9 +1923,9 @@ Protected Member Functions inherited from {\b jpl::_exception::AbstractException
 
 {
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b AbstractException} (const char *{\b type_ex})\par
+{\b AbstractException} (std::string {\b type_ex})\par
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b AbstractException} (const char *{\b type_ex}, const char *{\b msg})\par
+{\b AbstractException} (std::string {\b type_ex}, std::string {\b msg})\par
 }
 \pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
 Protected Attributes inherited from {\b jpl::_exception::AbstractException}\par
@@ -1708,9 +1933,9 @@ Protected Attributes inherited from {\b jpl::_exception::AbstractException}\par
 
 {
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-const char * {\b type_ex}\par
+std::string {\b type_ex}\par
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-const char * {\b msg}\par
+std::string {\b msg}\par
 }
 {\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
 \pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
@@ -1728,10 +1953,10 @@ Constructor & Destructor Documentation\par
 {\xe \v jpl::_exception::NoSuchFieldException\:NoSuchFieldException}
 \pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
 {\b 
-jpl::_exception::NoSuchFieldException::NoSuchFieldException (const char *  {\i msg}){\f2 [inline]}}}
+jpl::_exception::NoSuchFieldException::NoSuchFieldException (std::string  {\i msg}){\f2 [inline]}}}
 \par
-{\bkmkstart AAAAAAAADC}
-{\bkmkend AAAAAAAADC}
+{\bkmkstart AAAAAAAADM}
+{\bkmkend AAAAAAAADM}
 {
 \pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
 \par
@@ -1744,8 +1969,8 @@ Definition at line {\b 28} of file {\b NoSuchFieldException.hpp}.}\par
 {\b 
 jpl::_exception::NoSuchFieldException::NoSuchFieldException (){\f2 [inline]}}}
 \par
-{\bkmkstart AAAAAAAADD}
-{\bkmkend AAAAAAAADD}
+{\bkmkstart AAAAAAAADN}
+{\bkmkend AAAAAAAADN}
 {
 \pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
 \par
@@ -1764,8 +1989,8 @@ src/reflection/{\b NoSuchFieldException.hpp}\par
 jpl::_exception::NoSuchMethodException Class Reference\par \pard\plain 
 {\tc\tcl2 \v jpl::_exception::NoSuchMethodException}
 {\xe \v jpl::_exception::NoSuchMethodException}
-{\bkmkstart AAAAAAAADE}
-{\bkmkend AAAAAAAADE}
+{\bkmkstart AAAAAAAADO}
+{\bkmkend AAAAAAAADO}
 \par
 {
 {\f2 #include <NoSuchMethodException.hpp>}}\par
@@ -1779,7 +2004,7 @@ Public Member Functions\par
 
 {
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b NoSuchMethodException} (const char *{\b msg})\par
+{\b NoSuchMethodException} (std::string {\b msg})\par
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
 {\b NoSuchMethodException} ()\par
 }
@@ -1795,8 +2020,6 @@ virtual const char * {\b what} () const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW o
 Print the type of the exception which has been thrown with the message that has been passed, too. }{
 }\par
 }\par}
-\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-virtual const char * {\b getStacktrace} () const\par
 }
 \pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
 Additional Inherited Members\par
@@ -1807,9 +2030,9 @@ Protected Member Functions inherited from {\b jpl::_exception::AbstractException
 
 {
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b AbstractException} (const char *{\b type_ex})\par
+{\b AbstractException} (std::string {\b type_ex})\par
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b AbstractException} (const char *{\b type_ex}, const char *{\b msg})\par
+{\b AbstractException} (std::string {\b type_ex}, std::string {\b msg})\par
 }
 \pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
 Protected Attributes inherited from {\b jpl::_exception::AbstractException}\par
@@ -1817,9 +2040,9 @@ Protected Attributes inherited from {\b jpl::_exception::AbstractException}\par
 
 {
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-const char * {\b type_ex}\par
+std::string {\b type_ex}\par
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-const char * {\b msg}\par
+std::string {\b msg}\par
 }
 {\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
 \pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
@@ -1837,10 +2060,10 @@ Constructor & Destructor Documentation\par
 {\xe \v jpl::_exception::NoSuchMethodException\:NoSuchMethodException}
 \pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
 {\b 
-jpl::_exception::NoSuchMethodException::NoSuchMethodException (const char *  {\i msg}){\f2 [inline]}}}
+jpl::_exception::NoSuchMethodException::NoSuchMethodException (std::string  {\i msg}){\f2 [inline]}}}
 \par
-{\bkmkstart AAAAAAAADF}
-{\bkmkend AAAAAAAADF}
+{\bkmkstart AAAAAAAADP}
+{\bkmkend AAAAAAAADP}
 {
 \pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
 \par
@@ -1853,8 +2076,8 @@ Definition at line {\b 28} of file {\b NoSuchMethodException.hpp}.}\par
 {\b 
 jpl::_exception::NoSuchMethodException::NoSuchMethodException (){\f2 [inline]}}}
 \par
-{\bkmkstart AAAAAAAADG}
-{\bkmkend AAAAAAAADG}
+{\bkmkstart AAAAAAAADQ}
+{\bkmkend AAAAAAAADQ}
 {
 \pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
 \par
@@ -1873,8 +2096,8 @@ src/reflection/{\b NoSuchMethodException.hpp}\par
 jpl::_exception::NotFoundException Class Reference\par \pard\plain 
 {\tc\tcl2 \v jpl::_exception::NotFoundException}
 {\xe \v jpl::_exception::NotFoundException}
-{\bkmkstart AAAAAAAADH}
-{\bkmkend AAAAAAAADH}
+{\bkmkstart AAAAAAAADR}
+{\bkmkend AAAAAAAADR}
 \par
 {
 {\f2 #include <NotFoundException.hpp>}}\par
@@ -1898,9 +2121,11 @@ Public Member Functions inherited from {\b jpl::_exception::RuntimeException}\pa
 
 {
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b RuntimeException} (const char *{\b type_ex}, const char *{\b msg})\par
+{\b RuntimeException} (std::string {\b type_ex}, std::string {\b msg})\par
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b RuntimeException} (const char *{\b msg})\par
+{\b RuntimeException} (std::string {\b msg})\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\b RuntimeException} ()\par
 }
 \pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
 Public Member Functions inherited from {\b jpl::_exception::AbstractException}\par
@@ -1914,8 +2139,6 @@ virtual const char * {\b what} () const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW o
 Print the type of the exception which has been thrown with the message that has been passed, too. }{
 }\par
 }\par}
-\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-virtual const char * {\b getStacktrace} () const\par
 }
 \pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
 Additional Inherited Members\par
@@ -1926,9 +2149,9 @@ Protected Member Functions inherited from {\b jpl::_exception::AbstractException
 
 {
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b AbstractException} (const char *{\b type_ex})\par
+{\b AbstractException} (std::string {\b type_ex})\par
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b AbstractException} (const char *{\b type_ex}, const char *{\b msg})\par
+{\b AbstractException} (std::string {\b type_ex}, std::string {\b msg})\par
 }
 \pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
 Protected Attributes inherited from {\b jpl::_exception::AbstractException}\par
@@ -1936,9 +2159,9 @@ Protected Attributes inherited from {\b jpl::_exception::AbstractException}\par
 
 {
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-const char * {\b type_ex}\par
+std::string {\b type_ex}\par
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-const char * {\b msg}\par
+std::string {\b msg}\par
 }
 {\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
 \pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
@@ -1958,8 +2181,8 @@ Constructor & Destructor Documentation\par
 {\b 
 jpl::_exception::NotFoundException::NotFoundException (const char *const  {\i msg}){\f2 [inline]}}}
 \par
-{\bkmkstart AAAAAAAADI}
-{\bkmkend AAAAAAAADI}
+{\bkmkstart AAAAAAAADS}
+{\bkmkend AAAAAAAADS}
 {
 \pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
 \par
@@ -1972,8 +2195,8 @@ Definition at line {\b 25} of file {\b NotFoundException.hpp}.}\par
 {\b 
 jpl::_exception::NotFoundException::NotFoundException (){\f2 [inline]}}}
 \par
-{\bkmkstart AAAAAAAADJ}
-{\bkmkend AAAAAAAADJ}
+{\bkmkstart AAAAAAAADT}
+{\bkmkend AAAAAAAADT}
 {
 \pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
 \par
@@ -1992,8 +2215,8 @@ src/runtime/{\b NotFoundException.hpp}\par
 jpl::_exception::NullPointerException Class Reference\par \pard\plain 
 {\tc\tcl2 \v jpl::_exception::NullPointerException}
 {\xe \v jpl::_exception::NullPointerException}
-{\bkmkstart AAAAAAAADK}
-{\bkmkend AAAAAAAADK}
+{\bkmkstart AAAAAAAADU}
+{\bkmkend AAAAAAAADU}
 \par
 {
 {\f2 #include <NullPointerException.hpp>}}\par
@@ -2007,7 +2230,7 @@ Public Member Functions\par
 
 {
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b NullPointerException} (const char *{\b msg})\par
+{\b NullPointerException} (std::string {\b msg})\par
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
 {\b NullPointerException} ()\par
 }
@@ -2017,9 +2240,11 @@ Public Member Functions inherited from {\b jpl::_exception::RuntimeException}\pa
 
 {
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b RuntimeException} (const char *{\b type_ex}, const char *{\b msg})\par
+{\b RuntimeException} (std::string {\b type_ex}, std::string {\b msg})\par
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b RuntimeException} (const char *{\b msg})\par
+{\b RuntimeException} (std::string {\b msg})\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\b RuntimeException} ()\par
 }
 \pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
 Public Member Functions inherited from {\b jpl::_exception::AbstractException}\par
@@ -2033,8 +2258,6 @@ virtual const char * {\b what} () const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW o
 Print the type of the exception which has been thrown with the message that has been passed, too. }{
 }\par
 }\par}
-\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-virtual const char * {\b getStacktrace} () const\par
 }
 \pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
 Additional Inherited Members\par
@@ -2045,9 +2268,9 @@ Protected Member Functions inherited from {\b jpl::_exception::AbstractException
 
 {
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b AbstractException} (const char *{\b type_ex})\par
+{\b AbstractException} (std::string {\b type_ex})\par
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b AbstractException} (const char *{\b type_ex}, const char *{\b msg})\par
+{\b AbstractException} (std::string {\b type_ex}, std::string {\b msg})\par
 }
 \pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
 Protected Attributes inherited from {\b jpl::_exception::AbstractException}\par
@@ -2055,9 +2278,9 @@ Protected Attributes inherited from {\b jpl::_exception::AbstractException}\par
 
 {
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-const char * {\b type_ex}\par
+std::string {\b type_ex}\par
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-const char * {\b msg}\par
+std::string {\b msg}\par
 }
 {\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
 \pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
@@ -2075,10 +2298,10 @@ Constructor & Destructor Documentation\par
 {\xe \v jpl::_exception::NullPointerException\:NullPointerException}
 \pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
 {\b 
-jpl::_exception::NullPointerException::NullPointerException (const char *  {\i msg}){\f2 [inline]}}}
+jpl::_exception::NullPointerException::NullPointerException (std::string  {\i msg}){\f2 [inline]}}}
 \par
-{\bkmkstart AAAAAAAADL}
-{\bkmkend AAAAAAAADL}
+{\bkmkstart AAAAAAAADV}
+{\bkmkend AAAAAAAADV}
 {
 \pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
 \par
@@ -2091,8 +2314,8 @@ Definition at line {\b 26} of file {\b NullPointerException.hpp}.}\par
 {\b 
 jpl::_exception::NullPointerException::NullPointerException (){\f2 [inline]}}}
 \par
-{\bkmkstart AAAAAAAADM}
-{\bkmkend AAAAAAAADM}
+{\bkmkstart AAAAAAAADW}
+{\bkmkend AAAAAAAADW}
 {
 \pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
 \par
@@ -2111,8 +2334,8 @@ src/runtime/{\b NullPointerException.hpp}\par
 jpl::_exception::OutOfMemoryException Class Reference\par \pard\plain 
 {\tc\tcl2 \v jpl::_exception::OutOfMemoryException}
 {\xe \v jpl::_exception::OutOfMemoryException}
-{\bkmkstart AAAAAAAADN}
-{\bkmkend AAAAAAAADN}
+{\bkmkstart AAAAAAAADX}
+{\bkmkend AAAAAAAADX}
 \par
 {
 {\f2 #include <OutOfMemoryException.hpp>}}\par
@@ -2126,7 +2349,7 @@ Public Member Functions\par
 
 {
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b OutOfMemoryException} (const char *{\b msg})\par
+{\b OutOfMemoryException} (std::string {\b msg})\par
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
 {\b OutOfMemoryException} ()\par
 }
@@ -2136,9 +2359,11 @@ Public Member Functions inherited from {\b jpl::_exception::RuntimeException}\pa
 
 {
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b RuntimeException} (const char *{\b type_ex}, const char *{\b msg})\par
+{\b RuntimeException} (std::string {\b type_ex}, std::string {\b msg})\par
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b RuntimeException} (const char *{\b msg})\par
+{\b RuntimeException} (std::string {\b msg})\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\b RuntimeException} ()\par
 }
 \pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
 Public Member Functions inherited from {\b jpl::_exception::AbstractException}\par
@@ -2152,8 +2377,6 @@ virtual const char * {\b what} () const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW o
 Print the type of the exception which has been thrown with the message that has been passed, too. }{
 }\par
 }\par}
-\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-virtual const char * {\b getStacktrace} () const\par
 }
 \pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
 Additional Inherited Members\par
@@ -2164,9 +2387,9 @@ Protected Member Functions inherited from {\b jpl::_exception::AbstractException
 
 {
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b AbstractException} (const char *{\b type_ex})\par
+{\b AbstractException} (std::string {\b type_ex})\par
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b AbstractException} (const char *{\b type_ex}, const char *{\b msg})\par
+{\b AbstractException} (std::string {\b type_ex}, std::string {\b msg})\par
 }
 \pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
 Protected Attributes inherited from {\b jpl::_exception::AbstractException}\par
@@ -2174,9 +2397,9 @@ Protected Attributes inherited from {\b jpl::_exception::AbstractException}\par
 
 {
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-const char * {\b type_ex}\par
+std::string {\b type_ex}\par
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-const char * {\b msg}\par
+std::string {\b msg}\par
 }
 {\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
 \pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
@@ -2194,10 +2417,10 @@ Constructor & Destructor Documentation\par
 {\xe \v jpl::_exception::OutOfMemoryException\:OutOfMemoryException}
 \pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
 {\b 
-jpl::_exception::OutOfMemoryException::OutOfMemoryException (const char *  {\i msg}){\f2 [inline]}}}
+jpl::_exception::OutOfMemoryException::OutOfMemoryException (std::string  {\i msg}){\f2 [inline]}}}
 \par
-{\bkmkstart AAAAAAAADO}
-{\bkmkend AAAAAAAADO}
+{\bkmkstart AAAAAAAADY}
+{\bkmkend AAAAAAAADY}
 {
 \pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
 \par
@@ -2210,8 +2433,8 @@ Definition at line {\b 24} of file {\b OutOfMemoryException.hpp}.}\par
 {\b 
 jpl::_exception::OutOfMemoryException::OutOfMemoryException (){\f2 [inline]}}}
 \par
-{\bkmkstart AAAAAAAADP}
-{\bkmkend AAAAAAAADP}
+{\bkmkstart AAAAAAAADZ}
+{\bkmkend AAAAAAAADZ}
 {
 \pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
 \par
@@ -2230,8 +2453,8 @@ src/runtime/{\b OutOfMemoryException.hpp}\par
 jpl::_exception::PermissionException Class Reference\par \pard\plain 
 {\tc\tcl2 \v jpl::_exception::PermissionException}
 {\xe \v jpl::_exception::PermissionException}
-{\bkmkstart AAAAAAAADQ}
-{\bkmkend AAAAAAAADQ}
+{\bkmkstart AAAAAAAAEA}
+{\bkmkend AAAAAAAAEA}
 \par
 {
 {\f2 #include <PermissionException.hpp>}}\par
@@ -2245,7 +2468,7 @@ Public Member Functions\par
 
 {
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b PermissionException} (const char *{\b msg})\par
+{\b PermissionException} (std::string {\b msg})\par
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
 {\b PermissionException} ()\par
 }
@@ -2255,9 +2478,11 @@ Public Member Functions inherited from {\b jpl::_exception::RuntimeException}\pa
 
 {
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b RuntimeException} (const char *{\b type_ex}, const char *{\b msg})\par
+{\b RuntimeException} (std::string {\b type_ex}, std::string {\b msg})\par
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b RuntimeException} (const char *{\b msg})\par
+{\b RuntimeException} (std::string {\b msg})\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\b RuntimeException} ()\par
 }
 \pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
 Public Member Functions inherited from {\b jpl::_exception::AbstractException}\par
@@ -2271,8 +2496,6 @@ virtual const char * {\b what} () const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW o
 Print the type of the exception which has been thrown with the message that has been passed, too. }{
 }\par
 }\par}
-\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-virtual const char * {\b getStacktrace} () const\par
 }
 \pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
 Additional Inherited Members\par
@@ -2283,9 +2506,9 @@ Protected Member Functions inherited from {\b jpl::_exception::AbstractException
 
 {
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b AbstractException} (const char *{\b type_ex})\par
+{\b AbstractException} (std::string {\b type_ex})\par
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b AbstractException} (const char *{\b type_ex}, const char *{\b msg})\par
+{\b AbstractException} (std::string {\b type_ex}, std::string {\b msg})\par
 }
 \pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
 Protected Attributes inherited from {\b jpl::_exception::AbstractException}\par
@@ -2293,9 +2516,9 @@ Protected Attributes inherited from {\b jpl::_exception::AbstractException}\par
 
 {
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-const char * {\b type_ex}\par
+std::string {\b type_ex}\par
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-const char * {\b msg}\par
+std::string {\b msg}\par
 }
 {\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
 \pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
@@ -2313,10 +2536,10 @@ Constructor & Destructor Documentation\par
 {\xe \v jpl::_exception::PermissionException\:PermissionException}
 \pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
 {\b 
-jpl::_exception::PermissionException::PermissionException (const char *  {\i msg}){\f2 [inline]}}}
+jpl::_exception::PermissionException::PermissionException (std::string  {\i msg}){\f2 [inline]}}}
 \par
-{\bkmkstart AAAAAAAADR}
-{\bkmkend AAAAAAAADR}
+{\bkmkstart AAAAAAAAEB}
+{\bkmkend AAAAAAAAEB}
 {
 \pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
 \par
@@ -2329,8 +2552,8 @@ Definition at line {\b 23} of file {\b PermissionException.hpp}.}\par
 {\b 
 jpl::_exception::PermissionException::PermissionException (){\f2 [inline]}}}
 \par
-{\bkmkstart AAAAAAAADS}
-{\bkmkend AAAAAAAADS}
+{\bkmkstart AAAAAAAAEC}
+{\bkmkend AAAAAAAAEC}
 {
 \pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
 \par
@@ -2349,8 +2572,8 @@ src/runtime/{\b PermissionException.hpp}\par
 jpl::_exception::RuntimeException Class Reference\par \pard\plain 
 {\tc\tcl2 \v jpl::_exception::RuntimeException}
 {\xe \v jpl::_exception::RuntimeException}
-{\bkmkstart AAAAAAAADT}
-{\bkmkend AAAAAAAADT}
+{\bkmkstart AAAAAAAAED}
+{\bkmkend AAAAAAAAED}
 \par
 {
 {\f2 #include <RuntimeException.hpp>}}\par
@@ -2364,9 +2587,11 @@ Public Member Functions\par
 
 {
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b RuntimeException} (const char *{\b type_ex}, const char *{\b msg})\par
+{\b RuntimeException} (std::string {\b type_ex}, std::string {\b msg})\par
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b RuntimeException} (const char *{\b msg})\par
+{\b RuntimeException} (std::string {\b msg})\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\b RuntimeException} ()\par
 }
 \pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
 Public Member Functions inherited from {\b jpl::_exception::AbstractException}\par
@@ -2380,8 +2605,6 @@ virtual const char * {\b what} () const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW o
 Print the type of the exception which has been thrown with the message that has been passed, too. }{
 }\par
 }\par}
-\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-virtual const char * {\b getStacktrace} () const\par
 }
 \pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
 Additional Inherited Members\par
@@ -2392,9 +2615,9 @@ Protected Member Functions inherited from {\b jpl::_exception::AbstractException
 
 {
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b AbstractException} (const char *{\b type_ex})\par
+{\b AbstractException} (std::string {\b type_ex})\par
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b AbstractException} (const char *{\b type_ex}, const char *{\b msg})\par
+{\b AbstractException} (std::string {\b type_ex}, std::string {\b msg})\par
 }
 \pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
 Protected Attributes inherited from {\b jpl::_exception::AbstractException}\par
@@ -2402,9 +2625,9 @@ Protected Attributes inherited from {\b jpl::_exception::AbstractException}\par
 
 {
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-const char * {\b type_ex}\par
+std::string {\b type_ex}\par
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-const char * {\b msg}\par
+std::string {\b msg}\par
 }
 {\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
 \pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
@@ -2422,10 +2645,10 @@ Constructor & Destructor Documentation\par
 {\xe \v jpl::_exception::RuntimeException\:RuntimeException}
 \pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
 {\b 
-jpl::_exception::RuntimeException::RuntimeException (const char *  {\i type_ex}, const char *  {\i msg}){\f2 [inline]}}}
+jpl::_exception::RuntimeException::RuntimeException (std::string  {\i type_ex}, std::string  {\i msg}){\f2 [inline]}}}
 \par
-{\bkmkstart AAAAAAAADU}
-{\bkmkend AAAAAAAADU}
+{\bkmkstart AAAAAAAAEE}
+{\bkmkend AAAAAAAAEE}
 {
 \pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
 \par
@@ -2436,15 +2659,29 @@ Definition at line {\b 23} of file {\b RuntimeException.hpp}.}\par
 {\xe \v jpl::_exception::RuntimeException\:RuntimeException}
 \pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
 {\b 
-jpl::_exception::RuntimeException::RuntimeException (const char *  {\i msg}){\f2 [inline]}}}
+jpl::_exception::RuntimeException::RuntimeException (std::string  {\i msg}){\f2 [inline]}}}
 \par
-{\bkmkstart AAAAAAAADV}
-{\bkmkend AAAAAAAADV}
+{\bkmkstart AAAAAAAAEF}
+{\bkmkend AAAAAAAAEF}
 {
 \pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
 \par
 {
 Definition at line {\b 24} of file {\b RuntimeException.hpp}.}\par
+}
+{\xe \v RuntimeException\:jpl::_exception::RuntimeException}
+{\xe \v jpl::_exception::RuntimeException\:RuntimeException}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+jpl::_exception::RuntimeException::RuntimeException (){\f2 [inline]}}}
+\par
+{\bkmkstart AAAAAAAAEG}
+{\bkmkend AAAAAAAAEG}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+\par
+{
+Definition at line {\b 25} of file {\b RuntimeException.hpp}.}\par
 }
 {\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
 The documentation for this class was generated from the following file:{\par
@@ -2458,8 +2695,8 @@ src/runtime/{\b RuntimeException.hpp}\par
 jpl::_exception::SocketException Class Reference\par \pard\plain 
 {\tc\tcl2 \v jpl::_exception::SocketException}
 {\xe \v jpl::_exception::SocketException}
-{\bkmkstart AAAAAAAADW}
-{\bkmkend AAAAAAAADW}
+{\bkmkstart AAAAAAAAEH}
+{\bkmkend AAAAAAAAEH}
 \par
 {
 {\f2 #include <SocketException.hpp>}}\par
@@ -2473,7 +2710,7 @@ Public Member Functions\par
 
 {
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b SocketException} (const unsigned int {\b fd}, const unsigned int {\b error_code}, const char *{\b msg})\par
+{\b SocketException} (const unsigned int {\b fd}, const unsigned int {\b error_code}, std::string {\b msg})\par
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
 {\b SocketException} (const unsigned int {\b fd}, const unsigned int {\b error_code})\par
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
@@ -2492,13 +2729,12 @@ Public Member Functions inherited from {\b jpl::_exception::RuntimeException}\pa
 
 {
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b RuntimeException} (const char *{\b type_ex}, const char *{\b msg})\par
+{\b RuntimeException} (std::string {\b type_ex}, std::string {\b msg})\par
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b RuntimeException} (const char *{\b msg})\par
+{\b RuntimeException} (std::string {\b msg})\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\b RuntimeException} ()\par
 }
-\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
-Public Member Functions inherited from {\b jpl::_exception::AbstractException}\par
-\pard\plain 
 
 {
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
@@ -2508,8 +2744,6 @@ virtual const char * {\b what} () const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW o
 Print the type of the exception which has been thrown with the message that has been passed, too. }{
 }\par
 }\par}
-\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-virtual const char * {\b getStacktrace} () const\par
 }
 \pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
 Protected Attributes\par
@@ -2527,9 +2761,9 @@ Protected Attributes inherited from {\b jpl::_exception::AbstractException}\par
 
 {
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-const char * {\b type_ex}\par
+std::string {\b type_ex}\par
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-const char * {\b msg}\par
+std::string {\b msg}\par
 }
 \pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
 Additional Inherited Members\par
@@ -2540,9 +2774,9 @@ Protected Member Functions inherited from {\b jpl::_exception::AbstractException
 
 {
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b AbstractException} (const char *{\b type_ex})\par
+{\b AbstractException} (std::string {\b type_ex})\par
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b AbstractException} (const char *{\b type_ex}, const char *{\b msg})\par
+{\b AbstractException} (std::string {\b type_ex}, std::string {\b msg})\par
 }
 {\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
 \pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
@@ -2560,10 +2794,10 @@ Constructor & Destructor Documentation\par
 {\xe \v jpl::_exception::SocketException\:SocketException}
 \pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
 {\b 
-jpl::_exception::SocketException::SocketException (const unsigned int  {\i fd}, const unsigned int  {\i error_code}, const char *  {\i msg}){\f2 [inline]}}}
+jpl::_exception::SocketException::SocketException (const unsigned int  {\i fd}, const unsigned int  {\i error_code}, std::string  {\i msg}){\f2 [inline]}}}
 \par
-{\bkmkstart AAAAAAAADX}
-{\bkmkend AAAAAAAADX}
+{\bkmkstart AAAAAAAAEI}
+{\bkmkend AAAAAAAAEI}
 {
 \pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
 \par
@@ -2576,8 +2810,8 @@ Definition at line {\b 38} of file {\b SocketException.hpp}.}\par
 {\b 
 jpl::_exception::SocketException::SocketException (const unsigned int  {\i fd}, const unsigned int  {\i error_code}){\f2 [inline]}}}
 \par
-{\bkmkstart AAAAAAAADY}
-{\bkmkend AAAAAAAADY}
+{\bkmkstart AAAAAAAAEJ}
+{\bkmkend AAAAAAAAEJ}
 {
 \pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
 \par
@@ -2590,8 +2824,8 @@ Definition at line {\b 39} of file {\b SocketException.hpp}.}\par
 {\b 
 jpl::_exception::SocketException::SocketException (const unsigned int  {\i fd}){\f2 [inline]}}}
 \par
-{\bkmkstart AAAAAAAADZ}
-{\bkmkend AAAAAAAADZ}
+{\bkmkstart AAAAAAAAEK}
+{\bkmkend AAAAAAAAEK}
 {
 \pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
 \par
@@ -2608,8 +2842,8 @@ Member Function Documentation\par
 {\b 
 virtual const char * jpl::_exception::SocketException::what () const{\f2 [inline]}, {\f2 [override]}, {\f2 [virtual]}}}
 \par
-{\bkmkstart AAAAAAAABV}
-{\bkmkend AAAAAAAABV}
+{\bkmkstart AAAAAAAABX}
+{\bkmkend AAAAAAAABX}
 {
 \pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
 \par
@@ -2622,9 +2856,9 @@ Print the type of the exception which has been thrown with the message that has 
 Returns\par}\pard\plain \s82\li720\widctlpar\ql\adjustright \fs20\cgrid {\s17 \sa60 \sb30
 const char* \par
 }}}{
-Reimplemented from {\b jpl::_exception::AbstractException} ({\i p.{\field\fldedit {\*\fldinst PAGEREF AAAAAAAABS \\*MERGEFORMAT}{\fldrslt pagenum}}}).}\par
+Reimplemented from {\b jpl::_exception::AbstractException} ({\i p.{\field\fldedit {\*\fldinst PAGEREF AAAAAAAABT \\*MERGEFORMAT}{\fldrslt pagenum}}}).}\par
 {
-Definition at line {\b 51} of file {\b SocketException.hpp}.}\par
+Definition at line {\b 46} of file {\b SocketException.hpp}.}\par
 }
 {\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
 \pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
@@ -2636,8 +2870,8 @@ Field Documentation\par
 {\b 
 const unsigned int jpl::_exception::SocketException::error_code{\f2 [protected]}}}
 \par
-{\bkmkstart AAAAAAAAEA}
-{\bkmkend AAAAAAAAEA}
+{\bkmkstart AAAAAAAAEL}
+{\bkmkend AAAAAAAAEL}
 {
 \pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
 {\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
@@ -2651,8 +2885,8 @@ Definition at line {\b 31} of file {\b SocketException.hpp}.}\par
 {\b 
 const unsigned int jpl::_exception::SocketException::fd{\f2 [protected]}}}
 \par
-{\bkmkstart AAAAAAAAEB}
-{\bkmkend AAAAAAAAEB}
+{\bkmkstart AAAAAAAAEM}
+{\bkmkend AAAAAAAAEM}
 {
 \pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
 {\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
@@ -2672,8 +2906,8 @@ src/runtime/{\b SocketException.hpp}\par
 jpl::_exception::StackOverflowException Class Reference\par \pard\plain 
 {\tc\tcl2 \v jpl::_exception::StackOverflowException}
 {\xe \v jpl::_exception::StackOverflowException}
-{\bkmkstart AAAAAAAAEC}
-{\bkmkend AAAAAAAAEC}
+{\bkmkstart AAAAAAAAEN}
+{\bkmkend AAAAAAAAEN}
 \par
 {
 {\f2 #include <StackOverflowException.hpp>}}\par
@@ -2687,7 +2921,7 @@ Public Member Functions\par
 
 {
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b StackOverflowException} (const char *{\b msg})\par
+{\b StackOverflowException} (std::string {\b msg})\par
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
 {\b StackOverflowException} ()\par
 }
@@ -2697,9 +2931,11 @@ Public Member Functions inherited from {\b jpl::_exception::RuntimeException}\pa
 
 {
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b RuntimeException} (const char *{\b type_ex}, const char *{\b msg})\par
+{\b RuntimeException} (std::string {\b type_ex}, std::string {\b msg})\par
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b RuntimeException} (const char *{\b msg})\par
+{\b RuntimeException} (std::string {\b msg})\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\b RuntimeException} ()\par
 }
 \pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
 Public Member Functions inherited from {\b jpl::_exception::AbstractException}\par
@@ -2713,8 +2949,6 @@ virtual const char * {\b what} () const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW o
 Print the type of the exception which has been thrown with the message that has been passed, too. }{
 }\par
 }\par}
-\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-virtual const char * {\b getStacktrace} () const\par
 }
 \pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
 Additional Inherited Members\par
@@ -2725,9 +2959,9 @@ Protected Member Functions inherited from {\b jpl::_exception::AbstractException
 
 {
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b AbstractException} (const char *{\b type_ex})\par
+{\b AbstractException} (std::string {\b type_ex})\par
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b AbstractException} (const char *{\b type_ex}, const char *{\b msg})\par
+{\b AbstractException} (std::string {\b type_ex}, std::string {\b msg})\par
 }
 \pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
 Protected Attributes inherited from {\b jpl::_exception::AbstractException}\par
@@ -2735,9 +2969,9 @@ Protected Attributes inherited from {\b jpl::_exception::AbstractException}\par
 
 {
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-const char * {\b type_ex}\par
+std::string {\b type_ex}\par
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-const char * {\b msg}\par
+std::string {\b msg}\par
 }
 {\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
 \pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
@@ -2755,10 +2989,10 @@ Constructor & Destructor Documentation\par
 {\xe \v jpl::_exception::StackOverflowException\:StackOverflowException}
 \pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
 {\b 
-jpl::_exception::StackOverflowException::StackOverflowException (const char *  {\i msg}){\f2 [inline]}}}
+jpl::_exception::StackOverflowException::StackOverflowException (std::string  {\i msg}){\f2 [inline]}}}
 \par
-{\bkmkstart AAAAAAAAED}
-{\bkmkend AAAAAAAAED}
+{\bkmkstart AAAAAAAAEO}
+{\bkmkend AAAAAAAAEO}
 {
 \pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
 \par
@@ -2771,8 +3005,8 @@ Definition at line {\b 25} of file {\b StackOverflowException.hpp}.}\par
 {\b 
 jpl::_exception::StackOverflowException::StackOverflowException (){\f2 [inline]}}}
 \par
-{\bkmkstart AAAAAAAAEE}
-{\bkmkend AAAAAAAAEE}
+{\bkmkstart AAAAAAAAEP}
+{\bkmkend AAAAAAAAEP}
 {
 \pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
 \par
@@ -2791,8 +3025,8 @@ src/runtime/{\b StackOverflowException.hpp}\par
 jpl::_exception::StackUnderflowException Class Reference\par \pard\plain 
 {\tc\tcl2 \v jpl::_exception::StackUnderflowException}
 {\xe \v jpl::_exception::StackUnderflowException}
-{\bkmkstart AAAAAAAAEF}
-{\bkmkend AAAAAAAAEF}
+{\bkmkstart AAAAAAAAEQ}
+{\bkmkend AAAAAAAAEQ}
 \par
 {
 {\f2 #include <StackUnderflowException.hpp>}}\par
@@ -2806,7 +3040,7 @@ Public Member Functions\par
 
 {
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b StackUnderflowException} (const char *{\b msg})\par
+{\b StackUnderflowException} (std::string {\b msg})\par
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
 {\b StackUnderflowException} ()\par
 }
@@ -2816,9 +3050,11 @@ Public Member Functions inherited from {\b jpl::_exception::RuntimeException}\pa
 
 {
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b RuntimeException} (const char *{\b type_ex}, const char *{\b msg})\par
+{\b RuntimeException} (std::string {\b type_ex}, std::string {\b msg})\par
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b RuntimeException} (const char *{\b msg})\par
+{\b RuntimeException} (std::string {\b msg})\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\b RuntimeException} ()\par
 }
 \pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
 Public Member Functions inherited from {\b jpl::_exception::AbstractException}\par
@@ -2832,8 +3068,6 @@ virtual const char * {\b what} () const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW o
 Print the type of the exception which has been thrown with the message that has been passed, too. }{
 }\par
 }\par}
-\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-virtual const char * {\b getStacktrace} () const\par
 }
 \pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
 Additional Inherited Members\par
@@ -2844,9 +3078,9 @@ Protected Member Functions inherited from {\b jpl::_exception::AbstractException
 
 {
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b AbstractException} (const char *{\b type_ex})\par
+{\b AbstractException} (std::string {\b type_ex})\par
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-{\b AbstractException} (const char *{\b type_ex}, const char *{\b msg})\par
+{\b AbstractException} (std::string {\b type_ex}, std::string {\b msg})\par
 }
 \pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
 Protected Attributes inherited from {\b jpl::_exception::AbstractException}\par
@@ -2854,9 +3088,9 @@ Protected Attributes inherited from {\b jpl::_exception::AbstractException}\par
 
 {
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-const char * {\b type_ex}\par
+std::string {\b type_ex}\par
 \pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-const char * {\b msg}\par
+std::string {\b msg}\par
 }
 {\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
 \pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
@@ -2874,10 +3108,10 @@ Constructor & Destructor Documentation\par
 {\xe \v jpl::_exception::StackUnderflowException\:StackUnderflowException}
 \pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
 {\b 
-jpl::_exception::StackUnderflowException::StackUnderflowException (const char *  {\i msg}){\f2 [inline]}}}
+jpl::_exception::StackUnderflowException::StackUnderflowException (std::string  {\i msg}){\f2 [inline]}}}
 \par
-{\bkmkstart AAAAAAAAEG}
-{\bkmkend AAAAAAAAEG}
+{\bkmkstart AAAAAAAAER}
+{\bkmkend AAAAAAAAER}
 {
 \pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
 \par
@@ -2890,8 +3124,8 @@ Definition at line {\b 24} of file {\b StackUnderflowException.hpp}.}\par
 {\b 
 jpl::_exception::StackUnderflowException::StackUnderflowException (){\f2 [inline]}}}
 \par
-{\bkmkstart AAAAAAAAEH}
-{\bkmkend AAAAAAAAEH}
+{\bkmkstart AAAAAAAAES}
+{\bkmkend AAAAAAAAES}
 {
 \pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
 \par
@@ -2911,8 +3145,8 @@ File Documentation{\tc \v File Documentation}
 README.md File Reference\par \pard\plain 
 {\tc\tcl2 \v README.md}
 {\xe \v README.md}
-{\bkmkstart AAAAAAAAAS}
-{\bkmkend AAAAAAAAAS}
+{\bkmkstart AAAAAAAAAT}
+{\bkmkend AAAAAAAAAT}
 \par \pard\plain 
 
 \pard\plain \sect\sbkpage
@@ -2921,12 +3155,11 @@ README.md File Reference\par \pard\plain
 src/AbstractException.hpp File Reference\par \pard\plain 
 {\tc\tcl2 \v src/AbstractException.hpp}
 {\xe \v src/AbstractException.hpp}
-{\bkmkstart AAAAAAAAAT}
-{\bkmkend AAAAAAAAAT}
+{\bkmkstart AAAAAAAAAU}
+{\bkmkend AAAAAAAAAU}
 {
 \pard\plain \s18\widctlpar\fs22\cgrid {\f2 #include <iostream>}\par
-{\f2 #include <boost/stacktrace.hpp>}\par
-{\f2 #include <boost/stacktrace/frame.hpp>}\par
+{\f2 #include <vector>}\par
 }
 \pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
 Data Structures\par
@@ -2988,8 +3221,8 @@ Macro Definition Documentation\par
 {\b 
 #define STRINGIFY( arg)\~ #arg}}
 \par
-{\bkmkstart AAAAAAAAAU}
-{\bkmkend AAAAAAAAAU}
+{\bkmkstart AAAAAAAAAV}
+{\bkmkend AAAAAAAAAV}
 {
 \pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
 \par
@@ -3008,7 +3241,7 @@ Parameters\par}
 {\row }
 }
 }{
-Definition at line {\b 107} of file {\b AbstractException.hpp}.}\par
+Definition at line {\b 115} of file {\b AbstractException.hpp}.}\par
 }
 \par \pard\plain 
 
@@ -3022,72 +3255,77 @@ AbstractException.hpp\par \pard\plain
 {\bkmkend AAAAAAAAAA}
 Go to the documentation of this file.{
 \pard\plain \s40\li0\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 00001 \par
-00015 {\cf21 #ifndef ABSTRACT_EXCEPTION_JPL}\par
-00016 {\cf21 #define ABSTRACT_EXCEPTION_JPL}\par
-00017 \par
-00018 {\cf21 #include <iostream>}\par
-00019 \par
-00020 {\cf21 #include <boost/stacktrace.hpp>}\par
-00021 {\cf21 #include <boost/stacktrace/frame.hpp>}\par
-00022 \par
-00023 {\cf17 namespace }jpl\{\par
-00024 \par
-00025     {\cf17 namespace }_exception\{\par
-00026 \par
-00027         {\cf17 class }AbstractException : {\cf17 protected} std::exception\{\par
-00028 \par
-00029             {\cf17 protected}:\par
-00030                 \par
-00036                 {\cf17 const} {\cf18 char}* type_ex;\par
-00037 \par
-00042                 {\cf17 const} {\cf18 char}* msg;    \par
-00043 \par
-00044                 AbstractException({\cf17 const} {\cf18 char}* type_ex) : AbstractException(type_ex, {\cf22 ""})\{\}\par
-00045                 AbstractException({\cf17 const} {\cf18 char}* type_ex, {\cf17 const} {\cf18 char}* msg) : type_ex(type_ex), msg(msg)\{\}\par
-00046                 \par
-00047             {\cf17 public}:\par
-00048                 \par
-00054                 {\cf17 inline} {\cf17 virtual} {\cf17 const} {\cf18 char}* what() const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW{\cf17  override}\{\par
-00055                     std::string buffer = \par
-00056                         std::string(this->type_ex) + {\cf22 ": "} + std::string(this->msg);\par
-00057 \par
-00058 \par
-00059                     {\cf18 char}* c_buffer = {\cf17 new} {\cf18 char}[buffer.size()];\par
-00060                     memcpy(c_buffer, buffer.c_str(), buffer.size());\par
-00061                     {\cf19 return} c_buffer;\par
-00062                 \}\par
-00063 \par
-00067                 {\cf17 inline} {\cf17 virtual} {\cf17 const} {\cf18 char}* getStacktrace(){\cf17  const}\{\par
-00068                     {\cf17 auto} stacktrace = boost::stacktrace::stacktrace();\par
-00069 \par
-00070                     std::string buffer = std::string(this->what()) + {\cf22 "\\n"};\par
-00071 \par
-00072                     {\cf19 for}({\cf18 unsigned} {\cf18 long} i = 1; i <stacktrace.size(); i++)\{\par
-00073                         \par
-00074                         boost::stacktrace::frame frame = stacktrace[i];\par
-00075 \par
-00076                         buffer += frame.name() + {\cf22 " of "} + frame.source_file() + {\cf22 " at line "} + std::to_string(frame.source_line()) + {\cf22 "\\n"};\par
-00077                     \}    \par
-00078 \par
-00079                     {\cf18 char}* c_buffer = {\cf17 new} {\cf18 char}[buffer.size()];\par
-00080                     memcpy(c_buffer, buffer.c_str(), buffer.size());\par
-00081                     {\cf19 return} c_buffer;\par
-00082                 \}\par
-00083 \par
-00091                 {\cf17 inline} {\cf17 friend} std::ostream& operator<<(std::ostream& os, {\cf17 const} AbstractException &iae)\{\par
-00092 \par
-00093                     {\cf17 const} {\cf18 char}* buffer = iae.what();\par
-00094                     os<<buffer;\par
-00095                     {\cf17 delete}[] buffer;\par
-00096                     {\cf19 return} os;\par
-00097                 \}\par
-00098         \};\par
-00099     \}\par
-00100 \}\par
-00101 \par
-00107 {\cf21 #define STRINGIFY(arg) #arg}\par
-00108 \par
-00109 {\cf21 #endif}\par
+00018 {\cf21 #ifndef ABSTRACT_EXCEPTION_JPL}\par
+00019 {\cf21 #define ABSTRACT_EXCEPTION_JPL}\par
+00020 \par
+00021 {\cf21     #include <iostream>}\par
+00022 {\cf21     #include <vector>}\par
+00023 \par
+00024 {\cf21     #ifdef USE_STACKTRACE_W_EXCEPTION_JPL}\par
+00025 {\cf21         #include <jpl/utils/debug/stacktrace/Stacktrace.hpp>}\par
+00026 {\cf21     #endif}\par
+00027 \par
+00028     {\cf17 namespace }jpl\{\par
+00029 \par
+00030         {\cf17 namespace }_exception\{\par
+00031 \par
+00032             {\cf17 class }AbstractException;\par
+00033 \par
+00034 \par
+00035             {\cf17 class }AbstractException : {\cf17 protected} std::exception\{\par
+00036 \par
+00037                 {\cf17 protected}:\par
+00038                     \par
+00044                     std::string type_ex;\par
+00045 \par
+00050                     std::string msg;   \par
+00051 \par
+00052 {\cf21                     #ifdef USE_STACKTRACE_W_EXCEPTION_JPL}\par
+00053                         _utils::_debug::Stacktrace* stacktrace;\par
+00054 {\cf21                     #endif}\par
+00055 \par
+00056                     AbstractException(std::string type_ex) : AbstractException(type_ex, {\cf22 ""})\{\}\par
+00057                     AbstractException(std::string type_ex, std::string msg) : type_ex(type_ex), msg(msg)\{\par
+00058 {\cf21                         #ifdef USE_STACKTRACE_W_EXCEPTION_JPL}\par
+00059                             this->stacktrace = {\cf17 new} _utils::_debug::Stacktrace(0, 0);\par
+00060 {\cf21                         #endif}\par
+00061                     \}\par
+00062                     \par
+00063                 {\cf17 public}:\par
+00064                     \par
+00070                     {\cf17 inline} {\cf17 virtual} {\cf17 const} {\cf18 char}* what() const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW{\cf17  override}\{\par
+00071                         std::string buffer = \par
+00072                             std::string(this->type_ex) + {\cf22 ": "} + std::string(this->msg) + {\cf22 "\\0"};\par
+00073 \par
+00074 \par
+00075                         {\cf18 char}* c_buffer = {\cf17 new} {\cf18 char}[buffer.size()];\par
+00076                         memcpy(c_buffer, buffer.c_str(), buffer.size());\par
+00077                         {\cf19 return} c_buffer;\par
+00078                     \}\par
+00079 \par
+00080 {\cf21                     #ifdef USE_STACKTRACE_W_EXCEPTION_JPL}\par
+00084                         {\cf17 inline} {\cf17 virtual} {\cf17 const} _utils::_debug::Stacktrace* getStacktrace(){\cf17  const}\{{\cf19 return} this->stacktrace;\}\par
+00085 {\cf21                     #endif}\par
+00086 \par
+00094                     {\cf17 inline} {\cf17 friend} std::ostream& operator<<(std::ostream& os, {\cf17 const} AbstractException &iae)\{\par
+00095 \par
+00096                         {\cf17 const} {\cf18 char}* buffer = iae.what();\par
+00097                         os<<buffer<<std::endl;\par
+00098                         {\cf17 delete}[] buffer;\par
+00099 \par
+00100 {\cf21                         #ifdef USE_STACKTRACE_W_EXCEPTION_JPL}\par
+00101                             os<<iae.getStacktrace()<<std::endl;\par
+00102 {\cf21                         #endif}\par
+00103 \par
+00104                         {\cf19 return} os;\par
+00105                     \}\par
+00106             \};\par
+00107         \}\par
+00108     \}\par
+00109 \par
+00115 {\cf21     #define STRINGIFY(arg) #arg}\par
+00116 \par
+00117 {\cf21 #endif}\par
 }
 \par \pard\plain 
 
@@ -3097,8 +3335,8 @@ Go to the documentation of this file.{
 src/reflection/IllegalAccessException.hpp File Reference\par \pard\plain 
 {\tc\tcl2 \v src/reflection/IllegalAccessException.hpp}
 {\xe \v src/reflection/IllegalAccessException.hpp}
-{\bkmkstart AAAAAAAAAV}
-{\bkmkend AAAAAAAAAV}
+{\bkmkstart AAAAAAAAAW}
+{\bkmkend AAAAAAAAAW}
 {
 \pard\plain \s18\widctlpar\fs22\cgrid {\f2 #include "../AbstractException.hpp"}\par
 }
@@ -3165,7 +3403,7 @@ Go to the documentation of this file.{
 00025             \par
 00026             {\cf17 public}:\par
 00027 \par
-00028                 IllegalAccessException({\cf17 const} {\cf18 char}* msg) : AbstractException({\cf22 "ArithmeticException"}, msg)\{\}\par
+00028                 IllegalAccessException(std::string msg) : AbstractException({\cf22 "ArithmeticException"}, msg)\{\}\par
 00029                 IllegalAccessException() : IllegalAccessException({\cf22 ""})\{\}\par
 00030 \par
 00031         \};\par
@@ -3182,8 +3420,8 @@ Go to the documentation of this file.{
 src/reflection/NoSuchFieldException.hpp File Reference\par \pard\plain 
 {\tc\tcl2 \v src/reflection/NoSuchFieldException.hpp}
 {\xe \v src/reflection/NoSuchFieldException.hpp}
-{\bkmkstart AAAAAAAAAW}
-{\bkmkend AAAAAAAAAW}
+{\bkmkstart AAAAAAAAAX}
+{\bkmkend AAAAAAAAAX}
 {
 \pard\plain \s18\widctlpar\fs22\cgrid {\f2 #include "../AbstractException.hpp"}\par
 }
@@ -3250,7 +3488,7 @@ Go to the documentation of this file.{
 00025 \par
 00026             {\cf17 public}:\par
 00027 \par
-00028                 NoSuchFieldException({\cf17 const} {\cf18 char}* msg) : AbstractException({\cf22 "ArithmeticException"}, msg)\{\}\par
+00028                 NoSuchFieldException(std::string msg) : AbstractException({\cf22 "ArithmeticException"}, msg)\{\}\par
 00029                 NoSuchFieldException() : NoSuchFieldException({\cf22 ""})\{\}\par
 00030         \};\par
 00031     \}\par
@@ -3266,8 +3504,8 @@ Go to the documentation of this file.{
 src/reflection/NoSuchMethodException.hpp File Reference\par \pard\plain 
 {\tc\tcl2 \v src/reflection/NoSuchMethodException.hpp}
 {\xe \v src/reflection/NoSuchMethodException.hpp}
-{\bkmkstart AAAAAAAAAX}
-{\bkmkend AAAAAAAAAX}
+{\bkmkstart AAAAAAAAAY}
+{\bkmkend AAAAAAAAAY}
 {
 \pard\plain \s18\widctlpar\fs22\cgrid {\f2 #include "../AbstractException.hpp"}\par
 }
@@ -3334,7 +3572,7 @@ Go to the documentation of this file.{
 00025             \par
 00026             {\cf17 public}:\par
 00027 \par
-00028                 NoSuchMethodException({\cf17 const} {\cf18 char}* msg) : AbstractException({\cf22 "ArithmeticException"}, msg)\{\}\par
+00028                 NoSuchMethodException(std::string msg) : AbstractException({\cf22 "ArithmeticException"}, msg)\{\}\par
 00029                 NoSuchMethodException() : NoSuchMethodException({\cf22 ""})\{\}\par
 00030         \};\par
 00031     \}\par
@@ -3350,8 +3588,8 @@ Go to the documentation of this file.{
 src/runtime/ArithmeticException.hpp File Reference\par \pard\plain 
 {\tc\tcl2 \v src/runtime/ArithmeticException.hpp}
 {\xe \v src/runtime/ArithmeticException.hpp}
-{\bkmkstart AAAAAAAAAY}
-{\bkmkend AAAAAAAAAY}
+{\bkmkstart AAAAAAAAAZ}
+{\bkmkend AAAAAAAAAZ}
 {
 \pard\plain \s18\widctlpar\fs22\cgrid {\f2 #include "RuntimeException.hpp"}\par
 }
@@ -3419,7 +3657,7 @@ Go to the documentation of this file.{
 00024             \par
 00025             {\cf17 public}:\par
 00026 \par
-00027                 ArithmeticException({\cf17 const} {\cf18 char}* msg) : RuntimeException({\cf22 "ArithmeticException"}, msg)\{\}\par
+00027                 ArithmeticException(std::string msg) : RuntimeException({\cf22 "ArithmeticException"}, msg)\{\}\par
 00028                 ArithmeticException() : ArithmeticException({\cf22 ""})\{\}\par
 00029         \};\par
 00030     \}\par
@@ -3435,8 +3673,8 @@ Go to the documentation of this file.{
 src/runtime/FileNotFoundException.hpp File Reference\par \pard\plain 
 {\tc\tcl2 \v src/runtime/FileNotFoundException.hpp}
 {\xe \v src/runtime/FileNotFoundException.hpp}
-{\bkmkstart AAAAAAAAAZ}
-{\bkmkend AAAAAAAAAZ}
+{\bkmkstart AAAAAAAABA}
+{\bkmkend AAAAAAAABA}
 {
 \pard\plain \s18\widctlpar\fs22\cgrid {\f2 #include "RuntimeException.hpp"}\par
 }
@@ -3503,7 +3741,7 @@ Go to the documentation of this file.{
 00022             \par
 00023             {\cf17 public}:\par
 00024 \par
-00025                 FileNotFoundException({\cf17 const} {\cf18 char}* msg) : RuntimeException({\cf22 "FileNotFoundException"}, msg)\{\}\par
+00025                 FileNotFoundException(std::string msg) : RuntimeException({\cf22 "FileNotFoundException"}, msg)\{\}\par
 00026                 FileNotFoundException() : FileNotFoundException({\cf22 ""})\{\}\par
 00027         \};\par
 00028     \}\par
@@ -3519,8 +3757,8 @@ Go to the documentation of this file.{
 src/runtime/IllegalArgumentException.hpp File Reference\par \pard\plain 
 {\tc\tcl2 \v src/runtime/IllegalArgumentException.hpp}
 {\xe \v src/runtime/IllegalArgumentException.hpp}
-{\bkmkstart AAAAAAAABA}
-{\bkmkend AAAAAAAABA}
+{\bkmkstart AAAAAAAABB}
+{\bkmkend AAAAAAAABB}
 {
 \pard\plain \s18\widctlpar\fs22\cgrid {\f2 #include "RuntimeException.hpp"}\par
 }
@@ -3586,7 +3824,7 @@ Go to the documentation of this file.{
 00022 \par
 00023             {\cf17 public}:\par
 00024 \par
-00025                 IllegalArgumentException({\cf17 const} {\cf18 char}* msg) : RuntimeException({\cf22 "IllegalArgumentException"}, msg)\{\}\par
+00025                 IllegalArgumentException(std::string msg) : RuntimeException({\cf22 "IllegalArgumentException"}, msg)\{\}\par
 00026                 IllegalArgumentException() : IllegalArgumentException({\cf22 ""})\{\}\par
 00027         \};\par
 00028     \}\par
@@ -3602,8 +3840,8 @@ Go to the documentation of this file.{
 src/runtime/IllegalCastException.hpp File Reference\par \pard\plain 
 {\tc\tcl2 \v src/runtime/IllegalCastException.hpp}
 {\xe \v src/runtime/IllegalCastException.hpp}
-{\bkmkstart AAAAAAAABB}
-{\bkmkend AAAAAAAABB}
+{\bkmkstart AAAAAAAABC}
+{\bkmkend AAAAAAAABC}
 {
 \pard\plain \s18\widctlpar\fs22\cgrid {\f2 #include "RuntimeException.hpp"}\par
 }
@@ -3674,17 +3912,17 @@ Go to the documentation of this file.{
 00032             \par
 00033             {\cf17 public}:\par
 00034 \par
-00035                 IllegalCastException({\cf17 const} {\cf18 char}* _cast_attempted, {\cf17 const} {\cf18 char}* _cast_needed, {\cf17 const} {\cf18 char}* msg) : \par
+00035                 IllegalCastException({\cf17 const} {\cf18 char}* _cast_attempted, {\cf17 const} {\cf18 char}* _cast_needed, std::string msg) : \par
 00036                     RuntimeException({\cf22 "IllegalCastException"}, msg), _cast_attempted(_cast_attempted), _cast_needed(_cast_needed)\{\}\par
 00037                 IllegalCastException({\cf17 const} {\cf18 char}* _cast_attempted, {\cf17 const} {\cf18 char}* _cast_needed) : IllegalCastException(_cast_attempted, _cast_needed, {\cf22 ""})\{\}\par
-00038                 IllegalCastException({\cf17 const} {\cf18 char}* msg) : IllegalCastException({\cf22 "UNKNOWN"} ,{\cf22 "UNKNOWN"}, msg)\{\}\par
+00038                 IllegalCastException(std::string msg) : IllegalCastException({\cf22 "UNKNOWN"} ,{\cf22 "UNKNOWN"}, msg)\{\}\par
 00039                 IllegalCastException() : IllegalCastException({\cf22 ""})\{\}\par
 00040 \par
 00041                 {\cf17 inline} {\cf17 const} {\cf18 char}* what() const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW{\cf17  override}\{\par
 00042                     std::string buffer = \par
 00043                         std::string(this->type_ex) + {\cf22 " Attempted Cast: "} + std::string(this->_cast_attempted) +\par
 00044                                                      {\cf22 " Required Cast: "} + std::string(this->_cast_needed) + \par
-00045                                                      {\cf22 " "} + std::string(this->msg);\par
+00045                                                      {\cf22 " "} + std::string(this->msg) + {\cf22 "\\0"};\par
 00046 \par
 00047 \par
 00048                     {\cf18 char}* c_buffer = {\cf17 new} {\cf18 char}[buffer.size()];\par
@@ -3705,8 +3943,8 @@ Go to the documentation of this file.{
 src/runtime/IllegalStateException.hpp File Reference\par \pard\plain 
 {\tc\tcl2 \v src/runtime/IllegalStateException.hpp}
 {\xe \v src/runtime/IllegalStateException.hpp}
-{\bkmkstart AAAAAAAABC}
-{\bkmkend AAAAAAAABC}
+{\bkmkstart AAAAAAAABD}
+{\bkmkend AAAAAAAABD}
 {
 \pard\plain \s18\widctlpar\fs22\cgrid {\f2 #include "RuntimeException.hpp"}\par
 }
@@ -3773,7 +4011,7 @@ Go to the documentation of this file.{
 00031         {\cf17 class }IllegalStateException : {\cf17 public} RuntimeException\{\par
 00032 \par
 00033             {\cf17 public}:\par
-00034                 IllegalStateException({\cf17 const} {\cf18 char}* msg) : RuntimeException({\cf22 "IllegalStateException"}, msg)\{\}\par
+00034                 IllegalStateException(std::string msg) : RuntimeException({\cf22 "IllegalStateException"}, msg)\{\}\par
 00035                 IllegalStateException() : IllegalStateException({\cf22 ""})\{\}\par
 00036         \};\par
 00037     \}\par
@@ -3791,8 +4029,8 @@ Go to the documentation of this file.{
 src/runtime/IndexOutOfBoundsException.hpp File Reference\par \pard\plain 
 {\tc\tcl2 \v src/runtime/IndexOutOfBoundsException.hpp}
 {\xe \v src/runtime/IndexOutOfBoundsException.hpp}
-{\bkmkstart AAAAAAAABD}
-{\bkmkend AAAAAAAABD}
+{\bkmkstart AAAAAAAABE}
+{\bkmkend AAAAAAAABE}
 {
 \pard\plain \s18\widctlpar\fs22\cgrid {\f2 #include "IllegalArgumentException.hpp"}\par
 }
@@ -3862,7 +4100,7 @@ Go to the documentation of this file.{
 00037 \par
 00038 \par
 00039             {\cf17 public}:\par
-00040                 IndexOutOfBoundsException({\cf17 const} {\cf18 unsigned} {\cf18 int} max, {\cf17 const} {\cf18 unsigned} {\cf18 int} attempted, {\cf17 const} {\cf18 char}* msg) : \par
+00040                 IndexOutOfBoundsException({\cf17 const} {\cf18 unsigned} {\cf18 int} max, {\cf17 const} {\cf18 unsigned} {\cf18 int} attempted, std::string msg) : \par
 00041                     RuntimeException({\cf22 "IndexOutOfBoundsException"}, msg), max(max), attempted(attempted) \{\}\par
 00042                 IndexOutOfBoundsException({\cf17 const} {\cf18 unsigned} {\cf18 int} max, {\cf17 const} {\cf18 unsigned} {\cf18 int} attempted) :\par
 00043                     IndexOutOfBoundsException(max, attempted, {\cf22 ""})\{\}\par
@@ -3872,7 +4110,7 @@ Go to the documentation of this file.{
 00047                     std::string buffer =    std::string(this->type_ex) + \par
 00048                                             {\cf22 " Max: "} + std::to_string(this->max) + \par
 00049                                             {\cf22 " Attempted: "} + std::to_string(this->attempted) + \par
-00050                                             {\cf22 ". "} + std::string(this->msg);\par
+00050                                             {\cf22 ". "} + std::string(this->msg) + {\cf22 "\\0"};\par
 00051 \par
 00052                     this->msg = {\cf17 new} {\cf18 char}[buffer.size()];\par
 00053                     {\cf18 char}* tmp = ({\cf18 char}*)&msg[0];\par
@@ -3891,11 +4129,120 @@ Go to the documentation of this file.{
 \pard\plain \sect\sbkpage
 \s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
 \pard\plain \s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+src/runtime/IOException.hpp File Reference\par \pard\plain 
+{\tc\tcl2 \v src/runtime/IOException.hpp}
+{\xe \v src/runtime/IOException.hpp}
+{\bkmkstart AAAAAAAABF}
+{\bkmkend AAAAAAAABF}
+{
+\pard\plain \s18\widctlpar\fs22\cgrid {\f2 #include "RuntimeException.hpp"}\par
+{\f2 #include <jpl/utils/debug/ErrorUtils.hpp>}\par
+}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Data Structures\par
+\pard\plain 
+
+{
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+class {\b jpl::_exception::IOException}}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Namespaces\par
+\pard\plain 
+
+{
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+namespace {\b jpl}\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+namespace {\b jpl::_exception}\par
+}
+{\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Detailed Description\par
+\pard\plain 
+{
+\pard\plain \s17\sa60\sb30\widctlpar\qj \fs22\cgrid {\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+An IOException is thrown when an error is occurred in runtime during an I/O operation either on a socket or a file\par
+It is able to catch the last error occurred via _utils::_error::_GetLastError() if you instance via the default constructor; it even get the description of the error code via _utils::_error::_GetLastErrorAsString(unsigned int)\par
+{{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
+Date\par}\pard\plain \s81\li360\widctlpar\ql\adjustright \fs20\cgrid {\s17 \sa60 \sb30
+2023-08-01 \par
+}}{{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
+Copyright\par}\pard\plain \s81\li360\widctlpar\ql\adjustright \fs20\cgrid {\s17 \sa60 \sb30
+Copyright (c) 2023 \par
+}}{{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
+Author\par}\pard\plain \s81\li360\widctlpar\ql\adjustright \fs20\cgrid {\s17 \sa60 \sb30
+Gabriele-P03 \par
+}}}{
+Definition in file {\b IOException.hpp}.}\par
+}
+\par \pard\plain 
+
+\pard\plain \sect\sbkpage
+\s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+\pard\plain \s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+IOException.hpp\par \pard\plain 
+{\tc\tcl2 \v src/runtime/IOException.hpp}
+{\xe \v src/runtime/IOException.hpp}
+{\bkmkstart AAAAAAAAAK}
+{\bkmkend AAAAAAAAAK}
+Go to the documentation of this file.{
+\pard\plain \s40\li0\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 00001 \par
+00014 {\cf21 #ifndef IO_EXCEPTION_JPL}\par
+00015 {\cf21 #define IO_EXCEPTION_JPL}\par
+00016 \par
+00017 {\cf21 #include "RuntimeException.hpp"}\par
+00018 {\cf21 #include <jpl/utils/debug/ErrorUtils.hpp>}\par
+00019 \par
+00020 {\cf17 namespace }jpl\{\par
+00021 \par
+00022     {\cf17 namespace }_exception\{\par
+00023 \par
+00024         {\cf17 class }IOException : {\cf17 public} RuntimeException\{\par
+00025 \par
+00026             {\cf17 protected}:\par
+00027                 {\cf17 const} {\cf18 unsigned} {\cf18 int} error_code;\par
+00028                 std::string description; \par
+00029 \par
+00030             {\cf17 public}:\par
+00031                 IOException({\cf18 unsigned} {\cf18 int} error_code, std::string description, std::string msg) : RuntimeException({\cf22 "IOException"}, msg), error_code(error_code), description(description)\{\}\par
+00032                 IOException({\cf18 unsigned} {\cf18 int} error_code, std::string description) : IOException(error_code, description, {\cf22 ""})\{\}\par
+00033                 IOException({\cf18 unsigned} {\cf18 int} error_code) : IOException(error_code, _utils::_error::_GetLastErrorAsString(error_code), {\cf22 ""})\{\}\par
+00034                 IOException(std::string msg) : IOException(_utils::_error::_GetLastError())\{this->msg = msg;\}\par
+00035                 IOException() : IOException(_utils::_error::_GetLastError())\{\}\par
+00036 \par
+00037                 {\cf17 inline} {\cf17 const} {\cf18 char}* what() const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW{\cf17  override}\{\par
+00038                     std::string buffer = this->type_ex;\par
+00039                     buffer += {\cf22 " Error Code: "};\par
+00040                     buffer += std::to_string(this->error_code);\par
+00041                     buffer += {\cf22 " -> "};\par
+00042                     buffer += this->description;\par
+00043 \par
+00044                     {\cf19 if}(!this->msg.empty())\{\par
+00045                         buffer += {\cf22 " "};\par
+00046                         buffer += this->msg;\par
+00047                     \}\par
+00048 \par
+00049                     {\cf18 char}* c_buffer = {\cf17 new} {\cf18 char}[buffer.size()];\par
+00050                     memcpy(c_buffer, buffer.c_str(), buffer.size());\par
+00051                     c_buffer[buffer.size()] = {\cf23 '\\0'};\par
+00052                     {\cf19 return} c_buffer;\par
+00053                 \}\par
+00054         \};\par
+00055     \}\par
+00056 \}\par
+00057 \par
+00058 {\cf21 #endif}\par
+}
+\par \pard\plain 
+
+\pard\plain \sect\sbkpage
+\s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+\pard\plain \s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
 src/runtime/NotFoundException.hpp File Reference\par \pard\plain 
 {\tc\tcl2 \v src/runtime/NotFoundException.hpp}
 {\xe \v src/runtime/NotFoundException.hpp}
-{\bkmkstart AAAAAAAABE}
-{\bkmkend AAAAAAAABE}
+{\bkmkstart AAAAAAAABG}
+{\bkmkend AAAAAAAABG}
 {
 \pard\plain \s18\widctlpar\fs22\cgrid {\f2 #include "RuntimeException.hpp"}\par
 }
@@ -3944,8 +4291,8 @@ Definition in file {\b NotFoundException.hpp}.}\par
 NotFoundException.hpp\par \pard\plain 
 {\tc\tcl2 \v src/runtime/NotFoundException.hpp}
 {\xe \v src/runtime/NotFoundException.hpp}
-{\bkmkstart AAAAAAAAAK}
-{\bkmkend AAAAAAAAAK}
+{\bkmkstart AAAAAAAAAL}
+{\bkmkend AAAAAAAAAL}
 Go to the documentation of this file.{
 \pard\plain \s40\li0\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 00001 \par
 00012 {\cf21 #ifndef NOT_FOUND_EXCEPTION_JPL}\par
@@ -3978,8 +4325,8 @@ Go to the documentation of this file.{
 src/runtime/NullPointerException.hpp File Reference\par \pard\plain 
 {\tc\tcl2 \v src/runtime/NullPointerException.hpp}
 {\xe \v src/runtime/NullPointerException.hpp}
-{\bkmkstart AAAAAAAABF}
-{\bkmkend AAAAAAAABF}
+{\bkmkstart AAAAAAAABH}
+{\bkmkend AAAAAAAABH}
 {
 \pard\plain \s18\widctlpar\fs22\cgrid {\f2 #include "RuntimeException.hpp"}\par
 }
@@ -4027,8 +4374,8 @@ Definition in file {\b NullPointerException.hpp}.}\par
 NullPointerException.hpp\par \pard\plain 
 {\tc\tcl2 \v src/runtime/NullPointerException.hpp}
 {\xe \v src/runtime/NullPointerException.hpp}
-{\bkmkstart AAAAAAAAAL}
-{\bkmkend AAAAAAAAAL}
+{\bkmkstart AAAAAAAAAM}
+{\bkmkend AAAAAAAAAM}
 Go to the documentation of this file.{
 \pard\plain \s40\li0\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 00001 \par
 00012 {\cf21 #ifndef NULL_POINTER_EXCEPTION_JPL}\par
@@ -4045,7 +4392,7 @@ Go to the documentation of this file.{
 00023 \par
 00024             \par
 00025             {\cf17 public}:\par
-00026                 NullPointerException({\cf17 const} {\cf18 char}* msg) : RuntimeException({\cf22 "NullPointerException"}, msg)\{\}\par
+00026                 NullPointerException(std::string msg) : RuntimeException({\cf22 "NullPointerException"}, msg)\{\}\par
 00027                 NullPointerException() : NullPointerException({\cf22 ""})\{\}\par
 00028 \par
 00029         \};\par
@@ -4062,8 +4409,8 @@ Go to the documentation of this file.{
 src/runtime/OutOfMemoryException.hpp File Reference\par \pard\plain 
 {\tc\tcl2 \v src/runtime/OutOfMemoryException.hpp}
 {\xe \v src/runtime/OutOfMemoryException.hpp}
-{\bkmkstart AAAAAAAABG}
-{\bkmkend AAAAAAAABG}
+{\bkmkstart AAAAAAAABI}
+{\bkmkend AAAAAAAABI}
 {
 \pard\plain \s18\widctlpar\fs22\cgrid {\f2 #include "RuntimeException.hpp"}\par
 }
@@ -4111,8 +4458,8 @@ Definition in file {\b OutOfMemoryException.hpp}.}\par
 OutOfMemoryException.hpp\par \pard\plain 
 {\tc\tcl2 \v src/runtime/OutOfMemoryException.hpp}
 {\xe \v src/runtime/OutOfMemoryException.hpp}
-{\bkmkstart AAAAAAAAAM}
-{\bkmkend AAAAAAAAAM}
+{\bkmkstart AAAAAAAAAN}
+{\bkmkend AAAAAAAAAN}
 Go to the documentation of this file.{
 \pard\plain \s40\li0\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 00001 \par
 00012 {\cf21 #ifndef OUTOFMEMORY_EXCEPTION_JPL}\par
@@ -4127,7 +4474,7 @@ Go to the documentation of this file.{
 00021         {\cf17 class }OutOfMemoryException : {\cf17 public} RuntimeException\{\par
 00022 \par
 00023             {\cf17 public}:\par
-00024                 OutOfMemoryException({\cf17 const} {\cf18 char}* msg) : RuntimeException({\cf22 "OutOfMemoryException"}, msg)\{\}\par
+00024                 OutOfMemoryException(std::string msg) : RuntimeException({\cf22 "OutOfMemoryException"}, msg)\{\}\par
 00025                 OutOfMemoryException() : OutOfMemoryException({\cf22 ""})\{\}\par
 00026 \par
 00027         \};\par
@@ -4145,8 +4492,8 @@ Go to the documentation of this file.{
 src/runtime/PermissionException.hpp File Reference\par \pard\plain 
 {\tc\tcl2 \v src/runtime/PermissionException.hpp}
 {\xe \v src/runtime/PermissionException.hpp}
-{\bkmkstart AAAAAAAABH}
-{\bkmkend AAAAAAAABH}
+{\bkmkstart AAAAAAAABJ}
+{\bkmkend AAAAAAAABJ}
 {
 \pard\plain \s18\widctlpar\fs22\cgrid {\f2 #include "RuntimeException.hpp"}\par
 }
@@ -4194,8 +4541,8 @@ Definition in file {\b PermissionException.hpp}.}\par
 PermissionException.hpp\par \pard\plain 
 {\tc\tcl2 \v src/runtime/PermissionException.hpp}
 {\xe \v src/runtime/PermissionException.hpp}
-{\bkmkstart AAAAAAAAAN}
-{\bkmkend AAAAAAAAAN}
+{\bkmkstart AAAAAAAAAO}
+{\bkmkend AAAAAAAAAO}
 Go to the documentation of this file.{
 \pard\plain \s40\li0\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 00001 \par
 00011 {\cf21 #ifndef PERMISSION_EXCEPTION_JPL}\par
@@ -4210,7 +4557,7 @@ Go to the documentation of this file.{
 00020         {\cf17 class }PermissionException : {\cf17 public} RuntimeException\{\par
 00021 \par
 00022             {\cf17 public}:\par
-00023                 PermissionException({\cf17 const} {\cf18 char}* msg) : RuntimeException({\cf22 "RuntimeException"}, msg)\{\}\par
+00023                 PermissionException(std::string msg) : RuntimeException({\cf22 "RuntimeException"}, msg)\{\}\par
 00024                 PermissionException() : PermissionException({\cf22 ""})\{\}\par
 00025 \par
 00026         \};\par
@@ -4228,8 +4575,8 @@ Go to the documentation of this file.{
 src/runtime/RuntimeException.hpp File Reference\par \pard\plain 
 {\tc\tcl2 \v src/runtime/RuntimeException.hpp}
 {\xe \v src/runtime/RuntimeException.hpp}
-{\bkmkstart AAAAAAAABI}
-{\bkmkend AAAAAAAABI}
+{\bkmkstart AAAAAAAABK}
+{\bkmkend AAAAAAAABK}
 {
 \pard\plain \s18\widctlpar\fs22\cgrid {\f2 #include "../AbstractException.hpp"}\par
 }
@@ -4277,8 +4624,8 @@ Definition in file {\b RuntimeException.hpp}.}\par
 RuntimeException.hpp\par \pard\plain 
 {\tc\tcl2 \v src/runtime/RuntimeException.hpp}
 {\xe \v src/runtime/RuntimeException.hpp}
-{\bkmkstart AAAAAAAAAO}
-{\bkmkend AAAAAAAAAO}
+{\bkmkstart AAAAAAAAAP}
+{\bkmkend AAAAAAAAAP}
 Go to the documentation of this file.{
 \pard\plain \s40\li0\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 00001 \par
 00011 {\cf21 #ifndef RUNTIME_EXCEPTION_JPL}\par
@@ -4293,14 +4640,15 @@ Go to the documentation of this file.{
 00020         {\cf17 class }RuntimeException : {\cf17 public} AbstractException\{\par
 00021 \par
 00022             {\cf17 public}:\par
-00023                 RuntimeException({\cf17 const} {\cf18 char}* type_ex, {\cf17 const} {\cf18 char}* msg) : AbstractException(type_ex, msg)\{\}\par
-00024                 RuntimeException({\cf17 const} {\cf18 char}* msg) : RuntimeException({\cf22 "RuntimeException"}, msg)\{\}\par
-00025 \par
-00026         \};\par
-00027     \}\par
-00028 \}\par
-00029 \par
-00030 {\cf21 #endif}\par
+00023                 RuntimeException(std::string type_ex, std::string msg) : AbstractException(type_ex, msg)\{\}\par
+00024                 RuntimeException(std::string msg) : RuntimeException({\cf22 "RuntimeException"}, msg)\{\}\par
+00025                 RuntimeException() : RuntimeException({\cf22 ""})\{\}\par
+00026 \par
+00027         \};\par
+00028     \}\par
+00029 \}\par
+00030 \par
+00031 {\cf21 #endif}\par
 }
 \par \pard\plain 
 
@@ -4310,8 +4658,8 @@ Go to the documentation of this file.{
 src/runtime/SocketException.hpp File Reference\par \pard\plain 
 {\tc\tcl2 \v src/runtime/SocketException.hpp}
 {\xe \v src/runtime/SocketException.hpp}
-{\bkmkstart AAAAAAAABJ}
-{\bkmkend AAAAAAAABJ}
+{\bkmkstart AAAAAAAABL}
+{\bkmkend AAAAAAAABL}
 {
 \pard\plain \s18\widctlpar\fs22\cgrid {\f2 #include "RuntimeException.hpp"}\par
 {\f2 #include <jpl/utils/ErrorUtils.hpp>}\par
@@ -4361,8 +4709,8 @@ Definition in file {\b SocketException.hpp}.}\par
 SocketException.hpp\par \pard\plain 
 {\tc\tcl2 \v src/runtime/SocketException.hpp}
 {\xe \v src/runtime/SocketException.hpp}
-{\bkmkstart AAAAAAAAAP}
-{\bkmkend AAAAAAAAAP}
+{\bkmkstart AAAAAAAAAQ}
+{\bkmkend AAAAAAAAAQ}
 Go to the documentation of this file.{
 \pard\plain \s40\li0\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 00001 \par
 00014 {\cf21 #ifndef SOCKET_EXCEPTION_HPP}\par
@@ -4383,36 +4731,31 @@ Go to the documentation of this file.{
 00035                 {\cf17 const} {\cf18 unsigned} {\cf18 int} fd;\par
 00036 \par
 00037             {\cf17 public}:\par
-00038                 SocketException({\cf17 const} {\cf18 unsigned} {\cf18 int} fd, {\cf17 const} {\cf18 unsigned} {\cf18 int} error_code, {\cf17 const} {\cf18 char}* msg) : RuntimeException({\cf22 "SocketException"}, msg), error_code(error_code), fd(fd)\{\}\par
+00038                 SocketException({\cf17 const} {\cf18 unsigned} {\cf18 int} fd, {\cf17 const} {\cf18 unsigned} {\cf18 int} error_code, std::string msg) : RuntimeException({\cf22 "SocketException"}, msg), error_code(error_code), fd(fd)\{\}\par
 00039                 SocketException({\cf17 const} {\cf18 unsigned} {\cf18 int} fd, {\cf17 const} {\cf18 unsigned} {\cf18 int} error_code) : SocketException(fd, error_code, {\cf22 ""})\{\par
 00040                     std::string msg_s = jpl::_utils::_error::_GetLastErrorAsString(this->error_code); \par
 00041                     this->msg = {\cf17 new} {\cf18 char}[msg_s.size()];\par
 00042                     memcpy(({\cf18 char}*)this->msg, msg_s.c_str(), msg_s.size());\par
 00043                 \}\par
-00044                 SocketException({\cf17 const} {\cf18 unsigned} {\cf18 int} fd) : RuntimeException({\cf22 "SocketException"}, msg)\{\par
-00045                     this->error_code = jpl::_utils::_error::_GetLastError();\par
-00046                     std::string msg_s = jpl::_utils::_error::_GetLastErrorAsString(this->error_code); \par
-00047                     this->msg = {\cf17 new} {\cf18 char}[msg_s.size()];\par
-00048                     memcpy(({\cf18 char}*)this->msg, msg_s.c_str(), msg_s.size());\par
-00049                 \}\par
-00050        \par
-00051                 {\cf17 inline} {\cf17 virtual} {\cf17 const} {\cf18 char}* what() const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW{\cf17  override}\{\par
-00052                     std::string buffer = \par
-00053                         std::string(this->type_ex) + {\cf22 ": FD("}       + std::to_string(this->fd) + \par
-00054                                                      {\cf22 ") Code("}     + std::to_string(this->error_code) + \par
-00055                                                      {\cf22 ") -> "} + std::string(this->msg);\par
-00056 \par
+00044                 SocketException({\cf17 const} {\cf18 unsigned} {\cf18 int} fd) : SocketException(fd, jpl::_utils::_error::_GetLastError())\{\}\par
+00045        \par
+00046                 {\cf17 inline} {\cf17 virtual} {\cf17 const} {\cf18 char}* what() const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW{\cf17  override}\{\par
+00047                     std::string buffer = \par
+00048                         std::string(this->type_ex) + {\cf22 ": FD("}       + std::to_string(this->fd) + \par
+00049                                                      {\cf22 ") Code("}     + std::to_string(this->error_code) + \par
+00050                                                      {\cf22 ") -> "} + std::string(this->msg) + {\cf22 "\\0"};\par
+00051 \par
+00052 \par
+00053                     {\cf18 char}* c_buffer = {\cf17 new} {\cf18 char}[buffer.size()];\par
+00054                     memcpy(c_buffer, buffer.c_str(), buffer.size());\par
+00055                     {\cf19 return} c_buffer;\par
+00056                 \}\par
 00057 \par
-00058                     {\cf18 char}* c_buffer = {\cf17 new} {\cf18 char}[buffer.size()];\par
-00059                     memcpy(c_buffer, buffer.c_str(), buffer.size());\par
-00060                     {\cf19 return} c_buffer;\par
-00061                 \}\par
-00062 \par
-00063         \};\par
-00064     \}\par
-00065 \}\par
-00066 \par
-00067 {\cf21 #endif}\par
+00058         \};\par
+00059     \}\par
+00060 \}\par
+00061 \par
+00062 {\cf21 #endif}\par
 }
 \par \pard\plain 
 
@@ -4422,8 +4765,8 @@ Go to the documentation of this file.{
 src/runtime/StackOverflowException.hpp File Reference\par \pard\plain 
 {\tc\tcl2 \v src/runtime/StackOverflowException.hpp}
 {\xe \v src/runtime/StackOverflowException.hpp}
-{\bkmkstart AAAAAAAABK}
-{\bkmkend AAAAAAAABK}
+{\bkmkstart AAAAAAAABM}
+{\bkmkend AAAAAAAABM}
 {
 \pard\plain \s18\widctlpar\fs22\cgrid {\f2 #include "RuntimeException.hpp"}\par
 }
@@ -4471,8 +4814,8 @@ Definition in file {\b StackOverflowException.hpp}.}\par
 StackOverflowException.hpp\par \pard\plain 
 {\tc\tcl2 \v src/runtime/StackOverflowException.hpp}
 {\xe \v src/runtime/StackOverflowException.hpp}
-{\bkmkstart AAAAAAAAAQ}
-{\bkmkend AAAAAAAAAQ}
+{\bkmkstart AAAAAAAAAR}
+{\bkmkend AAAAAAAAAR}
 Go to the documentation of this file.{
 \pard\plain \s40\li0\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 00001 \par
 00012 {\cf21 #ifndef STACKOVERFLOW_EXCEPTION_JPL}\par
@@ -4488,7 +4831,7 @@ Go to the documentation of this file.{
 00022 \par
 00023 \par
 00024             {\cf17 public}:\par
-00025                 StackOverflowException({\cf17 const} {\cf18 char}* msg) :RuntimeException({\cf22 "StackOverflowException"}, msg)\{\}\par
+00025                 StackOverflowException(std::string msg) :RuntimeException({\cf22 "StackOverflowException"}, msg)\{\}\par
 00026                 StackOverflowException() :StackOverflowException({\cf22 ""})\{\}\par
 00027 \par
 00028         \};\par
@@ -4506,8 +4849,8 @@ Go to the documentation of this file.{
 src/runtime/StackUnderflowException.hpp File Reference\par \pard\plain 
 {\tc\tcl2 \v src/runtime/StackUnderflowException.hpp}
 {\xe \v src/runtime/StackUnderflowException.hpp}
-{\bkmkstart AAAAAAAABL}
-{\bkmkend AAAAAAAABL}
+{\bkmkstart AAAAAAAABN}
+{\bkmkend AAAAAAAABN}
 {
 \pard\plain \s18\widctlpar\fs22\cgrid {\f2 #include "RuntimeException.hpp"}\par
 }
@@ -4555,8 +4898,8 @@ Definition in file {\b StackUnderflowException.hpp}.}\par
 StackUnderflowException.hpp\par \pard\plain 
 {\tc\tcl2 \v src/runtime/StackUnderflowException.hpp}
 {\xe \v src/runtime/StackUnderflowException.hpp}
-{\bkmkstart AAAAAAAAAR}
-{\bkmkend AAAAAAAAAR}
+{\bkmkstart AAAAAAAAAS}
+{\bkmkend AAAAAAAAAS}
 Go to the documentation of this file.{
 \pard\plain \s40\li0\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 00001 \par
 00012 {\cf21 #ifndef STACKUNDERFLOW_EXCEPTION_JPL}\par
@@ -4571,7 +4914,7 @@ Go to the documentation of this file.{
 00021         {\cf17 class }StackUnderflowException : {\cf17 public} RuntimeException\{\par
 00022 \par
 00023             {\cf17 public}:\par
-00024                 StackUnderflowException({\cf17 const} {\cf18 char}* msg) : RuntimeException({\cf22 "StackUnderflowException"}, msg)\{\}\par
+00024                 StackUnderflowException(std::string msg) : RuntimeException({\cf22 "StackUnderflowException"}, msg)\{\}\par
 00025                 StackUnderflowException() : StackUnderflowException({\cf22 ""})\{\}\par
 00026         \};\par
 00027     \}\par

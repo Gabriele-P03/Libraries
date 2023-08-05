@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['outofmemoryexception_0',['OutOfMemoryException',['../d6/d42/classjpl_1_1__exception_1_1_out_of_memory_exception.html#a8cf3c92683aa5995d289bc50b8a47def',1,'jpl::_exception::OutOfMemoryException::OutOfMemoryException(const char *msg)'],['../d6/d42/classjpl_1_1__exception_1_1_out_of_memory_exception.html#aa553646b0ab69fb00ee3ac6070ca3fe9',1,'jpl::_exception::OutOfMemoryException::OutOfMemoryException()']]]
+  ['permissionexception_0',['PermissionException',['../d8/d57/classjpl_1_1__exception_1_1_permission_exception.html#a264bb7dd2b2071cf7c29f4a69d670596',1,'jpl::_exception::PermissionException::PermissionException(std::string msg)'],['../d8/d57/classjpl_1_1__exception_1_1_permission_exception.html#aff32f86be750c56bc278e37b3623c1ae',1,'jpl::_exception::PermissionException::PermissionException()']]]
 ];

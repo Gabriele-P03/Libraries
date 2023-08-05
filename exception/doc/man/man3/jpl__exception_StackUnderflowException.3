@@ -14,7 +14,7 @@ Inherits \fBjpl::_exception::RuntimeException\fP\&.
 
 .in +1c
 .ti -1c
-.RI "\fBStackUnderflowException\fP (const char *\fBmsg\fP)"
+.RI "\fBStackUnderflowException\fP (std::string \fBmsg\fP)"
 .br
 .ti -1c
 .RI "\fBStackUnderflowException\fP ()"
@@ -24,10 +24,13 @@ Inherits \fBjpl::_exception::RuntimeException\fP\&.
 Public Member Functions inherited from \fBjpl::_exception::RuntimeException\fP
 .in +1c
 .ti -1c
-.RI "\fBRuntimeException\fP (const char *\fBtype_ex\fP, const char *\fBmsg\fP)"
+.RI "\fBRuntimeException\fP (std::string \fBtype_ex\fP, std::string \fBmsg\fP)"
 .br
 .ti -1c
-.RI "\fBRuntimeException\fP (const char *\fBmsg\fP)"
+.RI "\fBRuntimeException\fP (std::string \fBmsg\fP)"
+.br
+.ti -1c
+.RI "\fBRuntimeException\fP ()"
 .br
 .in -1c
 
@@ -37,9 +40,6 @@ Public Member Functions inherited from \fBjpl::_exception::AbstractException\fP
 .RI "virtual const char * \fBwhat\fP () const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW override"
 .br
 .RI "Print the type of the exception which has been thrown with the message that has been passed, too\&. "
-.ti -1c
-.RI "virtual const char * \fBgetStacktrace\fP () const"
-.br
 .in -1c
 .SS "Additional Inherited Members"
 
@@ -47,20 +47,20 @@ Public Member Functions inherited from \fBjpl::_exception::AbstractException\fP
 Protected Member Functions inherited from \fBjpl::_exception::AbstractException\fP
 .in +1c
 .ti -1c
-.RI "\fBAbstractException\fP (const char *\fBtype_ex\fP)"
+.RI "\fBAbstractException\fP (std::string \fBtype_ex\fP)"
 .br
 .ti -1c
-.RI "\fBAbstractException\fP (const char *\fBtype_ex\fP, const char *\fBmsg\fP)"
+.RI "\fBAbstractException\fP (std::string \fBtype_ex\fP, std::string \fBmsg\fP)"
 .br
 .in -1c
 
 Protected Attributes inherited from \fBjpl::_exception::AbstractException\fP
 .in +1c
 .ti -1c
-.RI "const char * \fBtype_ex\fP"
+.RI "std::string \fBtype_ex\fP"
 .br
 .ti -1c
-.RI "const char * \fBmsg\fP"
+.RI "std::string \fBmsg\fP"
 .br
 .in -1c
 .SH "Detailed Description"
@@ -68,7 +68,7 @@ Protected Attributes inherited from \fBjpl::_exception::AbstractException\fP
 Definition at line \fB21\fP of file \fBStackUnderflowException\&.hpp\fP\&.
 .SH "Constructor & Destructor Documentation"
 .PP 
-.SS "jpl::_exception::StackUnderflowException::StackUnderflowException (const char * msg)\fC [inline]\fP"
+.SS "jpl::_exception::StackUnderflowException::StackUnderflowException (std::string msg)\fC [inline]\fP"
 
 .PP
 Definition at line \fB24\fP of file \fBStackUnderflowException\&.hpp\fP\&.

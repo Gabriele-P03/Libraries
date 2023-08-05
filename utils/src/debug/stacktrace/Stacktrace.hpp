@@ -34,7 +34,6 @@
 
                         Stacktrace(unsigned long skipped, unsigned long maxSize){
                             this->skipped = skipped;
-                            this->size = 0;
                             this->maxSize = maxSize;
 
                             this->frames = queryStacktrace(skipped, maxSize);

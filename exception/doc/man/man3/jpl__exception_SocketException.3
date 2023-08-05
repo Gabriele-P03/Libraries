@@ -14,7 +14,7 @@ Inherits \fBjpl::_exception::RuntimeException\fP\&.
 
 .in +1c
 .ti -1c
-.RI "\fBSocketException\fP (const unsigned int \fBfd\fP, const unsigned int \fBerror_code\fP, const char *\fBmsg\fP)"
+.RI "\fBSocketException\fP (const unsigned int \fBfd\fP, const unsigned int \fBerror_code\fP, std::string \fBmsg\fP)"
 .br
 .ti -1c
 .RI "\fBSocketException\fP (const unsigned int \fBfd\fP, const unsigned int \fBerror_code\fP)"
@@ -31,22 +31,20 @@ Inherits \fBjpl::_exception::RuntimeException\fP\&.
 Public Member Functions inherited from \fBjpl::_exception::RuntimeException\fP
 .in +1c
 .ti -1c
-.RI "\fBRuntimeException\fP (const char *\fBtype_ex\fP, const char *\fBmsg\fP)"
+.RI "\fBRuntimeException\fP (std::string \fBtype_ex\fP, std::string \fBmsg\fP)"
 .br
 .ti -1c
-.RI "\fBRuntimeException\fP (const char *\fBmsg\fP)"
+.RI "\fBRuntimeException\fP (std::string \fBmsg\fP)"
+.br
+.ti -1c
+.RI "\fBRuntimeException\fP ()"
 .br
 .in -1c
-
-Public Member Functions inherited from \fBjpl::_exception::AbstractException\fP
 .in +1c
 .ti -1c
 .RI "virtual const char * \fBwhat\fP () const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW override"
 .br
 .RI "Print the type of the exception which has been thrown with the message that has been passed, too\&. "
-.ti -1c
-.RI "virtual const char * \fBgetStacktrace\fP () const"
-.br
 .in -1c
 .SS "Protected Attributes"
 
@@ -62,10 +60,10 @@ Public Member Functions inherited from \fBjpl::_exception::AbstractException\fP
 Protected Attributes inherited from \fBjpl::_exception::AbstractException\fP
 .in +1c
 .ti -1c
-.RI "const char * \fBtype_ex\fP"
+.RI "std::string \fBtype_ex\fP"
 .br
 .ti -1c
-.RI "const char * \fBmsg\fP"
+.RI "std::string \fBmsg\fP"
 .br
 .in -1c
 .SS "Additional Inherited Members"
@@ -74,10 +72,10 @@ Protected Attributes inherited from \fBjpl::_exception::AbstractException\fP
 Protected Member Functions inherited from \fBjpl::_exception::AbstractException\fP
 .in +1c
 .ti -1c
-.RI "\fBAbstractException\fP (const char *\fBtype_ex\fP)"
+.RI "\fBAbstractException\fP (std::string \fBtype_ex\fP)"
 .br
 .ti -1c
-.RI "\fBAbstractException\fP (const char *\fBtype_ex\fP, const char *\fBmsg\fP)"
+.RI "\fBAbstractException\fP (std::string \fBtype_ex\fP, std::string \fBmsg\fP)"
 .br
 .in -1c
 .SH "Detailed Description"
@@ -85,7 +83,7 @@ Protected Member Functions inherited from \fBjpl::_exception::AbstractException\
 Definition at line \fB24\fP of file \fBSocketException\&.hpp\fP\&.
 .SH "Constructor & Destructor Documentation"
 .PP 
-.SS "jpl::_exception::SocketException::SocketException (const unsigned int fd, const unsigned int error_code, const char * msg)\fC [inline]\fP"
+.SS "jpl::_exception::SocketException::SocketException (const unsigned int fd, const unsigned int error_code, std::string msg)\fC [inline]\fP"
 
 .PP
 Definition at line \fB38\fP of file \fBSocketException\&.hpp\fP\&.
@@ -113,7 +111,7 @@ const char*
 .PP
 Reimplemented from \fBjpl::_exception::AbstractException\fP\&.
 .PP
-Definition at line \fB51\fP of file \fBSocketException\&.hpp\fP\&.
+Definition at line \fB46\fP of file \fBSocketException\&.hpp\fP\&.
 .SH "Field Documentation"
 .PP 
 .SS "const unsigned int jpl::_exception::SocketException::error_code\fC [protected]\fP"

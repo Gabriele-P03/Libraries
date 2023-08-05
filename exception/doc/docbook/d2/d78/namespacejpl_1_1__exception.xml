@@ -21,6 +21,8 @@
 </listitem>
             <listitem><para>class <link linkend="_classjpl_1_1__exception_1_1_index_out_of_bounds_exception">IndexOutOfBoundsException</link></para>
 </listitem>
+            <listitem><para>class <link linkend="_classjpl_1_1__exception_1_1_i_o_exception">IOException</link></para>
+</listitem>
             <listitem><para>class <link linkend="_classjpl_1_1__exception_1_1_no_such_field_exception">NoSuchFieldException</link></para>
 </listitem>
             <listitem><para>class <link linkend="_classjpl_1_1__exception_1_1_no_such_method_exception">NoSuchMethodException</link></para>

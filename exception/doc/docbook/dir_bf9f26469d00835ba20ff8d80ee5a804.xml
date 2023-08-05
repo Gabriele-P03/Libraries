@@ -17,6 +17,8 @@
 </listitem>
             <listitem><para>file <link linkend="__index_out_of_bounds_exception_8hpp">IndexOutOfBoundsException.hpp</link></para>
 </listitem>
+            <listitem><para>file <link linkend="__i_o_exception_8hpp">IOException.hpp</link></para>
+</listitem>
             <listitem><para>file <link linkend="__not_found_exception_8hpp">NotFoundException.hpp</link></para>
 </listitem>
             <listitem><para>file <link linkend="__null_pointer_exception_8hpp">NullPointerException.hpp</link></para>

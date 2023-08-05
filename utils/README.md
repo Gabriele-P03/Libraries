@@ -26,7 +26,9 @@ Since all its headers can be considered as sub-modules, you can download those o
 >> To reading/getting file and path<br><br>
 
 > <span style="color:yellow">DebugUtils</span> 
->> To provides some function whilst debugger is attached or about stacktrace and errors occurred<br><br>
+>> To provides some function whilst debugger is attached or about stacktrace and errors occurred<br>
+>><h2>For windows machine only:<br>
+>><h5>In order to print a more detailed stacktrace, you should extract .pdb (which contains symbols, also used by gdb) file from the compiled exe. I use <a href="https://github.com/rainers/cv2pdb">cv2pdb</a> which generate a file named as the executable one. Put it in mind that, once invoked cv2pdb (via CLI is "cv2pdb64.exe your_executable_file.exe"), all symbols are removed from the .exe and then, if you invoke gdb on it, it will not encounter any breakpoints.<br><br>
 
 > <span style="color:yellow">StructureUtils</span> 
 >> To provide several Data-Structure<br><br>

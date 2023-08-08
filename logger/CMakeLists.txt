@@ -7,13 +7,29 @@ set_target_properties(loggerJPL_sh PROPERTIES OUTPUT_NAME "loggerJPL_1_0_0")
 add_library( loggerJPL_st STATIC "src/Logger.cpp")
 set_target_properties(loggerJPL_st PROPERTIES OUTPUT_NAME "loggerJPL_1_0_0")
 
-#Both kernel options compilers cannot be decommented both at the same time
 
-#For Linux
-#set(CMAKE_C_COMPILER /usr/bin/gcc)
-#set(CMAKE_CXX_COMPILER /usr/bin/g++)
+set(${ENABLE_IMPLICIT_USE_LOGGER_JPL} OFF)
+#Logger's MACRO part
+if( ${QUIET_LOGGER_JPL} AND ${CUSTOM_LOGGER_JPL})
+    message(FATAL_ERROR "You are trying to build Custom mode and Quiet one together, which is a useless practice since QUIET macro is used only if CUSTOM is not defined")
+else()
+    if(${QUIET_LOGGER_JPL})
+        add_compile_definitions(QUIET_LOGGER_JPL)
+        option(ENABLE_IMPLICIT_USE_LOGGER_JPL "Implicit enabling USE_LOGGER" ON)
+        message("Compiling with QUIET MODE")
+    elseif(${CUSTOM_LOGGER_JPL})
+        add_compile_definitions(CUSTOM_LOGGER_JPL)
+        option(ENABLE_IMPLICIT_USE_LOGGER_JPL "Implicit enabling USE_LOGGER" ON)
+        message("Compiling with QUIET MODE")
+    endif()
+endif()
 
-#For Windows
+if(${UFW_LOGGER_JPL})
+    add_compile_definitions(UFW_LOGGER_JPL)
+    option(ENABLE_IMPLICIT_USE_LOGGER_JPL "Implicit enabling USE_LOGGER" ON)
+    message("Compiling with UFW MODE")
+endif()
+
 set(CMAKE_C_COMPILER gcc)
 set(CMAKE_CXX_COMPILER g++)
 

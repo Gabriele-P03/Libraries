@@ -1,14 +1,26 @@
 #include "Logger.hpp"
 
 #ifndef CUSTOM_LOGGER_JPL
-    #ifdef QUIET_MODULES_LOGGER_JPL
-        jpl::_logger::Logger* jpl::_logger::Logger::INSTANCE = new jpl::_logger::Logger(
-            jpl::_utils::_files::getLocalPath("/logs/" + jpl::_logger::Logger::getFileNameOfInstance() + ".txt"), true
-        );
+    #ifdef QUIET_LOGGER_JPL
+        #ifdef __linux__
+            jpl::_logger::Logger* jpl::_logger::Logger::INSTANCE = new jpl::_logger::Logger(
+                jpl::_utils::_files::getLocalPath("logs/" + jpl::_logger::Logger::getFileNameOfInstance() + ".txt"), true
+            );
+        #elif _WIN32
+            jpl::_logger::Logger* jpl::_logger::Logger::INSTANCE = new jpl::_logger::Logger(
+                jpl::_utils::_files::getLocalPath("logs\\" + jpl::_logger::Logger::getFileNameOfInstance() + ".txt"), true
+            );
+        #endif
     #else
-        jpl::_logger::Logger* jpl::_logger::Logger::INSTANCE = new jpl::_logger::Logger(
-            jpl::_utils::_files::getLocalPath("/logs/" + jpl::_logger::Logger::getFileNameOfInstance() + ".txt"), false
-        );
+        #ifdef __linux__
+            jpl::_logger::Logger* jpl::_logger::Logger::INSTANCE = new jpl::_logger::Logger(
+                jpl::_utils::_files::getLocalPath("logs/" + jpl::_logger::Logger::getFileNameOfInstance() + ".txt"), false
+            );
+        #elif _WIN32
+            jpl::_logger::Logger* jpl::_logger::Logger::INSTANCE = new jpl::_logger::Logger(
+                jpl::_utils::_files::getLocalPath("logs\\" + jpl::_logger::Logger::getFileNameOfInstance() + ".txt"), false
+            );
+        #endif
     #endif
 #endif
 
@@ -18,12 +30,13 @@ jpl::_logger::LOG_STATUS jpl::_logger::WARNING_JPL = "WAR";
 jpl::_logger::LOG_STATUS jpl::_logger::ERROR_JPL = "ERR";
 jpl::_logger::LOG_STATUS jpl::_logger::DEBUG_JPL = "DBG";
 
+
 void jpl::_logger::Logger::print(std::string msg){
 
     this->print(msg, jpl::_logger::INFO_JPL);
 }
 
-void jpl::_logger::Logger::print(std::string msg, jpl::_logger::LOG_STATUS status){
+void jpl::_logger::Logger::print(std::string msg, const jpl::_logger::LOG_STATUS status){
 
     if(status == jpl::_logger::DEBUG_JPL && !jpl::_utils::_debug::isDebugging()){
         return;
@@ -55,7 +68,7 @@ std::string jpl::_logger::Logger::getFileNameOfInstance(){
     return  std::to_string((*ltm).tm_mday) + "-" + 
             std::to_string((*ltm).tm_mon+1) + "-" + 
             std::to_string((*ltm).tm_year + 1900) + "_" +
-            std::to_string((*ltm).tm_hour) + ":" +
-            std::to_string((*ltm).tm_min) + ":" +
+            std::to_string((*ltm).tm_hour) + "-" +
+            std::to_string((*ltm).tm_min) + "-" +
             std::to_string((*ltm).tm_sec);
 }

@@ -1,6 +1,10 @@
 /**
  * @file
- * A logger provides writing log-program on terminal and even on a file
+ * 
+ * A logger provides writing log-program on terminal and even on a file.
+ * You should never include directly this header file unless you wanna force using this module.
+ * 
+ * A reading of its documentation is suggested before using this module since there are some mode of using it
  *  
  * 
  * @date 2022-08-01
@@ -27,26 +31,35 @@
     #include <jpl/utils/debug/DebugUtils.hpp>
 
     namespace jpl{
+        namespace _exception{
+            class IOException;
+        }
+    }
+
+    #include <jpl/exception/runtime/IOException.hpp>
+
+    namespace jpl{
 
         namespace _logger{
-            
-            typedef const char* const LOG_STATUS;
-            /**
-             * @brief Information message
-             */
-            extern LOG_STATUS INFO_JPL;
-            /**
-             * @brief Warning message
-             */
-            extern LOG_STATUS WARNING_JPL;
-            /**
-             * @brief Error message
-             */
-            extern LOG_STATUS ERROR_JPL;
-            /**
-             * @brief Debug message (not visible unless process has a debugger attached) 
-             */
-            extern LOG_STATUS DEBUG_JPL;
+
+                typedef const char* const LOG_STATUS;
+
+                /**
+                * @brief Information message
+                */
+                extern const LOG_STATUS INFO_JPL;
+                /**
+                * @brief Warning message
+                */
+                extern const LOG_STATUS WARNING_JPL;
+                /**
+                * @brief Error message
+                */
+                extern const LOG_STATUS ERROR_JPL;
+                /**
+                * @brief Debug message (not visible unless process has a debugger attached) 
+                */
+                extern const LOG_STATUS DEBUG_JPL;
 
             class Logger{
 
@@ -68,7 +81,7 @@
                     /**
                      * Logger's output file
                      */
-                    std::fstream* file;
+                    std::ofstream* file;
 
                     /**
                      * @brief If the fstream could be created, this flag is set to true,
@@ -99,15 +112,13 @@
                         this->flag = false;
 
                         if(!quiet){
-                            this->file = new std::fstream();
-                            this->file->open(pathToFile, std::ios_base::out);
+                            this->file = new std::ofstream();
+                            this->file->open(pathToFile);
 
-                            if(file->fail()){
+                            if(!file){
                                 #ifndef UFW_LOGGER_JPL   
-                                    this->print("Logger File could not be created and OI is not performed. Exiting...", jpl::_logger::ERROR_JPL);                       
-                                    exit(EXIT_FAILURE);   
-                                #else
-                                    this->print("Logger File could not be created but OI has been performed. Log file will not be written", jpl::_logger::WARNING);
+                                    this->print("Logger file could not be created and OI has not been performed. I have to exit...", ERROR_JPL);
+                                    exit(EXIT_FAILURE);
                                 #endif
                             }else{
                                 this->flag = true;
@@ -115,9 +126,7 @@
                         }
                     }
 
-                    #ifndef CUSTOM_LOGGER_JPL
-                        static Logger* INSTANCE;
-                    #endif
+                    static Logger* INSTANCE;
 
                     /**
                      * @brief Print msg on terminal
@@ -147,7 +156,7 @@
                      * 
                      * @return if Logger is able to write on file
                      */
-                    inline bool isWriting(){ return this->flag; }
+                    bool isWriting(){ return this->flag; }
 
                     ~Logger();
             };

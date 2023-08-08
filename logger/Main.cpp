@@ -1,8 +1,10 @@
-#include "src/Logger.hpp"
+#include "src/LoggerWrapper.hpp"
 
 int main(){
 
-    jpl::_logger::Logger::INSTANCE->print("Prova DBG", jpl::_logger::DEBUG);
+    jpl::_logger::print("Prova", jpl::_logger::INFO_JPL);
+
+    //jpl::_logger::Logger::INSTANCE->closeLogger();
 
     return 0;
 }

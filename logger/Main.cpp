@@ -1,4 +1,4 @@
-#include "src/LoggerWrapper.hpp"
+#include "Main.hpp"
 
 int main(){
 

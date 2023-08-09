@@ -36,8 +36,6 @@
         }
     }
 
-    #include <jpl/exception/runtime/IOException.hpp>
-
     namespace jpl{
 
         namespace _logger{
@@ -115,10 +113,12 @@
                             this->file = new std::ofstream();
                             this->file->open(pathToFile);
 
-                            if(!file){
+                            if(file->fail()){
                                 #ifndef UFW_LOGGER_JPL   
-                                    this->print("Logger file could not be created and OI has not been performed. I have to exit...", ERROR_JPL);
+                                    std::cout<<"Logger file could not be created and OI has not been enabled. I have to exit..."<<std::endl;
                                     exit(EXIT_FAILURE);
+                                #else
+                                    std::cout<<"Logger file could not be created but OI has been enables"<<std::endl;
                                 #endif
                             }else{
                                 this->flag = true;

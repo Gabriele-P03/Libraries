@@ -44,7 +44,6 @@ namespace jpl{
                                                      " Required Cast: " + std::string(this->_cast_needed) + 
                                                      " " + std::string(this->msg) + "\0";
 
-
                     char* c_buffer = new char[buffer.size()];
                     memcpy(c_buffer, buffer.c_str(), buffer.size());
                     return c_buffer;

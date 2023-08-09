@@ -3,13 +3,6 @@
  * 
  * An AbstractException is a template of a basic exception used by JPL to have theirs to be thrown.
  * 
- * This class does not include JPL's Logger, therefore it will not print the exception by itselves.
- * It provides, beyond what() function, even one that returns the stacktrace as const char* and which you can
- * print - by yourself - through JPL's Logger   
- *  
- * 
- * 
- * 
  * @date 2023-04-16
  * @copyright Copyright (c) 2023
  * @author Gabriele-P03
@@ -60,6 +53,7 @@
                         #endif
                     }
                     
+                    
                 public:
                     
                     /**
@@ -71,6 +65,15 @@
                         std::string buffer = 
                             std::string(this->type_ex) + ": " + std::string(this->msg) + "\0";
 
+                        #ifdef USE_STACKTRACE_W_EXCEPTION_JPL
+                            const std::vector<_utils::_debug::Frame>* frames = this->stacktrace->getFrames();
+                            for(unsigned int i = 0; i < frames->size(); i++){
+                                _utils::_debug::Frame frame = frames->at(i);
+                                std::string tmp = frame.function_name + " of " + frame.file_name + " at line " + std::to_string(frame.line) + ". Address " + frame.address;
+                                buffer += "\n" + tmp;
+                            }
+                        #endif
+
 
                         char* c_buffer = new char[buffer.size()];
                         memcpy(c_buffer, buffer.c_str(), buffer.size());
@@ -81,7 +84,26 @@
                         /**
                          * @return the Stacktrace of the thrown exception
                          */
-                        inline virtual const _utils::_debug::Stacktrace* getStacktrace() const{return this->stacktrace;}
+                        virtual const _utils::_debug::Stacktrace* getStacktrace() const{return this->stacktrace;}
+
+                        virtual const std::string getStacktraceAsString() const{
+
+                            const char* tmp = this->what();
+                            std::string buffer = std::string(tmp);
+                            delete[] tmp;
+
+                            const std::vector<_utils::_debug::Frame>* frames = this->stacktrace->getFrames();
+                            for(unsigned int i = 0; i < frames->size(); i++){
+                                _utils::_debug::Frame frame = frames->at(i);
+                                std::string tmp = "#" + std::to_string(i) + " Invalid Frame";
+                                if(frame.frame_valid){
+                                    tmp = "#" + std::to_string(i) + " " + frame.function_name + " of " + frame.file_name + " at line " + std::to_string(frame.line) + ". Address " + frame.address;
+                                }
+                                buffer += "\n\t" + tmp;
+                            }
+
+                            return buffer;
+                        }
                     #endif
 
                     /**
@@ -96,10 +118,6 @@
                         const char* buffer = ex.what();
                         os<<buffer<<std::endl;
                         delete[] buffer;
-
-                        #ifdef USE_STACKTRACE_W_EXCEPTION_JPL
-                            os<<*ex.getStacktrace();
-                        #endif
 
                         return os;
                     }

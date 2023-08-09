@@ -1,5 +1,5 @@
-#define USE_STACKTRACE_W_EXCEPTION_JPL
-#include "src/runtime/IOException.hpp"
+#include "Main.hpp"
+
 
 void f(){
     
@@ -11,7 +11,7 @@ int main(){
     try{
         f();
     }catch( jpl::_exception::IOException* ex){
-        std::cout<<*ex;
+        jpl::_logger::print(ex->getStacktraceAsString());
     }
 
     return 0;

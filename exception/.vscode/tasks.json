@@ -38,6 +38,8 @@
                 "-std=c++23",
                 "${workspaceFolder}/Main.cpp",
                 "-ldbghelp",
+                "-LC:\\msys64\\mingw64\\lib\\jpl",
+                "-lloggerJPL_1_0_0",
                 "-o",
                 "${workspaceFolder}/out/windows/Main.exe"
                 

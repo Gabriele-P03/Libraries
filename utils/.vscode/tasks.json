@@ -8,9 +8,6 @@
                 "-g",
                 "-std=c++23",
                 "${workspaceFolder}/Main.cpp",
-                "-no-pie",
-                "-fno-pie",
-                "-lbacktrace",
                 "-ldl",
                 "-o",
                 "${workspaceFolder}/out/linux/Main"
@@ -38,9 +35,8 @@
                 "-std=c++23",
                 "${workspaceFolder}/Main.cpp",
                 "-ldbghelp",
-                "-no-pie",
-                "-fno-pie",
-                "-lbacktrace",
+                "-LC:\\msys64\\mingw64\\lib\\jpl",
+                "-lloggerJPL_1_0_0",
                 "-o",
                 "${workspaceFolder}/out/windows/Main.exe"
                 

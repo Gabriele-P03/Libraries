@@ -1,25 +1,9 @@
-#include "src/debug/stacktrace/Stacktrace.hpp" 
-
-void f1(){
-    jpl::_utils::_debug::Stacktrace sta;
-    std::cout<<sta;
-}
-
-void f2(){
-
-}
-
-void f(){
-
-    f1();
-    
-    f2();
-}
+#include "src/FilesUtils.hpp"
 
 int main(){
 
-    f();
-
+    std::fstream* file = new std::fstream;
+    jpl::_utils::_files::getLocalFile("prova.txt", std::ios::in, &file);
 
     return 0;
 }

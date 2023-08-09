@@ -82,8 +82,12 @@
                  * @throw RuntimeException for any other errors
                  */ 
                 inline void getLocalFile(std::string pathToFile, std::ios_base::openmode _mode, std::fstream** file){
-
-                    std::string path = getRootPath() + "/" + pathToFile;
+                    
+                    #ifdef __linux__
+                        std::string path = getRootPath() + "/" + pathToFile;
+                    #elif _WIN32
+                        std::string path = getRootPath() + "\\" + pathToFile;
+                    #endif 
 
                     (**file).open(path, _mode);
 
@@ -91,7 +95,7 @@
                         unsigned int _err = _error::_GetLastError();
                         switch (_err){
                             case 2:
-                                throw new FileNotFoundException(pathToFile.c_str());
+                                throw new _exception::FileNotFoundException(pathToFile.c_str());
                             break;
 
                             #ifdef __linux__
@@ -99,13 +103,13 @@
                             #elif _WIN32
                                 case 5:
                             #endif
-                                throw new PermissionException(
+                                throw new _exception::PermissionException(
                                     std::string("Permission Needed to open " + pathToFile).c_str() 
                                     );
                             break;
                             
                         default:
-                            throw new RuntimeException(_error::_GetLastErrorAsString().c_str());
+                            throw new _exception::RuntimeException(_error::_GetLastErrorAsString().c_str());
                         
                         }
                     }
@@ -127,17 +131,29 @@
                     getLocalFile( "resources/" + pathToFile, _mode, file);
                 }
 
-
-                /**
-                 * @param path
-                 * @return the given path concatenate to the resources folder's one.
-                 */ 
-                inline std::string getInternalPath(std::string path) noexcept{return getRootPath() + "/resources/" + path;}
-                /**
-                 * @param path
-                 * @return the given path concatenate to the root folder's one
-                 */ 
-                inline std::string getLocalPath(std::string path) noexcept{return getRootPath() + "/" + path;}
+                #ifdef __linux__
+                    /**
+                     * @param path
+                     * @return the given path concatenate to the resources folder's one.
+                     */ 
+                    inline std::string getInternalPath(std::string path) noexcept{return getRootPath() + "/resources/" + path;}
+                    /**
+                     * @param path
+                     * @return the given path concatenate to the root folder's one
+                     */ 
+                    inline std::string getLocalPath(std::string path) noexcept{return getRootPath() + "/" + path;}
+                #elif _WIN32
+                    /**
+                     * @param path
+                     * @return the given path concatenate to the resources folder's one.
+                     */ 
+                    inline std::string getInternalPath(std::string path) noexcept{return getRootPath() + "\\resources\\" + path;}
+                    /**
+                     * @param path
+                     * @return the given path concatenate to the root folder's one
+                     */ 
+                    inline std::string getLocalPath(std::string path) noexcept{return getRootPath() + "\\" + path;}
+                #endif
 
 
                 /**
@@ -154,7 +170,7 @@
                  */
                 inline void readFile(std::fstream* file, char* &buffer, unsigned long &_size){
                     if(!file){
-                        throw new IllegalArgumentException(file, "has not been opened yet");
+                        throw new _exception::IllegalArgumentException("File has not been opened yet");
                     }else{
                         //Store the length of the file in order to create the right sized buffer
                         file->seekg(0, file->end);
@@ -167,7 +183,7 @@
                         if(file->read(buffer, _size)){
                             buffer[_size] = '\0';
                         }else{
-                            throw new RuntimeException("File could not be fully read");
+                            throw new _exception::RuntimeException("File could not be fully read");
                             _size = file->tellg();
                             buffer = (char*)realloc(buffer, _size);
                         }

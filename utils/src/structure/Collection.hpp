@@ -90,11 +90,11 @@ namespace jpl{
                     /**
                      * @return the max amount of items which can contained into the collection
                      */
-                    virtual unsigned long getMax() noexcept {return this->max;}
+                    virtual const unsigned long getMax() const noexcept {return this->max;}
                     /**
                      * @return the current amount of items which are contained into the collection 
                     */
-                   virtual unsigned long getSize() noexcept {return this->size;}
+                   virtual const unsigned long getSize() const noexcept {return this->size;}
                     /**
                      * @return if the collection allows null elements
                     */

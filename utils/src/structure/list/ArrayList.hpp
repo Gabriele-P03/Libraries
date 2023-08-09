@@ -54,8 +54,11 @@ namespace jpl{
                          */
                         virtual void rightShiftItems(unsigned int start, unsigned int offset){
                             
+                            if(start > this->max){
+                                throw new jpl::_exception::IndexOutOfBoundsException(this->max, this->size+offset);
+                            }
                             if(this->size + offset > this->max){
-                                throw new IndexOutOfBoundsException(ArrayList, this->max, this->size+offset);
+                                this->reallocate(this->max + this->max - this->size + offset);
                             }
 
                             for(unsigned int i = this->size; i > start; i--){
@@ -74,7 +77,7 @@ namespace jpl{
                         virtual void leftShiftItems(unsigned int start, unsigned int offset){
                             
                             if(start - offset < 0){
-                                throw new IndexOutOfBoundsException(ArrayList, 0, start - offset);
+                                throw new jpl::_exception::IndexOutOfBoundsException(0, start - offset);
                             }
 
                             for(unsigned int i = start; i < this->size-1; i++){
@@ -91,7 +94,7 @@ namespace jpl{
                                 this->t = NULL; //Since realloc, if ptr is NULL, behavies as malloc
                         } 
                         ArrayList() : ArrayList<T>(0){} 
-                        ArrayList( const ArrayList<T> &arrayList ) : List<T>(arrayList.length()){
+                        ArrayList( const ArrayList<T>* &arrayList ) : List<T>(arrayList->getSize()){
                             this->addAll(arrayList);
                         }
 
@@ -110,9 +113,9 @@ namespace jpl{
                          * 
                          * @throw IndexOutOfBounds if index is greater or equal than size
                         */
-                        virtual T* get(unsigned long index) override{
+                        virtual T* get(unsigned long index) const override{
                             if(index >= this->size)
-                                throw new IndexOutOfBoundsException(ArrayList, this->size, index);
+                                throw new jpl::_exception::IndexOutOfBoundsException(this->size, index);
                             return &this->t[index];
                         }
 
@@ -136,9 +139,7 @@ namespace jpl{
                         virtual void add(unsigned long index, T t) override{
                             
                             if(index > this->max)
-                                throw new IndexOutOfBoundsException(ArrayList, this->max, index);                   
-                            if(index == this->max)
-                                this->reallocate(this->max+1);
+                                throw new jpl::_exception::IndexOutOfBoundsException(this->max, index);                   
 
                             this->rightShiftItems(index, 1);
                             this->t[index] = t;
@@ -149,7 +150,7 @@ namespace jpl{
                          * 
                          * @param list
                         */
-                        virtual void addAll(List<T>* list) noexcept override{
+                        virtual void addAll(const List<T>* &list) noexcept override{
                             this->addAll(this->size, list);
                         }
                         /**
@@ -160,20 +161,22 @@ namespace jpl{
                          * 
                          * @throw IndexOutOfBounds if index is greater or equal to list's size
                         */
-                        virtual void addAll(unsigned long index, List<T>* list) override{
+                        virtual void addAll(unsigned long index, const List<T>* &list) override{
                             
                             if(index > this->max)
-                                throw new IndexOutOfBoundsException(ArrayList, this->size, index); 
+                                throw new jpl::_exception::IndexOutOfBoundsException(this->size, index); 
 
-                            unsigned long listSize = list->getSize();                
+                            unsigned long listSize = list->getSize();               
                             if(index + listSize - this->max > 0){
                                 this->reallocate(index + listSize - this->max);    //Reallocate as enough
                             }
 
                             this->rightShiftItems(index, listSize);
-                            for(unsigned int i = index; i < index + listSize; i++){
-                                this->set(i, *list->get(i-index));
-                            }
+                            
+                            T* startThis = &this->t[index];
+                            const T* lastList = list->get(0);
+                            memcpy(startThis, lastList, sizeof(T)*listSize);
+
                             this->size += listSize;
                         }
 
@@ -200,7 +203,7 @@ namespace jpl{
                         virtual void remove(unsigned long index) override{
                             
                             if(index >= this->size)
-                                throw new IndexOutOfBoundsException(ArrayList, this->max-1, index);
+                                throw new jpl::_exception::IndexOutOfBoundsException(this->max-1, index);
 
                             T* tmp = &this->t[index];
                             delete tmp;
@@ -225,7 +228,7 @@ namespace jpl{
                                     this->reallocate(this->max-1);
                                 }    
                             }
-                            throw new NotFoundException();
+                            throw new jpl::_exception::NotFoundException();
                         }
                         /**
                          * @brief remove all collection's items from this collection
@@ -243,7 +246,7 @@ namespace jpl{
                                     this->reallocate(this->max-1);
                                 }    
                             }
-                            throw new NotFoundException();
+                            throw new jpl::_exception::NotFoundException();
                         }
                         /**
                          * @brief Remove all elements which respect the given predicate
@@ -299,7 +302,7 @@ namespace jpl{
                         */
                         virtual T* set(unsigned long index, T t) override{
                             if(index >= this->max)
-                                throw new IndexOutOfBoundsException(ArrayList, this->max-1, index);
+                                throw new jpl::_exception::IndexOutOfBoundsException(this->max-1, index);
 
                             T* tmp = nullptr;
                             if(index < this->size)
@@ -343,10 +346,10 @@ namespace jpl{
                         virtual ArrayList<T>* subList(unsigned long start, unsigned long end) override{
                             
                             if(end >= this->max){
-                                throw new IndexOutOfBoundsException(ArrayList, this->max-1, end);
+                                throw new jpl::_exception::IndexOutOfBoundsException(this->max-1, end);
                             }
                             if(start > end){
-                                throw new IndexOutOfBoundsException(ArrayList, end, start);
+                                throw new jpl::_exception::IndexOutOfBoundsException(end, start);
                             }
 
                             ArrayList<T>* newOne = new ArrayList<T>(end - start);

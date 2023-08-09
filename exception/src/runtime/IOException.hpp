@@ -46,9 +46,10 @@ namespace jpl{
                         buffer += this->msg;
                     }
 
+                    buffer += '\0';
+
                     char* c_buffer = new char[buffer.size()];
                     memcpy(c_buffer, buffer.c_str(), buffer.size());
-                    c_buffer[buffer.size()] = '\0';
                     return c_buffer;
                 }
         };

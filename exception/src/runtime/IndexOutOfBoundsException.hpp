@@ -49,11 +49,9 @@ namespace jpl{
                                             " Attempted: " + std::to_string(this->attempted) + 
                                             ". " + std::string(this->msg) + "\0";
 
-                    this->msg = new char[buffer.size()];
-                    char* tmp = (char*)&msg[0];
-                    memcpy(tmp, buffer.c_str(), buffer.size());
-
-                    return this->msg;
+                    char* c_buffer = new char[buffer.size()];
+                    memcpy(c_buffer, buffer.c_str(), buffer.size());
+                    return c_buffer;
                 }
         };
     }

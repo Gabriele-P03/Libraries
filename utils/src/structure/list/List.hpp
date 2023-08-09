@@ -57,21 +57,21 @@ namespace jpl{
                      * @param index
                      * @param collection
                     */
-                    virtual void addAll(unsigned long index, List<T> *list) = 0;
+                    virtual void addAll(unsigned long index, const List<T>* &list) = 0;
                     /**
                     * @brief Insert into the structure all items contained into list at the end
                     * if the array list
                     * 
                     * @param list 
                     */
-                    virtual void addAll(List<T> *list) = 0;          
+                    virtual void addAll(const List<T>* &list) = 0;          
 
                     /**
                      * @return the element at the given index
                      * 
                      * @throw IndexOutOfBounds if index is graeter than length()-1 or less than 0
                     */
-                    virtual T* get(unsigned long index) = 0;
+                    virtual T* get(unsigned long index) const = 0;
 
 
                     /**

@@ -57,14 +57,14 @@ namespace jpl{
                      * @param index
                      * @param collection
                     */
-                    virtual void addAll(unsigned long index, const List<T>* &list) = 0;
+                    virtual void addAll(unsigned long index, const List<T>* list) = 0;
                     /**
                     * @brief Insert into the structure all items contained into list at the end
                     * if the array list
                     * 
                     * @param list 
                     */
-                    virtual void addAll(const List<T>* &list) = 0;          
+                    virtual void addAll(const List<T>* list) = 0;          
 
                     /**
                      * @return the element at the given index
@@ -95,14 +95,14 @@ namespace jpl{
                      * 
                      * @throw IndexOutOfBounds if index is graeter than length()-1 or less than 0
                     */
-                    virtual void remove(unsigned long index) = 0;
+                    virtual void removeAt(unsigned long index) = 0;
                     /**
                      * @brief remove t from this collection
                      * 
                      * @param t item to remove
                      * @throw NotFoundException if t has not been found into this collection
                      */
-                    virtual void remove(T* t) = 0;                    
+                    virtual void remove(T t) = 0;                    
                     /**
                      * @brief remove all collection's items from this collection
                      * 

@@ -20,6 +20,8 @@
 #include "Iterable.hpp"
 #include "../functional/predicate/Predicate.hpp"
 
+#include <concepts>
+
 namespace jpl{
 
     namespace _utils{
@@ -72,7 +74,7 @@ namespace jpl{
                      * @param t 
                      * @return if t is present
                      */
-                    virtual bool contains(T* t) noexcept = 0;
+                    virtual bool contains(T t) noexcept = 0;
 
 
                     /**

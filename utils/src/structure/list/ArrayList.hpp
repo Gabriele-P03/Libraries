@@ -93,8 +93,8 @@ namespace jpl{
                             else
                                 this->t = NULL; //Since realloc, if ptr is NULL, behavies as malloc
                         } 
-                        ArrayList() : ArrayList<T>(0){} 
-                        ArrayList( const ArrayList<T>* &arrayList ) : List<T>(arrayList->getSize()){
+                        ArrayList() : ArrayList<T>((unsigned long) 0){} 
+                        ArrayList( const ArrayList<T>* arrayList ){
                             this->addAll(arrayList);
                         }
 
@@ -150,7 +150,7 @@ namespace jpl{
                          * 
                          * @param list
                         */
-                        virtual void addAll(const List<T>* &list) noexcept override{
+                        virtual void addAll(const List<T>* list) noexcept override{
                             this->addAll(this->size, list);
                         }
                         /**
@@ -161,16 +161,12 @@ namespace jpl{
                          * 
                          * @throw IndexOutOfBounds if index is greater or equal to list's size
                         */
-                        virtual void addAll(unsigned long index, const List<T>* &list) override{
+                        virtual void addAll(unsigned long index, const List<T>* list) override{
                             
                             if(index > this->max)
                                 throw new jpl::_exception::IndexOutOfBoundsException(this->size, index); 
 
                             unsigned long listSize = list->getSize();               
-                            if(index + listSize - this->max > 0){
-                                this->reallocate(index + listSize - this->max);    //Reallocate as enough
-                            }
-
                             this->rightShiftItems(index, listSize);
                             
                             T* startThis = &this->t[index];
@@ -187,45 +183,47 @@ namespace jpl{
                          * @param t 
                          * @return if t is present
                          */
-                        virtual bool contains(T* t) noexcept override{
+                        virtual bool contains(T t) noexcept override{
                             for (unsigned long i = 0; i < this->size; i++)
-                                if(t == &this->t[i]) //Address check
+                                if(t == this->t[i]) //Address check
                                     return true;
                             return false;
                         }   
 
                         /**
                          * @brief remove the element at index position from this collection
-                         * 
+                         * If the element is a allocated in heap, it is also destroyed
                          * @param index
                          * @throw IndexOutOfBounds if index is greater or equals than size
                          */
-                        virtual void remove(unsigned long index) override{
+                        virtual void removeAt(unsigned long index) override{
                             
                             if(index >= this->size)
                                 throw new jpl::_exception::IndexOutOfBoundsException(this->max-1, index);
 
-                            T* tmp = &this->t[index];
-                            delete tmp;
+                            if( std::is_pointer<T>::value ){
+                                T tmp = this->t[index];
+                                //delete tmp;
+                            }
+
                             if(index != 0 && index != this->size-1)
                                 this->leftShiftItems(index, 1);
                             this->size--;
-                            this->reallocate(this->size-1);
+                            this->reallocate(this->size);
                         }
+
                         /**
                          * @brief remove t from this collection
+                         * If t is allocated in heap, it is also destroyed
                          * 
                          * @param t item to remove
                          * @throw NotFoundException if t has not been found into this collection
                          */
-                        virtual void remove(T* t) override{
+                        virtual void remove(T t) override{
                             for (unsigned long i = 0; i < this->size; i++){
-                                if(t == &this->t[i]){
-                                    delete this->t;
-                                    if(i == 0 && this->size > 1)
-                                        this->leftShiftItems(i+1, 1);
-                                    this->size--;
-                                    this->reallocate(this->max-1);
+                                if(t == this->t[i]){
+                                    this->removeAt(i);
+                                    return;
                                 }    
                             }
                             throw new jpl::_exception::NotFoundException();

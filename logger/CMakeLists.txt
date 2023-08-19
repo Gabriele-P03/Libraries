@@ -7,8 +7,6 @@ set_target_properties(loggerJPL_sh PROPERTIES OUTPUT_NAME "loggerJPL_1_0_0")
 add_library( loggerJPL_st STATIC "src/Logger.cpp")
 set_target_properties(loggerJPL_st PROPERTIES OUTPUT_NAME "loggerJPL_1_0_0")
 
-
-set(${ENABLE_IMPLICIT_USE_LOGGER_JPL} OFF)
 #Logger's MACRO part
 if( ${QUIET_LOGGER_JPL} AND ${CUSTOM_LOGGER_JPL})
     message(FATAL_ERROR "You are trying to build Custom mode and Quiet one together, which is a useless practice since QUIET macro is used only if CUSTOM is not defined")
@@ -20,11 +18,6 @@ else()
         add_compile_definitions(CUSTOM_LOGGER_JPL)
         message("Compiling with QUIET MODE")
     endif()
-endif()
-
-if(${UFW_LOGGER_JPL})
-    add_compile_definitions(UFW_LOGGER_JPL)
-    message("Compiling with UFW MODE")
 endif()
 
 set(CMAKE_C_COMPILER gcc)

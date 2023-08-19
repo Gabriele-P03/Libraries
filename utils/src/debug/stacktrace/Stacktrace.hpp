@@ -38,8 +38,12 @@
 
                             this->frames = queryStacktrace(skipped, maxSize);
                         }
-                        Stacktrace(unsigned long skipped) : Stacktrace(skipped, MAX_STACKFRAMES_JPL){}
-                        Stacktrace() : Stacktrace(DEFAULT_SKIP_STACKFRAMES_JPL+2){} //Plus 2 due to the two constructor called 
+                        Stacktrace(unsigned long skipped) : Stacktrace(skipped, MAX_STACKFRAMES_JPL){
+
+                        }
+                        Stacktrace() : Stacktrace(DEFAULT_SKIP_STACKFRAMES_JPL+2){
+                            
+                        } //Plus 2 due to the two constructor called 
 
                         const std::vector<Frame>* getFrames() const { return this->frames; }
                         const unsigned long getSkippedFrames() const{return this->skipped;}

@@ -24,7 +24,7 @@
         #include <linux/limits.h> //For MAX_PATH
     #endif
 
-    #include <jpl/utils/debug/ErrorUtils.hpp>
+    #include "debug/ErrorUtils.hpp>
     #include <jpl/exception/runtime/FileNotFoundException.hpp>
     #include <jpl/exception/runtime/RuntimeException.hpp>
     #include <jpl/exception/runtime/PermissionException.hpp>
@@ -109,7 +109,7 @@
                             break;
                             
                         default:
-                            throw new _exception::RuntimeException(_error::_GetLastErrorAsString().c_str());
+                            throw new _exception::RuntimeException(_error::_GetLastErrorAsString(_err).c_str());
                         
                         }
                     }

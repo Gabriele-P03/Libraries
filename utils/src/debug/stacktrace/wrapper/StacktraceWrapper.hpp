@@ -25,6 +25,8 @@
  * Although the decreasing, you could even encounter bugs about it, e.g. when there are some blank lines between two consecutive functions.<br>
  * You can get more information about it at {@link https://github.com/JochenKalmbach/StackWalker/issues/31}
  * 
+ * Whenever a Stack symbol could not be solved, an Invalid Frame will be inserted into the list.
+ * 
  * @author Gabriele-P03
  * @date 2023-08-03
  * @copyright Copyright (c) 2023

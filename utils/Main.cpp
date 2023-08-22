@@ -1,7 +1,10 @@
 #include "src/debug/stacktrace/Stacktrace.hpp"
 
 void f1(){
+
     std::cout<<jpl::_utils::_debug::Stacktrace();
+
+    return;
 }
 
 void f2(){

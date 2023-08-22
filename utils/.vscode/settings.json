@@ -73,7 +73,8 @@
         "*.ipp": "cpp",
         "stacktrace": "cpp",
         "source_location": "cpp",
-        "shared_mutex": "cpp"
+        "shared_mutex": "cpp",
+        "regex": "cpp"
     },
     "cmake.configureOnOpen": false,
     "C_Cpp.default.compilerPath": "C:\\msys64\\ming64\\bin\\g++.exe",

@@ -5,7 +5,7 @@
             "label": "Linux",
             "command": "/usr/bin/g++",
             "args": [
-                "-g",
+                "-ggdb",
                 "-std=c++23",
                 "${workspaceFolder}/Main.cpp",
                 "-ldl",

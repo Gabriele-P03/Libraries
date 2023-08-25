@@ -1,0 +1,27 @@
+\hypertarget{FunctionalInterface_8hpp}{}\doxysection{/home/gabriele/\+JPL/utils/src/functional/\+Functional\+Interface.hpp File Reference}
+\label{FunctionalInterface_8hpp}\index{/home/gabriele/JPL/utils/src/functional/FunctionalInterface.hpp@{/home/gabriele/JPL/utils/src/functional/FunctionalInterface.hpp}}
+{\ttfamily \#include $<$functional$>$}\newline
+\doxysubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classjpl_1_1__utils_1_1__functional_1_1FunctionalI}{jpl\+::\+\_\+utils\+::\+\_\+functional\+::\+FunctionalI}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacejpl}{jpl}}
+\item 
+namespace \mbox{\hyperlink{namespacejpl_1_1__utils}{jpl\+::\+\_\+utils}}
+\item 
+namespace \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__functional}{jpl\+::\+\_\+utils\+::\+\_\+functional}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This is intendeed to be such as an annotation in order to mark a functional interface.
+
+Whenever you approach with a functional interface, you can pass directly a lambda expression which will be moved as rvalue-\/reference via std\+::move(). The lambda will be stored as an std\+::function and test(...) method will be called to perform it
+
+\begin{DoxyAuthor}{Author}
+Gabriele-\/\+P03 
+\end{DoxyAuthor}

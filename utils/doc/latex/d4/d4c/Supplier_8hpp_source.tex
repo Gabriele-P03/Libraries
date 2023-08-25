@@ -1,0 +1,42 @@
+\hypertarget{Supplier_8hpp_source}{}\doxysection{Supplier.\+hpp}
+\label{Supplier_8hpp_source}\index{/home/gabriele/JPL/utils/src/functional/supplier/Supplier.hpp@{/home/gabriele/JPL/utils/src/functional/supplier/Supplier.hpp}}
+\mbox{\hyperlink{Supplier_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#ifndef\ SUPPLIER\_FUNCTIONAL\_INTERFACE\_JPL}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#define\ SUPPLIER\_FUNCTIONAL\_INTERFACE\_JPL}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}../FunctionalInterface.hpp"{}}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacejpl}{jpl}}\{}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{namespace\ }\_utils\{}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{keyword}{namespace\ }\_functional\{}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classjpl_1_1__utils_1_1__functional_1_1Supplier}{Supplier}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__functional_1_1FunctionalI}{FunctionalI}}\{}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::function<T()>\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__functional_1_1Supplier_a14169e7db213ed4e1a756d3c471d2461}{supplier}};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ SupplyType>}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classjpl_1_1__utils_1_1__functional_1_1Supplier_adadf1483ae22e159ddd72a50f4b58d7a}{Supplier}}(SupplyType\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__functional_1_1Supplier_a14169e7db213ed4e1a756d3c471d2461}{supplier}})\ :\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__functional_1_1Supplier_a14169e7db213ed4e1a756d3c471d2461}{supplier}}\{std::move(\mbox{\hyperlink{classjpl_1_1__utils_1_1__functional_1_1Supplier_a14169e7db213ed4e1a756d3c471d2461}{supplier}})\}}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ T\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__functional_1_1Supplier_a0505f2630d8210fdc8607b94d1c90b80}{test}}()\{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__functional_1_1Supplier_a14169e7db213ed4e1a756d3c471d2461}{supplier}}();}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00052\ \ \ \ \ \}}
+\DoxyCodeLine{00053\ \}}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

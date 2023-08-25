@@ -5,7 +5,7 @@
  * You oughta never include this header directly: kernel check is performed by StacktraceWrapper - whose header file may give you
  * more information with its documentation 
  * 
- * 
+ * (1)
  * I have already left a note about the decreasing of line number due to PC processing, as you can read from the
  * StacktraceWrapper.hpp documentation.
  * Although that, as you can see here, that decreasing operation is performed only when addr2line does NOT get into
@@ -13,9 +13,6 @@
  * @link https://wiki.dwarfstd.org/Path_Discriminators.md
  * 
  * Please, note instead that line number is always decreased under a windows machine
- * 
- * 
- * Under a linux kernel
  * 
  * @author Gabriele-P03
  * @date 2023-08-03
@@ -78,90 +75,70 @@
                     if(c_c_buffer == NULL){
                         frames->insert(frames->begin(), size, Frame());
                     }else{
+
                         for(unsigned int i = 0; i < size; i++){
+                            //Convert the symbol into a string
                             std::string sbuffer = std::string(c_c_buffer[i]);
+                            //Let's get file name where symbol has been found
+                            std::string exeFileName;
+                            unsigned long space = sbuffer.find('(');
+                            if(space == std::string::npos){
+                                space = sbuffer.size();
+                            }
+                            exeFileName = sbuffer.substr(0, space);
+                            //Let's get address
+                            std::string address = "";
+                            unsigned long _s = sbuffer.find("(");
+                            if( _s != std::string::npos && (sbuffer.find("+0x") != std::string::npos)){
+                                address = sbuffer.substr(_s+1);  //Plus 1 will remove '('
+                                unsigned long s_ = address.find(')');
+                                if(s_ != std::string::npos){
+                                    address = address.substr(0, s_);
+                                }
+                            }else{
+                                char tmpAddr[32];
+                                sprintf(&tmpAddr[0], "%p", buffer[i]);
+                                address = std::string(tmpAddr);
+                            }
 
-                            unsigned long p = sbuffer.find('(');
-
-                            //Store into syscom the formatted string
                             char syscom[512];
+                            sprintf(syscom, "addr2line -e %.*s -fC %.*s", exeFileName.size(), exeFileName.c_str(), address.size(), address.c_str());
+                            FILE* cmdStream = popen(syscom, "r");
 
-                            //Check for .so offset
-                            std::regex regexOffset("^\\+0x[0-9a-z]+$");
-                            std::string s = sbuffer.substr(p+1);
-                            s = s.substr(0, s.find(")"));
-                            if( std::regex_search(s, regexOffset )){
-                                if(s.at(0) != '+')
-                                    s = s.substr(s.find("+"));
-                                sprintf(syscom, "addr2line %s -fCe %.*s", s.c_str(), p, c_c_buffer[i]);
-                            }else{
-                                sprintf(syscom, "addr2line %p -fCe %.*s", buffer[i], p, c_c_buffer[i]);
-                            }
-
-                            std::cout<<syscom<<std::endl;
-
-                            FILE* pipe = popen(syscom, "r");
-                            if(!pipe){
-                                frames->push_back(Frame());
-                            }else{
-
-                                //Used as buffer
-                                std::string tmpString = "";
-                                // read till end of process:
-                                while (!feof(pipe)) {
-                                    
-                                    char tmp[128];
-                                    // use buffer to read and add to result
-                                    if (fgets(&tmp[0], 128, pipe) != NULL)
-                                        tmpString += std::string(tmp);
-                                }
-
-                                //Check for discriminator. If it is false, line number will be decreased
-                                bool flagDiscriminator = false;
-                                std::regex rx("\\(discriminator [0-9]+\\)\n");
-                                if(std::regex_search(tmpString, rx)){
-                                    flagDiscriminator = true;
-                                }
-
-                                if(!tmpString.empty()){
-                                    //File name before ':', after that is the line number
-                                    unsigned long endOfFuncName = tmpString.find('\n'); 
-                                    unsigned long splitIndex = tmpString.find(':', endOfFuncName);
-
-                                    unsigned long endOfLine = tmpString.find(' ', splitIndex);
-                                    //Since ' ' has to be checked only if discriminator is found ot, otherwise \n 
-                                    if(endOfLine == std::string::npos){
-                                        endOfLine = tmpString.find('\n', splitIndex);
-                                    }
-
-                                    if(splitIndex != std::string::npos && endOfFuncName != std::string::npos && endOfLine != std::string::npos){
-                                        std::string file_name = tmpString.substr(endOfFuncName+1, splitIndex-endOfFuncName-1);
-                                        std::string func_name = tmpString.substr(0, endOfFuncName);
-
-                                        char p_addr[32];
-                                        sprintf(p_addr, "%p", buffer[i]);
-                                        std::string address = std::string(p_addr);
-
-                                        //Da mettere dentro un try-catch
-                                        unsigned long lineNumber = 0;
-                                        try{
-                                            lineNumber = std::stoi(tmpString.substr(splitIndex+1, endOfLine-splitIndex-1));
-                                            if(!flagDiscriminator && lineNumber > 0){
-                                                lineNumber -= 1;
-                                            }
-                                        }catch(std::invalid_argument &ex){}
-                                        frames->push_back(Frame(lineNumber, func_name, address, file_name));
-                                    }else{
-                                        frames->push_back(Frame());
-                                    }
-                                }else{
-                                    frames->push_back(Frame());
-                                }
+                            std::string bufferStream = "";
+                            while(!feof(cmdStream)){
                                 
-                                pclose(pipe);
+                                char tmpStream[512];
+                                if(fgets(tmpStream, 512, cmdStream) != NULL){
+                                    bufferStream += tmpStream;
+                                }
                             }
+
+                            //Carriage which separate func name by file name and line
+                            unsigned long cr = bufferStream.find("\n");
+                            std::string func_name = bufferStream.substr(0, cr);
+                            //':' separate file name and line
+                            unsigned long separator = bufferStream.find(":", cr);
+                            std::string file_name = bufferStream.substr(cr+1, separator-cr-1);
+                            //Discriminator for multiple path function
+                            unsigned long disc_index = bufferStream.find(" (discriminator");
+
+                            unsigned long line = 0;
+                            try{
+                                if(disc_index != std::string::npos)
+                                    line = std::stoi(bufferStream.substr(separator+1, disc_index));
+                                else
+                                    line = std::stoi(bufferStream.substr(separator+1)) - 1; //-1 due to PC increasing (1)
+                            }catch(std::invalid_argument &ex){
+                                line -= 1;  //Since it ulong, a line which could not be figured out ('?') will be stored as max value for a ulong
+                            }
+
+                            if(disc_index != std::string::npos){
+                                func_name += " " + bufferStream.substr(disc_index, bufferStream.size()-disc_index-1);
+                            }
+
+                            frames->push_back(Frame(line, func_name, address, file_name));
                         }
-                        free(c_c_buffer);
                     }
 
                     return frames;

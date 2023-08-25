@@ -1,0 +1,130 @@
+\hypertarget{LinuxStacktraceWrapper_8hpp_source}{}\doxysection{Linux\+Stacktrace\+Wrapper.\+hpp}
+\label{LinuxStacktraceWrapper_8hpp_source}\index{/home/gabriele/JPL/utils/src/debug/stacktrace/wrapper/LinuxStacktraceWrapper.hpp@{/home/gabriele/JPL/utils/src/debug/stacktrace/wrapper/LinuxStacktraceWrapper.hpp}}
+\mbox{\hyperlink{LinuxStacktraceWrapper_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#ifndef\ LINUX\_STACKTRACE\_WRAPPER\_JPL}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#define\ LINUX\_STACKTRACE\_WRAPPER\_JPL}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\ \ \ \ \#include\ <string>}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\ \ \ \ \#include\ <vector>}\ \ \ \textcolor{comment}{//It\ will\ be\ replaced\ by\ JPL's\ ArrayList}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\ \ \ \ \#include\ <regex>}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\ \ \ \ \#include\ <iostream>}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\ \ \ \ \#include\ <execinfo.h>}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacejpl}{jpl}}\{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keyword}{namespace\ }\_utils\{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{namespace\ }\_debug\{}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame}{Frame}}\{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_a9a42e7bc8901413ab0059f87ea12144b}{frame\_valid}};}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_ad329fdc9bef5979bcc0caf4b69cccb29}{line}};}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_a662b327f7f17f31e1f703877cbb8c433}{function\_name}};}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_a734dd1c0b6044407be8eff16c00f7262}{address}};}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_a7a4f70f12322901a8091a4a1e8c334a5}{file\_name}};}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_a35830038f1996ae46e274099a241dda6}{Frame}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_ad329fdc9bef5979bcc0caf4b69cccb29}{line}},\ \textcolor{keyword}{const}\ std::string\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_a662b327f7f17f31e1f703877cbb8c433}{function\_name}},\ \textcolor{keyword}{const}\ std::string\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_a734dd1c0b6044407be8eff16c00f7262}{address}},\ \textcolor{keyword}{const}\ std::string\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_a7a4f70f12322901a8091a4a1e8c334a5}{file\_name}})\ :\ }
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_a9a42e7bc8901413ab0059f87ea12144b}{frame\_valid}}(true),\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_ad329fdc9bef5979bcc0caf4b69cccb29}{line}}(\mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_ad329fdc9bef5979bcc0caf4b69cccb29}{line}}),\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_a662b327f7f17f31e1f703877cbb8c433}{function\_name}}(\mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_a662b327f7f17f31e1f703877cbb8c433}{function\_name}}),\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_a734dd1c0b6044407be8eff16c00f7262}{address}}(\mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_a734dd1c0b6044407be8eff16c00f7262}{address}}),\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_a7a4f70f12322901a8091a4a1e8c334a5}{file\_name}}(\mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_a7a4f70f12322901a8091a4a1e8c334a5}{file\_name}})\{\}}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_aa91eb4517fd477098f2b5ba61aba3649}{Frame}}()\ :\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_a9a42e7bc8901413ab0059f87ea12144b}{frame\_valid}}(false),\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_ad329fdc9bef5979bcc0caf4b69cccb29}{line}}(0),\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_a662b327f7f17f31e1f703877cbb8c433}{function\_name}}(\textcolor{stringliteral}{"{}"{}}),\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_a734dd1c0b6044407be8eff16c00f7262}{address}}(\textcolor{stringliteral}{"{}"{}}),\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_a7a4f70f12322901a8091a4a1e8c334a5}{file\_name}}(\textcolor{stringliteral}{"{}"{}})\{\}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame}{Frame}}\&\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_a446af52188e151a1199acdd31ad05830}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame}{Frame}}\&\ frame)\{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *\textcolor{keyword}{const\_cast<}\textcolor{keywordtype}{bool}*\textcolor{keyword}{>}(\&this-\/>\mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_a9a42e7bc8901413ab0059f87ea12144b}{frame\_valid}})\ =\ frame.\mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_a9a42e7bc8901413ab0059f87ea12144b}{frame\_valid}};}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *\textcolor{keyword}{const\_cast<}\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}*\textcolor{keyword}{>}(\&this-\/>line)\ =\ frame.\mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_ad329fdc9bef5979bcc0caf4b69cccb29}{line}};}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *\textcolor{keyword}{const\_cast<}std::string*\textcolor{keyword}{>}(\&this-\/>\mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_a662b327f7f17f31e1f703877cbb8c433}{function\_name}})\ =\ frame.\mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_a662b327f7f17f31e1f703877cbb8c433}{function\_name}};}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *\textcolor{keyword}{const\_cast<}std::string*\textcolor{keyword}{>}(\&this-\/>address)\ =\ frame.\mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_a734dd1c0b6044407be8eff16c00f7262}{address}};}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *\textcolor{keyword}{const\_cast<}std::string*\textcolor{keyword}{>}(\&this-\/>\mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_a7a4f70f12322901a8091a4a1e8c334a5}{file\_name}})\ =\ frame.\mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_a7a4f70f12322901a8091a4a1e8c334a5}{file\_name}};}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<Frame>*\ \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__debug_aaa5f13b509219e9102725127d2151214}{queryStacktrace}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ skipped,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ maxSize)\{}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<Frame>\ *frames\ =\ \textcolor{keyword}{new}\ std::vector<Frame>();}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}*\ buffer[maxSize];}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Retrieve\ the\ stacktrace\ }}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ size\ =\ backtrace(buffer,\ maxSize);}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Translate\ symbols}}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}**\ c\_c\_buffer\ =\ backtrace\_symbols(buffer,\ size);}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//If\ it\ could\ not\ translate\ them,\ the\ vector\ is\ filled\ with\ size\ invalid\ frame}}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(c\_c\_buffer\ ==\ NULL)\{}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ frames-\/>insert(frames-\/>begin(),\ size,\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame}{Frame}}());}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ size;\ i++)\{}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Convert\ the\ symbol\ into\ a\ string}}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ sbuffer\ =\ std::string(c\_c\_buffer[i]);}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Let's\ get\ file\ name\ where\ symbol\ has\ been\ found}}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ exeFileName;}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ space\ =\ sbuffer.find(\textcolor{charliteral}{'('});}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(space\ ==\ std::string::npos)\{}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ space\ =\ sbuffer.size();}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ exeFileName\ =\ sbuffer.substr(0,\ space);}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Let's\ get\ address}}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ address\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \_s\ =\ sbuffer.find(\textcolor{stringliteral}{"{}("{}});}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ \_s\ !=\ std::string::npos\ \&\&\ (sbuffer.find(\textcolor{stringliteral}{"{}+0x"{}})\ !=\ std::string::npos))\{}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ address\ =\ sbuffer.substr(\_s+1);\ \ \textcolor{comment}{//Plus\ 1\ will\ remove\ '('}}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ s\_\ =\ address.find(\textcolor{charliteral}{')'});}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(s\_\ !=\ std::string::npos)\{}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ address\ =\ address.substr(0,\ s\_);}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ tmpAddr[32];}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sprintf(\&tmpAddr[0],\ \textcolor{stringliteral}{"{}\%p"{}},\ buffer[i]);}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ address\ =\ std::string(tmpAddr);}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ syscom[512];}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sprintf(syscom,\ \textcolor{stringliteral}{"{}addr2line\ -\/e\ \%.*s\ -\/fC\ \%.*s"{}},\ exeFileName.size(),\ exeFileName.c\_str(),\ address.size(),\ address.c\_str());}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ FILE*\ cmdStream\ =\ popen(syscom,\ \textcolor{stringliteral}{"{}r"{}});}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ bufferStream\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}(!feof(cmdStream))\{}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ tmpStream[512];}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(fgets(tmpStream,\ 512,\ cmdStream)\ !=\ NULL)\{}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ bufferStream\ +=\ tmpStream;}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Carriage\ which\ separate\ func\ name\ by\ file\ name\ and\ line}}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ cr\ =\ bufferStream.find(\textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ func\_name\ =\ bufferStream.substr(0,\ cr);}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//':'\ separate\ file\ name\ and\ line}}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ separator\ =\ bufferStream.find(\textcolor{stringliteral}{"{}:"{}},\ cr);}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ file\_name\ =\ bufferStream.substr(cr+1,\ separator-\/cr-\/1);}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Discriminator\ for\ multiple\ path\ function}}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ disc\_index\ =\ bufferStream.find(\textcolor{stringliteral}{"{}\ (discriminator"{}});}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ line\ =\ 0;}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\{}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(disc\_index\ !=\ std::string::npos)}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ line\ =\ std::stoi(bufferStream.substr(separator+1,\ disc\_index));}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ line\ =\ std::stoi(bufferStream.substr(separator+1))\ -\/\ 1;\ \textcolor{comment}{//-\/1\ due\ to\ PC\ increasing\ (1)}}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\textcolor{keywordflow}{catch}(std::invalid\_argument\ \&ex)\{}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ line\ -\/=\ 1;\ \ \textcolor{comment}{//Since\ it\ ulong,\ a\ line\ which\ could\ not\ be\ figured\ out\ ('?')\ will\ be\ stored\ as\ max\ value\ for\ a\ ulong}}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(disc\_index\ !=\ std::string::npos)\{}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ func\_name\ +=\ \textcolor{stringliteral}{"{}\ "{}}\ +\ bufferStream.substr(disc\_index,\ bufferStream.size()-\/disc\_index-\/1);}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ frames-\/>push\_back(\mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame}{Frame}}(line,\ func\_name,\ address,\ file\_name));}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ frames;}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00148\ \ \ \ \ \}}
+\DoxyCodeLine{00149\ }
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00151\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

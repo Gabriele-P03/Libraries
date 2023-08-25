@@ -1,0 +1,42 @@
+\hypertarget{BiFunction_8hpp_source}{}\doxysection{Bi\+Function.\+hpp}
+\label{BiFunction_8hpp_source}\index{/home/gabriele/JPL/utils/src/functional/function/BiFunction.hpp@{/home/gabriele/JPL/utils/src/functional/function/BiFunction.hpp}}
+\mbox{\hyperlink{BiFunction_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#ifndef\ BI\_FUNCTION\_FUNCTIONAL\_INTERFACE\_JPL}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ BI\_FUNCTION\_FUNCTIONAL\_INTERFACE\_JPL}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}../FunctionalInterface.hpp"{}}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacejpl}{jpl}}\{}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{namespace\ }\_utils\{}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keyword}{namespace\ }\_functional\{}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ E,\ \textcolor{keyword}{typename}\ R>}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classjpl_1_1__utils_1_1__functional_1_1BiFunction}{BiFunction}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__functional_1_1FunctionalI}{FunctionalI}}\{}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::function<R(T,\ E)>\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__functional_1_1BiFunction_a36f5bf299833e957faf36e641845bb18}{function}};}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ FunctionType>}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classjpl_1_1__utils_1_1__functional_1_1BiFunction_a30199fe4f3e5cec1545361ae3ee22d02}{BiFunction}}(FunctionType\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__functional_1_1BiFunction_a36f5bf299833e957faf36e641845bb18}{function}})\ :\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__functional_1_1BiFunction_a36f5bf299833e957faf36e641845bb18}{function}}\{std::move(\mbox{\hyperlink{classjpl_1_1__utils_1_1__functional_1_1BiFunction_a36f5bf299833e957faf36e641845bb18}{function}})\}}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ R\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__functional_1_1BiFunction_acb49d79d5184d8e523ab05e2b9b0aff9}{test}}(T\ t,\ E\ e)\{}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__functional_1_1BiFunction_a36f5bf299833e957faf36e641845bb18}{function}}(t,\ e);}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00057\ \ \ \ \ \}}
+\DoxyCodeLine{00058\ \}}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,7 +1,5 @@
-\chapter{\texorpdfstring{$<$}{<}strong\texorpdfstring{$>$}{>}Utils (CM)\texorpdfstring{$<$}{<}/strong\texorpdfstring{$>$}{>}}
-\hypertarget{index}{}\label{index}\index{$<$strong$>$Utils (CM)$<$/strong$>$@{$<$strong$>$Utils (CM)$<$/strong$>$}}
-\label{index_md__c_1_2_users_2paceg_2_personale_2_j_p_l_2utils_2_r_e_a_d_m_e}%
-\Hypertarget{index_md__c_1_2_users_2paceg_2_personale_2_j_p_l_2utils_2_r_e_a_d_m_e}%
+\label{index_md__home_gabriele_JPL_utils_README}%
+\Hypertarget{index_md__home_gabriele_JPL_utils_README}%
 \doxysubsection*{{\itshape Utils Function}}
 
 ~\newline
@@ -11,7 +9,7 @@
 ~\newline
  Since all its headers can be considered as sub-\/modules, you can download those ones you need and discard all other ones (unless they are not included by those ones you need). ~\newline
  ~\newline
-\hypertarget{index_autotoc_md1}{}\doxysection{\texorpdfstring{List of Sub-\/\+Modules\+:}{List of Sub-Modules:}}\label{index_autotoc_md1}
+\hypertarget{index_autotoc_md1}{}\doxysection{List of Sub-\/\+Modules\+:}\label{index_autotoc_md1}
 \begin{quote}
 Bits\+Utils \begin{quote}
 To operate on bits (boolean array) \end{quote}
@@ -31,7 +29,17 @@ To reading/getting file and path$<$br$>$~\newline
 \end{quote}
 \begin{quote}
 Debug\+Utils \begin{quote}
-To provides some function whilst debugger is attached or about stacktrace and errors occurred$<$br$>$~\newline
+To provides some function whilst debugger is attached or about stacktrace and errors occurred~\newline
+ In order to get a more readable stacktrace, everytime that either a shared or static object is made up by yourself, you should always build them with debug symbols$<$br$>$~\newline
+ e.\+g.~\newline
+ g++ -\/g \texorpdfstring{$<$}{<}--debug symbol -\/f\+PIC -\/c -\/o test.\+out test.\+cpp~\newline
+ g++ -\/shared -\/o libtest.\+so test.\+out~\newline
+ \doxysubsection*{For windows machine only\+:}
+
+\doxysubparagraph*{In order to print a more detailed stacktrace, you should extract .pdb (which contains symbols, also used by gdb) file from the compiled exe. I use \href{https://github.com/rainers/cv2pdb}{\texttt{ cv2pdb}} which generate a file named as the executable one. Put it in mind that, once invoked cv2pdb (via CLI is \char`\"{}cv2pdb64.\+exe your\+\_\+executable\+\_\+file.\+exe\char`\"{}), all symbols are removed from the .exe and then, if you invoke gdb on it, it will not encounter any breakpoints.}
+
+~\newline
+~\newline
  \end{quote}
 \end{quote}
 \begin{quote}

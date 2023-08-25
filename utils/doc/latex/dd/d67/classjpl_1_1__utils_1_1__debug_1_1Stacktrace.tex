@@ -1,0 +1,112 @@
+\hypertarget{classjpl_1_1__utils_1_1__debug_1_1Stacktrace}{}\doxysection{jpl\+::\+\_\+utils\+::\+\_\+debug\+::Stacktrace Class Reference}
+\label{classjpl_1_1__utils_1_1__debug_1_1Stacktrace}\index{jpl::\_utils::\_debug::Stacktrace@{jpl::\_utils::\_debug::Stacktrace}}
+
+
+{\ttfamily \#include \char`\"{}Stacktrace.\+hpp\char`\"{}}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classjpl_1_1__utils_1_1__debug_1_1Stacktrace_aab997fb5c3de22a12f3557a72c82ca6a}{Stacktrace}} (unsigned long \mbox{\hyperlink{classjpl_1_1__utils_1_1__debug_1_1Stacktrace_a75a8afa7aa36704dbf1402f74992fa55}{skipped}}, unsigned long \mbox{\hyperlink{classjpl_1_1__utils_1_1__debug_1_1Stacktrace_a5d96aabc1e2e3dd39594c31d92a72a4a}{max\+Size}})
+\item 
+\mbox{\hyperlink{classjpl_1_1__utils_1_1__debug_1_1Stacktrace_a9cfae883c2c2bed0d0cf033a833e4550}{Stacktrace}} (unsigned long \mbox{\hyperlink{classjpl_1_1__utils_1_1__debug_1_1Stacktrace_a75a8afa7aa36704dbf1402f74992fa55}{skipped}})
+\item 
+\mbox{\hyperlink{classjpl_1_1__utils_1_1__debug_1_1Stacktrace_a57dc0c72c620913f07ab5ce3f0aa722c}{Stacktrace}} ()
+\item 
+const std\+::vector$<$ \mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame}{Frame}} $>$ $\ast$ \mbox{\hyperlink{classjpl_1_1__utils_1_1__debug_1_1Stacktrace_abf7f62835c1a2d45930914f79435dbdc}{get\+Frames}} () const
+\item 
+const unsigned long \mbox{\hyperlink{classjpl_1_1__utils_1_1__debug_1_1Stacktrace_a21e32c4be4deb073f99231093e6a95e5}{get\+Skipped\+Frames}} () const
+\item 
+\mbox{\hyperlink{classjpl_1_1__utils_1_1__debug_1_1Stacktrace_ab26e9feb1ae4957d87310c6803012b4e}{$\sim$\+Stacktrace}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame}{Frame}} $>$ $\ast$ \mbox{\hyperlink{classjpl_1_1__utils_1_1__debug_1_1Stacktrace_ae637c24301aac5b944bee2a23703a7fd}{frames}}
+\item 
+unsigned long \mbox{\hyperlink{classjpl_1_1__utils_1_1__debug_1_1Stacktrace_a75a8afa7aa36704dbf1402f74992fa55}{skipped}}
+\item 
+unsigned long \mbox{\hyperlink{classjpl_1_1__utils_1_1__debug_1_1Stacktrace_a5d96aabc1e2e3dd39594c31d92a72a4a}{max\+Size}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+std\+::ostream \& \mbox{\hyperlink{classjpl_1_1__utils_1_1__debug_1_1Stacktrace_a92534bef149461d528e8e9e0bc041001}{operator$<$$<$}} (std\+::ostream \&os, const \mbox{\hyperlink{classjpl_1_1__utils_1_1__debug_1_1Stacktrace}{Stacktrace}} \&stacktrace)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classjpl_1_1__utils_1_1__debug_1_1Stacktrace_aab997fb5c3de22a12f3557a72c82ca6a}\label{classjpl_1_1__utils_1_1__debug_1_1Stacktrace_aab997fb5c3de22a12f3557a72c82ca6a}} 
+\index{jpl::\_utils::\_debug::Stacktrace@{jpl::\_utils::\_debug::Stacktrace}!Stacktrace@{Stacktrace}}
+\index{Stacktrace@{Stacktrace}!jpl::\_utils::\_debug::Stacktrace@{jpl::\_utils::\_debug::Stacktrace}}
+\doxysubsubsection{\texorpdfstring{Stacktrace()}{Stacktrace()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily jpl\+::\+\_\+utils\+::\+\_\+debug\+::\+Stacktrace\+::\+Stacktrace (\begin{DoxyParamCaption}\item[{unsigned long}]{skipped,  }\item[{unsigned long}]{max\+Size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classjpl_1_1__utils_1_1__debug_1_1Stacktrace_a9cfae883c2c2bed0d0cf033a833e4550}\label{classjpl_1_1__utils_1_1__debug_1_1Stacktrace_a9cfae883c2c2bed0d0cf033a833e4550}} 
+\index{jpl::\_utils::\_debug::Stacktrace@{jpl::\_utils::\_debug::Stacktrace}!Stacktrace@{Stacktrace}}
+\index{Stacktrace@{Stacktrace}!jpl::\_utils::\_debug::Stacktrace@{jpl::\_utils::\_debug::Stacktrace}}
+\doxysubsubsection{\texorpdfstring{Stacktrace()}{Stacktrace()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily jpl\+::\+\_\+utils\+::\+\_\+debug\+::\+Stacktrace\+::\+Stacktrace (\begin{DoxyParamCaption}\item[{unsigned long}]{skipped }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classjpl_1_1__utils_1_1__debug_1_1Stacktrace_a57dc0c72c620913f07ab5ce3f0aa722c}\label{classjpl_1_1__utils_1_1__debug_1_1Stacktrace_a57dc0c72c620913f07ab5ce3f0aa722c}} 
+\index{jpl::\_utils::\_debug::Stacktrace@{jpl::\_utils::\_debug::Stacktrace}!Stacktrace@{Stacktrace}}
+\index{Stacktrace@{Stacktrace}!jpl::\_utils::\_debug::Stacktrace@{jpl::\_utils::\_debug::Stacktrace}}
+\doxysubsubsection{\texorpdfstring{Stacktrace()}{Stacktrace()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily jpl\+::\+\_\+utils\+::\+\_\+debug\+::\+Stacktrace\+::\+Stacktrace (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classjpl_1_1__utils_1_1__debug_1_1Stacktrace_ab26e9feb1ae4957d87310c6803012b4e}\label{classjpl_1_1__utils_1_1__debug_1_1Stacktrace_ab26e9feb1ae4957d87310c6803012b4e}} 
+\index{jpl::\_utils::\_debug::Stacktrace@{jpl::\_utils::\_debug::Stacktrace}!````~Stacktrace@{$\sim$Stacktrace}}
+\index{````~Stacktrace@{$\sim$Stacktrace}!jpl::\_utils::\_debug::Stacktrace@{jpl::\_utils::\_debug::Stacktrace}}
+\doxysubsubsection{\texorpdfstring{$\sim$Stacktrace()}{~Stacktrace()}}
+{\footnotesize\ttfamily jpl\+::\+\_\+utils\+::\+\_\+debug\+::\+Stacktrace\+::$\sim$\+Stacktrace (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classjpl_1_1__utils_1_1__debug_1_1Stacktrace_abf7f62835c1a2d45930914f79435dbdc}\label{classjpl_1_1__utils_1_1__debug_1_1Stacktrace_abf7f62835c1a2d45930914f79435dbdc}} 
+\index{jpl::\_utils::\_debug::Stacktrace@{jpl::\_utils::\_debug::Stacktrace}!getFrames@{getFrames}}
+\index{getFrames@{getFrames}!jpl::\_utils::\_debug::Stacktrace@{jpl::\_utils::\_debug::Stacktrace}}
+\doxysubsubsection{\texorpdfstring{getFrames()}{getFrames()}}
+{\footnotesize\ttfamily const std\+::vector$<$ \mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame}{Frame}} $>$ $\ast$ jpl\+::\+\_\+utils\+::\+\_\+debug\+::\+Stacktrace\+::get\+Frames (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classjpl_1_1__utils_1_1__debug_1_1Stacktrace_a21e32c4be4deb073f99231093e6a95e5}\label{classjpl_1_1__utils_1_1__debug_1_1Stacktrace_a21e32c4be4deb073f99231093e6a95e5}} 
+\index{jpl::\_utils::\_debug::Stacktrace@{jpl::\_utils::\_debug::Stacktrace}!getSkippedFrames@{getSkippedFrames}}
+\index{getSkippedFrames@{getSkippedFrames}!jpl::\_utils::\_debug::Stacktrace@{jpl::\_utils::\_debug::Stacktrace}}
+\doxysubsubsection{\texorpdfstring{getSkippedFrames()}{getSkippedFrames()}}
+{\footnotesize\ttfamily const unsigned long jpl\+::\+\_\+utils\+::\+\_\+debug\+::\+Stacktrace\+::get\+Skipped\+Frames (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{classjpl_1_1__utils_1_1__debug_1_1Stacktrace_a92534bef149461d528e8e9e0bc041001}\label{classjpl_1_1__utils_1_1__debug_1_1Stacktrace_a92534bef149461d528e8e9e0bc041001}} 
+\index{jpl::\_utils::\_debug::Stacktrace@{jpl::\_utils::\_debug::Stacktrace}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!jpl::\_utils::\_debug::Stacktrace@{jpl::\_utils::\_debug::Stacktrace}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
+{\footnotesize\ttfamily std\+::ostream \& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os,  }\item[{const \mbox{\hyperlink{classjpl_1_1__utils_1_1__debug_1_1Stacktrace}{Stacktrace}} \&}]{stacktrace }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+\doxysubsection{Field Documentation}
+\mbox{\Hypertarget{classjpl_1_1__utils_1_1__debug_1_1Stacktrace_ae637c24301aac5b944bee2a23703a7fd}\label{classjpl_1_1__utils_1_1__debug_1_1Stacktrace_ae637c24301aac5b944bee2a23703a7fd}} 
+\index{jpl::\_utils::\_debug::Stacktrace@{jpl::\_utils::\_debug::Stacktrace}!frames@{frames}}
+\index{frames@{frames}!jpl::\_utils::\_debug::Stacktrace@{jpl::\_utils::\_debug::Stacktrace}}
+\doxysubsubsection{\texorpdfstring{frames}{frames}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame}{Frame}}$>$$\ast$ jpl\+::\+\_\+utils\+::\+\_\+debug\+::\+Stacktrace\+::frames\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classjpl_1_1__utils_1_1__debug_1_1Stacktrace_a5d96aabc1e2e3dd39594c31d92a72a4a}\label{classjpl_1_1__utils_1_1__debug_1_1Stacktrace_a5d96aabc1e2e3dd39594c31d92a72a4a}} 
+\index{jpl::\_utils::\_debug::Stacktrace@{jpl::\_utils::\_debug::Stacktrace}!maxSize@{maxSize}}
+\index{maxSize@{maxSize}!jpl::\_utils::\_debug::Stacktrace@{jpl::\_utils::\_debug::Stacktrace}}
+\doxysubsubsection{\texorpdfstring{maxSize}{maxSize}}
+{\footnotesize\ttfamily unsigned long jpl\+::\+\_\+utils\+::\+\_\+debug\+::\+Stacktrace\+::max\+Size\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classjpl_1_1__utils_1_1__debug_1_1Stacktrace_a75a8afa7aa36704dbf1402f74992fa55}\label{classjpl_1_1__utils_1_1__debug_1_1Stacktrace_a75a8afa7aa36704dbf1402f74992fa55}} 
+\index{jpl::\_utils::\_debug::Stacktrace@{jpl::\_utils::\_debug::Stacktrace}!skipped@{skipped}}
+\index{skipped@{skipped}!jpl::\_utils::\_debug::Stacktrace@{jpl::\_utils::\_debug::Stacktrace}}
+\doxysubsubsection{\texorpdfstring{skipped}{skipped}}
+{\footnotesize\ttfamily unsigned long jpl\+::\+\_\+utils\+::\+\_\+debug\+::\+Stacktrace\+::skipped\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/gabriele/\+JPL/utils/src/debug/stacktrace/\mbox{\hyperlink{Stacktrace_8hpp}{Stacktrace.\+hpp}}\end{DoxyCompactItemize}

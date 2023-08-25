@@ -24,7 +24,7 @@
         #include <linux/limits.h> //For MAX_PATH
     #endif
 
-    #include "debug/ErrorUtils.hpp>
+    #include "debug/ErrorUtils.hpp"
     #include <jpl/exception/runtime/FileNotFoundException.hpp>
     #include <jpl/exception/runtime/RuntimeException.hpp>
     #include <jpl/exception/runtime/PermissionException.hpp>

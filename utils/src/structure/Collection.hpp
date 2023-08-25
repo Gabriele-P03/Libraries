@@ -7,6 +7,9 @@
  * pre-existing structure provided by std, this sub-module provides the same kinda of structures but
  * with the auxiliary use of Exception module  
  * 
+ * All data-structures deal with their elemets through std::unique_ptr in order to let it to destroy
+ * element once no more unique_ptr own it. When you retrieve an element from a collection, it is not
+ * detached from the relative unique_ptr, but a pointer to the element is given to you
  *  
  * 
  * @date 2023-05-28

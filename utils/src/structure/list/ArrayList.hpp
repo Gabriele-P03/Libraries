@@ -26,6 +26,7 @@
 #define ARRAYLIST_JPL
 
 #include "List.hpp"
+#include <memory>
 
 namespace jpl{
 
@@ -39,7 +40,7 @@ namespace jpl{
                 class ArrayList : public List<T>{
 
                     protected:
-                        T* t;
+                        std::unique_ptr<T>* list;
 
                         /**
                          * @brief Right Shift a part of the array list which begins from start 'till last element.

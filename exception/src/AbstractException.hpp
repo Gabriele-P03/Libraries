@@ -13,6 +13,7 @@
 
     #include <iostream>
     #include <vector>
+    #include <string.h>
 
     #ifdef USE_STACKTRACE_W_EXCEPTION_JPL
         #include <jpl/utils/debug/stacktrace/Stacktrace.hpp>

@@ -1,20 +1,7 @@
-#include "src/debug/stacktrace/Stacktrace.hpp"
-
-void f1(){
-
-    std::cout<<jpl::_utils::_debug::Stacktrace();
-
-    return;
-}
-
-void f2(){
-    f1();
-}
-
+#include "src/structure/list/ArrayList.hpp"
 
 int main(){
 
-    f2();
 
     return 0;
 }

@@ -39,7 +39,7 @@ namespace jpl{
                     List(unsigned long size, bool nullableElements) : Collection<T>(size, size, nullableElements){}
                     List(unsigned long size) : List<T> (size, true){}
                     List() : List<T> (0, true){}
-
+                    
                 public:
 
                     /**
@@ -49,45 +49,46 @@ namespace jpl{
                      * @param t new element
                      * 
                      * @throw NullPointerException if list does not permit null elements and t it is
+                     * @throw RuntimeException if an element is already present into index position
                     */
-                    virtual void add(unsigned long index, T t) = 0;
+                    virtual void add(unsigned long index, const T &t) = 0;
                     /**
                      * Insert the whole given list at index
                      * 
                      * @param index
-                     * @param collection
+                     * @param list
+                     * 
+                     * @throw NullPointerException if list does not permit null elements
                     */
-                    virtual void addAll(unsigned long index, const List<T>* list) = 0;
+                    virtual void addAll(unsigned long index, List<T>* &list) = 0;
                     /**
                     * @brief Insert into the structure all items contained into list at the end
                     * if the array list
                     * 
                     * @param list 
+                    *
+                    * @throw NullPointerException if list does not permit null elements
                     */
-                    virtual void addAll(const List<T>* list) = 0;          
+                    virtual void addAll(List<T>* &list) = 0;          
 
                     /**
                      * @return the element at the given index
                      * 
-                     * @throw IndexOutOfBounds if index is graeter than length()-1 or less than 0
+                     * @throw IndexOutOfBounds if index is graeter than size
                     */
-                    virtual T* get(unsigned long index) const = 0;
+                    virtual T &get(unsigned long index) = 0;
 
 
                     /**
                      * @return the index of the first occurrence of t. 
-                     * If t is not found into the list, it returns max
-                     * 
-                     * @throw NullPointerException if list does not permit null elements and t it is
+                     * If t is not found into the list, it returns max 
                     */
-                    virtual unsigned long firstOccurrence(T* t) = 0;
+                    virtual unsigned long firstOccurrence(T* t) const noexcept = 0;
                     /**
                      * @return the index of the last occurrence of t.
                      * If t is not found into the list, it returns max
-                     * 
-                     * @throw NullPointerException if list does not permit null elements and t it is
                     */
-                    virtual unsigned long lastOccurrence(T* t) = 0;
+                    virtual unsigned long lastOccurrence(T* t) const noexcept = 0;
 
                     
                     /**
@@ -109,7 +110,7 @@ namespace jpl{
                      * @param list collection of items to remove
                      * @throw NotFoundException if at least one item into list has not been found
                      */
-                    virtual void removeAll(List<T>* list) = 0;
+                    virtual void removeAll(const List<T>* list) = 0;
                     /**
                      * @brief Remove all elements which respect the given predicate
                     */
@@ -123,18 +124,31 @@ namespace jpl{
                      * @throw IndexOutOfBounds if index is graeter than length()-1 or less than 0
                      * @throw NullPointerException if list does not permit null elements and t it is
                     */
-                    virtual T* set(unsigned long index, T t) = 0;
+                    virtual T* set(unsigned long index, const T &t) = 0;
 
                     /**
-                     * @return a sub list of the current one. If start is equals to end, am empty list is returned
-                     * 
                      * @param start index of the first element to copy
                      * @param end index of the last element to copy (included) 
+                     * 
+                     * @return a sub list of the current one. If start is equals to end, am empty list is returned
                      * 
                      * @throw IndexOutOfBounds if start is graeter or equals than max
                      * @throw IndexOutOfBounds if end is graeter or equals than max
                     */
-                    virtual List<T>* subList(unsigned long start, unsigned long end) = 0;
+                    virtual List<T>* subList(unsigned long start, unsigned long end) const = 0;
+                    /**
+                     * @brief The list is computed 'till the end of the target oneremove
+                     * 
+                     * @param start index of the first element to copy
+                     * 
+                     * @return a sub list of the current one. If start is equals to end, am empty list is returned
+                     * 
+                     * @throw IndexOutOfBounds if start is graeter or equals than max
+                    */
+                    virtual List<T>* subList(unsigned long start) const = 0;
+
+
+
             };
         }
     }

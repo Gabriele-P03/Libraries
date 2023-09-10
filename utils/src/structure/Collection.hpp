@@ -21,6 +21,8 @@
 #define COLLECTIONI_JPL
 
 #include "Iterable.hpp"
+#include "Ereaseable.hpp"
+#include "Printable.hpp"
 #include "../functional/predicate/Predicate.hpp"
 
 #include <concepts>
@@ -32,9 +34,11 @@ namespace jpl{
         namespace _collections{
             
             template <typename T>
-            class Collection : public Iterable<T>{
+            class Collection : public Iterable<T>, public Ereaseable<T>{
 
                 protected:
+
+
 
                     /**
                      * @brief It stores the max amount of items which can be contained into the collection
@@ -66,9 +70,9 @@ namespace jpl{
                      * by the type of structure
                      * 
                      * @param t 
-                     * 
+                     * @throw NullPointerException if list does not permit null elements and t it is
                      */
-                    virtual void add(T t) = 0;
+                    virtual void add(const T &t) = 0;
 
 
                     /**
@@ -77,13 +81,13 @@ namespace jpl{
                      * @param t 
                      * @return if t is present
                      */
-                    virtual bool contains(T t) noexcept = 0;
+                    virtual bool contains(const T &t) const noexcept = 0;
 
 
                     /**
                      * @brief Remove all elements from the collection
                     */
-                    virtual void clear() = 0;
+                    virtual void clear() noexcept = 0;
 
 
 
@@ -115,8 +119,7 @@ namespace jpl{
                      * 
                      * @return T* (get its size by length())
                      */
-                    virtual const T* toArray() = 0;
-
+                    virtual T* toArray() const noexcept = 0;
             };
         } 
     }

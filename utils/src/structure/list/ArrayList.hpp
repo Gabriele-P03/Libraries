@@ -40,7 +40,7 @@ namespace jpl{
                 class ArrayList : public List<T>{
 
                     protected:
-                        std::unique_ptr<T>* list;
+                        T* list;
 
                         /**
                          * @brief Right Shift a part of the array list which begins from start 'till last element.
@@ -63,7 +63,7 @@ namespace jpl{
                             }
 
                             for(unsigned int i = this->size; i > start; i--){
-                                this->t[i+offset-1] = this->t[i-1];
+                                this->list[i+offset-1] = this->list[i-1];
                             }
                         }
                         /**
@@ -82,7 +82,7 @@ namespace jpl{
                             }
 
                             for(unsigned int i = start; i < this->size-1; i++){
-                                this->t[i] = this->t[i+1];
+                                this->list[i] = this->list[i+1];
                             }
                         }
 
@@ -90,13 +90,19 @@ namespace jpl{
 
                         ArrayList(unsigned long size) : List<T>(size){
                             if(size > 0)   
-                                this->t = new T[size];
+                                this->list = new T[size];
                             else
-                                this->t = NULL; //Since realloc, if ptr is NULL, behavies as malloc
+                                this->list = nullptr; //Since realloc, if ptr is nullptr, behavies as malloc
                         } 
-                        ArrayList() : ArrayList<T>((unsigned long) 0){} 
+                        ArrayList() : ArrayList<T>(0UL){} 
                         ArrayList( const ArrayList<T>* arrayList ){
-                            this->addAll(arrayList);
+                            //this->addAll(arrayList);
+                        }
+
+                        ArrayList(std::initializer_list<T> ls) : ArrayList<T>(ls.size()){
+                            for(unsigned long i = 0; i < this->max; i++){
+                                this->list[i] = ls.begin()[i];
+                            }
                         }
 
 
@@ -107,260 +113,75 @@ namespace jpl{
                         */
                         virtual void reallocate(unsigned long size){
                             this->max = size;
-                            this->t = (T*)realloc(this->t, this->max*sizeof(*this->t));
+                            this->list = (T*)realloc(this->list, this->max*sizeof(*this->list));
                         }
-                        /**
-                         * @return the element at the given index
-                         * 
-                         * @throw IndexOutOfBounds if index is greater or equal than size
-                        */
-                        virtual T* get(unsigned long index) const override{
-                            if(index >= this->size)
+
+
+                        virtual T &get(unsigned long index){
+                            if(index >= this->size){
                                 throw new jpl::_exception::IndexOutOfBoundsException(this->size, index);
-                            return &this->t[index];
+                            }
+                            return this->list[index];
                         }
 
 
-                        /**
-                         * Insert the given t at the end of the list
-                         * 
-                         * @param t new element
-                        */
-                        virtual void add(T t) noexcept {
+                        virtual void add(unsigned long index, const T &t) override{
+                            if(index >= this->max){
+                                this->reallocate(index+1);
+                            }
+                            this->list[index] = t;
+                            if(index <= this->size){
+                                this->size++;
+                            }else{
+                                this->size = index+1;
+                            }
+                        }
+
+                        virtual void add(const T &t) noexcept override{
                             this->add(this->size, t);
                         }
-                        /**
-                         * Insert the given t at index
-                         * 
-                         * @param index index
-                         * @param t new element
-                         * 
-                         * @throw IndexOutOfBoundsException if index is greater than max
-                        */
-                        virtual void add(unsigned long index, T t) override{
-                            
-                            if(index > this->max)
-                                throw new jpl::_exception::IndexOutOfBoundsException(this->max, index);                   
 
-                            this->rightShiftItems(index, 1);
-                            this->t[index] = t;
-                            this->size++;
+
+                        virtual void addAll(unsigned long index, List<T>* &list) noexcept override{
+                            if(index+list->getSize() >= this->max){
+                                this->reallocate(index+list->getSize()+1-this->max);
+                            }
+
+                            for(unsigned int i = 0; i < list->getSize(); i++){
+                                this->list[index+i] = list->get(i);
+                            }
                         }
-                        /**
-                         * @brief Add the whole given list at the end of this one
-                         * 
-                         * @param list
-                        */
-                        virtual void addAll(const List<T>* list) noexcept override{
+
+                        virtual void addAll(List<T>* &list) noexcept override{
                             this->addAll(this->size, list);
                         }
-                        /**
-                         * Insert the given t at index
-                         * 
-                         * @param index index
-                         * @param t collection of new elements
-                         * 
-                         * @throw IndexOutOfBounds if index is greater or equal to list's size
-                        */
-                        virtual void addAll(unsigned long index, const List<T>* list) override{
-                            
-                            if(index > this->max)
-                                throw new jpl::_exception::IndexOutOfBoundsException(this->size, index); 
-
-                            unsigned long listSize = list->getSize();               
-                            this->rightShiftItems(index, listSize);
-                            
-                            T* startThis = &this->t[index];
-                            const T* lastList = list->get(0);
-                            memcpy(startThis, lastList, sizeof(T)*listSize);
-
-                            this->size += listSize;
-                        }
 
 
-                        /**
-                         * @brief Check into the whole collection if t is present
-                         * 
-                         * @param t 
-                         * @return if t is present
-                         */
-                        virtual bool contains(T t) noexcept override{
-                            for (unsigned long i = 0; i < this->size; i++)
-                                if(t == this->t[i]) //Address check
-                                    return true;
-                            return false;
-                        }   
+                        virtual bool contains(const T &t) const noexcept override{return false;} 
 
-                        /**
-                         * @brief remove the element at index position from this collection
-                         * If the element is a allocated in heap, it is also destroyed
-                         * @param index
-                         * @throw IndexOutOfBounds if index is greater or equals than size
-                         */
-                        virtual void removeAt(unsigned long index) override{
-                            
-                            if(index >= this->size)
-                                throw new jpl::_exception::IndexOutOfBoundsException(this->max-1, index);
+                        virtual void removeAt(unsigned long index) override{}
+                        virtual void remove(T t) override{}  
+                        virtual void removeAll(const List<T>* list) override{}
+                        virtual void removeAllIf(_functional::Predicate<T>* predicate) noexcept override{}
 
-                            if( std::is_pointer<T>::value ){
-                                T tmp = this->t[index];
-                                //delete tmp;
+                        virtual T* set(unsigned long index, const T &t) override {return nullptr;} 
+
+                        virtual List<T>* subList(unsigned long start, unsigned long end) const override{return nullptr;}
+                        virtual List<T>* subList(unsigned long start) const override{return nullptr;}
+
+                        virtual unsigned long firstOccurrence(T* t) const noexcept override{return 0;}
+                        virtual unsigned long lastOccurrence(T* t) const noexcept override{ return 0;}
+
+                        virtual void clear() noexcept override{}
+                        virtual T* toArray() const noexcept override {return nullptr;}
+
+                        virtual void forEach(_functional::Consumer<T*>* consumer) {}
+
+                        friend std::ostream& operator<<(std::ostream& os, const ArrayList<T> &list){
+                            for(unsigned long i = 0; i < list.size; i++){
+                                Printable<T>::print(os, list.list[i]);
                             }
-
-                            if(index != 0 && index != this->size-1)
-                                this->leftShiftItems(index, 1);
-                            this->size--;
-                            this->reallocate(this->size);
-                        }
-
-                        /**
-                         * @brief remove t from this collection
-                         * If t is allocated in heap, it is also destroyed
-                         * 
-                         * @param t item to remove
-                         * @throw NotFoundException if t has not been found into this collection
-                         */
-                        virtual void remove(T t) override{
-                            for (unsigned long i = 0; i < this->size; i++){
-                                if(t == this->t[i]){
-                                    this->removeAt(i);
-                                    return;
-                                }    
-                            }
-                            throw new jpl::_exception::NotFoundException();
-                        }
-                        /**
-                         * @brief remove all collection's items from this collection
-                         * 
-                         * @param list collection of items to remove
-                         * @throw NotFoundException if at least one item into list has not been found
-                         */
-                        virtual void removeAll(List<T>* list) override{
-                            for (unsigned long i = 0; i < this->size; i++){
-                                if(t == &this->t[i]){
-                                    delete this->t;
-                                    if(i == 0 && this->size > 1)
-                                        this->leftShiftItems(i+1, 1);
-                                    this->size--;
-                                    this->reallocate(this->max-1);
-                                }    
-                            }
-                            throw new jpl::_exception::NotFoundException();
-                        }
-                        /**
-                         * @brief Remove all elements which respect the given predicate
-                        */
-                        virtual void removeAllIf(_functional::Predicate<T>* predicate) noexcept override{
-                            unsigned long count = 0;
-                            for (unsigned long i = 0; i < this->size; i++){
-                                if(predicate->test(this->t[i])){
-                                    delete this->t;
-                                    this->t = nullptr;
-                                }    
-                            }
-                            //Re-ordering: substitution all nullptr
-                            for(unsigned long i = 0; i < this->size-1; i++){
-                                if(&this->t[i] == nullptr){
-                                    this->t[i] = this->t[i+1];
-                                }
-                            }
-                            this->size -= count;
-                            this->reallocate(this->max-count);
-                        }
-
-                        /**
-                         * @return the index of the first occurrence of t. 
-                         * If t is not found into the list, it returns max
-                        */
-                        virtual unsigned long firstOccurrence(T* t) override{
-                            for(unsigned long i = 0; i < this->size; i++){
-                                if(this->t == t)
-                                    return i;
-                            }
-                            return this->max;
-                        }
-                        /**
-                         * @return the index of the last occurrence of t.
-                         * If t is not found into the list, it returns max
-                        */
-                        virtual unsigned long lastOccurrence(T* t) override{
-                            for(unsigned long i = this->size-1; i >= 0; i--){
-                                if(this->t == t)
-                                    return i;
-                            }
-                            return this->max;
-                        }
-
-                        /**
-                         * Set t at the given index 
-                         * 
-                         * @return the previous element which was at index otherwise nullptr if any element has been found at index 
-                         * Since ArrayList allows null value, nullptr can be returned even through the list
-                         * 
-                         * @throw IndexOutOfBounds if index is graeter than or equals than max
-                        */
-                        virtual T* set(unsigned long index, T t) override{
-                            if(index >= this->max)
-                                throw new jpl::_exception::IndexOutOfBoundsException(this->max-1, index);
-
-                            T* tmp = nullptr;
-                            if(index < this->size)
-                                memcpy(tmp, &this->t[index], sizeof(*this->t));
-                            
-                            this->t[index] = t;
-                            return tmp;
-                        }
-
-                        /**
-                         * @brief Remove all elements from the list
-                        */
-                        virtual void clear() override{
-                            if(this->size > 0){
-                                delete[] this->t;
-                                this->size = 0;
-                            }
-                            this->max = 0;
-                        }
-                        /**
-                         * @return the current array list as a C-style array
-                        */
-                        virtual const T* toArray() override{
-                            T* buffer = nullptr;
-                            if(this->size > 0){
-                                buffer = new T[this->size];
-                                memcpy(buffer, this->t, this->size*sizeof(*this->t));
-                            }
-                            return buffer;
-                        }
-
-                        /**
-                         * @return a sub list of the current one. If start is equals to end, am empty list is returned
-                         * 
-                         * @param start index of the first element to copy
-                         * @param end index of the last element to copy (included) 
-                         * 
-                         * @throw IndexOutOfBounds if start is graeter or equals than end
-                         * @throw IndexOutOfBounds if end is graeter or equals than max
-                        */
-                        virtual ArrayList<T>* subList(unsigned long start, unsigned long end) override{
-                            
-                            if(end >= this->max){
-                                throw new jpl::_exception::IndexOutOfBoundsException(this->max-1, end);
-                            }
-                            if(start > end){
-                                throw new jpl::_exception::IndexOutOfBoundsException(end, start);
-                            }
-
-                            ArrayList<T>* newOne = new ArrayList<T>(end - start);
-                            for(unsigned long i = 0; i < newOne->getSize(); i++){
-                                newOne->set(i, this->t[i+start]);
-                            }
-                            return newOne;
-                        }
-
-                        virtual void forEach(_functional::Consumer<T*>* consumer) override{
-                            for(unsigned long i = 0; i < this->size; i++)
-                                consumer->test(&this->t[i]);                  
+                            return os;
                         }
                 };
             }

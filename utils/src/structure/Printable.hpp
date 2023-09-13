@@ -12,6 +12,7 @@
 #define PRINTABLE_JPL
 
 #include <iostream>
+#include <sstream>
 
 namespace jpl{
 
@@ -24,6 +25,12 @@ namespace jpl{
                 static std::ostream& print(std::ostream& os, const T &value){
                     return os<<value<<" ";
                 }
+                static std::string to_string(const T value){
+                    std::ostringstream ss;
+                    ss << value;
+                    return ss.str();
+                }
+
         };
 
         template <typename P>
@@ -32,6 +39,12 @@ namespace jpl{
             public:
                 static std::ostream& print(std::ostream& os, const P * const value){
                     return os<<*value<<" ";
+                }
+
+                static std::string to_string(const P* const value){
+                    std::ostringstream ss;
+                    ss << *value;
+                    return ss.str();
                 }
         };
     }

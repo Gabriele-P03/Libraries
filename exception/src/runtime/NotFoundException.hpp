@@ -22,7 +22,7 @@ namespace jpl{
             
             public:
 
-                NotFoundException(const char* const msg) : RuntimeException("NotFoundException", msg){}
+                NotFoundException(std::string msg) : RuntimeException("NotFoundException", msg){}
                 NotFoundException() : NotFoundException(""){}
 
         };

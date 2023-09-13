@@ -20,6 +20,8 @@ namespace jpl{
 
             public:
                 static void erease(T &value){}
+                static void v_erease(T* &list, unsigned long size){
+                }
         };
 
         template <typename P>
@@ -28,6 +30,11 @@ namespace jpl{
             public:
                 static void erease(P *value){
                     delete value;
+                }
+                static void v_erease(P** &list, unsigned long size){
+                    for(unsigned long i = 0; i < size; i++){
+                        delete list[i];
+                    }
                 }
         };
     }

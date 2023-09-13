@@ -9,6 +9,7 @@
                 "-std=c++23",
                 "${workspaceFolder}/Main.cpp",
                 "-ldl",
+                "-Wterminate",
                 "-o",
                 "${workspaceFolder}/out/linux/Main"
             ],

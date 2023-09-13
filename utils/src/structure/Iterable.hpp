@@ -1,9 +1,8 @@
 /**
  * @file
  * 
- * This is an interface
- * 
- * Every class which extends this one is marked as it can be involved into a for-each loop
+ * This is a functional interface which marks class which extends this one as
+ * they can be involved in a forEach loop with an instance of JPL's consumer
  * 
  * @date 2023-07-12
  * @copyright Copyright (c) 2023
@@ -24,7 +23,7 @@ namespace jpl{
 
             public:
 
-                virtual void forEach(_functional::Consumer<T*>* consumer) = 0;
+                virtual void forEach(_functional::Consumer<T> consumer) = 0;
         };
     }
 } 

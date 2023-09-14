@@ -1,20 +1,26 @@
 /**
  * @file
  * 
- * An ArrayList is a list which elements are consecutive stored as into a vector, but with the difference that an ArrayList is not synchronized  
+ * An ArrayList is a list which elements are consecutive stored as into a vector
  * 
  * This type of list is resizeable, but, being an array, if the size exceeds, the whole list is reallocated.
- * When a collection is attempted to being inserted, in order to prevent several reallocating, a unique call is done based on size of the 
- * collection which is going to be inserted.
- * If you know that several amount of calls are going to be done to either add() or addAll() - and you know how many 
- * elements are going to be insert - then you should call reallocate() by yourself, preventing the same several amount
+ * When a collection is attempted to being inserted, in order to prevent several reallocating, a unique call is done 
+ * based on size of the collection which is going to be inserted.
+ * If you know that several amount of calls are going to be done to add() - and you know how many 
+ * elements are going to be - then you should call reallocate() by yourself, preventing the same several amount
  * of calls to the function 
  * 
- * If you need a list which will be manipulated frequently, you should opt to use a LinkedList in order to not perform any reallocating.
+ * If you need a list which will be manipulated frequently, you should opt to use a LinkedList in order to not perform 
+ * any reallocating.
  * 
- * Null elements are allowed into this list.
+ * Null elements are allowed into this.
  * 
- * A copy of the element which is going to be insert is NOT performed, therefore, you oughta do it by yourself
+ * Methods as either set() or add() do put stuff you give them into the list; therefore, if you have declared an ArrayList 
+ * of pointers, no new object will be allocated...
+ * 
+ * Just like insertion methods, even occurrence-checking methods work like them; therefore, if you have declared an ArrayList
+ * of pointers, memory address will be compareted
+ * 
  * ArrayList does not implements any borderline about max amount of elements which can be contained into it
  * 
  * @date 2023-07-12
@@ -97,7 +103,7 @@ namespace jpl{
                         ArrayList( const ArrayList<T>* arrayList ){
                             this->addAll(arrayList);
                         }
-                        ArrayList(const T* array, unsigned long size){
+                        ArrayList(const T* const array, unsigned long size){
                             if(array == nullptr){
                                 throw new _exception::IllegalArgumentException("You cannot pass a null pointer");
                             }else{
@@ -105,6 +111,7 @@ namespace jpl{
                                     throw new _exception::IllegalArgumentException("You have passed a size parameter as 0");
                                 }
                             }
+                            this->nullableElements = true;
                             this->size = size;
                             this->max = size;
                             this->list = new T[this->size];
@@ -128,7 +135,7 @@ namespace jpl{
                         }
 
 
-                        virtual T &get(unsigned long index){
+                        virtual T &get(unsigned long index) const override{
                             if(index >= this->size){
                                 throw new jpl::_exception::IndexOutOfBoundsException(this->size, index);
                             }

@@ -1,12 +1,16 @@
 /**
  * @file 
  * 
+ * An knowledgment of DSA theory is required, since these documentation are not intendeed to teach it...
  * 
- * Since JPL provides Exception module and this one Function Interfaces, and, as an elephant in the room, 
- * they cannot be used with std data-structure already provided, this sub-module offers several data-structure 
+ * Since JPL provides Exception module, and this one Function Interfaces, and, as an elephant in the room, 
+ * they cannot be used with std data-structures already provided, this sub-module offers several data-structure 
  * compatible with them
  * 
- *  
+ * They follow the DSA hierarchy, but there are some them which could not be assimilated right as it (e.g. ArrayList)
+ * 
+ * This is the more abstract class which is extended by all JPL's data-structures. Some of its children could permit null-elements
+ * insertion, or even duplicate one. Read their documentation to get more info.
  * 
  * @date 2023-05-28
  * @copyright Copyright (c) 2023
@@ -54,9 +58,15 @@ namespace jpl{
                     */
                     bool nullableElements;
 
-                    Collection(unsigned long max, unsigned long size, bool nullableElements){
+                    /**
+                     * @brief if duplicate elements are allowed
+                    */
+                   bool duplicateElements;
+
+                    Collection(unsigned long max, unsigned long size, bool nullableElements, bool duplicateElements){
                         this->max = max;
                         this->size = size;
+                        this->duplicateElements = duplicateElements;
                         this->nullableElements = nullableElements;
                     }
 
@@ -102,6 +112,10 @@ namespace jpl{
                      * @return if the collection allows null elements
                     */
                     virtual bool allowNull() noexcept {return this->nullableElements;}
+                    /**
+                     * @return if the collection allows duplicate elements
+                    */
+                    virtual bool allowDuplicate() noexcept {return this->duplicateElements;}
 
                     /**
                      * @brief In order to offers you the most available compatibility to any others

@@ -1,9 +1,13 @@
 /**
  * @file
  * 
+ * A list is an ordered set of elements (either primitive types or object, either value or pointer) which are stored
+ * as DSA theory - depending on its feature
  * 
- * A list is like a Set, but it does allow null and dulicate elements both.
- * A list is an indexed super-type collection, it means that you can insert elements via an index 
+ * In this header file there are only pure virtual methods which are used by all JPL's List data-structure.
+ * 
+ * All list implementation - unlike Set - allow you to insert duplicate elements
+ * Some list implementation do not let you insert nullptr o NULL, throwing a JPL's NullPointerException
  * 
  * @date 2023-07-12
  * @copyright Copyright (c) 2023
@@ -35,8 +39,8 @@ namespace jpl{
                      * @param size size of the list
                      * @param nullableElements if this list allow null elements
                     */
-                    List(unsigned long size, bool nullableElements) : Collection<T>(size, size, nullableElements){}
-                    List(unsigned long size) : List<T> (size, true){}
+                    List(unsigned long size, bool nullableElements, bool duplicateElements) : Collection<T>(size, size, nullableElements, duplicateElements){}
+                    List(unsigned long size) : List<T> (size, true, true){}
                     List() : List<T> (0, true){}
                     
                 public:
@@ -75,7 +79,7 @@ namespace jpl{
                      * 
                      * @throw IndexOutOfBounds if index is graeter than size
                     */
-                    virtual T &get(unsigned long index) = 0;
+                    virtual T &get(unsigned long index) const = 0;
 
 
                     /**

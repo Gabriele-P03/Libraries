@@ -46,12 +46,12 @@ namespace jpl{
                      * 
                      * A collection is by itselves increaseable, a data-structure could set it as final in its own scope.
                     */
-                    unsigned long max;
+                    unsigned long max = 0;
                     
                     /**
                      * @brief It stores the current amount of items into the structure
                      */
-                    unsigned long size;
+                    unsigned long size = 0;
 
                     /**
                      * @brief if null elements are allowd to be inserted into the collection
@@ -63,11 +63,15 @@ namespace jpl{
                     */
                    bool duplicateElements;
 
-                    Collection(unsigned long max, unsigned long size, bool nullableElements, bool duplicateElements){
-                        this->max = max;
-                        this->size = size;
+                   /**
+                    * @brief if the collection is resizeable
+                   */
+                   bool resizeable;
+
+                    Collection(bool nullableElements, bool duplicateElements, bool resizeable){
                         this->duplicateElements = duplicateElements;
                         this->nullableElements = nullableElements;
+                        this->resizeable = resizeable;
                     }
 
                 public:
@@ -116,6 +120,10 @@ namespace jpl{
                      * @return if the collection allows duplicate elements
                     */
                     virtual bool allowDuplicate() noexcept {return this->duplicateElements;}
+                    /**
+                     * @return if the collection is resizeable
+                    */
+                   virtual bool allowResize() noexcept {return this->resizeable;}
 
                     /**
                      * @brief In order to offers you the most available compatibility to any others

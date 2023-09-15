@@ -36,12 +36,12 @@ namespace jpl{
                     /**
                      * Create a new empty list
                      * 
-                     * @param size size of the list
                      * @param nullableElements if this list allow null elements
+                     * @param duplicateElements if this list allow duplicate elements
+                     * @param resizeable if this list can be resized
                     */
-                    List(unsigned long size, bool nullableElements, bool duplicateElements) : Collection<T>(size, size, nullableElements, duplicateElements){}
-                    List(unsigned long size) : List<T> (size, true, true){}
-                    List() : List<T> (0UL){}
+                    List(bool nullableElements, bool duplicateElements, bool resizeable) : Collection<T>(nullableElements, duplicateElements, resizeable){}
+                    List() : List<T> (true, true, true){}
                     /**
                      * Create a new List from the given collection
                      * 
@@ -52,8 +52,6 @@ namespace jpl{
                         if(collection == nullptr){
                             throw new _exception::NullPointerException("You cannot pass a nullptr as Collection");
                         }
-                        this->nullableElements = true;
-                        this->duplicateElements = true;
                     }
                     
                 public:

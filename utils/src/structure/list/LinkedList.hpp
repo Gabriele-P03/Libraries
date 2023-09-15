@@ -23,12 +23,12 @@
 
 namespace jpl{
     namespace _utils{
-        namespace _collection{
+        namespace _collections{
 
             template<typename T>
             class LinkedList : public List<T>{
 
-                private:
+                protected:
 
                     typedef struct{
 
@@ -40,38 +40,46 @@ namespace jpl{
 
                     Node *head, *tail;
 
+                    Node* forwardProbe(unsigned long steps){
+                        if( steps >= this->size )
+                            throw new _exception::IndexOutOfBoundsException(this->size, steps);
+                        Node* node = head;
+                        for(unsigned long i = 0; i < steps; i++){
+                            node = node->next;
+                        }
+                        return node;
+                    }
+                    Node* reverseProbe(unsigned long steps){
+                        if( steps >= this->size )
+                            throw new _exception::IndexOutOfBoundsException(this->size, steps);
+                        Node* node = tail;
+                        for(unsigned long i = steps; i > 0; i--){
+                            node = node->previous;
+                        }
+                        return node;
+                    }
+
                 public:
 
                     LinkedList() : List<T>(0UL){}
-
-                    LinkedList(const LinkedList* const list) : List<T>(list->getSize()){
-
+                    LinkedList(Collection<T>* list) : List<T>(list->getSize()){
+                        this->addAll(list);
                     }
-
-                    LinkedList(const T* array, unsigned long size){
-                        if(array == nullptr){
-                            throw new _exception::NullPointerException("You cannot pass a null pointer");
-                        }else{
-                            if(size == 0){
-                                throw new _exception::IllegalArgumentException("A pointer is not nullptr but size is 0");
-                            }
-                        }
-                        this->duplicateElements = true;
-                        this->nullableElements = true;
-                        this->size = size;
-                        this->max = size;
-                    } 
 
                     virtual T &get(unsigned long index) const override{
                         if(index >= this->size){
                             throw new _exception::IndexOutOfBoundsException(this->size, index);
                         }
-                        if(index == 0)
-                            return *this->head;
-                        else if(index == this->size-1)
-                            return *this->tail;
-                        else
-                            //O(n)
+                        if(index == 0){
+                            return this->head->element;
+                        }else if(index == this->size-1){
+                            return this->tail->element;
+                        }else{
+                            if( index < (this->size/2) ){
+                                return this->forwardProbe(index)->element;
+                            }                                
+                            return this->reverseProbe(index)->element;
+                        }
                     }
             };
         }

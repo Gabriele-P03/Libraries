@@ -93,13 +93,7 @@ namespace jpl{
 
                     public:
 
-                        ArrayList(unsigned long size) : List<T>(size){
-                            if(size > 0)   
-                                this->list = new T[size];
-                            else
-                                this->list = nullptr; //Since realloc, if ptr is nullptr, behavies as malloc
-                        } 
-                        ArrayList() : ArrayList<T>(0UL){} 
+                        ArrayList() : List<T>(){} 
                         ArrayList(const T* const array, unsigned long size){
                             if(array == nullptr){
                                 throw new _exception::IllegalArgumentException("You cannot pass a null pointer");
@@ -108,16 +102,17 @@ namespace jpl{
                                     throw new _exception::IllegalArgumentException("You have passed a size parameter as 0");
                                 }
                             }
-                            this->nullableElements = true;
                             this->size = size;
                             this->max = size;
                             this->list = new T[this->size];
                             memcpy(this->list, array, sizeof(T)*this->size);
                         }
-                        ArrayList(std::initializer_list<T> ls) : ArrayList<T>(ls.size()){
+                        ArrayList(std::initializer_list<T> ls) : ArrayList<T>(){
+                            this->reallocate(ls.size());
                             for(unsigned long i = 0; i < this->max; i++){
                                 this->list[i] = ls.begin()[i];
                             }
+                            this->size = ls.size();
                         }
                         ArrayList(Collection<T>* collection) : List<T>(collection){
                             this->addAll(collection);
@@ -268,7 +263,8 @@ namespace jpl{
                                 throw new _exception::IndexOutOfBoundsException(this->size, end, "End is larger/equals than list's size");               
                             if(start > end)
                                 throw new _exception::IndexOutOfBoundsException(end, start, "Start is larger than End"); 
-                            ArrayList<T>* buffer = new ArrayList<T>(end-start);
+                            ArrayList<T>* buffer = new ArrayList<T>();
+                            buffer->reallocate(end-start);
                             for(unsigned long i = start; i < end; i++){
                                 T &cr = this->list[i];
                                 buffer->add(cr);

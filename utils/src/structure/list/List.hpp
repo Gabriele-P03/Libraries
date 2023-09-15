@@ -41,7 +41,20 @@ namespace jpl{
                     */
                     List(unsigned long size, bool nullableElements, bool duplicateElements) : Collection<T>(size, size, nullableElements, duplicateElements){}
                     List(unsigned long size) : List<T> (size, true, true){}
-                    List() : List<T> (0, true){}
+                    List() : List<T> (0UL){}
+                    /**
+                     * Create a new List from the given collection
+                     * 
+                     * @param collection 
+                     * @throw NullPointer if collection is nullptr
+                    */
+                    List(Collection<T>* collection) : List<T>(){
+                        if(collection == nullptr){
+                            throw new _exception::NullPointerException("You cannot pass a nullptr as Collection");
+                        }
+                        this->nullableElements = true;
+                        this->duplicateElements = true;
+                    }
                     
                 public:
 
@@ -63,7 +76,7 @@ namespace jpl{
                      * 
                      * @throw NullPointerException if list does not permit null elements
                     */
-                    virtual void addAll(unsigned long index, List<T>* list) = 0;
+                    virtual void addAll(unsigned long index, Collection<T>* collection) = 0;
                     /**
                     * @brief Insert into the structure all items contained into list at the end
                     * if the array list
@@ -72,7 +85,7 @@ namespace jpl{
                     *
                     * @throw NullPointerException if list does not permit null elements
                     */
-                    virtual void addAll(List<T>* list) = 0;          
+                    virtual void addAll(Collection<T>* collection) = 0;          
 
                     /**
                      * @return the element at the given index
@@ -113,7 +126,7 @@ namespace jpl{
                      * @param list list of items to remove
                      * @throw NotFoundException if at least one item into list has not been found
                      */
-                    virtual void removeAll(List<T>* list) = 0;
+                    virtual void removeAll(Collection<T>* collection) = 0;
                     /**
                      * @brief Remove all elements which respect the given predicate
                      * @param predicate

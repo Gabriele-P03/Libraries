@@ -100,9 +100,6 @@ namespace jpl{
                                 this->list = nullptr; //Since realloc, if ptr is nullptr, behavies as malloc
                         } 
                         ArrayList() : ArrayList<T>(0UL){} 
-                        ArrayList( const ArrayList<T>* arrayList ){
-                            this->addAll(arrayList);
-                        }
                         ArrayList(const T* const array, unsigned long size){
                             if(array == nullptr){
                                 throw new _exception::IllegalArgumentException("You cannot pass a null pointer");
@@ -122,7 +119,9 @@ namespace jpl{
                                 this->list[i] = ls.begin()[i];
                             }
                         }
-
+                        ArrayList(Collection<T>* collection) : List<T>(collection){
+                            this->addAll(collection);
+                        }
 
                         /**
                          * @brief It performs the reallocating of memory of the current array list
@@ -131,7 +130,11 @@ namespace jpl{
                         */
                         virtual void reallocate(unsigned long size){
                             this->max = size;
-                            this->list = (T*)realloc(this->list, this->max*sizeof(*this->list));
+                            if(this->size == 0){
+                                this->list = new T[size];
+                            }else{
+                                this->list = (T*)realloc(this->list, this->max*sizeof(T));
+                            }
                         }
 
 
@@ -160,19 +163,21 @@ namespace jpl{
                         }
 
 
-                        virtual void addAll(unsigned long index, List<T>* list) noexcept override{
-                            if(index+list->getSize() >= this->max){
-                                this->reallocate(index+list->getSize()-this->max);
+                        virtual void addAll(unsigned long index, Collection<T>* collection) noexcept override{
+                            if(index+collection->getSize() > this->max){
+                                this->reallocate(index+collection->getSize()-this->max);
                             }
 
-                            for(unsigned int i = 0; i < list->getSize(); i++){
-                                this->list[index+i] = list->get(i);
-                            }
-                            this->size += index + list->getSize() - this->size;
+                            unsigned int i = 0;
+                            collection->forEach( [&](T t){
+                                this->list[i++] = t;
+                            });
+
+                            this->size += index + collection->getSize() - this->size;
                         }
 
-                        virtual void addAll(List<T>* list) noexcept override{
-                            this->addAll(this->size, list);
+                        virtual void addAll(Collection<T>* collection) noexcept override{
+                            this->addAll(this->size, collection);
                         }
 
 
@@ -206,10 +211,9 @@ namespace jpl{
                             }
                             throw new jpl::_exception::NotFoundException( jpl::_utils::Printable<T>::to_string(t) + " has not been found into the list");
                         }  
-                        //NELLA DOC: SE T = POINTER => I SUOI ELEMENTI VERRANNO ELIMINATI MA NON SHIFTATI
-                        virtual void removeAll(List<T>* list) override{
-                            for(unsigned long i = 0; i < list->getSize(); i++){
-                                T ls = list->get(i);
+   
+                        virtual void removeAll(Collection<T>* collection) override{
+                            collection->forEach( [&](T ls){
                                 bool flag = false;
                                 for(unsigned long j = 0; j < this->size; j++){
                                     T cr = this->list[j];
@@ -223,7 +227,7 @@ namespace jpl{
                                 }
                                 if(!flag)
                                     throw new jpl::_exception::NotFoundException( jpl::_utils::Printable<T>::to_string(ls) + " has not been found into list");
-                            }
+                            });
                             this->reallocate(this->size);
                         }
                         virtual void removeAllIf(_functional::Predicate<T> predicate) noexcept override{

@@ -30,17 +30,27 @@ namespace jpl{
 
                 protected:
 
-                    typedef struct{
+                    struct Node{
 
                         T element;
-                        T* previous;
-                        T* next;
+                        Node* previous;
+                        Node* next;
 
-                    }Node;
+                        Node(const T &element, Node* next, Node* previous){
+                            this->element = element;
+                            this->next = next;
+                            this->previous = previous;
+                        }
+                        Node(const T &element) : Node(element, nullptr, nullptr){}
+
+                        ~Node(){
+                            Ereaseable<T>::erease(this->element);
+                        }
+                    };
 
                     Node *head, *tail;
 
-                    Node* forwardProbe(unsigned long steps){
+                    Node* forwardProbe(unsigned long steps) const {
                         if( steps >= this->size )
                             throw new _exception::IndexOutOfBoundsException(this->size, steps);
                         Node* node = head;
@@ -49,7 +59,7 @@ namespace jpl{
                         }
                         return node;
                     }
-                    Node* reverseProbe(unsigned long steps){
+                    Node* reverseProbe(unsigned long steps) const{
                         if( steps >= this->size )
                             throw new _exception::IndexOutOfBoundsException(this->size, steps);
                         Node* node = tail;
@@ -61,8 +71,13 @@ namespace jpl{
 
                 public:
 
-                    LinkedList() : List<T>(0UL){}
+                    LinkedList() : List<T>(){
+                        this->head = nullptr;
+                        this->tail = nullptr;
+                    }
                     LinkedList(Collection<T>* list) : List<T>(list->getSize()){
+                        this->head = nullptr;
+                        this->tail = nullptr;
                         this->addAll(list);
                     }
 
@@ -81,6 +96,64 @@ namespace jpl{
                             return this->reverseProbe(index)->element;
                         }
                     }
+
+                    virtual void add(unsigned long index, const T &t) override{
+                        if(index > this->size){
+                            throw new _exception::IndexOutOfBoundsException(this->size, index);
+                        }
+                        Node* newNode = new Node(t);
+                        if(index == 0){ //head
+                            if(this->size != 0){//LL not empty
+                                this->head->previous = newNode;
+                                newNode->next = this->head;
+                            }else{//If LL is empty, head is equal to tail
+                                this->tail = newNode;
+                            }
+                            this->head = newNode;
+                        }else if(index == this->size){//Tail
+                            this->tail->next = newNode;
+                            newNode = this->tail;
+                            this->tail = newNode;
+                        }else{
+                            if(index <= this->size/2){
+                                Node* tmp = this->forwardProbe(index-1);
+                                newNode->previous = tmp->previous;
+                                newNode->next = tmp;
+                                tmp->previous->next = newNode;
+                                tmp->previous = newNode;
+                                tmp = newNode;
+                            }else{
+                                Node* tmp = this->reverseProbe(this->size-index);
+                                newNode->next = tmp;
+                                newNode->previous = tmp->previous; 
+                                tmp->previous->next = newNode;
+                                tmp->next = newNode;
+                            }
+
+                        }
+                        this->size++;
+                    }
+
+                    virtual void add(const T &t) noexcept override{
+                        this->add(this->size, t);
+                    }
+
+
+                    virtual bool contains(const T t) const noexcept override{return false;}
+                    virtual void clear() noexcept override{}
+                    virtual void addAll(unsigned long index, Collection<T>* collection) override{}
+                    virtual void addAll(Collection<T>* collection) override{} 
+                    virtual unsigned long firstOccurrence(T t) const noexcept override {return 0;}
+                    virtual unsigned long lastOccurrence(T t) const noexcept override {return 0;}
+                    virtual void removeAt(unsigned long index) override{}
+                    virtual void remove(T t) override{}                    
+                    virtual void removeAll(Collection<T>* collection) override{}
+                    virtual void removeAllIf(_functional::Predicate<T> predicate) noexcept override{}
+                    virtual T set(unsigned long index, const T &t) override {return NULL;}
+                    virtual List<T>* subList(unsigned long start, unsigned long end) const override {return NULL;}
+                    virtual List<T>* subList(unsigned long start) const override {return NULL;}
+                    virtual void forEach(_functional::Consumer<T> consumer) override {}
+                    virtual T* toArray() const noexcept override{return NULL;}
             };
         }
     }

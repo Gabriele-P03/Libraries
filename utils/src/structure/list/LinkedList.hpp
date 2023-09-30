@@ -5,7 +5,7 @@
  * in memory due to available space during insertion time
  * 
  * A node is a struct which contains the element T, a pointer to the previous node and a pointer 
- * to the next one; thus, this is actually a Double Linked List as described by DSA.
+ * to the next one; thus, this is actually a Double and Circular Linked List as described by DSA.
  * The first node is called also Head and the last one Tail.
  * Being a DLL, insertion is O(1) only when it is done either at head or tail of it, otherwise is O(n).
  * Searching is always O(n).
@@ -42,7 +42,7 @@ namespace jpl{
                             this->previous = previous;
                         }
                         Node(const T &element) : Node(element, nullptr, nullptr){}
-
+                        Node(){}
                         ~Node(){
                             Ereaseable<T>::erease(this->element);
                         }
@@ -69,16 +69,23 @@ namespace jpl{
                         return node;
                     }
 
+                    Node* smartProbe(unsigned long index) const{
+                        if( index <= (this->size/2) ){
+                            return this->forwardProbe(index);
+                        }                                
+                        return this->reverseProbe(this->size-index-1);
+                    }
+
                 public:
 
                     LinkedList() : List<T>(){
                         this->head = nullptr;
                         this->tail = nullptr;
                     }
-                    LinkedList(Collection<T>* list) : List<T>(list->getSize()){
+                    LinkedList(Collection<T>* collection) : List<T>(collection->getSize()){
                         this->head = nullptr;
                         this->tail = nullptr;
-                        this->addAll(list);
+                        this->addAll(collection);
                     }
 
                     virtual T &get(unsigned long index) const override{
@@ -90,10 +97,7 @@ namespace jpl{
                         }else if(index == this->size-1){
                             return this->tail->element;
                         }else{
-                            if( index < (this->size/2) ){
-                                return this->forwardProbe(index)->element;
-                            }                                
-                            return this->reverseProbe(index)->element;
+                            return this->smartProbe(index)->element;
                         }
                     }
 
@@ -115,21 +119,12 @@ namespace jpl{
                             newNode = this->tail;
                             this->tail = newNode;
                         }else{
-                            if(index <= this->size/2){
-                                Node* tmp = this->forwardProbe(index-1);
-                                newNode->previous = tmp->previous;
-                                newNode->next = tmp;
-                                tmp->previous->next = newNode;
-                                tmp->previous = newNode;
-                                tmp = newNode;
-                            }else{
-                                Node* tmp = this->reverseProbe(this->size-index);
-                                newNode->next = tmp;
-                                newNode->previous = tmp->previous; 
-                                tmp->previous->next = newNode;
-                                tmp->next = newNode;
-                            }
-
+                            Node* tmp = this->smartProbe(index);
+                            newNode->previous = tmp;
+                            newNode->next = tmp->next;
+                            tmp->next = newNode;
+                            tmp->next->previous = newNode;
+                            tmp = newNode;
                         }
                         this->size++;
                     }
@@ -139,9 +134,47 @@ namespace jpl{
                     }
 
 
-                    virtual bool contains(const T t) const noexcept override{return false;}
-                    virtual void clear() noexcept override{}
-                    virtual void addAll(unsigned long index, Collection<T>* collection) override{}
+                    virtual bool contains(const T t) const noexcept override{
+                        Node* cr = this->head;
+                        for(unsigned long i = 0; i < this->size; i++){
+                            if(cr->element == t){
+                                return true;
+                            }
+                            cr = cr->next;
+                        }
+                        return false;
+                    }
+                    virtual void clear() noexcept override{
+                        Node* cr = this->head;
+                        for(unsigned long i = 0; i < this->size; i++){
+                            delete cr;
+                            cr = cr->next;
+                        }   
+                        this->size = 0;
+                    }
+                    virtual void addAll(unsigned long index, Collection<T>* collection) override{
+                        if(collection == nullptr){
+                            throw new _exception::NullPointerException("Collection passed to addAll cannot be nullptr");
+                        }
+                        unsigned long size = collection->getSize();
+                        Node* buffer = new Node[size]();
+                        unsigned long i = 0;
+                        collection->forEach( [&](T t){
+                            if(i < size-1){
+                                buffer[i].next = &buffer[i+1];
+                            }
+                            if(i > 0){
+                                buffer[i].previous = &buffer[i-1];
+                            }
+                            buffer[i++].element = t;
+                        });
+                        if(this->size == 0){
+                            this->head = buffer;
+                            this->tail = &buffer[size-1];   //It is safe even when collection has one item
+                        }else{
+
+                        }
+                    }
                     virtual void addAll(Collection<T>* collection) override{} 
                     virtual unsigned long firstOccurrence(T t) const noexcept override {return 0;}
                     virtual unsigned long lastOccurrence(T t) const noexcept override {return 0;}
@@ -154,6 +187,13 @@ namespace jpl{
                     virtual List<T>* subList(unsigned long start) const override {return NULL;}
                     virtual void forEach(_functional::Consumer<T> consumer) override {}
                     virtual T* toArray() const noexcept override{return NULL;}
+
+                    friend std::ostream& operator<<(std::ostream& os, const LinkedList<T> &list){
+                        for(unsigned long i = 0; i < list.size; i++){
+                            Printable<T>::print(os, list.get(i));
+                        }
+                        return os;
+                    }                    
             };
         }
     }

@@ -73,6 +73,7 @@ namespace jpl{
                      * @param list
                      * 
                      * @throw NullPointerException if list does not permit null elements
+                     * @throw NullPointerException if collection is nullptr
                     */
                     virtual void addAll(unsigned long index, Collection<T>* collection) = 0;
                     /**
@@ -82,6 +83,7 @@ namespace jpl{
                     * @param list 
                     *
                     * @throw NullPointerException if list does not permit null elements
+                    * @throw NullPointerException if collection is nullptr
                     */
                     virtual void addAll(Collection<T>* collection) = 0;          
 

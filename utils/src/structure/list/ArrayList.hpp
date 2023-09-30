@@ -159,6 +159,10 @@ namespace jpl{
 
 
                         virtual void addAll(unsigned long index, Collection<T>* collection) noexcept override{
+                            if(collection == nullptr){
+                                throw new _exception::NullPointerException("Collection passed to addAll cannot be nullptr");
+                            }
+                            
                             if(index+collection->getSize() > this->max){
                                 this->reallocate(index+collection->getSize()-this->max);
                             }

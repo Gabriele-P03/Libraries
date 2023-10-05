@@ -38,7 +38,11 @@ namespace jpl{
 
             public:
                 static std::ostream& print(std::ostream& os, const P * const value){
-                    return os<<*value<<" ";
+                    if(value == nullptr)
+                        os<<"nullptr ";
+                    else
+                        os<<*value<<" ";
+                    return os;
                 }
 
                 static std::string to_string(const P* const value){

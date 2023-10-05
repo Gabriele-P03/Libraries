@@ -9,6 +9,17 @@
  * All list implementation - unlike Set - allow you to insert duplicate elements
  * Some list implementation do not let you insert nullptr o NULL, throwing a JPL's NullPointerException
  * 
+ * 
+ * Methods as either set() or add() do put stuff you give them into the list; therefore, if you have 
+ * declared an ArrayList of pointers, no new object will be allocated...
+ * 
+ * Just like insertion methods, even occurrence-checking methods work like them; therefore, if you have 
+ * declared an ArrayList of pointers, memory address will be compareted
+ * 
+ * About removeAll ones, even them will cause a deletion of pointer into both list; therefore, once you 
+ * had called one of them, you should also call compress() function on the one passed as argument 
+ * in order to remove nullptr and resize it.
+ * 
  * @date 2023-07-12
  * @copyright Copyright (c) 2023
  * @author Gabriele-P03
@@ -48,9 +59,9 @@ namespace jpl{
                      * @param collection 
                      * @throw NullPointer if collection is nullptr
                     */
-                    List(Collection<T>* collection) : List<T>(){
-                        if(collection == nullptr){
-                            throw new _exception::NullPointerException("You cannot pass a nullptr as Collection");
+                    List(List<T>* list) : List<T>(){
+                        if(list == nullptr){
+                            throw new _exception::NullPointerException("You cannot pass a nullptr as list");
                         }
                     }
                     
@@ -75,7 +86,7 @@ namespace jpl{
                      * @throw NullPointerException if list does not permit null elements
                      * @throw NullPointerException if collection is nullptr
                     */
-                    virtual void addAll(unsigned long index, Collection<T>* collection) = 0;
+                    virtual void addAll(unsigned long index, List<T>* list) = 0;
                     /**
                     * @brief Insert into the structure all items contained into list at the end
                     * if the array list
@@ -85,7 +96,7 @@ namespace jpl{
                     * @throw NullPointerException if list does not permit null elements
                     * @throw NullPointerException if collection is nullptr
                     */
-                    virtual void addAll(Collection<T>* collection) = 0;          
+                    virtual void addAll(List<T>* list) = 0;          
 
                     /**
                      * @return the element at the given index
@@ -126,7 +137,7 @@ namespace jpl{
                      * @param list list of items to remove
                      * @throw NotFoundException if at least one item into list has not been found
                      */
-                    virtual void removeAll(Collection<T>* collection) = 0;
+                    virtual void removeAll(List<T>* list) = 0;
                     /**
                      * @brief Remove all elements which respect the given predicate
                      * @param predicate
@@ -164,7 +175,11 @@ namespace jpl{
                     */
                     virtual List<T>* subList(unsigned long start) const = 0;
 
-
+                    /**
+                     * This functions performs only whereas T is a pointer
+                     * It removes nullptr items from the list and resize it
+                    */
+                    virtual void compress() noexcept = 0;
 
             };
         }

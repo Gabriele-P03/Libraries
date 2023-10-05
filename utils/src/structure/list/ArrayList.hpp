@@ -15,12 +15,6 @@
  * 
  * Null elements are allowed into this.
  * 
- * Methods as either set() or add() do put stuff you give them into the list; therefore, if you have declared an ArrayList 
- * of pointers, no new object will be allocated...
- * 
- * Just like insertion methods, even occurrence-checking methods work like them; therefore, if you have declared an ArrayList
- * of pointers, memory address will be compareted
- * 
  * ArrayList does not implements any borderline about max amount of elements which can be contained into it
  * 
  * @date 2023-07-12
@@ -87,7 +81,7 @@ namespace jpl{
                                 throw new jpl::_exception::IndexOutOfBoundsException(0, start - offset);
                             }
                             for(unsigned int i = start; i < this->size-1; i++){
-                                this->list[i] = this->list[i+1];
+                                this->list[i] = this->list[i+offset];
                             }
                         }
 
@@ -114,8 +108,8 @@ namespace jpl{
                             }
                             this->size = ls.size();
                         }
-                        ArrayList(Collection<T>* collection) : List<T>(collection){
-                            this->addAll(collection);
+                        ArrayList(List<T>* list) : List<T>(list){
+                            this->addAll(list);
                         }
 
                         /**
@@ -158,25 +152,27 @@ namespace jpl{
                         }
 
 
-                        virtual void addAll(unsigned long index, Collection<T>* collection) noexcept override{
-                            if(collection == nullptr){
+                        virtual void addAll(unsigned long index, List<T>* list) override{
+                            if(list == nullptr){
                                 throw new _exception::NullPointerException("Collection passed to addAll cannot be nullptr");
                             }
                             
-                            if(index+collection->getSize() > this->max){
-                                this->reallocate(index+collection->getSize()-this->max);
+                            if(index+list->getSize() > this->max){
+                                this->reallocate(index+list->getSize()-this->max);
                             }
 
-                            unsigned int i = 0;
-                            collection->forEach( [&](T t){
-                                this->list[i++] = t;
-                            });
+                            if(index < this->size)
+                                this->rightShiftItems(list->getSize(), 1);
 
-                            this->size += index + collection->getSize() - this->size;
+                            for(unsigned long i = 0; i < list->getSize(); i++){
+                                this->list[index+i] = list->get(i);
+                            }
+
+                            this->size += index + list->getSize() - this->size;
                         }
 
-                        virtual void addAll(Collection<T>* collection) noexcept override{
-                            this->addAll(this->size, collection);
+                        virtual void addAll(List<T>* list) noexcept override{
+                            this->addAll(this->size, list);
                         }
 
 
@@ -211,8 +207,9 @@ namespace jpl{
                             throw new jpl::_exception::NotFoundException( jpl::_utils::Printable<T>::to_string(t) + " has not been found into the list");
                         }  
    
-                        virtual void removeAll(Collection<T>* collection) override{
-                            collection->forEach( [&](T ls){
+                        virtual void removeAll(List<T>* list) override{
+                            for(unsigned long i = 0; i < list->getSize(); i++){
+                                T &ls = list->get(i);
                                 bool flag = false;
                                 for(unsigned long j = 0; j < this->size; j++){
                                     T cr = this->list[j];
@@ -221,12 +218,16 @@ namespace jpl{
                                         this->leftShiftItems(j, 1);
                                         this->size--;
                                         flag = true;
+                                        j--;
+                                        if(std::is_pointer<T>::value){
+                                            Nullable<T>::nullify(ls);
+                                        }
                                         break;
                                     }
                                 }
                                 if(!flag)
                                     throw new jpl::_exception::NotFoundException( jpl::_utils::Printable<T>::to_string(ls) + " has not been found into list");
-                            });
+                            }
                             this->reallocate(this->size);
                         }
                         virtual void removeAllIf(_functional::Predicate<T> predicate) noexcept override{
@@ -311,6 +312,32 @@ namespace jpl{
                         virtual void forEach(_functional::Consumer<T> consumer) {
                             for(unsigned long i = 0; i < this->size; i++){
                                 consumer.test(this->list[i]);
+                            }
+                        }
+
+                        virtual void compress() noexcept override{
+                            unsigned long c = 0;
+                            unsigned long firstNull = this->size;
+                            for(unsigned long i = 0; i < this->size; i++){
+                                T t = this->list[i];
+                                if(Nullable<T>::isNull(t)){
+                                    if(firstNull == this->size){
+                                        firstNull = i;
+                                    }
+                                }else{
+                                    if(firstNull != this->size){
+                                        unsigned long offset = i-firstNull;
+                                        this->leftShiftItems(firstNull, offset);
+                                        this->size -= offset;
+                                        firstNull = this->size;
+                                        i -= offset;
+                                    }
+                                }
+                            }
+                            if(firstNull != this->size){
+                                unsigned long offset = this->size-firstNull;
+                                this->leftShiftItems(firstNull, offset);
+                                this->size -= offset;
                             }
                         }
 

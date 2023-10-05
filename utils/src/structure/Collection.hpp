@@ -24,6 +24,7 @@
 #include "Ereaseable.hpp"
 #include "Printable.hpp"
 #include "Copyable.hpp"
+#include "Nullable.hpp"
 #include "../functional/predicate/Predicate.hpp"
 
 #include <concepts>

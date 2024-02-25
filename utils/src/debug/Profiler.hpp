@@ -12,13 +12,15 @@
 #define PROFILER_JPL
 
     #include <ctime>
+    #include <string>
+    #include <stdio.h>
+    #include <string.h>
 
     #ifdef _WIN32
-        
+        #define MEMORY_CONSUMPTION_ARRAY_SIZE_PROFILE_JPL 4
     #elif __linux__
         #include <sys/sysinfo.h>
-
-
+        #define MEMORY_CONSUMPTION_ARRAY_SIZE_PROFILE_JPL 5 //The first element contains seconds since boot
     #endif
 
     namespace jpl{
@@ -27,39 +29,67 @@
 
                 struct SystemInfo{
 
-                    unsigned long time;     //Time as the SystemInfo stuct has been created at
-                    unsigned long upTime;   //Seconds since boot
+                    unsigned long time;         //Time as the SystemInfo stuct has been created at
+                    unsigned long upTime;       //Seconds since boot
 
-                    unsigned long totalRam; //Total RAM
-                    unsigned long freeRam;  //Free RAM at time
-                    unsigned long procRam;  //RAM used by the current process
-                    unsigned long threadRam;//RAM used by the thread which created this struct
+                    unsigned long totalMemory;  //Total RAM
+                    unsigned long freeMemory;   //Free RAM at time
+                    unsigned long usedMemory;   //RAM used globally
+                    unsigned long procMemory;   //RAM used by the current process
+                    unsigned long virtualTotalMemory;
+                    unsigned long virtualFreeMemory;
+                    unsigned long virtualUsedMemory;
+                    unsigned long virtualProcMemory;
 
-                    unsigned long totalCpu; //Total Used CPU percentage 
-                    unsigned long procCpu;  //Used CPU percentage by this process 
-                    unsigned long threadCpu;//Used CPU percentage by this thread
-                    
+                    unsigned long totalCpu;     //Total Used CPU percentage 
+                    unsigned long *procsCPUMhz; // Mhz of each CPU unit
+                    unsigned long procCpu;      //Used CPU percentage by this process 
+
+                    ~SystemInfo();
                 };
 
-                #ifdef _WIN32
-                    
-                #elif __linux__
-                    typedef struct sysinfo SysInfo;
+                typedef struct sysinfo SysInfo;
 
-                    SystemInfo* getCurrentInfo(){
-                        SysInfo memInfo;
-                        sysinfo(&memInfo);
+                class Profiler{
 
-                        SystemInfo* m = new SystemInfo;
-                        m->upTime = memInfo.uptime;
-                        m->time = time(NULL);
-                        m->totalRam = memInfo.totalram;
-                        m->freeRam = memInfo.freeram;
+                    private:
 
-                        return m;
-                    }
+                        static unsigned long processors;    //Contains the amount of CPU unit available
 
-                #endif
+                        #ifdef __linux__
+                            FILE* procSelfStatFile;
+                            FILE* procLoadavg;
+                            FILE* procCpuinfo;
+                        #endif 
+
+                        /**
+                         * Parse the single line in order to retrieve what is before " Kb"  
+                        */
+                        virtual unsigned long parseKBLine(char* line) const;
+
+                        /**
+                         * It probes global and local (this proc) memory consumption such as
+                         * total memory, total used memory, free one and used one by this proc
+                        */
+                        virtual void measureMemory(SystemInfo* &systemInfo) const;
+
+                        /**
+                         * It probes global and local (this proc) cpu consumption such as
+                         * total cpu percentage, Mhz of each unit and percentage of this proc
+                        */
+                        virtual void measureCpu(SystemInfo* &systemInfo) const;
+
+                        virtual void init();
+
+                    public:
+
+                        Profiler();
+                        ~Profiler();
+
+                        const SystemInfo* const measure() const;
+                };
+
+
 
             }
         }

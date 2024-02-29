@@ -2,6 +2,8 @@
  * A profiler can be used to catch global,current program and current thread memory consumption;
  * it can run either single-time or as a scheduled thread 
  * 
+ * Usually we represents the CPU usage as a percentage of elapsed time since process started.
+ * So the total CPU usage of an application is the sum of utime and stime, divided by elapsed time 
  * 
  * @date 2024-02-21
  * 
@@ -12,7 +14,7 @@
 #define PROFILER_JPL
 
     #include <ctime>
-    #include <string>
+    #include "../StringUtils.hpp"
     #include <stdio.h>
     #include <string.h>
 
@@ -41,9 +43,9 @@
                     unsigned long virtualUsedMemory;
                     unsigned long virtualProcMemory;
 
-                    unsigned long totalCpu;     //Total Used CPU percentage 
+                    float totalCpu;     //Total Used CPU percentage 
                     unsigned long *procsCPUMhz; // Mhz of each CPU unit
-                    unsigned long procCpu;      //Used CPU percentage by this process 
+                    float procCpu;      //Used CPU percentage by this process 
 
                     ~SystemInfo();
                 };
@@ -57,9 +59,10 @@
                         static unsigned long processors;    //Contains the amount of CPU unit available
 
                         #ifdef __linux__
-                            FILE* procSelfStatFile;
+                            FILE* procSelfStatus;
                             FILE* procLoadavg;
                             FILE* procCpuinfo;
+                            FILE* procSelfStat;
                         #endif 
 
                         /**

@@ -11,7 +11,8 @@ jpl::_utils::_profiler::Profiler::Profiler(){
 
 void jpl::_utils::_profiler::Profiler::init(){
     #ifdef __linux__
-        this->procSelfStatFile = fopen("/proc/self/status", "r");
+        this->procSelfStatus = fopen("/proc/self/status", "r");
+        this->procSelfStat = fopen("/proc/self/stat", "r");
         this->procLoadavg = fopen("/proc/loadavg", "r");
         this->procCpuinfo = fopen("/proc/cpuinfo", "r");
         //Let's count how many processors units are available
@@ -42,7 +43,7 @@ void jpl::_utils::_profiler::Profiler::measureMemory(jpl::_utils::_profiler::Sys
 
         char buffer[128];
         bool flagVirtual = false, flagPhisically = false;
-        while (fgets(buffer, 128, this->procSelfStatFile) != NULL)
+        while (fgets(buffer, 128, this->procSelfStatus) != NULL)
         {
             if (strncmp(buffer, "VmSize:", 7) == 0)
             {
@@ -57,6 +58,7 @@ void jpl::_utils::_profiler::Profiler::measureMemory(jpl::_utils::_profiler::Sys
             if (flagVirtual && flagPhisically)
                 break;
         }
+        rewind(this->procSelfStatus);
     #endif
 }
 
@@ -94,16 +96,32 @@ void jpl::_utils::_profiler::Profiler::measureCpu(jpl::_utils::_profiler::System
         if(c == 0 || c > sizeStr)
             systemInfo->totalCpu = 0;
         else{
-            char *p = buffer;
-            while( p[i++] != ' ' ){}
-            buffer[i-1] = '\0';
-            systemInfo->totalCpu = atof(buffer)*100/jpl::_utils::_profiler::Profiler::processors;
+            std::string str(buffer);
+            std::vector<std::string> *buffer = jpl::_utils::_string::split(str, std::regex(" "));
+            systemInfo->totalCpu = atof(buffer->at(0).c_str())*100.0/jpl::_utils::_profiler::Profiler::processors;
+            delete buffer;
         }
         delete[] buffer;
+        rewind(this->procLoadavg);
 
         /*
-            READING PERCENTAGE OF USED CPU BY THIS PROCESSOR
+            READING PERCENTAGE OF USED CPU BY CURRENT APPLICATION
         */
+        unsigned long utime, stime, starttime, elapesdtime;
+        i = 0;
+        sizeStr = 512;
+        char buff[sizeStr];
+        if( fgets(buff, 256, this->procSelfStat) != NULL){
+            //14-15-22
+            std::vector<std::string>* vec = jpl::_utils::_string::split(std::string(buff), std::regex("\\((.*?)\\)| "));
+            float utime = atof(vec->at(13).c_str());    //utime is the time process is running in user mode
+            float stime = atof(vec->at(14).c_str());    //stime is the time process is running in kernel mode
+            float perc = (utime+stime)/systemInfo->upTime;
+            systemInfo->procCpu = perc;
+            delete vec;
+        }
+        rewind(this->procSelfStat);
+       
     #endif
 }
 
@@ -129,6 +147,6 @@ jpl::_utils::_profiler::Profiler::~Profiler(){
     #ifdef __linux__
         fclose(this->procCpuinfo);
         fclose(this->procLoadavg);
-        fclose(this->procSelfStatFile);
+        fclose(this->procSelfStatus);
     #endif
 }

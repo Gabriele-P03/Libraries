@@ -7,6 +7,7 @@ jpl::_utils::_profiler::SystemInfo::~SystemInfo(){
 
 jpl::_utils::_profiler::Profiler::Profiler(){
     this->init();
+    this->started = false;
 }
 
 void jpl::_utils::_profiler::Profiler::init(){
@@ -28,6 +29,22 @@ void jpl::_utils::_profiler::Profiler::init(){
 
 void jpl::_utils::_profiler::Profiler::measureMemory(jpl::_utils::_profiler::SystemInfo *&systemInfo) const{
     #ifdef _WIN32
+        MEMORYSTATUSEX memInfo;
+        memInfo.dwLength = sizeof(MEMORYSTATUSEX);
+        GlobalMemoryStatusEx(&memInfo);
+        /*DWORDLONG totalVirtualMem = memInfo.ullTotalPageFile;
+
+        systemInfo->totalMemory = memInfo.ullTotalPhys; //Total Physical Memory
+        systemInfo->freeMemory = memInfo.ullAvailPhys;
+        systemInfo->usedMemory = systemInfo->totalMemory - systemInfo->freeMemory;
+
+        systemInfo->virtualTotalMemory = memInfo.ullTotalVirtual;
+        systemInfo->virtualFreeMemory = memInfo.ullAvailVirtual;
+        systemInfo->virtualUsedMemory = memInfo.ullTotalVirtual - memInfo.ullAvailVirtual;
+
+        PROCESS_MEMORY_COUNTERS_EX pmc;
+        GetProcessMemoryInfo(GetCurrentProcess(), (PROCESS_MEMORY_COUNTERS*)&pmc, sizeof(pmc));
+        SIZE_T virtualMemUsedByMe = pmc.PrivateUsage;*/
 
     #elif __linux__
         SysInfo memInfo;
@@ -143,10 +160,72 @@ const jpl::_utils::_profiler::SystemInfo *const jpl::_utils::_profiler::Profiler
     return memInfo;
 }
 
+void* jpl::_utils::_profiler::Profiler::measures(void* instanceProfiler){
+
+    jpl::_utils::_profiler::Profiler* profiler = static_cast<jpl::_utils::_profiler::Profiler*>(instanceProfiler);
+
+    if( profiler == nullptr){
+        throw new jpl::_exception::IllegalArgumentException("Not a instance of Profiler class has been passed");
+    }
+
+    #ifdef _WIN32
+        unsigned long ms = profiler->sleepMS;
+    #elif __linux__
+        unsigned long ms = profiler->sleepMS*1000;
+    #endif
+
+    std::vector<const jpl::_utils::_profiler::SystemInfo*>* list = profiler->systemInfoList;
+    while (profiler->started){
+        const jpl::_utils::_profiler::SystemInfo* measureInfo = profiler->measure();
+        list->push_back(measureInfo);
+        
+        #ifdef _WIN32
+            Sleep(profiler->sleepMS);
+        #elif __linux__
+            usleep(ms);
+        #endif
+    }
+    
+    return nullptr;
+}
+
+
+void jpl::_utils::_profiler::Profiler::start(unsigned long sleepMS){
+
+    if(this->started)
+        throw new jpl::_exception::IllegalStateException("This profiler has been already started");
+    
+    this->systemInfoList = new std::vector<const jpl::_utils::_profiler::SystemInfo*>();
+    this->sleepMS = sleepMS;
+    this->threadProfiler = new pthread_t;
+    int res = pthread_create(this->threadProfiler, NULL, jpl::_utils::_profiler::Profiler::measures, this);
+    if(res != 0){
+        throw new jpl::_exception::RuntimeException("This thread profiler could not be started: " + jpl::_utils::_error::_GetLastErrorAsString());
+    }
+
+    pthread_detach(*this->threadProfiler);
+    this->started = true;
+}
+
+void jpl::_utils::_profiler::Profiler::end(){
+
+    if(!this->started)
+        throw new jpl::_exception::IllegalStateException("This profiler has been already over");
+    
+    int res = pthread_cancel(*this->threadProfiler);
+    if(res != 0){
+        throw new jpl::_exception::RuntimeException("This thread profiler could not be stopped: " + jpl::_utils::_error::_GetLastErrorAsString());
+    }
+    free(this->threadProfiler);
+    this->started = false;
+}
+
+
 jpl::_utils::_profiler::Profiler::~Profiler(){
     #ifdef __linux__
         fclose(this->procCpuinfo);
         fclose(this->procLoadavg);
         fclose(this->procSelfStatus);
+        fclose(this->procSelfStat);
     #endif
 }

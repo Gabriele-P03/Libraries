@@ -17,12 +17,18 @@
     #include "../StringUtils.hpp"
     #include <stdio.h>
     #include <string.h>
+    #include <pthread.h>
+    #include <jpl/exception/runtime/IllegalStateException.hpp>
+    #include <jpl/exception/runtime/IllegalArgumentException.hpp>
+    #include <jpl/utils/debug/ErrorUtils.hpp>
+
 
     #ifdef _WIN32
-        #define MEMORY_CONSUMPTION_ARRAY_SIZE_PROFILE_JPL 4
+        #include <windows.h>
+        #include <psapi.h>
     #elif __linux__
         #include <sys/sysinfo.h>
-        #define MEMORY_CONSUMPTION_ARRAY_SIZE_PROFILE_JPL 5 //The first element contains seconds since boot
+        #include <unistd.h>
     #endif
 
     namespace jpl{
@@ -48,13 +54,15 @@
                     float procCpu;      //Used CPU percentage by this process 
 
                     ~SystemInfo();
+
+                    
                 };
 
                 typedef struct sysinfo SysInfo;
 
                 class Profiler{
 
-                    private:
+                    protected:
 
                         static unsigned long processors;    //Contains the amount of CPU unit available
 
@@ -84,12 +92,21 @@
 
                         virtual void init();
 
+                        std::vector<const SystemInfo*>* systemInfoList;
+                        static void* measures(void* instanceProfiler);
+                        unsigned long sleepMS;
+                        bool started;
+                        pthread_t* threadProfiler;
+
                     public:
 
                         Profiler();
                         ~Profiler();
 
-                        const SystemInfo* const measure() const;
+                        virtual void start(unsigned long sleepMS);
+                        virtual void end();
+
+                        virtual const SystemInfo* const measure() const;
                 };
 
 

@@ -21,7 +21,7 @@ namespace jpl{
              * @param regex
              * @param maxSize max amount of splitted string to return
             */
-            std::vector<std::string>* split(std::string src, std::regex regex, const unsigned long maxSize);
+            std::vector<std::string>* split(std::string src, std::regex regex, const unsigned long long maxSize);
             /**
              * @return Splitted src using regex
              * @param src

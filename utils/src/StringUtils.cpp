@@ -1,6 +1,6 @@
 #include "StringUtils.hpp"
 
-std::vector<std::string>* jpl::_utils::_string::split(std::string src, std::regex regex, const unsigned long maxSize){
+std::vector<std::string>* jpl::_utils::_string::split(std::string src, std::regex regex, const unsigned long long maxSize){
 
     std::vector<std::string>* vec = new std::vector<std::string>;
 

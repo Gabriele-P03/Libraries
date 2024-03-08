@@ -35,28 +35,7 @@
         namespace _utils{
             namespace _profiler{
 
-                struct SystemInfo{
-
-                    unsigned long time;         //Time as the SystemInfo stuct has been created at
-                    unsigned long upTime;       //Seconds since boot
-
-                    unsigned long totalMemory;  //Total RAM
-                    unsigned long freeMemory;   //Free RAM at time
-                    unsigned long usedMemory;   //RAM used globally
-                    unsigned long procMemory;   //RAM used by the current process
-                    unsigned long virtualTotalMemory;
-                    unsigned long virtualFreeMemory;
-                    unsigned long virtualUsedMemory;
-                    unsigned long virtualProcMemory;
-
-                    float totalCpu;     //Total Used CPU percentage 
-                    unsigned long *procsCPUMhz; // Mhz of each CPU unit
-                    float procCpu;      //Used CPU percentage by this process 
-
-                    ~SystemInfo();
-
-                    
-                };
+                struct SystemInfo;
 
                 typedef struct sysinfo SysInfo;
 
@@ -107,9 +86,50 @@
                         virtual void end();
 
                         virtual const SystemInfo* const measure() const;
+                        const std::vector<const SystemInfo*>* getSystemInfoList() const;
+
+                        static unsigned long getCoresAmount();
                 };
 
+                struct SystemInfo{
 
+                    unsigned long time;         //Time as the SystemInfo stuct has been created at
+                    unsigned long upTime;       //Seconds since boot
+
+                    unsigned long totalMemory;  //Total RAM
+                    unsigned long freeMemory;   //Free RAM at time
+                    unsigned long usedMemory;   //RAM used globally
+                    unsigned long procMemory;   //RAM used by the current process
+                    unsigned long virtualTotalMemory;
+                    unsigned long virtualFreeMemory;
+                    unsigned long virtualUsedMemory;
+                    unsigned long virtualProcMemory;
+
+                    float totalCpu;     //Total Used CPU percentage 
+                    unsigned long *procsCPUMhz; // Mhz of each CPU unit
+                    float procCpu;      //Used CPU percentage by this process 
+
+                    ~SystemInfo();
+
+                    inline friend std::ostream& operator<<(std::ostream& os, const SystemInfo &systemInfo){
+                        char* tmp = std::asctime(std::localtime((const long*)&systemInfo.time));
+                        tmp[strlen(tmp)-1] = '\0';
+                        os<<std::endl<<"["<<tmp<<"] - Uptime: "<<systemInfo.upTime<<")"<<std::endl;
+                        os<<"| Global Physical Memory( Total: "<<systemInfo.totalMemory<<", Free: "<<systemInfo.freeMemory<<", Used: "<<systemInfo.usedMemory<<")"<<std::endl;
+                        os<<"| Global Virtual Memory( Total: "<<systemInfo.virtualTotalMemory<<", Free: "<<systemInfo.virtualFreeMemory<<", Used: "<<systemInfo.virtualUsedMemory<<")"<<std::endl;
+                        os<<"| Process' Used Memory( Physic: "<<systemInfo.procMemory<<", Virtual: "<<systemInfo.virtualProcMemory<<")"<<std::endl;
+                        os<<"| CPU Percentage( Total: "<<systemInfo.totalCpu<<", Process': "<<systemInfo.procCpu<<")"<<std::endl;
+                        os<<"| CPU Core MHz( ";
+                        unsigned long size = jpl::_utils::_profiler::Profiler::getCoresAmount();
+                        for(unsigned long i = 0; i < size; i++){
+                            os<<std::to_string(i+1)<<"°: "<<systemInfo.procsCPUMhz[i];
+                            if(i < size-1)
+                                std::cout<<", ";
+                        }
+                        os<<")"<<std::endl;
+                        return os;
+                    }
+                };
 
             }
         }

@@ -5,6 +5,7 @@ jpl::_utils::_profiler::SystemInfo::~SystemInfo(){
     delete[] this->procsCPUMhz;
 }
 
+
 jpl::_utils::_profiler::Profiler::Profiler(){
     this->init();
     this->started = false;
@@ -218,6 +219,14 @@ void jpl::_utils::_profiler::Profiler::end(){
     }
     free(this->threadProfiler);
     this->started = false;
+}
+
+unsigned long jpl::_utils::_profiler::Profiler::getCoresAmount() {
+    return jpl::_utils::_profiler::Profiler::processors;
+}
+
+const std::vector<const jpl::_utils::_profiler::SystemInfo*>* jpl::_utils::_profiler::Profiler::getSystemInfoList() const{
+    return this->systemInfoList;
 }
 
 

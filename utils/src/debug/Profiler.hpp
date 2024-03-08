@@ -112,7 +112,8 @@
                     ~SystemInfo();
 
                     inline friend std::ostream& operator<<(std::ostream& os, const SystemInfo &systemInfo){
-                        char* tmp = std::asctime(std::localtime((const long*)&systemInfo.time));
+                        const time_t* tm = (const time_t*)&systemInfo.time;
+                        char* tmp = std::asctime(std::localtime(tm));
                         tmp[strlen(tmp)-1] = '\0';
                         os<<std::endl<<"["<<tmp<<"] - Uptime: "<<systemInfo.upTime<<")"<<std::endl;
                         os<<"| Global Physical Memory( Total: "<<systemInfo.totalMemory<<", Free: "<<systemInfo.freeMemory<<", Used: "<<systemInfo.usedMemory<<")"<<std::endl;

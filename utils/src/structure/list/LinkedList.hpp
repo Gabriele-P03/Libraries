@@ -69,10 +69,67 @@ namespace jpl{
                         }
 
                         Node* smartProbe(unsigned long index) const{
+                            if(index >= this->size){
+                                throw new _exception::IndexOutOfBoundsException(this->size-1, attempted);
+                            }
                             if( index <= (this->size/2) ){
                                 return this->forwardProbe(index);
                             }                                
                             return this->reverseProbe(this->size-index-1);
+                        }
+
+                        /**
+                         * @brief
+                         * It detaches the given node attaching the previous one with the next one.
+                         * It is a smart function wich checks if it is either the head or tail of the LL.
+                         * You must pass a node whose element had been already deleted   
+                         * 
+                         * @throw NullPointer if node is nullptr
+                        */
+                        void detach(Node* &node){
+                            if(node == nullptr)
+                                throw new _exception::NullPointerException("A nullptr cannot be passed");                           
+                            if(node->previous != nullptr){  //not head
+                                if(node->next != nullptr){  //not tail
+                                    node->previous->next = node->next;
+                                    node->next->previous = node->previous;
+                                }else{//tail -> new tail
+                                    node->previous->next = nullptr;
+                                    this->tail = node->previous;
+                                }
+                            }else{  //head -> new head
+                                if(node->next != nullptr){
+                                    node->next->previous = nullptr;
+                                    this->head = node->next;
+                                }
+                            }
+                        }
+
+                        /**
+                         * It detaches all nodes among first and last (both included)
+                         * You must be sure that all nodes from first to last are deleted
+                        */
+                        void detach_s(Node* &first, Node* &last, unsigned long size){
+                            if(first == this->head){
+                                if(last != this->tail){
+                                    last->next->previous = nullptr;
+                                    this->head = last->next;
+                                    this->size -= size;
+                                }else{
+                                    this->head = nullptr;
+                                    this->tail = nullptr;
+                                    this->size = 0;
+                                }
+                            }else{
+                                if(last != this->tail){
+                                    first->previous->next = tail->next;
+                                    tail->next->previous = first->previous;
+                                }else{
+                                    first->previous->next = nullptr;
+                                    this->tail = first->previous;
+                                }
+                                this->size -= size;
+                            }
                         }
 
                     public:
@@ -211,64 +268,113 @@ namespace jpl{
                         }
                         virtual void removeAt(unsigned long index) override{
                             Node* cr = this->smartProbe(index);
-                            cr->previous->next = cr->next;
-                            cr->next->previous = cr->previous;
                             Ereaseable<T>::erease(cr->element);
+                            this->detach(cr);
                             this->size--;
                         }
                         virtual void remove(T t) override{
                             Node* cr = this->head;
                             for(unsigned long i = 0; i < this->size; i++){
                                 if(cr->element == t){
-                                    cr->previous->next = cr->next;
-                                    cr->next->previous = cr->previous;
-                                    Ereaseable<T>::erease(cr->element); 
+                                    Ereaseable<T>::erease(cr->element);
+                                    this->detach(cr); 
+                                    this->size--;
+                                    return;
                                 }
-                                cr = cr->previous;
-                            } 
-                            this->size--;
+                                cr = cr->next;
+                            }
                         }                    
                         virtual void removeAll(List<T>* list) override{
                             Node* cr = this->head;
+                            Node* firstDeleted = nullptr;
+                            unsigned long len = 0;
                             for(unsigned long i = 0; i < list->getSize(); i++){
                                 T &ls = list->get(i); 
                                 for(unsigned long j = 0; j < this->size; j++){
                                     if(cr->element == ls){
                                         Ereaseable<T>::erease(cr->element);
-                                        if(j == 0){
-                                            this->head = cr->next;
-                                            this->head->previous = nullptr;
-                                        }else if(j == this->size-1){
-                                            this->tail = cr->previous;
-                                            this->tail->next = nullptr;
-                                        }else{
-                                            cr->previous->next = cr->next;
-                                            cr->next->previous = cr->previous;
+                                        if(firstDeleted == nullptr){
+                                            firstDeleted = cr;
                                         }
-                                        this->size--;
-                                        cr = cr->next;
-                                        break;
+                                        len++;
+                                    }else{
+                                        if(firstDeleted != nullptr){
+                                            this->detach_s(firstDeleted, cr->previous, len);
+                                            firstDeleted = nullptr;
+                                            len = 0;
+                                            this->size -= len;
+                                        }
                                     }
                                     cr = cr->next;
-                                }                              
+                                }      
+                                if(firstDeleted != nullptr){
+                                    this->detach_s(firstDeleted, cr, len);
+                                    this->size -= len;
+                                }                        
                             }
 
                         }
-                        virtual void removeAllIf(_functional::Predicate<T> predicate) noexcept override{}
-                        virtual T set(unsigned long index, const T &t) override {return NULL;}
+                        virtual void removeAllIf(_functional::Predicate<T> predicate) noexcept override{
+                            Node* cr = this->head;
+                            Node* &firstDeleted = nullptr;
+                            unsigned long len = 0;
+                            for(unsigned long i = 0; i < this->size; i++){
+                                if(predicate.test(cr->element)){
+                                    Ereaseable<T>::erease(cr->element);
+                                    if(firstDeleted == nullptr){
+                                        firstDeleted = cr;
+                                    }
+                                    len++;
+                                }else{
+                                    if(firstDeleted != nullptr){
+                                        this->detach_s(firstDeleted, cr->previous, len);
+                                        firstDeleted = nullptr;
+                                        this->size -= len;
+                                        len = 0;
+                                    }
+                                }
+                                cr = cr->next;
+                            }
+                            if(firstDeleted != nullptr){
+                                this->detach_s(firstDeleted, cr, len);
+                                this->size -= len;
+                            }  
+                        }
+                        virtual T set(unsigned long index, const T &t) override {}
                         virtual List<T>* subList(unsigned long start, unsigned long end) const override {return NULL;}
                         virtual List<T>* subList(unsigned long start) const override {return NULL;}
                         virtual void forEach(_functional::Consumer<T> consumer) override {
-                                Node* cr = this->head;
-                                for(unsigned long i = 0; i < this->size; i++){
-                                    consumer.test(cr->element);
-                                    cr = cr->next;
-                                }
+                            Node* cr = this->head;
+                            for(unsigned long i = 0; i < this->size; i++){
+                                consumer.test(cr->element);
+                                cr = cr->next;
+                            }
                         }
                         virtual T* toArray() const noexcept override{return NULL;}
 
                         virtual void compress() noexcept override{
-
+                            Node* cr = this->head;
+                            Node* &firstNull = nullptr;
+                            unsigned long len = 0;
+                            for(unsigned long i = 0; i < this->size; i++){
+                                if(Nullable<T>::isNull(cr->element)){
+                                    if(firstNull == nullptr)
+                                        firstNull = cr;
+                                    len++;
+                                }else{
+                                    if(firstNull != nullptr){
+                                        this->detach_s(firstNull, cr->previous, len);
+                                        firstNull = nullptr;
+                                        this->size -= len;
+                                        len = 0;
+                                    }
+                                }
+                                cr = cr->next;
+                            }
+                            if(firstNull != nullptr){
+                                this->detach_s(firstNull, cr, len);
+                                this->size -= len;
+                            }     
                         }
 
                         friend std::ostream& operator<<(std::ostream& os, const LinkedList<T> &list){

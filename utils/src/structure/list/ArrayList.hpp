@@ -219,9 +219,6 @@ namespace jpl{
                                         this->size--;
                                         flag = true;
                                         j--;
-                                        if(std::is_pointer<T>::value){
-                                            Nullable<T>::nullify(ls);
-                                        }
                                         break;
                                     }
                                 }

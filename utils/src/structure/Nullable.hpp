@@ -19,6 +19,7 @@ namespace jpl{
             public:
                 static bool isNull(T &value){return false;}
                 static void nullify(T &value){}
+                static bool isTypeNullable(){return false;}
         };
 
         template <typename P>
@@ -27,6 +28,7 @@ namespace jpl{
             public:
                 static bool isNull(P* value){return value == nullptr;}
                 static void nullify(P* &value){value = nullptr;}
+                static bool isTypeNullable(){return true;}
         };
     }
 }

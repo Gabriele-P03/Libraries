@@ -198,13 +198,12 @@ void jpl::_utils::_profiler::Profiler::start(unsigned long sleepMS){
     
     this->systemInfoList = new std::vector<const jpl::_utils::_profiler::SystemInfo*>();
     this->sleepMS = sleepMS;
-    this->threadProfiler = new pthread_t;
-    int res = pthread_create(this->threadProfiler, NULL, jpl::_utils::_profiler::Profiler::measures, this);
-    if(res != 0){
-        throw new jpl::_exception::RuntimeException("This thread profiler could not be started: " + jpl::_utils::_error::_GetLastErrorAsString());
+    this->threadProfiler = new std::thread(&jpl::_utils::_profiler::Profiler::measures, this);
+    try{
+        this->threadProfiler->detach();
+    }catch(const std::system_error* ex){
+        throw new jpl::_exception::RuntimeException("This profiler could not be started: " + jpl::_utils::_error::_GetLastErrorAsString(ex->code));
     }
-
-    pthread_detach(*this->threadProfiler);
     this->started = true;
 }
 
@@ -213,12 +212,8 @@ void jpl::_utils::_profiler::Profiler::end(){
     if(!this->started)
         throw new jpl::_exception::IllegalStateException("This profiler has been already over");
     
-    int res = pthread_cancel(*this->threadProfiler);
-    if(res != 0){
-        throw new jpl::_exception::RuntimeException("This thread profiler could not be stopped: " + jpl::_utils::_error::_GetLastErrorAsString());
-    }
-    free(this->threadProfiler);
     this->started = false;
+    free(this->threadProfiler);
 }
 
 unsigned long jpl::_utils::_profiler::Profiler::getCoresAmount() {

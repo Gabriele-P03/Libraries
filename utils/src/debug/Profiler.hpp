@@ -17,7 +17,7 @@
     #include "../StringUtils.hpp"
     #include <stdio.h>
     #include <string.h>
-    #include <pthread.h>
+    #include <thread>
     #include <jpl/exception/runtime/IllegalStateException.hpp>
     #include <jpl/exception/runtime/IllegalArgumentException.hpp>
     #include <jpl/utils/debug/ErrorUtils.hpp>
@@ -75,7 +75,7 @@
                         static void* measures(void* instanceProfiler);
                         unsigned long sleepMS;
                         bool started;
-                        pthread_t* threadProfiler;
+                        std::thread* threadProfiler;
 
                     public:
 

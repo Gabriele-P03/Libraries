@@ -13,7 +13,8 @@ int main(){
 
     try{
         jpl::_utils::_profiler::Profiler profiler;
-        profiler.start(100);
+        std::cout<<*profiler.measure();
+        /*profiler.start(100);
         for(int i = 0; i < 1000000000; i++){
         }
         profiler.end();
@@ -21,7 +22,7 @@ int main(){
         const std::vector<const jpl::_utils::_profiler::SystemInfo*>* vec = profiler.getSystemInfoList();
         for(int i = 0; i < vec->size(); i++){
             std::cout<<*vec->at(i);
-        }
+        }*/
     }catch(const jpl::_exception::RuntimeException* ex){
         std::cout<<*ex;
     }

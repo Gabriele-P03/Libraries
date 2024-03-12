@@ -33,7 +33,7 @@ void jpl::_utils::_profiler::Profiler::measureMemory(jpl::_utils::_profiler::Sys
         MEMORYSTATUSEX memInfo;
         memInfo.dwLength = sizeof(MEMORYSTATUSEX);
         GlobalMemoryStatusEx(&memInfo);
-        /*DWORDLONG totalVirtualMem = memInfo.ullTotalPageFile;
+        DWORDLONG totalVirtualMem = memInfo.ullTotalPageFile;
 
         systemInfo->totalMemory = memInfo.ullTotalPhys; //Total Physical Memory
         systemInfo->freeMemory = memInfo.ullAvailPhys;
@@ -45,8 +45,12 @@ void jpl::_utils::_profiler::Profiler::measureMemory(jpl::_utils::_profiler::Sys
 
         PROCESS_MEMORY_COUNTERS_EX pmc;
         GetProcessMemoryInfo(GetCurrentProcess(), (PROCESS_MEMORY_COUNTERS*)&pmc, sizeof(pmc));
-        SIZE_T virtualMemUsedByMe = pmc.PrivateUsage;*/
+        systemInfo->virtualProcMemory = pmc.PrivateUsage;
+        systemInfo->procMemory = pmc.WorkingSetSize;
 
+        std::chrono::duration<long long int, std::ratio<1, 1000>> hz = std::chrono::milliseconds(GetTickCount64());
+        unsigned long uptime = hz.count();
+        systemInfo->upTime = uptime;
     #elif __linux__
         SysInfo memInfo;
         sysinfo(&memInfo);
@@ -202,7 +206,7 @@ void jpl::_utils::_profiler::Profiler::start(unsigned long sleepMS){
     try{
         this->threadProfiler->detach();
     }catch(const std::system_error* ex){
-        throw new jpl::_exception::RuntimeException("This profiler could not be started: " + jpl::_utils::_error::_GetLastErrorAsString(ex->code));
+        throw new jpl::_exception::RuntimeException("This profiler could not be started: " + jpl::_utils::_error::_GetLastErrorAsString(ex->code().value()));
     }
     this->started = true;
 }

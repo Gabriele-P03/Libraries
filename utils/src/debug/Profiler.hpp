@@ -18,6 +18,7 @@
     #include <stdio.h>
     #include <string.h>
     #include <thread>
+    #include <iostream>
     #include <jpl/exception/runtime/IllegalStateException.hpp>
     #include <jpl/exception/runtime/IllegalArgumentException.hpp>
     #include <jpl/utils/debug/ErrorUtils.hpp>

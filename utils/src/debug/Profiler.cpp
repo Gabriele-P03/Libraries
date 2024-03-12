@@ -47,10 +47,6 @@ void jpl::_utils::_profiler::Profiler::measureMemory(jpl::_utils::_profiler::Sys
         GetProcessMemoryInfo(GetCurrentProcess(), (PROCESS_MEMORY_COUNTERS*)&pmc, sizeof(pmc));
         systemInfo->virtualProcMemory = pmc.PrivateUsage;
         systemInfo->procMemory = pmc.WorkingSetSize;
-
-        std::chrono::duration<long long int, std::ratio<1, 1000>> hz = std::chrono::milliseconds(GetTickCount64());
-        unsigned long uptime = hz.count();
-        systemInfo->upTime = uptime;
     #elif __linux__
         SysInfo memInfo;
         sysinfo(&memInfo);
@@ -160,6 +156,9 @@ const jpl::_utils::_profiler::SystemInfo *const jpl::_utils::_profiler::Profiler
     SystemInfo *memInfo = new SystemInfo;
     memInfo->procsCPUMhz = new unsigned long[jpl::_utils::_profiler::Profiler::processors];
     memInfo->time = time(NULL);
+    #ifdef _WIN32
+        memInfo->upTime = GetTickCount64();
+    #endif
     this->measureMemory(memInfo);
     this->measureCpu(memInfo);
     return memInfo;

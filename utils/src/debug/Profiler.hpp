@@ -22,12 +22,11 @@
     #include <jpl/exception/runtime/IllegalStateException.hpp>
     #include <jpl/exception/runtime/IllegalArgumentException.hpp>
     #include <jpl/utils/debug/ErrorUtils.hpp>
-
+    #include <jpl/utils/ConversionUtils.hpp>
 
     #ifdef _WIN32
         #include <windows.h>
         #include <psapi.h>
-        #include "../ConversionUtils.hpp"
     #elif __linux__
         #include <sys/sysinfo.h>
         #include <unistd.h>
@@ -117,9 +116,12 @@
                         long tm_long;
                         long* tm_plong = &tm_long;
                         _conversions::ulong_long(systemInfo.time, tm_plong);
-                        const time_t* tm = (const time_t*)&tm_long;
-                        std::string tmp = std::asctime(std::localtime(tm));
-                        tmp.pop_back();
+                        const time_t* ptime_t = (const time_t*)&tm_long;
+                        tm* ptm = std::localtime(ptime_t);
+                        char* tmp = std::asctime(ptm);
+                        std::cout<<std::string(tmp)<<" - "<<jpl::_utils::_error::_GetLastErrorAsString();
+                        
+                        //tmp.pop_back();
                         os<<std::endl<<"["<<tmp<<"] - Uptime: "<<systemInfo.upTime<<")"<<std::endl;
                         os<<"| Global Physical Memory( Total: "<<systemInfo.totalMemory<<", Free: "<<systemInfo.freeMemory<<", Used: "<<systemInfo.usedMemory<<")"<<std::endl;
                         os<<"| Global Virtual Memory( Total: "<<systemInfo.virtualTotalMemory<<", Free: "<<systemInfo.virtualFreeMemory<<", Used: "<<systemInfo.virtualUsedMemory<<")"<<std::endl;

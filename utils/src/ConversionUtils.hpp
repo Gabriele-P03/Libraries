@@ -30,6 +30,10 @@ namespace jpl
 
 		namespace _conversions
 		{
+
+			inline void ulong_long(unsigned long src, long *& dst){
+				memcpy(dst, &src, sizeof(long));
+			}
 			/**
 			 * Converts the given integer (src) into a const char
 			 * 

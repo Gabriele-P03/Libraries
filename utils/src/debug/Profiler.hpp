@@ -27,6 +27,7 @@
     #ifdef _WIN32
         #include <windows.h>
         #include <psapi.h>
+        #include "../ConversionUtils.hpp"
     #elif __linux__
         #include <sys/sysinfo.h>
         #include <unistd.h>
@@ -113,9 +114,12 @@
                     ~SystemInfo();
 
                     inline friend std::ostream& operator<<(std::ostream& os, const SystemInfo &systemInfo){
-                        const time_t* tm = (const time_t*)&systemInfo.time;
-                        char* tmp = std::asctime(std::localtime(tm));
-                        tmp[strlen(tmp)-1] = '\0';
+                        long tm_long;
+                        long* tm_plong = &tm_long;
+                        _conversions::ulong_long(systemInfo.time, tm_plong);
+                        const time_t* tm = (const time_t*)&tm_long;
+                        std::string tmp = std::asctime(std::localtime(tm));
+                        tmp.pop_back();
                         os<<std::endl<<"["<<tmp<<"] - Uptime: "<<systemInfo.upTime<<")"<<std::endl;
                         os<<"| Global Physical Memory( Total: "<<systemInfo.totalMemory<<", Free: "<<systemInfo.freeMemory<<", Used: "<<systemInfo.usedMemory<<")"<<std::endl;
                         os<<"| Global Virtual Memory( Total: "<<systemInfo.virtualTotalMemory<<", Free: "<<systemInfo.virtualFreeMemory<<", Used: "<<systemInfo.virtualUsedMemory<<")"<<std::endl;

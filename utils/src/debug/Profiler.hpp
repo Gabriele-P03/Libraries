@@ -51,6 +51,8 @@
                             FILE* procLoadavg;
                             FILE* procCpuinfo;
                             FILE* procSelfStat;
+                        #elif _WIN32
+                            static unsigned long lastIdleTicks, lastTotalTicks; 
                         #endif 
 
                         /**
@@ -116,12 +118,9 @@
                         long tm_long;
                         long* tm_plong = &tm_long;
                         _conversions::ulong_long(systemInfo.time, tm_plong);
-                        const time_t* ptime_t = (const time_t*)&tm_long;
-                        tm* ptm = std::localtime(ptime_t);
-                        char* tmp = std::asctime(ptm);
-                        std::cout<<std::string(tmp)<<" - "<<jpl::_utils::_error::_GetLastErrorAsString();
-                        
-                        //tmp.pop_back();
+                        const time_t ptime_t = tm_long;
+                        std::string tmp = std::asctime(std::localtime(&ptime_t));
+                        tmp.pop_back();
                         os<<std::endl<<"["<<tmp<<"] - Uptime: "<<systemInfo.upTime<<")"<<std::endl;
                         os<<"| Global Physical Memory( Total: "<<systemInfo.totalMemory<<", Free: "<<systemInfo.freeMemory<<", Used: "<<systemInfo.usedMemory<<")"<<std::endl;
                         os<<"| Global Virtual Memory( Total: "<<systemInfo.virtualTotalMemory<<", Free: "<<systemInfo.virtualFreeMemory<<", Used: "<<systemInfo.virtualUsedMemory<<")"<<std::endl;

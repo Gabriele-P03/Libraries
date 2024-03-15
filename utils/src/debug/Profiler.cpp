@@ -1,6 +1,12 @@
 #include "Profiler.hpp"
 
 unsigned long jpl::_utils::_profiler::Profiler::processors;
+
+#ifdef _WIN32
+    unsigned long jpl::_utils::_profiler::Profiler::lastIdleTicks = 0;
+    unsigned long jpl::_utils::_profiler::Profiler::lastTotalTicks = 0;
+#endif
+
 jpl::_utils::_profiler::SystemInfo::~SystemInfo(){
     delete[] this->procsCPUMhz;
 }
@@ -47,6 +53,7 @@ void jpl::_utils::_profiler::Profiler::measureMemory(jpl::_utils::_profiler::Sys
         GetProcessMemoryInfo(GetCurrentProcess(), (PROCESS_MEMORY_COUNTERS*)&pmc, sizeof(pmc));
         systemInfo->virtualProcMemory = pmc.PrivateUsage;
         systemInfo->procMemory = pmc.WorkingSetSize;
+
     #elif __linux__
         SysInfo memInfo;
         sysinfo(&memInfo);
@@ -81,7 +88,22 @@ void jpl::_utils::_profiler::Profiler::measureMemory(jpl::_utils::_profiler::Sys
 }
 
 void jpl::_utils::_profiler::Profiler::measureCpu(jpl::_utils::_profiler::SystemInfo* &systemInfo) const{
-    #ifdef __linux__
+    #ifdef _WIN32
+        FILETIME idleTime, kernelTime, userTime;
+        if(GetSystemTimes(&idleTime, &kernelTime, &userTime) == 0)
+            throw new jpl::_exception::RuntimeException("Could not read System Times: " + jpl::_utils::_error::_GetLastErrorAsString());
+        //Transform FILETIMEs into ulong
+        unsigned long uidleTime = ( ((unsigned long)(idleTime.dwHighDateTime)) << 32) | ((unsigned long)idleTime.dwLowDateTime);
+        unsigned long ukernelTime = ( ((unsigned long)(kernelTime.dwHighDateTime)) << 32) | ((unsigned long)kernelTime.dwLowDateTime);
+        unsigned long uuserTime = ( ((unsigned long)(userTime.dwHighDateTime)) << 32) | ((unsigned long)userTime.dwLowDateTime);
+        unsigned long ukTime = uuserTime + ukernelTime;
+        unsigned long long totalTicksSinceLastTime = ukTime - jpl::_utils::_profiler::Profiler::lastTotalTicks;
+        unsigned long long idleTicksSinceLastTime = uidleTime - jpl::_utils::_profiler::Profiler::lastIdleTicks;
+        jpl::_utils::_profiler::Profiler::lastTotalTicks = ukTime;
+        jpl::_utils::_profiler::Profiler::lastIdleTicks = uidleTime;
+        systemInfo->totalCpu = ukTime/systemInfo->upTime;
+
+    #elif __linux__
 
         /*
             READING MHZ OF EACH CPU UNIT

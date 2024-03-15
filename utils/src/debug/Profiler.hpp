@@ -27,6 +27,7 @@
     #ifdef _WIN32
         #include <windows.h>
         #include <psapi.h>
+        #include <pdh.h>
     #elif __linux__
         #include <sys/sysinfo.h>
         #include <unistd.h>
@@ -47,11 +48,13 @@
                         static unsigned long processors;    //Contains the amount of CPU unit available
 
                         #ifdef __linux__
+                            static FILE* procLoadavg;
+                            static FILE* procCpuinfo;
                             FILE* procSelfStatus;
-                            FILE* procLoadavg;
-                            FILE* procCpuinfo;
                             FILE* procSelfStat;
                         #elif _WIN32
+                            static PDH_HQUERY cpuQuery;
+                            static PDH_HCOUNTER cpuTotal; 
                             static unsigned long lastIdleTicks, lastTotalTicks; 
                         #endif 
 

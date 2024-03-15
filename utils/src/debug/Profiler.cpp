@@ -1,10 +1,15 @@
 #include "Profiler.hpp"
 
-unsigned long jpl::_utils::_profiler::Profiler::processors;
+unsigned long jpl::_utils::_profiler::Profiler::processors = 0;
 
 #ifdef _WIN32
+    PDH_HQUERY jpl::_utils::_profiler::Profiler::cpuQuery = nullptr;
+    PDH_HCOUNTER jpl::_utils::_profiler::Profiler::cpuTotal = nullptr;
     unsigned long jpl::_utils::_profiler::Profiler::lastIdleTicks = 0;
     unsigned long jpl::_utils::_profiler::Profiler::lastTotalTicks = 0;
+#elif __linux__
+    FILE* jpl::_utils::_profiler::Profiler::procCpuinfo = nullptr;
+    FILE* jpl::_utils::_profiler::Profiler::procLoadavg = nullptr;
 #endif
 
 jpl::_utils::_profiler::SystemInfo::~SystemInfo(){
@@ -18,19 +23,27 @@ jpl::_utils::_profiler::Profiler::Profiler(){
 }
 
 void jpl::_utils::_profiler::Profiler::init(){
-    #ifdef __linux__
+    #ifdef _WIN32
+        if(jpl::_utils::_profiler::Profiler::cpuQuery == nullptr){
+            PdhOpenQuery(NULL, NULL, &jpl::_utils::_profiler::Profiler::cpuQuery);
+            PdhAddEnglishCounter(jpl::_utils::_profiler::Profiler::cpuQuery, "\\Processor(_Total)\\% Processor Time", NULL, &jpl::_utils::_profiler::Profiler::cpuTotal);
+            PdhCollectQueryData(jpl::_utils::_profiler::Profiler::cpuQuery);
+        }
+    #elif __linux__
         this->procSelfStatus = fopen("/proc/self/status", "r");
         this->procSelfStat = fopen("/proc/self/stat", "r");
         this->procLoadavg = fopen("/proc/loadavg", "r");
         this->procCpuinfo = fopen("/proc/cpuinfo", "r");
-        //Let's count how many processors units are available
-        char buffer[256];
-        while( fgets(buffer, 256, this->procCpuinfo) != NULL ){
-            if( strncmp(buffer, "processor", 9) == 0){
-                jpl::_utils::_profiler::Profiler::processors++;
+        if(jpl::_utils::_profiler::Profiler::processors == 0){
+            //Let's count how many processors units are available
+            char buffer[256];
+            while( fgets(buffer, 256, this->procCpuinfo) != NULL ){
+                if( strncmp(buffer, "processor", 9) == 0){
+                    jpl::_utils::_profiler::Profiler::processors++;
+                }
             }
+            rewind(this->procCpuinfo);  //Rewinding /proc/cpuinfo
         }
-        rewind(this->procCpuinfo);  //Rewinding /proc/cpuinfo
     #endif
 }
 
@@ -89,7 +102,12 @@ void jpl::_utils::_profiler::Profiler::measureMemory(jpl::_utils::_profiler::Sys
 
 void jpl::_utils::_profiler::Profiler::measureCpu(jpl::_utils::_profiler::SystemInfo* &systemInfo) const{
     #ifdef _WIN32
-        FILETIME idleTime, kernelTime, userTime;
+        PDH_FMT_COUNTERVALUE fmt;
+        PdhCollectQueryData(jpl::_utils::_profiler::Profiler::cpuQuery);
+        PdhGetFormattedCounterValue(jpl::_utils::_profiler::Profiler::cpuTotal, PDH_FMT_DOUBLE, NULL, &fmt);
+        systemInfo->totalCpu = fmt.doubleValue;
+
+        /*FILETIME idleTime, kernelTime, userTime;
         if(GetSystemTimes(&idleTime, &kernelTime, &userTime) == 0)
             throw new jpl::_exception::RuntimeException("Could not read System Times: " + jpl::_utils::_error::_GetLastErrorAsString());
         //Transform FILETIMEs into ulong
@@ -101,8 +119,8 @@ void jpl::_utils::_profiler::Profiler::measureCpu(jpl::_utils::_profiler::System
         unsigned long long idleTicksSinceLastTime = uidleTime - jpl::_utils::_profiler::Profiler::lastIdleTicks;
         jpl::_utils::_profiler::Profiler::lastTotalTicks = ukTime;
         jpl::_utils::_profiler::Profiler::lastIdleTicks = uidleTime;
-        systemInfo->totalCpu = ukTime/systemInfo->upTime;
-
+        //systemInfo->totalCpu = 100.0f*(totalTicksSinceLastTime-idleTicksSinceLastTime)/idleTicksSinceLastTime;
+        */
     #elif __linux__
 
         /*
@@ -252,8 +270,6 @@ const std::vector<const jpl::_utils::_profiler::SystemInfo*>* jpl::_utils::_prof
 
 jpl::_utils::_profiler::Profiler::~Profiler(){
     #ifdef __linux__
-        fclose(this->procCpuinfo);
-        fclose(this->procLoadavg);
         fclose(this->procSelfStatus);
         fclose(this->procSelfStat);
     #endif

@@ -28,6 +28,7 @@
         #include <windows.h>
         #include <psapi.h>
         #include <pdh.h>
+        #include <powerbase.h>
     #elif __linux__
         #include <sys/sysinfo.h>
         #include <unistd.h>
@@ -39,8 +40,18 @@
 
                 struct SystemInfo;
 
-                typedef struct sysinfo SysInfo;
-
+                #ifdef _WIN32
+                    typedef struct _PROCESSOR_POWER_INFORMATION {
+                        ULONG Number;
+                        ULONG MaxMhz;
+                        ULONG CurrentMhz;
+                        ULONG MhzLimit;
+                        ULONG MaxIdleState;
+                        ULONG CurrentIdleState;
+                    } PROCESSOR_POWER_INFORMATION, *PPROCESSOR_POWER_INFORMATION;
+                #elif __linux__    
+                    typedef struct sysinfo SysInfo;
+                #endif
                 class Profiler{
 
                     protected:
@@ -50,18 +61,22 @@
                         #ifdef __linux__
                             static FILE* procLoadavg;
                             static FILE* procCpuinfo;
+                            static FILE* procLoadavg;
+                            static FILE* procCpuinfo;
                             FILE* procSelfStatus;
                             FILE* procSelfStat;
+
+                            /**
+                             * Parse the single line in order to retrieve what is before " Kb"  
+                            */
+                            virtual unsigned long parseKBLine(char* line) const;
                         #elif _WIN32
                             static PDH_HQUERY cpuQuery;
                             static PDH_HCOUNTER cpuTotal; 
-                            static unsigned long lastIdleTicks, lastTotalTicks; 
+                            HANDLE self;
+                            ULARGE_INTEGER lastPCPU, lastPKernelTime, lastPUserTime;
+                            static unsigned long lastCPUTime, lastKernelTime, lastUserTime; 
                         #endif 
-
-                        /**
-                         * Parse the single line in order to retrieve what is before " Kb"  
-                        */
-                        virtual unsigned long parseKBLine(char* line) const;
 
                         /**
                          * It probes global and local (this proc) memory consumption such as
@@ -73,7 +88,7 @@
                          * It probes global and local (this proc) cpu consumption such as
                          * total cpu percentage, Mhz of each unit and percentage of this proc
                         */
-                        virtual void measureCpu(SystemInfo* &systemInfo) const;
+                        virtual void measureCpu(SystemInfo* &systemInfo);
 
                         virtual void init();
 
@@ -91,7 +106,7 @@
                         virtual void start(unsigned long sleepMS);
                         virtual void end();
 
-                        virtual const SystemInfo* const measure() const;
+                        virtual const SystemInfo* const measure();
                         const std::vector<const SystemInfo*>* getSystemInfoList() const;
 
                         static unsigned long getCoresAmount();
@@ -132,7 +147,7 @@
                         os<<"| CPU Core MHz( ";
                         unsigned long size = jpl::_utils::_profiler::Profiler::getCoresAmount();
                         for(unsigned long i = 0; i < size; i++){
-                            os<<std::to_string(i+1)<<"°: "<<systemInfo.procsCPUMhz[i];
+                            os<<std::to_string(i+1)<<"#: "<<systemInfo.procsCPUMhz[i];
                             if(i < size-1)
                                 std::cout<<", ";
                         }

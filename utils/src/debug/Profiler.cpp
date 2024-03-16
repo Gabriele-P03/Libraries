@@ -1,21 +1,29 @@
 #include "Profiler.hpp"
 
 unsigned long jpl::_utils::_profiler::Profiler::processors = 0;
+unsigned long jpl::_utils::_profiler::Profiler::processors = 0;
 
 #ifdef _WIN32
     PDH_HQUERY jpl::_utils::_profiler::Profiler::cpuQuery = nullptr;
     PDH_HCOUNTER jpl::_utils::_profiler::Profiler::cpuTotal = nullptr;
-    unsigned long jpl::_utils::_profiler::Profiler::lastIdleTicks = 0;
-    unsigned long jpl::_utils::_profiler::Profiler::lastTotalTicks = 0;
+    unsigned long jpl::_utils::_profiler::Profiler::lastCPUTime = 0;
+    unsigned long jpl::_utils::_profiler::Profiler::lastKernelTime = 0;
+    unsigned long jpl::_utils::_profiler::Profiler::lastUserTime = 0;
 #elif __linux__
     FILE* jpl::_utils::_profiler::Profiler::procCpuinfo = nullptr;
     FILE* jpl::_utils::_profiler::Profiler::procLoadavg = nullptr;
+
+    unsigned long jpl::_utils::_profiler::Profiler::parseKBLine(char *line) const{
+        int sizeLine = strlen(line);
+        const char *p = line;
+        while (*p < '0' || *p > '9') // Slide pointer 'till a digit is found
+            p++;
+        line[sizeLine - 3] = '\0'; //-3 since the line will over with " Kb"
+        return std::stoi(p);
+    }
 #endif
 
-jpl::_utils::_profiler::SystemInfo::~SystemInfo(){
-    delete[] this->procsCPUMhz;
-}
-
+jpl::_utils::_profiler::SystemInfo::~SystemInfo(){delete[] this->procsCPUMhz;}
 
 jpl::_utils::_profiler::Profiler::Profiler(){
     this->init();
@@ -29,20 +37,37 @@ void jpl::_utils::_profiler::Profiler::init(){
             PdhAddEnglishCounter(jpl::_utils::_profiler::Profiler::cpuQuery, "\\Processor(_Total)\\% Processor Time", NULL, &jpl::_utils::_profiler::Profiler::cpuTotal);
             PdhCollectQueryData(jpl::_utils::_profiler::Profiler::cpuQuery);
         }
+        if(jpl::_utils::_profiler::Profiler::processors == 0){
+            SYSTEM_INFO sysInfo;
+            GetSystemInfo(&sysInfo);
+            jpl::_utils::_profiler::Profiler::processors = sysInfo.dwNumberOfProcessors;
+        }
+        this->self = GetCurrentProcess();
+        FILETIME ftime, fkernel, fuser;
+        GetSystemTimeAsFileTime(&ftime);
+        memcpy(&this->lastPCPU, &ftime, sizeof(FILETIME));
+        GetProcessTimes(this->self, &ftime, &ftime, &fkernel, &fuser);
+        memcpy(&this->lastPKernelTime, &fkernel, sizeof(FILETIME));
+        memcpy(&this->lastPUserTime, &fuser, sizeof(FILETIME));
+
     #elif __linux__
         this->procSelfStatus = fopen("/proc/self/status", "r");
         this->procSelfStat = fopen("/proc/self/stat", "r");
-        this->procLoadavg = fopen("/proc/loadavg", "r");
-        this->procCpuinfo = fopen("/proc/cpuinfo", "r");
+
+        if(jpl::_utils::_profiler::Profiler::procLoadavg == nullptr)
+            jpl::_utils::_profiler::Profiler::procLoadavg = fopen("/proc/loadavg", "r");
+        if(jpl::_utils::_profiler::Profiler::procCpuinfo == nullptr)
+            jpl::_utils::_profiler::Profiler::procCpuinfo = fopen("/proc/cpuinfo", "r");
+
         if(jpl::_utils::_profiler::Profiler::processors == 0){
             //Let's count how many processors units are available
             char buffer[256];
-            while( fgets(buffer, 256, this->procCpuinfo) != NULL ){
+            while( fgets(buffer, 256, jpl::_utils::_profiler::Profiler::procCpuinfo) != NULL ){
                 if( strncmp(buffer, "processor", 9) == 0){
                     jpl::_utils::_profiler::Profiler::processors++;
                 }
             }
-            rewind(this->procCpuinfo);  //Rewinding /proc/cpuinfo
+            rewind(jpl::_utils::_profiler::Profiler::procCpuinfo);  //Rewinding /proc/cpuinfo
         }
     #endif
 }
@@ -100,27 +125,32 @@ void jpl::_utils::_profiler::Profiler::measureMemory(jpl::_utils::_profiler::Sys
     #endif
 }
 
-void jpl::_utils::_profiler::Profiler::measureCpu(jpl::_utils::_profiler::SystemInfo* &systemInfo) const{
+void jpl::_utils::_profiler::Profiler::measureCpu(jpl::_utils::_profiler::SystemInfo* &systemInfo){
     #ifdef _WIN32
+        //Total CPU
         PDH_FMT_COUNTERVALUE fmt;
         PdhCollectQueryData(jpl::_utils::_profiler::Profiler::cpuQuery);
         PdhGetFormattedCounterValue(jpl::_utils::_profiler::Profiler::cpuTotal, PDH_FMT_DOUBLE, NULL, &fmt);
         systemInfo->totalCpu = fmt.doubleValue;
-
-        /*FILETIME idleTime, kernelTime, userTime;
-        if(GetSystemTimes(&idleTime, &kernelTime, &userTime) == 0)
-            throw new jpl::_exception::RuntimeException("Could not read System Times: " + jpl::_utils::_error::_GetLastErrorAsString());
-        //Transform FILETIMEs into ulong
-        unsigned long uidleTime = ( ((unsigned long)(idleTime.dwHighDateTime)) << 32) | ((unsigned long)idleTime.dwLowDateTime);
-        unsigned long ukernelTime = ( ((unsigned long)(kernelTime.dwHighDateTime)) << 32) | ((unsigned long)kernelTime.dwLowDateTime);
-        unsigned long uuserTime = ( ((unsigned long)(userTime.dwHighDateTime)) << 32) | ((unsigned long)userTime.dwLowDateTime);
-        unsigned long ukTime = uuserTime + ukernelTime;
-        unsigned long long totalTicksSinceLastTime = ukTime - jpl::_utils::_profiler::Profiler::lastTotalTicks;
-        unsigned long long idleTicksSinceLastTime = uidleTime - jpl::_utils::_profiler::Profiler::lastIdleTicks;
-        jpl::_utils::_profiler::Profiler::lastTotalTicks = ukTime;
-        jpl::_utils::_profiler::Profiler::lastIdleTicks = uidleTime;
-        //systemInfo->totalCpu = 100.0f*(totalTicksSinceLastTime-idleTicksSinceLastTime)/idleTicksSinceLastTime;
-        */
+        //CPU used by this processor
+        FILETIME ftime, fkernel, fuser;
+        ULARGE_INTEGER now, kernel, user;
+        GetSystemTimeAsFileTime(&ftime);
+        memcpy(&now, &ftime, sizeof(FILETIME));
+        GetProcessTimes(this->self, &ftime, &ftime, &fkernel, &fuser);
+        memcpy(&kernel, &fkernel, sizeof(FILETIME));
+        memcpy(&user, &fuser, sizeof(FILETIME));
+        systemInfo->procCpu = (100.0f/jpl::_utils::_profiler::Profiler::processors)*(user.QuadPart - this->lastPUserTime.QuadPart + kernel.QuadPart - this->lastPKernelTime.QuadPart)/(now.QuadPart - this->lastPCPU.QuadPart);
+        this->lastPCPU = now;
+        this->lastPKernelTime = kernel;
+        this->lastPUserTime = user;
+        //Cores freq
+        PROCESSOR_POWER_INFORMATION* coresInfo = new PROCESSOR_POWER_INFORMATION[jpl::_utils::_profiler::Profiler::processors];
+        CallNtPowerInformation(ProcessorInformation, NULL, 0, coresInfo, sizeof(PROCESSOR_POWER_INFORMATION)*jpl::_utils::_profiler::Profiler::processors);
+        for(unsigned long i = 0; i < jpl::_utils::_profiler::Profiler::processors; i++){
+            systemInfo->procsCPUMhz[i] = coresInfo[i].CurrentMhz;
+        }
+        delete[] coresInfo;
     #elif __linux__
 
         /*
@@ -129,7 +159,7 @@ void jpl::_utils::_profiler::Profiler::measureCpu(jpl::_utils::_profiler::System
         unsigned long sizeStr = 256, i = 0, c = 0;
         while(true){
             char* buffer = new char[sizeStr];
-            c = getline(&buffer, &sizeStr, this->procCpuinfo);
+            c = getline(&buffer, &sizeStr, jpl::_utils::_profiler::Profiler::procCpuinfo);
             if(c == 0 || c > sizeStr){
                 delete[] buffer;
                 break;
@@ -142,7 +172,7 @@ void jpl::_utils::_profiler::Profiler::measureCpu(jpl::_utils::_profiler::System
             }
             delete[] buffer;
         }
-        rewind(this->procCpuinfo);
+        rewind(jpl::_utils::_profiler::Profiler::procCpuinfo);
 
         /*
             READING TOTAL PERCENTAGE OF USED CPU 
@@ -150,7 +180,7 @@ void jpl::_utils::_profiler::Profiler::measureCpu(jpl::_utils::_profiler::System
         i = 0;
         sizeStr = 256;
         char* buffer = new char[sizeStr];
-        c = getline(&buffer, &sizeStr, this->procLoadavg);
+        c = getline(&buffer, &sizeStr, jpl::_utils::_profiler::Profiler::procLoadavg);
         if(c == 0 || c > sizeStr)
             systemInfo->totalCpu = 0;
         else{
@@ -160,7 +190,7 @@ void jpl::_utils::_profiler::Profiler::measureCpu(jpl::_utils::_profiler::System
             delete buffer;
         }
         delete[] buffer;
-        rewind(this->procLoadavg);
+        rewind(jpl::_utils::_profiler::Profiler::procLoadavg);
 
         /*
             READING PERCENTAGE OF USED CPU BY CURRENT APPLICATION
@@ -183,18 +213,10 @@ void jpl::_utils::_profiler::Profiler::measureCpu(jpl::_utils::_profiler::System
     #endif
 }
 
-unsigned long jpl::_utils::_profiler::Profiler::parseKBLine(char *line) const{
-    int sizeLine = strlen(line);
-    const char *p = line;
-    while (*p < '0' || *p > '9') // Slide pointer 'till a digit is found
-        p++;
-    line[sizeLine - 3] = '\0'; //-3 since the line will over with " Kb"
-    return std::stoi(p);
-}
-
-const jpl::_utils::_profiler::SystemInfo *const jpl::_utils::_profiler::Profiler::measure() const{
+const jpl::_utils::_profiler::SystemInfo *const jpl::_utils::_profiler::Profiler::measure(){
     SystemInfo *memInfo = new SystemInfo;
     memInfo->procsCPUMhz = new unsigned long[jpl::_utils::_profiler::Profiler::processors];
+    memset(memInfo->procsCPUMhz, 0, sizeof(unsigned long)*jpl::_utils::_profiler::Profiler::processors);
     memInfo->time = time(NULL);
     #ifdef _WIN32
         memInfo->upTime = GetTickCount64();
@@ -205,19 +227,14 @@ const jpl::_utils::_profiler::SystemInfo *const jpl::_utils::_profiler::Profiler
 }
 
 void* jpl::_utils::_profiler::Profiler::measures(void* instanceProfiler){
-
     jpl::_utils::_profiler::Profiler* profiler = static_cast<jpl::_utils::_profiler::Profiler*>(instanceProfiler);
-
-    if( profiler == nullptr){
+    if( profiler == nullptr)
         throw new jpl::_exception::IllegalArgumentException("Not a instance of Profiler class has been passed");
-    }
-
     #ifdef _WIN32
         unsigned long ms = profiler->sleepMS;
     #elif __linux__
         unsigned long ms = profiler->sleepMS*1000;
     #endif
-
     std::vector<const jpl::_utils::_profiler::SystemInfo*>* list = profiler->systemInfoList;
     while (profiler->started){
         const jpl::_utils::_profiler::SystemInfo* measureInfo = profiler->measure();
@@ -229,16 +246,13 @@ void* jpl::_utils::_profiler::Profiler::measures(void* instanceProfiler){
             usleep(ms);
         #endif
     }
-    
     return nullptr;
 }
 
 
 void jpl::_utils::_profiler::Profiler::start(unsigned long sleepMS){
-
     if(this->started)
         throw new jpl::_exception::IllegalStateException("This profiler has been already started");
-    
     this->systemInfoList = new std::vector<const jpl::_utils::_profiler::SystemInfo*>();
     this->sleepMS = sleepMS;
     this->threadProfiler = new std::thread(&jpl::_utils::_profiler::Profiler::measures, this);
@@ -251,26 +265,21 @@ void jpl::_utils::_profiler::Profiler::start(unsigned long sleepMS){
 }
 
 void jpl::_utils::_profiler::Profiler::end(){
-
     if(!this->started)
         throw new jpl::_exception::IllegalStateException("This profiler has been already over");
-    
     this->started = false;
     free(this->threadProfiler);
 }
 
-unsigned long jpl::_utils::_profiler::Profiler::getCoresAmount() {
-    return jpl::_utils::_profiler::Profiler::processors;
-}
-
-const std::vector<const jpl::_utils::_profiler::SystemInfo*>* jpl::_utils::_profiler::Profiler::getSystemInfoList() const{
-    return this->systemInfoList;
-}
-
+unsigned long jpl::_utils::_profiler::Profiler::getCoresAmount() {return jpl::_utils::_profiler::Profiler::processors;}
+const std::vector<const jpl::_utils::_profiler::SystemInfo*>* jpl::_utils::_profiler::Profiler::getSystemInfoList() const{ return this->systemInfoList;}
 
 jpl::_utils::_profiler::Profiler::~Profiler(){
-    #ifdef __linux__
+    #ifdef _WIN32
+        CloseHandle(this->self);
+    #elif __linux__
         fclose(this->procSelfStatus);
         fclose(this->procSelfStat);
     #endif
+    delete this->systemInfoList;
 }

@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 3.9)
 
-set(UTILS_VERSION_JPL, "1.0.0")
-set(UTILS_VERSION_JPL_str, "1_0_0")
+set(UTILS_VERSION_JPL "1.0.0")
+set(UTILS_VERSION_JPL_str "1_0_0")
 project(Utils VERSION ${UTILS_VERSION_JPL})
-message("Compiling Utils Module v: " + ${UTILS_VERSION_JPL})
+message("Compiling Utils Module v: " ${UTILS_VERSION_JPL})
 
 #Utils's MACRO part
 if(${PROFILER_JPL})

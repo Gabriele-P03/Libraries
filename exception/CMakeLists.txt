@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 3.9)
 
-set(EXCEPTION_VERSION_JPL, "1.0.0")
-set(EXCEPTION_VERSION_JPL_str, "1_0_0")
+set(EXCEPTION_VERSION_JPL "1.0.0")
+set(EXCEPTION_VERSION_JPL_str "1_0_0")
 project(Exception VERSION ${EXCEPTION_VERSION_JPL})
-message("Compiling Exception Module v: " + ${EXCEPTION_VERSION_JPL})
+message("Compiling Exception Module v: " ${EXCEPTION_VERSION_JPL})
 
 set(CMAKE_C_COMPILER gcc)
 set(CMAKE_CXX_COMPILER g++)

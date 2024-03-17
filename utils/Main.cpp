@@ -13,10 +13,14 @@ int main(){
 
     try{
         jpl::_utils::_profiler::Profiler profiler;
-        
-        while(true){
-            const jpl::_utils::_profiler::SystemInfo* sysInfo = profiler.measure(); 
-            std::cout<<*sysInfo;
+        profiler.start(1000);
+        for(int i = 0; i < 10000; i++)
+        {
+            std::cout<<i<<" ";
+        }
+        profiler.end();
+        for(int i = 0; i < profiler.getSystemInfoList()->size(); i++){
+            std::cout<<*profiler.getSystemInfoList()->at(i);
         }
     }catch(const jpl::_exception::RuntimeException* ex){
         std::cout<<*ex;

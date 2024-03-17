@@ -1,14 +1,14 @@
 #include "Profiler.hpp"
 
 unsigned long jpl::_utils::_profiler::Profiler::processors = 0;
-unsigned long jpl::_utils::_profiler::Profiler::processors = 0;
+unsigned long jpl::_utils::_profiler::Profiler::lastCPUTime = 0;
+unsigned long jpl::_utils::_profiler::Profiler::lastKernelTime = 0;
+unsigned long jpl::_utils::_profiler::Profiler::lastUserTime = 0;
 
 #ifdef _WIN32
     PDH_HQUERY jpl::_utils::_profiler::Profiler::cpuQuery = nullptr;
     PDH_HCOUNTER jpl::_utils::_profiler::Profiler::cpuTotal = nullptr;
-    unsigned long jpl::_utils::_profiler::Profiler::lastCPUTime = 0;
-    unsigned long jpl::_utils::_profiler::Profiler::lastKernelTime = 0;
-    unsigned long jpl::_utils::_profiler::Profiler::lastUserTime = 0;
+
 #elif __linux__
     FILE* jpl::_utils::_profiler::Profiler::procCpuinfo = nullptr;
     FILE* jpl::_utils::_profiler::Profiler::procLoadavg = nullptr;
@@ -52,7 +52,6 @@ void jpl::_utils::_profiler::Profiler::init(){
 
     #elif __linux__
         this->procSelfStatus = fopen("/proc/self/status", "r");
-        this->procSelfStat = fopen("/proc/self/stat", "r");
 
         if(jpl::_utils::_profiler::Profiler::procLoadavg == nullptr)
             jpl::_utils::_profiler::Profiler::procLoadavg = fopen("/proc/loadavg", "r");
@@ -69,6 +68,11 @@ void jpl::_utils::_profiler::Profiler::init(){
             }
             rewind(jpl::_utils::_profiler::Profiler::procCpuinfo);  //Rewinding /proc/cpuinfo
         }
+
+        timeSample tmSample;
+        jpl::_utils::_profiler::Profiler::lastCPUTime = times(&tmSample);
+        jpl::_utils::_profiler::Profiler::lastKernelTime = tmSample.tms_stime;
+        jpl::_utils::_profiler::Profiler::lastUserTime = tmSample.tms_utime;
     #endif
 }
 
@@ -195,21 +199,24 @@ void jpl::_utils::_profiler::Profiler::measureCpu(jpl::_utils::_profiler::System
         /*
             READING PERCENTAGE OF USED CPU BY CURRENT APPLICATION
         */
-        unsigned long utime, stime, starttime, elapesdtime;
-        i = 0;
-        sizeStr = 512;
-        char buff[sizeStr];
-        if( fgets(buff, 256, this->procSelfStat) != NULL){
-            //14-15-22
-            std::vector<std::string>* vec = jpl::_utils::_string::split(std::string(buff), std::regex("\\((.*?)\\)| "));
-            float utime = atof(vec->at(13).c_str());    //utime is the time process is running in user mode
-            float stime = atof(vec->at(14).c_str());    //stime is the time process is running in kernel mode
-            float perc = (utime+stime)/systemInfo->upTime;
-            systemInfo->procCpu = perc;
-            delete vec;
+        timeSample tmSample;
+        long now = times(&tmSample);
+        double percent;
+        if(now == -1)
+            throw new jpl::_exception::RuntimeException("Could not read CPU usage of current process: " + jpl::_utils::_error::_GetLastErrorAsString());
+        if(now <= jpl::_utils::_profiler::Profiler::lastCPUTime || tmSample.tms_stime < jpl::_utils::_profiler::Profiler::lastKernelTime || tmSample.tms_utime < jpl::_utils::_profiler::Profiler::lastUserTime){
+            percent = (jpl::_utils::_profiler::Profiler::lastKernelTime+jpl::_utils::_profiler::Profiler::lastUserTime)/jpl::_utils::_profiler::Profiler::lastCPUTime;
+        }else{
+            percent = tmSample.tms_stime-jpl::_utils::_profiler::Profiler::lastKernelTime;
+            percent+= tmSample.tms_utime-jpl::_utils::_profiler::Profiler::lastUserTime;
+            percent/= (now - jpl::_utils::_profiler::Profiler::lastCPUTime);
+            jpl::_utils::_profiler::Profiler::lastCPUTime = now;
+            jpl::_utils::_profiler::Profiler::lastKernelTime = tmSample.tms_stime;
+            jpl::_utils::_profiler::Profiler::lastUserTime = tmSample.tms_utime;
         }
-        rewind(this->procSelfStat);
-       
+        percent /= jpl::_utils::_profiler::Profiler::processors;
+        percent *= 100.0f;
+        systemInfo->procCpu = percent;
     #endif
 }
 
@@ -235,9 +242,9 @@ void* jpl::_utils::_profiler::Profiler::measures(void* instanceProfiler){
     #elif __linux__
         unsigned long ms = profiler->sleepMS*1000;
     #endif
-    std::vector<const jpl::_utils::_profiler::SystemInfo*>* list = profiler->systemInfoList;
+    std::vector<const jpl::_utils::_profiler::SystemInfo*>* &list = profiler->systemInfoList;
     while (profiler->started){
-        const jpl::_utils::_profiler::SystemInfo* measureInfo = profiler->measure();
+        const jpl::_utils::_profiler::SystemInfo* const measureInfo = profiler->measure();
         list->push_back(measureInfo);
         
         #ifdef _WIN32
@@ -256,12 +263,14 @@ void jpl::_utils::_profiler::Profiler::start(unsigned long sleepMS){
     this->systemInfoList = new std::vector<const jpl::_utils::_profiler::SystemInfo*>();
     this->sleepMS = sleepMS;
     this->threadProfiler = new std::thread(&jpl::_utils::_profiler::Profiler::measures, this);
+    this->started = true;
     try{
         this->threadProfiler->detach();
     }catch(const std::system_error* ex){
+        this->started = false;
         throw new jpl::_exception::RuntimeException("This profiler could not be started: " + jpl::_utils::_error::_GetLastErrorAsString(ex->code().value()));
     }
-    this->started = true;
+
 }
 
 void jpl::_utils::_profiler::Profiler::end(){
@@ -279,7 +288,6 @@ jpl::_utils::_profiler::Profiler::~Profiler(){
         CloseHandle(this->self);
     #elif __linux__
         fclose(this->procSelfStatus);
-        fclose(this->procSelfStat);
     #endif
     delete this->systemInfoList;
 }

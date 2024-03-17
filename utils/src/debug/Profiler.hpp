@@ -32,6 +32,7 @@
     #elif __linux__
         #include <sys/sysinfo.h>
         #include <unistd.h>
+        #include <sys/times.h>
     #endif
 
     namespace jpl{
@@ -51,20 +52,18 @@
                     } PROCESSOR_POWER_INFORMATION, *PPROCESSOR_POWER_INFORMATION;
                 #elif __linux__    
                     typedef struct sysinfo SysInfo;
+                    typedef struct tms timeSample;
                 #endif
                 class Profiler{
 
                     protected:
 
                         static unsigned long processors;    //Contains the amount of CPU unit available
-
+                        static unsigned long lastCPUTime, lastKernelTime, lastUserTime;
                         #ifdef __linux__
                             static FILE* procLoadavg;
                             static FILE* procCpuinfo;
-                            static FILE* procLoadavg;
-                            static FILE* procCpuinfo;
                             FILE* procSelfStatus;
-                            FILE* procSelfStat;
 
                             /**
                              * Parse the single line in order to retrieve what is before " Kb"  
@@ -75,7 +74,6 @@
                             static PDH_HCOUNTER cpuTotal; 
                             HANDLE self;
                             ULARGE_INTEGER lastPCPU, lastPKernelTime, lastPUserTime;
-                            static unsigned long lastCPUTime, lastKernelTime, lastUserTime; 
                         #endif 
 
                         /**

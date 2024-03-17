@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 3.9)
 
-project(LoggerJPL VERSION 1.0.0)
+set(LOGGER_VERSION_JPL "1.0.0")
+set(LOGGER_VERSION_JPL_str "1_0_0")
+project(LoggerJPL VERSION ${LOGGER_VERSION_JPL})
+message("Compiling Logger v: " ${LOGGER_VERSION_JPL})
 
 add_library( loggerJPL_sh SHARED "src/Logger.cpp")
 set_target_properties(loggerJPL_sh PROPERTIES OUTPUT_NAME "loggerJPL_1_0_0")

@@ -1,6 +1,9 @@
 /**
- * A profiler can be used to catch global,current program and current thread memory consumption;
- * it can run either single-time or as a scheduled thread 
+ * The profiler is, as well-known, a tool which probes processors and memory consumption by the current process.
+ * This one do it even for global information (i.e. Total Mem, Total CPU).
+ * 
+ * You can use it once or as a scheduled thread. <br>
+ * For the first mode, you just have to call Profiler#  
  * 
  * Usually we represents the CPU usage as a percentage of elapsed time since process started.
  * So the total CPU usage of an application is the sum of utime and stime, divided by elapsed time 
@@ -108,6 +111,9 @@
                         const std::vector<const SystemInfo*>* getSystemInfoList() const;
 
                         static unsigned long getCoresAmount();
+
+                        bool isStarted() const noexcept;
+                        unsigned long getSleepMS() const noexcept;
                 };
 
                 struct SystemInfo{

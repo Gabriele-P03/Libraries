@@ -28,6 +28,7 @@ jpl::_utils::_profiler::SystemInfo::~SystemInfo(){delete[] this->procsCPUMhz;}
 jpl::_utils::_profiler::Profiler::Profiler(){
     this->init();
     this->started = false;
+    this->sleepMS = 0;
 }
 
 void jpl::_utils::_profiler::Profiler::init(){
@@ -291,3 +292,6 @@ jpl::_utils::_profiler::Profiler::~Profiler(){
     #endif
     delete this->systemInfoList;
 }
+
+bool jpl::_utils::_profiler::Profiler::isStarted() const noexcept{ return this->started;}
+unsigned long jpl::_utils::_profiler::Profiler::getSleepMS() const noexcept{ return this->sleepMS;}

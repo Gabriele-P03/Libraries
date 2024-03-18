@@ -8,4 +8,5 @@ git_repo_url = "https://github.com/Gabriele-P03/JPL/"
 git_default_branch = "main"
 
 [paths]
+output_dir = "docs"
 compile_commands = "build/compile_commands.json"

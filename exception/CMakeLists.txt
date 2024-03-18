@@ -5,6 +5,8 @@ set(EXCEPTION_VERSION_JPL_str "1_0_0")
 project(Exception VERSION ${EXCEPTION_VERSION_JPL})
 message("Compiling Exception v: " ${EXCEPTION_VERSION_JPL})
 
+target_include_directories(Exception PUBLIC "src/**.hpp")
+
 set(CMAKE_C_COMPILER gcc)
 set(CMAKE_CXX_COMPILER g++)
 

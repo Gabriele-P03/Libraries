@@ -117,7 +117,7 @@ namespace jpl{
                          * 
                          * @param size amount of elements which will be insert
                         */
-                        virtual void reallocate(unsigned long size){
+                        virtual void reallocate(unsigned long size) noexcept{
                             this->max = size;
                             if(this->size == 0){
                                 this->list = new T[size];
@@ -127,7 +127,7 @@ namespace jpl{
                         }
 
 
-                        virtual T &get(unsigned long index) const override{
+                        virtual T get(unsigned long index) const override{
                             if(index >= this->size){
                                 throw new jpl::_exception::IndexOutOfBoundsException(this->size, index);
                             }

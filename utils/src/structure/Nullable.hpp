@@ -18,17 +18,15 @@ namespace jpl{
 
             public:
                 static bool isNull(T &value){return false;}
-                static void nullify(T &value){}
-                static bool isTypeNullable(){return false;}
+                static void nullify(T* &value){}
         };
 
         template <typename P>
         class Nullable<P *>{
 
             public:
-                static bool isNull(P* value){return value == nullptr;}
-                static void nullify(P* &value){value = nullptr;}
-                static bool isTypeNullable(){return true;}
+                static bool isNull(P* &value){return value == NULL;}
+                static void nullify(P** &value){*value = NULL;}
         };
     }
 }

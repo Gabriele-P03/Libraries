@@ -1,29 +1,33 @@
-#include "src/debug/Profiler.hpp"
-#include "src/StringUtils.hpp"
+#include "src/structure/list/LinkedList.hpp"
 
 using namespace jpl;
 using namespace _utils;
+using namespace _collections;
+using namespace _list; 
 
-#include <iostream>
-#include <chrono>
-#include <thread>
-
-int main(){
-    //std::this_thread::sleep_for(std::chrono::milliseconds(5000));
+/*
 
     try{
-        jpl::_utils::_profiler::Profiler profiler;
-        profiler.start(1000);
-        for(int i = 0; i < 10000; i++)
-        {
-            std::cout<<i<<" ";
-        }
-        profiler.end();
-        for(int i = 0; i < profiler.getSystemInfoList()->size(); i++){
-            std::cout<<*profiler.getSystemInfoList()->at(i);
-        }
-    }catch(const jpl::_exception::RuntimeException* ex){
-        std::cout<<*ex;
+        int *x = new int(1), *y = new int(2);
+        LinkedList<int*>* list1 = new LinkedList<int*>{x, y};
+        list1->addAll(list1);
+        std::cout<<*list1<<std::endl;
+        list1->clear();
+        std::cout<<*list1;
+        
+    }catch(const _exception::RuntimeException* ex){
+        std::cout<<ex->what();
     }
-    //std::cout<<memInfo->totalMemory;
+*/
+
+
+int main(){
+
+    int* x = new int(1);
+    int* z = new int;
+    memcpy(z, x, sizeof(int));
+    
+    delete z;
+    delete x;
+    std::cout<<"End"; 
 }

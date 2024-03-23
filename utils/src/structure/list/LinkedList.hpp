@@ -43,15 +43,15 @@ namespace jpl{
                                 this->next = next;
                                 this->previous = previous;
                             }
-                            Node(const T &element) : Node(element, nullptr, nullptr){}
+                            Node(T element) : Node(element, nullptr, nullptr){}
                             Node(){}
                         };
 
                         Node *head, *tail;
 
                         Node* forwardProbe(unsigned long steps) const {
-                            if( steps >= this->size )
-                                throw new _exception::IndexOutOfBoundsException(this->size, steps);
+                            if( steps >= this->max )
+                                throw new _exception::IndexOutOfBoundsException(this->max-1, steps);
                             Node* node = head;
                             for(unsigned long i = 0; i < steps; i++){
                                 node = node->next;
@@ -59,8 +59,8 @@ namespace jpl{
                             return node;
                         }
                         Node* reverseProbe(unsigned long steps) const{
-                            if( steps >= this->size )
-                                throw new _exception::IndexOutOfBoundsException(this->size, steps);
+                            if( steps >= this->max )
+                                throw new _exception::IndexOutOfBoundsException(this->max-1, steps);
                             Node* node = tail;
                             for(unsigned long i = steps; i > 0; i--){
                                 node = node->previous;
@@ -69,8 +69,8 @@ namespace jpl{
                         }
 
                         Node* smartProbe(unsigned long index) const{
-                            if(index >= this->size){
-                                throw new _exception::IndexOutOfBoundsException(this->size-1, attempted);
+                            if(index >= this->max){
+                                throw new _exception::IndexOutOfBoundsException(this->max-1, index);
                             }
                             if( index <= (this->size/2) ){
                                 return this->forwardProbe(index);
@@ -138,16 +138,47 @@ namespace jpl{
                             this->head = nullptr;
                             this->tail = nullptr;
                         }
-                        LinkedList(List<T>* list) : List<T>(list->getSize()){
-                            this->head = nullptr;
-                            this->tail = nullptr;
+                        LinkedList(unsigned long size) : List<T>(){
+                            if(size > 0){
+                                Node* pre = nullptr;
+                                for(unsigned long i = 0; i < size; i++){
+                                    Node* cr = new Node();
+                                    if(i == 0){
+                                        this->head = cr;
+                                    }else{
+                                        pre->next = cr;
+                                        cr->previous = pre;
+                                    }
+                                    pre = cr;
+                                }
+                                this->tail = pre;   //Pre is always set as the last one
+                                this->max = size;
+                                this->size = size;
+                            }
+                        }
+                        LinkedList(List<T>* list) : LinkedList<T>(list->getSize()){
                             this->addAll(list);
                         }
-
-                        virtual T &get(unsigned long index) const override{
-                            if(index >= this->size){
-                                throw new _exception::IndexOutOfBoundsException(this->size, index);
+                        LinkedList(std::initializer_list<T> list) : List<T>(){
+                            unsigned long size = list.size();
+                            Node* pre = nullptr;
+                            for(unsigned long i = 0; i < size; i++){
+                                Node* cr = new Node();
+                                if(i == 0){
+                                    this->head = cr;
+                                }else{
+                                    pre->next = cr;
+                                    cr->previous = pre;
+                                }
+                                cr->element = list.begin()[i];
+                                pre = cr;
                             }
+                            this->tail = pre;
+                            this->max = size;
+                            this->size = size;
+                        }
+
+                        virtual T get(unsigned long index) const override{
                             if(index == 0){
                                 return this->head->element;
                             }else if(index == this->size-1){
@@ -157,10 +188,7 @@ namespace jpl{
                             }
                         }
 
-                        virtual void add(unsigned long index, const T &t) override{
-                            if(index > this->size){
-                                throw new _exception::IndexOutOfBoundsException(this->size, index);
-                            }
+                        virtual void add(unsigned long index, T t) override{
                             Node* newNode = new Node(t);
                             if(index == 0){ //head
                                 if(this->size != 0){//LL not empty
@@ -172,24 +200,26 @@ namespace jpl{
                                 this->head = newNode;
                             }else if(index == this->size){//Tail
                                 this->tail->next = newNode;
-                                newNode = this->tail;
+                                newNode->previous = this->tail;
                                 this->tail = newNode;
                             }else{
                                 Node* tmp = this->smartProbe(index);
-                                newNode->previous = tmp;
-                                newNode->next = tmp->next;
-                                tmp->next = newNode;
-                                tmp->next->previous = newNode;
+                                tmp->previous->next = newNode;
+                                newNode->previous = tmp->previous;
+                                tmp->previous = newNode;
+                                newNode->next = tmp;    
                             }
-                            this->size++;
+                            if(this->size++ >= this->max){
+                                this->max = this->size;
+                            }
                         }
 
-                        virtual void add(const T &t) noexcept override{
+                        virtual void add(T t) noexcept override{
                             this->add(this->size, t);
                         }
 
 
-                        virtual bool contains(const T t) const noexcept override{
+                        virtual bool contains(T t) const noexcept override{
                             Node* cr = this->head;
                             for(unsigned long i = 0; i < this->size; i++){
                                 if(cr->element == t){
@@ -200,50 +230,65 @@ namespace jpl{
                             return false;
                         }
                         virtual void clear() noexcept override{
-                            Node* cr = this->head;
+                            Node* cr = this->head, *next = nullptr;
                             for(unsigned long i = 0; i < this->size; i++){
-                                delete cr;
-                                cr = cr->next;
+                                if(Pointerable<T>::isPointer(cr->element)){
+                                    if(!Nullable<T>::isNull(cr->element)){
+                                        T &t = cr->element;
+                                        t = NULL;
+                                        //Ereaseable<T>::erease(*t);
+                                    
+                                    }
+                                }
+                                next = cr->next;
+                                Ereaseable<Node*>::erease(cr);
+                                cr = next;
                             }   
                             this->size = 0;
+                            this->max = 0;
                         }
                         virtual void addAll(unsigned long index, List<T>* list) override{
                             if(list == nullptr){
                                 throw new _exception::NullPointerException("list passed to addAll cannot be nullptr");
                             }
+
                             unsigned long size = list->getSize();
-                            Node* buffer = new Node[size]();
-                            unsigned long i = 0;
-                            list->forEach( [&](T t){
-                                if(i < size-1){
-                                    buffer[i].next = &buffer[i+1];
+                            Node* first = nullptr, *pre = nullptr;
+                            for(unsigned long i = 0; i < size; i++){
+                                T t = list->get(i);
+                                Node* n = new Node(t);
+                                if(i == 0){
+                                    first = n;
+                                }else{
+                                    pre->next = n;
+                                    n->previous = pre;
                                 }
-                                if(i > 0){
-                                    buffer[i].previous = &buffer[i-1];
-                                }
-                                buffer[i++].element = t;
-                            });
+                                pre = n;
+                            }
+
                             if(this->size == 0){
-                                this->head = buffer;
-                                this->tail = &buffer[size-1];   //It is safe even when collection has one item
+                                this->head = first;
+                                this->tail = pre;   //It is safe even when collection has one item
                             }else{
                                 if(index == 0){
-                                    this->head->previous = &buffer[size-1];
-                                    buffer[size-1].next = this->head;
-                                    this->head = buffer;
+                                    this->head->previous = pre;
+                                    pre->next = this->head;
+                                    this->head = first;
                                 }else if(index == this->size){
-                                    this->tail->next = buffer;
-                                    buffer[0].previous = this->tail;
-                                    this->tail = &buffer[size-1]; 
+                                    this->tail->next = first;
+                                    first->previous = this->tail;
+                                    this->tail = pre;
                                 }else{
-                                    Node* cr = this->smartProbe(index);
-                                    buffer->previous = cr;
-                                    buffer[size-1].next = cr->next;
-                                    cr->next->previous = &buffer[size-1];
-                                    cr->next = buffer;
+                                    Node* cr1 = this->smartProbe(index);
+                                    cr1->next->previous = pre;
+                                    pre->next = cr1->next;
+                                    cr1->next = first;
+                                    first->previous = cr1;
                                 }
                             }
                             this->size += size;
+                            if(this->size > this->max)
+                                this->max = this->size;
                         }
                         virtual void addAll(List<T>* list) override{
                             this->addAll(this->size, list);
@@ -289,7 +334,7 @@ namespace jpl{
                             Node* firstDeleted = nullptr;
                             unsigned long len = 0;
                             for(unsigned long i = 0; i < list->getSize(); i++){
-                                T &ls = list->get(i); 
+                                T ls = list->get(i); 
                                 for(unsigned long j = 0; j < this->size; j++){
                                     if(cr->element == ls){
                                         Ereaseable<T>::erease(cr->element);
@@ -316,7 +361,7 @@ namespace jpl{
                         }
                         virtual void removeAllIf(_functional::Predicate<T> predicate) noexcept override{
                             Node* cr = this->head;
-                            Node* &firstDeleted = nullptr;
+                            Node* firstDeleted = nullptr;
                             unsigned long len = 0;
                             for(unsigned long i = 0; i < this->size; i++){
                                 if(predicate.test(cr->element)){
@@ -340,9 +385,29 @@ namespace jpl{
                                 this->size -= len;
                             }  
                         }
-                        virtual T set(unsigned long index, const T &t) override {}
-                        virtual List<T>* subList(unsigned long start, unsigned long end) const override {return NULL;}
-                        virtual List<T>* subList(unsigned long start) const override {return NULL;}
+                        virtual T set(unsigned long index, T t) override {
+                            Node* cr = this->smartProbe(index);
+                            T cp;
+                            Copyable<T>::copy(cp, cr->element);
+                            cr->element = t;
+                            return cp;
+                        }
+                        virtual List<T>* subList(unsigned long start, unsigned long end) const override {
+                            if(start >= end)
+                                throw new jpl::_exception::IndexOutOfBoundsException(end, start);
+                            if(end > this->max)
+                                throw new jpl::_exception::IndexOutOfBoundsException(this->max, end);
+                            unsigned long offset = end - start;
+                            jpl::_utils::_collections::_list::LinkedList<T>* list = new jpl::_utils::_collections::_list::LinkedList<T>(offset);
+                            Node* cr = this->head, *cr1 = list->head;
+                            for(unsigned long i = 0; i < offset; i++){
+                                cr1->element = cr->element;
+                                cr = cr->next;
+                                cr1 = cr1->next;
+                            }
+                            return list;
+                        }
+                        virtual List<T>* subList(unsigned long start) const override {return this->subList(start, this->max);}
                         virtual void forEach(_functional::Consumer<T> consumer) override {
                             Node* cr = this->head;
                             for(unsigned long i = 0; i < this->size; i++){
@@ -354,7 +419,7 @@ namespace jpl{
 
                         virtual void compress() noexcept override{
                             Node* cr = this->head;
-                            Node* &firstNull = nullptr;
+                            Node* firstNull = nullptr;
                             unsigned long len = 0;
                             for(unsigned long i = 0; i < this->size; i++){
                                 if(Nullable<T>::isNull(cr->element)){

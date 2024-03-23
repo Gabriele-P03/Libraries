@@ -29,7 +29,9 @@ namespace jpl{
 
             public:
                 static void copy(P* &dst, const P* src){
-                    memcpy(dst, src, sizeof(*src));
+                    if(dst = nullptr)
+                        dst = (P*)malloc(sizeof(src));
+                    memcpy(dst, src, sizeof(src));
                 }
         };
     }

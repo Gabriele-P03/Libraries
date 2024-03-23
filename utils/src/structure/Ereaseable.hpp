@@ -11,6 +11,8 @@
 #ifndef EREASEABLE_JPL
 #define EREASEABLE_JPL
 
+#include <assert.h>
+
 namespace jpl{
 
     namespace _utils{
@@ -28,9 +30,8 @@ namespace jpl{
         class Ereaseable<P *>{
 
             public:
-                static void erease(P *value){
+                static void erease(P* &value){
                     delete value;
-                    value = nullptr;
                 }
                 static void v_erease(P** &list, unsigned long size){
                     for(unsigned long i = 0; i < size; i++){

@@ -25,6 +25,7 @@
 #include "Printable.hpp"
 #include "Copyable.hpp"
 #include "Nullable.hpp"
+#include "Pointerable.hpp"
 #include "../functional/predicate/Predicate.hpp"
 
 #include <concepts>
@@ -83,14 +84,14 @@ namespace jpl{
                      * @param t 
                      * @throw NullPointerException if list does not permit null elements and t is nullptr
                      */
-                    virtual void add(const T &t) = 0;
+                    virtual void add(T t) = 0;
 
 
                     /**
                      * @param t 
                      * @return Check if the collection contains t
                      */
-                    virtual bool contains(const T t) const noexcept = 0;
+                    virtual bool contains(T t) const noexcept = 0;
 
 
                     /**

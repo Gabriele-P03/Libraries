@@ -76,7 +76,7 @@ namespace jpl{
                      * @throw NullPointerException if list does not permit null elements and t it is
                      * @throw RuntimeException if an element is already present into index position
                     */
-                    virtual void add(unsigned long index, const T &t) = 0;
+                    virtual void add(unsigned long index, T t) = 0;
                     /**
                      * Insert the whole given list at index
                      * 
@@ -103,7 +103,7 @@ namespace jpl{
                      * 
                      * @throw IndexOutOfBounds if index is graeter than size
                     */
-                    virtual T &get(unsigned long index) const = 0;
+                    virtual T get(unsigned long index) const = 0;
 
 
                     /**
@@ -152,7 +152,7 @@ namespace jpl{
                      * @throw IndexOutOfBounds if index is graeter than length()-1 or less than 0
                      * @throw NullPointerException if list does not permit null elements and t it is
                     */
-                    virtual T set(unsigned long index, const T &t) = 0;
+                    virtual T set(unsigned long index, T t) = 0;
 
                     /**
                      * @param start index of the first element to copy

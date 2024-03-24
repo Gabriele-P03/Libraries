@@ -41,7 +41,7 @@ namespace jpl{
                     if(value == nullptr)
                         os<<"nullptr ";
                     else
-                        os<<*value<<" ";
+                        os<<value<<" ";
                     return os;
                 }
 

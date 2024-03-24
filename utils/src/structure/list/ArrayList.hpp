@@ -312,32 +312,6 @@ namespace jpl{
                             }
                         }
 
-                        virtual void compress() noexcept override{
-                            unsigned long c = 0;
-                            unsigned long firstNull = this->size;
-                            for(unsigned long i = 0; i < this->size; i++){
-                                T t = this->list[i];
-                                if(Nullable<T>::isNull(t)){
-                                    if(firstNull == this->size){
-                                        firstNull = i;
-                                    }
-                                }else{
-                                    if(firstNull != this->size){
-                                        unsigned long offset = i-firstNull;
-                                        this->leftShiftItems(firstNull, offset);
-                                        this->size -= offset;
-                                        firstNull = this->size;
-                                        i -= offset;
-                                    }
-                                }
-                            }
-                            if(firstNull != this->size){
-                                unsigned long offset = this->size-firstNull;
-                                this->leftShiftItems(firstNull, offset);
-                                this->size -= offset;
-                            }
-                        }
-
                         friend std::ostream& operator<<(std::ostream& os, const ArrayList<T> &list){
                             for(unsigned long i = 0; i < list.size; i++){
                                 Printable<T>::print(os, list.list[i]);

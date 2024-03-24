@@ -1,24 +1,15 @@
 /**
  * @file
  * 
- * A list is an ordered set of elements (either primitive types or object, either value or pointer) which are stored
- * as DSA theory - depending on its feature
+ * All list implementation - unlike Set, or other such implementations - allow you to insert duplicate elements
+ * and null both; otherwise a RuntimeException or a NullPointerException is thrown
  * 
- * In this header file there are only pure virtual methods which are used by all JPL's List data-structure.
+ * In all duplicated or nullable implementations, elements are managed via std::shared_ptr, therefore, in case of
+ * pointer type, you have never to destory them by yourself. Those one provide special function to catch all std::shared_ptr
+ * which point to the same object and call std::shared_ptr::restore() for each of them. 
+ * As you can get by cppreference.com, even after have restored the last std::shared_ptr, you do not need to call delete operator
+ * on the object since it is already called by the last restored one. 
  * 
- * All list implementation - unlike Set - allow you to insert duplicate elements
- * Some list implementation do not let you insert nullptr o NULL, throwing a JPL's NullPointerException
- * 
- * 
- * Methods as either set() or add() do put stuff you give them into the list; therefore, if you have 
- * declared an ArrayList of pointers, no new object will be allocated...
- * 
- * Just like insertion methods, even occurrence-checking methods work like them; therefore, if you have 
- * declared an ArrayList of pointers, memory address will be compareted
- * 
- * About removeAll ones, even them will cause a deletion of pointer into both list; therefore, once you 
- * had called one of them, you should also call compress() function on the one passed as argument 
- * in order to remove nullptr and resize it.
  * 
  * @date 2023-07-12
  * @copyright Copyright (c) 2023
@@ -28,6 +19,7 @@
 #ifndef LISTI_JPL
 #define LISTI_JPL
 
+#include <memory>
 #include "../Collection.hpp"
 #include <jpl/exception/runtime/IndexOutOfBoundsException.hpp>
 #include <jpl/exception/runtime/NotFoundException.hpp>
@@ -64,6 +56,14 @@ namespace jpl{
                             throw new _exception::NullPointerException("You cannot pass a nullptr as list");
                         }
                     }
+
+                    /**
+                     * Remove all instance of t into the collection
+                     * 
+                     * @param t element
+                     * @param start first index (excluded)
+                    */
+                    virtual void clearAllOf(T t, unsigned long start) = 0;
                     
                 public:
 
@@ -126,18 +126,27 @@ namespace jpl{
                     virtual void removeAt(unsigned long index) = 0;
                     /**
                      * @brief remove t from this collection
+                     * It does not throw NotFoundException if t has not been found
                      * 
                      * @param t item to remove
-                     * @throw NotFoundException if t has not been found into this collection
                      */
-                    virtual void remove(T t) = 0;                    
+                    virtual void remove(T t) noexcept = 0 ;   
+                    /**
+                     * @brief remove all t instance - if T is a pointer type - from this collection 
+                     * It does not throw NotFoundException if t has not been found
+                     * 
+                     * @param t item to remove
+                     * 
+                     * @throw NotFoundException if at least one t has not been found 
+                     */
+                    virtual void removeAllOf(T t) noexcept = 0;                  
                     /**
                      * @brief remove all list's items from this collection
+                     * It does not throw NotFoundException if t has not been found
                      * 
                      * @param list list of items to remove
-                     * @throw NotFoundException if at least one item into list has not been found
                      */
-                    virtual void removeAll(List<T>* list) = 0;
+                    virtual void removeAll(List<T>* list) noexcept = 0;
                     /**
                      * @brief Remove all elements which respect the given predicate
                      * @param predicate
@@ -174,12 +183,6 @@ namespace jpl{
                      * @throw IndexOutOfBounds if start is graeter or equals than max
                     */
                     virtual List<T>* subList(unsigned long start) const = 0;
-
-                    /**
-                     * This functions performs only whereas T is a pointer
-                     * It removes nullptr items from the list and resize it
-                    */
-                    virtual void compress() noexcept = 0;
 
             };
         }

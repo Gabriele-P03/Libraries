@@ -21,7 +21,6 @@
 #define COLLECTIONI_JPL
 
 #include "Iterable.hpp"
-#include "Ereaseable.hpp"
 #include "Printable.hpp"
 #include "Copyable.hpp"
 #include "Nullable.hpp"
@@ -37,7 +36,7 @@ namespace jpl{
         namespace _collections{
             
             template <typename T>
-            class Collection : public Iterable<T>, public Ereaseable<T>{
+            class Collection : public Iterable<T>{
 
                 protected:
 

@@ -32,6 +32,7 @@ namespace jpl{
             public:
                 static void erease(P* &value){
                     delete value;
+                    value = nullptr;
                 }
                 static void v_erease(P** &list, unsigned long size){
                     for(unsigned long i = 0; i < size; i++){

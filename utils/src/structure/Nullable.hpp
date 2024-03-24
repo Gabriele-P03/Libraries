@@ -25,8 +25,8 @@ namespace jpl{
         class Nullable<P *>{
 
             public:
-                static bool isNull(P* &value){return value == NULL;}
-                static void nullify(P** &value){*value = NULL;}
+                static bool isNull(P* &value){return value == nullptr;}
+                static void nullify(P* &value){value = nullptr;}
         };
     }
 }

@@ -8,8 +8,6 @@
                 "-ggdb",
                 "-std=c++23",
                 "${workspaceFolder}/Main.cpp",
-                "${workspaceFolder}/src/debug/Profiler.cpp",
-                "${workspaceFolder}/src/StringUtils.cpp",
                 "-ldl",
                 "-Wterminate",
                 "-o",

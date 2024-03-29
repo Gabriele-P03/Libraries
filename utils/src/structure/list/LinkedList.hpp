@@ -368,12 +368,13 @@ namespace jpl{
                         } 
                         virtual void removeAllOf(T t) noexcept override{
                             Node* cr = this->head;
-                            for(unsigned long i = 0; i < this->size; i++){
+                            for(unsigned long i = 0; i < this->size;){
                                 if(*cr->element.get() == t){
                                     this->resetHelper(cr->element);
                                     this->detach(cr); 
                                     delete cr;
-                                }
+                                }else
+                                    i++;
                                 cr = cr->next;
                             }
                         }                    
@@ -443,10 +444,9 @@ namespace jpl{
                             if(former == nullptr){
                                 cr->element.reset();    //Here it does not have to delete
                                 cr->element = std::make_shared<T>(t);
-                            }
-                            else{
+                            }else if(*cr->element.get() != t){
                                 cr->element.reset();    //Here it does not have to delete
-                                cr->element = std::shared_ptr<T>(cr->element);
+                                cr->element = std::shared_ptr<T>(former->element);
                             }
                             return cp;
                         }
@@ -457,7 +457,7 @@ namespace jpl{
                                 throw new jpl::_exception::IndexOutOfBoundsException(this->max, end);
                             unsigned long offset = end - start;
                             jpl::_utils::_collections::_list::LinkedList<T>* list = new jpl::_utils::_collections::_list::LinkedList<T>(offset);
-                            Node* cr = this->head, *cr1 = list->head;
+                            Node* cr = this->smartProbe(start), *cr1 = list->head;
                             for(unsigned long i = 0; i < offset; i++){
                                 cr1->element = cr->element;
                                 cr = cr->next;
@@ -465,7 +465,7 @@ namespace jpl{
                             }
                             return list;
                         }
-                        virtual List<T>* subList(unsigned long start) const override {return this->subList(start, this->max);}
+                        virtual List<T>* subList(unsigned long start) const override {return this->subList(start, this->size);}
                         virtual void forEach(_functional::Consumer<T> consumer) override {
                             Node* cr = this->head;
                             for(unsigned long i = 0; i < this->size; i++){

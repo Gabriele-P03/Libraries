@@ -385,8 +385,6 @@ namespace jpl{
                                 bool flagDeleted = false;
                                 for(unsigned long j = 0; j < this->size; j++){
                                     T lc = *cr->element.get();
-                                    std::cout<<"i: "<<i<<", j: "<<j<<std::endl;
-                                    std::cout<<ls<<": "<<*ls<<", "<<lc<<": "<<*lc<<std::endl<<std::endl;
                                     if(lc == ls){
                                         flagDeleted = this->resetHelper(cr->element);
                                         if(firstDeleted == nullptr)

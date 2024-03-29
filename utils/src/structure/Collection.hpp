@@ -24,6 +24,7 @@
 #include "Printable.hpp"
 #include "Copyable.hpp"
 #include "Nullable.hpp"
+#include "Ereaseable.hpp"
 #include "Pointerable.hpp"
 #include "../functional/predicate/Predicate.hpp"
 
@@ -69,10 +70,16 @@ namespace jpl{
                    */
                    bool resizeable;
 
+                    /**
+                     * @brief if T is a pointer
+                    */
+                   bool pointer;
+
                     Collection(bool nullableElements, bool duplicateElements, bool resizeable){
                         this->duplicateElements = duplicateElements;
                         this->nullableElements = nullableElements;
                         this->resizeable = resizeable;
+                        this->pointer = Pointerable<T>::isPointer();
                     }
 
                 public:
@@ -102,29 +109,33 @@ namespace jpl{
                     /**
                      * @return if the structure is empty
                      */
-                    virtual bool isEmpty() noexcept {return this->size == 0;}
+                    bool isEmpty() noexcept {return this->size == 0;}
 
 
                     /**
                      * @return the max amount of items which can contained into the collection
                      */
-                    virtual const unsigned long getMax() const noexcept {return this->max;}
+                    const unsigned long getMax() const noexcept {return this->max;}
                     /**
                      * @return the current amount of items which are contained into the collection 
                     */
-                    virtual const unsigned long getSize() const noexcept {return this->size;}
+                    const unsigned long getSize() const noexcept {return this->size;}
                     /**
                      * @return if the collection allows null elements
                     */
-                    virtual bool allowNull() noexcept {return this->nullableElements;}
+                    const bool allowNull() const noexcept {return this->nullableElements;}
                     /**
                      * @return if the collection allows duplicate elements
                     */
-                    virtual bool allowDuplicate() noexcept {return this->duplicateElements;}
+                    const bool allowDuplicate() const noexcept {return this->duplicateElements;}
                     /**
                      * @return if the collection is resizeable
                     */
-                   virtual bool allowResize() noexcept {return this->resizeable;}
+                    const bool allowResize() const noexcept {return this->resizeable;}
+                    /**
+                     * @return if T is a pointer
+                    */
+                    const bool isPointer() const noexcept {return this->pointer;}
 
                     /**
                      * @brief In order to offers you the most available compatibility to any others

@@ -56,14 +56,6 @@ namespace jpl{
                             throw new _exception::NullPointerException("You cannot pass a nullptr as list");
                         }
                     }
-
-                    /**
-                     * Remove all instance of t into the collection
-                     * 
-                     * @param t element
-                     * @param start first index (excluded)
-                    */
-                    virtual void clearAllOf(T t, unsigned long start) = 0;
                     
                 public:
 

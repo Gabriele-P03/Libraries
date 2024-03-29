@@ -45,9 +45,7 @@ namespace jpl{
                             }
 
                             Node(T element, Node* next, Node* previous){
-                                T* t = new T();
-                                *t = element;
-                                this->element = std::shared_ptr<T>(t);
+                                this->element = std::make_shared<T>(element);
                                 this->next = next;
                                 this->previous = previous;
                             }
@@ -116,42 +114,35 @@ namespace jpl{
 
                         /**
                          * It detaches all nodes among first and last (both included)
-                         * You must be sure that all nodes from first to last are deleted
+                         * All nodes from first to last have not to be already deleted
                         */
                         void detach_s(Node* &first, Node* &last, unsigned long size){
-                            if(first == this->head){
+                            if(size > this->size)
+                                throw new _exception::IndexOutOfBoundsException(this->size, size);
+                            if(first != this->head){
                                 if(last != this->tail){
-                                    last->next->previous = nullptr;
-                                    this->head = last->next;
-                                    this->size -= size;
-                                    this->max -= size;
+                                    first->previous->next = last->next;
+                                    last->next->previous = first->previous;
                                 }else{
-                                    this->head = nullptr;
-                                    this->tail = nullptr;
-                                    this->size = 0;
-                                    this->max = 0;
+                                    this->tail = first->previous;
+                                    first->previous->next = nullptr;
                                 }
                             }else{
                                 if(last != this->tail){
-                                    first->previous->next = tail->next;
-                                    tail->next->previous = first->previous;
+                                    this->head = last->next;
+                                    last->next->previous = nullptr;
                                 }else{
-                                    first->previous->next = nullptr;
-                                    this->tail = first->previous;
+                                    this->head = nullptr;
+                                    this->tail = nullptr;
                                 }
-                                this->size -= size;
-                                this->max -= size;
                             }
-                        }
-
-                        void clearAllOf(T t, unsigned long index){
-                            if(index >= this->size)
-                                throw new _exception::IndexOutOfBoundsException(this->max-1, index);
-                            Node* cr = this->head;
-                            for(unsigned long i = index+1; i < this->size; i++){
-                                if(*cr->element.get() == t)
-                                    cr->element.reset();
-                            }    
+                            Node* cr = first;
+                            for(unsigned long i = 0; i < size; i++){
+                                delete cr;
+                                cr = cr->next;
+                            }
+                            this->size -= size;
+                            this->max -= size;
                         }
 
                         Node* firstNodeOf(T t, unsigned long end) const noexcept{
@@ -164,22 +155,38 @@ namespace jpl{
                             return nullptr;
                         }
 
-                        void createNewNode(Node* &cr, T &t, unsigned long end) const noexcept{
-                            if(Pointerable<T>::isPointer(t)){
+                        void createNewNode(Node* &cr, T t, unsigned long end) const noexcept{
+                            if(this->pointer){
                                 //Check if t is being managed by a former std::shared_ptr
                                 Node* former = this->firstNodeOf(t, end);
                                 if(former != nullptr)
                                     cr->element = std::shared_ptr<T>(former->element);
                                 else{
-                                    T* nw = new T;
-                                    *nw = t;
                                     cr->element = std::make_shared<T>(t);
                                 }
                             }else{
-                                T* nw = new T;
-                                *nw = t;
                                 cr->element = std::make_shared<T>(t);
                             }
+                        }
+
+                        virtual bool resetHelper(std::shared_ptr<T> &ptr){
+                            #ifdef DEL_EFF_DS_JPL
+                                bool del = false;
+                                T t; 
+                                if(this->pointer)
+                                    if(ptr.use_count() == 1){
+                                        del = true;
+                                        t = *ptr.get();
+                                    }
+                            #endif
+                            ptr.reset();
+                            #ifdef DEL_EFF_DS_JPL
+                                if(del)
+                                    Ereaseable<T>::erease(t);
+                                return del;
+                            #else
+                                return false;
+                            #endif
                         }
                     public:
 
@@ -212,9 +219,8 @@ namespace jpl{
                             unsigned long size = list.size();
                             Node* pre = nullptr;
                             for(unsigned long i = 0; i < size; i++){
-                                T t = list.begin()[i];
                                 Node* cr = new Node();
-                                this->createNewNode(cr, t, i);
+                                this->createNewNode(cr, list.begin()[i], i);
                                 if(i == 0){
                                     this->head = cr;
                                 }else{
@@ -229,13 +235,9 @@ namespace jpl{
                         }
 
                         virtual T get(unsigned long index) const override{
-                            if(index == 0){
-                                return *this->head->element.get();
-                            }else if(index == this->size-1){
-                                return *this->tail->element.get();
-                            }else{
-                                return *this->smartProbe(index)->element.get();
-                            }
+                            if(index == 0) return *this->head->element.get();
+                            else if(index == this->size-1) return *this->tail->element.get();
+                            else return *this->smartProbe(index)->element.get();
                         }
 
                         virtual void add(unsigned long index, T t) override{
@@ -245,9 +247,8 @@ namespace jpl{
                                 if(this->size != 0){//LL not empty
                                     this->head->previous = newNode;
                                     newNode->next = this->head;
-                                }else{//If LL is empty, head is equal to tail
+                                }else//If LL is empty, head is equal to tail
                                     this->tail = newNode;
-                                }
                                 this->head = newNode;
                             }else if(index == this->size){//Tail
                                 this->tail->next = newNode;
@@ -260,14 +261,10 @@ namespace jpl{
                                 tmp->previous = newNode;
                                 newNode->next = tmp;    
                             }
-                            if(this->size++ >= this->max){
+                            if(this->size++ >= this->max)
                                 this->max = this->size;
-                            }
                         }
-
-                        virtual void add(T t) noexcept override{
-                            this->add(this->size, t);
-                        }
+                        virtual void add(T t) noexcept override{this->add(this->size, t);}
 
 
                         virtual bool contains(T t) const noexcept override{
@@ -281,24 +278,21 @@ namespace jpl{
                         }
                         virtual void clear() noexcept override{
                             Node* cr = this->head;
-                            for(unsigned long i = 0; i < this->size; i++){
-                                cr->element.reset();
-                                delete cr;
+                            for(unsigned long i = 0; i < this->size; i++){  
+                                this->resetHelper(cr->element);
                                 cr = cr->next;
                             }   
                             this->size = 0;
                             this->max = 0;
                         }
                         virtual void addAll(unsigned long index, List<T>* list) override{
-                            if(list == nullptr){
+                            if(list == nullptr)
                                 throw new _exception::NullPointerException("list passed to addAll cannot be nullptr");
-                            }
                             unsigned long size = list->getSize();
                             Node* first = nullptr, *pre = nullptr;
                             for(unsigned long i = 0; i < size; i++){
-                                T t = list->get(i);
                                 Node* n = new Node;
-                                this->createNewNode(n, t, this->size+i);
+                                this->createNewNode(n, list->get(i), this->size+i);
                                 if(i == 0){
                                     first = n;
                                 }else{
@@ -334,6 +328,7 @@ namespace jpl{
                         virtual void addAll(List<T>* list) override{
                             this->addAll(this->size, list);
                         } 
+
                         virtual unsigned long firstOccurrence(T t) const noexcept override {
                             Node* cr = this->head;
                             for(unsigned long i = 0; i < this->size; i++){
@@ -355,7 +350,7 @@ namespace jpl{
 
                         virtual void removeAt(unsigned long index) override{
                             Node* cr = this->smartProbe(index);
-                            cr->element.reset();
+                            this->resetHelper(cr->element);
                             this->detach(cr);
                             delete cr;
                         }
@@ -363,7 +358,7 @@ namespace jpl{
                             Node* cr = this->head;
                             for(unsigned long i = 0; i < this->size; i++){
                                 if(*cr->element.get() == t){
-                                    cr->element.reset();
+                                    this->resetHelper(cr->element);
                                     this->detach(cr); 
                                     delete cr;
                                     return;
@@ -375,56 +370,58 @@ namespace jpl{
                             Node* cr = this->head;
                             for(unsigned long i = 0; i < this->size; i++){
                                 if(*cr->element.get() == t){
-                                    cr->element.reset();
+                                    this->resetHelper(cr->element);
                                     this->detach(cr); 
                                     delete cr;
-                                    //Now let's figure out all other t elements into this list, but before let's check if it a pointer
-                                    if(Pointerable<T>::isPointer(t))
-                                        this->clearAllOf(t, i);
-                                    return;
                                 }
                                 cr = cr->next;
                             }
                         }                    
                         virtual void removeAll(List<T>* list) noexcept override{
-                            Node* cr = this->head;
-                            Node* firstDeleted = nullptr;
-                            unsigned long len = 0;
                             for(unsigned long i = 0; i < list->getSize(); i++){
+                                Node* cr = this->head, *firstDeleted = nullptr;
+                                unsigned long len = 0;
                                 T ls = list->get(i);
+                                bool flagDeleted = false;
                                 for(unsigned long j = 0; j < this->size; j++){
-                                    if(*cr->element.get() == ls){
-                                        cr->element.reset();
-                                        delete cr;
-                                        if(firstDeleted == nullptr){
+                                    T lc = *cr->element.get();
+                                    std::cout<<"i: "<<i<<", j: "<<j<<std::endl;
+                                    std::cout<<ls<<": "<<*ls<<", "<<lc<<": "<<*lc<<std::endl<<std::endl;
+                                    if(lc == ls){
+                                        flagDeleted = this->resetHelper(cr->element);
+                                        if(firstDeleted == nullptr)
                                             firstDeleted = cr;
-                                        }
                                         len++;
                                     }else{
                                         if(firstDeleted != nullptr){
                                             this->detach_s(firstDeleted, cr->previous, len);
                                             firstDeleted = nullptr;
                                             len = 0;
+                                            if(flagDeleted){
+                                                if(this->pointer)
+                                                    i--;
+                                                break;
+                                            }
                                         }
                                     }
-                                    cr = cr->next;
+                                    if(j < this->size-1)
+                                        cr = cr->next;
                                 }      
                                 if(firstDeleted != nullptr){
-                                    this->detach_s(firstDeleted, cr, len);
-                                }                        
+                                    this->detach_s(firstDeleted, cr, len);                        
+                                    if(this->pointer)
+                                        i--;
+                                }
                             }
-
                         }
                         virtual void removeAllIf(_functional::Predicate<T> predicate) noexcept override{
-                            Node* cr = this->head;
-                            Node* firstDeleted = nullptr;
+                            Node* cr = this->head, *firstDeleted = nullptr;
                             unsigned long len = 0;
                             for(unsigned long i = 0; i < this->size; i++){
                                 if(predicate.test(*cr->element.get())){
-                                    cr->element.reset();
-                                    if(firstDeleted == nullptr){
+                                    this->resetHelper(cr->element);
+                                    if(firstDeleted == nullptr)
                                         firstDeleted = cr;
-                                    }
                                     len++;
                                 }else{
                                     if(firstDeleted != nullptr){
@@ -433,11 +430,11 @@ namespace jpl{
                                         len = 0;
                                     }
                                 }
-                                cr = cr->next;
+                                if(i < this->size-1)
+                                    cr = cr->next;
                             }
-                            if(firstDeleted != nullptr){
-                                this->detach_s(firstDeleted, cr, len);
-                            }  
+                            if(firstDeleted != nullptr)
+                                this->detach_s(firstDeleted, cr, len); 
                         }
                         virtual T set(unsigned long index, T t) override {
                             Node* cr = this->smartProbe(index);
@@ -446,11 +443,11 @@ namespace jpl{
                             Copyable<T>::copy(cp, *cr->element.get());
                             Node* former = this->firstNodeOf(t, this->size);
                             if(former == nullptr){
-                                cr->element.reset();
+                                cr->element.reset();    //Here it does not have to delete
                                 cr->element = std::make_shared<T>(t);
                             }
                             else{
-                                cr->element.reset();
+                                cr->element.reset();    //Here it does not have to delete
                                 cr->element = std::shared_ptr<T>(cr->element);
                             }
                             return cp;

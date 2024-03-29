@@ -17,14 +17,14 @@ namespace jpl{
         class Pointerable{
 
             public:
-                static bool isPointer(T value){return false;}
+                static bool isPointer(){return false;}
         };
 
         template <typename P>
         class Pointerable<P *>{
 
             public:
-                static bool isPointer(P* value){return true;}
+                static bool isPointer(){return true;}
         };
     }
 }

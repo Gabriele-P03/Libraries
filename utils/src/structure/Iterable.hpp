@@ -23,6 +23,11 @@ namespace jpl{
 
             public:
 
+                /**
+                 * @brief Iterate all elements of the collection and execute consumer 
+                 * on each element <br>
+                 * Unless you have checked if T is nullptr - if it is a pointer - segmentation-fault may occurr
+                */
                 virtual void forEach(_functional::Consumer<T> consumer) = 0;
         };
     }

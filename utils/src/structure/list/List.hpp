@@ -140,11 +140,12 @@ namespace jpl{
                      */
                     virtual void removeAll(List<T>* list) noexcept = 0;
                     /**
-                     * @brief Remove all elements which respect the given predicate
+                     * @brief Remove all elements which respect the given predicate. If T is a pointer to object, unless you 
+                     * have checked if element is nullptr, a segmentation-fault will occur
                      * @param predicate
                      * @return the amount of element removed 
                     */
-                    virtual size_t removeAllIf(_functional::Predicate<T> predicate) noexcept = 0;
+                    virtual size_t removeAllIf(_functional::Predicate<T> predicate) = 0;
 
                     /**
                      * Set t at the given index (which was already occuped)
@@ -177,6 +178,25 @@ namespace jpl{
                     */
                     virtual List<T>* subList(unsigned long start) const = 0;
 
+                    virtual bool resetHelper(std::shared_ptr<T> &ptr){
+                        #ifdef DEL_EFF_DS_JPL
+                            bool del = false;
+                            T t; 
+                            if(this->pointer)
+                                if(ptr.use_count() == 1){
+                                    del = true;
+                                    t = *ptr.get();
+                                }
+                        #endif
+                        ptr.reset();
+                        #ifdef DEL_EFF_DS_JPL
+                            if(del)
+                                Ereaseable<T>::erease(t);
+                            return del;
+                        #else
+                            return false;
+                        #endif
+                    }
             };
         }
     }

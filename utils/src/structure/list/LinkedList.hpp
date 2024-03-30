@@ -145,9 +145,9 @@ namespace jpl{
                             this->max -= size;
                         }
 
-                        Node* firstNodeOf(T t, unsigned long end) const noexcept{
+                        Node* firstNodeOf(T t) const noexcept{
                             Node* cr = this->head;
-                            for(unsigned long i = 0; i < end; i++){
+                            for(unsigned long i = 0; i < this->size; i++){
                                 if(*cr->element.get() == t)
                                     return cr;
                                 cr = cr->next;
@@ -167,26 +167,6 @@ namespace jpl{
                             }else{
                                 cr->element = std::make_shared<T>(t);
                             }
-                        }
-
-                        virtual bool resetHelper(std::shared_ptr<T> &ptr){
-                            #ifdef DEL_EFF_DS_JPL
-                                bool del = false;
-                                T t; 
-                                if(this->pointer)
-                                    if(ptr.use_count() == 1){
-                                        del = true;
-                                        t = *ptr.get();
-                                    }
-                            #endif
-                            ptr.reset();
-                            #ifdef DEL_EFF_DS_JPL
-                                if(del)
-                                    Ereaseable<T>::erease(t);
-                                return del;
-                            #else
-                                return false;
-                            #endif
                         }
                     public:
 
@@ -417,7 +397,7 @@ namespace jpl{
                                 }
                             }
                         }
-                        virtual size_t removeAllIf(_functional::Predicate<T> predicate) noexcept override{
+                        virtual size_t removeAllIf(_functional::Predicate<T> predicate) override{
                             Node* cr = this->head, *firstDeleted = nullptr;
                             unsigned long len = 0;
                             size_t amount = 0;
@@ -447,7 +427,7 @@ namespace jpl{
                             T cp;
                             Nullable<T>::nullify(cp);
                             Copyable<T>::copy(cp, *cr->element.get());
-                            Node* former = this->firstNodeOf(t, this->size);
+                            Node* former = this->firstNodeOf(t);
                             if(former == nullptr){
                                 cr->element.reset();    //Here it does not have to delete
                                 cr->element = std::make_shared<T>(t);

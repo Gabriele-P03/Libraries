@@ -1,19 +1,39 @@
 #define DEL_EFF_DS_JPL
 #include "src/structure/list/LinkedList.hpp"
 
+#include "src/structure/list/ArrayList.hpp"
+
 using namespace jpl;
 using namespace _utils;
 using namespace _collections;
 using namespace _list; 
 
+static int c = 0;
+
+class Bar{
+
+    public:
+        int x;
+        Bar(){
+            this->x = ++c;
+        }
+        ~Bar(){
+            std::cout<<"Deleting "<<x<<"...";
+        }
+
+        friend std::ostream& operator<<(std::ostream &os, const Bar &bar){
+            os<<bar.x;
+            return os;
+        }
+};
 
 int main(){
 
-    int*x = new int(1), *y = new int(2), *z = new int(3), *a = new int(4);
-    LinkedList<int*>* list = new LinkedList<int*>{x,y,z,a};
-    //std::cout<<*list<<std::endl;
-    list->addAll(list);
-    //std::cout<<*list<<std::endl;
-    list->removeAll(list);
-    //std::cout<<*list<<std::endl;
+    ArrayList<Bar*>* list = new ArrayList<Bar*>(10);
+    Bar* bar = new Bar();
+    list->add(bar);
+    //list->clear();
+    delete list;
+
+    std::cout<<"Del";
 }

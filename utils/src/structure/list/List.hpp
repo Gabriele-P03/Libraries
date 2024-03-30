@@ -121,17 +121,17 @@ namespace jpl{
                      * It does not throw NotFoundException if t has not been found
                      * 
                      * @param t item to remove
+                     * @return if it has removed a t element
                      */
-                    virtual void remove(T t) noexcept = 0 ;   
+                    virtual bool remove(T t) noexcept = 0 ;   
                     /**
                      * @brief remove all t instance - if T is a pointer type - from this collection 
                      * It does not throw NotFoundException if t has not been found
                      * 
                      * @param t item to remove
-                     * 
-                     * @throw NotFoundException if at least one t has not been found 
+                     * @return the amount of t element removed
                      */
-                    virtual void removeAllOf(T t) noexcept = 0;                  
+                    virtual size_t removeAllOf(T t) noexcept = 0;                  
                     /**
                      * @brief remove all list's items from this collection
                      * It does not throw NotFoundException if t has not been found
@@ -142,8 +142,9 @@ namespace jpl{
                     /**
                      * @brief Remove all elements which respect the given predicate
                      * @param predicate
+                     * @return the amount of element removed 
                     */
-                    virtual void removeAllIf(_functional::Predicate<T> predicate) noexcept = 0;
+                    virtual size_t removeAllIf(_functional::Predicate<T> predicate) noexcept = 0;
 
                     /**
                      * Set t at the given index (which was already occuped)

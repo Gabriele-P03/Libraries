@@ -354,29 +354,33 @@ namespace jpl{
                             this->detach(cr);
                             delete cr;
                         }
-                        virtual void remove(T t) noexcept override{
+                        virtual bool remove(T t) noexcept override{
                             Node* cr = this->head;
                             for(unsigned long i = 0; i < this->size; i++){
                                 if(*cr->element.get() == t){
                                     this->resetHelper(cr->element);
                                     this->detach(cr); 
                                     delete cr;
-                                    return;
+                                    return true;
                                 }
                                 cr = cr->next;
                             }
+                            return false;
                         } 
-                        virtual void removeAllOf(T t) noexcept override{
+                        virtual size_t removeAllOf(T t) noexcept override{
                             Node* cr = this->head;
+                            size_t amount = 0;
                             for(unsigned long i = 0; i < this->size;){
                                 if(*cr->element.get() == t){
                                     this->resetHelper(cr->element);
                                     this->detach(cr); 
                                     delete cr;
+                                    amount++;
                                 }else
                                     i++;
                                 cr = cr->next;
                             }
+                            return amount;
                         }                    
                         virtual void removeAll(List<T>* list) noexcept override{
                             for(unsigned long i = 0; i < list->getSize(); i++){
@@ -413,15 +417,17 @@ namespace jpl{
                                 }
                             }
                         }
-                        virtual void removeAllIf(_functional::Predicate<T> predicate) noexcept override{
+                        virtual size_t removeAllIf(_functional::Predicate<T> predicate) noexcept override{
                             Node* cr = this->head, *firstDeleted = nullptr;
                             unsigned long len = 0;
+                            size_t amount = 0;
                             for(unsigned long i = 0; i < this->size; i++){
                                 if(predicate.test(*cr->element.get())){
                                     this->resetHelper(cr->element);
                                     if(firstDeleted == nullptr)
                                         firstDeleted = cr;
                                     len++;
+                                    amount++;
                                 }else{
                                     if(firstDeleted != nullptr){
                                         this->detach_s(firstDeleted, cr->previous, len);
@@ -434,6 +440,7 @@ namespace jpl{
                             }
                             if(firstDeleted != nullptr)
                                 this->detach_s(firstDeleted, cr, len); 
+                            return amount;
                         }
                         virtual T set(unsigned long index, T t) override {
                             Node* cr = this->smartProbe(index);

@@ -109,25 +109,27 @@ namespace jpl{
                         ArrayList(std::initializer_list<T> ls) : ArrayList<T>(){
                             this->reallocate(ls.size());
                             for(unsigned long i = 0; i < this->max; i++)
-                                this->list[i] = ls.begin()[i];
+                                this->list[i] = std::make_shared<T>(ls.begin()[i]);
                             this->size = ls.size();
                         }
                         ArrayList(List<T>* list) : List<T>(list){this->addAll(list);}
 
                         /**
-                         * @brief It performs the reallocating of memory of the current array list
+                         * @brief It reallocates current list as size amount
                          * 
-                         * @param size amount of elements which will be insert
+                         * @param size 
                         */
                         virtual void reallocate(unsigned long size) noexcept{
                             this->max = size;
                             if(this->size == 0)
                                 this->list = new std::shared_ptr<T>[size];
                             else{
-                                std::shared_ptr
+                                std::shared_ptr<T>* tmp = new std::shared_ptr<T>[size];
                                 for(unsigned long i = 0; i < size; i++){
-
+                                    tmp[i] = std::shared_ptr<T>(this->list[i]);
                                 }
+                                delete [] this->list;   //Do not reset elements
+                                this->list = tmp;
                             }
                         }
 

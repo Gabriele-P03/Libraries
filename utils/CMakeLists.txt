@@ -3,11 +3,12 @@ cmake_minimum_required(VERSION 3.9)
 set(ALLOW_DUPLICATE_CUSTOM_TARGETS TRUE)
 set(UTILS_VERSION_JPL "1.0.0")
 set(UTILS_VERSION_JPL_str "1_0_0")
-project(Utils VERSION ${UTILS_VERSION_JPL})
+project(UTILS VERSION ${UTILS_VERSION_JPL})
 message("Compiling Utils v: " ${UTILS_VERSION_JPL})
 
 set(FIRST_CALL_ADD_LIBRARY_SH TRUE)
 set(FIRST_CALL_ADD_LIBRARY_ST TRUE)
+set(STRING_UTILS_CPP TRUE)
 
 function (addSRC PATH_SRC NAME_INFO STATIC_ENABLE SHARED_ENABLE)
 
@@ -45,6 +46,10 @@ endif()
 if(${STRING_UTILS_CPP})
     addSRC("src/StringUtils.cpp" "StringUtils" TRUE TRUE)
 endif()
+addSrc("Main.cpp" "Main" TRUE TRUE)
+
+target_include_directories(utilsJPL_st PUBLIC "src/**.hpp")
+target_include_directories(utilsJPL_sh PUBLIC "src/**.hpp")
 
 set(CMAKE_C_COMPILER gcc)
 set(CMAKE_CXX_COMPILER g++)

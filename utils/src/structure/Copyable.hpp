@@ -1,6 +1,5 @@
 /**
- * This is a wrapper header file which helps a collection to copy its elements in a best-effort way.
- * 
+ * This is a wapper header file which is used whenever a copy of an element is needed.
  * 
  * @date 10/09/2023
  * @author Gabriele-P03

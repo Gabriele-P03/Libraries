@@ -1,8 +1,7 @@
 /**
- * This is a wrapper header file which helps a collection to delete its element in a best-effort way.
- * 
- * How it delete the element, unless it is not a pointer, is via an implementation of helper class which
- * checks type of T - if it is a pointer or not - and then use the relative erease() method
+ * This is a wrapper header file which is used whenever a deletion of an element is needed.
+ * If the typename is a pointer, the real deletion is performed only when DEL_EFF_DS_JPL macro is defined before 
+ * have included the collection's header file 
  * 
  * @date 10/09/2023
  * @author Gabriele-P03

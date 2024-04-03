@@ -1,16 +1,11 @@
 /**
  * @file 
  * 
- * An knowledgment of DSA theory is required, since these documentation are not intendeed to teach it...
+ * An knowledgment of DSA theory is required, since these documentation are not intendeed to explain it...
  * 
- * Since JPL provides Exception module, and this one Function Interfaces, and, as an elephant in the room, 
- * they cannot be used with std data-structures already provided, this sub-module offers several data-structure 
- * compatible with them
- * 
- * They follow the DSA hierarchy, but there are some them which could not be assimilated right as it (e.g. ArrayList)
- * 
- * This is the more abstract class which is extended by all JPL's data-structures. Some of its children could permit null-elements
- * insertion, or even duplicate one. Read their documentation to get more info.
+ * This is the top-level of all JPL's data-structures hierarchy. 
+ * It stores some properties which are common to each of them and which describe their behaviour, such as null 
+ * elements permission, duplicates, resizeable and so on.
  * 
  * @date 2023-05-28
  * @copyright Copyright (c) 2023

@@ -1,5 +1,5 @@
 /**
- *  Check if a T is a pointer or not
+ *  This is a wrapper header file which is used whenever a collection needs to get know if T is a pointer
  * 
  * 
  * @date 10/09/2023

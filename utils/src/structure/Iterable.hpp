@@ -1,8 +1,7 @@
 /**
  * @file
  * 
- * This is a functional interface which marks class which extends this one as
- * they can be involved in a forEach loop with an instance of JPL's consumer
+ * This is a functional interface which marks collection as involvable in a forEach loop with an instance of JPL's consumer
  * 
  * @date 2023-07-12
  * @copyright Copyright (c) 2023

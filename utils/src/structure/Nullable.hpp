@@ -1,5 +1,6 @@
 /**
- * This is a wrapper header file which helps a collection to check nullptr element.
+ * This is a wrapper header file which is used whenever a collection needs to either check if an element is null or, in case
+ * of pointer element, to assign nullptr value
  * 
  * 
  * @date 10/09/2023

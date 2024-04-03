@@ -1,8 +1,8 @@
 /**
- * This is a wrapper header file which helps a collection to print its element in a best-effort way.
- * 
- * How it print the element is via an implementation of helper class which
- * checks type of T - if it is a pointer or not - and then use the relative print() method
+ * This is a wrapper header file which helps a collection either to print its elements or to generate a string which represents
+ * its elements. 
+ * Generally you can pass a collection to the std::cout. If T is a pointer, addresses will be printed, else the operator<< will
+ * be used; therefore you oughta decleare that type of function, otherwise a compilation-error will occur  
  * 
  * @date 10/09/2023
  * @author Gabriele-P03

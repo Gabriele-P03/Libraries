@@ -10,6 +10,7 @@
  * As you can get by cppreference.com, even after have restored the last std::shared_ptr, you do not need to call delete operator
  * on the object since it is already called by the last restored one. 
  * 
+ * All JPL's list implementation let you insert null and duplicate elements both. 
  * 
  * @date 2023-07-12
  * @copyright Copyright (c) 2023

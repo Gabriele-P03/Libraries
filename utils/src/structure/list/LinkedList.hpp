@@ -11,7 +11,6 @@
  * Searching is always O(n).
  * Indexed Deletion - removeAt(ulong) - is just like Insertion; Smooth one - remove(T) - is O(n).
  * 
- * Just like ArrayList, if you declare a Linked List of pointer, no new object will be allocated
  * 
  * @date 14-09-2023
  * @author Gabriele-P03
@@ -158,7 +157,7 @@ namespace jpl{
                         void createNewNode(Node* &cr, T t, unsigned long end) const noexcept{
                             if(this->pointer){
                                 //Check if t is being managed by a former std::shared_ptr
-                                Node* former = this->firstNodeOf(t, end);
+                                Node* former = this->firstNodeOf(t);
                                 if(former != nullptr)
                                     cr->element = std::shared_ptr<T>(former->element);
                                 else{

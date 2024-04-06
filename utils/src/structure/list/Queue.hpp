@@ -1,10 +1,10 @@
 /**
  * @file 
  * 
- * This is the usual implementation of stack using a LIFO method.
- * JPL stack is a doubled LL similar implementation, but it does not inherit it since most of all its functions should have been 
+ * This is the usual implementation of queue using a FIFO method.
+ * JPL queue is a doubled LL similar implementation, but it does not inherit it since most of all its functions should have been 
  * overriden returning nullptr; altough it is located into the same List's package.
- * Elements into a stack are managed via std::shared_ptr since this DS let you push null and duplicate elements both.
+ * Elements into a queue are managed via std::shared_ptr since this DS let you push null and duplicate elements both.
  * Just like for AL and LL, defining DEL_EFF_DS_JPL, you let the DS destroys the element once the last smart-pointer had released it
  * 
  * @author Gabriele-P03
@@ -13,8 +13,8 @@
  * 
  */
 
-#ifndef STACK_JPL
-#define STACK_JPL
+#ifndef QUEUE_JPL
+#define QUEUE_JPL
 
 #include "../Collection.hpp"
 
@@ -24,7 +24,7 @@ namespace jpl{
             namespace _list{
                 
                 template <typename T>
-                class Stack : public Collection<T>{
+                class Queue : public Collection<T>{
 
                     private:
                         /**
@@ -32,7 +32,7 @@ namespace jpl{
                          * @throw RuntimeException anytime it is called
                         */
                         virtual void add(T t) {
-                            throw new _exception::RuntimeException("You must call push(T) in order to add an element into a stack");
+                            throw new _exception::RuntimeException("You must call push(T) in order to add an element into a queue");
                         }
 
                     protected:
@@ -106,22 +106,22 @@ namespace jpl{
                         }
 
                     public:
-                        Stack() : Collection<T>(true, true, true){
+                        Queue() : Collection<T>(true, true, true){
                             this->head = nullptr;
                             this->tail = nullptr;
                         }
                        
                         /**
-                         * @return The last element into the stack without removing it
+                         * @return The first element into the queue without removing it
                          * @throw IndexOutOfBoundsException if it is empty
                         */
                         virtual T peek() const{
                             if(this->size == 0)
                                 throw new _exception::IndexOutOfBoundsException(0, 0);
-                            return *this->tail->element.get();    
+                            return *this->head->element.get();    
                         }
                         /**
-                         * @return The last element into the stack after have removed it
+                         * @return The first element into the queue after have removed it
                          * @throw IndexOutOfBoundsException if it is empty
                         */
                         virtual T pop(){
@@ -129,17 +129,17 @@ namespace jpl{
                                 throw new _exception::IndexOutOfBoundsException(0, 0);
                             T t;
                             Nullable<T>::nullify(t);
-                            T cr = *this->tail->element.get();
+                            T cr = *this->head->element.get();
                             Copyable<T>::copy(t, cr);
-                            this->resetHelper(this->tail->element);
-                            this->tail = this->tail->previous;
-                            delete this->tail->next;
-                            this->tail->next = nullptr;
+                            this->resetHelper(this->head->element);
+                            this->head = this->head->next;
+                            delete this->head->previous;
+                            this->head->previous = nullptr;
                             this->size--;
                             return t;
                         }
                         /**
-                         * @return Push at the end of the stack the given element
+                         * @return Push at the end of the queue the given element
                          * @param t the new element
                         */
                         virtual void push(T t) noexcept {
@@ -154,42 +154,42 @@ namespace jpl{
                                 this->tail = nw;
                             }
                             this->size++;
-                        }   
+                        } 
                         /**
-                         * @brief Its returned value reflects how many times you have to call pop(), before in 
+                         * @brief Its returned value reflects how many times you have to call pop() before, in 
                          * order to get t
                          * @param t element to look for
-                         * @return the index of t in the stack
+                         * @return the index of t in the queue
                         */
                         virtual unsigned long search(T t) const noexcept{
-                            Node* cr = this->tail;    
+                            Node* cr = this->head;    
                             for(unsigned long i = 0; i < this->size; i++){
                                 if(*cr->element.get() == t)
                                     return i;  
-                                cr = cr->previous;
+                                cr = cr->next;
                             }
                             return this->size;
                         }
 
                         /**
-                         * @brief It clears the stack calling pop() for each of elements
+                         * @brief It clears the queue calling pop() for each of elements
                         */
                         virtual void clear() noexcept override{
                             for(unsigned long i = 0; i < this->size; i++)
                                 this->pop();
                         }
                         /**
-                         * @brief it does not remove elements from the stack (peek)
+                         * @brief it does not remove elements from the queue (peek)
                          * @return an array of size-sized which contains all elements
                         */
                         virtual T* toArray() const noexcept override{
                             if(this->size == 0)
                                 return nullptr;
                             T* buffer = new T[this->size];
-                            Node* cr = this->tail;
+                            Node* cr = this->head;
                             for(unsigned long i = 0; i < this->size; i++){
                                 buffer[i] = *cr->element.get();
-                                cr = cr->previous;
+                                cr = cr->next;
                             }
                             return buffer;
                         }
@@ -198,22 +198,22 @@ namespace jpl{
                          * @param consumer consumer
                         */
                         virtual void forEach(_functional::Consumer<T> consumer) {
-                            Node* cr = this->tail;
+                            Node* cr = this->head;
                             for(unsigned long i = 0; i < this->size; i++){
                                 consumer.test(*cr->element.get());
-                                cr = cr->previous;
+                                cr = cr->next;
                             }
                         }
                         /**
                          * @param t to look for
-                         * @return if the stack contains t
+                         * @return if the queue contains t
                         */
                         virtual bool contains(T t) const noexcept {
-                            Node* cr = this->tail;    
+                            Node* cr = this->head;    
                             for(unsigned long i = 0; i < this->size; i++){
                                 if(*cr->element.get() == t)
                                     return true;  
-                                cr = cr->previous;
+                                cr = cr->next;
                             }
                             return false;
                         }

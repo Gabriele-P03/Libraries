@@ -15,12 +15,12 @@
 #ifndef COLLECTIONI_JPL
 #define COLLECTIONI_JPL
 
-#include "Iterable.hpp"
-#include "Printable.hpp"
-#include "Copyable.hpp"
-#include "Nullable.hpp"
-#include "Ereaseable.hpp"
-#include "Pointerable.hpp"
+#include "functional/Iterable.hpp"
+#include "functional/Printable.hpp"
+#include "functional/Copyable.hpp"
+#include "functional/Nullable.hpp"
+#include "functional/Ereaseable.hpp"
+#include "functional/Pointerable.hpp"
 #include "../functional/predicate/Predicate.hpp"
 
 #include <concepts>

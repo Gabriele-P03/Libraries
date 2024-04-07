@@ -1,0 +1,83 @@
+\doxysection{jpl Namespace Reference}
+\hypertarget{namespacejpl}{}\label{namespacejpl}\index{jpl@{jpl}}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacejpl_1_1__exception}{\+\_\+exception}}
+\item 
+namespace \mbox{\hyperlink{namespacejpl_1_1__logger}{\+\_\+logger}}
+\item 
+namespace \mbox{\hyperlink{namespacejpl_1_1__utils}{\+\_\+utils}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The profiler is, as well-\/known, a tool which probes processors and memory consumption by the current process. This one do it even for global information (i.\+e. Total Mem, Total CPU).
+
+You can use it once or as a scheduled thread. ~\newline
+ For the first mode, you just have to call Profiler\# ~\newline
+
+
+Usually we represents the CPU usage as a percentage of elapsed time since process started. So the total CPU usage of an application is the sum of utime and stime, divided by elapsed time
+
+\begin{DoxyDate}{Date}
+2024-\/02-\/21
+\end{DoxyDate}
+\begin{DoxyAuthor}{Author}
+Gabriele-\/\+P03
+\end{DoxyAuthor}
+This header file contains some functions about reading file, getting path (absolute, relative and root one) and getting file
+
+\begin{DoxyDate}{Date}
+2023-\/02-\/06 
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2023 
+\end{DoxyCopyright}
+\begin{DoxyAuthor}{Author}
+Gabriele-\/\+P03
+\end{DoxyAuthor}
+SPLIT FUNCTION
+
+This is a wapper header file which is used whenever a copy of an element is needed.
+
+\begin{DoxyDate}{Date}
+10/09/2023 
+\end{DoxyDate}
+\begin{DoxyAuthor}{Author}
+Gabriele-\/\+P03
+\end{DoxyAuthor}
+This is a wrapper header file which is used whenever a deletion of an element is needed. If the typename is a pointer, the real deletion is performed only when DEL\+\_\+\+EFF\+\_\+\+DS\+\_\+\+JPL macro is defined before have included the collection\textquotesingle{}s header file
+
+\begin{DoxyDate}{Date}
+10/09/2023 
+\end{DoxyDate}
+\begin{DoxyAuthor}{Author}
+Gabriele-\/\+P03
+\end{DoxyAuthor}
+This is a wrapper header file which is used whenever a collection needs to either check if an element is null or, in case of pointer element, to assign nullptr value
+
+\begin{DoxyDate}{Date}
+10/09/2023 
+\end{DoxyDate}
+\begin{DoxyAuthor}{Author}
+Gabriele-\/\+P03
+\end{DoxyAuthor}
+This is a wrapper header file which is used whenever a collection needs to get know if T is a pointer
+
+\begin{DoxyDate}{Date}
+10/09/2023 
+\end{DoxyDate}
+\begin{DoxyAuthor}{Author}
+Gabriele-\/\+P03
+\end{DoxyAuthor}
+This is a wrapper header file which helps a collection either to print its elements or to generate a string which represents its elements. Generally you can pass a collection to the std\+::cout. If T is a pointer, addresses will be printed, else the operator\texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} will be used; therefore you oughta decleare that type of function, otherwise a compilation-\/error will occur ~\newline
+
+
+\begin{DoxyDate}{Date}
+10/09/2023 
+\end{DoxyDate}
+\begin{DoxyAuthor}{Author}
+Gabriele-\/\+P03
+\end{DoxyAuthor}
+It is the implementation of a Generic Tree whose node can have N children 

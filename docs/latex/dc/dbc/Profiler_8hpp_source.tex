@@ -1,0 +1,148 @@
+\doxysection{Profiler.\+hpp}
+\hypertarget{Profiler_8hpp_source}{}\label{Profiler_8hpp_source}\index{utils/src/debug/Profiler.hpp@{utils/src/debug/Profiler.hpp}}
+\mbox{\hyperlink{Profiler_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#ifndef\ PROFILER\_JPL}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ PROFILER\_JPL}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\ \ \ \ \#include\ <ctime>}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}\mbox{\hyperlink{StringUtils_8hpp}{../StringUtils.hpp}}"{}}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\ \ \ \ \#include\ <stdio.h>}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\ \ \ \ \#include\ <string.h>}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\ \ \ \ \#include\ <thread>}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\ \ \ \ \#include\ <iostream>}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\ \ \ \ \#include\ <jpl/exception/runtime/IllegalStateException.hpp>}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\ \ \ \ \#include\ <jpl/exception/runtime/IllegalArgumentException.hpp>}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\ \ \ \ \#include\ <jpl/utils/debug/ErrorUtils.hpp>}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\ \ \ \ \#include\ <jpl/utils/ConversionUtils.hpp>}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\ \ \ \ \#ifdef\ \_WIN32}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#include\ <windows.h>}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#include\ <psapi.h>}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#include\ <pdh.h>}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#include\ <powerbase.h>}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\ \ \ \ \#elif\ \_\_linux\_\_}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#include\ <sys/sysinfo.h>}}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#include\ <unistd.h>}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#include\ <sys/times.h>}}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\ \ \ \ \#endif}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacejpl}{jpl}}\{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keyword}{namespace\ }\_utils\{}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{namespace\ }\_profiler\{}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structjpl_1_1__utils_1_1__profiler_1_1SystemInfo}{SystemInfo}};}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#ifdef\ \_WIN32}}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\_PROCESSOR\_POWER\_INFORMATION\ \{}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ULONG\ Number;}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ULONG\ MaxMhz;}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ULONG\ CurrentMhz;}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ULONG\ MhzLimit;}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ULONG\ MaxIdleState;}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ULONG\ CurrentIdleState;}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ PROCESSOR\_POWER\_INFORMATION,\ *PPROCESSOR\_POWER\_INFORMATION;}
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#elif\ \_\_linux\_\_\ \ \ \ }}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }sysinfo\ SysInfo;}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }tms\ timeSample;}
+\DoxyCodeLine{00059\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#endif}}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classjpl_1_1__utils_1_1__profiler_1_1Profiler}{Profiler}}\{}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__profiler_1_1Profiler_a15a019ac2aaf099e5153e6fc3645aad7_a15a019ac2aaf099e5153e6fc3645aad7}{processors}};\ \ \ \ \textcolor{comment}{//Contains\ the\ amount\ of\ CPU\ unit\ available}}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__profiler_1_1Profiler_a4830b0842e00ba5288e5c562881f532d_a4830b0842e00ba5288e5c562881f532d}{lastCPUTime}},\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__profiler_1_1Profiler_a4f601a50a2c760feb03a917d52b68f9e_a4f601a50a2c760feb03a917d52b68f9e}{lastKernelTime}},\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__profiler_1_1Profiler_a367fd80758a895b5da484fad111f6080_a367fd80758a895b5da484fad111f6080}{lastUserTime}};}
+\DoxyCodeLine{00066\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#ifdef\ \_\_linux\_\_}}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ FILE*\ procLoadavg;}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ FILE*\ procCpuinfo;}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ FILE*\ procSelfStatus;}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ parseKBLine(\textcolor{keywordtype}{char}*\ line)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00075\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#elif\ \_WIN32}}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ PDH\_HQUERY\ cpuQuery;}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ PDH\_HCOUNTER\ cpuTotal;\ }
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ HANDLE\ self;}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ULARGE\_INTEGER\ lastPCPU,\ lastPKernelTime,\ lastPUserTime;}
+\DoxyCodeLine{00080\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#endif\ }}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__profiler_1_1Profiler_ab82246c5e03765262a1b90cefed21a4f_ab82246c5e03765262a1b90cefed21a4f}{measureMemory}}(\mbox{\hyperlink{structjpl_1_1__utils_1_1__profiler_1_1SystemInfo}{SystemInfo}}*\ \&systemInfo)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__profiler_1_1Profiler_a4dd48b82523d1fe36c587f80db6fad59_a4dd48b82523d1fe36c587f80db6fad59}{measureCpu}}(\mbox{\hyperlink{structjpl_1_1__utils_1_1__profiler_1_1SystemInfo}{SystemInfo}}*\ \&systemInfo);}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__profiler_1_1Profiler_a970c0314b7a7ea218fae993e4fa32dce_a970c0314b7a7ea218fae993e4fa32dce}{init}}();}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<const\ SystemInfo*>*\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__profiler_1_1Profiler_a123d9289067769f7ffe16a86c2f66fc5_a123d9289067769f7ffe16a86c2f66fc5}{systemInfoList}};}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}*\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__profiler_1_1Profiler_ae970ff8d528f8174465cf2cd8b7ca62b_ae970ff8d528f8174465cf2cd8b7ca62b}{measures}}(\textcolor{keywordtype}{void}*\ instanceProfiler);}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__profiler_1_1Profiler_a187b042922eca0c3d9287f0919aa77cc_a187b042922eca0c3d9287f0919aa77cc}{sleepMS}};}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__profiler_1_1Profiler_a796e8ff928b9f94e2f266c794b0d4fa5_a796e8ff928b9f94e2f266c794b0d4fa5}{started}};}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::thread*\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__profiler_1_1Profiler_ad777ee282f5c835d2e1b73e744ddad3c_ad777ee282f5c835d2e1b73e744ddad3c}{threadProfiler}};}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classjpl_1_1__utils_1_1__profiler_1_1Profiler_acb1fa32c04cca1c2c6f137b1fbb38bab_acb1fa32c04cca1c2c6f137b1fbb38bab}{Profiler}}();}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classjpl_1_1__utils_1_1__profiler_1_1Profiler_a229adacae1ba360e4a600ccbbd960571_a229adacae1ba360e4a600ccbbd960571}{\string~Profiler}}();}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__profiler_1_1Profiler_a92c235bcde3eea5c4b6b0876dbf2ae41_a92c235bcde3eea5c4b6b0876dbf2ae41}{start}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__profiler_1_1Profiler_a187b042922eca0c3d9287f0919aa77cc_a187b042922eca0c3d9287f0919aa77cc}{sleepMS}});}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__profiler_1_1Profiler_af839b074dde526c683e4405af6b7e4c4_af839b074dde526c683e4405af6b7e4c4}{end}}();}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__profiler_1_1SystemInfo}{SystemInfo}}*\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__profiler_1_1Profiler_a6cd89326fad4dc7761b35d35c3f065d6_a6cd89326fad4dc7761b35d35c3f065d6}{measure}}();}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<const\ SystemInfo*>*\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__profiler_1_1Profiler_a8033cad190aa4537eb67b9b6182216b5_a8033cad190aa4537eb67b9b6182216b5}{getSystemInfoList}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__profiler_1_1Profiler_a71a82ac95b4ccfca2c929e857e930210_a71a82ac95b4ccfca2c929e857e930210}{getCoresAmount}}();}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__profiler_1_1Profiler_a3798045370609050c04a2b65fe3a931a_a3798045370609050c04a2b65fe3a931a}{isStarted}}()\ const\ noexcept;}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__profiler_1_1Profiler_a2b1236724279a91d4a1cfdc2730cea72_a2b1236724279a91d4a1cfdc2730cea72}{getSleepMS}}()\ const\ noexcept;}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ struct\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__profiler_1_1SystemInfo}{SystemInfo}}\{}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__profiler_1_1SystemInfo_aabf6ec18b8fffcc5320f0dc6120bef49_aabf6ec18b8fffcc5320f0dc6120bef49}{time}};\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Time\ as\ the\ SystemInfo\ stuct\ has\ been\ created\ at}}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__profiler_1_1SystemInfo_aa636b5ea6acebd3c45cb2e07adecd380_aa636b5ea6acebd3c45cb2e07adecd380}{upTime}};\ \ \ \ \ \ \ \textcolor{comment}{//Seconds\ since\ boot}}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__profiler_1_1SystemInfo_ad144c80b563f1b0e1d7b49cfbfe6364e_ad144c80b563f1b0e1d7b49cfbfe6364e}{totalMemory}};\ \ \textcolor{comment}{//Total\ RAM}}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__profiler_1_1SystemInfo_a1fbc9aa5e3d669a9d666983d1646d221_a1fbc9aa5e3d669a9d666983d1646d221}{freeMemory}};\ \ \ \textcolor{comment}{//Free\ RAM\ at\ time}}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__profiler_1_1SystemInfo_afb8fefeab4dc66312980fd96ff755de0_afb8fefeab4dc66312980fd96ff755de0}{usedMemory}};\ \ \ \textcolor{comment}{//RAM\ used\ globally}}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__profiler_1_1SystemInfo_adf0424eafffe86767e09bcb733d2a4ca_adf0424eafffe86767e09bcb733d2a4ca}{procMemory}};\ \ \ \textcolor{comment}{//RAM\ used\ by\ the\ current\ process}}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__profiler_1_1SystemInfo_aec22e8d35a049f9936055881c04b5378_aec22e8d35a049f9936055881c04b5378}{virtualTotalMemory}};}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__profiler_1_1SystemInfo_acd9bdf09c5755a9b31b6641efc87d567_acd9bdf09c5755a9b31b6641efc87d567}{virtualFreeMemory}};}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__profiler_1_1SystemInfo_af2041c41f492f117c0a15d9966045dc6_af2041c41f492f117c0a15d9966045dc6}{virtualUsedMemory}};}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__profiler_1_1SystemInfo_a2f8606bdd9366c4eb64e152cb90af442_a2f8606bdd9366c4eb64e152cb90af442}{virtualProcMemory}};}
+\DoxyCodeLine{00132\ }
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__profiler_1_1SystemInfo_af0a0c402b0363586c907d9fe1fae9cdc_af0a0c402b0363586c907d9fe1fae9cdc}{totalCpu}};\ \ \ \ \ \textcolor{comment}{//Total\ Used\ CPU\ percentage\ }}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ *\mbox{\hyperlink{structjpl_1_1__utils_1_1__profiler_1_1SystemInfo_a5b3508c92fba8646bd3e100256edcc73_a5b3508c92fba8646bd3e100256edcc73}{procsCPUMhz}};\ \textcolor{comment}{//\ Mhz\ of\ each\ CPU\ unit}}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__profiler_1_1SystemInfo_a5953e0470e529ff81a194917a2b9b2ca_a5953e0470e529ff81a194917a2b9b2ca}{procCpu}};\ \ \ \ \ \ \textcolor{comment}{//Used\ CPU\ percentage\ by\ this\ process\ }}
+\DoxyCodeLine{00136\ }
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structjpl_1_1__utils_1_1__profiler_1_1SystemInfo}{\string~SystemInfo}}();}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keyword}{friend}\ std::ostream\&\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__profiler_1_1SystemInfo_a78a8d8def288b834d7777bd58dbde133_a78a8d8def288b834d7777bd58dbde133}{operator<<}}(std::ostream\&\ os,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__profiler_1_1SystemInfo}{SystemInfo}}\ \&systemInfo)\{}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ tm\_long;}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{long}*\ tm\_plong\ =\ \&tm\_long;}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__conversions_ac66bbb76248374362befbb2dbee5a699_ac66bbb76248374362befbb2dbee5a699}{\_conversions::ulong\_long}}(systemInfo.\mbox{\hyperlink{structjpl_1_1__utils_1_1__profiler_1_1SystemInfo_aabf6ec18b8fffcc5320f0dc6120bef49_aabf6ec18b8fffcc5320f0dc6120bef49}{time}},\ tm\_plong);}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ time\_t\ ptime\_t\ =\ tm\_long;}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ tmp\ =\ std::asctime(std::localtime(\&ptime\_t));}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tmp.pop\_back();}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ os<<std::endl<<\textcolor{stringliteral}{"{}["{}}<<tmp<<\textcolor{stringliteral}{"{}]\ -\/\ Uptime:\ "{}}<<systemInfo.\mbox{\hyperlink{structjpl_1_1__utils_1_1__profiler_1_1SystemInfo_aa636b5ea6acebd3c45cb2e07adecd380_aa636b5ea6acebd3c45cb2e07adecd380}{upTime}}<<\textcolor{stringliteral}{"{})"{}}<<std::endl;}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ os<<\textcolor{stringliteral}{"{}|\ Global\ Physical\ Memory(\ Total:\ "{}}<<systemInfo.\mbox{\hyperlink{structjpl_1_1__utils_1_1__profiler_1_1SystemInfo_ad144c80b563f1b0e1d7b49cfbfe6364e_ad144c80b563f1b0e1d7b49cfbfe6364e}{totalMemory}}<<\textcolor{stringliteral}{"{},\ Free:\ "{}}<<systemInfo.\mbox{\hyperlink{structjpl_1_1__utils_1_1__profiler_1_1SystemInfo_a1fbc9aa5e3d669a9d666983d1646d221_a1fbc9aa5e3d669a9d666983d1646d221}{freeMemory}}<<\textcolor{stringliteral}{"{},\ Used:\ "{}}<<systemInfo.\mbox{\hyperlink{structjpl_1_1__utils_1_1__profiler_1_1SystemInfo_afb8fefeab4dc66312980fd96ff755de0_afb8fefeab4dc66312980fd96ff755de0}{usedMemory}}<<\textcolor{stringliteral}{"{})"{}}<<std::endl;}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ os<<\textcolor{stringliteral}{"{}|\ Global\ Virtual\ Memory(\ Total:\ "{}}<<systemInfo.\mbox{\hyperlink{structjpl_1_1__utils_1_1__profiler_1_1SystemInfo_aec22e8d35a049f9936055881c04b5378_aec22e8d35a049f9936055881c04b5378}{virtualTotalMemory}}<<\textcolor{stringliteral}{"{},\ Free:\ "{}}<<systemInfo.\mbox{\hyperlink{structjpl_1_1__utils_1_1__profiler_1_1SystemInfo_acd9bdf09c5755a9b31b6641efc87d567_acd9bdf09c5755a9b31b6641efc87d567}{virtualFreeMemory}}<<\textcolor{stringliteral}{"{},\ Used:\ "{}}<<systemInfo.\mbox{\hyperlink{structjpl_1_1__utils_1_1__profiler_1_1SystemInfo_af2041c41f492f117c0a15d9966045dc6_af2041c41f492f117c0a15d9966045dc6}{virtualUsedMemory}}<<\textcolor{stringliteral}{"{})"{}}<<std::endl;}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ os<<\textcolor{stringliteral}{"{}|\ Process'\ Used\ Memory(\ Physic:\ "{}}<<systemInfo.\mbox{\hyperlink{structjpl_1_1__utils_1_1__profiler_1_1SystemInfo_adf0424eafffe86767e09bcb733d2a4ca_adf0424eafffe86767e09bcb733d2a4ca}{procMemory}}<<\textcolor{stringliteral}{"{},\ Virtual:\ "{}}<<systemInfo.\mbox{\hyperlink{structjpl_1_1__utils_1_1__profiler_1_1SystemInfo_a2f8606bdd9366c4eb64e152cb90af442_a2f8606bdd9366c4eb64e152cb90af442}{virtualProcMemory}}<<\textcolor{stringliteral}{"{})"{}}<<std::endl;}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ os<<\textcolor{stringliteral}{"{}|\ CPU\ Percentage(\ Total:\ "{}}<<systemInfo.\mbox{\hyperlink{structjpl_1_1__utils_1_1__profiler_1_1SystemInfo_af0a0c402b0363586c907d9fe1fae9cdc_af0a0c402b0363586c907d9fe1fae9cdc}{totalCpu}}<<\textcolor{stringliteral}{"{},\ Process':\ "{}}<<systemInfo.\mbox{\hyperlink{structjpl_1_1__utils_1_1__profiler_1_1SystemInfo_a5953e0470e529ff81a194917a2b9b2ca_a5953e0470e529ff81a194917a2b9b2ca}{procCpu}}<<\textcolor{stringliteral}{"{})"{}}<<std::endl;}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ os<<\textcolor{stringliteral}{"{}|\ CPU\ Core\ MHz(\ "{}};}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ size\ =\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__profiler_1_1Profiler_a71a82ac95b4ccfca2c929e857e930210_a71a82ac95b4ccfca2c929e857e930210}{jpl::\_utils::\_profiler::Profiler::getCoresAmount}}();}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ i\ =\ 0;\ i\ <\ size;\ i++)\{}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ os<<std::to\_string(i+1)<<\textcolor{stringliteral}{"{}\#:\ "{}}<<systemInfo.\mbox{\hyperlink{structjpl_1_1__utils_1_1__profiler_1_1SystemInfo_a5b3508c92fba8646bd3e100256edcc73_a5b3508c92fba8646bd3e100256edcc73}{procsCPUMhz}}[i];}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(i\ <\ size-\/1)}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout<<\textcolor{stringliteral}{"{},\ "{}};}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ os<<\textcolor{stringliteral}{"{})"{}}<<std::endl;}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ os;}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00162\ }
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00165\ \ \ \ \ \}}
+\DoxyCodeLine{00166\ }
+\DoxyCodeLine{00167\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

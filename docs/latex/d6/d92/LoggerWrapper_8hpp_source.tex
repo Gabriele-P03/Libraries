@@ -1,0 +1,83 @@
+\doxysection{Logger\+Wrapper.\+hpp}
+\hypertarget{LoggerWrapper_8hpp_source}{}\label{LoggerWrapper_8hpp_source}\index{logger/src/LoggerWrapper.hpp@{logger/src/LoggerWrapper.hpp}}
+\mbox{\hyperlink{LoggerWrapper_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#ifndef\ LOGGER\_WRAPPER\_JPL}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ LOGGER\_WRAPPER\_JPL}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{comment}{//This\ implicit\ definition\ is\ required\ only\ for\ including\ headers}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\ \ \ \ \#if\ ((defined(CUSTOM\_LOGGER\_JPL)\ ||\ defined(UFW\_LOGGER\_JPL)\ ||\ defined(QUIET\_LOGGER\_JPL))\ \&\&\ !defined(USE\_LOGGER\_JPL))}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ USE\_LOGGER\_JPL}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\ \ \ \ \#endif}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\ \ \ \ \#if\ defined(USE\_LOGGER\_JPL)\ \&\&\ defined(DISABLE\_LOGGER\_JPL)}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#error\ "{}USE\_LOGGER\_JPL\ and\ DISABLE\_LOGGER\_JPL\ both\ defined"{}}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\ \ \ \ \#endif}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\ \ \ \ \#ifdef\ USE\_LOGGER\_JPL}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#include\ "{}\mbox{\hyperlink{Logger_8hpp}{Logger.hpp}}"{}}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacejpl}{jpl}}\{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{namespace\ }\_logger\{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacejpl_1_1__logger_a909deec94298a397b06127f8ac7d4a68_a909deec94298a397b06127f8ac7d4a68}{print}}(std::string\ msg,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{namespacejpl_1_1__logger_a792f1548c6d4cbb2370032b773147251_a792f1548c6d4cbb2370032b773147251}{jpl::\_logger::LOG\_STATUS}}\ status)\{}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classjpl_1_1__logger_1_1Logger_a66246f816ec6a7ddc2c13ac46cb06420_a66246f816ec6a7ddc2c13ac46cb06420}{jpl::\_logger::Logger::INSTANCE}}-\/>\mbox{\hyperlink{classjpl_1_1__logger_1_1Logger_a924032a44c5ad7578c2fd4f61100d754_a924032a44c5ad7578c2fd4f61100d754}{print}}(msg,\ status);}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacejpl_1_1__logger_a909deec94298a397b06127f8ac7d4a68_a909deec94298a397b06127f8ac7d4a68}{print}}(std::string\ msg)\{}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classjpl_1_1__logger_1_1Logger_a66246f816ec6a7ddc2c13ac46cb06420_a66246f816ec6a7ddc2c13ac46cb06420}{jpl::\_logger::Logger::INSTANCE}}-\/>\mbox{\hyperlink{classjpl_1_1__logger_1_1Logger_a924032a44c5ad7578c2fd4f61100d754_a924032a44c5ad7578c2fd4f61100d754}{print}}(msg,\ \mbox{\hyperlink{namespacejpl_1_1__logger_abd3e6bb6994657edb6a248f91de4a020_abd3e6bb6994657edb6a248f91de4a020}{jpl::\_logger::INFO\_JPL}});}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\ \ \ \ \#else\ }}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#include\ <iostream>}}
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#include\ <string>}}
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#include\ <ctime>}}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacejpl}{jpl}}\{}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{namespace\ }\_logger\{}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \textcolor{keyword}{const}\ \mbox{\hyperlink{namespacejpl_1_1__logger_a792f1548c6d4cbb2370032b773147251_a792f1548c6d4cbb2370032b773147251}{LOG\_STATUS}};}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{namespacejpl_1_1__logger_a792f1548c6d4cbb2370032b773147251_a792f1548c6d4cbb2370032b773147251}{LOG\_STATUS}}\ \mbox{\hyperlink{namespacejpl_1_1__logger_abd3e6bb6994657edb6a248f91de4a020_abd3e6bb6994657edb6a248f91de4a020}{INFO\_JPL}}\ =\ \textcolor{stringliteral}{"{}INF"{}};}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{namespacejpl_1_1__logger_a792f1548c6d4cbb2370032b773147251_a792f1548c6d4cbb2370032b773147251}{LOG\_STATUS}}\ \mbox{\hyperlink{namespacejpl_1_1__logger_aaf25705f78a2bb585a2a2ec4f69bc5b0_aaf25705f78a2bb585a2a2ec4f69bc5b0}{WARNING\_JPL}}\ =\ \textcolor{stringliteral}{"{}WAR"{}};}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{namespacejpl_1_1__logger_a792f1548c6d4cbb2370032b773147251_a792f1548c6d4cbb2370032b773147251}{LOG\_STATUS}}\ \mbox{\hyperlink{namespacejpl_1_1__logger_a22542d2b436c8fe7e915bcb4c45cfe44_a22542d2b436c8fe7e915bcb4c45cfe44}{ERROR\_JPL}}\ =\ \textcolor{stringliteral}{"{}ERR"{}};}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{namespacejpl_1_1__logger_a792f1548c6d4cbb2370032b773147251_a792f1548c6d4cbb2370032b773147251}{LOG\_STATUS}}\ \mbox{\hyperlink{namespacejpl_1_1__logger_ab510e5e456c742873006dce9798587c6_ab510e5e456c742873006dce9798587c6}{DEBUG\_JPL}}\ =\ \textcolor{stringliteral}{"{}DBG"{}};}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ std::string\ \mbox{\hyperlink{namespacejpl_1_1__logger_a7ef275bb6cfc544fe1dbcf6b630a15c8_a7ef275bb6cfc544fe1dbcf6b630a15c8}{getTM}}()\{}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::time\_t\ now\ =\ std::time(0);}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::tm\ *ltm\ =\ std::localtime(\&now);}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \ std::to\_string((*ltm).tm\_mday)\ +\ \textcolor{stringliteral}{"{}-\/"{}}\ +\ }
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::to\_string((*ltm).tm\_mon+1)\ +\ \textcolor{stringliteral}{"{}-\/"{}}\ +\ }
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::to\_string((*ltm).tm\_year\ +\ 1900)\ +\ \textcolor{stringliteral}{"{}\_"{}}\ +}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::to\_string((*ltm).tm\_hour)\ +\ \textcolor{stringliteral}{"{}:"{}}\ +}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::to\_string((*ltm).tm\_min)\ +\ \textcolor{stringliteral}{"{}:"{}}\ +}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::to\_string((*ltm).tm\_sec);}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacejpl_1_1__logger_a909deec94298a397b06127f8ac7d4a68_a909deec94298a397b06127f8ac7d4a68}{print}}(std::string\ msg,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{namespacejpl_1_1__logger_a792f1548c6d4cbb2370032b773147251_a792f1548c6d4cbb2370032b773147251}{LOG\_STATUS}}\ status)\{}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00095\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#ifndef\ DISABLE\_LOGGER\_JPL}}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(status\ ==\ \textcolor{stringliteral}{"{}DBG"{}})\{}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout<<\mbox{\hyperlink{namespacejpl_1_1__logger_a7ef275bb6cfc544fe1dbcf6b630a15c8_a7ef275bb6cfc544fe1dbcf6b630a15c8}{getTM}}()<<\textcolor{stringliteral}{"{}\ "{}}<<msg<<std::endl;}
+\DoxyCodeLine{00101\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#endif}}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacejpl_1_1__logger_a909deec94298a397b06127f8ac7d4a68_a909deec94298a397b06127f8ac7d4a68}{print}}(std::string\ msg)\{\ }
+\DoxyCodeLine{00105\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#ifndef\ DISABLE\_LOGGER\_JPL}}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacejpl_1_1__logger_a909deec94298a397b06127f8ac7d4a68_a909deec94298a397b06127f8ac7d4a68}{jpl::\_logger::print}}(msg,\ \textcolor{stringliteral}{"{}"{}});\ }
+\DoxyCodeLine{00107\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#endif}}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{00111\ \textcolor{preprocessor}{\ \ \ \ \#endif}}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

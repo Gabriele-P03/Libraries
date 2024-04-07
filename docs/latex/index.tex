@@ -1,0 +1,43 @@
+\chapter{JPL}
+\hypertarget{index}{}\label{index}\index{JPL@{JPL}}
+\label{index_md_README}%
+\Hypertarget{index_md_README}%
+JPL is intended to be an independent multi-\/module open-\/source library for general engineering purposes. ~\newline
+ Although each module is meant to be independent from the others, some of them might include another one (OD), or even mutually (OMD); particularly, the Utils one is included by most of them (CM).~\newline
+ {\itshape You can read about acronyms meaning at the end of this README file...} ~\newline
+~\newline
+ Every modules\textquotesingle{} documentation are written following a chromatic regulamantation. ~\newline
+ {\bfseries{(Actually it could not be striclty followed by all of them since they\textquotesingle{}re still in WIP)}}\+: ~\newline
+ Package ~\newline
+ Header ~\newline
+ Class ~\newline
+ Constructor ~\newline
+ Field ~\newline
+ Function ~\newline
+ Argument ~\newline
+ Exception ~\newline
+ Module ~\newline
+ Macro ~\newline
+~\newline
+ \hypertarget{index_autotoc_md1}{}\doxysection{\texorpdfstring{Modules\+:}{Modules\+:}}\label{index_autotoc_md1}
+\begin{quote}
+\#\# Exception Exception \end{quote}
+\begin{quote}
+\#\# Utils Utility functions, DS, Debug tools and so on... \end{quote}
+\begin{quote}
+\#\# Logger Logger sub-\/system \end{quote}
+~\newline
+~\newline
+ \hypertarget{index_autotoc_md2}{}\doxysection{\texorpdfstring{Dictionary}{Dictionary}}\label{index_autotoc_md2}
+\texorpdfstring{$>$}{>}\#\# CM ({\itshape Common Module}) \begin{quote}
+\begin{quote}
+A module which is included by other ones without letting choose to the programmer. Beyond Utils one, it happens hardly ever \end{quote}
+\end{quote}
+\texorpdfstring{$>$}{>}\#\# OD ({\itshape Optional Dependency}) \begin{quote}
+\begin{quote}
+A module could include another one in order to do its tasks, but if the latter was not loaded successfully, program will not exit with failure. The first one will keep running such as it had never asked help to the other one \end{quote}
+\end{quote}
+\texorpdfstring{$>$}{>}\#\# OMD ({\itshape Optional Mutual Dependency}) \begin{quote}
+\begin{quote}
+Just like the OD, but they include each others. \end{quote}
+\end{quote}

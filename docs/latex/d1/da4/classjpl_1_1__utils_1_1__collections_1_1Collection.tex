@@ -1,0 +1,271 @@
+\doxysection{jpl\+::\+\_\+utils\+::\+\_\+collections\+::Collection\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{classjpl_1_1__utils_1_1__collections_1_1Collection}{}\label{classjpl_1_1__utils_1_1__collections_1_1Collection}\index{jpl::\_utils::\_collections::Collection$<$ T $>$@{jpl::\_utils::\_collections::Collection$<$ T $>$}}
+
+
+{\ttfamily \#include $<$Collection.\+hpp$>$}
+
+Inheritance diagram for jpl\+::\+\_\+utils\+::\+\_\+collections\+::Collection\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.137404cm]{d1/da4/classjpl_1_1__utils_1_1__collections_1_1Collection}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1Collection_ac6cb1c5c7d8c719b1605f35d834686ab_ac6cb1c5c7d8c719b1605f35d834686ab}{add}} (T t)=0
+\begin{DoxyCompactList}\small\item\em Insert t into the structure. The position t is added at depends on type of structure. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1Collection_aba30be1ac44a21c251c4df8a3bcedbe7_aba30be1ac44a21c251c4df8a3bcedbe7}{contains}} (T t) const noexcept=0
+\item 
+virtual void \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1Collection_a5476c533267df7a5591b302e50c29e2a_a5476c533267df7a5591b302e50c29e2a}{clear}} () noexcept=0
+\begin{DoxyCompactList}\small\item\em Remove all elements from the collection. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1Collection_ae8d15f57c804f2eebb6cdb7963b8d8dc_ae8d15f57c804f2eebb6cdb7963b8d8dc}{is\+Empty}} () noexcept
+\item 
+const unsigned long \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1Collection_aa2d40dd4c0592ee51c241a0790567f3b_aa2d40dd4c0592ee51c241a0790567f3b}{get\+Max}} () const noexcept
+\item 
+const unsigned long \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1Collection_a51e52a0853bec13b07a4fceb80a0ca8e_a51e52a0853bec13b07a4fceb80a0ca8e}{get\+Size}} () const noexcept
+\item 
+const bool \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1Collection_af1a416ae5b02f91f0ff2ca03a43b1c18_af1a416ae5b02f91f0ff2ca03a43b1c18}{allow\+Null}} () const noexcept
+\item 
+const bool \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1Collection_ad0757fbdfc6e63be9ed9d91479020ccc_ad0757fbdfc6e63be9ed9d91479020ccc}{allow\+Duplicate}} () const noexcept
+\item 
+const bool \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1Collection_a38ece38e22b9f5a157246b94c83e8100_a38ece38e22b9f5a157246b94c83e8100}{allow\+Resize}} () const noexcept
+\item 
+const bool \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1Collection_a2aa9f6666453b555b8980c24510e5e4d_a2aa9f6666453b555b8980c24510e5e4d}{is\+Pointer}} () const noexcept
+\item 
+virtual T \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1Collection_aa4f94cc8f7853e1b61530b180d1df4b6_aa4f94cc8f7853e1b61530b180d1df4b6}{to\+Array}} () const noexcept=0
+\begin{DoxyCompactList}\small\item\em In order to offers you the most available compatibility to any others type of structures (even not JPL\textquotesingle{}s), any collection can be copied into an array. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classjpl_1_1__utils_1_1Iterable_a1e2af25891059c6364ddaa34939efe04_a1e2af25891059c6364ddaa34939efe04}{for\+Each}} (\mbox{\hyperlink{classjpl_1_1__utils_1_1__functional_1_1Consumer}{\+\_\+functional\+::\+Consumer}}$<$ T $>$ consumer)=0
+\begin{DoxyCompactList}\small\item\em Iterate all elements of the collection and execute consumer on each element ~\newline
+ Unless you have checked if T is nullptr -\/ if it is a pointer -\/ segmentation-\/fault may occurr. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1Collection_ac6f33fba0cad83e0612bdd957eb67ce1_ac6f33fba0cad83e0612bdd957eb67ce1}{Collection}} (bool \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1Collection_aada92f182e92c7e3cc3e3aebf6d9d45f_aada92f182e92c7e3cc3e3aebf6d9d45f}{nullable\+Elements}}, bool \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1Collection_a4124da56343d43ff8a7f48c0e78ddf14_a4124da56343d43ff8a7f48c0e78ddf14}{duplicate\+Elements}}, bool \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1Collection_a29a8a0a5da72e1471a550f3e0e5ab5aa_a29a8a0a5da72e1471a550f3e0e5ab5aa}{resizeable}})
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+unsigned long \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1Collection_a1baf49842978ed56115f3c17b653ed99_a1baf49842978ed56115f3c17b653ed99}{max}} = 0
+\begin{DoxyCompactList}\small\item\em It stores the max amount of items which can be contained into the collection. \end{DoxyCompactList}\item 
+unsigned long \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1Collection_a383f38e782ffdfb92c05b23ca4a861fe_a383f38e782ffdfb92c05b23ca4a861fe}{size}} = 0
+\begin{DoxyCompactList}\small\item\em It stores the current amount of items into the structure. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1Collection_aada92f182e92c7e3cc3e3aebf6d9d45f_aada92f182e92c7e3cc3e3aebf6d9d45f}{nullable\+Elements}}
+\begin{DoxyCompactList}\small\item\em if null elements are allowd to be inserted into the collection \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1Collection_a4124da56343d43ff8a7f48c0e78ddf14_a4124da56343d43ff8a7f48c0e78ddf14}{duplicate\+Elements}}
+\begin{DoxyCompactList}\small\item\em if duplicate elements are allowed \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1Collection_a29a8a0a5da72e1471a550f3e0e5ab5aa_a29a8a0a5da72e1471a550f3e0e5ab5aa}{resizeable}}
+\begin{DoxyCompactList}\small\item\em if the collection is resizeable \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1Collection_ab649a459c32cdc05931ef4160baf28df_ab649a459c32cdc05931ef4160baf28df}{pointer}}
+\begin{DoxyCompactList}\small\item\em if T is a pointer \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classjpl_1_1__utils_1_1__collections_1_1Collection_ac6f33fba0cad83e0612bdd957eb67ce1_ac6f33fba0cad83e0612bdd957eb67ce1}\label{classjpl_1_1__utils_1_1__collections_1_1Collection_ac6f33fba0cad83e0612bdd957eb67ce1_ac6f33fba0cad83e0612bdd957eb67ce1} 
+\index{jpl::\_utils::\_collections::Collection$<$ T $>$@{jpl::\_utils::\_collections::Collection$<$ T $>$}!Collection@{Collection}}
+\index{Collection@{Collection}!jpl::\_utils::\_collections::Collection$<$ T $>$@{jpl::\_utils::\_collections::Collection$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Collection()}{Collection()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1Collection}{jpl\+::\+\_\+utils\+::\+\_\+collections\+::\+Collection}}$<$ T $>$\+::\+Collection (\begin{DoxyParamCaption}\item[{bool}]{nullable\+Elements,  }\item[{bool}]{duplicate\+Elements,  }\item[{bool}]{resizeable }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classjpl_1_1__utils_1_1__collections_1_1Collection_ac6cb1c5c7d8c719b1605f35d834686ab_ac6cb1c5c7d8c719b1605f35d834686ab}\label{classjpl_1_1__utils_1_1__collections_1_1Collection_ac6cb1c5c7d8c719b1605f35d834686ab_ac6cb1c5c7d8c719b1605f35d834686ab} 
+\index{jpl::\_utils::\_collections::Collection$<$ T $>$@{jpl::\_utils::\_collections::Collection$<$ T $>$}!add@{add}}
+\index{add@{add}!jpl::\_utils::\_collections::Collection$<$ T $>$@{jpl::\_utils::\_collections::Collection$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{add()}{add()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+virtual void \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1Collection}{jpl\+::\+\_\+utils\+::\+\_\+collections\+::\+Collection}}$<$ T $>$\+::add (\begin{DoxyParamCaption}\item[{T}]{t }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Null\+Pointer\+Exception} & if list does not permit null elements and t is nullptr \\
+\hline
+\end{DoxyExceptions}
+
+
+Implemented in \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_a575fa9eef9cf8ad904369b20882b6f11_a575fa9eef9cf8ad904369b20882b6f11}{jpl\+::\+\_\+utils\+::\+\_\+collections\+::\+\_\+list\+::\+Queue$<$ T $>$}}, \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1Stack_ab5abd6f8044daee8db5c5b2547e91579_ab5abd6f8044daee8db5c5b2547e91579}{jpl\+::\+\_\+utils\+::\+\_\+collections\+::\+\_\+list\+::\+Stack$<$ T $>$}}, \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1ArrayList_ad83984225bf707ae5fc4958185cd16fe_ad83984225bf707ae5fc4958185cd16fe}{jpl\+::\+\_\+utils\+::\+\_\+collections\+::\+\_\+list\+::\+Array\+List$<$ T $>$}}, and \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1LinkedList_a5f110569d978e11396c7969d9e96a530_a5f110569d978e11396c7969d9e96a530}{jpl\+::\+\_\+utils\+::\+\_\+collections\+::\+\_\+list\+::\+Linked\+List$<$ T $>$}}.
+
+\Hypertarget{classjpl_1_1__utils_1_1__collections_1_1Collection_ad0757fbdfc6e63be9ed9d91479020ccc_ad0757fbdfc6e63be9ed9d91479020ccc}\label{classjpl_1_1__utils_1_1__collections_1_1Collection_ad0757fbdfc6e63be9ed9d91479020ccc_ad0757fbdfc6e63be9ed9d91479020ccc} 
+\index{jpl::\_utils::\_collections::Collection$<$ T $>$@{jpl::\_utils::\_collections::Collection$<$ T $>$}!allowDuplicate@{allowDuplicate}}
+\index{allowDuplicate@{allowDuplicate}!jpl::\_utils::\_collections::Collection$<$ T $>$@{jpl::\_utils::\_collections::Collection$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{allowDuplicate()}{allowDuplicate()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+const bool \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1Collection}{jpl\+::\+\_\+utils\+::\+\_\+collections\+::\+Collection}}$<$ T $>$\+::allow\+Duplicate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+\begin{DoxyReturn}{Returns}
+if the collection allows duplicate elements 
+\end{DoxyReturn}
+\Hypertarget{classjpl_1_1__utils_1_1__collections_1_1Collection_af1a416ae5b02f91f0ff2ca03a43b1c18_af1a416ae5b02f91f0ff2ca03a43b1c18}\label{classjpl_1_1__utils_1_1__collections_1_1Collection_af1a416ae5b02f91f0ff2ca03a43b1c18_af1a416ae5b02f91f0ff2ca03a43b1c18} 
+\index{jpl::\_utils::\_collections::Collection$<$ T $>$@{jpl::\_utils::\_collections::Collection$<$ T $>$}!allowNull@{allowNull}}
+\index{allowNull@{allowNull}!jpl::\_utils::\_collections::Collection$<$ T $>$@{jpl::\_utils::\_collections::Collection$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{allowNull()}{allowNull()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+const bool \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1Collection}{jpl\+::\+\_\+utils\+::\+\_\+collections\+::\+Collection}}$<$ T $>$\+::allow\+Null (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+\begin{DoxyReturn}{Returns}
+if the collection allows null elements 
+\end{DoxyReturn}
+\Hypertarget{classjpl_1_1__utils_1_1__collections_1_1Collection_a38ece38e22b9f5a157246b94c83e8100_a38ece38e22b9f5a157246b94c83e8100}\label{classjpl_1_1__utils_1_1__collections_1_1Collection_a38ece38e22b9f5a157246b94c83e8100_a38ece38e22b9f5a157246b94c83e8100} 
+\index{jpl::\_utils::\_collections::Collection$<$ T $>$@{jpl::\_utils::\_collections::Collection$<$ T $>$}!allowResize@{allowResize}}
+\index{allowResize@{allowResize}!jpl::\_utils::\_collections::Collection$<$ T $>$@{jpl::\_utils::\_collections::Collection$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{allowResize()}{allowResize()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+const bool \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1Collection}{jpl\+::\+\_\+utils\+::\+\_\+collections\+::\+Collection}}$<$ T $>$\+::allow\+Resize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+\begin{DoxyReturn}{Returns}
+if the collection is resizeable 
+\end{DoxyReturn}
+\Hypertarget{classjpl_1_1__utils_1_1__collections_1_1Collection_a5476c533267df7a5591b302e50c29e2a_a5476c533267df7a5591b302e50c29e2a}\label{classjpl_1_1__utils_1_1__collections_1_1Collection_a5476c533267df7a5591b302e50c29e2a_a5476c533267df7a5591b302e50c29e2a} 
+\index{jpl::\_utils::\_collections::Collection$<$ T $>$@{jpl::\_utils::\_collections::Collection$<$ T $>$}!clear@{clear}}
+\index{clear@{clear}!jpl::\_utils::\_collections::Collection$<$ T $>$@{jpl::\_utils::\_collections::Collection$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+virtual void \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1Collection}{jpl\+::\+\_\+utils\+::\+\_\+collections\+::\+Collection}}$<$ T $>$\+::clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}, {\ttfamily [noexcept]}}
+
+
+
+Implemented in \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1ArrayList_a7195c1ff6f94e2262eb2d1c9016f476f_a7195c1ff6f94e2262eb2d1c9016f476f}{jpl\+::\+\_\+utils\+::\+\_\+collections\+::\+\_\+list\+::\+Array\+List$<$ T $>$}}, \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1LinkedList_a410339bec5e1651af59159375992373d_a410339bec5e1651af59159375992373d}{jpl\+::\+\_\+utils\+::\+\_\+collections\+::\+\_\+list\+::\+Linked\+List$<$ T $>$}}, \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_a062ba4f115c6f68184a4a1953501cfcb_a062ba4f115c6f68184a4a1953501cfcb}{jpl\+::\+\_\+utils\+::\+\_\+collections\+::\+\_\+list\+::\+Queue$<$ T $>$}}, and \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1Stack_a9009249d296c2ca9f8e1ce318b3637fa_a9009249d296c2ca9f8e1ce318b3637fa}{jpl\+::\+\_\+utils\+::\+\_\+collections\+::\+\_\+list\+::\+Stack$<$ T $>$}}.
+
+\Hypertarget{classjpl_1_1__utils_1_1__collections_1_1Collection_aba30be1ac44a21c251c4df8a3bcedbe7_aba30be1ac44a21c251c4df8a3bcedbe7}\label{classjpl_1_1__utils_1_1__collections_1_1Collection_aba30be1ac44a21c251c4df8a3bcedbe7_aba30be1ac44a21c251c4df8a3bcedbe7} 
+\index{jpl::\_utils::\_collections::Collection$<$ T $>$@{jpl::\_utils::\_collections::Collection$<$ T $>$}!contains@{contains}}
+\index{contains@{contains}!jpl::\_utils::\_collections::Collection$<$ T $>$@{jpl::\_utils::\_collections::Collection$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{contains()}{contains()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+virtual bool \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1Collection}{jpl\+::\+\_\+utils\+::\+\_\+collections\+::\+Collection}}$<$ T $>$\+::contains (\begin{DoxyParamCaption}\item[{T}]{t }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}, {\ttfamily [noexcept]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Check if the collection contains t 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1ArrayList_a0eba05fa32ea8a2d166b7b4a9e9cb70b_a0eba05fa32ea8a2d166b7b4a9e9cb70b}{jpl\+::\+\_\+utils\+::\+\_\+collections\+::\+\_\+list\+::\+Array\+List$<$ T $>$}}, \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_a2d57dbf4729e998a012ce18175231707_a2d57dbf4729e998a012ce18175231707}{jpl\+::\+\_\+utils\+::\+\_\+collections\+::\+\_\+list\+::\+Queue$<$ T $>$}}, \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1Stack_acd1ccca207de384ff31ebfc8a2765f94_acd1ccca207de384ff31ebfc8a2765f94}{jpl\+::\+\_\+utils\+::\+\_\+collections\+::\+\_\+list\+::\+Stack$<$ T $>$}}, and \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1LinkedList_ac3fd499af11f45cf1f251845232786d0_ac3fd499af11f45cf1f251845232786d0}{jpl\+::\+\_\+utils\+::\+\_\+collections\+::\+\_\+list\+::\+Linked\+List$<$ T $>$}}.
+
+\Hypertarget{classjpl_1_1__utils_1_1Iterable_a1e2af25891059c6364ddaa34939efe04_a1e2af25891059c6364ddaa34939efe04}\label{classjpl_1_1__utils_1_1Iterable_a1e2af25891059c6364ddaa34939efe04_a1e2af25891059c6364ddaa34939efe04} 
+\index{jpl::\_utils::\_collections::Collection$<$ T $>$@{jpl::\_utils::\_collections::Collection$<$ T $>$}!forEach@{forEach}}
+\index{forEach@{forEach}!jpl::\_utils::\_collections::Collection$<$ T $>$@{jpl::\_utils::\_collections::Collection$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{forEach()}{forEach()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+virtual void \mbox{\hyperlink{classjpl_1_1__utils_1_1Iterable}{jpl\+::\+\_\+utils\+::\+Iterable}}$<$ T $>$\+::for\+Each (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classjpl_1_1__utils_1_1__functional_1_1Consumer}{\+\_\+functional\+::\+Consumer}}$<$ T $>$}]{consumer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}, {\ttfamily [inherited]}}
+
+
+
+Implemented in \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1ArrayList_aaf99b85b8a7c7ad58811cbda69488821_aaf99b85b8a7c7ad58811cbda69488821}{jpl\+::\+\_\+utils\+::\+\_\+collections\+::\+\_\+list\+::\+Array\+List$<$ T $>$}}, \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_a946481702e8763ab11789939089c790d_a946481702e8763ab11789939089c790d}{jpl\+::\+\_\+utils\+::\+\_\+collections\+::\+\_\+list\+::\+Queue$<$ T $>$}}, \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1Stack_a08efa66d6d995019fb55a182d3b8fb2c_a08efa66d6d995019fb55a182d3b8fb2c}{jpl\+::\+\_\+utils\+::\+\_\+collections\+::\+\_\+list\+::\+Stack$<$ T $>$}}, and \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1LinkedList_a81a8f9d8c534e026bd5f7cd0666dfea9_a81a8f9d8c534e026bd5f7cd0666dfea9}{jpl\+::\+\_\+utils\+::\+\_\+collections\+::\+\_\+list\+::\+Linked\+List$<$ T $>$}}.
+
+\Hypertarget{classjpl_1_1__utils_1_1__collections_1_1Collection_aa2d40dd4c0592ee51c241a0790567f3b_aa2d40dd4c0592ee51c241a0790567f3b}\label{classjpl_1_1__utils_1_1__collections_1_1Collection_aa2d40dd4c0592ee51c241a0790567f3b_aa2d40dd4c0592ee51c241a0790567f3b} 
+\index{jpl::\_utils::\_collections::Collection$<$ T $>$@{jpl::\_utils::\_collections::Collection$<$ T $>$}!getMax@{getMax}}
+\index{getMax@{getMax}!jpl::\_utils::\_collections::Collection$<$ T $>$@{jpl::\_utils::\_collections::Collection$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{getMax()}{getMax()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+const unsigned long \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1Collection}{jpl\+::\+\_\+utils\+::\+\_\+collections\+::\+Collection}}$<$ T $>$\+::get\+Max (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+\begin{DoxyReturn}{Returns}
+the max amount of items which can contained into the collection 
+\end{DoxyReturn}
+\Hypertarget{classjpl_1_1__utils_1_1__collections_1_1Collection_a51e52a0853bec13b07a4fceb80a0ca8e_a51e52a0853bec13b07a4fceb80a0ca8e}\label{classjpl_1_1__utils_1_1__collections_1_1Collection_a51e52a0853bec13b07a4fceb80a0ca8e_a51e52a0853bec13b07a4fceb80a0ca8e} 
+\index{jpl::\_utils::\_collections::Collection$<$ T $>$@{jpl::\_utils::\_collections::Collection$<$ T $>$}!getSize@{getSize}}
+\index{getSize@{getSize}!jpl::\_utils::\_collections::Collection$<$ T $>$@{jpl::\_utils::\_collections::Collection$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{getSize()}{getSize()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+const unsigned long \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1Collection}{jpl\+::\+\_\+utils\+::\+\_\+collections\+::\+Collection}}$<$ T $>$\+::get\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+\begin{DoxyReturn}{Returns}
+the current amount of items which are contained into the collection 
+\end{DoxyReturn}
+\Hypertarget{classjpl_1_1__utils_1_1__collections_1_1Collection_ae8d15f57c804f2eebb6cdb7963b8d8dc_ae8d15f57c804f2eebb6cdb7963b8d8dc}\label{classjpl_1_1__utils_1_1__collections_1_1Collection_ae8d15f57c804f2eebb6cdb7963b8d8dc_ae8d15f57c804f2eebb6cdb7963b8d8dc} 
+\index{jpl::\_utils::\_collections::Collection$<$ T $>$@{jpl::\_utils::\_collections::Collection$<$ T $>$}!isEmpty@{isEmpty}}
+\index{isEmpty@{isEmpty}!jpl::\_utils::\_collections::Collection$<$ T $>$@{jpl::\_utils::\_collections::Collection$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{isEmpty()}{isEmpty()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+bool \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1Collection}{jpl\+::\+\_\+utils\+::\+\_\+collections\+::\+Collection}}$<$ T $>$\+::is\+Empty (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+\begin{DoxyReturn}{Returns}
+if the structure is empty 
+\end{DoxyReturn}
+\Hypertarget{classjpl_1_1__utils_1_1__collections_1_1Collection_a2aa9f6666453b555b8980c24510e5e4d_a2aa9f6666453b555b8980c24510e5e4d}\label{classjpl_1_1__utils_1_1__collections_1_1Collection_a2aa9f6666453b555b8980c24510e5e4d_a2aa9f6666453b555b8980c24510e5e4d} 
+\index{jpl::\_utils::\_collections::Collection$<$ T $>$@{jpl::\_utils::\_collections::Collection$<$ T $>$}!isPointer@{isPointer}}
+\index{isPointer@{isPointer}!jpl::\_utils::\_collections::Collection$<$ T $>$@{jpl::\_utils::\_collections::Collection$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{isPointer()}{isPointer()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+const bool \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1Collection}{jpl\+::\+\_\+utils\+::\+\_\+collections\+::\+Collection}}$<$ T $>$\+::is\+Pointer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+\begin{DoxyReturn}{Returns}
+if T is a pointer 
+\end{DoxyReturn}
+\Hypertarget{classjpl_1_1__utils_1_1__collections_1_1Collection_aa4f94cc8f7853e1b61530b180d1df4b6_aa4f94cc8f7853e1b61530b180d1df4b6}\label{classjpl_1_1__utils_1_1__collections_1_1Collection_aa4f94cc8f7853e1b61530b180d1df4b6_aa4f94cc8f7853e1b61530b180d1df4b6} 
+\index{jpl::\_utils::\_collections::Collection$<$ T $>$@{jpl::\_utils::\_collections::Collection$<$ T $>$}!toArray@{toArray}}
+\index{toArray@{toArray}!jpl::\_utils::\_collections::Collection$<$ T $>$@{jpl::\_utils::\_collections::Collection$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{toArray()}{toArray()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+virtual T \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1Collection}{jpl\+::\+\_\+utils\+::\+\_\+collections\+::\+Collection}}$<$ T $>$\+::to\+Array (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}, {\ttfamily [noexcept]}}
+
+Each array returned by a collection will be a mirror-\/copy of this one, therefore if the template type is a pointer, in the array you will have right them (a new allocation of them will not be done)
+
+\begin{DoxyReturn}{Returns}
+T\texorpdfstring{$\ast$}{*} (get its size by \doxylink{classjpl_1_1__utils_1_1__collections_1_1Collection_a51e52a0853bec13b07a4fceb80a0ca8e_a51e52a0853bec13b07a4fceb80a0ca8e}{get\+Size()}) 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1ArrayList_a3e6c33329c8a5bc3d414f2d2c17c02ae_a3e6c33329c8a5bc3d414f2d2c17c02ae}{jpl\+::\+\_\+utils\+::\+\_\+collections\+::\+\_\+list\+::\+Array\+List$<$ T $>$}}, \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1LinkedList_adaec2315e9b0cadf322f12a761618f9b_adaec2315e9b0cadf322f12a761618f9b}{jpl\+::\+\_\+utils\+::\+\_\+collections\+::\+\_\+list\+::\+Linked\+List$<$ T $>$}}, \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_a37619727a13157540686096485b6a07e_a37619727a13157540686096485b6a07e}{jpl\+::\+\_\+utils\+::\+\_\+collections\+::\+\_\+list\+::\+Queue$<$ T $>$}}, and \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1Stack_ad4e86c3d7a9d992a31ba03329ca37d46_ad4e86c3d7a9d992a31ba03329ca37d46}{jpl\+::\+\_\+utils\+::\+\_\+collections\+::\+\_\+list\+::\+Stack$<$ T $>$}}.
+
+
+
+\doxysubsection{Field Documentation}
+\Hypertarget{classjpl_1_1__utils_1_1__collections_1_1Collection_a4124da56343d43ff8a7f48c0e78ddf14_a4124da56343d43ff8a7f48c0e78ddf14}\label{classjpl_1_1__utils_1_1__collections_1_1Collection_a4124da56343d43ff8a7f48c0e78ddf14_a4124da56343d43ff8a7f48c0e78ddf14} 
+\index{jpl::\_utils::\_collections::Collection$<$ T $>$@{jpl::\_utils::\_collections::Collection$<$ T $>$}!duplicateElements@{duplicateElements}}
+\index{duplicateElements@{duplicateElements}!jpl::\_utils::\_collections::Collection$<$ T $>$@{jpl::\_utils::\_collections::Collection$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{duplicateElements}{duplicateElements}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+bool \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1Collection}{jpl\+::\+\_\+utils\+::\+\_\+collections\+::\+Collection}}$<$ T $>$\+::duplicate\+Elements\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classjpl_1_1__utils_1_1__collections_1_1Collection_a1baf49842978ed56115f3c17b653ed99_a1baf49842978ed56115f3c17b653ed99}\label{classjpl_1_1__utils_1_1__collections_1_1Collection_a1baf49842978ed56115f3c17b653ed99_a1baf49842978ed56115f3c17b653ed99} 
+\index{jpl::\_utils::\_collections::Collection$<$ T $>$@{jpl::\_utils::\_collections::Collection$<$ T $>$}!max@{max}}
+\index{max@{max}!jpl::\_utils::\_collections::Collection$<$ T $>$@{jpl::\_utils::\_collections::Collection$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{max}{max}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+unsigned long \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1Collection}{jpl\+::\+\_\+utils\+::\+\_\+collections\+::\+Collection}}$<$ T $>$\+::max = 0\hspace{0.3cm}{\ttfamily [protected]}}
+
+A collection is by itselves increaseable, a data-\/structure could set it as final in its own scope. \Hypertarget{classjpl_1_1__utils_1_1__collections_1_1Collection_aada92f182e92c7e3cc3e3aebf6d9d45f_aada92f182e92c7e3cc3e3aebf6d9d45f}\label{classjpl_1_1__utils_1_1__collections_1_1Collection_aada92f182e92c7e3cc3e3aebf6d9d45f_aada92f182e92c7e3cc3e3aebf6d9d45f} 
+\index{jpl::\_utils::\_collections::Collection$<$ T $>$@{jpl::\_utils::\_collections::Collection$<$ T $>$}!nullableElements@{nullableElements}}
+\index{nullableElements@{nullableElements}!jpl::\_utils::\_collections::Collection$<$ T $>$@{jpl::\_utils::\_collections::Collection$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{nullableElements}{nullableElements}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+bool \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1Collection}{jpl\+::\+\_\+utils\+::\+\_\+collections\+::\+Collection}}$<$ T $>$\+::nullable\+Elements\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classjpl_1_1__utils_1_1__collections_1_1Collection_ab649a459c32cdc05931ef4160baf28df_ab649a459c32cdc05931ef4160baf28df}\label{classjpl_1_1__utils_1_1__collections_1_1Collection_ab649a459c32cdc05931ef4160baf28df_ab649a459c32cdc05931ef4160baf28df} 
+\index{jpl::\_utils::\_collections::Collection$<$ T $>$@{jpl::\_utils::\_collections::Collection$<$ T $>$}!pointer@{pointer}}
+\index{pointer@{pointer}!jpl::\_utils::\_collections::Collection$<$ T $>$@{jpl::\_utils::\_collections::Collection$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{pointer}{pointer}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+bool \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1Collection}{jpl\+::\+\_\+utils\+::\+\_\+collections\+::\+Collection}}$<$ T $>$\+::pointer\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classjpl_1_1__utils_1_1__collections_1_1Collection_a29a8a0a5da72e1471a550f3e0e5ab5aa_a29a8a0a5da72e1471a550f3e0e5ab5aa}\label{classjpl_1_1__utils_1_1__collections_1_1Collection_a29a8a0a5da72e1471a550f3e0e5ab5aa_a29a8a0a5da72e1471a550f3e0e5ab5aa} 
+\index{jpl::\_utils::\_collections::Collection$<$ T $>$@{jpl::\_utils::\_collections::Collection$<$ T $>$}!resizeable@{resizeable}}
+\index{resizeable@{resizeable}!jpl::\_utils::\_collections::Collection$<$ T $>$@{jpl::\_utils::\_collections::Collection$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{resizeable}{resizeable}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+bool \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1Collection}{jpl\+::\+\_\+utils\+::\+\_\+collections\+::\+Collection}}$<$ T $>$\+::resizeable\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classjpl_1_1__utils_1_1__collections_1_1Collection_a383f38e782ffdfb92c05b23ca4a861fe_a383f38e782ffdfb92c05b23ca4a861fe}\label{classjpl_1_1__utils_1_1__collections_1_1Collection_a383f38e782ffdfb92c05b23ca4a861fe_a383f38e782ffdfb92c05b23ca4a861fe} 
+\index{jpl::\_utils::\_collections::Collection$<$ T $>$@{jpl::\_utils::\_collections::Collection$<$ T $>$}!size@{size}}
+\index{size@{size}!jpl::\_utils::\_collections::Collection$<$ T $>$@{jpl::\_utils::\_collections::Collection$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{size}{size}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+unsigned long \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1Collection}{jpl\+::\+\_\+utils\+::\+\_\+collections\+::\+Collection}}$<$ T $>$\+::size = 0\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+utils/src/structure/\mbox{\hyperlink{Collection_8hpp}{Collection.\+hpp}}\end{DoxyCompactItemize}

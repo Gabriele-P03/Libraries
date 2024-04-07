@@ -1,0 +1,32 @@
+\doxysection{utils/src/debug/stacktrace/wrapper/\+Linux\+Stacktrace\+Wrapper.hpp File Reference}
+\hypertarget{LinuxStacktraceWrapper_8hpp}{}\label{LinuxStacktraceWrapper_8hpp}\index{utils/src/debug/stacktrace/wrapper/LinuxStacktraceWrapper.hpp@{utils/src/debug/stacktrace/wrapper/LinuxStacktraceWrapper.hpp}}
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$regex$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$execinfo.\+h$>$}\newline
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame}{jpl\+::\+\_\+utils\+::\+\_\+debug\+::\+Frame}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacejpl}{jpl}}
+\item 
+namespace \mbox{\hyperlink{namespacejpl_1_1__utils}{jpl\+::\+\_\+utils}}
+\item 
+namespace \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__debug}{jpl\+::\+\_\+utils\+::\+\_\+debug}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame}{Frame}} $>$ \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__debug_aaa5f13b509219e9102725127d2151214_aaa5f13b509219e9102725127d2151214}{jpl\+::\+\_\+utils\+::\+\_\+debug\+::query\+Stacktrace}} (unsigned int skipped, unsigned int max\+Size)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This is the right Stacktrace Wrapper for a linux machine. You oughta never include this header directly\+: kernel check is performed by Stacktrace\+Wrapper -\/ whose header file may give you more information with its documentation
+
+(1) I have already left a note about the decreasing of line number due to PC processing, as you can read from the \doxylink{StacktraceWrapper_8hpp}{Stacktrace\+Wrapper.\+hpp} documentation. Although that, as you can see here, that decreasing operation is performed only when addr2line does NOT get into a multiple path function (check the link below to get more information about it) \doxylink{}{Please, note instead that line number is always decreased under a windows machine  Gabriele-\/\+P03  2023-\/08-\/03  Copyright (c) 2023 }

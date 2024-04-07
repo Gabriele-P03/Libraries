@@ -1,0 +1,147 @@
+\doxysection{Win\+Stacktrace\+Wrapper.\+hpp}
+\hypertarget{WinStacktraceWrapper_8hpp_source}{}\label{WinStacktraceWrapper_8hpp_source}\index{utils/src/debug/stacktrace/wrapper/WinStacktraceWrapper.hpp@{utils/src/debug/stacktrace/wrapper/WinStacktraceWrapper.hpp}}
+\mbox{\hyperlink{WinStacktraceWrapper_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#ifndef\ WIN\_STACKTRACE\_WRAPPER\_JPL}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#define\ WIN\_STACKTRACE\_WRAPPER\_JPL}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\ \ \ \ \#include\ <eh.h>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\ \ \ \ \#include\ <Windows.h>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\ \ \ \ \#include\ <dbghelp.h>}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\ \ \ \ \#include\ <string>}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\ \ \ \ \#include\ <vector>}\ \ \ \textcolor{comment}{//It\ will\ be\ replaced\ by\ JPL's\ ArrayList}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}\mbox{\hyperlink{ErrorUtils_8hpp}{../../ErrorUtils.hpp}}"{}}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacejpl}{jpl}}\{}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{keyword}{namespace\ }\_utils\{}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{namespace\ }\_debug\{}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }Frame\{}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_a9a42e7bc8901413ab0059f87ea12144b_a9a42e7bc8901413ab0059f87ea12144b}{frame\_valid}};}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_ad329fdc9bef5979bcc0caf4b69cccb29_ad329fdc9bef5979bcc0caf4b69cccb29}{line}};}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_a662b327f7f17f31e1f703877cbb8c433_a662b327f7f17f31e1f703877cbb8c433}{function\_name}};}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_a734dd1c0b6044407be8eff16c00f7262_a734dd1c0b6044407be8eff16c00f7262}{address}};}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_a7a4f70f12322901a8091a4a1e8c334a5_a7a4f70f12322901a8091a4a1e8c334a5}{file\_name}};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_a35830038f1996ae46e274099a241dda6_a35830038f1996ae46e274099a241dda6}{Frame}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_ad329fdc9bef5979bcc0caf4b69cccb29_ad329fdc9bef5979bcc0caf4b69cccb29}{line}},\ \textcolor{keyword}{const}\ std::string\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_a662b327f7f17f31e1f703877cbb8c433_a662b327f7f17f31e1f703877cbb8c433}{function\_name}},\ \textcolor{keyword}{const}\ std::string\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_a734dd1c0b6044407be8eff16c00f7262_a734dd1c0b6044407be8eff16c00f7262}{address}},\ \textcolor{keyword}{const}\ std::string\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_a7a4f70f12322901a8091a4a1e8c334a5_a7a4f70f12322901a8091a4a1e8c334a5}{file\_name}})\ :\ }
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_a9a42e7bc8901413ab0059f87ea12144b_a9a42e7bc8901413ab0059f87ea12144b}{frame\_valid}}(true),\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_ad329fdc9bef5979bcc0caf4b69cccb29_ad329fdc9bef5979bcc0caf4b69cccb29}{line}}(\mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_ad329fdc9bef5979bcc0caf4b69cccb29_ad329fdc9bef5979bcc0caf4b69cccb29}{line}}),\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_a662b327f7f17f31e1f703877cbb8c433_a662b327f7f17f31e1f703877cbb8c433}{function\_name}}(\mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_a662b327f7f17f31e1f703877cbb8c433_a662b327f7f17f31e1f703877cbb8c433}{function\_name}}),\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_a734dd1c0b6044407be8eff16c00f7262_a734dd1c0b6044407be8eff16c00f7262}{address}}(\mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_a734dd1c0b6044407be8eff16c00f7262_a734dd1c0b6044407be8eff16c00f7262}{address}}),\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_a7a4f70f12322901a8091a4a1e8c334a5_a7a4f70f12322901a8091a4a1e8c334a5}{file\_name}}(\mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_a7a4f70f12322901a8091a4a1e8c334a5_a7a4f70f12322901a8091a4a1e8c334a5}{file\_name}})\{\}}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_aa91eb4517fd477098f2b5ba61aba3649_aa91eb4517fd477098f2b5ba61aba3649}{Frame}}()\ :\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_a9a42e7bc8901413ab0059f87ea12144b_a9a42e7bc8901413ab0059f87ea12144b}{frame\_valid}}(false),\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_ad329fdc9bef5979bcc0caf4b69cccb29_ad329fdc9bef5979bcc0caf4b69cccb29}{line}}(0),\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_a662b327f7f17f31e1f703877cbb8c433_a662b327f7f17f31e1f703877cbb8c433}{function\_name}}(\textcolor{stringliteral}{"{}"{}}),\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_a734dd1c0b6044407be8eff16c00f7262_a734dd1c0b6044407be8eff16c00f7262}{address}}(\textcolor{stringliteral}{"{}"{}}),\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_a7a4f70f12322901a8091a4a1e8c334a5_a7a4f70f12322901a8091a4a1e8c334a5}{file\_name}}(\textcolor{stringliteral}{"{}"{}})\{\}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame}{Frame}}\&\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_a446af52188e151a1199acdd31ad05830_a446af52188e151a1199acdd31ad05830}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame}{Frame}}\&\ frame)\{}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *\textcolor{keyword}{const\_cast<}\textcolor{keywordtype}{bool}*\textcolor{keyword}{>}(\&this-\/>\mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_a9a42e7bc8901413ab0059f87ea12144b_a9a42e7bc8901413ab0059f87ea12144b}{frame\_valid}})\ =\ frame.frame\_valid;}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *\textcolor{keyword}{const\_cast<}\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}*\textcolor{keyword}{>}(\&this-\/>\mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_ad329fdc9bef5979bcc0caf4b69cccb29_ad329fdc9bef5979bcc0caf4b69cccb29}{line}})\ =\ frame.line;}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *\textcolor{keyword}{const\_cast<}std::string*\textcolor{keyword}{>}(\&this-\/>\mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_a662b327f7f17f31e1f703877cbb8c433_a662b327f7f17f31e1f703877cbb8c433}{function\_name}})\ =\ frame.function\_name;}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *\textcolor{keyword}{const\_cast<}std::string*\textcolor{keyword}{>}(\&this-\/>\mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_a734dd1c0b6044407be8eff16c00f7262_a734dd1c0b6044407be8eff16c00f7262}{address}})\ =\ frame.address;}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *\textcolor{keyword}{const\_cast<}std::string*\textcolor{keyword}{>}(\&this-\/>\mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_a7a4f70f12322901a8091a4a1e8c334a5_a7a4f70f12322901a8091a4a1e8c334a5}{file\_name}})\ =\ frame.file\_name;}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<Frame>*\ \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__debug_aaa5f13b509219e9102725127d2151214_aaa5f13b509219e9102725127d2151214}{queryStacktrace}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ skipped,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ maxSize)\{}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<Frame>*\ frames\ =\ \textcolor{keyword}{new}\ std::vector<Frame>();}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ HANDLE\ process\ =\ GetCurrentProcess();}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ HANDLE\ thread\ =\ GetCurrentThread();}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Capturing\ context}}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CONTEXT\ context;}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ memset(\&context,\ 0,\ \textcolor{keyword}{sizeof}(context));}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ context.ContextFlags\ =\ CONTEXT\_FULL;}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ RtlCaptureContext(\&context);}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Initializing\ process}}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (SymInitialize(process,\ NULL,\ TRUE))\ \{}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ DWORD\ image;}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ STACKFRAME64\ stackframe;}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ZeroMemory(\&stackframe,\ \textcolor{keyword}{sizeof}(STACKFRAME64));}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#ifdef\ \_M\_IX86}}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ image\ =\ IMAGE\_FILE\_MACHINE\_I386;}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ stackframe.AddrPC.Offset\ =\ context.Eip;}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ stackframe.AddrPC.Mode\ =\ AddrModeFlat;}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ stackframe.AddrFrame.Offset\ =\ context.Ebp;}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ stackframe.AddrFrame.Mode\ =\ AddrModeFlat;}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ stackframe.AddrStack.Offset\ =\ context.Esp;}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ stackframe.AddrStack.Mode\ =\ AddrModeFlat;}
+\DoxyCodeLine{00083\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#elif\ \_M\_X64}}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ image\ =\ IMAGE\_FILE\_MACHINE\_AMD64;}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ stackframe.AddrPC.Offset\ =\ context.Rip;}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ stackframe.AddrPC.Mode\ =\ AddrModeFlat;}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ stackframe.AddrFrame.Offset\ =\ context.Rsp;}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ stackframe.AddrFrame.Mode\ =\ AddrModeFlat;}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ stackframe.AddrStack.Offset\ =\ context.Rsp;}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ stackframe.AddrStack.Mode\ =\ AddrModeFlat;}
+\DoxyCodeLine{00091\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#elif\ \_M\_IA64}}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ image\ =\ IMAGE\_FILE\_MACHINE\_IA64;}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ stackframe.AddrPC.Offset\ =\ context.StIIP;}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ stackframe.AddrPC.Mode\ =\ AddrModeFlat;}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ stackframe.AddrFrame.Offset\ =\ context.IntSp;}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ stackframe.AddrFrame.Mode\ =\ AddrModeFlat;}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ stackframe.AddrBStore.Offset\ =\ context.RsBSP;}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ stackframe.AddrBStore.Mode\ =\ AddrModeFlat;}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ stackframe.AddrStack.Offset\ =\ context.IntSp;}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ stackframe.AddrStack.Mode\ =\ AddrModeFlat;}
+\DoxyCodeLine{00101\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#endif}}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Let's\ StackWalk}}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ maxSize;\ i++)\{}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ flag\ =\ StackWalk64(}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ image,\ process,\ thread,\ }
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&stackframe,\ \&context,\ NULL,\ }
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SymFunctionTableAccess64,\ SymGetModuleBase64,\ NULL}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );\ }
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{00113\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Actually,\ any\ error\ occurred:\ there\ are\ no\ frames\ to\ walk\ thorugh\ left}}
+\DoxyCodeLine{00114\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(!flag)\{}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ DWORD64\ \ dwDisplacement\ =\ 0;}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ DWORD64\ \ dwAddress\ =\ stackframe.AddrPC.Offset;}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ buffer[\textcolor{keyword}{sizeof}(SYMBOL\_INFO)\ +\ MAX\_SYM\_NAME\ *\ \textcolor{keyword}{sizeof}(TCHAR)];}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ PSYMBOL\_INFO\ pSymbol\ =\ (PSYMBOL\_INFO)buffer;}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pSymbol-\/>SizeOfStruct\ =\ \textcolor{keyword}{sizeof}(SYMBOL\_INFO);}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pSymbol-\/>MaxNameLen\ =\ MAX\_SYM\_NAME;}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Let's\ get\ Symbol\ from\ address}}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ SymFromAddr(\ process,\ stackframe.AddrPC.Offset,\ \&dwDisplacement,\ pSymbol\ )\ )\{}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Let's\ get\ number\ line}}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ DWORD\ disLine\ =\ 0;}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ IMAGEHLP\_LINE64\ line;}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ZeroMemory(\&line,\ \textcolor{keyword}{sizeof}(IMAGEHLP\_LINE64));}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ line.SizeOfStruct\ =\ \textcolor{keyword}{sizeof}(IMAGEHLP\_LINE64);}
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ SymGetLineFromAddr64(process,\ dwAddress,\ \&disLine,\ \&line)\ )\{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Everything\ ok.\ Let's\ add\ the\ frame\ to\ the\ vector}}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Frame\ frame(line.LineNumber-\/1,\ std::string(pSymbol-\/>Name),\ std::to\_string(pSymbol-\/>Address),\ std::string(line.FileName));}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ frames-\/>push\_back(frame);}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ frames-\/>push\_back(Frame());}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SymCleanup(process);}
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Let's\ remove\ skipped\ frames}}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(frames-\/>size()-\/skipped\ >\ 0)}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ frames-\/>erase(frames-\/>begin(),\ frames-\/>begin()+skipped);}
+\DoxyCodeLine{00151\ }
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ frames;}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00157\ \ \ \ \ \}}
+\DoxyCodeLine{00158\ }
+\DoxyCodeLine{00159\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

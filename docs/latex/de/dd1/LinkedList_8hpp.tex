@@ -1,0 +1,34 @@
+\doxysection{utils/src/structure/list/\+Linked\+List.hpp File Reference}
+\hypertarget{LinkedList_8hpp}{}\label{LinkedList_8hpp}\index{utils/src/structure/list/LinkedList.hpp@{utils/src/structure/list/LinkedList.hpp}}
+{\ttfamily \#include "{}List.\+hpp"{}}\newline
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1LinkedList}{jpl\+::\+\_\+utils\+::\+\_\+collections\+::\+\_\+list\+::\+Linked\+List$<$ T $>$}}
+\item 
+struct \mbox{\hyperlink{structjpl_1_1__utils_1_1__collections_1_1__list_1_1LinkedList_1_1Node}{jpl\+::\+\_\+utils\+::\+\_\+collections\+::\+\_\+list\+::\+Linked\+List$<$ T $>$\+::\+Node}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacejpl}{jpl}}
+\item 
+namespace \mbox{\hyperlink{namespacejpl_1_1__utils}{jpl\+::\+\_\+utils}}
+\item 
+namespace \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__collections}{jpl\+::\+\_\+utils\+::\+\_\+collections}}
+\item 
+namespace \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__collections_1_1__list}{jpl\+::\+\_\+utils\+::\+\_\+collections\+::\+\_\+list}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A linked list is an ordered collection of nodes which -\/ probably -\/ are not sequentially stored in memory due to available space during insertion time
+
+A node is a struct which contains the element T, a pointer to the previous node and a pointer to the next one; thus, this is actually a Double and Circular Linked List as described by DSA. The first node is called also Head and the last one Tail. Being a DLL, insertion is O(1) only when it is done either at head or tail of it, otherwise is O(n). Searching is always O(n). Indexed Deletion -\/ remove\+At(ulong) -\/ is just like Insertion; Smooth one -\/ remove(\+T) -\/ is O(n).
+
+\begin{DoxyDate}{Date}
+14-\/09-\/2023 
+\end{DoxyDate}
+\begin{DoxyAuthor}{Author}
+Gabriele-\/\+P03 
+\end{DoxyAuthor}

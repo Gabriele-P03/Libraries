@@ -1,0 +1,39 @@
+\doxysection{logger/src/\+Logger\+Wrapper.hpp File Reference}
+\hypertarget{LoggerWrapper_8hpp}{}\label{LoggerWrapper_8hpp}\index{logger/src/LoggerWrapper.hpp@{logger/src/LoggerWrapper.hpp}}
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$ctime$>$}\newline
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacejpl}{jpl}}
+\item 
+namespace \mbox{\hyperlink{namespacejpl_1_1__logger}{jpl\+::\+\_\+logger}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::string \mbox{\hyperlink{namespacejpl_1_1__logger_a7ef275bb6cfc544fe1dbcf6b630a15c8_a7ef275bb6cfc544fe1dbcf6b630a15c8}{jpl\+::\+\_\+logger\+::get\+TM}} ()
+\item 
+void \mbox{\hyperlink{namespacejpl_1_1__logger_a909deec94298a397b06127f8ac7d4a68_a909deec94298a397b06127f8ac7d4a68}{jpl\+::\+\_\+logger\+::print}} (std\+::string msg, const \mbox{\hyperlink{namespacejpl_1_1__logger_a792f1548c6d4cbb2370032b773147251_a792f1548c6d4cbb2370032b773147251}{LOG\+\_\+\+STATUS}} status)
+\begin{DoxyCompactList}\small\item\em status will be ignored (if DBG, it will not be passed) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacejpl_1_1__logger_a0f2c31e7ffbad3b211c0baaef59a996e_a0f2c31e7ffbad3b211c0baaef59a996e}{jpl\+::\+\_\+logger\+::print}} (std\+::string msg)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This is the wrapper which ensures to include JPL\textquotesingle{}s Logger if you have defined any Logger\textquotesingle{}s macro, which you can read about from documentation. If you have not defined any of them, a print function is defined in order to get compatibility with all JPL\textquotesingle{}s modules which invoke print() function, since they do not check if any of those macro had been defined; indeed they invoke \doxylink{namespacejpl_1_1__logger_a909deec94298a397b06127f8ac7d4a68_a909deec94298a397b06127f8ac7d4a68}{jpl\+::\+\_\+logger\+::print()} (not \doxylink{classjpl_1_1__logger_1_1Logger_a924032a44c5ad7578c2fd4f61100d754_a924032a44c5ad7578c2fd4f61100d754}{jpl\+::\+\_\+logger\+::\+Logger\+::print()}).
+
+If you choose to not use JPL\textquotesingle{}s Logger at all, although you can read about some LOG\+\_\+\+STATUS below, they are just defined for compatibity and status will not be printed; furthermore no debug messages will be print, since it could be reason of security leak due to no checks performed on jpl\+::\+\_\+utils\+::\+\_\+debug\+::is\+Debugging().
+
+You should always include this header rather than \doxylink{Logger_8hpp}{Logger.\+hpp} if you do not wanna force using this module
+
+\begin{DoxyAuthor}{Author}
+Gabriele-\/\+P03 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2023-\/08-\/08 
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2023 
+\end{DoxyCopyright}

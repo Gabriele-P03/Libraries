@@ -1,0 +1,33 @@
+\doxysection{jpl\+::\+\_\+utils\+::\+\_\+debug Namespace Reference}
+\hypertarget{namespacejpl_1_1__utils_1_1__debug}{}\label{namespacejpl_1_1__utils_1_1__debug}\index{jpl::\_utils::\_debug@{jpl::\_utils::\_debug}}
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame}{Frame}}
+\item 
+class \mbox{\hyperlink{classjpl_1_1__utils_1_1__debug_1_1Stacktrace}{Stacktrace}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame}{Frame}} $>$ \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__debug_aaa5f13b509219e9102725127d2151214_aaa5f13b509219e9102725127d2151214}{query\+Stacktrace}} (unsigned int skipped, unsigned int max\+Size)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespacejpl_1_1__utils_1_1__debug_aaa5f13b509219e9102725127d2151214_aaa5f13b509219e9102725127d2151214}\label{namespacejpl_1_1__utils_1_1__debug_aaa5f13b509219e9102725127d2151214_aaa5f13b509219e9102725127d2151214} 
+\index{jpl::\_utils::\_debug@{jpl::\_utils::\_debug}!queryStacktrace@{queryStacktrace}}
+\index{queryStacktrace@{queryStacktrace}!jpl::\_utils::\_debug@{jpl::\_utils::\_debug}}
+\doxysubsubsection{\texorpdfstring{queryStacktrace()}{queryStacktrace()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame}{Frame}} $>$ \texorpdfstring{$\ast$}{*} jpl\+::\+\_\+utils\+::\+\_\+debug\+::query\+Stacktrace (\begin{DoxyParamCaption}\item[{unsigned int}]{skipped,  }\item[{unsigned int}]{max\+Size }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em skipped} & amount of frames to skip \\
+\hline
+{\em max\+Size} & max amount of frames to retrieve \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$\+Frame$>$\texorpdfstring{$\ast$}{*} vector containing all retrieved frames 
+\end{DoxyReturn}

@@ -1,0 +1,35 @@
+\doxysection{exception/src/runtime/\+Illegal\+State\+Exception.hpp File Reference}
+\hypertarget{IllegalStateException_8hpp}{}\label{IllegalStateException_8hpp}\index{exception/src/runtime/IllegalStateException.hpp@{exception/src/runtime/IllegalStateException.hpp}}
+{\ttfamily \#include "{}Runtime\+Exception.\+hpp"{}}\newline
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classjpl_1_1__exception_1_1IllegalStateException}{jpl\+::\+\_\+exception\+::\+Illegal\+State\+Exception}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacejpl}{jpl}}
+\item 
+namespace \mbox{\hyperlink{namespacejpl_1_1__exception}{jpl\+::\+\_\+exception}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+An Illegal\+State\+Exception is thrown whenever any function is called at a bad time, i.\+e. wheter an another function had to be called before the one which threw this exception
+
+e.\+g.
+
+The foo() function must be called after have set flag as true, then\+:
+
+void foo()\{ if(!flag)\{ throw new Illegal\+State\+Exception() \} \}
+
+\begin{DoxyDate}{Date}
+2023-\/04-\/22 
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2023 
+\end{DoxyCopyright}
+\begin{DoxyAuthor}{Author}
+Gabriele-\/\+P03 
+\end{DoxyAuthor}

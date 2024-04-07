@@ -1,0 +1,23 @@
+\doxysection{Stacktrace\+Wrapper.\+hpp}
+\hypertarget{StacktraceWrapper_8hpp_source}{}\label{StacktraceWrapper_8hpp_source}\index{utils/src/debug/stacktrace/wrapper/StacktraceWrapper.hpp@{utils/src/debug/stacktrace/wrapper/StacktraceWrapper.hpp}}
+\mbox{\hyperlink{StacktraceWrapper_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#ifndef\ STACKTRACE\_WRAPPER\_JPL}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#define\ STACKTRACE\_WRAPPER\_JPL}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\ \ \ \ \#define\ DEFAULT\_SKIP\_STACKFRAMES\_JPL\ 3}}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \textcolor{preprocessor}{\ \ \ \ \#define\ MAX\_STACKFRAMES\_JPL\ 512}}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \textcolor{preprocessor}{\ \ \ \ \#ifdef\ \_\_linux\_\_}}
+\DoxyCodeLine{00060\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#include\ "{}\mbox{\hyperlink{LinuxStacktraceWrapper_8hpp}{LinuxStacktraceWrapper.hpp}}"{}}}
+\DoxyCodeLine{00061\ \textcolor{preprocessor}{\ \ \ \ \#elif\ \_WIN32}}
+\DoxyCodeLine{00062\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#include\ "{}\mbox{\hyperlink{WinStacktraceWrapper_8hpp}{WinStacktraceWrapper.hpp}}"{}}}
+\DoxyCodeLine{00063\ \textcolor{preprocessor}{\ \ \ \ \#else}}
+\DoxyCodeLine{00064\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#error\ "{}The\ kernel\ which\ this\ machine\ is\ running\ on\ is\ not\ compatible"{}}}
+\DoxyCodeLine{00065\ \textcolor{preprocessor}{\ \ \ \ \#endif}}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

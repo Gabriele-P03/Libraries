@@ -1,0 +1,73 @@
+\doxysection{utils/src/debug/stacktrace/wrapper/\+Stacktrace\+Wrapper.hpp File Reference}
+\hypertarget{StacktraceWrapper_8hpp}{}\label{StacktraceWrapper_8hpp}\index{utils/src/debug/stacktrace/wrapper/StacktraceWrapper.hpp@{utils/src/debug/stacktrace/wrapper/StacktraceWrapper.hpp}}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{StacktraceWrapper_8hpp_a113d30a0049fc544862b8a8a6e6cb3ae_a113d30a0049fc544862b8a8a6e6cb3ae}{DEFAULT\+\_\+\+SKIP\+\_\+\+STACKFRAMES\+\_\+\+JPL}}~3
+\begin{DoxyCompactList}\small\item\em it is the amount of called functions that you should always skip, it begins from the call to Stacktrace\textquotesingle{}s constructor \textquotesingle{}till query\+Stacktrace() function.~\newline
+ I guess that, into a printed stacktrace, you do not care about these functions which had been called after the thrown exception \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{StacktraceWrapper_8hpp_a6bf6eed45ef5beef94bc300bb1730186_a6bf6eed45ef5beef94bc300bb1730186}{MAX\+\_\+\+STACKFRAMES\+\_\+\+JPL}}~512
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This is the wrapper which provides an over-\/platform including system in order to include the right Stacktrace\+Wrapper for your machine.~\newline
+ You oughta always include this one in order to prevent any errors about the wrong included wrapper.
+
+Into each specific wrapper there is a query\+Stacktrace(unsigned int, unsigned int) which returns a pointer to vector of struct Frame -\/ what is a struct Frame will be discussed later.~\newline
+ The first parameter is the amount of frames that you would like to skip (removed from the vector); you should always pass DEFAULT\+\_\+\+SKIP\+\_\+\+FRAMES (read its comment to get more information about what it does mean).~\newline
+ The second parameter is the max amount of frames that you would like to retrieve. ~\newline
+ {\itshape Frame} description\+: 
+\begin{DoxyParams}{Parameters}
+{\em bool} & frame\+\_\+valid it indicates if the frame is valid (you should check jpl\+::\+\_\+utils\+::\+\_\+error\+::\+\_\+\+Get\+Last\+Error() to get known about the error that happened) \\
+\hline
+{\em line} & number line of the called function into file\+\_\+name \\
+\hline
+{\em function\+\_\+name} & name of the function \\
+\hline
+{\em address} & address of the function ~\newline
+ \\
+\hline
+{\em file\+\_\+name} & name of the file\\
+\hline
+\end{DoxyParams}
+All these parameters are set to 0 or empty string, if frame\+\_\+valid is false ~\newline
+ About the -\/1 when it stores the line number\+: 
+
+The stackframe is recognized via PC (Program Counter), that register is increased once the istruction is decoded -\/ therefore before it is actually performed -\/ then the line number retrieved is the one of the next istruction, then it is decreased.~\newline
+ Although the decreasing, you could even encounter bugs about it, e.\+g. when there are some blank lines between two consecutive functions.~\newline
+ You can get more information about it at {\ttfamily \doxylink{}{https\+://github.\+com/\+Jochen\+Kalmbach/\+Stack\+Walker/issues/31}}
+
+Whenever a Stack symbol could not be solved, an Invalid Frame will be inserted into the list.
+
+\begin{DoxyAuthor}{Author}
+Gabriele-\/\+P03 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2023-\/08-\/03 
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2023 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{StacktraceWrapper_8hpp_a113d30a0049fc544862b8a8a6e6cb3ae_a113d30a0049fc544862b8a8a6e6cb3ae}\label{StacktraceWrapper_8hpp_a113d30a0049fc544862b8a8a6e6cb3ae_a113d30a0049fc544862b8a8a6e6cb3ae} 
+\index{StacktraceWrapper.hpp@{StacktraceWrapper.hpp}!DEFAULT\_SKIP\_STACKFRAMES\_JPL@{DEFAULT\_SKIP\_STACKFRAMES\_JPL}}
+\index{DEFAULT\_SKIP\_STACKFRAMES\_JPL@{DEFAULT\_SKIP\_STACKFRAMES\_JPL}!StacktraceWrapper.hpp@{StacktraceWrapper.hpp}}
+\doxysubsubsection{\texorpdfstring{DEFAULT\_SKIP\_STACKFRAMES\_JPL}{DEFAULT\_SKIP\_STACKFRAMES\_JPL}}
+{\footnotesize\ttfamily \#define DEFAULT\+\_\+\+SKIP\+\_\+\+STACKFRAMES\+\_\+\+JPL~3}
+
+Windows case\+:
+
+First call to skip\+: \doxylink{namespacejpl_1_1__utils_1_1__debug_aaa5f13b509219e9102725127d2151214_aaa5f13b509219e9102725127d2151214}{jpl\+::\+\_\+utils\+::\+\_\+debug\+::query\+Stacktrace()} Second call to skip\+: \doxylink{classjpl_1_1__utils_1_1__debug_1_1Stacktrace}{jpl\+::\+\_\+utils\+::\+\_\+debug\+::\+Stacktrace()} Third call to skip\+: the function which invoke the Stacktrace constructor
+
+Linux case\+:
+
+This field is used by default constructor, increased by 2 (check it to get more information).~\newline
+ If you use it with the constructor with skipped solo parameter, increase it of 1, otherwise pass it as it is \Hypertarget{StacktraceWrapper_8hpp_a6bf6eed45ef5beef94bc300bb1730186_a6bf6eed45ef5beef94bc300bb1730186}\label{StacktraceWrapper_8hpp_a6bf6eed45ef5beef94bc300bb1730186_a6bf6eed45ef5beef94bc300bb1730186} 
+\index{StacktraceWrapper.hpp@{StacktraceWrapper.hpp}!MAX\_STACKFRAMES\_JPL@{MAX\_STACKFRAMES\_JPL}}
+\index{MAX\_STACKFRAMES\_JPL@{MAX\_STACKFRAMES\_JPL}!StacktraceWrapper.hpp@{StacktraceWrapper.hpp}}
+\doxysubsubsection{\texorpdfstring{MAX\_STACKFRAMES\_JPL}{MAX\_STACKFRAMES\_JPL}}
+{\footnotesize\ttfamily \#define MAX\+\_\+\+STACKFRAMES\+\_\+\+JPL~512}
+

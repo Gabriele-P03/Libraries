@@ -1,0 +1,181 @@
+\doxysection{Queue.\+hpp}
+\hypertarget{Queue_8hpp_source}{}\label{Queue_8hpp_source}\index{utils/src/structure/list/Queue.hpp@{utils/src/structure/list/Queue.hpp}}
+\mbox{\hyperlink{Queue_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#ifndef\ QUEUE\_JPL}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ QUEUE\_JPL}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Collection_8hpp}{../Collection.hpp}}"{}}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacejpl}{jpl}}\{}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{namespace\ }\_utils\{}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keyword}{namespace\ }\_collections\{}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{namespace\ }\_list\{}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue}{Queue}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1Collection}{Collection}}<T>\{}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_a575fa9eef9cf8ad904369b20882b6f11_a575fa9eef9cf8ad904369b20882b6f11}{add}}(T\ t)\ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classjpl_1_1__exception_1_1RuntimeException}{\_exception::RuntimeException}}(\textcolor{stringliteral}{"{}You\ must\ call\ push(T)\ in\ order\ to\ add\ an\ element\ into\ a\ queue"{}});}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_1_1Node}{Node}}\{}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::shared\_ptr<T>\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_1_1Node_a33aa648f5ba8ccf25912475e8f0c96ef_a33aa648f5ba8ccf25912475e8f0c96ef}{element}};}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_1_1Node}{Node}}*\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_1_1Node_a33f050d80853c3f96862dfd395c5f7d2_a33f050d80853c3f96862dfd395c5f7d2}{previous}};}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_1_1Node}{Node}}*\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_1_1Node_a6672b63241a4766bf38226552667113c_a6672b63241a4766bf38226552667113c}{next}};}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_1_1Node_ab859a3f3d733f4ab1091c6a7dbce66d0_ab859a3f3d733f4ab1091c6a7dbce66d0}{Node}}(std::shared\_ptr<T>\ ptr,\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_1_1Node}{Node}}*\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_1_1Node_a6672b63241a4766bf38226552667113c_a6672b63241a4766bf38226552667113c}{next}},\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_1_1Node}{Node}}*\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_1_1Node_a33f050d80853c3f96862dfd395c5f7d2_a33f050d80853c3f96862dfd395c5f7d2}{previous}})\{}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>element\ =\ std::shared\_ptr<T>(ptr);}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>next\ =\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_1_1Node_a6672b63241a4766bf38226552667113c_a6672b63241a4766bf38226552667113c}{next}};}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>previous\ =\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_1_1Node_a33f050d80853c3f96862dfd395c5f7d2_a33f050d80853c3f96862dfd395c5f7d2}{previous}};}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_1_1Node_a33dfdb61b6d346d133fe3434021307f6_a33dfdb61b6d346d133fe3434021307f6}{Node}}(T\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_1_1Node_a33aa648f5ba8ccf25912475e8f0c96ef_a33aa648f5ba8ccf25912475e8f0c96ef}{element}},\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_1_1Node}{Node}}*\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_1_1Node_a6672b63241a4766bf38226552667113c_a6672b63241a4766bf38226552667113c}{next}},\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_1_1Node}{Node}}*\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_1_1Node_a33f050d80853c3f96862dfd395c5f7d2_a33f050d80853c3f96862dfd395c5f7d2}{previous}})\{}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>element\ =\ std::make\_shared<T>(\mbox{\hyperlink{structjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_1_1Node_a33aa648f5ba8ccf25912475e8f0c96ef_a33aa648f5ba8ccf25912475e8f0c96ef}{element}});}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>next\ =\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_1_1Node_a6672b63241a4766bf38226552667113c_a6672b63241a4766bf38226552667113c}{next}};}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>previous\ =\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_1_1Node_a33f050d80853c3f96862dfd395c5f7d2_a33f050d80853c3f96862dfd395c5f7d2}{previous}};}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_1_1Node_adfbc0ba0c08e5fb9b16cd26225cd6a8c_adfbc0ba0c08e5fb9b16cd26225cd6a8c}{Node}}(T\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_1_1Node_a33aa648f5ba8ccf25912475e8f0c96ef_a33aa648f5ba8ccf25912475e8f0c96ef}{element}})\ :\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_1_1Node}{Node}}(\mbox{\hyperlink{structjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_1_1Node_a33aa648f5ba8ccf25912475e8f0c96ef_a33aa648f5ba8ccf25912475e8f0c96ef}{element}},\ nullptr,\ nullptr)\{\}}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_1_1Node_adaa11abd1f2b91c1d9d4d469ea0a1136_adaa11abd1f2b91c1d9d4d469ea0a1136}{Node}}(std::shared\_ptr<T>\ ptr)\ :\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_1_1Node}{Node}}(ptr,\ nullptr,\ nullptr)\{\}}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_1_1Node_a19f659a191b1ce286dde4b580c447bf1_a19f659a191b1ce286dde4b580c447bf1}{Node}}()\{\}}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_1_1Node}{Node}}\ *\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_ae1afe62423319e102cd96d0e346b474f_ae1afe62423319e102cd96d0e346b474f}{head}},\ *\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_a897fe89ed008ae75fc31804377e13599_a897fe89ed008ae75fc31804377e13599}{tail}};}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_1_1Node}{Node}}*\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_aa4076d70fd706864aedf8219c0769bd7_aa4076d70fd706864aedf8219c0769bd7}{firstNodeOf}}(T\ t)\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}\{}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_1_1Node}{Node}}*\ cr\ =\ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_ae1afe62423319e102cd96d0e346b474f_ae1afe62423319e102cd96d0e346b474f}{head}};}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ i\ =\ 0;\ i\ <\ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1Collection_a383f38e782ffdfb92c05b23ca4a861fe_a383f38e782ffdfb92c05b23ca4a861fe}{size}};\ i++)\{}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(*cr-\/>\mbox{\hyperlink{structjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_1_1Node_a33aa648f5ba8ccf25912475e8f0c96ef_a33aa648f5ba8ccf25912475e8f0c96ef}{element}}.get()\ ==\ t)}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ cr;}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cr\ =\ cr-\/>\mbox{\hyperlink{structjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_1_1Node_a6672b63241a4766bf38226552667113c_a6672b63241a4766bf38226552667113c}{next}};}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_af0aa5bc5580a70863d7532748d5e399a_af0aa5bc5580a70863d7532748d5e399a}{createNewNode}}(\mbox{\hyperlink{structjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_1_1Node}{Node}}*\ \&cr,\ T\ t,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ end)\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}\{}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1Collection_ab649a459c32cdc05931ef4160baf28df_ab649a459c32cdc05931ef4160baf28df}{pointer}})\{}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Check\ if\ t\ is\ being\ managed\ by\ a\ former\ std::shared\_ptr}}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_1_1Node}{Node}}*\ former\ =\ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_aa4076d70fd706864aedf8219c0769bd7_aa4076d70fd706864aedf8219c0769bd7}{firstNodeOf}}(t);}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(former\ !=\ \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cr-\/>element\ =\ std::shared\_ptr<T>(former-\/>\mbox{\hyperlink{structjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_1_1Node_a33aa648f5ba8ccf25912475e8f0c96ef_a33aa648f5ba8ccf25912475e8f0c96ef}{element}});}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cr-\/>element\ =\ std::make\_shared<T>(t);}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cr-\/>element\ =\ std::make\_shared<T>(t);}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_ab2ac414b75e015115cc586342d200b7e_ab2ac414b75e015115cc586342d200b7e}{resetHelper}}(std::shared\_ptr<T>\ \&ptr)\{}
+\DoxyCodeLine{00089\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#ifdef\ DEL\_EFF\_DS\_JPL}}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ del\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T\ t;\ }
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1Collection_ab649a459c32cdc05931ef4160baf28df_ab649a459c32cdc05931ef4160baf28df}{pointer}})}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(ptr.use\_count()\ ==\ 1)\{}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ del\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ t\ =\ *ptr.get();}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00097\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#endif}}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ptr.reset();}
+\DoxyCodeLine{00099\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#ifdef\ DEL\_EFF\_DS\_JPL}}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(del)}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classjpl_1_1__utils_1_1Ereaseable_a8c7d215095cc9be4973b70a475cd9929_a8c7d215095cc9be4973b70a475cd9929}{Ereaseable<T>::erease}}(t);}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ del;}
+\DoxyCodeLine{00103\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#else}}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00105\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#endif}}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_aa8b8b4110b75c02ef5d46d14c2430485_aa8b8b4110b75c02ef5d46d14c2430485}{Queue}}()\ :\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1Collection}{Collection}}<T>(true,\ true,\ true)\{}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>head\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>tail\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ T\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_a0f22d2b59ad5a1c8bf6ee321192c3f2d_a0f22d2b59ad5a1c8bf6ee321192c3f2d}{peek}}()\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1Collection_a383f38e782ffdfb92c05b23ca4a861fe_a383f38e782ffdfb92c05b23ca4a861fe}{size}}\ ==\ 0)}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classjpl_1_1__exception_1_1IndexOutOfBoundsException}{\_exception::IndexOutOfBoundsException}}(0,\ 0);}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *this-\/>head-\/>\mbox{\hyperlink{structjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_1_1Node_a33aa648f5ba8ccf25912475e8f0c96ef_a33aa648f5ba8ccf25912475e8f0c96ef}{element}}.get();\ \ \ \ }
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ T\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_a82b2e34a6dac60315dfe00cec2a9299f_a82b2e34a6dac60315dfe00cec2a9299f}{pop}}()\{}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1Collection_a383f38e782ffdfb92c05b23ca4a861fe_a383f38e782ffdfb92c05b23ca4a861fe}{size}}\ ==\ 0)}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classjpl_1_1__exception_1_1IndexOutOfBoundsException}{\_exception::IndexOutOfBoundsException}}(0,\ 0);}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T\ t;}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classjpl_1_1__utils_1_1Nullable_a05268d185c09d8fd791b1a4ccbd71af7_a05268d185c09d8fd791b1a4ccbd71af7}{Nullable<T>::nullify}}(t);}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T\ cr\ =\ *this-\/>head-\/>\mbox{\hyperlink{structjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_1_1Node_a33aa648f5ba8ccf25912475e8f0c96ef_a33aa648f5ba8ccf25912475e8f0c96ef}{element}}.get();}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classjpl_1_1__utils_1_1Copyable_af3688e548b301a526a796ed16d970f97_af3688e548b301a526a796ed16d970f97}{Copyable<T>::copy}}(t,\ cr);}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_ab2ac414b75e015115cc586342d200b7e_ab2ac414b75e015115cc586342d200b7e}{resetHelper}}(this-\/>head-\/>\mbox{\hyperlink{structjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_1_1Node_a33aa648f5ba8ccf25912475e8f0c96ef_a33aa648f5ba8ccf25912475e8f0c96ef}{element}});}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>head\ =\ this-\/>head-\/>\mbox{\hyperlink{structjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_1_1Node_a6672b63241a4766bf38226552667113c_a6672b63241a4766bf38226552667113c}{next}};}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ this-\/>head-\/>\mbox{\hyperlink{structjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_1_1Node_a33f050d80853c3f96862dfd395c5f7d2_a33f050d80853c3f96862dfd395c5f7d2}{previous}};}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>head-\/>\mbox{\hyperlink{structjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_1_1Node_a33f050d80853c3f96862dfd395c5f7d2_a33f050d80853c3f96862dfd395c5f7d2}{previous}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1Collection_a383f38e782ffdfb92c05b23ca4a861fe_a383f38e782ffdfb92c05b23ca4a861fe}{size}}-\/-\/;}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ t;}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_a98cf2936e8d4bd8a8bfa41e5329592b1_a98cf2936e8d4bd8a8bfa41e5329592b1}{push}}(T\ t)\ \textcolor{keyword}{noexcept}\ \{}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_1_1Node}{Node}}*\ nw\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{structjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_1_1Node}{Node}}();}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_af0aa5bc5580a70863d7532748d5e399a_af0aa5bc5580a70863d7532748d5e399a}{createNewNode}}(nw,\ t,\ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1Collection_a383f38e782ffdfb92c05b23ca4a861fe_a383f38e782ffdfb92c05b23ca4a861fe}{size}});}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1Collection_a383f38e782ffdfb92c05b23ca4a861fe_a383f38e782ffdfb92c05b23ca4a861fe}{size}}\ ==\ 0)\{}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>head\ =\ nw;}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>tail\ =\ nw;}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>tail-\/>\mbox{\hyperlink{structjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_1_1Node_a6672b63241a4766bf38226552667113c_a6672b63241a4766bf38226552667113c}{next}}\ =\ nw;}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ nw-\/>\mbox{\hyperlink{structjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_1_1Node_a33f050d80853c3f96862dfd395c5f7d2_a33f050d80853c3f96862dfd395c5f7d2}{previous}}\ =\ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_a897fe89ed008ae75fc31804377e13599_a897fe89ed008ae75fc31804377e13599}{tail}};}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>tail\ =\ nw;}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1Collection_a383f38e782ffdfb92c05b23ca4a861fe_a383f38e782ffdfb92c05b23ca4a861fe}{size}}++;}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_ab6e51d631f5490378e431d6a082ded60_ab6e51d631f5490378e431d6a082ded60}{search}}(T\ t)\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}\{}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_1_1Node}{Node}}*\ cr\ =\ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_ae1afe62423319e102cd96d0e346b474f_ae1afe62423319e102cd96d0e346b474f}{head}};\ \ \ \ }
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ i\ =\ 0;\ i\ <\ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1Collection_a383f38e782ffdfb92c05b23ca4a861fe_a383f38e782ffdfb92c05b23ca4a861fe}{size}};\ i++)\{}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(*cr-\/>\mbox{\hyperlink{structjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_1_1Node_a33aa648f5ba8ccf25912475e8f0c96ef_a33aa648f5ba8ccf25912475e8f0c96ef}{element}}.get()\ ==\ t)}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ i;\ \ }
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cr\ =\ cr-\/>\mbox{\hyperlink{structjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_1_1Node_a6672b63241a4766bf38226552667113c_a6672b63241a4766bf38226552667113c}{next}};}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1Collection_a383f38e782ffdfb92c05b23ca4a861fe_a383f38e782ffdfb92c05b23ca4a861fe}{size}};}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00173\ }
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_a062ba4f115c6f68184a4a1953501cfcb_a062ba4f115c6f68184a4a1953501cfcb}{clear}}()\ noexcept\textcolor{keyword}{\ override}\{}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ i\ =\ 0;\ i\ <\ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1Collection_a383f38e782ffdfb92c05b23ca4a861fe_a383f38e782ffdfb92c05b23ca4a861fe}{size}};\ i++)}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_a82b2e34a6dac60315dfe00cec2a9299f_a82b2e34a6dac60315dfe00cec2a9299f}{pop}}();}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ T*\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_a37619727a13157540686096485b6a07e_a37619727a13157540686096485b6a07e}{toArray}}()\ const\ noexcept\textcolor{keyword}{\ override}\{}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1Collection_a383f38e782ffdfb92c05b23ca4a861fe_a383f38e782ffdfb92c05b23ca4a861fe}{size}}\ ==\ 0)}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T*\ buffer\ =\ \textcolor{keyword}{new}\ T[this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1Collection_a383f38e782ffdfb92c05b23ca4a861fe_a383f38e782ffdfb92c05b23ca4a861fe}{size}}];}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_1_1Node}{Node}}*\ cr\ =\ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_ae1afe62423319e102cd96d0e346b474f_ae1afe62423319e102cd96d0e346b474f}{head}};}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ i\ =\ 0;\ i\ <\ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1Collection_a383f38e782ffdfb92c05b23ca4a861fe_a383f38e782ffdfb92c05b23ca4a861fe}{size}};\ i++)\{}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ buffer[i]\ =\ *cr-\/>\mbox{\hyperlink{structjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_1_1Node_a33aa648f5ba8ccf25912475e8f0c96ef_a33aa648f5ba8ccf25912475e8f0c96ef}{element}}.get();}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cr\ =\ cr-\/>\mbox{\hyperlink{structjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_1_1Node_a6672b63241a4766bf38226552667113c_a6672b63241a4766bf38226552667113c}{next}};}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ buffer;}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_a946481702e8763ab11789939089c790d_a946481702e8763ab11789939089c790d}{forEach}}(\mbox{\hyperlink{classjpl_1_1__utils_1_1__functional_1_1Consumer}{\_functional::Consumer<T>}}\ consumer)\ \{}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_1_1Node}{Node}}*\ cr\ =\ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_ae1afe62423319e102cd96d0e346b474f_ae1afe62423319e102cd96d0e346b474f}{head}};}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ i\ =\ 0;\ i\ <\ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1Collection_a383f38e782ffdfb92c05b23ca4a861fe_a383f38e782ffdfb92c05b23ca4a861fe}{size}};\ i++)\{}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ consumer.\mbox{\hyperlink{classjpl_1_1__utils_1_1__functional_1_1Consumer_a2b4b556512c25cf18cbc0738353e9807_a2b4b556512c25cf18cbc0738353e9807}{test}}(*cr-\/>\mbox{\hyperlink{structjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_1_1Node_a33aa648f5ba8ccf25912475e8f0c96ef_a33aa648f5ba8ccf25912475e8f0c96ef}{element}}.get());}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cr\ =\ cr-\/>\mbox{\hyperlink{structjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_1_1Node_a6672b63241a4766bf38226552667113c_a6672b63241a4766bf38226552667113c}{next}};}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_a2d57dbf4729e998a012ce18175231707_a2d57dbf4729e998a012ce18175231707}{contains}}(T\ t)\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}\ \{}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_1_1Node}{Node}}*\ cr\ =\ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_ae1afe62423319e102cd96d0e346b474f_ae1afe62423319e102cd96d0e346b474f}{head}};\ \ \ \ }
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ i\ =\ 0;\ i\ <\ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1Collection_a383f38e782ffdfb92c05b23ca4a861fe_a383f38e782ffdfb92c05b23ca4a861fe}{size}};\ i++)\{}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(*cr-\/>\mbox{\hyperlink{structjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_1_1Node_a33aa648f5ba8ccf25912475e8f0c96ef_a33aa648f5ba8ccf25912475e8f0c96ef}{element}}.get()\ ==\ t)}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};\ \ }
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cr\ =\ cr-\/>\mbox{\hyperlink{structjpl_1_1__utils_1_1__collections_1_1__list_1_1Queue_1_1Node_a6672b63241a4766bf38226552667113c_a6672b63241a4766bf38226552667113c}{next}};}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00223\ \ \ \ \ \}}
+\DoxyCodeLine{00224\ \}}
+\DoxyCodeLine{00225\ }
+\DoxyCodeLine{00226\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

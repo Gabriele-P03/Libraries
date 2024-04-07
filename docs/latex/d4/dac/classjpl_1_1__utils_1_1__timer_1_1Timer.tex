@@ -1,0 +1,149 @@
+\doxysection{jpl\+::\+\_\+utils\+::\+\_\+timer\+::Timer Class Reference}
+\hypertarget{classjpl_1_1__utils_1_1__timer_1_1Timer}{}\label{classjpl_1_1__utils_1_1__timer_1_1Timer}\index{jpl::\_utils::\_timer::Timer@{jpl::\_utils::\_timer::Timer}}
+
+
+{\ttfamily \#include $<$Timer.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classjpl_1_1__utils_1_1__timer_1_1Timer_a5454143f3716b953f70840888300f456_a5454143f3716b953f70840888300f456}{Timer}} (std\+::string \mbox{\hyperlink{classjpl_1_1__utils_1_1__timer_1_1Timer_a1068a4953b2a92411986b472792183d0_a1068a4953b2a92411986b472792183d0}{timer\+Name}})
+\item 
+\mbox{\hyperlink{classjpl_1_1__utils_1_1__timer_1_1Timer_a55e3d18889979cc458c63b6ed10ae2df_a55e3d18889979cc458c63b6ed10ae2df}{Timer}} ()
+\item 
+virtual void \mbox{\hyperlink{classjpl_1_1__utils_1_1__timer_1_1Timer_a14c978dd141748de2f82ae2a04a0faee_a14c978dd141748de2f82ae2a04a0faee}{start}} ()
+\item 
+virtual void \mbox{\hyperlink{classjpl_1_1__utils_1_1__timer_1_1Timer_a3cd886c165ea244f417dffb5436ec24f_a3cd886c165ea244f417dffb5436ec24f}{end}} ()
+\item 
+virtual bool \mbox{\hyperlink{classjpl_1_1__utils_1_1__timer_1_1Timer_a918b42eee73b0fe98d9863f820c0703f_a918b42eee73b0fe98d9863f820c0703f}{is\+Started}} () const
+\item 
+virtual bool \mbox{\hyperlink{classjpl_1_1__utils_1_1__timer_1_1Timer_a6f71ead14314d4027a4afa7b89ffd454_a6f71ead14314d4027a4afa7b89ffd454}{is\+Terminated}} () const
+\item 
+virtual const std\+::string \texorpdfstring{$\ast$}{*}const \mbox{\hyperlink{classjpl_1_1__utils_1_1__timer_1_1Timer_a03c3f5201e6094566890917eca3464c0_a03c3f5201e6094566890917eca3464c0}{get\+Name}} () const
+\item 
+virtual const time\+\_\+t \texorpdfstring{$\ast$}{*}const \mbox{\hyperlink{classjpl_1_1__utils_1_1__timer_1_1Timer_a0d9b79e2b916ed796ac5215b10b80845_a0d9b79e2b916ed796ac5215b10b80845}{get\+Start\+Time}} () const
+\item 
+virtual const time\+\_\+t \texorpdfstring{$\ast$}{*}const \mbox{\hyperlink{classjpl_1_1__utils_1_1__timer_1_1Timer_a56688bed1dbc989daf54f186d0d18729_a56688bed1dbc989daf54f186d0d18729}{get\+End\+Time}} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual std\+::string \mbox{\hyperlink{classjpl_1_1__utils_1_1__timer_1_1Timer_ac30804aad8266c3c9bcf9b18d4ad1acd_ac30804aad8266c3c9bcf9b18d4ad1acd}{time\+To\+String}} (const time\+\_\+t \texorpdfstring{$\ast$}{*}time) const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classjpl_1_1__utils_1_1__timer_1_1Timer_a60d5129b291650fdf3d705d5995d4aea_a60d5129b291650fdf3d705d5995d4aea}{terminated}}
+\item 
+bool \mbox{\hyperlink{classjpl_1_1__utils_1_1__timer_1_1Timer_a67baf8c62e8c9568f2878a12f9b42d4d_a67baf8c62e8c9568f2878a12f9b42d4d}{started}}
+\item 
+std\+::string \mbox{\hyperlink{classjpl_1_1__utils_1_1__timer_1_1Timer_a1068a4953b2a92411986b472792183d0_a1068a4953b2a92411986b472792183d0}{timer\+Name}}
+\item 
+time\+\_\+t \mbox{\hyperlink{classjpl_1_1__utils_1_1__timer_1_1Timer_a0b8d4377c4987af3a9f5489b12da920d_a0b8d4377c4987af3a9f5489b12da920d}{start\+Time}}
+\item 
+time\+\_\+t \mbox{\hyperlink{classjpl_1_1__utils_1_1__timer_1_1Timer_a3eb447882bdcfac8f2ae23b80a1a6f6f_a3eb447882bdcfac8f2ae23b80a1a6f6f}{end\+Time}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classjpl_1_1__utils_1_1__timer_1_1Timer_a5454143f3716b953f70840888300f456_a5454143f3716b953f70840888300f456}\label{classjpl_1_1__utils_1_1__timer_1_1Timer_a5454143f3716b953f70840888300f456_a5454143f3716b953f70840888300f456} 
+\index{jpl::\_utils::\_timer::Timer@{jpl::\_utils::\_timer::Timer}!Timer@{Timer}}
+\index{Timer@{Timer}!jpl::\_utils::\_timer::Timer@{jpl::\_utils::\_timer::Timer}}
+\doxysubsubsection{\texorpdfstring{Timer()}{Timer()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily jpl\+::\+\_\+utils\+::\+\_\+timer\+::\+Timer\+::\+Timer (\begin{DoxyParamCaption}\item[{std\+::string}]{timer\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classjpl_1_1__utils_1_1__timer_1_1Timer_a55e3d18889979cc458c63b6ed10ae2df_a55e3d18889979cc458c63b6ed10ae2df}\label{classjpl_1_1__utils_1_1__timer_1_1Timer_a55e3d18889979cc458c63b6ed10ae2df_a55e3d18889979cc458c63b6ed10ae2df} 
+\index{jpl::\_utils::\_timer::Timer@{jpl::\_utils::\_timer::Timer}!Timer@{Timer}}
+\index{Timer@{Timer}!jpl::\_utils::\_timer::Timer@{jpl::\_utils::\_timer::Timer}}
+\doxysubsubsection{\texorpdfstring{Timer()}{Timer()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily jpl\+::\+\_\+utils\+::\+\_\+timer\+::\+Timer\+::\+Timer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classjpl_1_1__utils_1_1__timer_1_1Timer_a3cd886c165ea244f417dffb5436ec24f_a3cd886c165ea244f417dffb5436ec24f}\label{classjpl_1_1__utils_1_1__timer_1_1Timer_a3cd886c165ea244f417dffb5436ec24f_a3cd886c165ea244f417dffb5436ec24f} 
+\index{jpl::\_utils::\_timer::Timer@{jpl::\_utils::\_timer::Timer}!end@{end}}
+\index{end@{end}!jpl::\_utils::\_timer::Timer@{jpl::\_utils::\_timer::Timer}}
+\doxysubsubsection{\texorpdfstring{end()}{end()}}
+{\footnotesize\ttfamily virtual void jpl\+::\+\_\+utils\+::\+\_\+timer\+::\+Timer\+::end (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+\Hypertarget{classjpl_1_1__utils_1_1__timer_1_1Timer_a56688bed1dbc989daf54f186d0d18729_a56688bed1dbc989daf54f186d0d18729}\label{classjpl_1_1__utils_1_1__timer_1_1Timer_a56688bed1dbc989daf54f186d0d18729_a56688bed1dbc989daf54f186d0d18729} 
+\index{jpl::\_utils::\_timer::Timer@{jpl::\_utils::\_timer::Timer}!getEndTime@{getEndTime}}
+\index{getEndTime@{getEndTime}!jpl::\_utils::\_timer::Timer@{jpl::\_utils::\_timer::Timer}}
+\doxysubsubsection{\texorpdfstring{getEndTime()}{getEndTime()}}
+{\footnotesize\ttfamily virtual const time\+\_\+t \texorpdfstring{$\ast$}{*}const jpl\+::\+\_\+utils\+::\+\_\+timer\+::\+Timer\+::get\+End\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+\Hypertarget{classjpl_1_1__utils_1_1__timer_1_1Timer_a03c3f5201e6094566890917eca3464c0_a03c3f5201e6094566890917eca3464c0}\label{classjpl_1_1__utils_1_1__timer_1_1Timer_a03c3f5201e6094566890917eca3464c0_a03c3f5201e6094566890917eca3464c0} 
+\index{jpl::\_utils::\_timer::Timer@{jpl::\_utils::\_timer::Timer}!getName@{getName}}
+\index{getName@{getName}!jpl::\_utils::\_timer::Timer@{jpl::\_utils::\_timer::Timer}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily virtual const std\+::string \texorpdfstring{$\ast$}{*}const jpl\+::\+\_\+utils\+::\+\_\+timer\+::\+Timer\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+\Hypertarget{classjpl_1_1__utils_1_1__timer_1_1Timer_a0d9b79e2b916ed796ac5215b10b80845_a0d9b79e2b916ed796ac5215b10b80845}\label{classjpl_1_1__utils_1_1__timer_1_1Timer_a0d9b79e2b916ed796ac5215b10b80845_a0d9b79e2b916ed796ac5215b10b80845} 
+\index{jpl::\_utils::\_timer::Timer@{jpl::\_utils::\_timer::Timer}!getStartTime@{getStartTime}}
+\index{getStartTime@{getStartTime}!jpl::\_utils::\_timer::Timer@{jpl::\_utils::\_timer::Timer}}
+\doxysubsubsection{\texorpdfstring{getStartTime()}{getStartTime()}}
+{\footnotesize\ttfamily virtual const time\+\_\+t \texorpdfstring{$\ast$}{*}const jpl\+::\+\_\+utils\+::\+\_\+timer\+::\+Timer\+::get\+Start\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+\Hypertarget{classjpl_1_1__utils_1_1__timer_1_1Timer_a918b42eee73b0fe98d9863f820c0703f_a918b42eee73b0fe98d9863f820c0703f}\label{classjpl_1_1__utils_1_1__timer_1_1Timer_a918b42eee73b0fe98d9863f820c0703f_a918b42eee73b0fe98d9863f820c0703f} 
+\index{jpl::\_utils::\_timer::Timer@{jpl::\_utils::\_timer::Timer}!isStarted@{isStarted}}
+\index{isStarted@{isStarted}!jpl::\_utils::\_timer::Timer@{jpl::\_utils::\_timer::Timer}}
+\doxysubsubsection{\texorpdfstring{isStarted()}{isStarted()}}
+{\footnotesize\ttfamily virtual bool jpl\+::\+\_\+utils\+::\+\_\+timer\+::\+Timer\+::is\+Started (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+\Hypertarget{classjpl_1_1__utils_1_1__timer_1_1Timer_a6f71ead14314d4027a4afa7b89ffd454_a6f71ead14314d4027a4afa7b89ffd454}\label{classjpl_1_1__utils_1_1__timer_1_1Timer_a6f71ead14314d4027a4afa7b89ffd454_a6f71ead14314d4027a4afa7b89ffd454} 
+\index{jpl::\_utils::\_timer::Timer@{jpl::\_utils::\_timer::Timer}!isTerminated@{isTerminated}}
+\index{isTerminated@{isTerminated}!jpl::\_utils::\_timer::Timer@{jpl::\_utils::\_timer::Timer}}
+\doxysubsubsection{\texorpdfstring{isTerminated()}{isTerminated()}}
+{\footnotesize\ttfamily virtual bool jpl\+::\+\_\+utils\+::\+\_\+timer\+::\+Timer\+::is\+Terminated (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+\Hypertarget{classjpl_1_1__utils_1_1__timer_1_1Timer_a14c978dd141748de2f82ae2a04a0faee_a14c978dd141748de2f82ae2a04a0faee}\label{classjpl_1_1__utils_1_1__timer_1_1Timer_a14c978dd141748de2f82ae2a04a0faee_a14c978dd141748de2f82ae2a04a0faee} 
+\index{jpl::\_utils::\_timer::Timer@{jpl::\_utils::\_timer::Timer}!start@{start}}
+\index{start@{start}!jpl::\_utils::\_timer::Timer@{jpl::\_utils::\_timer::Timer}}
+\doxysubsubsection{\texorpdfstring{start()}{start()}}
+{\footnotesize\ttfamily virtual void jpl\+::\+\_\+utils\+::\+\_\+timer\+::\+Timer\+::start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+\Hypertarget{classjpl_1_1__utils_1_1__timer_1_1Timer_ac30804aad8266c3c9bcf9b18d4ad1acd_ac30804aad8266c3c9bcf9b18d4ad1acd}\label{classjpl_1_1__utils_1_1__timer_1_1Timer_ac30804aad8266c3c9bcf9b18d4ad1acd_ac30804aad8266c3c9bcf9b18d4ad1acd} 
+\index{jpl::\_utils::\_timer::Timer@{jpl::\_utils::\_timer::Timer}!timeToString@{timeToString}}
+\index{timeToString@{timeToString}!jpl::\_utils::\_timer::Timer@{jpl::\_utils::\_timer::Timer}}
+\doxysubsubsection{\texorpdfstring{timeToString()}{timeToString()}}
+{\footnotesize\ttfamily virtual std\+::string jpl\+::\+\_\+utils\+::\+\_\+timer\+::\+Timer\+::time\+To\+String (\begin{DoxyParamCaption}\item[{const time\+\_\+t \texorpdfstring{$\ast$}{*}}]{time }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+\doxysubsection{Field Documentation}
+\Hypertarget{classjpl_1_1__utils_1_1__timer_1_1Timer_a3eb447882bdcfac8f2ae23b80a1a6f6f_a3eb447882bdcfac8f2ae23b80a1a6f6f}\label{classjpl_1_1__utils_1_1__timer_1_1Timer_a3eb447882bdcfac8f2ae23b80a1a6f6f_a3eb447882bdcfac8f2ae23b80a1a6f6f} 
+\index{jpl::\_utils::\_timer::Timer@{jpl::\_utils::\_timer::Timer}!endTime@{endTime}}
+\index{endTime@{endTime}!jpl::\_utils::\_timer::Timer@{jpl::\_utils::\_timer::Timer}}
+\doxysubsubsection{\texorpdfstring{endTime}{endTime}}
+{\footnotesize\ttfamily time\+\_\+t jpl\+::\+\_\+utils\+::\+\_\+timer\+::\+Timer\+::end\+Time\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classjpl_1_1__utils_1_1__timer_1_1Timer_a67baf8c62e8c9568f2878a12f9b42d4d_a67baf8c62e8c9568f2878a12f9b42d4d}\label{classjpl_1_1__utils_1_1__timer_1_1Timer_a67baf8c62e8c9568f2878a12f9b42d4d_a67baf8c62e8c9568f2878a12f9b42d4d} 
+\index{jpl::\_utils::\_timer::Timer@{jpl::\_utils::\_timer::Timer}!started@{started}}
+\index{started@{started}!jpl::\_utils::\_timer::Timer@{jpl::\_utils::\_timer::Timer}}
+\doxysubsubsection{\texorpdfstring{started}{started}}
+{\footnotesize\ttfamily bool jpl\+::\+\_\+utils\+::\+\_\+timer\+::\+Timer\+::started\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classjpl_1_1__utils_1_1__timer_1_1Timer_a0b8d4377c4987af3a9f5489b12da920d_a0b8d4377c4987af3a9f5489b12da920d}\label{classjpl_1_1__utils_1_1__timer_1_1Timer_a0b8d4377c4987af3a9f5489b12da920d_a0b8d4377c4987af3a9f5489b12da920d} 
+\index{jpl::\_utils::\_timer::Timer@{jpl::\_utils::\_timer::Timer}!startTime@{startTime}}
+\index{startTime@{startTime}!jpl::\_utils::\_timer::Timer@{jpl::\_utils::\_timer::Timer}}
+\doxysubsubsection{\texorpdfstring{startTime}{startTime}}
+{\footnotesize\ttfamily time\+\_\+t jpl\+::\+\_\+utils\+::\+\_\+timer\+::\+Timer\+::start\+Time\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classjpl_1_1__utils_1_1__timer_1_1Timer_a60d5129b291650fdf3d705d5995d4aea_a60d5129b291650fdf3d705d5995d4aea}\label{classjpl_1_1__utils_1_1__timer_1_1Timer_a60d5129b291650fdf3d705d5995d4aea_a60d5129b291650fdf3d705d5995d4aea} 
+\index{jpl::\_utils::\_timer::Timer@{jpl::\_utils::\_timer::Timer}!terminated@{terminated}}
+\index{terminated@{terminated}!jpl::\_utils::\_timer::Timer@{jpl::\_utils::\_timer::Timer}}
+\doxysubsubsection{\texorpdfstring{terminated}{terminated}}
+{\footnotesize\ttfamily bool jpl\+::\+\_\+utils\+::\+\_\+timer\+::\+Timer\+::terminated\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classjpl_1_1__utils_1_1__timer_1_1Timer_a1068a4953b2a92411986b472792183d0_a1068a4953b2a92411986b472792183d0}\label{classjpl_1_1__utils_1_1__timer_1_1Timer_a1068a4953b2a92411986b472792183d0_a1068a4953b2a92411986b472792183d0} 
+\index{jpl::\_utils::\_timer::Timer@{jpl::\_utils::\_timer::Timer}!timerName@{timerName}}
+\index{timerName@{timerName}!jpl::\_utils::\_timer::Timer@{jpl::\_utils::\_timer::Timer}}
+\doxysubsubsection{\texorpdfstring{timerName}{timerName}}
+{\footnotesize\ttfamily std\+::string jpl\+::\+\_\+utils\+::\+\_\+timer\+::\+Timer\+::timer\+Name\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+utils/src/debug/\mbox{\hyperlink{Timer_8hpp}{Timer.\+hpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,39 @@
+\doxysection{utils/src/structure/list/\+List.hpp File Reference}
+\hypertarget{List_8hpp}{}\label{List_8hpp}\index{utils/src/structure/list/List.hpp@{utils/src/structure/list/List.hpp}}
+{\ttfamily \#include $<$memory$>$}\newline
+{\ttfamily \#include "{}../\+Collection.\+hpp"{}}\newline
+{\ttfamily \#include $<$jpl/exception/runtime/\+Index\+Out\+Of\+Bounds\+Exception.\+hpp$>$}\newline
+{\ttfamily \#include $<$jpl/exception/runtime/\+Not\+Found\+Exception.\+hpp$>$}\newline
+{\ttfamily \#include $<$jpl/exception/runtime/\+Null\+Pointer\+Exception.\+hpp$>$}\newline
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1List}{jpl\+::\+\_\+utils\+::\+\_\+collections\+::\+List$<$ T $>$}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacejpl}{jpl}}
+\item 
+namespace \mbox{\hyperlink{namespacejpl_1_1__utils}{jpl\+::\+\_\+utils}}
+\item 
+namespace \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__collections}{jpl\+::\+\_\+utils\+::\+\_\+collections}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+All list implementation -\/ unlike Set, or other such implementations -\/ allow you to insert duplicate elements and null both; otherwise a Runtime\+Exception or a Null\+Pointer\+Exception is thrown
+
+In all duplicated or nullable implementations, elements are managed via std\+::shared\+\_\+ptr, therefore, in case of pointer type, you have never to destory them by yourself. Those one provide special function to catch all std\+::shared\+\_\+ptr which point to the same object and call std\+::shared\+\_\+ptr\+::restore() for each of them. As you can get by cppreference.\+com, even after have restored the last std\+::shared\+\_\+ptr, you do not need to call delete operator on the object since it is already called by the last restored one.
+
+All JPL\textquotesingle{}s list implementation let you insert null and duplicate elements both.
+
+\begin{DoxyDate}{Date}
+2023-\/07-\/12 
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2023 
+\end{DoxyCopyright}
+\begin{DoxyAuthor}{Author}
+Gabriele-\/\+P03 
+\end{DoxyAuthor}

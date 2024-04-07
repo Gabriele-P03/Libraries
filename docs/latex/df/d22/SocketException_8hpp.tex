@@ -1,0 +1,32 @@
+\doxysection{exception/src/runtime/\+Socket\+Exception.hpp File Reference}
+\hypertarget{SocketException_8hpp}{}\label{SocketException_8hpp}\index{exception/src/runtime/SocketException.hpp@{exception/src/runtime/SocketException.hpp}}
+{\ttfamily \#include "{}Runtime\+Exception.\+hpp"{}}\newline
+{\ttfamily \#include $<$jpl/utils/\+Error\+Utils.\+hpp$>$}\newline
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classjpl_1_1__exception_1_1SocketException}{jpl\+::\+\_\+exception\+::\+Socket\+Exception}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacejpl}{jpl}}
+\item 
+namespace \mbox{\hyperlink{namespacejpl_1_1__exception}{jpl\+::\+\_\+exception}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A Socket\+Exception is thrown whenever a socket error is occurred in runtime.
+
+You may even call the constructor with the FD of the socket and let JPL retrieve the last error code and its meaning via \+\_\+utils\+:\+\_\+\+Get\+Last\+Error() and \+\_\+utils\+::\+\_\+\+Get\+Last\+Error\+As\+String
+
+\begin{DoxyDate}{Date}
+2023-\/05-\/27 
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2023 
+\end{DoxyCopyright}
+\begin{DoxyAuthor}{Author}
+Gabriele-\/\+P03 
+\end{DoxyAuthor}

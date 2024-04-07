@@ -1,0 +1,53 @@
+\doxysection{IOException.\+hpp}
+\hypertarget{IOException_8hpp_source}{}\label{IOException_8hpp_source}\index{exception/src/runtime/IOException.hpp@{exception/src/runtime/IOException.hpp}}
+\mbox{\hyperlink{IOException_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#ifndef\ IO\_EXCEPTION\_JPL}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ IO\_EXCEPTION\_JPL}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{RuntimeException_8hpp}{RuntimeException.hpp}}"{}}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <jpl/utils/debug/ErrorUtils.hpp>}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacejpl}{jpl}}\{}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{namespace\ }\_exception\{}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classjpl_1_1__exception_1_1IOException}{IOException}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classjpl_1_1__exception_1_1RuntimeException}{RuntimeException}}\{}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classjpl_1_1__exception_1_1IOException_a54984e0bfb4841a76e8b321ca74d7566_a54984e0bfb4841a76e8b321ca74d7566}{error\_code}};}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{classjpl_1_1__exception_1_1IOException_ad607d16487c1edd5446c191394a9fca9_ad607d16487c1edd5446c191394a9fca9}{description}};\ }
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classjpl_1_1__exception_1_1IOException_aadb4c8d0d5b8d79caf82dd6b4f629041_aadb4c8d0d5b8d79caf82dd6b4f629041}{IOException}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classjpl_1_1__exception_1_1IOException_a54984e0bfb4841a76e8b321ca74d7566_a54984e0bfb4841a76e8b321ca74d7566}{error\_code}},\ std::string\ \mbox{\hyperlink{classjpl_1_1__exception_1_1IOException_ad607d16487c1edd5446c191394a9fca9_ad607d16487c1edd5446c191394a9fca9}{description}},\ std::string\ \mbox{\hyperlink{classjpl_1_1__exception_1_1AbstractException_a2aa9aba38aab837ce8eee9552dd2f1fb_a2aa9aba38aab837ce8eee9552dd2f1fb}{msg}})\ :\ \mbox{\hyperlink{classjpl_1_1__exception_1_1RuntimeException}{RuntimeException}}(\textcolor{stringliteral}{"{}IOException"{}},\ \mbox{\hyperlink{classjpl_1_1__exception_1_1AbstractException_a2aa9aba38aab837ce8eee9552dd2f1fb_a2aa9aba38aab837ce8eee9552dd2f1fb}{msg}}),\ \mbox{\hyperlink{classjpl_1_1__exception_1_1IOException_a54984e0bfb4841a76e8b321ca74d7566_a54984e0bfb4841a76e8b321ca74d7566}{error\_code}}(\mbox{\hyperlink{classjpl_1_1__exception_1_1IOException_a54984e0bfb4841a76e8b321ca74d7566_a54984e0bfb4841a76e8b321ca74d7566}{error\_code}}),\ \mbox{\hyperlink{classjpl_1_1__exception_1_1IOException_ad607d16487c1edd5446c191394a9fca9_ad607d16487c1edd5446c191394a9fca9}{description}}(\mbox{\hyperlink{classjpl_1_1__exception_1_1IOException_ad607d16487c1edd5446c191394a9fca9_ad607d16487c1edd5446c191394a9fca9}{description}})\{\}}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classjpl_1_1__exception_1_1IOException_a5cafc7c4e00e3fcb8204e5ded96041a4_a5cafc7c4e00e3fcb8204e5ded96041a4}{IOException}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classjpl_1_1__exception_1_1IOException_a54984e0bfb4841a76e8b321ca74d7566_a54984e0bfb4841a76e8b321ca74d7566}{error\_code}},\ std::string\ \mbox{\hyperlink{classjpl_1_1__exception_1_1IOException_ad607d16487c1edd5446c191394a9fca9_ad607d16487c1edd5446c191394a9fca9}{description}})\ :\ \mbox{\hyperlink{classjpl_1_1__exception_1_1IOException}{IOException}}(\mbox{\hyperlink{classjpl_1_1__exception_1_1IOException_a54984e0bfb4841a76e8b321ca74d7566_a54984e0bfb4841a76e8b321ca74d7566}{error\_code}},\ \mbox{\hyperlink{classjpl_1_1__exception_1_1IOException_ad607d16487c1edd5446c191394a9fca9_ad607d16487c1edd5446c191394a9fca9}{description}},\ \textcolor{stringliteral}{"{}"{}})\{\}}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classjpl_1_1__exception_1_1IOException_ada9a43c3919fea21c54b5a0777286029_ada9a43c3919fea21c54b5a0777286029}{IOException}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classjpl_1_1__exception_1_1IOException_a54984e0bfb4841a76e8b321ca74d7566_a54984e0bfb4841a76e8b321ca74d7566}{error\_code}})\ :\ \mbox{\hyperlink{classjpl_1_1__exception_1_1IOException}{IOException}}(\mbox{\hyperlink{classjpl_1_1__exception_1_1IOException_a54984e0bfb4841a76e8b321ca74d7566_a54984e0bfb4841a76e8b321ca74d7566}{error\_code}},\ \_utils::\_error::\_GetLastErrorAsString(\mbox{\hyperlink{classjpl_1_1__exception_1_1IOException_a54984e0bfb4841a76e8b321ca74d7566_a54984e0bfb4841a76e8b321ca74d7566}{error\_code}}),\ \textcolor{stringliteral}{"{}"{}})\{\}}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classjpl_1_1__exception_1_1IOException_a4bd5e3ac045e767b0dbabd535b32664a_a4bd5e3ac045e767b0dbabd535b32664a}{IOException}}(std::string\ \mbox{\hyperlink{classjpl_1_1__exception_1_1AbstractException_a2aa9aba38aab837ce8eee9552dd2f1fb_a2aa9aba38aab837ce8eee9552dd2f1fb}{msg}})\ :\ \mbox{\hyperlink{classjpl_1_1__exception_1_1IOException}{IOException}}(\_utils::\_error::\_GetLastError())\{this-\/>msg\ =\ \mbox{\hyperlink{classjpl_1_1__exception_1_1AbstractException_a2aa9aba38aab837ce8eee9552dd2f1fb_a2aa9aba38aab837ce8eee9552dd2f1fb}{msg}};\}}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classjpl_1_1__exception_1_1IOException_a39a2329b2a3c9d2639dc6adff38c3e03_a39a2329b2a3c9d2639dc6adff38c3e03}{IOException}}()\ :\ \mbox{\hyperlink{classjpl_1_1__exception_1_1IOException}{IOException}}(\_utils::\_error::\_GetLastError())\{\}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{classjpl_1_1__exception_1_1IOException_a99b59a19d9d9165575e98678db8602f5_a99b59a19d9d9165575e98678db8602f5}{what}}()\ const\ \_GLIBCXX\_TXN\_SAFE\_DYN\ \_GLIBCXX\_NOTHROW\textcolor{keyword}{\ override}\{}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ buffer\ =\ this-\/>\mbox{\hyperlink{classjpl_1_1__exception_1_1AbstractException_ac135cf56b3dc4fdb4bc558d345d0f436_ac135cf56b3dc4fdb4bc558d345d0f436}{type\_ex}};}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ buffer\ +=\ \textcolor{stringliteral}{"{}\ Error\ Code:\ "{}};}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ buffer\ +=\ std::to\_string(this-\/>error\_code);}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ buffer\ +=\ \textcolor{stringliteral}{"{}\ -\/>\ "{}};}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ buffer\ +=\ this-\/>\mbox{\hyperlink{classjpl_1_1__exception_1_1IOException_ad607d16487c1edd5446c191394a9fca9_ad607d16487c1edd5446c191394a9fca9}{description}};}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(!this-\/>\mbox{\hyperlink{classjpl_1_1__exception_1_1AbstractException_a2aa9aba38aab837ce8eee9552dd2f1fb_a2aa9aba38aab837ce8eee9552dd2f1fb}{msg}}.empty())\{}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ buffer\ +=\ \textcolor{stringliteral}{"{}\ "{}};}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ buffer\ +=\ this-\/>\mbox{\hyperlink{classjpl_1_1__exception_1_1AbstractException_a2aa9aba38aab837ce8eee9552dd2f1fb_a2aa9aba38aab837ce8eee9552dd2f1fb}{msg}};}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ buffer\ +=\ \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}*\ c\_buffer\ =\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{char}[buffer.size()];}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ memcpy(c\_buffer,\ buffer.c\_str(),\ buffer.size());}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ c\_buffer;}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00056\ \ \ \ \ \}}
+\DoxyCodeLine{00057\ \}}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

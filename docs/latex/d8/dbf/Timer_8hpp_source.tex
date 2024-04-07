@@ -1,0 +1,84 @@
+\doxysection{Timer.\+hpp}
+\hypertarget{Timer_8hpp_source}{}\label{Timer_8hpp_source}\index{utils/src/debug/Timer.hpp@{utils/src/debug/Timer.hpp}}
+\mbox{\hyperlink{Timer_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#ifndef\ TIMER\_JPL}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ TIMER\_JPL}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <ctime>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <jpl/logger/LoggerWrapper.hpp>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <jpl/exception/runtime/IllegalStateException.hpp>}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacejpl}{jpl}}\{}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{namespace\ }\_utils\{}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keyword}{namespace\ }\_timer\{}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classjpl_1_1__utils_1_1__timer_1_1Timer}{Timer}}\{}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__timer_1_1Timer_a60d5129b291650fdf3d705d5995d4aea_a60d5129b291650fdf3d705d5995d4aea}{terminated}};}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__timer_1_1Timer_a67baf8c62e8c9568f2878a12f9b42d4d_a67baf8c62e8c9568f2878a12f9b42d4d}{started}};}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__timer_1_1Timer_a1068a4953b2a92411986b472792183d0_a1068a4953b2a92411986b472792183d0}{timerName}};}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ time\_t\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__timer_1_1Timer_a0b8d4377c4987af3a9f5489b12da920d_a0b8d4377c4987af3a9f5489b12da920d}{startTime}},\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__timer_1_1Timer_a3eb447882bdcfac8f2ae23b80a1a6f6f_a3eb447882bdcfac8f2ae23b80a1a6f6f}{endTime}};}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ std::string\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__timer_1_1Timer_ac30804aad8266c3c9bcf9b18d4ad1acd_ac30804aad8266c3c9bcf9b18d4ad1acd}{timeToString}}(\textcolor{keyword}{const}\ time\_t\ *time)\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#ifdef\ NUSE\_ASCTIME\_TIMER\_JPL}}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::to\_string(*time);}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#else}}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::asctime(std::localtime(time));}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#endif}}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classjpl_1_1__utils_1_1__timer_1_1Timer_a5454143f3716b953f70840888300f456_a5454143f3716b953f70840888300f456}{Timer}}(std::string\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__timer_1_1Timer_a1068a4953b2a92411986b472792183d0_a1068a4953b2a92411986b472792183d0}{timerName}})\{}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>timerName\ =\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__timer_1_1Timer_a1068a4953b2a92411986b472792183d0_a1068a4953b2a92411986b472792183d0}{timerName}};}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>started\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>terminated\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>startTime\ =\ 0;}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>endTime\ =\ 0;}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classjpl_1_1__utils_1_1__timer_1_1Timer_a55e3d18889979cc458c63b6ed10ae2df_a55e3d18889979cc458c63b6ed10ae2df}{Timer}}()\ :\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__timer_1_1Timer}{Timer}}(\textcolor{stringliteral}{"{}unnamed"{}})\{}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__timer_1_1Timer_a14c978dd141748de2f82ae2a04a0faee_a14c978dd141748de2f82ae2a04a0faee}{start}}()\ \{}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(this-\/>started)}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classjpl_1_1__exception_1_1IllegalStateException}{\_exception::IllegalStateException}}(\textcolor{stringliteral}{"{}The\ timer\ "{}}\ +\ this-\/>timerName\ +\ \textcolor{stringliteral}{"{}\ has\ been\ already\ started\ at\ "{}}\ +\ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__timer_1_1Timer_ac30804aad8266c3c9bcf9b18d4ad1acd_ac30804aad8266c3c9bcf9b18d4ad1acd}{timeToString}}(\&this-\/>startTime));}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(this-\/>terminated)}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classjpl_1_1__exception_1_1IllegalStateException}{\_exception::IllegalStateException}}(\textcolor{stringliteral}{"{}The\ timer\ "{}}\ +\ this-\/>timerName\ +\ \textcolor{stringliteral}{"{}\ has\ been\ already\ terminated\ at\ "{}}\ +\ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__timer_1_1Timer_ac30804aad8266c3c9bcf9b18d4ad1acd_ac30804aad8266c3c9bcf9b18d4ad1acd}{timeToString}}(\&this-\/>endTime));}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>startTime\ =\ time(\textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>started\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacejpl_1_1__logger_a909deec94298a397b06127f8ac7d4a68_a909deec94298a397b06127f8ac7d4a68}{\_logger::print}}(\textcolor{stringliteral}{"{}Timer\ "{}}\ +\ this-\/>timerName\ +\ \textcolor{stringliteral}{"{}\ started\ at\ "{}}\ +\ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__timer_1_1Timer_ac30804aad8266c3c9bcf9b18d4ad1acd_ac30804aad8266c3c9bcf9b18d4ad1acd}{timeToString}}(\&this-\/>startTime));}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__timer_1_1Timer_a3cd886c165ea244f417dffb5436ec24f_a3cd886c165ea244f417dffb5436ec24f}{end}}()\{}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(!this-\/>started)}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classjpl_1_1__exception_1_1IllegalStateException}{\_exception::IllegalStateException}}(\textcolor{stringliteral}{"{}The\ timer\ "{}}\ +\ this-\/>timerName\ +\ \textcolor{stringliteral}{"{}\ has\ not\ been\ started\ yet"{}});}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(this-\/>terminated)}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classjpl_1_1__exception_1_1IllegalStateException}{\_exception::IllegalStateException}}(\textcolor{stringliteral}{"{}The\ timer\ "{}}\ +\ this-\/>timerName\ +\ \textcolor{stringliteral}{"{}\ has\ been\ already\ terminated\ at\ "{}}\ +\ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__timer_1_1Timer_ac30804aad8266c3c9bcf9b18d4ad1acd_ac30804aad8266c3c9bcf9b18d4ad1acd}{timeToString}}(\&this-\/>endTime));}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>endTime\ =\ time(\textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>started\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>terminated\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacejpl_1_1__logger_a909deec94298a397b06127f8ac7d4a68_a909deec94298a397b06127f8ac7d4a68}{\_logger::print}}(\textcolor{stringliteral}{"{}Timer\ "{}}\ +\ this-\/>timerName\ +\ \textcolor{stringliteral}{"{}\ finished\ at\ "{}}\ +\ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__timer_1_1Timer_ac30804aad8266c3c9bcf9b18d4ad1acd_ac30804aad8266c3c9bcf9b18d4ad1acd}{timeToString}}(\&this-\/>endTime));}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__timer_1_1Timer_a918b42eee73b0fe98d9863f820c0703f_a918b42eee73b0fe98d9863f820c0703f}{isStarted}}()\textcolor{keyword}{\ const}\{\textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__timer_1_1Timer_a67baf8c62e8c9568f2878a12f9b42d4d_a67baf8c62e8c9568f2878a12f9b42d4d}{started}};\}}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__timer_1_1Timer_a6f71ead14314d4027a4afa7b89ffd454_a6f71ead14314d4027a4afa7b89ffd454}{isTerminated}}()\textcolor{keyword}{\ const}\{\textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__timer_1_1Timer_a60d5129b291650fdf3d705d5995d4aea_a60d5129b291650fdf3d705d5995d4aea}{terminated}};\}}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keyword}{const}\ std::string*\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__timer_1_1Timer_a03c3f5201e6094566890917eca3464c0_a03c3f5201e6094566890917eca3464c0}{getName}}()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ \&this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__timer_1_1Timer_a1068a4953b2a92411986b472792183d0_a1068a4953b2a92411986b472792183d0}{timerName}};\}\ }
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keyword}{const}\ time\_t*\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__timer_1_1Timer_a0d9b79e2b916ed796ac5215b10b80845_a0d9b79e2b916ed796ac5215b10b80845}{getStartTime}}()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ \&this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__timer_1_1Timer_a0b8d4377c4987af3a9f5489b12da920d_a0b8d4377c4987af3a9f5489b12da920d}{startTime}};\}}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keyword}{const}\ time\_t*\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__timer_1_1Timer_a56688bed1dbc989daf54f186d0d18729_a56688bed1dbc989daf54f186d0d18729}{getEndTime}}()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ \&this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__timer_1_1Timer_a3eb447882bdcfac8f2ae23b80a1a6f6f_a3eb447882bdcfac8f2ae23b80a1a6f6f}{endTime}};\}}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00083\ \ \ \ \ \}}
+\DoxyCodeLine{00084\ \}}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

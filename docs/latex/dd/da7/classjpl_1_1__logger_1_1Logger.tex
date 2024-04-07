@@ -1,0 +1,166 @@
+\doxysection{jpl\+::\+\_\+logger\+::Logger Class Reference}
+\hypertarget{classjpl_1_1__logger_1_1Logger}{}\label{classjpl_1_1__logger_1_1Logger}\index{jpl::\_logger::Logger@{jpl::\_logger::Logger}}
+
+
+{\ttfamily \#include $<$Logger.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classjpl_1_1__logger_1_1Logger_abe441655b4dd2368beb69f47746cbadc_abe441655b4dd2368beb69f47746cbadc}{Logger}} (std\+::string path\+To\+File)
+\item 
+\mbox{\hyperlink{classjpl_1_1__logger_1_1Logger_a78334716ca2de39c38a1e79581fc3d54_a78334716ca2de39c38a1e79581fc3d54}{Logger}} (std\+::string path\+To\+File, bool quiet)
+\item 
+void \mbox{\hyperlink{classjpl_1_1__logger_1_1Logger_a924032a44c5ad7578c2fd4f61100d754_a924032a44c5ad7578c2fd4f61100d754}{print}} (std\+::string msg)
+\begin{DoxyCompactList}\small\item\em Print msg on terminal Write msg on file and flushes it. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classjpl_1_1__logger_1_1Logger_a4e87504a9fac6a93084b49ea1e8263f1_a4e87504a9fac6a93084b49ea1e8263f1}{print}} (std\+::string msg, const \mbox{\hyperlink{namespacejpl_1_1__logger_a792f1548c6d4cbb2370032b773147251_a792f1548c6d4cbb2370032b773147251}{LOG\+\_\+\+STATUS}} status)
+\begin{DoxyCompactList}\small\item\em write msg on terminal Write msg on file and flushes it. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classjpl_1_1__logger_1_1Logger_a9e46a8272b8a903472629cf74a878b72_a9e46a8272b8a903472629cf74a878b72}{close\+Logger}} ()
+\item 
+bool \mbox{\hyperlink{classjpl_1_1__logger_1_1Logger_a05696ef2309d1cfda89fd3382a7efd07_a05696ef2309d1cfda89fd3382a7efd07}{is\+Writing}} ()
+\begin{DoxyCompactList}\small\item\em this check-\/function is useless to call unless you have defined UFW\+\_\+\+LOGGER\+\_\+\+JPL \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classjpl_1_1__logger_1_1Logger_a88e7a7b0748080910728e28fb4f84dbd_a88e7a7b0748080910728e28fb4f84dbd}{\texorpdfstring{$\sim$}{\string~}\+Logger}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classjpl_1_1__logger_1_1Logger}{Logger}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classjpl_1_1__logger_1_1Logger_a66246f816ec6a7ddc2c13ac46cb06420_a66246f816ec6a7ddc2c13ac46cb06420}{INSTANCE}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::string \mbox{\hyperlink{classjpl_1_1__logger_1_1Logger_a162f55a394dac81b49204d630f4d0834_a162f55a394dac81b49204d630f4d0834}{get\+File\+Name\+Of\+Instance}} ()
+\item 
+static std\+::tm \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classjpl_1_1__logger_1_1Logger_a5a5e998481cb27380e8df30ebc692516_a5a5e998481cb27380e8df30ebc692516}{get\+TM}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::ofstream \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classjpl_1_1__logger_1_1Logger_a0d3cc27914402ebf613a64ee4f5373fd_a0d3cc27914402ebf613a64ee4f5373fd}{file}}
+\item 
+bool \mbox{\hyperlink{classjpl_1_1__logger_1_1Logger_a870b7f952084b3fc310608b4423ad186_a870b7f952084b3fc310608b4423ad186}{flag}}
+\begin{DoxyCompactList}\small\item\em If the fstream could be created, this flag is set to true, otherwise to false. Is is used to check, when UFW\+\_\+\+LOGGER\+\_\+\+JPL macro is defined, if logger is able to write on file, too. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classjpl_1_1__logger_1_1Logger_abe441655b4dd2368beb69f47746cbadc_abe441655b4dd2368beb69f47746cbadc}\label{classjpl_1_1__logger_1_1Logger_abe441655b4dd2368beb69f47746cbadc_abe441655b4dd2368beb69f47746cbadc} 
+\index{jpl::\_logger::Logger@{jpl::\_logger::Logger}!Logger@{Logger}}
+\index{Logger@{Logger}!jpl::\_logger::Logger@{jpl::\_logger::Logger}}
+\doxysubsubsection{\texorpdfstring{Logger()}{Logger()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily jpl\+::\+\_\+logger\+::\+Logger\+::\+Logger (\begin{DoxyParamCaption}\item[{std\+::string}]{path\+To\+File }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Create a new instance of \doxylink{classjpl_1_1__logger_1_1Logger}{Logger} associated with the output file at the given path. Quiet mode is implicitly set to false
+
+
+\begin{DoxyParams}{Parameters}
+{\em path\+To\+File} & aboslute path of the file which is wanted to be used as output one \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classjpl_1_1__logger_1_1Logger_a78334716ca2de39c38a1e79581fc3d54_a78334716ca2de39c38a1e79581fc3d54}\label{classjpl_1_1__logger_1_1Logger_a78334716ca2de39c38a1e79581fc3d54_a78334716ca2de39c38a1e79581fc3d54} 
+\index{jpl::\_logger::Logger@{jpl::\_logger::Logger}!Logger@{Logger}}
+\index{Logger@{Logger}!jpl::\_logger::Logger@{jpl::\_logger::Logger}}
+\doxysubsubsection{\texorpdfstring{Logger()}{Logger()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily jpl\+::\+\_\+logger\+::\+Logger\+::\+Logger (\begin{DoxyParamCaption}\item[{std\+::string}]{path\+To\+File,  }\item[{bool}]{quiet }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Create a new instance of \doxylink{classjpl_1_1__logger_1_1Logger}{Logger} associated with the output file at the given path
+
+
+\begin{DoxyParams}{Parameters}
+{\em path\+To\+File} & aboslute path of the file which is wanted to be used as output one \\
+\hline
+{\em quiet} & quiet mode \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classjpl_1_1__logger_1_1Logger_a88e7a7b0748080910728e28fb4f84dbd_a88e7a7b0748080910728e28fb4f84dbd}\label{classjpl_1_1__logger_1_1Logger_a88e7a7b0748080910728e28fb4f84dbd_a88e7a7b0748080910728e28fb4f84dbd} 
+\index{jpl::\_logger::Logger@{jpl::\_logger::Logger}!````~Logger@{\texorpdfstring{$\sim$}{\string~}Logger}}
+\index{````~Logger@{\texorpdfstring{$\sim$}{\string~}Logger}!jpl::\_logger::Logger@{jpl::\_logger::Logger}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Logger()}{\string~Logger()}}
+{\footnotesize\ttfamily jpl\+::\+\_\+logger\+::\+Logger\+::\texorpdfstring{$\sim$}{\string~}\+Logger (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classjpl_1_1__logger_1_1Logger_a9e46a8272b8a903472629cf74a878b72_a9e46a8272b8a903472629cf74a878b72}\label{classjpl_1_1__logger_1_1Logger_a9e46a8272b8a903472629cf74a878b72_a9e46a8272b8a903472629cf74a878b72} 
+\index{jpl::\_logger::Logger@{jpl::\_logger::Logger}!closeLogger@{closeLogger}}
+\index{closeLogger@{closeLogger}!jpl::\_logger::Logger@{jpl::\_logger::Logger}}
+\doxysubsubsection{\texorpdfstring{closeLogger()}{closeLogger()}}
+{\footnotesize\ttfamily void jpl\+::\+\_\+logger\+::\+Logger\+::close\+Logger (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Close logger and its file \Hypertarget{classjpl_1_1__logger_1_1Logger_a162f55a394dac81b49204d630f4d0834_a162f55a394dac81b49204d630f4d0834}\label{classjpl_1_1__logger_1_1Logger_a162f55a394dac81b49204d630f4d0834_a162f55a394dac81b49204d630f4d0834} 
+\index{jpl::\_logger::Logger@{jpl::\_logger::Logger}!getFileNameOfInstance@{getFileNameOfInstance}}
+\index{getFileNameOfInstance@{getFileNameOfInstance}!jpl::\_logger::Logger@{jpl::\_logger::Logger}}
+\doxysubsubsection{\texorpdfstring{getFileNameOfInstance()}{getFileNameOfInstance()}}
+{\footnotesize\ttfamily std\+::string jpl\+::\+\_\+logger\+::\+Logger\+::get\+File\+Name\+Of\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+\begin{DoxyReturn}{Returns}
+the file name of today e.\+g. dd-\/mm-\/yyyy\+\_\+hh-\/mm-\/ss.\+txt 
+\end{DoxyReturn}
+\Hypertarget{classjpl_1_1__logger_1_1Logger_a5a5e998481cb27380e8df30ebc692516_a5a5e998481cb27380e8df30ebc692516}\label{classjpl_1_1__logger_1_1Logger_a5a5e998481cb27380e8df30ebc692516_a5a5e998481cb27380e8df30ebc692516} 
+\index{jpl::\_logger::Logger@{jpl::\_logger::Logger}!getTM@{getTM}}
+\index{getTM@{getTM}!jpl::\_logger::Logger@{jpl::\_logger::Logger}}
+\doxysubsubsection{\texorpdfstring{getTM()}{getTM()}}
+{\footnotesize\ttfamily static std\+::tm \texorpdfstring{$\ast$}{*} jpl\+::\+\_\+logger\+::\+Logger\+::get\+TM (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [protected]}}
+
+\begin{DoxyReturn}{Returns}
+an instance of std\+::tm at the current moment 
+\end{DoxyReturn}
+\Hypertarget{classjpl_1_1__logger_1_1Logger_a05696ef2309d1cfda89fd3382a7efd07_a05696ef2309d1cfda89fd3382a7efd07}\label{classjpl_1_1__logger_1_1Logger_a05696ef2309d1cfda89fd3382a7efd07_a05696ef2309d1cfda89fd3382a7efd07} 
+\index{jpl::\_logger::Logger@{jpl::\_logger::Logger}!isWriting@{isWriting}}
+\index{isWriting@{isWriting}!jpl::\_logger::Logger@{jpl::\_logger::Logger}}
+\doxysubsubsection{\texorpdfstring{isWriting()}{isWriting()}}
+{\footnotesize\ttfamily bool jpl\+::\+\_\+logger\+::\+Logger\+::is\+Writing (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyReturn}{Returns}
+if \doxylink{classjpl_1_1__logger_1_1Logger}{Logger} is able to write on file 
+\end{DoxyReturn}
+\Hypertarget{classjpl_1_1__logger_1_1Logger_a924032a44c5ad7578c2fd4f61100d754_a924032a44c5ad7578c2fd4f61100d754}\label{classjpl_1_1__logger_1_1Logger_a924032a44c5ad7578c2fd4f61100d754_a924032a44c5ad7578c2fd4f61100d754} 
+\index{jpl::\_logger::Logger@{jpl::\_logger::Logger}!print@{print}}
+\index{print@{print}!jpl::\_logger::Logger@{jpl::\_logger::Logger}}
+\doxysubsubsection{\texorpdfstring{print()}{print()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void jpl\+::\+\_\+logger\+::\+Logger\+::print (\begin{DoxyParamCaption}\item[{std\+::string}]{msg }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em msg} & message \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classjpl_1_1__logger_1_1Logger_a4e87504a9fac6a93084b49ea1e8263f1_a4e87504a9fac6a93084b49ea1e8263f1}\label{classjpl_1_1__logger_1_1Logger_a4e87504a9fac6a93084b49ea1e8263f1_a4e87504a9fac6a93084b49ea1e8263f1} 
+\index{jpl::\_logger::Logger@{jpl::\_logger::Logger}!print@{print}}
+\index{print@{print}!jpl::\_logger::Logger@{jpl::\_logger::Logger}}
+\doxysubsubsection{\texorpdfstring{print()}{print()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void jpl\+::\+\_\+logger\+::\+Logger\+::print (\begin{DoxyParamCaption}\item[{std\+::string}]{msg,  }\item[{const \mbox{\hyperlink{namespacejpl_1_1__logger_a792f1548c6d4cbb2370032b773147251_a792f1548c6d4cbb2370032b773147251}{LOG\+\_\+\+STATUS}}}]{status }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em msg} & message \\
+\hline
+{\em status} & status of the message \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Field Documentation}
+\Hypertarget{classjpl_1_1__logger_1_1Logger_a0d3cc27914402ebf613a64ee4f5373fd_a0d3cc27914402ebf613a64ee4f5373fd}\label{classjpl_1_1__logger_1_1Logger_a0d3cc27914402ebf613a64ee4f5373fd_a0d3cc27914402ebf613a64ee4f5373fd} 
+\index{jpl::\_logger::Logger@{jpl::\_logger::Logger}!file@{file}}
+\index{file@{file}!jpl::\_logger::Logger@{jpl::\_logger::Logger}}
+\doxysubsubsection{\texorpdfstring{file}{file}}
+{\footnotesize\ttfamily std\+::ofstream\texorpdfstring{$\ast$}{*} jpl\+::\+\_\+logger\+::\+Logger\+::file\hspace{0.3cm}{\ttfamily [protected]}}
+
+\doxylink{classjpl_1_1__logger_1_1Logger}{Logger}\textquotesingle{}s output file \Hypertarget{classjpl_1_1__logger_1_1Logger_a870b7f952084b3fc310608b4423ad186_a870b7f952084b3fc310608b4423ad186}\label{classjpl_1_1__logger_1_1Logger_a870b7f952084b3fc310608b4423ad186_a870b7f952084b3fc310608b4423ad186} 
+\index{jpl::\_logger::Logger@{jpl::\_logger::Logger}!flag@{flag}}
+\index{flag@{flag}!jpl::\_logger::Logger@{jpl::\_logger::Logger}}
+\doxysubsubsection{\texorpdfstring{flag}{flag}}
+{\footnotesize\ttfamily bool jpl\+::\+\_\+logger\+::\+Logger\+::flag\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classjpl_1_1__logger_1_1Logger_a66246f816ec6a7ddc2c13ac46cb06420_a66246f816ec6a7ddc2c13ac46cb06420}\label{classjpl_1_1__logger_1_1Logger_a66246f816ec6a7ddc2c13ac46cb06420_a66246f816ec6a7ddc2c13ac46cb06420} 
+\index{jpl::\_logger::Logger@{jpl::\_logger::Logger}!INSTANCE@{INSTANCE}}
+\index{INSTANCE@{INSTANCE}!jpl::\_logger::Logger@{jpl::\_logger::Logger}}
+\doxysubsubsection{\texorpdfstring{INSTANCE}{INSTANCE}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classjpl_1_1__logger_1_1Logger}{Logger}}\texorpdfstring{$\ast$}{*} jpl\+::\+\_\+logger\+::\+Logger\+::\+INSTANCE\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+logger/src/\mbox{\hyperlink{Logger_8hpp}{Logger.\+hpp}}\item 
+logger/src/\mbox{\hyperlink{Logger_8cpp}{Logger.\+cpp}}\end{DoxyCompactItemize}

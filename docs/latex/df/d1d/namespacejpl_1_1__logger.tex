@@ -1,0 +1,96 @@
+\doxysection{jpl\+::\+\_\+logger Namespace Reference}
+\hypertarget{namespacejpl_1_1__logger}{}\label{namespacejpl_1_1__logger}\index{jpl::\_logger@{jpl::\_logger}}
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classjpl_1_1__logger_1_1Logger}{Logger}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef const char \texorpdfstring{$\ast$}{*}const \mbox{\hyperlink{namespacejpl_1_1__logger_a792f1548c6d4cbb2370032b773147251_a792f1548c6d4cbb2370032b773147251}{LOG\+\_\+\+STATUS}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::string \mbox{\hyperlink{namespacejpl_1_1__logger_a7ef275bb6cfc544fe1dbcf6b630a15c8_a7ef275bb6cfc544fe1dbcf6b630a15c8}{get\+TM}} ()
+\item 
+void \mbox{\hyperlink{namespacejpl_1_1__logger_a909deec94298a397b06127f8ac7d4a68_a909deec94298a397b06127f8ac7d4a68}{print}} (std\+::string msg, const \mbox{\hyperlink{namespacejpl_1_1__logger_a792f1548c6d4cbb2370032b773147251_a792f1548c6d4cbb2370032b773147251}{LOG\+\_\+\+STATUS}} status)
+\begin{DoxyCompactList}\small\item\em status will be ignored (if DBG, it will not be passed) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacejpl_1_1__logger_a0f2c31e7ffbad3b211c0baaef59a996e_a0f2c31e7ffbad3b211c0baaef59a996e}{print}} (std\+::string msg)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const \mbox{\hyperlink{namespacejpl_1_1__logger_a792f1548c6d4cbb2370032b773147251_a792f1548c6d4cbb2370032b773147251}{LOG\+\_\+\+STATUS}} \mbox{\hyperlink{namespacejpl_1_1__logger_abd3e6bb6994657edb6a248f91de4a020_abd3e6bb6994657edb6a248f91de4a020}{INFO\+\_\+\+JPL}} = "{}INF"{}
+\begin{DoxyCompactList}\small\item\em Information message. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{namespacejpl_1_1__logger_a792f1548c6d4cbb2370032b773147251_a792f1548c6d4cbb2370032b773147251}{LOG\+\_\+\+STATUS}} \mbox{\hyperlink{namespacejpl_1_1__logger_aaf25705f78a2bb585a2a2ec4f69bc5b0_aaf25705f78a2bb585a2a2ec4f69bc5b0}{WARNING\+\_\+\+JPL}} = "{}WAR"{}
+\begin{DoxyCompactList}\small\item\em Warning message. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{namespacejpl_1_1__logger_a792f1548c6d4cbb2370032b773147251_a792f1548c6d4cbb2370032b773147251}{LOG\+\_\+\+STATUS}} \mbox{\hyperlink{namespacejpl_1_1__logger_a22542d2b436c8fe7e915bcb4c45cfe44_a22542d2b436c8fe7e915bcb4c45cfe44}{ERROR\+\_\+\+JPL}} = "{}ERR"{}
+\begin{DoxyCompactList}\small\item\em Error message. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{namespacejpl_1_1__logger_a792f1548c6d4cbb2370032b773147251_a792f1548c6d4cbb2370032b773147251}{LOG\+\_\+\+STATUS}} \mbox{\hyperlink{namespacejpl_1_1__logger_ab510e5e456c742873006dce9798587c6_ab510e5e456c742873006dce9798587c6}{DEBUG\+\_\+\+JPL}} = "{}DBG"{}
+\begin{DoxyCompactList}\small\item\em Debug message (not visible unless process has a debugger attached) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{namespacejpl_1_1__logger_a792f1548c6d4cbb2370032b773147251_a792f1548c6d4cbb2370032b773147251}\label{namespacejpl_1_1__logger_a792f1548c6d4cbb2370032b773147251_a792f1548c6d4cbb2370032b773147251} 
+\index{jpl::\_logger@{jpl::\_logger}!LOG\_STATUS@{LOG\_STATUS}}
+\index{LOG\_STATUS@{LOG\_STATUS}!jpl::\_logger@{jpl::\_logger}}
+\doxysubsubsection{\texorpdfstring{LOG\_STATUS}{LOG\_STATUS}}
+{\footnotesize\ttfamily typedef const char \texorpdfstring{$\ast$}{*}const \mbox{\hyperlink{namespacejpl_1_1__logger_a792f1548c6d4cbb2370032b773147251_a792f1548c6d4cbb2370032b773147251}{jpl\+::\+\_\+logger\+::\+LOG\+\_\+\+STATUS}}}
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespacejpl_1_1__logger_a7ef275bb6cfc544fe1dbcf6b630a15c8_a7ef275bb6cfc544fe1dbcf6b630a15c8}\label{namespacejpl_1_1__logger_a7ef275bb6cfc544fe1dbcf6b630a15c8_a7ef275bb6cfc544fe1dbcf6b630a15c8} 
+\index{jpl::\_logger@{jpl::\_logger}!getTM@{getTM}}
+\index{getTM@{getTM}!jpl::\_logger@{jpl::\_logger}}
+\doxysubsubsection{\texorpdfstring{getTM()}{getTM()}}
+{\footnotesize\ttfamily static std\+::string jpl\+::\+\_\+logger\+::get\+TM (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{namespacejpl_1_1__logger_a0f2c31e7ffbad3b211c0baaef59a996e_a0f2c31e7ffbad3b211c0baaef59a996e}\label{namespacejpl_1_1__logger_a0f2c31e7ffbad3b211c0baaef59a996e_a0f2c31e7ffbad3b211c0baaef59a996e} 
+\index{jpl::\_logger@{jpl::\_logger}!print@{print}}
+\index{print@{print}!jpl::\_logger@{jpl::\_logger}}
+\doxysubsubsection{\texorpdfstring{print()}{print()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void jpl\+::\+\_\+logger\+::print (\begin{DoxyParamCaption}\item[{std\+::string}]{msg }\end{DoxyParamCaption})}
+
+\Hypertarget{namespacejpl_1_1__logger_a909deec94298a397b06127f8ac7d4a68_a909deec94298a397b06127f8ac7d4a68}\label{namespacejpl_1_1__logger_a909deec94298a397b06127f8ac7d4a68_a909deec94298a397b06127f8ac7d4a68} 
+\index{jpl::\_logger@{jpl::\_logger}!print@{print}}
+\index{print@{print}!jpl::\_logger@{jpl::\_logger}}
+\doxysubsubsection{\texorpdfstring{print()}{print()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void jpl\+::\+\_\+logger\+::print (\begin{DoxyParamCaption}\item[{std\+::string}]{msg,  }\item[{const \mbox{\hyperlink{namespacejpl_1_1__logger_a792f1548c6d4cbb2370032b773147251_a792f1548c6d4cbb2370032b773147251}{LOG\+\_\+\+STATUS}}}]{status }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em msg} & status \\
+\hline
+{\em status} & message status \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{namespacejpl_1_1__logger_ab510e5e456c742873006dce9798587c6_ab510e5e456c742873006dce9798587c6}\label{namespacejpl_1_1__logger_ab510e5e456c742873006dce9798587c6_ab510e5e456c742873006dce9798587c6} 
+\index{jpl::\_logger@{jpl::\_logger}!DEBUG\_JPL@{DEBUG\_JPL}}
+\index{DEBUG\_JPL@{DEBUG\_JPL}!jpl::\_logger@{jpl::\_logger}}
+\doxysubsubsection{\texorpdfstring{DEBUG\_JPL}{DEBUG\_JPL}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{namespacejpl_1_1__logger_a792f1548c6d4cbb2370032b773147251_a792f1548c6d4cbb2370032b773147251}{LOG\+\_\+\+STATUS}} jpl\+::\+\_\+logger\+::\+DEBUG\+\_\+\+JPL = "{}DBG"{}}
+
+\Hypertarget{namespacejpl_1_1__logger_a22542d2b436c8fe7e915bcb4c45cfe44_a22542d2b436c8fe7e915bcb4c45cfe44}\label{namespacejpl_1_1__logger_a22542d2b436c8fe7e915bcb4c45cfe44_a22542d2b436c8fe7e915bcb4c45cfe44} 
+\index{jpl::\_logger@{jpl::\_logger}!ERROR\_JPL@{ERROR\_JPL}}
+\index{ERROR\_JPL@{ERROR\_JPL}!jpl::\_logger@{jpl::\_logger}}
+\doxysubsubsection{\texorpdfstring{ERROR\_JPL}{ERROR\_JPL}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{namespacejpl_1_1__logger_a792f1548c6d4cbb2370032b773147251_a792f1548c6d4cbb2370032b773147251}{LOG\+\_\+\+STATUS}} jpl\+::\+\_\+logger\+::\+ERROR\+\_\+\+JPL = "{}ERR"{}}
+
+\Hypertarget{namespacejpl_1_1__logger_abd3e6bb6994657edb6a248f91de4a020_abd3e6bb6994657edb6a248f91de4a020}\label{namespacejpl_1_1__logger_abd3e6bb6994657edb6a248f91de4a020_abd3e6bb6994657edb6a248f91de4a020} 
+\index{jpl::\_logger@{jpl::\_logger}!INFO\_JPL@{INFO\_JPL}}
+\index{INFO\_JPL@{INFO\_JPL}!jpl::\_logger@{jpl::\_logger}}
+\doxysubsubsection{\texorpdfstring{INFO\_JPL}{INFO\_JPL}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{namespacejpl_1_1__logger_a792f1548c6d4cbb2370032b773147251_a792f1548c6d4cbb2370032b773147251}{LOG\+\_\+\+STATUS}} jpl\+::\+\_\+logger\+::\+INFO\+\_\+\+JPL = "{}INF"{}}
+
+\Hypertarget{namespacejpl_1_1__logger_aaf25705f78a2bb585a2a2ec4f69bc5b0_aaf25705f78a2bb585a2a2ec4f69bc5b0}\label{namespacejpl_1_1__logger_aaf25705f78a2bb585a2a2ec4f69bc5b0_aaf25705f78a2bb585a2a2ec4f69bc5b0} 
+\index{jpl::\_logger@{jpl::\_logger}!WARNING\_JPL@{WARNING\_JPL}}
+\index{WARNING\_JPL@{WARNING\_JPL}!jpl::\_logger@{jpl::\_logger}}
+\doxysubsubsection{\texorpdfstring{WARNING\_JPL}{WARNING\_JPL}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{namespacejpl_1_1__logger_a792f1548c6d4cbb2370032b773147251_a792f1548c6d4cbb2370032b773147251}{LOG\+\_\+\+STATUS}} jpl\+::\+\_\+logger\+::\+WARNING\+\_\+\+JPL = "{}WAR"{}}
+

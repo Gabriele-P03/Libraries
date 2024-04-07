@@ -1,0 +1,104 @@
+\doxysection{Abstract\+Exception.\+hpp}
+\hypertarget{AbstractException_8hpp_source}{}\label{AbstractException_8hpp_source}\index{exception/src/AbstractException.hpp@{exception/src/AbstractException.hpp}}
+\mbox{\hyperlink{AbstractException_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#ifndef\ ABSTRACT\_EXCEPTION\_JPL}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#define\ ABSTRACT\_EXCEPTION\_JPL}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\ \ \ \ \#include\ <iostream>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\ \ \ \ \#include\ <vector>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\ \ \ \ \#include\ <string.h>}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\ \ \ \ \#ifdef\ USE\_STACKTRACE\_W\_EXCEPTION\_JPL}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#include\ <jpl/utils/debug/stacktrace/Stacktrace.hpp>}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\ \ \ \ \#endif}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacejpl}{jpl}}\{}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{keyword}{namespace\ }\_exception\{}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classjpl_1_1__exception_1_1AbstractException}{AbstractException}};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classjpl_1_1__exception_1_1AbstractException}{AbstractException}}\ :\ \textcolor{keyword}{protected}\ std::exception\{}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{classjpl_1_1__exception_1_1AbstractException_ac135cf56b3dc4fdb4bc558d345d0f436_ac135cf56b3dc4fdb4bc558d345d0f436}{type\_ex}};}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{classjpl_1_1__exception_1_1AbstractException_a2aa9aba38aab837ce8eee9552dd2f1fb_a2aa9aba38aab837ce8eee9552dd2f1fb}{msg}};\ \ \ }
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#ifdef\ USE\_STACKTRACE\_W\_EXCEPTION\_JPL}}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classjpl_1_1__utils_1_1__debug_1_1Stacktrace}{\_utils::\_debug::Stacktrace}}*\ stacktrace;}
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#endif}}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classjpl_1_1__exception_1_1AbstractException_a705351cb7a55d23909e49c9f447d5a8e_a705351cb7a55d23909e49c9f447d5a8e}{AbstractException}}(std::string\ \mbox{\hyperlink{classjpl_1_1__exception_1_1AbstractException_ac135cf56b3dc4fdb4bc558d345d0f436_ac135cf56b3dc4fdb4bc558d345d0f436}{type\_ex}})\ :\ \mbox{\hyperlink{classjpl_1_1__exception_1_1AbstractException}{AbstractException}}(\mbox{\hyperlink{classjpl_1_1__exception_1_1AbstractException_ac135cf56b3dc4fdb4bc558d345d0f436_ac135cf56b3dc4fdb4bc558d345d0f436}{type\_ex}},\ \textcolor{stringliteral}{"{}"{}})\{\}}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classjpl_1_1__exception_1_1AbstractException_af4f36b532a1cd3916101e10216f5d8e2_af4f36b532a1cd3916101e10216f5d8e2}{AbstractException}}(std::string\ \mbox{\hyperlink{classjpl_1_1__exception_1_1AbstractException_ac135cf56b3dc4fdb4bc558d345d0f436_ac135cf56b3dc4fdb4bc558d345d0f436}{type\_ex}},\ std::string\ \mbox{\hyperlink{classjpl_1_1__exception_1_1AbstractException_a2aa9aba38aab837ce8eee9552dd2f1fb_a2aa9aba38aab837ce8eee9552dd2f1fb}{msg}})\ :\ \mbox{\hyperlink{classjpl_1_1__exception_1_1AbstractException_ac135cf56b3dc4fdb4bc558d345d0f436_ac135cf56b3dc4fdb4bc558d345d0f436}{type\_ex}}(\mbox{\hyperlink{classjpl_1_1__exception_1_1AbstractException_ac135cf56b3dc4fdb4bc558d345d0f436_ac135cf56b3dc4fdb4bc558d345d0f436}{type\_ex}}),\ \mbox{\hyperlink{classjpl_1_1__exception_1_1AbstractException_a2aa9aba38aab837ce8eee9552dd2f1fb_a2aa9aba38aab837ce8eee9552dd2f1fb}{msg}}(\mbox{\hyperlink{classjpl_1_1__exception_1_1AbstractException_a2aa9aba38aab837ce8eee9552dd2f1fb_a2aa9aba38aab837ce8eee9552dd2f1fb}{msg}})\{}
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#ifdef\ USE\_STACKTRACE\_W\_EXCEPTION\_JPL}}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>stacktrace\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__debug_1_1Stacktrace}{\_utils::\_debug::Stacktrace}}(\mbox{\hyperlink{StacktraceWrapper_8hpp_a113d30a0049fc544862b8a8a6e6cb3ae_a113d30a0049fc544862b8a8a6e6cb3ae}{DEFAULT\_SKIP\_STACKFRAMES\_JPL}});}
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#endif}}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keyword}{virtual}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{classjpl_1_1__exception_1_1AbstractException_ae17527e3192e5afdb01a90f199dbafe5_ae17527e3192e5afdb01a90f199dbafe5}{what}}()\ const\ \_GLIBCXX\_TXN\_SAFE\_DYN\ \_GLIBCXX\_NOTHROW\textcolor{keyword}{\ override}\{}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ buffer\ =\ }
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string(this-\/>type\_ex)\ +\ \textcolor{stringliteral}{"{}:\ "{}}\ +\ std::string(this-\/>msg)\ +\ \textcolor{stringliteral}{"{}\(\backslash\)0"{}};}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#ifdef\ USE\_STACKTRACE\_W\_EXCEPTION\_JPL}}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<\_utils::\_debug::Frame>*\ frames\ =\ this-\/>stacktrace-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__debug_1_1Stacktrace_abf7f62835c1a2d45930914f79435dbdc_abf7f62835c1a2d45930914f79435dbdc}{getFrames}}();}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ frames-\/>size();\ i++)\{}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame}{\_utils::\_debug::Frame}}\ frame\ =\ frames-\/>at(i);}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ tmp\ =\ frame.\mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_a662b327f7f17f31e1f703877cbb8c433_a662b327f7f17f31e1f703877cbb8c433}{function\_name}}\ +\ \textcolor{stringliteral}{"{}\ of\ "{}}\ +\ frame.\mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_a7a4f70f12322901a8091a4a1e8c334a5_a7a4f70f12322901a8091a4a1e8c334a5}{file\_name}}\ +\ \textcolor{stringliteral}{"{}\ at\ line\ "{}}\ +\ std::to\_string(frame.\mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_ad329fdc9bef5979bcc0caf4b69cccb29_ad329fdc9bef5979bcc0caf4b69cccb29}{line}})\ +\ \textcolor{stringliteral}{"{}.\ Address\ "{}}\ +\ frame.\mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_a734dd1c0b6044407be8eff16c00f7262_a734dd1c0b6044407be8eff16c00f7262}{address}};}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ buffer\ +=\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}}\ +\ tmp;}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00076\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#endif}}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}*\ c\_buffer\ =\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{char}[buffer.size()];}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ memcpy(c\_buffer,\ buffer.c\_str(),\ buffer.size());}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ c\_buffer;}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#ifdef\ USE\_STACKTRACE\_W\_EXCEPTION\_JPL}}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__debug_1_1Stacktrace}{\_utils::\_debug::Stacktrace}}*\ getStacktrace()\textcolor{keyword}{\ const}\{\textcolor{keywordflow}{return}\ this-\/>stacktrace;\}}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keyword}{const}\ std::string\ getStacktraceAsString()\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ tmp\ =\ this-\/>\mbox{\hyperlink{classjpl_1_1__exception_1_1AbstractException_ae17527e3192e5afdb01a90f199dbafe5_ae17527e3192e5afdb01a90f199dbafe5}{what}}();}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ buffer\ =\ std::string(tmp);}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}[]\ tmp;}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<\_utils::\_debug::Frame>*\ frames\ =\ this-\/>stacktrace-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__debug_1_1Stacktrace_abf7f62835c1a2d45930914f79435dbdc_abf7f62835c1a2d45930914f79435dbdc}{getFrames}}();}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ frames-\/>size();\ i++)\{}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame}{\_utils::\_debug::Frame}}\ frame\ =\ frames-\/>at(i);}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ tmp\ =\ \textcolor{stringliteral}{"{}\#"{}}\ +\ std::to\_string(i)\ +\ \textcolor{stringliteral}{"{}\ Invalid\ Frame"{}};}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(frame.\mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_a9a42e7bc8901413ab0059f87ea12144b_a9a42e7bc8901413ab0059f87ea12144b}{frame\_valid}})\{}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tmp\ =\ \textcolor{stringliteral}{"{}\#"{}}\ +\ std::to\_string(i)\ +\ \textcolor{stringliteral}{"{}\ "{}}\ +\ frame.\mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_a662b327f7f17f31e1f703877cbb8c433_a662b327f7f17f31e1f703877cbb8c433}{function\_name}}\ +\ \textcolor{stringliteral}{"{}\ of\ "{}}\ +\ frame.\mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_a7a4f70f12322901a8091a4a1e8c334a5_a7a4f70f12322901a8091a4a1e8c334a5}{file\_name}}\ +\ \textcolor{stringliteral}{"{}\ at\ line\ "{}}\ +\ std::to\_string(frame.\mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_ad329fdc9bef5979bcc0caf4b69cccb29_ad329fdc9bef5979bcc0caf4b69cccb29}{line}})\ +\ \textcolor{stringliteral}{"{}.\ Address\ "{}}\ +\ frame.\mbox{\hyperlink{structjpl_1_1__utils_1_1__debug_1_1Frame_a734dd1c0b6044407be8eff16c00f7262_a734dd1c0b6044407be8eff16c00f7262}{address}};}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ buffer\ +=\ \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)t"{}}\ +\ tmp;}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ buffer;}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00108\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#endif}}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keyword}{friend}\ std::ostream\&\ \mbox{\hyperlink{classjpl_1_1__exception_1_1AbstractException_a7290f23a4dc35a792d0099e8a1c3dbaa_a7290f23a4dc35a792d0099e8a1c3dbaa}{operator<<}}(std::ostream\&\ os,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classjpl_1_1__exception_1_1AbstractException}{AbstractException}}\ \&ex)\{}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ buffer\ =\ ex.\mbox{\hyperlink{classjpl_1_1__exception_1_1AbstractException_ae17527e3192e5afdb01a90f199dbafe5_ae17527e3192e5afdb01a90f199dbafe5}{what}}();}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ os<<buffer<<std::endl;}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}[]\ buffer;}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ os;}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00127\ \ \ \ \ \}}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00134\ \textcolor{preprocessor}{\ \ \ \ \#define\ STRINGIFY(arg)\ \#arg}}
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00136\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

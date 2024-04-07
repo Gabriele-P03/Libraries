@@ -1,0 +1,41 @@
+\doxysection{utils/src/structure/list/\+Array\+List.hpp File Reference}
+\hypertarget{ArrayList_8hpp}{}\label{ArrayList_8hpp}\index{utils/src/structure/list/ArrayList.hpp@{utils/src/structure/list/ArrayList.hpp}}
+{\ttfamily \#include "{}List.\+hpp"{}}\newline
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1ArrayList}{jpl\+::\+\_\+utils\+::\+\_\+collections\+::\+\_\+list\+::\+Array\+List$<$ T $>$}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacejpl}{jpl}}
+\item 
+namespace \mbox{\hyperlink{namespacejpl_1_1__utils}{jpl\+::\+\_\+utils}}
+\item 
+namespace \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__collections}{jpl\+::\+\_\+utils\+::\+\_\+collections}}
+\item 
+namespace \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__collections_1_1__list}{jpl\+::\+\_\+utils\+::\+\_\+collections\+::\+\_\+list}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+An Array\+List is a list which elements are consecutive stored as into a vector
+
+This type of list is resizeable, but, being an array, if the size exceeds, the whole list is reallocated. When a collection is attempted to being inserted, in order to prevent several reallocating, a unique call is done based on size of the collection which is going to be inserted. If you know that several amount of calls are going to be done to add() -\/ and you know how many elements are going to be -\/ then you should call reallocate() by yourself, preventing the same several amount of calls to the function
+
+If you need a list which will be manipulated frequently, you should opt to use a Linked\+List in order to not perform any reallocating.
+
+Null elements are allowed into this.
+
+Array\+List does not implements any borderline about max amount of elements which can be contained into it
+
+\begin{DoxyDate}{Date}
+2023-\/07-\/12 
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2023 
+\end{DoxyCopyright}
+\begin{DoxyAuthor}{Author}
+Gabriele-\/\+P03 
+\end{DoxyAuthor}

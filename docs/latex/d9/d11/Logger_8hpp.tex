@@ -1,0 +1,54 @@
+\doxysection{logger/src/\+Logger.hpp File Reference}
+\hypertarget{Logger_8hpp}{}\label{Logger_8hpp}\index{logger/src/Logger.hpp@{logger/src/Logger.hpp}}
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$ctime$>$}\newline
+{\ttfamily \#include $<$jpl/utils/\+Files\+Utils.\+hpp$>$}\newline
+{\ttfamily \#include $<$jpl/utils/debug/\+Debug\+Utils.\+hpp$>$}\newline
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classjpl_1_1__logger_1_1Logger}{jpl\+::\+\_\+logger\+::\+Logger}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacejpl}{jpl}}
+\item 
+namespace \mbox{\hyperlink{namespacejpl_1_1__exception}{jpl\+::\+\_\+exception}}
+\item 
+namespace \mbox{\hyperlink{namespacejpl_1_1__logger}{jpl\+::\+\_\+logger}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef const char \texorpdfstring{$\ast$}{*}const \mbox{\hyperlink{namespacejpl_1_1__logger_a792f1548c6d4cbb2370032b773147251_a792f1548c6d4cbb2370032b773147251}{jpl\+::\+\_\+logger\+::\+LOG\+\_\+\+STATUS}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const \mbox{\hyperlink{namespacejpl_1_1__logger_a792f1548c6d4cbb2370032b773147251_a792f1548c6d4cbb2370032b773147251}{LOG\+\_\+\+STATUS}} \mbox{\hyperlink{namespacejpl_1_1__logger_abd3e6bb6994657edb6a248f91de4a020_abd3e6bb6994657edb6a248f91de4a020}{jpl\+::\+\_\+logger\+::\+INFO\+\_\+\+JPL}} = "{}INF"{}
+\begin{DoxyCompactList}\small\item\em Information message. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{namespacejpl_1_1__logger_a792f1548c6d4cbb2370032b773147251_a792f1548c6d4cbb2370032b773147251}{LOG\+\_\+\+STATUS}} \mbox{\hyperlink{namespacejpl_1_1__logger_aaf25705f78a2bb585a2a2ec4f69bc5b0_aaf25705f78a2bb585a2a2ec4f69bc5b0}{jpl\+::\+\_\+logger\+::\+WARNING\+\_\+\+JPL}} = "{}WAR"{}
+\begin{DoxyCompactList}\small\item\em Warning message. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{namespacejpl_1_1__logger_a792f1548c6d4cbb2370032b773147251_a792f1548c6d4cbb2370032b773147251}{LOG\+\_\+\+STATUS}} \mbox{\hyperlink{namespacejpl_1_1__logger_a22542d2b436c8fe7e915bcb4c45cfe44_a22542d2b436c8fe7e915bcb4c45cfe44}{jpl\+::\+\_\+logger\+::\+ERROR\+\_\+\+JPL}} = "{}ERR"{}
+\begin{DoxyCompactList}\small\item\em Error message. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{namespacejpl_1_1__logger_a792f1548c6d4cbb2370032b773147251_a792f1548c6d4cbb2370032b773147251}{LOG\+\_\+\+STATUS}} \mbox{\hyperlink{namespacejpl_1_1__logger_ab510e5e456c742873006dce9798587c6_ab510e5e456c742873006dce9798587c6}{jpl\+::\+\_\+logger\+::\+DEBUG\+\_\+\+JPL}} = "{}DBG"{}
+\begin{DoxyCompactList}\small\item\em Debug message (not visible unless process has a debugger attached) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A logger provides writing log-\/program on terminal and even on a file. You should never include directly this header file unless you wanna force using this module.
+
+A reading of its documentation is suggested before using this module since there are some mode of using it
+
+\begin{DoxyDate}{Date}
+2022-\/08-\/01 
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2022 
+\end{DoxyCopyright}
+\begin{DoxyAuthor}{Author}
+Gabriele-\/\+P03 
+\end{DoxyAuthor}

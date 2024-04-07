@@ -1,0 +1,35 @@
+\doxysection{utils/src/structure/list/\+Stack.hpp File Reference}
+\hypertarget{Stack_8hpp}{}\label{Stack_8hpp}\index{utils/src/structure/list/Stack.hpp@{utils/src/structure/list/Stack.hpp}}
+{\ttfamily \#include "{}../\+Collection.\+hpp"{}}\newline
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1__list_1_1Stack}{jpl\+::\+\_\+utils\+::\+\_\+collections\+::\+\_\+list\+::\+Stack$<$ T $>$}}
+\item 
+struct \mbox{\hyperlink{structjpl_1_1__utils_1_1__collections_1_1__list_1_1Stack_1_1Node}{jpl\+::\+\_\+utils\+::\+\_\+collections\+::\+\_\+list\+::\+Stack$<$ T $>$\+::\+Node}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacejpl}{jpl}}
+\item 
+namespace \mbox{\hyperlink{namespacejpl_1_1__utils}{jpl\+::\+\_\+utils}}
+\item 
+namespace \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__collections}{jpl\+::\+\_\+utils\+::\+\_\+collections}}
+\item 
+namespace \mbox{\hyperlink{namespacejpl_1_1__utils_1_1__collections_1_1__list}{jpl\+::\+\_\+utils\+::\+\_\+collections\+::\+\_\+list}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This is the usual implementation of stack using a LIFO method. JPL stack is a doubled LL similar implementation, but it does not inherit it since most of all its functions should have been overriden returning nullptr; altough it is located into the same List\textquotesingle{}s package. Elements into a stack are managed via std\+::shared\+\_\+ptr since this DS let you push null and duplicate elements both. Just like for AL and LL, defining DEL\+\_\+\+EFF\+\_\+\+DS\+\_\+\+JPL, you let the DS destroys the element once the last smart-\/pointer had released it
+
+\begin{DoxyAuthor}{Author}
+Gabriele-\/\+P03 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2024-\/04-\/03 
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2024 
+\end{DoxyCopyright}

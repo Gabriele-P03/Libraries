@@ -1,0 +1,84 @@
+\doxysection{List.\+hpp}
+\hypertarget{List_8hpp_source}{}\label{List_8hpp_source}\index{utils/src/structure/list/List.hpp@{utils/src/structure/list/List.hpp}}
+\mbox{\hyperlink{List_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#ifndef\ LISTI\_JPL}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ LISTI\_JPL}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Collection_8hpp}{../Collection.hpp}}"{}}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ <jpl/exception/runtime/IndexOutOfBoundsException.hpp>}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#include\ <jpl/exception/runtime/NotFoundException.hpp>}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#include\ <jpl/exception/runtime/NullPointerException.hpp>}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacejpl}{jpl}}\{}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{namespace\ }\_utils\{}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keyword}{namespace\ }\_collections\{}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1List}{List}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1Collection}{Collection}}<T>\{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1List_ad573a27a0e0a9a43df51533e7849d073_ad573a27a0e0a9a43df51533e7849d073}{List}}(\textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1Collection_aada92f182e92c7e3cc3e3aebf6d9d45f_aada92f182e92c7e3cc3e3aebf6d9d45f}{nullableElements}},\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1Collection_a4124da56343d43ff8a7f48c0e78ddf14_a4124da56343d43ff8a7f48c0e78ddf14}{duplicateElements}},\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1Collection_a29a8a0a5da72e1471a550f3e0e5ab5aa_a29a8a0a5da72e1471a550f3e0e5ab5aa}{resizeable}})\ :\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1Collection}{Collection}}<T>(\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1Collection_aada92f182e92c7e3cc3e3aebf6d9d45f_aada92f182e92c7e3cc3e3aebf6d9d45f}{nullableElements}},\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1Collection_a4124da56343d43ff8a7f48c0e78ddf14_a4124da56343d43ff8a7f48c0e78ddf14}{duplicateElements}},\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1Collection_a29a8a0a5da72e1471a550f3e0e5ab5aa_a29a8a0a5da72e1471a550f3e0e5ab5aa}{resizeable}})\{\}}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1List_aa0031cdafae98f82a31ce28b9d54ec9b_aa0031cdafae98f82a31ce28b9d54ec9b}{List}}()\ :\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1List}{List}}<T>\ (true,\ true,\ true)\{\}}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1List_a4a10b3b75b245bd18d2bcc91db887e29_a4a10b3b75b245bd18d2bcc91db887e29}{List}}(\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1List}{List<T>}}*\ list)\ :\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1List}{List}}<T>()\{}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(list\ ==\ \textcolor{keyword}{nullptr})\{}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classjpl_1_1__exception_1_1NullPointerException}{\_exception::NullPointerException}}(\textcolor{stringliteral}{"{}You\ cannot\ pass\ a\ nullptr\ as\ list"{}});}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1List_a62813839fc60386072ddbdc7edf669da_a62813839fc60386072ddbdc7edf669da}{add}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ index,\ T\ t)\ =\ 0;}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1List_ae91f24eccdea5532cda6830972556904_ae91f24eccdea5532cda6830972556904}{addAll}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ index,\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1List}{List<T>}}*\ list)\ =\ 0;}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1List_a66471fdaf9980963a01cb7586821335c_a66471fdaf9980963a01cb7586821335c}{addAll}}(\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1List}{List<T>}}*\ list)\ =\ 0;\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ T\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1List_a574db2bb33de293c189f4354b59fad74_a574db2bb33de293c189f4354b59fad74}{get}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ index)\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1List_aac316b707bf25f74621a3acccbc7c9b8_aac316b707bf25f74621a3acccbc7c9b8}{firstOccurrence}}(T\ t)\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}\ =\ 0;}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1List_ad37490ceadec798f8cec3658aecc367d_ad37490ceadec798f8cec3658aecc367d}{lastOccurrence}}(T\ t)\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}\ =\ 0;}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1List_a5eca52f358a900fbf23bc404e3fc1972_a5eca52f358a900fbf23bc404e3fc1972}{removeAt}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ index)\ =\ 0;}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1List_a8620e530afa5a91c5a659d572e344796_a8620e530afa5a91c5a659d572e344796}{remove}}(T\ t)\ \textcolor{keyword}{noexcept}\ =\ 0\ ;\ \ \ }
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1List_a3322575d8b60b5240f5f0055c31a537e_a3322575d8b60b5240f5f0055c31a537e}{removeAllOf}}(T\ t)\ \textcolor{keyword}{noexcept}\ =\ 0;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1List_a445bca24c06dd22b0dd58041d86f6ef4_a445bca24c06dd22b0dd58041d86f6ef4}{removeAll}}(\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1List}{List<T>}}*\ list)\ \textcolor{keyword}{noexcept}\ =\ 0;}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1List_a18506e92cbe206106fb4bde992858d0c_a18506e92cbe206106fb4bde992858d0c}{removeAllIf}}(\mbox{\hyperlink{classjpl_1_1__utils_1_1__functional_1_1Predicate}{\_functional::Predicate<T>}}\ predicate)\ =\ 0;}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ T\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1List_a409f42b5a65582e013f79c279fd9f917_a409f42b5a65582e013f79c279fd9f917}{set}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ index,\ T\ t)\ =\ 0;}
+\DoxyCodeLine{00160\ }
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1List}{List<T>}}*\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1List_a8a130cb4157833fffa165d0cff9e251f_a8a130cb4157833fffa165d0cff9e251f}{subList}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ start,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ end)\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1List}{List<T>}}*\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1List_a064938864896f0780b68aedaebdac034_a064938864896f0780b68aedaebdac034}{subList}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ start)\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00181\ }
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1List_ad8e05a5297222ec776b0889027d30d86_ad8e05a5297222ec776b0889027d30d86}{resetHelper}}(std::shared\_ptr<T>\ \&ptr)\{}
+\DoxyCodeLine{00183\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#ifdef\ DEL\_EFF\_DS\_JPL}}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ del\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T\ t;\ }
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(this-\/>\mbox{\hyperlink{classjpl_1_1__utils_1_1__collections_1_1Collection_ab649a459c32cdc05931ef4160baf28df_ab649a459c32cdc05931ef4160baf28df}{pointer}})}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(ptr.use\_count()\ ==\ 1)\{}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ del\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ t\ =\ *ptr.get();}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00191\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#endif}}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ptr.reset();}
+\DoxyCodeLine{00193\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#ifdef\ DEL\_EFF\_DS\_JPL}}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(del)}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classjpl_1_1__utils_1_1Ereaseable_a8c7d215095cc9be4973b70a475cd9929_a8c7d215095cc9be4973b70a475cd9929}{Ereaseable<T>::erease}}(t);}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ del;}
+\DoxyCodeLine{00197\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#else}}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00199\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#endif}}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00203\ \ \ \ \ \}}
+\DoxyCodeLine{00204\ \}}
+\DoxyCodeLine{00205\ }
+\DoxyCodeLine{00206\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

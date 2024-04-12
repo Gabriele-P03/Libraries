@@ -7,12 +7,7 @@ void f(){
 
 int main(){
 
-    try{
-        std::cout<<"Prova...";
-        f();
-    }catch( jpl::_exception::IOException* ex){
-        
-    }
+    f();
 
     return 0;
 }

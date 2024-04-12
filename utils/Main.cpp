@@ -1,17 +1,10 @@
-#define DEL_EFF_DS_JPL
-#include "src/structure/list/LinkedList.hpp"
-#include "src/structure/list/ArrayList.hpp"
-#include "src/structure/list/Stack.hpp"
-#include "src/structure/list/Queue.hpp"
-
-using namespace jpl;
-using namespace _utils;
-using namespace _collections;
-using namespace _list;
+#define AUTO_LOG_EXCEPTION_JPL
+#define USE_STACKTRACE_W_EXCEPTION_JPL
+#define USE_LOGGER_JPL
+#include <jpl/logger/LoggerWrapper.hpp>
+#include <jpl/exception/runtime/IOException.hpp>
 
 int main(){
 
-    int*x = new int(1), *y = new int(2), *z = new int(3), *a = new int(4);
-    Queue<int*>* queue = new Queue<int*>(); 
-    queue->pop();
+    //throw new jpl::_exception::IOException("Ex");
 }

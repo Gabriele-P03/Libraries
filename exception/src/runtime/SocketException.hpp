@@ -35,7 +35,11 @@ namespace jpl{
                 const unsigned int fd;
 
             public:
-                SocketException(const unsigned int fd, const unsigned int error_code, std::string msg) : RuntimeException("SocketException", msg), error_code(error_code), fd(fd){}
+                SocketException(const unsigned int fd, const unsigned int error_code, std::string msg) : RuntimeException("SocketException", msg), error_code(error_code), fd(fd){
+                    #ifdef AUTO_LOG_EXCEPTION_JPL
+                         _logger::error(this->getStacktraceAsString());
+                    #endif
+                }
                 SocketException(const unsigned int fd, const unsigned int error_code) : SocketException(fd, error_code, ""){
                     std::string msg_s = jpl::_utils::_error::_GetLastErrorAsString(this->error_code); 
                     this->msg = new char[msg_s.size()];
@@ -47,11 +51,11 @@ namespace jpl{
                     std::string buffer = 
                         std::string(this->type_ex) + ": FD("       + std::to_string(this->fd) + 
                                                      ") Code("     + std::to_string(this->error_code) + 
-                                                     ") -> " + std::string(this->msg) + "\0";
+                                                     ") -> " + std::string(this->msg);
 
 
                     char* c_buffer = new char[buffer.size()];
-                    memcpy(c_buffer, buffer.c_str(), buffer.size());
+                    strcpy(c_buffer, buffer.c_str());
                     return c_buffer;
                 }
 

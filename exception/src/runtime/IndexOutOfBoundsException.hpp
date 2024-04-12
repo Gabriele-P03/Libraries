@@ -38,7 +38,11 @@ namespace jpl{
 
             public:
                 IndexOutOfBoundsException(const unsigned int max, const unsigned int attempted, std::string msg) : 
-                    RuntimeException("IndexOutOfBoundsException", msg), max(max), attempted(attempted) {}
+                    RuntimeException("IndexOutOfBoundsException", msg), max(max), attempted(attempted) {
+                    #ifdef AUTO_LOG_EXCEPTION_JPL
+                         _logger::error(this->getStacktraceAsString());
+                    #endif
+                    }
                 IndexOutOfBoundsException(const unsigned int max, const unsigned int attempted) :
                     IndexOutOfBoundsException(max, attempted, ""){}
 
@@ -47,10 +51,10 @@ namespace jpl{
                     std::string buffer =    std::string(this->type_ex) + 
                                             " Max: " + std::to_string(this->max) + 
                                             " Attempted: " + std::to_string(this->attempted) + 
-                                            ". " + std::string(this->msg) + "\0";
+                                            ". " + std::string(this->msg);
 
                     char* c_buffer = new char[buffer.size()];
-                    memcpy(c_buffer, buffer.c_str(), buffer.size());
+                    strcpy(c_buffer, buffer.c_str());
                     return c_buffer;
                 }
         };

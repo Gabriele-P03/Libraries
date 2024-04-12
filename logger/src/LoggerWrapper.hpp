@@ -104,7 +104,7 @@
                             return;
                         }
 
-                        std::cout<<getTM()<<" "<<msg<<std::endl;
+                        std::cout<<"[ "<<getTM()<<" ] "<<msg<<std::endl;
                     #endif
                 }
 

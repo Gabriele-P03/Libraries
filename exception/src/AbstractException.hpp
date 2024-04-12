@@ -15,18 +15,20 @@
     #include <vector>
     #include <string.h>
 
-    #define USE_STACKTRACE_W_EXCEPTION_JPL
-    #define AUTO_LOG_EXCEPTION_JPL
-    #define USE_LOGGER_JPL
-
     #ifdef USE_STACKTRACE_W_EXCEPTION_JPL
         #include <jpl/utils/debug/stacktrace/Stacktrace.hpp>
     #endif
 
     #ifdef AUTO_LOG_EXCEPTION_JPL
+        #ifndef USE_STACKTRACE_W_EXCEPTION_JPL
+            #error "Exception auto-logging is available only through  USE_STACKTRACE_W_EXCEPTION_JPL macro. Define it!"
+        #endif
+        #if !defined(LOGGER_WRAPPER_JPL) && !defined(LOGGER_JPL)
+            #error "Either Logger or LoggerWrapper must be included before Exception if you wanna auto-log 'em"
+        #endif 
         namespace jpl{
             namespace _logger{
-                extern void error(std::string msg);
+                void error(std::string msg);
             }
         }
     #endif
@@ -64,10 +66,6 @@
                         #ifdef USE_STACKTRACE_W_EXCEPTION_JPL
                             this->stacktrace = new _utils::_debug::Stacktrace(DEFAULT_SKIP_STACKFRAMES_JPL);
                         #endif
-
-                        #ifdef AUTO_LOG_EXCEPTION_JPL
-                            _logger::error(this->getStacktraceAsString());
-                        #endif
                     }
                     
                     
@@ -80,20 +78,9 @@
                      */
                     inline virtual const char* what() const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW override{
                         std::string buffer = 
-                            std::string(this->type_ex) + ": " + std::string(this->msg) + "\0";
-
-                        #ifdef USE_STACKTRACE_W_EXCEPTION_JPL
-                            const std::vector<_utils::_debug::Frame>* frames = this->stacktrace->getFrames();
-                            for(unsigned int i = 0; i < frames->size(); i++){
-                                _utils::_debug::Frame frame = frames->at(i);
-                                std::string tmp = frame.function_name + " of " + frame.file_name + " at line " + std::to_string(frame.line) + ". Address " + frame.address;
-                                buffer += "\n" + tmp;
-                            }
-                        #endif
-
-
+                            std::string(this->type_ex) + ": " + std::string(this->msg);
                         char* c_buffer = new char[buffer.size()];
-                        memcpy(c_buffer, buffer.c_str(), buffer.size());
+                        strcpy(c_buffer, buffer.c_str());
                         return c_buffer;
                     }
 

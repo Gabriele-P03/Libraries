@@ -26,7 +26,7 @@
     #include <fstream>
     #include <iostream>
     #include <ctime>
-    
+
     #include <jpl/utils/FilesUtils.hpp>
     #include <jpl/utils/debug/DebugUtils.hpp>
 
@@ -111,11 +111,15 @@
 
                             if(file->fail()){
                                 #ifndef UFW_LOGGER_JPL   
-                                    throw new _exception::IOException("Logger file could not be created and OD has not been enabled. I have to exit...");
+                                    throw new _exception::IOException("Logger file could not be created and OD has not been enabled. I have to exit..." + _utils::_error::_GetLastErrorAsString());
                                     exit(EXIT_FAILURE);
                                 #else
                                     #undef USE_LOGGER_JPL
-                                    throw new _exception::IOException("Logger file could not be created but OD has been enabled!");
+                                    try{
+                                        throw new _exception::IOException("Logger file could not be created but OD has been enabled!" + _utils::_error::_GetLastErrorAsString());
+                                    }catch(const _exception::IOException* ex){
+
+                                    }
                                     //std::cout<<"Logger file could not be created but OI has been enabled"<<std::endl;
                                 #endif
                             }else{

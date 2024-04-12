@@ -31,7 +31,11 @@ namespace jpl{
         class IllegalStateException : public RuntimeException{
 
             public:
-                IllegalStateException(std::string msg) : RuntimeException("IllegalStateException", msg){}
+                IllegalStateException(std::string msg) : RuntimeException("IllegalStateException", msg){
+                    #ifdef AUTO_LOG_EXCEPTION_JPL
+                         _logger::error(this->getStacktraceAsString());
+                    #endif
+                }
                 IllegalStateException() : IllegalStateException(""){}
         };
     }

@@ -1,11 +1,12 @@
-#define UFW_LOGGER_JPL
-#include "src/LoggerWrapper.hpp"
+#define USE_LOGGER_JPL
+#define USE_STACKTRACE_W_EXCEPTION_JPL
+#define AUTO_LOG_EXCEPTION_JPL
+
+#include <jpl/logger/LoggerWrapper.hpp>
 
 int main(){
 
-    jpl::_logger::print("Prova", jpl::_logger::INFO_JPL);
-
-    //jpl::_logger::Logger::INSTANCE->closeLogger();
+    throw new jpl::_exception::FileNotFoundException("Op");
 
     return 0;
 }

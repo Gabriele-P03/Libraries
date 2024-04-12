@@ -21,7 +21,11 @@ namespace jpl{
         class OutOfMemoryException : public RuntimeException{
 
             public:
-                OutOfMemoryException(std::string msg) : RuntimeException("OutOfMemoryException", msg){}
+                OutOfMemoryException(std::string msg) : RuntimeException("OutOfMemoryException", msg){
+                    #ifdef AUTO_LOG_EXCEPTION_JPL
+                         _logger::error(this->getStacktraceAsString());
+                    #endif
+                }
                 OutOfMemoryException() : OutOfMemoryException(""){}
 
         };

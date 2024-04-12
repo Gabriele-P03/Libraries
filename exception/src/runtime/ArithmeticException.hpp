@@ -24,7 +24,11 @@ namespace jpl{
             
             public:
 
-                ArithmeticException(std::string msg) : RuntimeException("ArithmeticException", msg){}
+                ArithmeticException(std::string msg) : RuntimeException("ArithmeticException", msg){
+                    #ifdef AUTO_LOG_EXCEPTION_JPL
+                         _logger::error(this->getStacktraceAsString());
+                    #endif
+                }
                 ArithmeticException() : ArithmeticException(""){}
         };
     }

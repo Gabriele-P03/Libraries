@@ -20,7 +20,12 @@ namespace jpl{
         class RuntimeException : public AbstractException{
 
             public:
-                RuntimeException(std::string type_ex, std::string msg) : AbstractException(type_ex, msg){}
+                RuntimeException(std::string type_ex, std::string msg) : AbstractException(type_ex, msg){
+                    #ifdef AUTO_LOG_EXCEPTION_JPL
+                        if(typeid(this) != typeid(RuntimeException*))
+                            _logger::error(this->getStacktraceAsString());
+                    #endif
+                }
                 RuntimeException(std::string msg) : RuntimeException("RuntimeException", msg){}
                 RuntimeException() : RuntimeException(""){}
 

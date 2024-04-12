@@ -28,7 +28,11 @@ namespace jpl{
                 std::string description; 
 
             public:
-                IOException(unsigned int error_code, std::string description, std::string msg) : RuntimeException("IOException", msg), error_code(error_code), description(description){}
+                IOException(unsigned int error_code, std::string description, std::string msg) : RuntimeException("IOException", msg), error_code(error_code), description(description){
+                    #ifdef AUTO_LOG_EXCEPTION_JPL
+                         _logger::error(this->getStacktraceAsString());
+                    #endif
+                }
                 IOException(unsigned int error_code, std::string description) : IOException(error_code, description, ""){}
                 IOException(unsigned int error_code) : IOException(error_code, _utils::_error::_GetLastErrorAsString(error_code), ""){}
                 IOException(std::string msg) : IOException(_utils::_error::_GetLastError()){this->msg = msg;}
@@ -46,10 +50,8 @@ namespace jpl{
                         buffer += this->msg;
                     }
 
-                    buffer += '\0';
-
                     char* c_buffer = new char[buffer.size()];
-                    memcpy(c_buffer, buffer.c_str(), buffer.size());
+                    strcpy(c_buffer, buffer.c_str());
                     return c_buffer;
                 }
         };

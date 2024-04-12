@@ -22,7 +22,11 @@ namespace jpl{
 
             public:
 
-                IllegalArgumentException(std::string msg) : RuntimeException("IllegalArgumentException", msg){}
+                IllegalArgumentException(std::string msg) : RuntimeException("IllegalArgumentException", msg){
+                    #ifdef AUTO_LOG_EXCEPTION_JPL
+                         _logger::error(this->getStacktraceAsString());
+                    #endif
+                }
                 IllegalArgumentException() : IllegalArgumentException(""){}
         };
     }

@@ -73,7 +73,12 @@
         "valarray": "cpp",
         "variant": "cpp",
         "*.ipp": "cpp",
-        "source_location": "cpp"
+        "source_location": "cpp",
+        "charconv": "cpp",
+        "expected": "cpp",
+        "regex": "cpp",
+        "format": "cpp",
+        "span": "cpp"
     },
     "cmake.configureOnOpen": false
 }

@@ -8,9 +8,9 @@
                 "-g",
                 "-std=c++23",
                 "${workspaceFolder}/Main.cpp",
+                "-lloggerJPL",
                 "-no-pie",
                 "-fno-pie",
-                "-lbacktrace",
                 "-ldl",
                 "-o",
                 "${workspaceFolder}/out/linux/Main"

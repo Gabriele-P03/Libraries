@@ -30,11 +30,7 @@
     #include <jpl/utils/FilesUtils.hpp>
     #include <jpl/utils/debug/DebugUtils.hpp>
 
-    namespace jpl{
-        namespace _exception{
-            class IOException;
-        }
-    }
+    #include <jpl/exception/runtime/IOException.hpp>
 
     namespace jpl{
 
@@ -115,10 +111,12 @@
 
                             if(file->fail()){
                                 #ifndef UFW_LOGGER_JPL   
-                                    std::cout<<"Logger file could not be created and OI has not been enabled. I have to exit..."<<std::endl;
+                                    throw new _exception::IOException("Logger file could not be created and OD has not been enabled. I have to exit...");
                                     exit(EXIT_FAILURE);
                                 #else
-                                    std::cout<<"Logger file could not be created but OI has been enables"<<std::endl;
+                                    #undef USE_LOGGER_JPL
+                                    throw new _exception::IOException("Logger file could not be created but OD has been enabled!");
+                                    //std::cout<<"Logger file could not be created but OI has been enabled"<<std::endl;
                                 #endif
                             }else{
                                 this->flag = true;

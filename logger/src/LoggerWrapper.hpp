@@ -20,13 +20,11 @@
 #ifndef LOGGER_WRAPPER_JPL
 #define LOGGER_WRAPPER_JPL
 
+    #include <jpl/utils/debug/DebugUtils.hpp>
+
     //This implicit definition is required only for including headers
     #if ((defined(CUSTOM_LOGGER_JPL) || defined(UFW_LOGGER_JPL) || defined(QUIET_LOGGER_JPL)) && !defined(USE_LOGGER_JPL))
         #define USE_LOGGER_JPL
-    #endif
-
-    #if defined(USE_LOGGER_JPL) && defined(DISABLE_LOGGER_JPL)
-        #error "USE_LOGGER_JPL and DISABLE_LOGGER_JPL both defined"
     #endif
 
     #ifdef USE_LOGGER_JPL
@@ -37,8 +35,17 @@
                 void print(std::string msg, const jpl::_logger::LOG_STATUS status){
                     jpl::_logger::Logger::INSTANCE->print(msg, status);
                 }
-                void print(std::string msg){
+                void info(std::string msg){
                     jpl::_logger::Logger::INSTANCE->print(msg, jpl::_logger::INFO_JPL);
+                }
+                void error(std::string msg){
+                    jpl::_logger::Logger::INSTANCE->print(msg, jpl::_logger::ERROR_JPL);
+                }
+                void warning(std::string msg){
+                    jpl::_logger::Logger::INSTANCE->print(msg, jpl::_logger::WARNING_JPL);
+                }
+                void debug(std::string msg){
+                    jpl::_logger::Logger::INSTANCE->print(msg, jpl::_logger::DEBUG_JPL);
                 }
             }
         }
@@ -93,7 +100,7 @@
                 void print(std::string msg, const LOG_STATUS status){
                     
                     #ifndef DISABLE_LOGGER_JPL
-                        if(status == "DBG"){
+                        if(status == "DBG" && !_utils::_debug::isDebugging()){
                             return;
                         }
 
@@ -101,11 +108,10 @@
                     #endif
                 }
 
-                void print(std::string msg){ 
-                    #ifndef DISABLE_LOGGER_JPL
-                        jpl::_logger::print(msg, ""); 
-                    #endif
-                }
+                void info(std::string msg){ jpl::_logger::print(msg, INFO_JPL); }
+                void error(std::string msg){ jpl::_logger::print(msg, ERROR_JPL); }
+                void warning(std::string msg){ jpl::_logger::print(msg, WARNING_JPL); }
+                void debug(std::string msg){ jpl::_logger::print(msg, DEBUG_JPL); }
             }
         } 
     #endif

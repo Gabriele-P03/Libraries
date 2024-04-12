@@ -1,6 +1,5 @@
 #include "Main.hpp"
 
-
 void f(){
     
     throw new jpl::_exception::IOException();
@@ -9,9 +8,10 @@ void f(){
 int main(){
 
     try{
+        std::cout<<"Prova...";
         f();
     }catch( jpl::_exception::IOException* ex){
-        jpl::_logger::print(ex->getStacktraceAsString());
+        
     }
 
     return 0;

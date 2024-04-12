@@ -15,8 +15,20 @@
     #include <vector>
     #include <string.h>
 
+    #define USE_STACKTRACE_W_EXCEPTION_JPL
+    #define AUTO_LOG_EXCEPTION_JPL
+    #define USE_LOGGER_JPL
+
     #ifdef USE_STACKTRACE_W_EXCEPTION_JPL
         #include <jpl/utils/debug/stacktrace/Stacktrace.hpp>
+    #endif
+
+    #ifdef AUTO_LOG_EXCEPTION_JPL
+        namespace jpl{
+            namespace _logger{
+                extern void error(std::string msg);
+            }
+        }
     #endif
 
     namespace jpl{
@@ -51,6 +63,10 @@
                     AbstractException(std::string type_ex, std::string msg) : type_ex(type_ex), msg(msg){
                         #ifdef USE_STACKTRACE_W_EXCEPTION_JPL
                             this->stacktrace = new _utils::_debug::Stacktrace(DEFAULT_SKIP_STACKFRAMES_JPL);
+                        #endif
+
+                        #ifdef AUTO_LOG_EXCEPTION_JPL
+                            _logger::error(this->getStacktraceAsString());
                         #endif
                     }
                     
@@ -125,12 +141,4 @@
             };
         }
     }
-
-    /**
-     * @brief Stringify the arg
-     * 
-     * @param arg anything you want
-     */
-    #define STRINGIFY(arg) #arg
-
 #endif

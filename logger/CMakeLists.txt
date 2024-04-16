@@ -21,6 +21,11 @@ else()
         add_compile_definitions(CUSTOM_LOGGER_JPL)
         message("Compiling with QUIET MODE")
     endif()
+
+    if(${UFW_LOGGER_JPL})
+        add_compile_definitions(UFW_LOGGER_JPL)
+        message("Compiling with UFW MODE")
+    endif()
 endif()
 
 set(CMAKE_C_COMPILER gcc)

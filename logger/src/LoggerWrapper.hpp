@@ -21,7 +21,6 @@
 #define LOGGER_WRAPPER_JPL
 
     #include <jpl/utils/debug/DebugUtils.hpp>
-
     //This implicit definition is required only for including headers
     #if ((defined(CUSTOM_LOGGER_JPL) || defined(UFW_LOGGER_JPL) || defined(QUIET_LOGGER_JPL)) && !defined(USE_LOGGER_JPL))
         #define USE_LOGGER_JPL

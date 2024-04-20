@@ -1,9 +1,7 @@
-#include "Main.hpp"
 
+#define USE_LOGGER_JPL
+#include "src/LoggerWrapper.hpp"
 int main(){
-
-    std::cout<<"Prova1";
-    //throw new jpl::_exception::FileNotFoundException("Op");
 
     return 0;
 }

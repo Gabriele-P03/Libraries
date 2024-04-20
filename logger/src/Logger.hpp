@@ -111,7 +111,8 @@
 
                             if(file->fail()){
                                 #ifndef UFW_LOGGER_JPL   
-                                    throw new _exception::IOException("Logger file could not be created and OD has not been enabled. I have to exit..." + _utils::_error::_GetLastErrorAsString());
+                                    std::cout<<"UFW Mode is not enabled and Logger could not create output file..."<<std::endl;
+                                    throw new _exception::IOException("Logger file could not be created and OD has not been enabled. I have to exit...");
                                     exit(EXIT_FAILURE);
                                 #else
                                     #undef USE_LOGGER_JPL

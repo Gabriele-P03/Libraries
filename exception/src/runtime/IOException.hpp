@@ -33,9 +33,9 @@ namespace jpl{
                          _logger::error(this->getStacktraceAsString());
                     #endif
                 }
-                IOException(unsigned int error_code, std::string description) : IOException(error_code, description, ""){}
+                IOException(unsigned int error_code, std::string msg) : IOException(error_code,  _utils::_error::_GetLastErrorAsString(error_code), msg){}
                 IOException(unsigned int error_code) : IOException(error_code, _utils::_error::_GetLastErrorAsString(error_code), ""){}
-                IOException(std::string msg) : IOException(_utils::_error::_GetLastError()){this->msg = msg;}
+                IOException(std::string msg) : IOException(_utils::_error::_GetLastError(), msg){}
                 IOException() : IOException(_utils::_error::_GetLastError()){}
 
                 inline const char* what() const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW override{
@@ -46,7 +46,7 @@ namespace jpl{
                     buffer += this->description;
 
                     if(!this->msg.empty()){
-                        buffer += " ";
+                        buffer += ". ";
                         buffer += this->msg;
                     }
 

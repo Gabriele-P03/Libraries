@@ -11,6 +11,7 @@
 
 #include <string>
 #include <type_traits>
+#include <ctime>
 
 namespace jpl{
     namespace _parser{
@@ -18,7 +19,7 @@ namespace jpl{
 
             //A JsonField can only be composed by either a primitive type or an std::string
             template <typename T>
-            concept PrimitiveType = std::__or_<std::is_fundamental<T>::value, std::is_same<T, std::string>::value>;  
+            concept PrimitiveType = std::__or_<std::is_fundamental<T>, std::is_same<T, std::string>, std::is_same<T, std::tm>>::value;  
 
             template <PrimitiveType T>
             class JSONField{
@@ -34,13 +35,13 @@ namespace jpl{
                     JSONField(std::string name);
                     JSONField();
 
-                    virtual T getValue() const noexcept;
-                    virtual std::string getName() const noexcept;
-                    virtual unsigned long getTabsCount() const noexcept;
+                    T getValue() const noexcept;
+                    void setValue(T value) noexcept;
 
-                    virtual void setValue(T value) noexcept;
-                    virtual void setName(std::string name) noexcept;
-                    virtual void setTabsCount(unsigned long tabs) noexcept;
+                    std::string getName() const noexcept;
+                    unsigned long getTabsCount() const noexcept;
+                    void setName(std::string name) noexcept;
+                    void setTabsCount(unsigned long tabs) noexcept;
             };
         }
     }

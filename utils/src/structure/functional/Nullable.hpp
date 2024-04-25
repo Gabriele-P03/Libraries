@@ -19,7 +19,7 @@ namespace jpl{
 
             public:
                 static bool isNull(T &value){return false;}
-                static void nullify(T* &value){}
+                static void nullify(T &value){}
         };
 
         template <typename P>

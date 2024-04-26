@@ -1,5 +1,5 @@
 /**
- * Json Array abstraction
+ * Json Field abstraction
  * 
  *
  * @file JSONObject.hpp
@@ -10,9 +10,6 @@
 #define JSON_FIELD_JPL
 
 #include <string>
-#include <type_traits>
-#include <ctime>
-#include <variant>
 
 namespace jpl{
     namespace _parser{

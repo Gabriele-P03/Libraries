@@ -11,7 +11,18 @@
 
 #include <string>
 #include <variant>
-#include "JSONField.hpp"
+
+#include "fields/JSONFieldUInt.hpp"
+#include "fields/JSONField.hpp"
+#include "fields/JSONFieldInt.hpp"
+#include "fields/JSONFieldFloat.hpp"
+#include "fields/JSONFieldString.hpp"
+#include "fields/JSONFieldTM.hpp"
+#include "fields/JSONFieldbool.hpp"
+#include "fields/JSONFieldULong.hpp"
+#include "fields/JSONFieldLong.hpp"
+#include "fields/JSONFieldBool.hpp"
+
 #include <jpl/utils/structure/list/LinkedList.hpp>
 
 namespace jpl{
@@ -23,14 +34,14 @@ namespace jpl{
             class JSONObject{
                 
                 protected:
-                    unsigned long intSize, uintSize, longSize, ulongSize, floatSize, doubleSize, boolSize, tmSize, stringSize;
+                    unsigned long intSize, uintSize, longSize, ulongSize, floatSize, boolSize, boolSize, tmSize, stringSize;
 
                     unsigned long tabs; //Count how many tabs 
                     std::string name;
 
                     _utils::_collections::_list::LinkedList<JSONObject*> jsonObjects;   //Children json object
                     _utils::_collections::_list::LinkedList<JSONArray*> jsonArray;      //Children json array
-                    _utils::_collections::_list::LinkedList<AbstractJSONField> fields;         //Children json field
+                    _utils::_collections::_list::LinkedList<JSONField*> fields;         //Children json field
 
                 public:
                     JSONObject(std::string name, unsigned long tabs);
@@ -44,27 +55,27 @@ namespace jpl{
                     JSONArray* getJsonArray(unsigned long index) const;
 
 
-                    virtual AbstractJSONField* getJsonField(std::string name) const;
-                    virtual AbstractJSONField* getJsonField(unsigned long index) const;
+                    virtual JSONField* getJsonField(std::string name) const;
+                    virtual JSONField* getJsonField(unsigned long index) const;
 
-                    virtual JSONField<int> getJSONFieldInt(std::string name) const;
-                    virtual JSONField<int> getJSONFieldInt(unsigned long index) const;
-                    virtual JSONField<unsigned int>getJSONFieldUInt(std::string name) const;
-                    virtual JSONField<unsigned int>getJSONFieldUInt(unsigned long index) const;
-                    virtual JSONField<long> getJSONFieldLong(std::string name) const;
-                    virtual JSONField<long> getJSONFieldLong(unsigned long index) const;
-                    virtual JSONField<unsigned long> getJSONFieldULong(std::string name) const;
-                    virtual JSONField<unsigned long> getJSONFieldULong(unsigned long index) const;
-                    virtual JSONField<float> getJSONFieldFloat(std::string name) const;
-                    virtual JSONField<float> getJSONFieldFloat(unsigned long index) const;
-                    virtual JSONField<double> getJSONFieldDouble(std::string name) const;
-                    virtual JSONField<double> getJSONFieldDouble(unsigned long index) const;
-                    virtual JSONField<bool> getJSONFieldBool(std::string name) const;
-                    virtual JSONField<bool> getJSONFieldBool(unsigned long index) const;
-                    virtual JSONField<std::tm> getJSONFieldTM(std::string name) const;
-                    virtual JSONField<std::tm> getJSONFieldTM(unsigned long index) const;
-                    virtual JSONField<std::string> getJSONFieldString(std::string name) const;
-                    virtual JSONField<std::string> getJSONFieldString(unsigned long index) const;
+                    virtual JSONFieldInt* getJSONFieldInt(std::string name) const;
+                    virtual JSONFieldInt* getJSONFieldInt(unsigned long index) const;
+                    virtual JSONFieldUInt* getJSONFieldUInt(std::string name) const;
+                    virtual JSONFieldUInt* getJSONFieldUInt(unsigned long index) const;
+                    virtual JSONFieldLong* getJSONFieldLong(std::string name) const;
+                    virtual JSONFieldLong* getJSONFieldLong(unsigned long index) const;
+                    virtual JSONFieldULong* getJSONFieldULong(std::string name) const;
+                    virtual JSONFieldULong* getJSONFieldULong(unsigned long index) const;
+                    virtual JSONFieldFloat* getJSONFieldFloat(std::string name) const;
+                    virtual JSONFieldFloat* getJSONFieldFloat(unsigned long index) const;
+                    virtual JSONFieldbool* getJSONFieldbool(std::string name) const;
+                    virtual JSONFieldbool* getJSONFieldbool(unsigned long index) const;
+                    virtual JSONFieldBool* getJSONFieldBool(std::string name) const;
+                    virtual JSONFieldBool* getJSONFieldBool(unsigned long index) const;
+                    virtual JSONFieldTM* getJSONFieldTM(std::string name) const;
+                    virtual JSONFieldTM* getJSONFieldTM(unsigned long index) const;
+                    virtual JSONFieldString* getJSONFieldString(std::string name) const;
+                    virtual JSONFieldString* getJSONFieldString(unsigned long index) const;
 
                     virtual unsigned long getJSONObjectSize() const noexcept{return this->jsonObjects.getSize();}
                     virtual unsigned long getJSONOArraySize() const noexcept{return this->jsonArray.getSize();}
@@ -74,7 +85,7 @@ namespace jpl{
                     virtual unsigned long getJSONFieldLongSize() const noexcept{return this->longSize;}
                     virtual unsigned long getJSONFieldULongSize() const noexcept{return this->ulongSize;}
                     virtual unsigned long getJSONFieldFloatSize() const noexcept{return this->floatSize;}
-                    virtual unsigned long getJSONFieldDoubleSize() const noexcept{return this->doubleSize;}
+                    virtual unsigned long getJSONFieldboolSize() const noexcept{return this->boolSize;}
                     virtual unsigned long getJSONFieldBoolSize() const noexcept{return this->boolSize;}
                     virtual unsigned long getJSONFieldTMSize() const noexcept{return this->tmSize;}
                     virtual unsigned long getJSONFieldStringSize() const noexcept {return this->stringSize;}

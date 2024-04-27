@@ -17,14 +17,14 @@ namespace jpl{
                     JSONFieldTM(std::string name, unsigned long tabs, std::tm value) : JSONField(name, tabs){
                         this->value = value;
                     }
-                    JSONFieldTM(std::string name, unsigned long tabs) : JSONFieldTM(name, tabs, 0){}
+                    JSONFieldTM(std::string name, unsigned long tabs) : JSONFieldTM(name, tabs, std::tm{}){}
                     JSONFieldTM(std::string name) : JSONFieldTM(name, 0){}
                     JSONFieldTM() : JSONFieldTM(""){}
 
                     std::tm getTM() const noexcept{return this->value;}
                     void setTM(std::tm value) noexcept {this->value = value;}
 
-                    inline bool operator==(const JSONFieldTM r){return this->value = r.value;}
+                    //inline bool operator==(const JSONFieldTM r){return this->value == r.value;}
             };
         }
     }

@@ -8,7 +8,8 @@
                 "-ggdb",
                 "-std=c++23",
                 "${workspaceFolder}/Main.cpp",
-                //"${workspaceFolder}/src/json/JSONObject.cpp",
+                "${workspaceFolder}/src/json/JSONObject.cpp",
+                "${workspaceFolder}/src/json/JSONArray.cpp",
                 "-Wterminate",
                 "-o",
                 "${workspaceFolder}/out/linux/Main"

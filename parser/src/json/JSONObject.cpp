@@ -9,7 +9,7 @@ jpl::_parser::_json::JSONObject::JSONObject() : jpl::_parser::_json::JSONObject(
 
 jpl::_parser::_json::JSONObject::~JSONObject(){
     this->fields.clear();
-    this->jsonArray.clear();
+    this->jsonArrays.clear();
     this->jsonObjects.clear();
 }
 
@@ -37,8 +37,8 @@ jpl::_parser::_json::JSONObject* jpl::_parser::_json::JSONObject::getJSONObject(
 */
 
 jpl::_parser::_json::JSONArray* jpl::_parser::_json::JSONObject::getJSONArray(std::string name) const{
-    for(size_t i = 0; i < this->jsonArray.getSize(); i++){
-        jpl::_parser::_json::JSONArray* cr = this->jsonArray.get(i);
+    for(size_t i = 0; i < this->jsonArrays.getSize(); i++){
+        jpl::_parser::_json::JSONArray* cr = this->jsonArrays.get(i);
         if(cr->getName().compare(name) == 0)
             return cr;
     }
@@ -46,9 +46,9 @@ jpl::_parser::_json::JSONArray* jpl::_parser::_json::JSONObject::getJSONArray(st
 }
 
 jpl::_parser::_json::JSONArray* jpl::_parser::_json::JSONObject::getJSONArray(unsigned long index) const{
-    if(index >= this->jsonArray.getSize())
-        throw new jpl::_exception::IndexOutOfBoundsException(this->jsonArray.getSize(), index);
-    return this->jsonArray.get(index);
+    if(index >= this->jsonArrays.getSize())
+        throw new jpl::_exception::IndexOutOfBoundsException(this->jsonArrays.getSize(), index);
+    return this->jsonArrays.get(index);
 }
 
 
@@ -318,4 +318,20 @@ jpl::_parser::_json::JSONFieldString* jpl::_parser::_json::JSONObject::getJSONFi
         }
     }  
     throw new jpl::_exception::RuntimeException("Altough index is into the range, there's no valid json field. This is a JPL bug, please report...");
+}
+
+void jpl::_parser::_json::JSONObject::addJSONObject(JSONObject* jsonObject){
+    if(jsonObject == nullptr)
+        throw new jpl::_exception::IllegalArgumentException("You cannot add null json object");
+    this->jsonObjects.add(jsonObject);
+}
+void jpl::_parser::_json::JSONObject::addJSONArray(JSONArray* jsonArray){
+    if(jsonArray == nullptr)
+        throw new jpl::_exception::IllegalArgumentException("You cannot add null json array");
+    this->jsonArrays.add(jsonArray);
+}
+void jpl::_parser::_json::JSONObject::addJSONField(JSONField* field){
+    if(field == nullptr)
+        throw new jpl::_exception::IllegalArgumentException("You cannot add null json field");
+    this->fields.add(field);
 }

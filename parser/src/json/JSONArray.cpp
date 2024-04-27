@@ -9,7 +9,7 @@ jpl::_parser::_json::JSONArray::JSONArray() : jpl::_parser::_json::JSONArray("")
 
 jpl::_parser::_json::JSONArray::~JSONArray(){
     this->fields.clear();
-    this->jsonArray.clear();
+    this->jsonArrays.clear();
     this->jsonObjects.clear();
 }
 
@@ -20,9 +20,9 @@ jpl::_parser::_json::JSONObject* jpl::_parser::_json::JSONArray::getJSONObject(u
 }
 
 jpl::_parser::_json::JSONArray* jpl::_parser::_json::JSONArray::getJSONArray(unsigned long index) const{
-    if(index >= this->jsonArray.getSize())
-        throw new jpl::_exception::IndexOutOfBoundsException(this->jsonArray.getSize(), index);
-    return this->jsonArray.get(index);
+    if(index >= this->jsonArrays.getSize())
+        throw new jpl::_exception::IndexOutOfBoundsException(this->jsonArrays.getSize(), index);
+    return this->jsonArrays.get(index);
 }
 
 /**
@@ -182,4 +182,21 @@ jpl::_parser::_json::JSONFieldString* jpl::_parser::_json::JSONArray::getJSONFie
         }
     }  
     throw new jpl::_exception::RuntimeException("Altough index is into the range, there's no valid json field. This is a JPL bug, please report...");
+}
+
+
+void jpl::_parser::_json::JSONArray::addJSONObject(JSONObject* jsonObject){
+    if(jsonObject == nullptr)
+        throw new jpl::_exception::IllegalArgumentException("You cannot add null json object");
+    this->jsonObjects.add(jsonObject);
+}
+void jpl::_parser::_json::JSONArray::addJSONArray(JSONArray* jsonArray){
+    if(jsonArray == nullptr)
+        throw new jpl::_exception::IllegalArgumentException("You cannot add null json array");
+    this->jsonArrays.add(jsonArray);
+}
+void jpl::_parser::_json::JSONArray::addJSONField(JSONField* field){
+    if(field == nullptr)
+        throw new jpl::_exception::IllegalArgumentException("You cannot add null json field");
+    this->fields.add(field);
 }

@@ -42,7 +42,7 @@ namespace jpl{
                     std::string name;
 
                     _utils::_collections::_list::LinkedList<JSONObject*> jsonObjects;   //Children json object
-                    _utils::_collections::_list::LinkedList<JSONArray*> jsonArray;      //Children json array
+                    _utils::_collections::_list::LinkedList<JSONArray*> jsonArrays;      //Children json array
                     _utils::_collections::_list::LinkedList<JSONField*> fields;         //Children json field
 
                 public:
@@ -72,7 +72,7 @@ namespace jpl{
                     JSONFieldString* getJSONFieldString(unsigned long index) const;
 
                     unsigned long getJSONObjectSize() const noexcept{return this->jsonObjects.getSize();}
-                    unsigned long getJSONOArraySize() const noexcept{return this->jsonArray.getSize();}
+                    unsigned long getJSONOArraySize() const noexcept{return this->jsonArrays.getSize();}
                     unsigned long getJSONFieldSize() const noexcept{return this->fields.getSize();}
                     unsigned long getJSONFieldIntSize() const noexcept{return this->intSize;}
                     unsigned long getJSONFieldUIntSize() const noexcept{return this->uintSize;}
@@ -86,6 +86,10 @@ namespace jpl{
 
                     std::string getName() const noexcept{return this->name;}
                     unsigned long getTabs() const noexcept{return this->tabs;} 
+
+                    void addJSONObject(JSONObject* jsonObject);
+                    void addJSONArray(JSONArray* jsonObject);
+                    void addJSONField(JSONField* jsonObject);
 
                     ~JSONArray();
             };

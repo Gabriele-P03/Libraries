@@ -10,6 +10,7 @@
                 "${workspaceFolder}/Main.cpp",
                 "${workspaceFolder}/src/json/JSONObject.cpp",
                 "${workspaceFolder}/src/json/JSONArray.cpp",
+                "${workspaceFolder}/src/json/JSONUtils.cpp",
                 "-Wterminate",
                 "-o",
                 "${workspaceFolder}/out/linux/Main"

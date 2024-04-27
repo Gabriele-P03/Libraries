@@ -15,9 +15,13 @@ std::string* jpl::_parser::_json::smartFieldDivide(std::string f){
         }else if(c == s){
             if(!flag){
                 std::string* buf = new std::string[2];
-                buf[0] = f.substr(0, i);
-                buf[1] = f.substr(1+i);
+                buf[0] = f.substr(1, i-1);  //Ignore opening and closing double quote
+                buf[1] = f.substr(1+i);     
                 return buf;
+            }
+        }else if(c == ' '){
+            if(!flag){
+                f.erase(i, 1);
             }
         }
     } 

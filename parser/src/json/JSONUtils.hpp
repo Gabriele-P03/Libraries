@@ -11,19 +11,17 @@
 #define JSON_UTILS_JPL
 
 #include "JSONObject.hpp"
+#include <jpl/utils/StringUtils.hpp>
+#include "exception/JSONParseException.hpp"
 
 namespace jpl{
     namespace _parser{
         namespace _json{
 
-            /**
-             * @param buffer which contains field as json string
-             * @return JSONField parsed by given string
-            */
-            JSONField* parseFieldByString(std::string buffer);
+            void* parseJSONString(std::string buffer);
 
-            std::string* smartFieldDivide(std::string f);
-
+            JSONObject* parseJSONObjectByString(std::string buffer);
+            JSONArray* parseJSONArrayByString(std::string buffer);
         }
     }
 }

@@ -1,29 +1,23 @@
 #include "JSONUtils.hpp"
 
-jpl::_parser::_json::JSONField* jpl::_parser::_json::parseFieldByString(std::string buffer){
-    return nullptr;
+
+void* jpl::_parser::_json::parseJSONString(std::string buffer){
+    buffer = jpl::_utils::_string::trim(buffer);
+    if(buffer.length() < 2)
+        throw new jpl::_parser::_json::_exception::JSONParseException("Json String: \"" + buffer + "\" seems like that it does not have opening/closing bracket");
+    char s = buffer.at(0);
+    buffer = buffer.substr(1, buffer.length()-2);
+    if(s == '{')
+        return jpl::_parser::_json::parseJSONObjectByString(buffer);
+    else if(s == '[')
+        return jpl::_parser::_json::parseJSONArrayByString(buffer);
+    throw new jpl::_parser::_json::_exception::JSONParseException(s + " is not a valid char at the beginning of a json file");
 }
 
-std::string* jpl::_parser::_json::smartFieldDivide(std::string f){
+jpl::_parser::_json::JSONArray* jpl::_parser::_json::parseJSONArrayByString(std::string buffer){
+    return new jpl::_parser::_json::JSONArray("array", 1);
+}
 
-    char s = ':';
-    bool flag = false;
-    for(size_t i = 0; i < f.size(); i++){
-        char c = f.at(i);
-        if(c == '"'){
-            flag = !flag;
-        }else if(c == s){
-            if(!flag){
-                std::string* buf = new std::string[2];
-                buf[0] = f.substr(1, i-1);  //Ignore opening and closing double quote
-                buf[1] = f.substr(1+i);     
-                return buf;
-            }
-        }else if(c == ' '){
-            if(!flag){
-                f.erase(i, 1);
-            }
-        }
-    } 
-    return nullptr;   
+jpl::_parser::_json::JSONObject* jpl::_parser::_json::parseJSONObjectByString(std::string buffer){
+    return new jpl::_parser::_json::JSONObject("object", 1);
 }

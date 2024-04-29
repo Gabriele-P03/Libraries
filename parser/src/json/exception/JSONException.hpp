@@ -22,9 +22,11 @@ namespace jpl{
                     public:
 
                         JSONException(std::string name, std::string msg) : jpl::_exception::RuntimeException(name, msg){
-                            #ifdef AUTO_LOG_EXCEPTION_JPL
-                                _logger::error(this->getStacktraceAsString());
-                            #endif
+                            if( typeid(this) == typeid(JSONException) ){
+                                #ifdef AUTO_LOG_EXCEPTION_JPL
+                                    _logger::error(this->getStacktraceAsString());
+                                #endif
+                            }
                         }
 
                 };

@@ -37,6 +37,7 @@ namespace jpl{
              * @return src 
             */
             std::string startTrim(std::string src){
+                std::string s = src;
                 s.erase(s.begin(), std::find_if(s.begin(), s.end(), [](unsigned char ch) {
                     return !std::isspace(ch);
                 }));
@@ -48,6 +49,7 @@ namespace jpl{
              * @return src 
             */
             std::string endTrim(std::string src){
+                std::string s = src; 
                 s.erase(std::find_if(s.rbegin(), s.rend(), [](unsigned char ch) {
                     return !std::isspace(ch);
                 }).base(), s.end());
@@ -59,7 +61,7 @@ namespace jpl{
              * @return src 
             */
             std::string trim(std::string src){
-                return jpl::_utils::_string::startTrim(jpl::_utils::_string::endTrim(s));
+                return jpl::_utils::_string::startTrim(jpl::_utils::_string::endTrim(src));
             }
 
 
@@ -92,7 +94,7 @@ namespace jpl{
             */
             size_t count(std::string src, std::regex regex){
                 auto beg = std::sregex_iterator(src.begin(), src.end(), regex);
-                auto end = std::regex_iterator();
+                auto end = std::sregex_iterator();
                 return std::distance(beg, end);
             }
 
@@ -128,6 +130,17 @@ namespace jpl{
 
             bool equalsIgnoreCase(std::string s1, std::string s2){
                 return toLower(s1).compare(toLower(s2)) == 0;
+            }
+
+            size_t findFirstOf(std::string src, std::regex regex){
+                std::smatch match;
+                std::regex_search(src, match, regex);
+                return (size_t) match.position();
+            }
+            size_t findLastOf(std::string src, std::regex regex){
+                std::string cp = src;
+                std::reverse(cp.begin(), cp.end());
+                return src.size() - 1 - findFirstOf(cp, regex);
             }
         }
     

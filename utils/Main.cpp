@@ -1,8 +1,9 @@
-#define USE_LOGGER_JPL
-#include <jpl/logger/LoggerWrapper.hpp>
+#include "src/StringUtils.hpp"
+#include <iostream>
 
 int main(){
 
-    jpl::_logger::info("Prova ciao");
-    //throw new jpl::_exception::IOException("Ex");
+    std::string src = "ProvaPa\\\"1\\\"\"";
+
+    std::cout<<src<<std::endl<<jpl::_utils::_string::findFirstOf(src, std::regex("a"))<<std::endl<<jpl::_utils::_string::findLastOf(src, std::regex("a"));
 }

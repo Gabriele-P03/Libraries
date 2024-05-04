@@ -47,10 +47,6 @@ endif()
 if(${STRING_UTILS_CPP})
     addSRC("src/StringUtils.cpp" "StringUtils" TRUE TRUE)
 endif()
-addSrc("Main.cpp" "Main" TRUE TRUE)
-
-target_include_directories(utilsJPL_st PUBLIC "src/**.hpp")
-target_include_directories(utilsJPL_sh PUBLIC "src/**.hpp")
 
 set(CMAKE_C_COMPILER gcc)
 set(CMAKE_CXX_COMPILER g++)

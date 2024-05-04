@@ -20,8 +20,9 @@ namespace jpl{
 
             void* parseJSONString(std::string buffer);
 
-            JSONObject* parseJSONObjectByString(std::string buffer);
-            JSONArray* parseJSONArrayByString(std::string buffer);
+            JSONObject* parseJSONObjectByString(std::string buffer, bool parseName = true, size_t tabs = 0);
+            JSONArray* parseJSONArrayByString(std::string buffer, bool parseName = true, size_t tabs = 0);
+            JSONField* parseJSONFieldByString(std::string buffer, bool parseName = true, size_t tabs = 0);
         }
     }
 }

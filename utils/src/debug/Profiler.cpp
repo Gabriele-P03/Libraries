@@ -190,8 +190,8 @@ void jpl::_utils::_profiler::Profiler::measureCpu(jpl::_utils::_profiler::System
             systemInfo->totalCpu = 0;
         else{
             std::string str(buffer);
-            std::vector<std::string> *buffer = jpl::_utils::_string::split(str, std::regex(" "));
-            systemInfo->totalCpu = atof(buffer->at(0).c_str())*100.0/jpl::_utils::_profiler::Profiler::processors;
+            jpl::_utils::_collections::_list::LinkedList<std::string> *buffer = jpl::_utils::_string::split(str, std::regex(" "));
+            systemInfo->totalCpu = atof(buffer->get(0).c_str())*100.0/jpl::_utils::_profiler::Profiler::processors;
             delete buffer;
         }
         delete[] buffer;

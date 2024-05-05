@@ -8,7 +8,7 @@
 #define STRING_UTILS_JPL
 
 #include <string>
-#include <vector>
+#include "structure/list/LinkedList.hpp"
 #include <regex>
 #include <algorithm>
 
@@ -35,15 +35,8 @@ namespace jpl{
              * @return Splitted src using regex
              * @param src
              * @param regex
-             * @param maxSize max amount of splitted string to return
             */
-            std::vector<std::string>* split(std::string src, std::regex regex, const unsigned long long maxSize);
-            /**
-             * @return Splitted src using regex
-             * @param src
-             * @param regex
-            */
-            std::vector<std::string>* split(std::string src, std::regex regex);
+            _collections::_list::LinkedList<std::string>* split(std::string src, std::regex regex);
 
 
             /**

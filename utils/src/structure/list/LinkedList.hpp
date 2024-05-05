@@ -478,7 +478,11 @@ namespace jpl{
                                 cr = cr->next;
                             }
                             return os;
-                        }                    
+                        }      
+
+                        ~LinkedList(){
+                            this->clear();
+                        }              
                 };
             }
         }

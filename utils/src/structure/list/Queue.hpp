@@ -177,6 +177,8 @@ namespace jpl{
                         virtual void clear() noexcept override{
                             for(unsigned long i = 0; i < this->size; i++)
                                 this->pop();
+                            this->max=0;
+                            this->size=0;
                         }
                         /**
                          * @brief it does not remove elements from the queue (peek)
@@ -216,6 +218,10 @@ namespace jpl{
                                 cr = cr->next;
                             }
                             return false;
+                        }
+
+                        ~Queue(){
+                            this->clear();
                         }
                 };
             }

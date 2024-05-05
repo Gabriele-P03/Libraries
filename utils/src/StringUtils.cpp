@@ -15,8 +15,11 @@ jpl::_utils::_collections::_list::LinkedList<std::string>* jpl::_utils::_string:
 size_t jpl::_utils::_string::getIndexGroupOver(std::string src, std::regex o, std::regex c){
     size_t i = 0, count = 0;
     do{
+        FIXA QUESTA FUNZIONE: EXC SE TERMINA CON i != 0
         jpl::_utils::_string::RegexMatch ms = jpl::_utils::_string::findFirstOf(src, o);
         jpl::_utils::_string::RegexMatch me = jpl::_utils::_string::findFirstOf(src, c);
+        if(me.pos == src.size())
+            break;
         if(ms.pos == src.size() || ms.pos > me.pos){
             count += me.pos + me.length;
             src = src.substr(me.pos + me.length);
@@ -29,5 +32,7 @@ size_t jpl::_utils::_string::getIndexGroupOver(std::string src, std::regex o, st
         }else
             return ms.pos;
     }while(i > 0);
+    if(i > 0)
+        throw new jpl::_exception::
     return count-1;
 }

@@ -16,6 +16,10 @@
 #ifndef PROFILER_JPL
 #define PROFILER_JPL
 
+    #ifdef AUTO_LOG_EXCEPTION_JPL
+        #include <jpl/logger/LoggerWrapper.hpp>
+    #endif
+    
     #include <ctime>
     #include "../StringUtils.hpp"
     #include <stdio.h>

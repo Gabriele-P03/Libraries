@@ -11,6 +11,15 @@ set(FIRST_CALL_ADD_LIBRARY_SH TRUE)
 set(FIRST_CALL_ADD_LIBRARY_ST TRUE)
 set(STRING_UTILS_CPP TRUE)
 
+if(${USE_STACKTRACE_W_EXCEPTION_JPL})
+    add_compile_definitions(USE_STACKTRACE_W_EXCEPTION_JPL)
+    message(STATUS " MACRO: Exception with Stacktrace have been enabled")
+    if(${AUTO_LOG_EXCEPTION_JPL})
+        add_compile_definitions(AUTO_LOG_EXCEPTION_JPL)
+        message(STATUS " MACRO: Stacktrace auto-logged after exception has been enabled")
+    endif()
+endif()
+
 function (addSRC PATH_SRC NAME_INFO STATIC_ENABLE SHARED_ENABLE)
 
 

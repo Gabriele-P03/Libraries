@@ -7,6 +7,10 @@
 #ifndef STRING_UTILS_JPL
 #define STRING_UTILS_JPL
 
+    #ifdef AUTO_LOG_EXCEPTION_JPL
+        #include <jpl/logger/LoggerWrapper.hpp>
+    #endif
+    
 #include <string>
 #include "structure/list/LinkedList.hpp"
 #include <regex>

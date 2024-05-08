@@ -7,7 +7,7 @@
             "args": [
                 "-ggdb",
                 "-std=c++23",
-                "${workspaceFolder}/src/StringUtils.cpp",
+                "${workspaceFolder}/src/debug/stacktrace/wrapper/StacktraceWrapper.cpp",
                 "${workspaceFolder}/Main.cpp", 
                 "-Wterminate",
                 "-o",
@@ -34,10 +34,8 @@
                 "-g",
                 "-std=c++23",
                 "${workspaceFolder}/Main.cpp",
-                "${workspaceFolder}/src/debug/Profiler.cpp",
-                "${workspaceFolder}/src/StringUtils.cpp",
-                "-lpdh",
-                "-lpowrprof",
+                "${workspaceFolder}/src/debug/stacktrace/wrapper/StacktraceWrapper.cpp",
+                "-ldbghelp",
                 "-o",
                 "${workspaceFolder}/out/windows/Main.exe"
                 

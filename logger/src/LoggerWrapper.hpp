@@ -31,19 +31,19 @@
 
         namespace jpl{
             namespace _logger{
-                void print(std::string msg, const jpl::_logger::LOG_STATUS status){
+                inline void print(std::string msg, const jpl::_logger::LOG_STATUS status){
                     jpl::_logger::Logger::INSTANCE->print(msg, status);
                 }
-                void info(std::string msg){
+                inline void info(std::string msg){
                     jpl::_logger::Logger::INSTANCE->print(msg, jpl::_logger::INFO_JPL);
                 }
-                void error(std::string msg){
+                inline void error(std::string msg){
                     jpl::_logger::Logger::INSTANCE->print(msg, jpl::_logger::ERROR_JPL);
                 }
-                void warning(std::string msg){
+                inline void warning(std::string msg){
                     jpl::_logger::Logger::INSTANCE->print(msg, jpl::_logger::WARNING_JPL);
                 }
-                void debug(std::string msg){
+                inline void debug(std::string msg){
                     jpl::_logger::Logger::INSTANCE->print(msg, jpl::_logger::DEBUG_JPL);
                 }
             }
@@ -96,7 +96,7 @@
                  * @param msg status
                  * @param status message status
                  */
-                void print(std::string msg, const LOG_STATUS status){
+                inline void print(std::string msg, const LOG_STATUS status){
                     
                     #ifndef DISABLE_LOGGER_JPL
                         if(status == "DBG" && !_utils::_debug::isDebugging()){
@@ -107,10 +107,10 @@
                     #endif
                 }
 
-                void info(std::string msg){ jpl::_logger::print(msg, INFO_JPL); }
-                void error(std::string msg){ jpl::_logger::print(msg, ERROR_JPL); }
-                void warning(std::string msg){ jpl::_logger::print(msg, WARNING_JPL); }
-                void debug(std::string msg){ jpl::_logger::print(msg, DEBUG_JPL); }
+                inline void info(std::string msg){ jpl::_logger::print(msg, INFO_JPL); }
+                inline void error(std::string msg){ jpl::_logger::print(msg, ERROR_JPL); }
+                inline void warning(std::string msg){ jpl::_logger::print(msg, WARNING_JPL); }
+                inline void debug(std::string msg){ jpl::_logger::print(msg, DEBUG_JPL); }
             }
         } 
     #endif

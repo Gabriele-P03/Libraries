@@ -8,6 +8,8 @@
                 "-ggdb",
                 "-std=c++23",
                 "${workspaceFolder}/src/debug/stacktrace/wrapper/StacktraceWrapper.cpp",
+                "${workspaceFolder}/src/debug/stacktrace/Stacktrace.cpp",
+                "${workspaceFolder}/src/debug/Profiler.cpp",
                 "${workspaceFolder}/Main.cpp", 
                 "-Wterminate",
                 "-o",

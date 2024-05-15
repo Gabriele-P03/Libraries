@@ -37,7 +37,7 @@ namespace jpl{
             public:
                 SocketException(const unsigned int fd, const unsigned int error_code, std::string msg) : RuntimeException("SocketException", msg), error_code(error_code), fd(fd){
                     #ifdef AUTO_LOG_EXCEPTION_JPL
-                         _logger::error(this->getStacktraceAsString());
+                         ::jpl::_logger::error(AbstractException::getStacktraceAsString());
                     #endif
                 }
                 SocketException(const unsigned int fd, const unsigned int error_code) : SocketException(fd, error_code, ""){

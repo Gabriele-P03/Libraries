@@ -23,7 +23,7 @@ namespace jpl{
                 RuntimeException(std::string type_ex, std::string msg) : AbstractException(type_ex, msg){
                     #ifdef AUTO_LOG_EXCEPTION_JPL
                         if(typeid(this) != typeid(RuntimeException*))
-                            _logger::error(this->getStacktraceAsString());
+                            ::jpl::_logger::error(AbstractException::getStacktraceAsString());
                     #endif
                 }
                 RuntimeException(std::string msg) : RuntimeException("RuntimeException", msg){}

@@ -40,7 +40,7 @@ namespace jpl{
                 IndexOutOfBoundsException(const unsigned int max, const unsigned int attempted, std::string msg) : 
                     RuntimeException("IndexOutOfBoundsException", msg), max(max), attempted(attempted) {
                     #ifdef AUTO_LOG_EXCEPTION_JPL
-                         _logger::error(this->getStacktraceAsString());
+                         ::jpl::_logger::error(AbstractException::getStacktraceAsString());
                     #endif
                     }
                 IndexOutOfBoundsException(const unsigned int max, const unsigned int attempted) :

@@ -24,7 +24,7 @@ namespace jpl{
 
                 FileNotFoundException(std::string msg) : RuntimeException("FileNotFoundException", msg){
                     #ifdef AUTO_LOG_EXCEPTION_JPL
-                         _logger::error(this->getStacktraceAsString());
+                         ::jpl::_logger::error(AbstractException::getStacktraceAsString());
                     #endif
                 }
                 FileNotFoundException() : FileNotFoundException(""){}

@@ -35,7 +35,7 @@ namespace jpl{
                 IllegalCastException(const char* _cast_attempted, const char* _cast_needed, std::string msg) : 
                     RuntimeException("IllegalCastException", msg), _cast_attempted(_cast_attempted), _cast_needed(_cast_needed){
                     #ifdef AUTO_LOG_EXCEPTION_JPL
-                         _logger::error(this->getStacktraceAsString());
+                         ::jpl::_logger::error(AbstractException::getStacktraceAsString());
                     #endif
                     }
                 IllegalCastException(const char* _cast_attempted, const char* _cast_needed) : IllegalCastException(_cast_attempted, _cast_needed, ""){}

@@ -24,7 +24,7 @@ namespace jpl{
 
                 IllegalArgumentException(std::string msg) : RuntimeException("IllegalArgumentException", msg){
                     #ifdef AUTO_LOG_EXCEPTION_JPL
-                         _logger::error(this->getStacktraceAsString());
+                         ::jpl::_logger::error(AbstractException::getStacktraceAsString());
                     #endif
                 }
                 IllegalArgumentException() : IllegalArgumentException(""){}

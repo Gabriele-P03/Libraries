@@ -1,3 +1,4 @@
+
 /**
  * @file
  * 
@@ -56,15 +57,11 @@
 
     #define MAX_STACKFRAMES_JPL 512
 
-    #ifdef AUTO_LOG_EXCEPTION_JPL
-        #include <jpl/logger/LoggerWrapper.hpp>
-    #endif
 
     #ifdef _WIN32
         #include <eh.h>
         #include <windows.h>
         #include <dbghelp.h>
-        #include "../../ErrorUtils.hpp"
     #elif __linux__
         #include <regex>
         #include <iostream>
@@ -72,7 +69,7 @@
     #endif
 
     #include <string>
-    #include "../../../structure/list/LinkedList.hpp"   //It will be replaced by JPL's ArrayList
+    
 
     namespace jpl{
         namespace _utils{
@@ -99,6 +96,28 @@
                     }
                 };
 
+            }
+        }
+    }
+
+    /*
+        LoggerWrappre needs the definition of struct Frame, therefore it is included after it 
+    */
+
+    #ifdef AUTO_LOG_EXCEPTION_JPL
+        #include <jpl/logger/LoggerWrapper.hpp>
+    #endif
+
+    #ifdef _WIN32
+        #include "../../ErrorUtils.hpp"
+    #endif
+
+    #include "../../../structure/list/LinkedList.hpp"
+    
+    namespace jpl{
+        namespace _utils{
+            namespace _debug{
+
                 /**
                  * 
                  * @param skipped amount of frames to skip
@@ -106,7 +125,7 @@
                  * @return std::vector<Frame>* vector containing all retrieved frames
                  */
 
-                extern _collections::_list::LinkedList<Frame*>* queryStacktrace(unsigned int skipped, unsigned int maxSize);
+                _collections::_list::LinkedList<jpl::_utils::_debug::Frame*>* queryStacktrace(unsigned int skipped, unsigned int maxSize);
             }
         }
     }

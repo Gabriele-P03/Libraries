@@ -18,10 +18,8 @@ if(${USE_STACKTRACE_W_EXCEPTION_JPL})
         add_compile_definitions(AUTO_LOG_EXCEPTION_JPL)
         message(STATUS " MACRO: Stacktrace auto-logged after exception has been enabled")
     endif()
-    if(!${STACKTRACE_JPL})
-        message(STATUS "Stacktrace auto-enabled")
-        set(STACKTRACE_JPL TRUE CACHE BOOL "Exception needs Stacktrace ")
-    endif()
+    message(STATUS "Stacktrace auto-enabled")
+    set(STACKTRACE_JPL TRUE CACHE BOOL "Exception needs Stacktrace ")
 endif()
 
 function (addSRC PATH_SRC NAME_INFO STATIC_ENABLE SHARED_ENABLE)
@@ -51,6 +49,9 @@ function (addSRC PATH_SRC NAME_INFO STATIC_ENABLE SHARED_ENABLE)
 
 endfunction()
 
+if(${STACKTRACE_JPL})
+    addSRC("src/debug/stacktrace/wrapper/StacktraceWrapper.cpp" "StacktraceWrapper" TRUE TRUE)
+endif()
 
 #Utils's MACRO part
 if(${PROFILER_JPL})
@@ -60,9 +61,7 @@ endif()
 if(${STRING_UTILS_CPP})
     addSRC("src/StringUtils.cpp" "StringUtils" TRUE TRUE)
 endif()
-if(${STACKTRACE_JPL})
-    addSRC("src/debug/stracktrace/wrapper/StacktraceWrapper.cpp" "StacktraceWrapper" TRUE TRUE)
-endif()
+
 
 set(CMAKE_C_COMPILER gcc)
 set(CMAKE_CXX_COMPILER g++)

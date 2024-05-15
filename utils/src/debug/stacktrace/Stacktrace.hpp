@@ -5,6 +5,8 @@
  * Since it is a low-level implementation, there's an header-wrapper (StacktraceWrapper) in order to include the header file which is adapt to the running machine; that 
  * header file also has more information about everything you need to know about this feauter.
  * 
+ * It is known that size var is 
+ * 
  * @author Gabriele-P03
  * @date 2023-08-04
  * @copyright Copyright (c) 2023
@@ -13,45 +15,48 @@
 #ifndef STACKTRACE_JPL
 #define STACKTRACE_JPL
 
-    #include "wrapper/StacktraceWrapper.hpp"
     #include <iostream>
 
     namespace jpl{
         namespace _utils{
+
+            namespace _collections{
+                namespace _list{
+                    template<class T>
+                    class LinkedList;
+                }
+            }
+
             namespace _debug{
+
+                struct Frame;
 
                 class Stacktrace{
 
                     
                     protected:
 
-                        std::vector<Frame>* frames;    //Later it will become an ArrayList
+                        _collections::_list::LinkedList<jpl::_utils::_debug::Frame*>* frames;    //Later it will become an ArrayList
 
                         unsigned long skipped;
                         unsigned long maxSize;  //It will not be able to be retrieved since it is used only to get stacktrace
-
+                        unsigned long size;     //It is the size of frames contained in frames, therefore the LL has the same size
                     public:
 
-                        Stacktrace(unsigned long skipped, unsigned long maxSize){
-                            this->skipped = skipped;
-                            this->maxSize = maxSize;
+                        Stacktrace(unsigned long skipped, unsigned long maxSize);
+                        Stacktrace(unsigned long skipped);
+                        Stacktrace();
 
-                            this->frames = queryStacktrace(skipped, maxSize);
+                        const _collections::_list::LinkedList<_debug::Frame*>* getFrames() const;
+                        const unsigned long getSkippedFrames() const;
+                        const _debug::Frame getFrameAt(unsigned long i) const;
+                        const unsigned long getSize() const noexcept{
+                            return this->size;
                         }
-                        Stacktrace(unsigned long skipped) : Stacktrace(skipped, MAX_STACKFRAMES_JPL){
 
-                        }
-                        Stacktrace() : Stacktrace(DEFAULT_SKIP_STACKFRAMES_JPL+2){
-                            
-                        } //Plus 2 due to the two constructor called 
-
-                        const std::vector<Frame>* getFrames() const { return this->frames; }
-                        const unsigned long getSkippedFrames() const{return this->skipped;}
-
-                        inline friend std::ostream& operator<<(std::ostream& os, const Stacktrace &stacktrace){
-                            std::vector<Frame>* stackFrames = stacktrace.frames;
-                            for(unsigned long i = 0; i < stackFrames->size(); i++){
-                                Frame frame = stackFrames->at(i);
+                        inline friend std::ostream& operator<<(std::ostream& os, const Stacktrace &s){
+                            for(unsigned long i = 0; i < s.size; i++){
+                                _debug::Frame frame = s.getFrameAt(i);
                                 os<<"\t#"<<i<<" ";
                                 if(frame.frame_valid){
                                     os<<frame.function_name<<" of "<<frame.file_name<<" at line "<<frame.line<<". Address "<<frame.address;
@@ -60,18 +65,15 @@
                                 }
                                 os<<std::endl;
                             }
-
                             return os;
                         }
                 
-                        ~Stacktrace(){
-                            this->frames->clear();
-                            delete this->frames;
-                        }
+                        ~Stacktrace();
                 };
             }
         }
     }
 
+    #include "wrapper/StacktraceWrapper.hpp"
 
 #endif

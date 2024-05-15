@@ -2,7 +2,7 @@
 
 void f(){
     
-    throw new jpl::_exception::RuntimeException();
+    throw new jpl::_exception::IOException();
 }
 
 int main(){

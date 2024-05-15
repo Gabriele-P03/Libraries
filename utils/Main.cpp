@@ -1,7 +1,5 @@
 #include "Main.hpp"
 
-using namespace jpl::_utils::_string;
-
 int main(){
 
     /*1- PASSA QUERYSTACKTRACE IN CPP FILE...

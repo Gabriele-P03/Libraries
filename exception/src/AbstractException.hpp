@@ -96,9 +96,8 @@
                             std::string buffer = std::string(tmp);
                             delete[] tmp;
 
-                            const std::vector<_utils::_debug::Frame>* frames = this->stacktrace->getFrames();
-                            for(unsigned int i = 0; i < frames->size(); i++){
-                                _utils::_debug::Frame frame = frames->at(i);
+                            for(unsigned int i = 0; i < this->stacktrace->getSize(); i++){
+                                _utils::_debug::Frame frame = this->stacktrace->getFrameAt(i);
                                 std::string tmp = "#" + std::to_string(i) + " Invalid Frame";
                                 if(frame.frame_valid){
                                     tmp = "#" + std::to_string(i) + " " + frame.function_name + " of " + frame.file_name + " at line " + std::to_string(frame.line) + ". Address " + frame.address;

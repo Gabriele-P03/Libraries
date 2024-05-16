@@ -16,7 +16,16 @@
     #include <string.h>
 
     #ifdef USE_STACKTRACE_W_EXCEPTION_JPL
-        #include <jpl/utils/debug/stacktrace/Stacktrace.hpp>
+    namespace jpl{
+        namespace _utils{
+            namespace _debug{
+                class Stacktrace;
+                extern Stacktrace* getStacktrace(unsigned long skipped, unsigned long maxFrame);
+                extern std::string stktrc_str(const Stacktrace* stacktrace);
+            }
+        }
+    }
+        
     #endif
 
     #ifdef AUTO_LOG_EXCEPTION_JPL
@@ -61,10 +70,10 @@
                         _utils::_debug::Stacktrace* stacktrace;
                     #endif
 
-                    AbstractException(std::string type_ex) : AbstractException(type_ex, ""){}
-                    AbstractException(std::string type_ex, std::string msg) : type_ex(type_ex), msg(msg){
+                    AbstractException(std::string type_ex, unsigned long skip) : AbstractException(type_ex, "", skip){}
+                    AbstractException(std::string type_ex, std::string msg, unsigned long skip) : type_ex(type_ex), msg(msg){
                         #ifdef USE_STACKTRACE_W_EXCEPTION_JPL
-                            this->stacktrace = new _utils::_debug::Stacktrace(DEFAULT_SKIP_STACKFRAMES_JPL);
+                            this->stacktrace = _utils::_debug::getStacktrace(skip, 512);
                         #endif
                     }
                     
@@ -96,14 +105,7 @@
                             std::string buffer = std::string(tmp);
                             delete[] tmp;
 
-                            for(unsigned int i = 0; i < this->stacktrace->getSize(); i++){
-                                _utils::_debug::Frame frame = this->stacktrace->getFrameAt(i);
-                                std::string tmp = "#" + std::to_string(i) + " Invalid Frame";
-                                if(frame.frame_valid){
-                                    tmp = "#" + std::to_string(i) + " " + frame.function_name + " of " + frame.file_name + " at line " + std::to_string(frame.line) + ". Address " + frame.address;
-                                }
-                                buffer += "\n\t" + tmp;
-                            }
+                            buffer += _utils::_debug::stktrc_str(this->stacktrace);
 
                             return buffer;
                         }

@@ -15,6 +15,7 @@
 #ifndef STACKTRACE_JPL
 #define STACKTRACE_JPL
 
+    #include "Frame.hpp"
     #include <iostream>
 
     namespace jpl{
@@ -28,8 +29,6 @@
             }
 
             namespace _debug{
-
-                struct Frame;
 
                 class Stacktrace{
 
@@ -70,6 +69,9 @@
                 
                         ~Stacktrace();
                 };
+
+                Stacktrace* getStacktrace(unsigned long skipped, unsigned long maxFrame);
+                std::string stktrc_str(const Stacktrace* stacktrace);
             }
         }
     }

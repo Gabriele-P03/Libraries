@@ -28,3 +28,22 @@ jpl::_utils::_debug::Stacktrace::~Stacktrace(){
     this->frames->clear();
     delete this->frames;
 }
+
+//NON MEMBER FUNCTION
+
+jpl::_utils::_debug::Stacktrace* jpl::_utils::_debug::getStacktrace(unsigned long skipped, unsigned long maxFrame){
+    return new jpl::_utils::_debug::Stacktrace(skipped, maxFrame);
+}
+
+std::string jpl::_utils::_debug::stktrc_str(const Stacktrace* stacktrace){
+    std::string buffer = "";
+    for(unsigned int i = 0; i < stacktrace->getSize(); i++){
+        _utils::_debug::Frame frame = stacktrace->getFrameAt(i);
+        std::string tmp = "#" + std::to_string(i) + " Invalid Frame";
+        if(frame.frame_valid){
+            tmp = "#" + std::to_string(i) + " " + frame.function_name + " of " + frame.file_name + " at line " + std::to_string(frame.line) + ". Address " + frame.address;
+        }
+        buffer += "\n\t" + tmp;
+    }
+    return buffer;
+}

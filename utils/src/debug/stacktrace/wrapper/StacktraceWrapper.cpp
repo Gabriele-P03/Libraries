@@ -68,7 +68,7 @@ jpl::_utils::_collections::_list::LinkedList<jpl::_utils::_debug::Frame*>* jpl::
                             if(disc_index != std::string::npos){
                                 func_name += " " + bufferStream.substr(disc_index, bufferStream.size()-disc_index-1);
                             }
-                            frames->add(new Frame(line, func_name, address, file_name));
+                            frames->add(new jpl::_utils::_debug::Frame(line, func_name, address, file_name));
                         }
                     }
                     return frames;

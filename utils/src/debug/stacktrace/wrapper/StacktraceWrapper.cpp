@@ -39,7 +39,7 @@ jpl::_utils::_collections::_list::LinkedList<jpl::_utils::_debug::Frame*>* jpl::
                                 address = std::string(tmpAddr);
                             }
                             char syscom[512];
-                            sprintf(syscom, "addr2line -e %.*s -fC %.*s", exeFileName.size(), exeFileName.c_str(), address.size(), address.c_str());
+                            sprintf(syscom, "addr2line -e %.*s -fC %.*s", (int)exeFileName.size(), exeFileName.c_str(), (int)address.size(), address.c_str());
                             FILE* cmdStream = popen(syscom, "r");
                             std::string bufferStream = "";
                             while(!feof(cmdStream)){

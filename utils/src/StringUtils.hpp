@@ -157,6 +157,13 @@ namespace jpl{
                 m.pos = src.size() - 1 - m.pos;
                 return m;
             }
+            inline bool startWith(std::string src, std::regex regex){
+                return findFirstOf(src, regex).pos == 0;
+            }
+            inline bool endWith(std::string src, std::regex regex){
+                RegexMatch m = findLastOf(src, regex);
+                return (m.pos + m.length == src.length());
+            }
 
             /**
              * @brief A group is intended to be a substring which begins with o and over with c.

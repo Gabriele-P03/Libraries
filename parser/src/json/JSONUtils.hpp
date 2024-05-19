@@ -18,11 +18,18 @@ namespace jpl{
     namespace _parser{
         namespace _json{
 
+            const std::regex stct_regex = std::regex("^[\\[\\]\\{}\"].*");
+
             void* parseJSONString(std::string &buffer, bool parseName, size_t tabs);
 
             JSONObject* parseJSONObjectByString(std::string &buffer, bool parseName = true, size_t tabs = 0);
             JSONArray* parseJSONArrayByString(std::string &buffer, bool parseName = true, size_t tabs = 0);
             JSONField* parseJSONFieldByString(std::string &buffer, bool parseName = true, size_t tabs = 0);
+        
+            /**
+             * substring, trim, remove comma and trim
+            */
+            void stct(std::string &buffer, size_t i);
         }
     }
 }

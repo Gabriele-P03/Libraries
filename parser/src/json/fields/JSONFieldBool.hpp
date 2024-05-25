@@ -24,6 +24,10 @@ namespace jpl{
                     void setBool(bool value) noexcept {this->value = value;}
 
                     inline bool operator==(const JSONFieldBool r){return this->value = r.value;}
+
+                    std::string toString() const noexcept override{
+                        return (!this->name.empty() ? "\"" + this->name + "\": " : "") + (this->value ? "true" : "false") 
+                    }
             };
         }
     }

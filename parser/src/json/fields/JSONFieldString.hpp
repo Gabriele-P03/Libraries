@@ -25,6 +25,10 @@ namespace jpl{
                     void setString(std::string value) noexcept {this->value = value;}
 
                     inline bool operator==(const JSONFieldString r){return this->value.compare(r.value) == 0;}
+
+                    std::string toString() const noexcept override{
+                        return (!this->name.empty() ? "\"" + this->name + "\": " : "") + "\"" + this->value + "\"";
+                    }
             };
         }
     }

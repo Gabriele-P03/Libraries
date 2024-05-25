@@ -94,6 +94,8 @@ namespace jpl{
                     void addJSONArray(JSONArray* jsonObject);
                     void addJSONField(JSONField* jsonObject);
 
+                    std::string toString() const noexcept;
+
                     ~JSONArray();
             };
         }

@@ -200,3 +200,22 @@ void jpl::_parser::_json::JSONArray::addJSONField(JSONField* field){
         throw new jpl::_exception::IllegalArgumentException("You cannot add null json field");
     this->fields.add(field);
 }
+
+std::string jpl::_parser::_json::JSONObject::toString() const noexcept{
+    std::string buffer = std::string(this->tabs, '\t');
+    if(!this->name.empty()){
+        buffer += "\"" + this->name + "\":";
+    }
+    buffer += "[\n";
+    for(size_t i = 0; i < this->jsonObjects.getSize(); i++){
+        buffer += this->jsonObjects.get(i)->toString();
+    }
+    for(size_t i = 0; i < this->jsonArrays.getSize(); i++){
+        buffer += this->jsonArrays.get(i)->toString();
+    }
+    for(size_t i = 0; i < this->fields.getSize(); i++){
+        buffer += this->fields.get(i)->toString();
+    }
+    buffer += std::string(this->tabs, '\t') + "]";
+    return buffer;
+}

@@ -24,6 +24,10 @@ namespace jpl{
                     void setFloat(float value) noexcept {this->value = value;}
 
                     inline bool operator==(const JSONFieldFloat r){return this->value = r.value;}
+                    
+                    std::string toString() const noexcept override{
+                        return (!this->name.empty() ? "\"" + this->name + "\": " : "") + std::to_string(this->value);
+                    }
             };
         }
     }

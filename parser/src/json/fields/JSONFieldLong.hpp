@@ -24,6 +24,10 @@ namespace jpl{
                     void setLong(long value) noexcept {this->value = value;}
 
                     inline bool operator==(const JSONFieldLong r){return this->value = r.value;}
+
+                    std::string toString() const noexcept override{
+                        return (!this->name.empty() ? "\"" + this->name + "\": " : "") + std::to_string(this->value);
+                    }
             };
         }
     }

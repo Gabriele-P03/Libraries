@@ -51,6 +51,7 @@ endfunction()
 
 if(${STACKTRACE_JPL})
     addSRC("src/debug/stacktrace/wrapper/StacktraceWrapper.cpp" "StacktraceWrapper" TRUE TRUE)
+    addSRC("src/debug/stacktrace/Stacktrace.cpp" "Stacktrace" TRUE TRUE)
 endif()
 
 #Utils's MACRO part

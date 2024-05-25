@@ -10,6 +10,7 @@
                 "${workspaceFolder}/src/debug/stacktrace/wrapper/StacktraceWrapper.cpp",
                 "${workspaceFolder}/src/debug/stacktrace/Stacktrace.cpp",
                 "${workspaceFolder}/src/debug/Profiler.cpp",
+                "${workspaceFolder}/src/StringUtils.cpp",
                 "${workspaceFolder}/Main.cpp", 
                 "-Wterminate",
                 "-o",

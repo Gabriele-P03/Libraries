@@ -20,7 +20,7 @@ namespace jpl{
 
             const std::regex stct_regex = std::regex("^[\\[\\]\\{}\"].*");
 
-            void* parseJSONString(std::string &buffer, bool parseName, size_t tabs);
+            JSONElement* parseJSONString(std::string &buffer, bool parseName, size_t tabs);
 
             JSONObject* parseJSONObjectByString(std::string &buffer, bool parseName = true, size_t tabs = 0);
             JSONArray* parseJSONArrayByString(std::string &buffer, bool parseName = true, size_t tabs = 0);

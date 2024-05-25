@@ -11,10 +11,10 @@
                 "${workspaceFolder}/src/json/JSONUtils.cpp",
                 "${workspaceFolder}/src/json/JSONObject.cpp",
                 "${workspaceFolder}/src/json/JSONArray.cpp",
-                "-lutilsJPL",
                 "-Wterminate",
                 "-o",
-                "${workspaceFolder}/out/linux/Main"
+                "${workspaceFolder}/out/linux/Main",
+                "-lutilsJPL"
             ],
             "options": {
                 "cwd": "${fileDirname}"

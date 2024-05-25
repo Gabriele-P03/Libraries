@@ -26,13 +26,15 @@
 #include <jpl/exception/runtime/IndexOutOfBoundsException.hpp>
 #include "exception/JSONKeyNotFoundException.hpp"
 
+#include "JSONElement.hpp"
+
 namespace jpl{
     namespace _parser{
         namespace _json{
 
             class JSONArray;
 
-            class JSONObject{
+            class JSONObject : public JSONElement{
                 
                 protected:
                     unsigned long intSize, uintSize, longSize, ulongSize, floatSize, doubleSize, boolSize, tmSize, stringSize;
@@ -101,6 +103,7 @@ namespace jpl{
                     unsigned long getJSONFieldStringSize() const noexcept {return this->stringSize;}
 
                     std::string getName() const noexcept{return this->name;}
+                    void setName(std::string name) noexcept{this->name = name;}
                     unsigned long getTabs() const noexcept{return this->tabs;} 
 
                     void addJSONObject(JSONObject* jsonObject);

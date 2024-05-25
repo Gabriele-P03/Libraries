@@ -10,12 +10,13 @@
 #define JSON_FIELD_JPL
 
 #include <string>
+#include "../JSONElement.hpp"
 
 namespace jpl{
     namespace _parser{
         namespace _json{
 
-            class JSONField{
+            class JSONField : public JSONElement{
                 
                 protected:
                     unsigned long tabs; //Count how many tabs. They will be used for indentation 

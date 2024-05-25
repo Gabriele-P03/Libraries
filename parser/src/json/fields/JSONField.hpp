@@ -35,7 +35,7 @@ namespace jpl{
                     void setName(std::string name) noexcept {this->name = name;}
                     void setTabsCount(unsigned long tabs) noexcept {this->tabs = tabs;}
 
-                    virtual std::string toString() const noexcept;
+                    virtual std::string toString() const noexcept = 0;
             };
 
         }

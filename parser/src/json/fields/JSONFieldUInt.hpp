@@ -24,6 +24,10 @@ namespace jpl{
                     void setUInt(unsigned int value) noexcept {this->value = value;}
 
                     inline bool operator==(const JSONFieldUInt r){return this->value = r.value;}
+
+                    std::string toString() const noexcept override{
+                        return std::string(this->tabs, '\t') + (!this->name.empty() ? "\"" + this->name + "\": " : "") + std::to_string(this->value);
+                    }
             };
         }
     }

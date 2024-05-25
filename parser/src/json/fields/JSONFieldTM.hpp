@@ -27,7 +27,7 @@ namespace jpl{
                     //inline bool operator==(const JSONFieldTM r){return this->value == r.value;}
 
                     std::string toString() const noexcept override{
-                        return (!this->name.empty() ? "\"" + this->name + "\": " : "") + std::to_string(this->value);
+                        return std::string(this->tabs, '\t') + (!this->name.empty() ? "\"" + this->name + "\": " : "") + std::asctime(&this->value);
                     }
             };
         }

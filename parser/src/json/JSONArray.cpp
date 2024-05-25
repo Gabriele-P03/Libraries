@@ -201,21 +201,25 @@ void jpl::_parser::_json::JSONArray::addJSONField(JSONField* field){
     this->fields.add(field);
 }
 
-std::string jpl::_parser::_json::JSONObject::toString() const noexcept{
+std::string jpl::_parser::_json::JSONArray::toString() const noexcept{
     std::string buffer = std::string(this->tabs, '\t');
     if(!this->name.empty()){
         buffer += "\"" + this->name + "\":";
     }
-    buffer += "[\n";
-    for(size_t i = 0; i < this->jsonObjects.getSize(); i++){
+    buffer += "{\n";
+    size_t objSize = this->jsonObjects.getSize(), arrSize = this->jsonArrays.getSize(), fldSize = this->fields.getSize();
+    for(size_t i = 0; i < objSize; i++){
         buffer += this->jsonObjects.get(i)->toString();
+        buffer += (i < objSize-1 ? ",\n" : "\n");
     }
-    for(size_t i = 0; i < this->jsonArrays.getSize(); i++){
+    for(size_t i = 0; i < arrSize; i++){
         buffer += this->jsonArrays.get(i)->toString();
+        buffer += (i < arrSize-1 ? ",\n" : "\n");
     }
-    for(size_t i = 0; i < this->fields.getSize(); i++){
+    for(size_t i = 0; i < fldSize; i++){
         buffer += this->fields.get(i)->toString();
+        buffer += (i < fldSize-1 ? ",\n" : "\n");
     }
-    buffer += std::string(this->tabs, '\t') + "]";
+    buffer += std::string(this->tabs, '\t') + "}";
     return buffer;
 }

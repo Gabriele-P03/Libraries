@@ -139,6 +139,14 @@ namespace jpl{
                 return std::regex_search(src.begin(), src.end(), regex);
             }
 
+            /**
+             * @param src the input string
+             * @param regex the regex that will be matched against
+            */
+           inline bool match(std::string src, std::regex regex){
+            return std::regex_match(src.begin(), src.end(), regex);
+           }
+
 
             inline bool equalsIgnoreCase(std::string s1, std::string s2){
                 return toLower(s1).compare(toLower(s2)) == 0;

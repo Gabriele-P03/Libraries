@@ -27,6 +27,9 @@ namespace jpl{
             inline bool isLetter(char _s){
                 return isUppercaseLetter(_s) || isLowercaseLetter(_s);
             }
+            inline bool isNumber(char _s){
+                return (_s >= ((unsigned int)('0')) && _s <= ((unsigned int)('9'))); 
+            }
 
             /**
              * Return the lowercase of the given letter. 

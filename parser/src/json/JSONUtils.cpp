@@ -76,6 +76,22 @@ jpl::_parser::_json::JSONObject* jpl::_parser::_json::parseJSONObjectByString(st
 jpl::_parser::_json::JSONField* jpl::_parser::_json::parseJSONFieldByString(std::string &buffer, bool parseName, size_t tabs){
     if(buffer.empty())
         throw new jpl::_parser::_json::_exception::JSONParseException("Trying to parse an empty string");
+    try{
+        std::tm tm;       //Try TM
+        if(strptime(buffer.c_str(), "%Y-%m-%d %H:%M:%S", &tm) == NULL)  //As most of all DBMS require
+            throw new std::exception();
+        return new jpl::_parser::_json::JSONFieldTM("", tabs, tm);
+    }catch(const std::exception* ex){}
+    if(jpl::_utils::_string::match(buffer, std::regex("^-?[0-9]+\\.?[0-9]*$"))){
+        try{unsigned int ui = std::stoul(buffer.c_str()); return new jpl::_parser::_json::JSONFieldUInt("", tabs, ui);}catch(const std::exception* ex){} //String to ui
+        try{unsigned int ul = std::stoul(buffer.c_str()); return new jpl::_parser::_json::JSONFieldULong("", tabs, ul);}catch(const std::exception* ex){} //String to ul
+        try{long l = std::stol(buffer.c_str()); return new jpl::_parser::_json::JSONFieldLong("", tabs, l);}catch(const std::exception* ex){} //String to long
+        try{int i = std::stoi(buffer.c_str()); return new jpl::_parser::_json::JSONFieldInt("", tabs, i);}catch(const std::exception* ex){} //String to int
+        try{double d = std::stod(buffer.c_str()); return new jpl::_parser::_json::JSONFieldDouble("", tabs, d);}catch(const std::exception* ex){} //String to double
+        try{float f = std::stof(buffer.c_str()); return new jpl::_parser::_json::JSONFieldFloat("", tabs, f);}catch(const std::exception* ex){} //String to float
+    }
+    if(buffer.compare("true") == 0 || buffer.compare("false"))
+        try{bool b = std::stof(buffer.c_str()); return new jpl::_parser::_json::JSONFieldBool("", tabs, b);}catch(const std::exception* ex){} //String to bool
     return new jpl::_parser::_json::JSONFieldString("", tabs, buffer);
 }
 

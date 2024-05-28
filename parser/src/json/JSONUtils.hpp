@@ -14,6 +14,8 @@
 #include <jpl/utils/StringUtils.hpp>
 #include "exception/JSONParseException.hpp"
 
+#include <jpl/utils/CharUtils.hpp>
+
 namespace jpl{
     namespace _parser{
         namespace _json{

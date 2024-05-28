@@ -85,20 +85,6 @@ jpl::_parser::_json::JSONFieldInt* jpl::_parser::_json::JSONObject::getJSONField
     throw new jpl::_parser::_json::_exception::JSONKeyNotFoundException(name + " json field int has not been found");
 }
 
-jpl::_parser::_json::JSONFieldInt* jpl::_parser::_json::JSONObject::getJSONFieldInt(unsigned long index) const{
-    if(index >= this->intSize)
-        throw new jpl::_exception::IndexOutOfBoundsException(this->fields.getSize(), index);
-    size_t c = 0;
-    for(size_t i = 0; i < this->fields.getSize(); i++){
-        jpl::_parser::_json::JSONField* cr = this->fields.get(i);
-        if( typeid(cr) == typeid(jpl::_parser::_json::JSONFieldInt) ){
-            if(c++ == index)
-                return static_cast<jpl::_parser::_json::JSONFieldInt*>(cr);
-        }
-    }  
-    throw new jpl::_exception::RuntimeException("Altough index is into the range, there's no valid json field. This is a JPL bug, please report...");
-}
-
 //  --------------------------------------- JSON Fields UInt ---------------------------------------
 
 jpl::_parser::_json::JSONFieldUInt* jpl::_parser::_json::JSONObject::getJSONFieldUInt(std::string name) const{
@@ -110,20 +96,6 @@ jpl::_parser::_json::JSONFieldUInt* jpl::_parser::_json::JSONObject::getJSONFiel
         }
     }
     throw new jpl::_parser::_json::_exception::JSONKeyNotFoundException(name + " json field uint has not been found");
-}
-
-jpl::_parser::_json::JSONFieldUInt* jpl::_parser::_json::JSONObject::getJSONFieldUInt(unsigned long index) const{
-    if(index >= this->uintSize)
-        throw new jpl::_exception::IndexOutOfBoundsException(this->fields.getSize(), index);
-    size_t c = 0;
-    for(size_t i = 0; i < this->fields.getSize(); i++){
-        jpl::_parser::_json::JSONField* cr = this->fields.get(i);
-        if( typeid(cr) == typeid(jpl::_parser::_json::JSONFieldUInt) ){
-            if(c++ == index)
-                return static_cast<jpl::_parser::_json::JSONFieldUInt*>(cr);
-        }
-    }  
-    throw new jpl::_exception::RuntimeException("Altough index is into the range, there's no valid json field. This is a JPL bug, please report...");
 }
 
 //  --------------------------------------- JSON Fields Long ---------------------------------------
@@ -138,21 +110,6 @@ jpl::_parser::_json::JSONFieldLong* jpl::_parser::_json::JSONObject::getJSONFiel
     }
     throw new jpl::_parser::_json::_exception::JSONKeyNotFoundException(name + " json field long has not been found");
 }
-
-jpl::_parser::_json::JSONFieldLong* jpl::_parser::_json::JSONObject::getJSONFieldLong(unsigned long index) const{
-    if(index >= this->longSize)
-        throw new jpl::_exception::IndexOutOfBoundsException(this->fields.getSize(), index);
-    size_t c = 0;
-    for(size_t i = 0; i < this->fields.getSize(); i++){
-        jpl::_parser::_json::JSONField* cr = this->fields.get(i);
-        if( typeid(cr) == typeid(jpl::_parser::_json::JSONFieldLong) ){
-            if(c++ == index)
-                return static_cast<jpl::_parser::_json::JSONFieldLong*>(cr);
-        }
-    }  
-    throw new jpl::_exception::RuntimeException("Altough index is into the range, there's no valid json field. This is a JPL bug, please report...");
-}
-
 //  --------------------------------------- JSON Fields ULong ---------------------------------------
 
 jpl::_parser::_json::JSONFieldULong* jpl::_parser::_json::JSONObject::getJSONFieldULong(std::string name) const{
@@ -165,21 +122,6 @@ jpl::_parser::_json::JSONFieldULong* jpl::_parser::_json::JSONObject::getJSONFie
     }
     throw new jpl::_parser::_json::_exception::JSONKeyNotFoundException(name + " json field ulong has not been found");
 }
-
-jpl::_parser::_json::JSONFieldULong* jpl::_parser::_json::JSONObject::getJSONFieldULong(unsigned long index) const{
-    if(index >= this->ulongSize)
-        throw new jpl::_exception::IndexOutOfBoundsException(this->fields.getSize(), index);
-    size_t c = 0;
-    for(size_t i = 0; i < this->fields.getSize(); i++){
-        jpl::_parser::_json::JSONField* cr = this->fields.get(i);
-        if( typeid(cr) == typeid(jpl::_parser::_json::JSONFieldULong) ){
-            if(c++ == index)
-                return static_cast<jpl::_parser::_json::JSONFieldULong*>(cr);
-        }
-    }  
-    throw new jpl::_exception::RuntimeException("Altough index is into the range, there's no valid json field. This is a JPL bug, please report...");
-}
-
 
 //  --------------------------------------- JSON Fields Float ---------------------------------------
 
@@ -194,21 +136,6 @@ jpl::_parser::_json::JSONFieldFloat* jpl::_parser::_json::JSONObject::getJSONFie
     throw new jpl::_parser::_json::_exception::JSONKeyNotFoundException(name + " json field float has not been found");
 }
 
-jpl::_parser::_json::JSONFieldFloat* jpl::_parser::_json::JSONObject::getJSONFieldFloat(unsigned long index) const{
-    if(index >= this->floatSize)
-        throw new jpl::_exception::IndexOutOfBoundsException(this->fields.getSize(), index);
-    size_t c = 0;
-    for(size_t i = 0; i < this->fields.getSize(); i++){
-        jpl::_parser::_json::JSONField* cr = this->fields.get(i);
-        if( typeid(cr) == typeid(jpl::_parser::_json::JSONFieldFloat) ){
-            if(c++ == index)
-                return static_cast<jpl::_parser::_json::JSONFieldFloat*>(cr);
-        }
-    }  
-    throw new jpl::_exception::RuntimeException("Altough index is into the range, there's no valid json field. This is a JPL bug, please report...");
-}
-
-
 //  --------------------------------------- JSON Fields Double ---------------------------------------
 
 jpl::_parser::_json::JSONFieldDouble* jpl::_parser::_json::JSONObject::getJSONFieldDouble(std::string name) const{
@@ -221,21 +148,6 @@ jpl::_parser::_json::JSONFieldDouble* jpl::_parser::_json::JSONObject::getJSONFi
     }
     throw new jpl::_parser::_json::_exception::JSONKeyNotFoundException(name + " json field double has not been found");
 }
-
-jpl::_parser::_json::JSONFieldDouble* jpl::_parser::_json::JSONObject::getJSONFieldDouble(unsigned long index) const{
-    if(index >= this->doubleSize)
-        throw new jpl::_exception::IndexOutOfBoundsException(this->fields.getSize(), index);
-    size_t c = 0;
-    for(size_t i = 0; i < this->fields.getSize(); i++){
-        jpl::_parser::_json::JSONField* cr = this->fields.get(i);
-        if( typeid(cr) == typeid(jpl::_parser::_json::JSONFieldDouble) ){
-            if(c++ == index)
-                return static_cast<jpl::_parser::_json::JSONFieldDouble*>(cr);
-        }
-    }  
-    throw new jpl::_exception::RuntimeException("Altough index is into the range, there's no valid json field. This is a JPL bug, please report...");
-}
-
 
 //  --------------------------------------- JSON Fields Bool ---------------------------------------
 
@@ -250,19 +162,6 @@ jpl::_parser::_json::JSONFieldBool* jpl::_parser::_json::JSONObject::getJSONFiel
     throw new jpl::_parser::_json::_exception::JSONKeyNotFoundException(name + " json field bool has not been found");
 }
 
-jpl::_parser::_json::JSONFieldBool* jpl::_parser::_json::JSONObject::getJSONFieldBool(unsigned long index) const{
-    if(index >= this->boolSize)
-        throw new jpl::_exception::IndexOutOfBoundsException(this->fields.getSize(), index);
-    size_t c = 0;
-    for(size_t i = 0; i < this->fields.getSize(); i++){
-        jpl::_parser::_json::JSONField* cr = this->fields.get(i);
-        if( typeid(cr) == typeid(jpl::_parser::_json::JSONFieldBool) ){
-            if(c++ == index)
-                return static_cast<jpl::_parser::_json::JSONFieldBool*>(cr);
-        }
-    }  
-    throw new jpl::_exception::RuntimeException("Altough index is into the range, there's no valid json field. This is a JPL bug, please report...");
-}
 
 
 //  --------------------------------------- JSON Fields TM ---------------------------------------
@@ -278,21 +177,6 @@ jpl::_parser::_json::JSONFieldTM* jpl::_parser::_json::JSONObject::getJSONFieldT
     throw new jpl::_parser::_json::_exception::JSONKeyNotFoundException(name + " json field tm has not been found");
 }
 
-jpl::_parser::_json::JSONFieldTM* jpl::_parser::_json::JSONObject::getJSONFieldTM(unsigned long index) const{
-    if(index >= this->tmSize)
-        throw new jpl::_exception::IndexOutOfBoundsException(this->fields.getSize(), index);
-    size_t c = 0;
-    for(size_t i = 0; i < this->fields.getSize(); i++){
-        jpl::_parser::_json::JSONField* cr = this->fields.get(i);
-        if( typeid(cr) == typeid(jpl::_parser::_json::JSONFieldTM) ){
-            if(c++ == index)
-                return static_cast<jpl::_parser::_json::JSONFieldTM*>(cr);
-        }
-    }  
-    throw new jpl::_exception::RuntimeException("Altough index is into the range, there's no valid json field. This is a JPL bug, please report...");
-}
-
-
 //  --------------------------------------- JSON Fields String ---------------------------------------
 
 jpl::_parser::_json::JSONFieldString* jpl::_parser::_json::JSONObject::getJSONFieldString(std::string name) const{
@@ -306,33 +190,34 @@ jpl::_parser::_json::JSONFieldString* jpl::_parser::_json::JSONObject::getJSONFi
     throw new jpl::_parser::_json::_exception::JSONKeyNotFoundException(name + " json field string has not been found");
 }
 
-jpl::_parser::_json::JSONFieldString* jpl::_parser::_json::JSONObject::getJSONFieldString(unsigned long index) const{
-    if(index >= this->stringSize)
-        throw new jpl::_exception::IndexOutOfBoundsException(this->fields.getSize(), index);
-    size_t c = 0;
-    for(size_t i = 0; i < this->fields.getSize(); i++){
-        jpl::_parser::_json::JSONField* cr = this->fields.get(i);
-        if( typeid(cr) == typeid(jpl::_parser::_json::JSONFieldString) ){
-            if(c++ == index)
-                return static_cast<jpl::_parser::_json::JSONFieldString*>(cr);
-        }
-    }  
-    throw new jpl::_exception::RuntimeException("Altough index is into the range, there's no valid json field. This is a JPL bug, please report...");
-}
+
+
 
 void jpl::_parser::_json::JSONObject::addJSONObject(JSONObject* jsonObject){
     if(jsonObject == nullptr)
         throw new jpl::_exception::IllegalArgumentException("You cannot add null json object");
+    for(size_t i = 0; i < this->jsonObjects.getSize(); i++){
+        if(this->jsonObjects.get(i)->getName().compare(jsonObject->getName()) == 0)
+            throw new jpl::_parser::_json::_exception::JSONDuplicateElementException(jsonObject->getName() + " object has been already parsed in the JSONObject " + this->name);
+    }   
     this->jsonObjects.add(jsonObject);
 }
 void jpl::_parser::_json::JSONObject::addJSONArray(JSONArray* jsonArray){
     if(jsonArray == nullptr)
         throw new jpl::_exception::IllegalArgumentException("You cannot add null json array");
+    for(size_t i = 0; i < this->jsonArrays.getSize(); i++){
+        if(this->jsonArrays.get(i)->getName().compare(jsonArray->getName()) == 0)
+            throw new jpl::_parser::_json::_exception::JSONDuplicateElementException(jsonArray->getName() + " has array been already parsed in the JSONObject " + this->name);
+    }       
     this->jsonArrays.add(jsonArray);
 }
 void jpl::_parser::_json::JSONObject::addJSONField(JSONField* field){
     if(field == nullptr)
         throw new jpl::_exception::IllegalArgumentException("You cannot add null json field");
+    for(size_t i = 0; i < this->fields.getSize(); i++){
+        if(this->fields.get(i)->getName().compare(field->getName()) == 0)
+            throw new jpl::_parser::_json::_exception::JSONDuplicateElementException(field->getName() + " field has been already parsed in the JSONObject " + this->name);
+    }    
     this->fields.add(field);
 }
 

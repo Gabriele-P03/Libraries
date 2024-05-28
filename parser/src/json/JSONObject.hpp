@@ -22,10 +22,11 @@
 #include "fields/JSONFieldLong.hpp"
 #include "fields/JSONFieldBool.hpp"
 
+#include <jpl/utils/structure/list/ArrayList.hpp>
 #include <jpl/utils/structure/list/LinkedList.hpp>
-#include <jpl/exception/runtime/IndexOutOfBoundsException.hpp>
 #include "exception/JSONKeyNotFoundException.hpp"
 
+#include "exception/JSONDuplicateElementException.hpp"  //it is only used by JSONObject
 #include "JSONElement.hpp"
 
 namespace jpl{
@@ -37,7 +38,6 @@ namespace jpl{
             class JSONObject : public JSONElement{
                 
                 protected:
-                    unsigned long intSize, uintSize, longSize, ulongSize, floatSize, doubleSize, boolSize, tmSize, stringSize;
 
                     unsigned long tabs; //Count how many tabs 
                     std::string name;
@@ -63,44 +63,45 @@ namespace jpl{
                      * @return the relative json object
                     */
                     JSONObject* getJSONObject(unsigned long index) const;
-
+                    /**
+                     * @param name of the json array
+                     * @throw NotFoundException if a so-called json array does not exist
+                     * @return the json array named as given param 
+                    */
                     JSONArray* getJSONArray(std::string name) const;
+                    /**
+                     * @param index json array index
+                     * @throw IndexOutOfBounds if a index is >= LL json array size
+                     * @return the relative json array
+                    */
                     JSONArray* getJSONArray(unsigned long index) const;
 
+                    /**
+                     * @param name of the json field
+                     * @throw NotFoundException if a so-called json field does not exist
+                     * @return the json field named as given param 
+                    */
                     JSONField* getJSONField(std::string name) const;
+                    /**
+                     * @param index json field index
+                     * @throw IndexOutOfBounds if a index is >= LL json field size
+                     * @return the relative json field
+                    */
                     JSONField* getJSONField(unsigned long index) const;
 
                     JSONFieldInt* getJSONFieldInt(std::string name) const;
-                    JSONFieldInt* getJSONFieldInt(unsigned long index) const;
                     JSONFieldUInt* getJSONFieldUInt(std::string name) const;
-                    JSONFieldUInt* getJSONFieldUInt(unsigned long index) const;
                     JSONFieldLong* getJSONFieldLong(std::string name) const;
-                    JSONFieldLong* getJSONFieldLong(unsigned long index) const;
                     JSONFieldULong* getJSONFieldULong(std::string name) const;
-                    JSONFieldULong* getJSONFieldULong(unsigned long index) const;
                     JSONFieldFloat* getJSONFieldFloat(std::string name) const;
-                    JSONFieldFloat* getJSONFieldFloat(unsigned long index) const;
                     JSONFieldDouble* getJSONFieldDouble(std::string name) const;
-                    JSONFieldDouble* getJSONFieldDouble(unsigned long index) const;
                     JSONFieldBool* getJSONFieldBool(std::string name) const;
-                    JSONFieldBool* getJSONFieldBool(unsigned long index) const;
                     JSONFieldTM* getJSONFieldTM(std::string name) const;
-                    JSONFieldTM* getJSONFieldTM(unsigned long index) const;
                     JSONFieldString* getJSONFieldString(std::string name) const;
-                    JSONFieldString* getJSONFieldString(unsigned long index) const;
 
                     unsigned long getJSONObjectSize() const noexcept{return this->jsonObjects.getSize();}
                     unsigned long getJSONOArraySize() const noexcept{return this->jsonArrays.getSize();}
                     unsigned long getJSONFieldSize() const noexcept{return this->fields.getSize();}
-                    unsigned long getJSONFieldIntSize() const noexcept{return this->intSize;}
-                    unsigned long getJSONFieldUIntSize() const noexcept{return this->uintSize;}
-                    unsigned long getJSONFieldLongSize() const noexcept{return this->longSize;}
-                    unsigned long getJSONFieldULongSize() const noexcept{return this->ulongSize;}
-                    unsigned long getJSONFieldFloatSize() const noexcept{return this->floatSize;}
-                    unsigned long getJSONFieldboolSize() const noexcept{return this->boolSize;}
-                    unsigned long getJSONFieldBoolSize() const noexcept{return this->boolSize;}
-                    unsigned long getJSONFieldTMSize() const noexcept{return this->tmSize;}
-                    unsigned long getJSONFieldStringSize() const noexcept {return this->stringSize;}
 
                     std::string getName() const noexcept{return this->name;}
                     void setName(std::string name) noexcept{this->name = name;}
@@ -109,6 +110,43 @@ namespace jpl{
                     void addJSONObject(JSONObject* jsonObject);
                     void addJSONArray(JSONArray* jsonObject);
                     void addJSONField(JSONField* jsonObject);
+
+                    /**
+                     * @brief remove the index-th json object
+                     * @param index
+                     * @throw IndexOutOfBounds if a index is >= LL json object size
+                    */
+                    void removeJSONObject(unsigned long index);
+                    /**
+                     * @brief remove the json object called as name
+                     * @param name
+                     * @throw NotFoundException if a index is >= LL json object size
+                    */
+                    void removeJSONObject(std::string name);
+                    /**
+                     * @brief remove the index-th json array
+                     * @param index
+                     * @throw IndexOutOfBounds if a index is >= LL json array size
+                    */
+                    void removeJSONArray(unsigned long index);
+                    /**
+                     * @brief remove the json array called as name
+                     * @param name
+                     * @throw NotFoundException if a index is >= LL json array size
+                    */
+                    void removeJSONArray(std::string name);
+                    /**
+                     * @brief remove the index-th json array
+                     * @param index
+                     * @throw IndexOutOfBounds if a index is >= LL json array size
+                    */
+                    void removeJSONField(unsigned long index);
+                    /**
+                     * @brief remove the json field called as name
+                     * @param name
+                     * @throw NotFoundException if a index is >= LL json field size
+                    */
+                    void removeJSONField(std::string name);
 
                     std::string toString() const noexcept;
 

@@ -78,7 +78,7 @@ jpl::_parser::_json::JSONFieldInt* jpl::_parser::_json::JSONObject::getJSONField
     for(size_t i = 0; i < this->fields.getSize(); i++){
         jpl::_parser::_json::JSONField* cr = this->fields.get(i);
         if(cr->getName().compare(name) == 0){
-            if( typeid(cr) == typeid(jpl::_parser::_json::JSONFieldInt) )
+            if( typeid(*cr) == typeid(jpl::_parser::_json::JSONFieldInt) )
                 return static_cast<jpl::_parser::_json::JSONFieldInt*>(cr);
         }
     }
@@ -91,7 +91,7 @@ jpl::_parser::_json::JSONFieldUInt* jpl::_parser::_json::JSONObject::getJSONFiel
     for(size_t i = 0; i < this->fields.getSize(); i++){
         jpl::_parser::_json::JSONField* cr = this->fields.get(i);
         if(cr->getName().compare(name) == 0){
-            if( typeid(cr) == typeid(jpl::_parser::_json::JSONFieldUInt) )
+            if( typeid(*cr) == typeid(jpl::_parser::_json::JSONFieldUInt) )
                 return static_cast<jpl::_parser::_json::JSONFieldUInt*>(cr);
         }
     }
@@ -104,7 +104,7 @@ jpl::_parser::_json::JSONFieldLong* jpl::_parser::_json::JSONObject::getJSONFiel
     for(size_t i = 0; i < this->fields.getSize(); i++){
         jpl::_parser::_json::JSONField* cr = this->fields.get(i);
         if(cr->getName().compare(name) == 0){
-            if( typeid(cr) == typeid(jpl::_parser::_json::JSONFieldLong) )
+            if( typeid(*cr) == typeid(jpl::_parser::_json::JSONFieldLong) )
                 return static_cast<jpl::_parser::_json::JSONFieldLong*>(cr);
         }
     }
@@ -116,7 +116,7 @@ jpl::_parser::_json::JSONFieldULong* jpl::_parser::_json::JSONObject::getJSONFie
     for(size_t i = 0; i < this->fields.getSize(); i++){
         jpl::_parser::_json::JSONField* cr = this->fields.get(i);
         if(cr->getName().compare(name) == 0){
-            if( typeid(cr) == typeid(jpl::_parser::_json::JSONFieldULong) )
+            if( typeid(*cr) == typeid(jpl::_parser::_json::JSONFieldULong) )
                 return static_cast<jpl::_parser::_json::JSONFieldULong*>(cr);
         }
     }
@@ -129,7 +129,7 @@ jpl::_parser::_json::JSONFieldFloat* jpl::_parser::_json::JSONObject::getJSONFie
     for(size_t i = 0; i < this->fields.getSize(); i++){
         jpl::_parser::_json::JSONField* cr = this->fields.get(i);
         if(cr->getName().compare(name) == 0){
-            if( typeid(cr) == typeid(jpl::_parser::_json::JSONFieldFloat) )
+            if( typeid(*cr) == typeid(jpl::_parser::_json::JSONFieldFloat) )
                 return static_cast<jpl::_parser::_json::JSONFieldFloat*>(cr);
         }
     }
@@ -142,7 +142,7 @@ jpl::_parser::_json::JSONFieldDouble* jpl::_parser::_json::JSONObject::getJSONFi
     for(size_t i = 0; i < this->fields.getSize(); i++){
         jpl::_parser::_json::JSONField* cr = this->fields.get(i);
         if(cr->getName().compare(name) == 0){
-            if( typeid(cr) == typeid(jpl::_parser::_json::JSONFieldDouble) )
+            if( typeid(*cr) == typeid(jpl::_parser::_json::JSONFieldDouble) )
                 return static_cast<jpl::_parser::_json::JSONFieldDouble*>(cr);
         }
     }
@@ -155,7 +155,7 @@ jpl::_parser::_json::JSONFieldBool* jpl::_parser::_json::JSONObject::getJSONFiel
     for(size_t i = 0; i < this->fields.getSize(); i++){
         jpl::_parser::_json::JSONField* cr = this->fields.get(i);
         if(cr->getName().compare(name) == 0){
-            if( typeid(cr) == typeid(jpl::_parser::_json::JSONFieldBool) )
+            if( typeid(*cr) == typeid(jpl::_parser::_json::JSONFieldBool) )
                 return static_cast<jpl::_parser::_json::JSONFieldBool*>(cr);
         }
     }
@@ -170,7 +170,7 @@ jpl::_parser::_json::JSONFieldTM* jpl::_parser::_json::JSONObject::getJSONFieldT
     for(size_t i = 0; i < this->fields.getSize(); i++){
         jpl::_parser::_json::JSONField* cr = this->fields.get(i);
         if(cr->getName().compare(name) == 0){
-            if( typeid(cr) == typeid(jpl::_parser::_json::JSONFieldTM) )
+            if( typeid(*cr) == typeid(jpl::_parser::_json::JSONFieldTM) )
                 return static_cast<jpl::_parser::_json::JSONFieldTM*>(cr);
         }
     }
@@ -183,7 +183,7 @@ jpl::_parser::_json::JSONFieldString* jpl::_parser::_json::JSONObject::getJSONFi
     for(size_t i = 0; i < this->fields.getSize(); i++){
         jpl::_parser::_json::JSONField* cr = this->fields.get(i);
         if(cr->getName().compare(name) == 0){
-            if( typeid(cr) == typeid(jpl::_parser::_json::JSONFieldString) )
+            if( typeid(*cr) == typeid(jpl::_parser::_json::JSONFieldString) )
                 return static_cast<jpl::_parser::_json::JSONFieldString*>(cr);
         }
     }

@@ -11,6 +11,7 @@
                 "${workspaceFolder}/src/json/JSONUtils.cpp",
                 "${workspaceFolder}/src/json/JSONObject.cpp",
                 "${workspaceFolder}/src/json/JSONArray.cpp",
+                "${workspaceFolder}/src/xml/structure/Element.cpp",
                 "-Wterminate",
                 "-o",
                 "${workspaceFolder}/out/linux/Main",

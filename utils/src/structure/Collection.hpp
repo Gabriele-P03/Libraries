@@ -104,7 +104,7 @@ namespace jpl{
                     /**
                      * @return if the structure is empty
                      */
-                    bool isEmpty() noexcept {return this->size == 0;}
+                    bool isEmpty() const noexcept {return this->size == 0;}
 
 
                     /**

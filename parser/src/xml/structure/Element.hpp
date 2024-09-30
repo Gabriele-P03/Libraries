@@ -51,7 +51,7 @@ namespace jpl{
 
                     std::string getName() const noexcept {return this->name;}
 
-                    std::string toString() const noexcept;
+                    virtual std::string toString() const noexcept;
 
                     ~Element();
             };

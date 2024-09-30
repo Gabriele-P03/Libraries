@@ -11,7 +11,7 @@
 #ifndef XML_ROOT_ELEMENT_JPL
 #define XML_ROOT_ELEMENT_JPL
 
-#include <Element.hpp>
+#include "Element.hpp"
 
 namespace jpl{
     
@@ -32,11 +32,13 @@ namespace jpl{
                     Root(std::string name);
                     Root(std::string name, std::string version, std::string encoding);
                     Root(std::string name, std::string version, std::string encoding, 
-                        _utils::_collections::_list::LinkedList<Element> elements,
-                        _utils::_collections::_list::LinkedList<Attribute> attributes);
+                        _utils::_collections::_list::LinkedList<Element*> elements,
+                        _utils::_collections::_list::LinkedList<Attribute*> attributes);
 
                     std::string getVersion() const noexcept {return this->version;}
                     std::string getEncoding() const noexcept {return this->encoding;}
+
+                    std::string toString() const noexcept override;
 
             };
 

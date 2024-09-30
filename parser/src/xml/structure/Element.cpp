@@ -7,12 +7,11 @@ jpl::_parser::_xml::Element::Element(std::string name) : jpl::_parser::_xml::Ele
 
 jpl::_parser::_xml::Element::Element(std::string name, jpl::_utils::_collections::_list::LinkedList<Element*> elements, jpl::_utils::_collections::_list::LinkedList<Attribute*> attributes)
     : name(name){
-
     if(this->name.empty())
         throw new jpl::_exception::IllegalArgumentException("An XML Element cannot have an empty name");
     if(this->name.find(" ") != std::string::npos)
         throw new jpl::_parser::_xml::_exception::XMLParsingException("XML Element name cannot contains empty space: " + this->name);
-                    
+             
     this->elements = elements;
     this->attributes = attributes;
 }
@@ -135,8 +134,12 @@ std::string jpl::_parser::_xml::Element::toString() const noexcept{
                 buffer += cr->toString();
             }
         }
-        buffer += " >"
-        
+        buffer += " >\n";
+        for(size_t i = 0; i < this->elements.getSize(); i++){
+            Element* cr = this->elements.get(i);
+            buffer += cr->toString() + "\n";
+        }
+        buffer += "<" + this->name + " />\n";
     } 
     return buffer;
 }

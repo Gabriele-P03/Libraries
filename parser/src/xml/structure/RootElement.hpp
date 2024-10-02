@@ -19,7 +19,7 @@ namespace jpl{
         
         namespace _xml{
 
-            class Root : public Element{
+            class RootElement : public Element{
 
                 protected:
 
@@ -29,9 +29,9 @@ namespace jpl{
                 public:
 
 
-                    Root(std::string name);
-                    Root(std::string name, std::string version, std::string encoding);
-                    Root(std::string name, std::string version, std::string encoding, 
+                    RootElement(std::string name);
+                    RootElement(std::string name, std::string version, std::string encoding);
+                    RootElement(std::string name, std::string version, std::string encoding, 
                         _utils::_collections::_list::LinkedList<Element*> elements,
                         _utils::_collections::_list::LinkedList<Attribute*> attributes);
 

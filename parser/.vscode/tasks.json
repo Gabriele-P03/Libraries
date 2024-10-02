@@ -13,6 +13,7 @@
                 "${workspaceFolder}/src/json/JSONArray.cpp",
                 "${workspaceFolder}/src/xml/structure/Element.cpp",
                 "${workspaceFolder}/src/xml/structure/RootElement.cpp",
+                "${workspaceFolder}/src/xml/XMLUtils.cpp",
                 "-Wterminate",
                 "-o",
                 "${workspaceFolder}/out/linux/Main",

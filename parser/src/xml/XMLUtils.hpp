@@ -18,6 +18,7 @@ namespace jpl{
             
             static void parseHeaderAttribute(std::string &buffer, std::string nameAttribute, std::string &attributeOut);
 
+            static void parseElement(std::string &buffer, Element* element, unsigned short tabs);
             static void parseAttributes(std::string buffer, Element* element);
             void validateName(std::string name);
 

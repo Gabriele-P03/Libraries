@@ -37,7 +37,7 @@ namespace jpl{
                     std::string getName() const noexcept { return this->name;}
                     std::string getAttribute() const noexcept { return this->attribute;}
 
-                    std::string toString() const noexcept{return this->name + ": '" + this->attribute + "'";}
+                    std::string toString() const noexcept{return this->name + "='" + this->attribute + "'";}
             };
         }
     }

@@ -22,23 +22,8 @@ jpl::_parser::_xml::RootElement* jpl::_parser::_xml::parse(std::string buffer){
     }
     parseHeaderAttribute(header, "encoding", encoding);
 
-    size_t endRoot = jpl::_utils::_string::getIndexGroupOver(buffer, std::regex("<"), std::regex(">"));
-    if(endRoot == std::string::npos)
-        throw new jpl::_parser::_xml::_exception::XMLParsingException("XML Root declaration is not valid");
-    std::string tmp = jpl::_utils::_string::trim(buffer.substr(1, endRoot));
-    size_t endNameRoot = tmp.find(" ");
-    if(endNameRoot == std::string::npos){
-        endNameRoot = tmp.find("\0");   //If there are no empty space, it may be that there are no attributes
-        if(endNameRoot == std::string::npos)
-            throw new jpl::_parser::_xml::_exception::XMLParsingException("XML Root declaration is not valid: " + tmp);
-    }
-    std::string rootName = tmp.substr(0, endNameRoot);
-    validateName(rootName);
-    tmp = tmp.substr(endNameRoot, tmp.size() - 1 - endNameRoot);
-    buffer = buffer.substr(endRoot+1);//remove header of root
-    buffer = buffer.substr(0, buffer.size() - 3 - rootName.size());//Remove angle brackets, slash and root name from the end
-    RootElement* root = new RootElement(rootName, version, encoding);
-    jpl::_parser::_xml::parseAttributes(tmp, root);
+    RootElement* root = new RootElement("unnamed", version, encoding);
+    jpl::_parser::_xml::parseElement(buffer, root, 0);
     return root;
 }
 
@@ -57,7 +42,54 @@ static void jpl::_parser::_xml::parseHeaderAttribute(std::string &buffer, std::s
     }
 }
 
-void jpl::_parser::_xml::parseAttributes(std::string buffer, Element* element){
+static void jpl::_parser::_xml::parseElement(std::string &buffer, Element* element, unsigned short tabs){
+    size_t endRootHeader = jpl::_utils::_string::getIndexGroupOver(buffer, std::regex("<"), std::regex(">"));
+    if(endRootHeader == std::string::npos)
+        throw new jpl::_parser::_xml::_exception::XMLParsingException("XML Element declaration is not valid");
+    std::string tmp = jpl::_utils::_string::trim(buffer.substr(1, endRootHeader));
+    bool shortQuit = tmp.at(tmp.size()-2) == '/';
+    size_t endNameRoot = tmp.find(" ");
+    if(endNameRoot == std::string::npos)
+        endNameRoot = endRootHeader-1;//If there are no empty space, it may be that there are no attributes
+    std::string rootName = tmp.substr(0, endNameRoot - (shortQuit ? 1 : 0) );
+    tmp = tmp.substr(endNameRoot, tmp.size() - 1 - endNameRoot);
+    buffer = buffer.substr(endRootHeader+1);//remove header of root
+    validateName(rootName);
+    element->setName(rootName);
+    parseAttributes(tmp, element);
+    if(shortQuit)
+        return;
+    while(!buffer.empty()){
+        buffer = jpl::_utils::_string::trim(buffer);
+        if(buffer.at(0) != '<'){    //There's some text
+            size_t endText = buffer.find("<");
+            if(endText == std::string::npos)
+                throw new jpl::_parser::_xml::_exception::XMLParsingException("Could not find '<' in order to finish text-parsing of " + rootName + " element ");
+            std::string text = jpl::_utils::_string::endTrim(buffer.substr(0, endText));
+            element->setText(text);
+            buffer.erase(0, endText);
+        }
+        if(buffer.find("</") == 0){ //The previous element is over
+            buffer.erase(0, 2);
+            if(buffer.at(0) == ' ')
+                throw new jpl::_parser::_xml::_exception::XMLParsingException("The close tag of an element does not have to contains empty space");
+            if(buffer.find(rootName + ">") == 0){
+                buffer.erase(0, rootName.size()+1);
+                buffer = jpl::_utils::_string::startTrim(buffer);
+            }else{
+                throw new jpl::_parser::_xml::_exception::XMLParsingException("The close tag '</" + rootName + "> has not been found");
+            }
+            break;
+        }
+        Element* child = new Element("unnamed");
+        child->setTabs(tabs+1);
+        parseElement(buffer, child, tabs+1);
+        element->addElement(child);
+    }
+
+}
+
+static void jpl::_parser::_xml::parseAttributes(std::string buffer, Element* element){
     buffer = jpl::_utils::_string::trim(buffer);
     while(!buffer.empty()){
         size_t eq = buffer.find('=');
@@ -77,7 +109,7 @@ void jpl::_parser::_xml::parseAttributes(std::string buffer, Element* element){
             buffer = buffer.substr(end+1);
             buffer = jpl::_utils::_string::startTrim(buffer);
         }else{
-            throw new jpl::_parser::_xml::_exception::XMLParsingException("Attribute value must be enclosed by double-quote");
+            throw new jpl::_parser::_xml::_exception::XMLParsingException("Attribute value must be enclosed by double-quote. Element: " + element->getName() + ". Attribute: " + nameAttribute);
         }
     }
 }

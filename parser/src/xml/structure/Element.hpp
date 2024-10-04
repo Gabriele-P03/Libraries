@@ -22,18 +22,24 @@ namespace jpl{
         
         namespace _xml{
 
+            extern void validateName(std::string name);
+
             class Element{
 
                 protected:
                     _utils::_collections::_list::LinkedList<Element*> elements;
                     _utils::_collections::_list::LinkedList<Attribute*> attributes;
-                    const std::string name;
+                    std::string name;
+                    std::string text;
+                    unsigned short tabs;
                 
                 public:
 
                     Element(std::string name);
                     Element(
                         std::string name,
+                        std::string text,
+                        unsigned short tab,
                         _utils::_collections::_list::LinkedList<Element*> elements,
                         _utils::_collections::_list::LinkedList<Attribute*> attributes);
 
@@ -50,6 +56,15 @@ namespace jpl{
                     void removeAttribute(Attribute* attribute);
 
                     std::string getName() const noexcept {return this->name;}
+                    void setName(std::string name) {
+                        validateName(name);
+                        this->name = name;    
+                    }
+                    void setText(std::string text) noexcept {this->text = text;}
+                    std::string getText() const noexcept {return this->text;}
+
+                    void setTabs(unsigned short tabs) noexcept{this->tabs = tabs;}
+                    unsigned short getTabs() const noexcept{return this->tabs;}
 
                     virtual std::string toString() const noexcept;
 

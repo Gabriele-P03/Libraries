@@ -31,7 +31,8 @@ namespace jpl{
 
                     RootElement(std::string name);
                     RootElement(std::string name, std::string version, std::string encoding);
-                    RootElement(std::string name, std::string version, std::string encoding, 
+                    RootElement(std::string name, std::string version, std::string encoding,
+                        std::string text, 
                         _utils::_collections::_list::LinkedList<Element*> elements,
                         _utils::_collections::_list::LinkedList<Attribute*> attributes);
 

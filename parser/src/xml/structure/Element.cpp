@@ -1,17 +1,18 @@
 #include "Element.hpp"
 
 jpl::_parser::_xml::Element::Element(std::string name) : jpl::_parser::_xml::Element::Element(
-    name, jpl::_utils::_collections::_list::LinkedList<Element*>(), jpl::_utils::_collections::_list::LinkedList<Attribute*>()){
+    name, "", 0, jpl::_utils::_collections::_list::LinkedList<Element*>(), jpl::_utils::_collections::_list::LinkedList<Attribute*>()){
 }
 
 
-jpl::_parser::_xml::Element::Element(std::string name, jpl::_utils::_collections::_list::LinkedList<Element*> elements, jpl::_utils::_collections::_list::LinkedList<Attribute*> attributes)
-    : name(name){
+jpl::_parser::_xml::Element::Element(std::string name, std::string text, unsigned short tabs, jpl::_utils::_collections::_list::LinkedList<Element*> elements, jpl::_utils::_collections::_list::LinkedList<Attribute*> attributes)
+    : name(name){    
     if(this->name.empty())
         throw new jpl::_exception::IllegalArgumentException("An XML Element cannot have an empty name");
     if(this->name.find(" ") != std::string::npos)
         throw new jpl::_parser::_xml::_exception::XMLParsingException("XML Element name cannot contains empty space: " + this->name);
-             
+    this->text = text;
+    this->tabs = tabs;
     this->elements = elements;
     this->attributes = attributes;
 }
@@ -60,6 +61,7 @@ void jpl::_parser::_xml::Element::addElement(Element* element){
     if(element == nullptr){
         throw new jpl::_exception::NullPointerException("You cannot add nullptr as element");
     }
+    element->setTabs(this->tabs+1);
     this->elements.add(element);
 }
 
@@ -123,23 +125,27 @@ jpl::_parser::_xml::Element::~Element(){
 }
 
 std::string jpl::_parser::_xml::Element::toString() const noexcept{
-    std::string buffer = "<" + this->name;
-    if(this->attributes.isEmpty() && this->elements.isEmpty()){
+    std::string tabsString = std::string(this->tabs, '\t');
+    std::string buffer = tabsString + "<" + this->name;
+    if(!this->attributes.isEmpty()){
+        buffer += " ";
+        for(size_t i = 0; i < this->attributes.getSize(); i++){
+            Attribute* cr = this->attributes.get(i);
+            buffer += cr->toString();
+        }
+    }
+    if(this->text.empty() && this->elements.isEmpty()){
         buffer += "/>";
     }else{
-        if(!this->attributes.isEmpty()){
-            buffer += " ";
-            for(size_t i = 0; i < this->attributes.getSize(); i++){
-                Attribute* cr = this->attributes.get(i);
-                buffer += cr->toString();
-            }
+        buffer += ">\n";
+        if(!this->text.empty()){
+            buffer += tabsString + "\t" + this->text + "\n";
         }
-        buffer += " >\n";
         for(size_t i = 0; i < this->elements.getSize(); i++){
             Element* cr = this->elements.get(i);
             buffer += cr->toString() + "\n";
         }
-        buffer += "<" + this->name + " />\n";
+        buffer += tabsString + "</" + this->name + ">";
     } 
     return buffer;
 }

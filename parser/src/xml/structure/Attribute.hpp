@@ -2,7 +2,8 @@
  * 
  * @file
  * 
- * The rappresentation of an XML element's attribute
+ * The rappresentation of an XML element's attribute.
+ * It does respect XML syntax about attribute's name 
  * 
  * @author Gabriele-P03
  * @date 27-09-2024
@@ -23,20 +24,31 @@ namespace jpl{
 
             struct Attribute{
                 private:
-                    const std::string name;
-                    const std::string attribute;
+
+                    std::string name;
+                    std::string attribute;
 
                 public:
-                    Attribute(std::string name, std::string attribute) : name(name), attribute(attribute){
-                        if(this->name.empty())
-                            throw new jpl::_exception::IllegalArgumentException("An XML Attribute cannot have an empty name");
-                        if(this->name.find(" ") != std::string::npos)
-                            throw new jpl::_parser::_xml::_exception::XMLParsingException("XML Attribute name cannot contains empty space: " + this->name);
+                    Attribute(std::string name, std::string attribute){
+                        validateName(name);
+                        this->name = name;
+                        this->attribute = attribute;
                     }
 
                     std::string getName() const noexcept { return this->name;}
+                    void setName(std::string name){
+                        validateName(name);
+                        this->name = name;
+                    }
+                    
                     std::string getAttribute() const noexcept { return this->attribute;}
+                    void setAttribute(std::string attribute) noexcept {
+                        this->attribute = attribute;
+                    }
 
+                    /**
+                     * @return the representation of an attribute as XML requires (name='value')
+                     */
                     std::string toString() const noexcept{return this->name + "='" + this->attribute + "'";}
             };
         }

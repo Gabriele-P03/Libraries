@@ -7,10 +7,7 @@ jpl::_parser::_xml::Element::Element(std::string name) : jpl::_parser::_xml::Ele
 
 jpl::_parser::_xml::Element::Element(std::string name, std::string text, unsigned short tabs, jpl::_utils::_collections::_list::LinkedList<Element*> elements, jpl::_utils::_collections::_list::LinkedList<Attribute*> attributes)
     : name(name){    
-    if(this->name.empty())
-        throw new jpl::_exception::IllegalArgumentException("An XML Element cannot have an empty name");
-    if(this->name.find(" ") != std::string::npos)
-        throw new jpl::_parser::_xml::_exception::XMLParsingException("XML Element name cannot contains empty space: " + this->name);
+    validateName(name);
     this->text = text;
     this->tabs = tabs;
     this->elements = elements;
@@ -42,7 +39,7 @@ jpl::_parser::_xml::Element* jpl::_parser::_xml::Element::getElement(std::string
 }
 void jpl::_parser::_xml::Element::removeElement(Element* element){
     if(element == nullptr){
-        throw new jpl::_exception::NullPointerException("XML Remove Element: nullptr as element");
+        throw new jpl::_exception::IllegalArgumentException("XML Remove Element: nullptr as element");
     }
     if(!this->elements.remove(element))
         throw new jpl::_parser::_xml::_exception::XMLNotFoundException("Element " + element->getName() + " does not exist into element " + this->name);
@@ -59,7 +56,7 @@ void jpl::_parser::_xml::Element::removeElement(std::string name){
 } 
 void jpl::_parser::_xml::Element::addElement(Element* element){
     if(element == nullptr){
-        throw new jpl::_exception::NullPointerException("You cannot add nullptr as element");
+        throw new jpl::_exception::IllegalArgumentException("You cannot add nullptr as element");
     }
     element->setTabs(this->tabs+1);
     this->elements.add(element);
@@ -107,7 +104,7 @@ void jpl::_parser::_xml::Element::removeAttribute(std::string name){
 } 
 void jpl::_parser::_xml::Element::addAttribute(Attribute* attribute){
     if(attribute == nullptr){
-        throw new jpl::_exception::NullPointerException("You cannot add nullptr as attribute");
+        throw new jpl::_exception::IllegalArgumentException("You cannot add nullptr as attribute");
     }
     for(size_t i = 0; i < this->attributes.getSize(); i++){
         Attribute* cr = this->attributes.get(i);

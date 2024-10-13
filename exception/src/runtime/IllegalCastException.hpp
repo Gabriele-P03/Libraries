@@ -49,7 +49,7 @@ namespace jpl{
                                                      " " + std::string(this->msg);
 
                     char* c_buffer = new char[buffer.size()];
-                    strcpy(c_buffer, buffer.c_str(), buffer.size());
+                    memcpy(c_buffer, buffer.c_str(), buffer.size());
                     return c_buffer;
                 }
         };

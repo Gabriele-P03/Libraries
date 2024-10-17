@@ -119,13 +119,15 @@ namespace jpl{
                          * 
                          * @param size 
                         */
-                        virtual void reallocate(unsigned long size) noexcept{
+                        virtual void reallocate(unsigned long size){
+                            if(this->size >= size)
+                                throw new jpl::_exception::IllegalArgumentException("An arraylist cannot be reallocated with a size less than its current one. If you wanna reduce its size, you should delete");
                             this->max = size;
                             if(this->size == 0)
                                 this->list = new std::shared_ptr<T>[size];
                             else{
                                 std::shared_ptr<T>* tmp = new std::shared_ptr<T>[size];
-                                for(unsigned long i = 0; i < size; i++){
+                                for(unsigned long i = 0; i < this->size; i++){
                                     tmp[i] = std::shared_ptr<T>(this->list[i]);
                                 }
                                 delete [] this->list;   //Do not reset elements
@@ -264,7 +266,7 @@ namespace jpl{
                         }
 
                         virtual T set(unsigned long index, T t) override {
-                            if(index > this->size)
+                            if(index >= this->size)
                                 throw new _exception::IndexOutOfBoundsException(this->size, index);
                             std::shared_ptr<T> &cr = this->list[index];
                             T cp;

@@ -153,7 +153,7 @@ namespace jpl{
                      * 
                      * @return the previous element which was at index
                      * 
-                     * @throw IndexOutOfBounds if index is graeter than length()-1 or less than 0
+                     * @throw IndexOutOfBounds if index is graeter or equals than getSize()-1
                      * @throw NullPointerException if list does not permit null elements and t it is
                     */
                     virtual T set(unsigned long index, T t) = 0;

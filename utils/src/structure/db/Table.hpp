@@ -70,17 +70,13 @@ namespace jpl{
                     std::string getName() const noexcept{return this->name;}
                     bool isEditableTuple() const noexcept{return this->editableTuple;}
                     bool isEditableColumn() const noexcept{return this->editableColumn;}
+                    size_t getColumnsSize() const noexcept{return this->columns->getSize();}
+                    size_t getTuplesSize() const noexcept{return this->tuples->getSize();}
 
                     ~Table(){
-                        this->columns->clear();
-                        this->tuples->clear();
                         delete this->columns;
                         delete this->tuples;
                     }
-
-                    static std::string getString(Tuple* tuple, AbstractColumn* column);
-                    static std::string getString(Tuple* tuple, std::string colName);
-                    static std::string getString(Tuple* tuple, size_t colIndex);
             };
         }
     }

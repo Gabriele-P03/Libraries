@@ -24,6 +24,12 @@ void jpl::_utils::_collections::Table::addColumn(std::size_t index, jpl::_utils:
         throw new jpl::_exception::IllegalArgumentException("You cannot add nullptr as column");
     if(index > this->columns->getSize())
         throw new jpl::_exception::IndexOutOfBoundsException(this->columns->getSize(), index);
+    for(size_t i = 0; i < this->columns->getSize(); i++){
+        jpl::_utils::_collections::AbstractColumn* col = this->columns->get(i);
+        if(col->getName().compare(column->getName()) == 0){
+            throw new jpl::_exception::RuntimeException("There's already a column names as " + column->getName() + " in " + this->name + " table");
+        }
+    }    
     this->columns->add(index, column);
     for(size_t i = index; i < this->columns->getSize(); i++)
         this->columns->get(i)->setIndex(i+1);

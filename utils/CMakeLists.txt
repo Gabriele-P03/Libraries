@@ -2,10 +2,16 @@ cmake_minimum_required(VERSION 3.9)
 message("")
 message("---------------------------------------- UTILS ----------------------------------------")
 message("")
+
 set(ALLOW_DUPLICATE_CUSTOM_TARGETS TRUE)
 set(UTILS_VERSION_JPL "1.0.0")
 project(UTILS VERSION ${UTILS_VERSION_JPL})
+
+set(CMAKE_C_COMPILER gcc)
+set(CMAKE_CXX_COMPILER g++)
+set(CMAKE_CXX_STANDARD 23)
 message("Compiling Utils v: " ${UTILS_VERSION_JPL})
+message("Compiling with Cxx v: " ${CMAKE_CXX_STANDARD})
 
 set(FIRST_CALL_ADD_LIBRARY_SH TRUE)
 set(FIRST_CALL_ADD_LIBRARY_ST TRUE)
@@ -63,11 +69,11 @@ if(${STRING_UTILS_CPP})
     addSRC("src/StringUtils.cpp" "StringUtils" TRUE TRUE)
 endif()
 
+#Adding DB structure cpp
+addSRC("src/structure/db/Table.cpp" "Table" TRUE TRUE)
+addSRC("src/structure/db/TableWrapper.cpp" "Table" TRUE TRUE)
+addSRC("src/structure/db/columns/Column.cpp" "Table" TRUE TRUE)
 
-set(CMAKE_C_COMPILER gcc)
-set(CMAKE_CXX_COMPILER g++)
-
-set(CMAKE_CXX_STANDARD 23)
 
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}")
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}")

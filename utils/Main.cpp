@@ -1,11 +1,29 @@
 #include "Main.hpp"
 
+using namespace jpl;
+using namespace _utils;
+using namespace _collections;
+
+
 int main(){
 
-    std::string src = "{{}__{}{{}}";
-    std::cout<<jpl::_utils::_string::getIndexGroupOver(src, std::regex("\\{"), std::regex("\\}"));
-    
-    //jpl::_utils::_collections::_list::LinkedList<std::string>* vec = split(src, std::regex("\"[ ]*:"));
-    return 0;
+    Column<std::string>* col1 = new Column<std::string>("c1", true);
+    Column<double>* col2 = new Column<double>("c2", false);
+    Column<const char*>* col3 = new Column<const char*>("c3", true);
+    Column<int>* col4 = new Column<int>("c4", false);
 
+    Table* table = new Table("table", true, true);
+    table->addColumn(col1);
+    table->addColumn(col2);
+    table->addColumn(col3);
+    table->addColumn(col4);
+
+    Tuple* tuple = new Tuple();
+    table->addTuple(tuple);
+    
+    //TableWrapper::setStringValue(table, 0, 0, "cia");
+    //TableWrapper::setStringValue(table, 0, 0, "cia1");
+    TableWrapper::setDoubleValue(table, 0, 1, 56.45);
+    TableWrapper::setCharsValue(table, 0, 2, "x");
+    TableWrapper::setIntValue(table, 0, 3, 5);
 }

@@ -21,6 +21,8 @@
 #define CONVERTION_UTILS_JPL
 
 #include <string.h>
+#include <jpl/exception/runtime/IllegalArgumentException.hpp>
+#include "StringUtils.hpp"
 
 namespace jpl
 {
@@ -211,6 +213,21 @@ namespace jpl
 					}
 				}
 				return buffer;
+			}
+
+			/**
+			 * @param value 
+			 * @return true if value is equal to either 1 or true
+			 * @return false if value is equal to either 0 or false
+			 * @throw IllegalArgumentException if value was not a valid value
+			 */
+			inline bool str_bool(std::string value){
+				if(value.compare("1") || jpl::_utils::_string::toLower(value).compare("true") == 0){
+					return true;
+				}else if(value.compare("0") || jpl::_utils::_string::toLower(value).compare("false") == 0){
+					return false;
+				}
+				throw new jpl::_exception::IllegalArgumentException(value + " could not be parsed as boolean value");
 			}
 		}
 	}

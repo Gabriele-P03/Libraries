@@ -12,6 +12,7 @@
 
 #include "Table.hpp"
 #include "columns/Column.hpp"
+#include "../../ConversionUtils.hpp"
 
 namespace jpl{
     namespace _utils{

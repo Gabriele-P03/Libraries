@@ -93,23 +93,24 @@ void jpl::_parser::_csv::CSVParser::parseData(std::istream* is){
     std::string line;
     size_t i = 0;
     jpl::_utils::_collections::Table* table = this->tables.get(i);
-    while(std::getline(is, line)){
+    while(std::getline(*is, line)){
         if(this->multiTable){
             if(line.empty())
                 i = 0;
             else{
                 if(i+1 > this->tables.getSize())
-                    throw new jpl::_parser::_csv::_exception::CSVParsingException("There's a set of data of " + std::to_string(i+1) + " rows. Max is " + this->tables.getSize());
+                    throw new jpl::_parser::_csv::_exception::CSVParsingException("There's a set of data of " + std::to_string(i+1) + " rows. Max is " + std::to_string(this->tables.getSize()));
                 table = this->tables.get(i++);
             }
         }
         size_t endValue;
         jpl::_utils::_collections::_list::ArrayList<std::string>* values = new jpl::_utils::_collections::_list::ArrayList<std::string>(table->getColumnsSize());
         jpl::_utils::_collections::Tuple* tuple = new jpl::_utils::_collections::Tuple(table->getTuplesSize(), values);
+        size_t j = 0;
         while( (endValue = line.find(this->separator) != std::string::npos) ){
             std::string value = line.substr(0, endValue);
             line = line.substr(endValue+1);
-            values->add(value);
+            jpl::_utils::_collections::TableWrapper::setSmartValue(table, table->getTuplesSize(), j++, value);
         }
         table->addTuple(tuple);
     }

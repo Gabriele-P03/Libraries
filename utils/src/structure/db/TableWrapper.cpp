@@ -304,15 +304,19 @@ void jpl::_utils::_collections::TableWrapper::setSmartValue(jpl::_utils::_collec
     if(dynamic_cast<Column<std::string>*>(col))
         ((jpl::_utils::_collections::Column<std::string>*)col)->setValue(tuple, value);
     else if(dynamic_cast<Column<bool>*>(col))
-        ((jpl::_utils::_collections::Column<bool>*)col)->setValue(tuple, value);
+        ((jpl::_utils::_collections::Column<bool>*)col)->setValue(tuple, jpl::_utils::_conversions::str_bool(value));
     else if(dynamic_cast<Column<double>*>(col))
-        ((jpl::_utils::_collections::Column<double>*)col)->setValue(tuple, value);
+        ((jpl::_utils::_collections::Column<double>*)col)->setValue(tuple, std::atof(value.c_str()));
     else if(dynamic_cast<Column<long>*>(col))
-        ((jpl::_utils::_collections::Column<long>*)col)->setValue(tuple, value);
+        ((jpl::_utils::_collections::Column<long>*)col)->setValue(tuple, std::atol(value.c_str()));
     else if(dynamic_cast<Column<int>*>(col))
-        ((jpl::_utils::_collections::Column<int>*)col)->setValue(tuple, value);
-    else if(dynamic_cast<Column<const char*>*>(col))
-        ((jpl::_utils::_collections::Column<const char*>*)col)->setValue(tuple, value);
+        ((jpl::_utils::_collections::Column<int>*)col)->setValue(tuple, std::atoi(value.c_str()));
+    else if(dynamic_cast<Column<const char*>*>(col)){
+        const char *buf = new char[value.size()];
+        char* tmp = (char*)&buf[0];
+        memcpy(tmp, value.c_str(), value.size()); 
+        ((jpl::_utils::_collections::Column<const char*>*)col)->setValue(tuple, buf);
+    }
     else
         throw new jpl::_exception::RuntimeException("No dynamic cast for column was valid");    
 }
@@ -326,15 +330,18 @@ void jpl::_utils::_collections::TableWrapper::setSmartValue(jpl::_utils::_collec
     if(dynamic_cast<Column<std::string>*>(col))
         ((jpl::_utils::_collections::Column<std::string>*)col)->setValue(tuple, value);
     else if(dynamic_cast<Column<bool>*>(col))
-        ((jpl::_utils::_collections::Column<bool>*)col)->setValue(tuple, value);
+        ((jpl::_utils::_collections::Column<bool>*)col)->setValue(tuple, jpl::_utils::_conversions::str_bool(value));
     else if(dynamic_cast<Column<double>*>(col))
-        ((jpl::_utils::_collections::Column<double>*)col)->setValue(tuple, value);
+        ((jpl::_utils::_collections::Column<double>*)col)->setValue(tuple, std::atof(value.c_str()));
     else if(dynamic_cast<Column<long>*>(col))
-        ((jpl::_utils::_collections::Column<long>*)col)->setValue(tuple, value);
+        ((jpl::_utils::_collections::Column<long>*)col)->setValue(tuple, std::atol(value.c_str()));
     else if(dynamic_cast<Column<int>*>(col))
-        ((jpl::_utils::_collections::Column<int>*)col)->setValue(tuple, value);
-    else if(dynamic_cast<Column<const char*>*>(col))
-        ((jpl::_utils::_collections::Column<const char*>*)col)->setValue(tuple, value);
-    else
+        ((jpl::_utils::_collections::Column<int>*)col)->setValue(tuple, std::atoi(value.c_str()));
+    else if(dynamic_cast<Column<const char*>*>(col)){
+        const char *buf = new char[value.size()];
+        char* tmp = (char*)&buf[0];
+        memcpy(tmp, value.c_str(), value.size()); 
+        ((jpl::_utils::_collections::Column<const char*>*)col)->setValue(tuple, buf);
+    }else
         throw new jpl::_exception::RuntimeException("No dynamic cast for column was valid");    
 }

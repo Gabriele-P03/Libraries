@@ -1,0 +1,10 @@
+<?xml version="1.0" e ncoding="UTF-8" ?>
+<root ciao='x' as='as'>
+        <x1.1>
+                testo di prova
+                <x1.2/>
+        </x1.1>
+        <x2.1>
+                <x2.2/>
+        </x2.1>
+</root>

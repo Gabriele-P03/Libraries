@@ -288,3 +288,53 @@ void jpl::_utils::_collections::TableWrapper::setCharsValue(jpl::_utils::_collec
     jpl::_utils::_collections::Tuple* tuple = table->tuples->get(iTuple);
     ((jpl::_utils::_collections::Column<const char*>*)col)->setValue(tuple, value);
 }
+
+
+/**
+ * SMART
+ */
+
+void jpl::_utils::_collections::TableWrapper::setSmartValue(jpl::_utils::_collections::Table* table, size_t iTuple, size_t iCol, std::string value){
+    if(table == nullptr)
+        throw new jpl::_exception::IllegalArgumentException("Table instance is nullptr");
+    if(!table->isEditableTuple())
+        throw new jpl::_exception::IllegalStateException("Table " + table->getName() + " does not allow tuple-editing");
+    AbstractColumn* col = table->getColumn(iCol);
+    jpl::_utils::_collections::Tuple* tuple = table->tuples->get(iTuple);
+    if(dynamic_cast<Column<std::string>*>(col))
+        ((jpl::_utils::_collections::Column<std::string>*)col)->setValue(tuple, value);
+    else if(dynamic_cast<Column<bool>*>(col))
+        ((jpl::_utils::_collections::Column<bool>*)col)->setValue(tuple, value);
+    else if(dynamic_cast<Column<double>*>(col))
+        ((jpl::_utils::_collections::Column<double>*)col)->setValue(tuple, value);
+    else if(dynamic_cast<Column<long>*>(col))
+        ((jpl::_utils::_collections::Column<long>*)col)->setValue(tuple, value);
+    else if(dynamic_cast<Column<int>*>(col))
+        ((jpl::_utils::_collections::Column<int>*)col)->setValue(tuple, value);
+    else if(dynamic_cast<Column<const char*>*>(col))
+        ((jpl::_utils::_collections::Column<const char*>*)col)->setValue(tuple, value);
+    else
+        throw new jpl::_exception::RuntimeException("No dynamic cast for column was valid");    
+}
+void jpl::_utils::_collections::TableWrapper::setSmartValue(jpl::_utils::_collections::Table* table, size_t iTuple, std::string colName, std::string value){
+    if(table == nullptr)
+        throw new jpl::_exception::IllegalArgumentException("Table instance is nullptr");
+    if(!table->isEditableTuple())
+        throw new jpl::_exception::IllegalStateException("Table " + table->getName() + " does not allow tuple-editing");
+    AbstractColumn* col = table->getColumn(colName);
+    jpl::_utils::_collections::Tuple* tuple = table->tuples->get(iTuple);
+    if(dynamic_cast<Column<std::string>*>(col))
+        ((jpl::_utils::_collections::Column<std::string>*)col)->setValue(tuple, value);
+    else if(dynamic_cast<Column<bool>*>(col))
+        ((jpl::_utils::_collections::Column<bool>*)col)->setValue(tuple, value);
+    else if(dynamic_cast<Column<double>*>(col))
+        ((jpl::_utils::_collections::Column<double>*)col)->setValue(tuple, value);
+    else if(dynamic_cast<Column<long>*>(col))
+        ((jpl::_utils::_collections::Column<long>*)col)->setValue(tuple, value);
+    else if(dynamic_cast<Column<int>*>(col))
+        ((jpl::_utils::_collections::Column<int>*)col)->setValue(tuple, value);
+    else if(dynamic_cast<Column<const char*>*>(col))
+        ((jpl::_utils::_collections::Column<const char*>*)col)->setValue(tuple, value);
+    else
+        throw new jpl::_exception::RuntimeException("No dynamic cast for column was valid");    
+}

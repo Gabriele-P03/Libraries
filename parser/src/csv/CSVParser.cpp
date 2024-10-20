@@ -27,12 +27,16 @@ void jpl::_parser::_csv::CSVParser::parse(std::istream* is){
     std::string line;
     while(std::getline(*is, line)){
         if(line.empty()){
-            break;
+            break;  //In multi table mode, the empty line marks separation between header and data
         }else{
             buffer += line + "\n";
         }
+        if(!this->multiTable){
+            break;  //In standard mode, there could not be any separation-empty-line
+        }
     }
     this->parseHeader(buffer);
+    this->parseData(is);
 }
 
 
@@ -76,5 +80,37 @@ void jpl::_parser::_csv::CSVParser::parseHeader(std::string header){
         if(!check){
             this->tables.add(table);
         }
+        if(i == 0 && !this->multiTable){
+            break;
+        }
+    }
+}
+
+void jpl::_parser::_csv::CSVParser::parseData(std::istream* is){
+    if(is == nullptr){
+        throw new jpl::_exception::IllegalArgumentException("input stream passed is nullptr");
+    }
+    std::string line;
+    size_t i = 0;
+    jpl::_utils::_collections::Table* table = this->tables.get(i);
+    while(std::getline(is, line)){
+        if(this->multiTable){
+            if(line.empty())
+                i = 0;
+            else{
+                if(i+1 > this->tables.getSize())
+                    throw new jpl::_parser::_csv::_exception::CSVParsingException("There's a set of data of " + std::to_string(i+1) + " rows. Max is " + this->tables.getSize());
+                table = this->tables.get(i++);
+            }
+        }
+        size_t endValue;
+        jpl::_utils::_collections::_list::ArrayList<std::string>* values = new jpl::_utils::_collections::_list::ArrayList<std::string>(table->getColumnsSize());
+        jpl::_utils::_collections::Tuple* tuple = new jpl::_utils::_collections::Tuple(table->getTuplesSize(), values);
+        while( (endValue = line.find(this->separator) != std::string::npos) ){
+            std::string value = line.substr(0, endValue);
+            line = line.substr(endValue+1);
+            values->add(value);
+        }
+        table->addTuple(tuple);
     }
 }

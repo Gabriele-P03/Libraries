@@ -379,6 +379,42 @@ namespace jpl{
                      * @throw IllegalStateException if table does not allow to edit tuple
                      */
                     static void setCharsValue(Table* table, size_t iTuple, size_t iCol, const char* value);
+
+
+                    /*********************************************************
+                     *  SMART -> Algorithm chooses what kind of column is required.
+                     *  
+                     *  Value must be passed as std::string in order to guarantee compatiblity 
+                     ********************************************************/
+
+                    /**
+                     * @param table
+                     * @param iTuple index of the tuple 
+                     * @param colName column's name
+                     * @param value
+                     * 
+                     * @throw IndexOutOfBounds if iTuple is greater or equals than table's tuples' size
+                     * @throw NotFoundException if table's columns list does not contains any column called as colName
+                     * @throw RuntimeException if colName column is not an instance of Column<std::string> 
+                     * @throw IllegalArgumentException if table is nullptr
+                     * @throw IllegalStateException if table does not allow to edit tuple
+                     * @throw IllegalArgumentException if value is an empty string and column does not allow it
+                     */
+                    static void setSmartValue(Table* table, size_t iTuple, std::string colName, std::string value);
+                    /**
+                     * @param table
+                     * @param iTuple index of the tuple 
+                     * @param colName column's name
+                     * @param value
+                     * 
+                     * @throw IndexOutOfBounds if iTuple is greater or equals than table's tuples' size
+                     * @throw IndexOutOfBounds if iCol is greater or equals than table's columns' size
+                     * @throw RuntimeException if colName column is not an instance of Column<std::string> 
+                     * @throw IllegalArgumentException if table is nullptr
+                     * @throw IllegalStateException if table does not allow to edit tuple
+                     * @throw IllegalArgumentException if value is an empty string and column does not allow it
+                     */
+                    static void setSmartValue(Table* table, size_t iTuple, size_t iCol, std::string value);
             };
         }
     }

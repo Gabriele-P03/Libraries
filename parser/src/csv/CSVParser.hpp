@@ -17,6 +17,8 @@
  *  2) an empty-line must separate data and declaration
  *  3) each set of data must be separated by an empty line
  * 
+ * In standard mode, there's no need to leave an empty line 
+ * 
  * In multi-table mode, the separator is the same for each of them.
  * In multi-table mode, if file contains more tables' columns declaration than tables list, this parser will not be able to instance the missing ones,
  * throwing exception 
@@ -55,6 +57,14 @@ namespace jpl{
                     bool multiTable;
 
                     void parseHeader(std::string header);
+
+                    /**
+                     * @param is 
+                     * 
+                     * @throw IllegalArgumentException if is nullptr
+                     * @throw CSVParsingException if any error during parsing occurs
+                     */
+                    void parseData(std::istream* is);
                 public:
 
                     /**

@@ -23,7 +23,5 @@ int main(){
     
     //TableWrapper::setStringValue(table, 0, 0, "cia");
     //TableWrapper::setStringValue(table, 0, 0, "cia1");
-    TableWrapper::setDoubleValue(table, 0, 1, 56.45);
-    TableWrapper::setCharsValue(table, 0, 2, "x");
-    TableWrapper::setIntValue(table, 0, 3, 5);
+    TableWrapper::setSmartValue(table, 0, 0, "x");
 }

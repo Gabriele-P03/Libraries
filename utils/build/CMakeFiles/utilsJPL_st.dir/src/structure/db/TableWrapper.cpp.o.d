@@ -262,4 +262,33 @@ CMakeFiles/utilsJPL_st.dir/src/structure/db/TableWrapper.cpp.o: \
  /usr/include/jpl/exception/runtime/IllegalStateException.hpp \
  /home/gabriele/JPL/utils/src/structure/db/Tuple.hpp \
  /home/gabriele/JPL/utils/src/structure/db/columns/Column.hpp \
- /home/gabriele/JPL/utils/src/structure/db/columns/AbstractColumn.hpp
+ /home/gabriele/JPL/utils/src/structure/db/columns/AbstractColumn.hpp \
+ /home/gabriele/JPL/utils/src/structure/db/../../ConversionUtils.hpp \
+ /home/gabriele/JPL/utils/src/structure/db/../../StringUtils.hpp \
+ /home/gabriele/JPL/utils/src/structure/db/../../structure/list/LinkedList.hpp \
+ /home/gabriele/JPL/utils/src/structure/db/../../structure/list/List.hpp \
+ /usr/include/c++/13/regex /usr/include/c++/13/bitset \
+ /usr/include/c++/13/locale \
+ /usr/include/c++/13/bits/locale_facets_nonio.h \
+ /usr/include/x86_64-linux-gnu/c++/13/bits/time_members.h \
+ /usr/include/x86_64-linux-gnu/c++/13/bits/messages_members.h \
+ /usr/include/libintl.h /usr/include/c++/13/bits/codecvt.h \
+ /usr/include/c++/13/bits/locale_facets_nonio.tcc \
+ /usr/include/c++/13/bits/locale_conv.h /usr/include/c++/13/stack \
+ /usr/include/c++/13/deque /usr/include/c++/13/bits/stl_deque.h \
+ /usr/include/c++/13/bits/deque.tcc /usr/include/c++/13/bits/stl_stack.h \
+ /usr/include/c++/13/bits/stl_tree.h /usr/include/c++/13/bits/stl_map.h \
+ /usr/include/c++/13/bits/regex_constants.h \
+ /usr/include/c++/13/bits/regex_error.h \
+ /usr/include/c++/13/bits/regex_automaton.h \
+ /usr/include/c++/13/bits/regex_automaton.tcc \
+ /usr/include/c++/13/bits/regex_scanner.h \
+ /usr/include/c++/13/bits/regex_scanner.tcc \
+ /usr/include/c++/13/bits/regex_compiler.h \
+ /usr/include/c++/13/bits/regex_compiler.tcc \
+ /usr/include/c++/13/bits/regex.h /usr/include/c++/13/bits/regex.tcc \
+ /usr/include/c++/13/bits/regex_executor.h \
+ /usr/include/c++/13/bits/regex_executor.tcc \
+ /usr/include/c++/13/algorithm /usr/include/c++/13/bits/ranges_algo.h \
+ /usr/include/c++/13/optional \
+ /usr/include/c++/13/pstl/glue_algorithm_defs.h

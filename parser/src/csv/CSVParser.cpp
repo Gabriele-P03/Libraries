@@ -106,12 +106,33 @@ void jpl::_parser::_csv::CSVParser::parseData(std::istream* is){
         size_t endValue;
         jpl::_utils::_collections::_list::ArrayList<std::string>* values = new jpl::_utils::_collections::_list::ArrayList<std::string>(table->getColumnsSize());
         jpl::_utils::_collections::Tuple* tuple = new jpl::_utils::_collections::Tuple(table->getTuplesSize(), values);
-        size_t j = 0;
-        while( (endValue = line.find(this->separator) != std::string::npos) ){
-            std::string value = line.substr(0, endValue);
-            line = line.substr(endValue+1);
-            jpl::_utils::_collections::TableWrapper::setSmartValue(table, table->getTuplesSize(), j++, value);
-        }
         table->addTuple(tuple);
+        size_t j = 0;
+        bool flag = true;
+        do{
+            endValue = line.find(this->separator);
+            if(endValue == std::string::npos){
+                flag = false;
+                endValue = line.size();
+            }else{
+                line.erase(0, endValue+1);
+            }
+            std::string value = line.substr(0, endValue);
+            if(value.empty()){//Empty value, it checks if column is mandatory
+                jpl::_utils::_collections::AbstractColumn* col = table->getColumn(j);
+                if(col->isMandatory()){
+                    throw new jpl::_parser::_csv::_exception::CSVParsingException(col->getName() + " column is mandatory");
+                }
+            }
+            jpl::_utils::_collections::TableWrapper::setSmartValue(table, table->getTuplesSize()-1, j++, value);
+        }while(flag);
+        if(j != table->getColumnsSize()){   //Once line is completely parsed, it checks if there are any missing mandatory columns
+            for(size_t iMissCol = j; iMissCol < table->getColumnsSize(); iMissCol++ ){
+                jpl::_utils::_collections::AbstractColumn* col = table->getColumn(iMissCol);
+                if(col->isMandatory()){
+                    throw new jpl::_parser::_csv::_exception::CSVParsingException(col->getName() + " column is mandatory");
+                }
+            }
+        }
     }
 }

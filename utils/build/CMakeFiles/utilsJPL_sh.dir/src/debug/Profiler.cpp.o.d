@@ -288,6 +288,7 @@ CMakeFiles/utilsJPL_sh.dir/src/debug/Profiler.cpp.o: \
  /usr/include/jpl/exception/runtime/IllegalStateException.hpp \
  /usr/include/jpl/exception/runtime/IllegalArgumentException.hpp \
  /usr/include/jpl/utils/ConversionUtils.hpp \
+ /usr/include/jpl/utils/StringUtils.hpp \
  /usr/include/x86_64-linux-gnu/sys/sysinfo.h /usr/include/linux/kernel.h \
  /usr/include/linux/sysinfo.h /usr/include/linux/types.h \
  /usr/include/x86_64-linux-gnu/asm/types.h \

@@ -16,6 +16,8 @@ using namespace _list;
 
 int main(){
 
+    throw new jpl::_exception::IllegalStateException("This CSV Parser already contains a table instance. If you wanna insert another one, you have to enable multi-table mode before");
+    
     std::ifstream in("/home/gabriele/JPL/parser/out/linux/test.csv");
     if(!in.is_open())
         exit(-1);

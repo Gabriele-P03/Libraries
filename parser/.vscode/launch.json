@@ -10,9 +10,12 @@
             "request": "launch",
             "program": "${workspaceFolder}/out/linux/Main",
             "args": [],
+            "env":{
+                "MALLOC_CHECK_": 2
+            },
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}/out",
-            "environment": [],
+            "environment": [            ],
             "externalConsole": false,
             "MIMode": "gdb",
             "setupCommands": [

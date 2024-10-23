@@ -7,11 +7,16 @@
             "args": [
                 "-ggdb",
                 "-std=c++23",
+                "-DAUTO_LOG_EXCEPTION_JPL",
+                "-DUSE_STACKTRACE_W_EXCEPTION_JPL",
+                "${workspaceFolder}/src/debug/stacktrace/Stacktrace.cpp",
+                "${workspaceFolder}/src/debug/stacktrace/wrapper/StacktraceWrapper.cpp",
                 "${workspaceFolder}/src/structure/db/columns/Column.cpp",
                 "${workspaceFolder}/src/structure/db/Table.cpp",
                 "${workspaceFolder}/src/structure/db/TableWrapper.cpp",
                 "${workspaceFolder}/src/StringUtils.cpp",
                 "${workspaceFolder}/Main.cpp", 
+                "-lloggerJPL",
                 "-Wterminate",
                 "-o",
                 "${workspaceFolder}/out/linux/Main"

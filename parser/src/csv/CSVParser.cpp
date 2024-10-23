@@ -11,6 +11,8 @@ jpl::_parser::_csv::CSVParser::CSVParser(const char* separator) : separator(sepa
 void jpl::_parser::_csv::CSVParser::addTable(jpl::_utils::_collections::Table* table){
     if(table == nullptr)
         throw new jpl::_exception::IllegalArgumentException("You cannot add a nullptr");
+    if(!this->multiTable && !this->tables.isEmpty())
+        throw new jpl::_exception::IllegalStateException("This CSV Parser already contains a table instance. If you wanna insert another one, you have to enable multi-table mode before");
     for(size_t i = 0; i < this->tables.getSize(); i++){
         jpl::_utils::_collections::Table* cr = this->tables.get(i);
         if(cr == table)

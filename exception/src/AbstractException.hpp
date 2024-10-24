@@ -73,7 +73,7 @@
                     AbstractException(std::string type_ex, unsigned long skip) : AbstractException(type_ex, "", skip){}
                     AbstractException(std::string type_ex, std::string msg, unsigned long skip) : type_ex(type_ex), msg(msg){
                         #ifdef USE_STACKTRACE_W_EXCEPTION_JPL
-                            this->stacktrace = _utils::_debug::getStacktrace(skip, 512);
+                            this->stacktrace = _utils::_debug::getStacktrace(skip, 2048);
                         #endif
                     }
                     

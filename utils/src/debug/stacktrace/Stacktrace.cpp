@@ -1,13 +1,13 @@
 #include "Stacktrace.hpp"
 
 jpl::_utils::_debug::Stacktrace::Stacktrace(unsigned long skipped, unsigned long maxSize){
-    this->skipped = skipped;
+    this->skipped = skipped+1;
     this->maxSize = maxSize;
-    this->frames = queryStacktrace(skipped, maxSize);
+    this->frames = queryStacktrace(this->skipped, this->maxSize);
     this->size = this->frames->getSize();
 }
-jpl::_utils::_debug::Stacktrace::Stacktrace(unsigned long skipped) : jpl::_utils::_debug::Stacktrace(skipped, MAX_STACKFRAMES_JPL){}
-jpl::_utils::_debug::Stacktrace::Stacktrace() : jpl::_utils::_debug::Stacktrace(0){}
+jpl::_utils::_debug::Stacktrace::Stacktrace(unsigned long skipped) : jpl::_utils::_debug::Stacktrace(skipped+1, MAX_STACKFRAMES_JPL){}
+jpl::_utils::_debug::Stacktrace::Stacktrace() : jpl::_utils::_debug::Stacktrace(1){}
 
 const jpl::_utils::_debug::Frame jpl::_utils::_debug::Stacktrace::getFrameAt(unsigned long i) const{
     if(i >= this->size)
@@ -30,10 +30,6 @@ jpl::_utils::_debug::Stacktrace::~Stacktrace(){
 }
 
 //NON MEMBER FUNCTION
-
-jpl::_utils::_debug::Stacktrace* jpl::_utils::_debug::getStacktrace(unsigned long skipped, unsigned long maxFrame){
-    return new jpl::_utils::_debug::Stacktrace(skipped, maxFrame);
-}
 
 std::string jpl::_utils::_debug::stktrc_str(const Stacktrace* stacktrace){
     std::string buffer = "";

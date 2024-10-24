@@ -3,8 +3,9 @@
 jpl::_utils::_collections::_list::LinkedList<jpl::_utils::_debug::Frame*>* jpl::_utils::_debug::queryStacktrace(unsigned int skipped, unsigned int maxSize){
 
     #ifdef __linux__
+                    skipped++;
                     jpl::_utils::_collections::_list::LinkedList<Frame*> *frames = new jpl::_utils::_collections::_list::LinkedList<Frame*>();
-                    void* buffer[maxSize];
+                    void* buffer[maxSize]; 
                     //Retrieve the stacktrace 
                     int size = backtrace(buffer, maxSize);
                     //Translate symbols
@@ -14,7 +15,7 @@ jpl::_utils::_collections::_list::LinkedList<jpl::_utils::_debug::Frame*>* jpl::
                         for(size_t i = 0; i < size; i++)
                             frames->add(new Frame());
                     }else{
-                        for(unsigned int i = 0; i < size; i++){
+                        for(unsigned int i = skipped; i < size; i++){
                             //Convert the symbol into a string
                             std::string sbuffer = std::string(c_c_buffer[i]);
                             //Let's get file name where symbol has been found
@@ -71,6 +72,8 @@ jpl::_utils::_collections::_list::LinkedList<jpl::_utils::_debug::Frame*>* jpl::
                             frames->add(new jpl::_utils::_debug::Frame(line, func_name, address, file_name));
                         }
                     }
+                    free(c_c_buffer);
+                    //free(buffer);
                     return frames;
     #elif _WIN32
                     jpl::_utils::_collections::_list::LinkedList<Frame*>* frames = new jpl::_utils::_collections::_list::LinkedList<Frame*>();

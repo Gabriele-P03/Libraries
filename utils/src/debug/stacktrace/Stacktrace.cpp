@@ -31,6 +31,10 @@ jpl::_utils::_debug::Stacktrace::~Stacktrace(){
 
 //NON MEMBER FUNCTION
 
+jpl::_utils::_debug::Stacktrace* jpl::_utils::_debug::getStacktrace(unsigned long skipped, unsigned long maxFrame){
+    return new jpl::_utils::_debug::Stacktrace(skipped, maxFrame);
+}
+
 std::string jpl::_utils::_debug::stktrc_str(const Stacktrace* stacktrace){
     std::string buffer = "";
     for(unsigned int i = 0; i < stacktrace->getSize(); i++){

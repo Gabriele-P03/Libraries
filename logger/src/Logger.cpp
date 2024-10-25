@@ -31,18 +31,15 @@ jpl::_logger::LOG_STATUS jpl::_logger::ERROR_JPL = "ERR";
 jpl::_logger::LOG_STATUS jpl::_logger::DEBUG_JPL = "DBG";
 
 
-void jpl::_logger::Logger::print(std::string msg){
-
+void jpl::_logger::Logger::print(const std::string &msg){
     this->print(msg, jpl::_logger::INFO_JPL);
 }
 
-void jpl::_logger::Logger::print(std::string msg, const jpl::_logger::LOG_STATUS status){
-
+void jpl::_logger::Logger::print(const std::string &msg, const jpl::_logger::LOG_STATUS status){
     if(status == jpl::_logger::DEBUG_JPL && !jpl::_utils::_debug::isDebugging()){
         return;
     }
-
-    msg = "[" + this->getFileNameOfInstance() + " -> " + status + "]: " + msg + "\n";
+    std::string buffer = "[" + this->getFileNameOfInstance() + " -> " + status + "]: " + msg + "\n";
     std::cout<<msg;
     if(flag){
         this->file->write(msg.c_str(), msg.size());
@@ -62,9 +59,7 @@ jpl::_logger::Logger::~Logger(){
 }
 
 std::string jpl::_logger::Logger::getFileNameOfInstance(){
-
     std::tm *ltm = jpl::_logger::Logger::getTM();
-
     return  std::to_string((*ltm).tm_mday) + "-" + 
             std::to_string((*ltm).tm_mon+1) + "-" + 
             std::to_string((*ltm).tm_year + 1900) + "_" +

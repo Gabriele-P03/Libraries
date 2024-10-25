@@ -93,7 +93,7 @@
                      * 
                      * @param pathToFile aboslute path of the file which is wanted to be used as output one
                      */
-                    Logger(std::string pathToFile) : Logger(pathToFile, false){}
+                    Logger(const std::string &pathToFile) : Logger(pathToFile, false){}
 
                     /**
                      * Create a new instance of Logger associated with the output file at the given path
@@ -101,7 +101,7 @@
                      * @param pathToFile aboslute path of the file which is wanted to be used as output one
                      * @param quiet quiet mode 
                      */
-                    Logger(std::string pathToFile, bool quiet){
+                    Logger(const std::string &pathToFile, bool quiet){
                         
                         this->flag = false;
 
@@ -137,7 +137,7 @@
                      * 
                      * @param msg message
                      */
-                    void print(std::string msg);
+                    void print(const std::string &msg);
 
                     /**
                      * @brief write msg on terminal
@@ -146,7 +146,7 @@
                      * @param msg message
                      * @param status status of the message
                      */
-                    void print(std::string msg, const LOG_STATUS status);
+                    void print(const std::string &msg, const LOG_STATUS status);
 
                     /**
                      * Close logger and its file

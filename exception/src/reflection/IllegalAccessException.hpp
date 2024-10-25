@@ -25,7 +25,7 @@ namespace jpl{
             
             public:
 
-                IllegalAccessException(std::string msg) : AbstractException("ArithmeticException", msg){
+                IllegalAccessException(const std::string &msg) : AbstractException("ArithmeticException", msg){
                     #ifdef AUTO_LOG_EXCEPTION_JPL
                          ::jpl::_logger::error(AbstractException::getStacktraceAsString());
                     #endif

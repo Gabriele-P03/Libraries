@@ -21,7 +21,7 @@ namespace jpl{
         class StackUnderflowException : public RuntimeException{
 
             public:
-                StackUnderflowException(std::string msg) : RuntimeException("StackUnderflowException", msg){
+                StackUnderflowException(const std::string &msg) : RuntimeException("StackUnderflowException", msg){
                     #ifdef AUTO_LOG_EXCEPTION_JPL
                          ::jpl::_logger::error(AbstractException::getStacktraceAsString());
                     #endif

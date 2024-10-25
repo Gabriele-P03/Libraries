@@ -20,11 +20,11 @@ namespace jpl{
         class RuntimeException : public AbstractException{
 
             protected:
-                RuntimeException(std::string type_ex, std::string msg, unsigned long skip) : AbstractException(type_ex, msg, skip+1){}
-                RuntimeException(std::string type_ex, std::string msg) : AbstractException(type_ex, msg, 2){} //2 skips
+                RuntimeException(std::string type_ex, const std::string &msg, unsigned long skip) : AbstractException(type_ex, msg, skip+1){}
+                RuntimeException(std::string type_ex, const std::string &msg) : AbstractException(type_ex, msg, 2){} //2 skips
 
             public:
-                RuntimeException(std::string msg) : RuntimeException("RuntimeException", msg){
+                RuntimeException(const std::string &msg) : RuntimeException("RuntimeException", msg){
                     #ifdef AUTO_LOG_EXCEPTION_JPL
                         ::jpl::_logger::error(AbstractException::getStacktraceAsString());
                     #endif

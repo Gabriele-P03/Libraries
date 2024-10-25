@@ -32,14 +32,14 @@ namespace jpl{
             
             public:
 
-                IllegalCastException(const char* _cast_attempted, const char* _cast_needed, std::string msg) : 
+                IllegalCastException(const char* _cast_attempted, const char* _cast_needed, const std::string &msg) : 
                     RuntimeException("IllegalCastException", msg), _cast_attempted(_cast_attempted), _cast_needed(_cast_needed){
                     #ifdef AUTO_LOG_EXCEPTION_JPL
                          ::jpl::_logger::error(AbstractException::getStacktraceAsString());
                     #endif
                     }
                 IllegalCastException(const char* _cast_attempted, const char* _cast_needed) : IllegalCastException(_cast_attempted, _cast_needed, ""){}
-                IllegalCastException(std::string msg) : IllegalCastException("UNKNOWN" ,"UNKNOWN", msg){}
+                IllegalCastException(const std::string &msg) : IllegalCastException("UNKNOWN" ,"UNKNOWN", msg){}
                 IllegalCastException() : IllegalCastException(""){}
 
                 inline const char* what() const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW override{

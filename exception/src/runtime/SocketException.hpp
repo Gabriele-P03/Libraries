@@ -35,13 +35,13 @@ namespace jpl{
                 const unsigned int fd;
 
             public:
-                SocketException(const unsigned int fd, const unsigned int error_code, std::string msg) : RuntimeException("SocketException", msg), error_code(error_code), fd(fd){
+                SocketException(const unsigned int fd, const unsigned int error_code, const std::string &msg) : RuntimeException("SocketException", msg), error_code(error_code), fd(fd){
                     #ifdef AUTO_LOG_EXCEPTION_JPL
                          ::jpl::_logger::error(AbstractException::getStacktraceAsString());
                     #endif
                 }
                 SocketException(const unsigned int fd, const unsigned int error_code) : SocketException(fd, error_code, ""){
-                    std::string msg_s = jpl::_utils::_error::_GetLastErrorAsString(this->error_code); 
+                    const std::string &msg_s = jpl::_utils::_error::_GetLastErrorAsString(this->error_code); 
                     this->msg = new char[msg_s.size()];
                     memcpy((char*)this->msg, msg_s.c_str(), msg_s.size());
                 }

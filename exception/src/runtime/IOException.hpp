@@ -28,14 +28,14 @@ namespace jpl{
                 std::string description; 
 
             public:
-                IOException(unsigned int error_code, std::string description, std::string msg) : RuntimeException("IOException", msg), error_code(error_code), description(description){
+                IOException(unsigned int error_code, std::string description, const std::string &msg) : RuntimeException("IOException", msg), error_code(error_code), description(description){
                     #ifdef AUTO_LOG_EXCEPTION_JPL
                          ::jpl::_logger::error(AbstractException::getStacktraceAsString());
                     #endif
                 }
-                IOException(unsigned int error_code, std::string msg) : IOException(error_code,  _utils::_error::_GetLastErrorAsString(error_code), msg){}
+                IOException(unsigned int error_code, const std::string &msg) : IOException(error_code,  _utils::_error::_GetLastErrorAsString(error_code), msg){}
                 IOException(unsigned int error_code) : IOException(error_code, _utils::_error::_GetLastErrorAsString(error_code), ""){}
-                IOException(std::string msg) : IOException(_utils::_error::_GetLastError(), msg){}
+                IOException(const std::string &msg) : IOException(_utils::_error::_GetLastError(), msg){}
                 IOException() : IOException(_utils::_error::_GetLastError()){}
 
                 inline const char* what() const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW override{

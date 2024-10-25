@@ -20,7 +20,7 @@ namespace jpl{
         class PermissionException : public RuntimeException{
 
             public:
-                PermissionException(std::string msg) : RuntimeException("RuntimeException", msg){
+                PermissionException(const std::string &msg) : RuntimeException("RuntimeException", msg){
                     #ifdef AUTO_LOG_EXCEPTION_JPL
                          ::jpl::_logger::error(AbstractException::getStacktraceAsString());
                     #endif

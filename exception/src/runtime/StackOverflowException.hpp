@@ -22,7 +22,7 @@ namespace jpl{
 
 
             public:
-                StackOverflowException(std::string msg) :RuntimeException("StackOverflowException", msg){
+                StackOverflowException(const std::string &msg) :RuntimeException("StackOverflowException", msg){
                     #ifdef AUTO_LOG_EXCEPTION_JPL
                          ::jpl::_logger::error(AbstractException::getStacktraceAsString());
                     #endif

@@ -37,6 +37,15 @@ namespace jpl{
                     #endif
                 }
                 IllegalStateException() : IllegalStateException(""){}
+
+                IllegalStateException(const IllegalStateException &a) : RuntimeException(a){}
+
+                IllegalStateException& operator= (const IllegalStateException& a){
+                    RuntimeException::operator=(a);
+                    return *this;
+                }
+                
+                ~IllegalStateException() {}
         };
     }
 }

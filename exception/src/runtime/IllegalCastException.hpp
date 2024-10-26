@@ -24,21 +24,21 @@ namespace jpl{
                 /**
                  * The class which the field has been attempted to be cast to
                  */
-                const char* _cast_attempted;
+                std::string cast_attempted;
                 /**
                  * The class supplied
                  */
-                const char* _cast_needed;
+                std::string cast_needed;
             
             public:
 
-                IllegalCastException(const char* _cast_attempted, const char* _cast_needed, const std::string &msg) : 
-                    RuntimeException("IllegalCastException", msg), _cast_attempted(_cast_attempted), _cast_needed(_cast_needed){
+                IllegalCastException(const std::string &cast_attempted, const std::string &cast_needed, const std::string &msg) : 
+                    RuntimeException("IllegalCastException", msg), cast_attempted(cast_attempted), cast_needed(cast_needed){
                     #ifdef AUTO_LOG_EXCEPTION_JPL
                          ::jpl::_logger::error(AbstractException::getStacktraceAsString());
                     #endif
                     }
-                IllegalCastException(const char* _cast_attempted, const char* _cast_needed) : IllegalCastException(_cast_attempted, _cast_needed, ""){}
+                IllegalCastException(const std::string &cast_attempted, const std::string &cast_needed) : IllegalCastException(cast_attempted, cast_needed, ""){}
                 IllegalCastException(const std::string &msg) : IllegalCastException("UNKNOWN" ,"UNKNOWN", msg){}
                 IllegalCastException() : IllegalCastException(""){}
 
@@ -52,6 +52,21 @@ namespace jpl{
                     memcpy(c_buffer, buffer.c_str(), buffer.size());
                     return c_buffer;
                 }
+
+
+                IllegalCastException(const IllegalCastException &a) : RuntimeException(a){
+                    this->cast_needed = a.cast_needed;
+                    this->cast_attempted = a.cast_attempted;
+                }
+
+                IllegalCastException& operator= (const IllegalCastException& a){
+                    RuntimeException::operator=(a);
+                    this->cast_needed = a.cast_needed;
+                    this->cast_attempted = a.cast_attempted;
+                    return *this;
+                }
+                
+                ~IllegalCastException() {}
         };
     }
 }

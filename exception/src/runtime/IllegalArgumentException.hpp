@@ -28,6 +28,15 @@ namespace jpl{
                     #endif
                 }
                 IllegalArgumentException() : IllegalArgumentException(""){}
+
+                IllegalArgumentException(const IllegalArgumentException &a) : RuntimeException(a){}
+
+                IllegalArgumentException& operator= (const IllegalArgumentException& a){
+                    RuntimeException::operator=(a);
+                    return *this;
+                }
+                
+                ~IllegalArgumentException() {}
         };
     }
 }

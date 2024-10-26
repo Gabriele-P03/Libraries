@@ -27,6 +27,13 @@ namespace jpl{
                 }
                 PermissionException() : PermissionException(""){}
 
+                PermissionException(const PermissionException &a) : RuntimeException(a){}
+
+                PermissionException& operator= (const PermissionException& a){
+                    RuntimeException::operator=(a);
+                }
+                
+                ~PermissionException() {}
         };
     }
 }

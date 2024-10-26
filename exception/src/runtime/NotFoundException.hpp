@@ -29,6 +29,13 @@ namespace jpl{
                 }
                 NotFoundException() : NotFoundException(""){}
 
+                NotFoundException(const NotFoundException &a) : RuntimeException(a){}
+
+                NotFoundException& operator= (const NotFoundException& a){
+                    RuntimeException::operator=(a);
+                }
+                
+                ~NotFoundException() {}
         };
     }
 }

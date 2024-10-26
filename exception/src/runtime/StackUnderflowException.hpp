@@ -27,6 +27,14 @@ namespace jpl{
                     #endif
                 }
                 StackUnderflowException() : StackUnderflowException(""){}
+
+                StackUnderflowException(const StackUnderflowException &a) : RuntimeException(a){}
+
+                StackUnderflowException& operator= (const StackUnderflowException& a){
+                    RuntimeException::operator=(a);
+                }
+                
+                ~StackUnderflowException() {}
         };
     }
 }

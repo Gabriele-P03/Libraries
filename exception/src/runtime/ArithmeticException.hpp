@@ -30,6 +30,15 @@ namespace jpl{
                     #endif
                 }
                 ArithmeticException() : ArithmeticException(""){}
+
+                ArithmeticException(const ArithmeticException &a) : RuntimeException(a){}
+
+                ArithmeticException& operator= (const ArithmeticException& a){
+                    RuntimeException::operator=(a);
+                    return *this;
+                }
+                
+                ~ArithmeticException() {}
         };
     }
 }

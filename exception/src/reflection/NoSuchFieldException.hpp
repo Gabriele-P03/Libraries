@@ -31,6 +31,15 @@ namespace jpl{
                     #endif
                 }
                 NoSuchFieldException() : NoSuchFieldException(""){}
+
+                NoSuchFieldException(const NoSuchMethodException &a) : AbstractException(a){}
+
+                NoSuchFieldException& operator= (const NoSuchFieldException& a){
+                    AbstractException::operator=(a);
+                    return *this;
+                }
+                
+                ~NoSuchFieldException() {}
         };
     }
 }

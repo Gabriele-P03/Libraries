@@ -32,6 +32,14 @@ namespace jpl{
                 }
                 IllegalAccessException() : IllegalAccessException(""){}
 
+                IllegalAccessException(const IllegalAccessException &a) : AbstractException(a){}
+
+                IllegalAccessException& operator= (const IllegalAccessException& a){
+                    AbstractException::operator=(a);
+                    return *this;
+                }
+                
+                ~IllegalAccessException() {}
         };
     }
 }

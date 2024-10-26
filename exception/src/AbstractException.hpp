@@ -64,17 +64,29 @@
                      * It is a description of what has just happened. For some exception it may be a template
                      * of stuff (usually when constructor does not need any msg)
                      */
-                    const std::string msg;   
+                    std::string msg;   
 
                     #ifdef USE_STACKTRACE_W_EXCEPTION_JPL
                         _utils::_debug::Stacktrace* stacktrace;
                     #endif
 
-                    AbstractException(std::string type_ex, unsigned long skip) : AbstractException(type_ex, "", skip){}
-                    AbstractException(std::string type_ex, const std::string &msg, unsigned long skip) : type_ex(type_ex), msg(msg){
+                    AbstractException(const std::string &type_ex, unsigned long skip) : AbstractException(type_ex, "", skip){}
+                    AbstractException(const std::string &type_ex, const std::string &msg, unsigned long skip){
+                        this->type_ex = type_ex;
+                        this->msg = msg;
                         #ifdef USE_STACKTRACE_W_EXCEPTION_JPL
                             this->stacktrace = _utils::_debug::getStacktrace(skip, 2048);
                         #endif
+                    }
+
+                    AbstractException(const AbstractException &a){
+                        this->msg = a.msg;
+                        this->type_ex = type_ex;
+                    }
+
+                    AbstractException& operator= (const AbstractException& a){
+                        this->msg = a.msg;
+                        this->type_ex = type_ex;
                     }
                     
                     
@@ -125,6 +137,10 @@
                         delete[] buffer;
 
                         return os;
+                    }
+
+                    ~AbstractException(){
+
                     }
             };
         }

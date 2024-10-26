@@ -28,6 +28,13 @@ namespace jpl{
                 }
                 OutOfMemoryException() : OutOfMemoryException(""){}
 
+                OutOfMemoryException(const OutOfMemoryException &a) : RuntimeException(a){}
+
+                OutOfMemoryException& operator= (const OutOfMemoryException& a){
+                    RuntimeException::operator=(a);
+                }
+                
+                ~OutOfMemoryException() {}
         };
     }
 }

@@ -31,6 +31,16 @@ namespace jpl{
                     #endif
                 }
                 NoSuchMethodException() : NoSuchMethodException(""){}
+
+
+                NoSuchMethodException(const NoSuchMethodException &a) : AbstractException(a){}
+
+                NoSuchMethodException& operator= (const NoSuchMethodException& a){
+                    AbstractException::operator=(a);
+                    return *this;
+                }
+                
+                ~NoSuchMethodException() {}
         };
     }
 }

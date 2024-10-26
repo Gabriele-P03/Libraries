@@ -23,10 +23,6 @@ namespace jpl{
 
             private:
                 /**
-                 * the list which the operation had been performed on
-                 */
-                const char* _object;
-                /**
                  * size of list
                  */
                 const unsigned int max;
@@ -57,6 +53,14 @@ namespace jpl{
                     strcpy(c_buffer, buffer.c_str());
                     return c_buffer;
                 }
+                                
+                IndexOutOfBoundsException(const IndexOutOfBoundsException &a) : RuntimeException(a){}
+
+                IndexOutOfBoundsException& operator= (const IndexOutOfBoundsException& a){
+                    RuntimeException::operator=(a);
+                }
+                
+                ~IndexOutOfBoundsException() {}
         };
     }
 }

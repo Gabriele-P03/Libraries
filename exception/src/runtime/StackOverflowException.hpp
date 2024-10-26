@@ -29,6 +29,14 @@ namespace jpl{
                 }
                 StackOverflowException() :StackOverflowException(""){}
 
+                StackOverflowException(const StackUnderflowException &a) : RuntimeException(a){}
+
+                StackOverflowException& operator= (const StackOverflowException& a){
+                    RuntimeException::operator=(a);
+                }
+                
+                ~StackOverflowException() {}
+
         };
     }
 }

@@ -28,7 +28,7 @@ namespace jpl{
                 std::string description; 
 
             public:
-                IOException(unsigned int error_code, std::string description, const std::string &msg) : RuntimeException("IOException", msg), error_code(error_code), description(description){
+                IOException(unsigned int error_code, const std::string &description, const std::string &msg) : RuntimeException("IOException", msg), error_code(error_code), description(description){
                     #ifdef AUTO_LOG_EXCEPTION_JPL
                          ::jpl::_logger::error(AbstractException::getStacktraceAsString());
                     #endif
@@ -54,6 +54,15 @@ namespace jpl{
                     strcpy(c_buffer, buffer.c_str());
                     return c_buffer;
                 }
+
+
+                IOException(const IOException &a) : RuntimeException(a){}
+
+                IOException& operator= (const IOException& a){
+                    RuntimeException::operator=(a);
+                }
+                
+                ~IOException() {}
         };
     }
 }

@@ -59,6 +59,14 @@ namespace jpl{
                     return c_buffer;
                 }
 
+                SocketException(const SocketException &a) : RuntimeException(a){}
+
+                SocketException& operator= (const SocketException& a){
+                    RuntimeException::operator=(a);
+                }
+                
+                ~SocketException() {}
+
         };
     }
 }

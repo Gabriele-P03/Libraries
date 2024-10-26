@@ -30,6 +30,14 @@ namespace jpl{
                 }
                 NullPointerException() : NullPointerException(""){}
 
+                NullPointerException(const NullPointerException &a) : RuntimeException(a){}
+
+                NullPointerException& operator= (const NullPointerException& a){
+                    RuntimeException::operator=(a);
+                }
+                
+                ~NullPointerException() {}
+
         };
     }
 }

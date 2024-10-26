@@ -28,6 +28,15 @@ namespace jpl{
                     #endif
                 }
                 FileNotFoundException() : FileNotFoundException(""){}
+
+                FileNotFoundException(const FileNotFoundException &a) : RuntimeException(a){}
+
+                FileNotFoundException& operator= (const FileNotFoundException& a){
+                    RuntimeException::operator=(a);
+                    return *this;
+                }
+                
+                ~FileNotFoundException() {}
         };
     }
 }

@@ -20,8 +20,8 @@ namespace jpl{
         class RuntimeException : public AbstractException{
 
             protected:
-                RuntimeException(std::string type_ex, const std::string &msg, unsigned long skip) : AbstractException(type_ex, msg, skip+1){}
-                RuntimeException(std::string type_ex, const std::string &msg) : AbstractException(type_ex, msg, 2){} //2 skips
+                RuntimeException(const std::string &type_ex, const std::string &msg, unsigned long skip) : AbstractException(type_ex, msg, skip+1){}
+                RuntimeException(const std::string &type_ex, const std::string &msg) : AbstractException(type_ex, msg, 2){} //2 skips
 
             public:
                 RuntimeException(const std::string &msg) : RuntimeException("RuntimeException", msg){
@@ -34,6 +34,14 @@ namespace jpl{
                         ::jpl::_logger::error(AbstractException::getStacktraceAsString());
                     #endif
                 }
+
+                RuntimeException(const AbstractException &a) : AbstractException(a){}
+
+                RuntimeException& operator= (const RuntimeException& a){
+                    AbstractException::operator=(a);
+                }
+                
+                ~RuntimeExcepyion() {}
 
         };
     }

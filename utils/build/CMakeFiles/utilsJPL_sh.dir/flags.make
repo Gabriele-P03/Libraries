@@ -6,5 +6,5 @@ CXX_DEFINES = -DAUTO_LOG_EXCEPTION_JPL -DUSE_STACKTRACE_W_EXCEPTION_JPL -DutilsJ
 
 CXX_INCLUDES = -I/home/gabriele/JPL/utils/CPLUS_INCLUDE_PATH -I/home/gabriele/JPL/utils/C_INCLUDE_PATH
 
-CXX_FLAGS = -std=gnu++23 -fPIC
+CXX_FLAGS = -g -std=gnu++23 -fPIC
 

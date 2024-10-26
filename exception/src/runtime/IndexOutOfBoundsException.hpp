@@ -25,11 +25,11 @@ namespace jpl{
                 /**
                  * size of list
                  */
-                const unsigned int max;
+                unsigned int max;
                 /**
                  * the index attempted
                  */
-                const unsigned int attempted;
+                unsigned int attempted;
 
 
             public:
@@ -54,10 +54,12 @@ namespace jpl{
                     return c_buffer;
                 }
                                 
-                IndexOutOfBoundsException(const IndexOutOfBoundsException &a) : RuntimeException(a){}
+                IndexOutOfBoundsException(const IndexOutOfBoundsException &a) : IndexOutOfBoundsException(a.max, a.attempted, a.msg){}
 
                 IndexOutOfBoundsException& operator= (const IndexOutOfBoundsException& a){
                     RuntimeException::operator=(a);
+                    this->max = a.max;
+                    this->attempted = a.attempted;
                     return *this;
                 }
                 

@@ -8,6 +8,15 @@ jpl::_utils::_debug::Stacktrace::Stacktrace(unsigned long skipped, unsigned long
 }
 jpl::_utils::_debug::Stacktrace::Stacktrace(unsigned long skipped) : jpl::_utils::_debug::Stacktrace(skipped+1, MAX_STACKFRAMES_JPL){}
 jpl::_utils::_debug::Stacktrace::Stacktrace() : jpl::_utils::_debug::Stacktrace(1){}
+jpl::_utils::_debug::Stacktrace::Stacktrace(const jpl::_utils::_debug::Stacktrace& st){
+    this->maxSize = st.maxSize;
+    this->size = st.size;
+    this->skipped = st.skipped;
+    this->frames = new jpl::_utils::_collections::_list::LinkedList<jpl::_utils::_debug::Frame*>(st.frames->getSize());
+    for(size_t i = 0; i < st.frames->getSize(); i++){
+        this->frames->add(new jpl::_utils::_debug::Frame(st.getFrameAt(i)));
+    }
+}
 
 const jpl::_utils::_debug::Frame jpl::_utils::_debug::Stacktrace::getFrameAt(unsigned long i) const{
     if(i >= this->size)
@@ -25,7 +34,6 @@ const unsigned long jpl::_utils::_debug::Stacktrace::getSkippedFrames() const{
 
 
 jpl::_utils::_debug::Stacktrace::~Stacktrace(){
-    this->frames->clear();
     delete this->frames;
 }
 

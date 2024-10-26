@@ -44,8 +44,8 @@ namespace jpl{
 
                 inline const char* what() const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW override{
                     std::string buffer = 
-                        std::string(this->type_ex) + " Attempted Cast: " + std::string(this->_cast_attempted) +
-                                                     " Required Cast: " + std::string(this->_cast_needed) + 
+                        std::string(this->type_ex) + " Attempted Cast: " + std::string(this->cast_attempted) +
+                                                     " Required Cast: " + std::string(this->cast_needed) + 
                                                      " " + std::string(this->msg);
 
                     char* c_buffer = new char[buffer.size()];

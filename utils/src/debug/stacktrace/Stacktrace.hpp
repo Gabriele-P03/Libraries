@@ -45,6 +45,7 @@
                         Stacktrace(unsigned long skipped, unsigned long maxSize);
                         Stacktrace(unsigned long skipped);
                         Stacktrace();
+                        Stacktrace(const Stacktrace &st);
 
                         const _collections::_list::LinkedList<_debug::Frame*>* getFrames() const;
                         const unsigned long getSkippedFrames() const;
@@ -68,9 +69,14 @@
                         }
                 
                         ~Stacktrace();
+
+                        Stacktrace& operator= (const Stacktrace &st) = delete;
                 };
 
                 Stacktrace* getStacktrace(unsigned long skipped, unsigned long maxFrame);
+                Stacktrace* copy_st(const Stacktrace& st){
+                    return new Stacktrace(st);
+                }
                 std::string stktrc_str(const Stacktrace* stacktrace);
             }
         }

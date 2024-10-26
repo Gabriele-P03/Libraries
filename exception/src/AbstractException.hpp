@@ -20,6 +20,7 @@
         namespace _utils{
             namespace _debug{
                 class Stacktrace;
+                extern Stacktrace* copy_st(const Stacktrace& st);
                 extern Stacktrace* getStacktrace(unsigned long skipped, unsigned long maxFrame);
                 extern std::string stktrc_str(const Stacktrace* stacktrace);
             }
@@ -83,7 +84,7 @@
                         this->msg = a.msg;
                         this->type_ex = type_ex;
                         #ifdef USE_STACKTRACE_W_EXCEPTION_JPL
-                            this->stacktrace = new _utils::_debug::Stacktrace(*a.stacktrace);
+                            this->stacktrace = _utils::_debug::copy_st(*a.stacktrace);
                         #endif
                     }
 
@@ -91,7 +92,7 @@
                         this->msg = a.msg;
                         this->type_ex = type_ex;
                         #ifdef USE_STACKTRACE_W_EXCEPTION_JPL
-                            this->stacktrace = new _utils::_debug::Stacktrace(*a.stacktrace);
+                            this->stacktrace = _utils::_debug::copy_st(*a.stacktrace);
                         #endif
                         return *this;
                     }

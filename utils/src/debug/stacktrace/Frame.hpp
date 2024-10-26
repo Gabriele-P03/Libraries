@@ -22,6 +22,10 @@ namespace jpl{
                     frame_valid(true), line(line), function_name(function_name), address(address), file_name(file_name){}
                 
                 Frame() : frame_valid(false), line(0), function_name(""), address(""), file_name(""){}
+
+                Frame(const Frame& frame) : Frame(frame.line, frame.function_name, frame.address, frame.file_name){
+
+                }
                 
                 Frame& operator=(const Frame& frame){
                     *const_cast<bool*>(&this->frame_valid) = frame.frame_valid;
@@ -31,6 +35,8 @@ namespace jpl{
                     *const_cast<std::string*>(&this->file_name) = frame.file_name;
                     return *this;
                 }
+
+                ~Frame(){}
             };
         }
     }

@@ -98,6 +98,8 @@ namespace jpl{
                     void setMultiTable(bool multiTable) noexcept{this->multiTable = multiTable;}
 
                     const char* const getSeparator() const noexcept {return this->separator;}
+
+                    ~CSVParser();
             };
         }
     }

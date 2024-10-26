@@ -6,7 +6,20 @@ using namespace _utils;
 using namespace _collections;
 
 
+void z(){
+throw new _exception::RuntimeException("Prova diu Prova diu Prova diu Prova diu Prova diu Prova diuProva diu");
+}
+
+void y(){
+    z();
+}
+
+void x(){
+    y();
+}
+
+
 int main(){
 
-    throw new _exception::IllegalStateException("Prova diu Prova diu Prova diu Prova diu Prova diu Prova diuProva diu Prova diu Prova diu Prova diu ");
+    x();
 }

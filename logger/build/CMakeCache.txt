@@ -246,9 +246,6 @@ LoggerJPL_IS_TOP_LEVEL:STATIC=ON
 LoggerJPL_SOURCE_DIR:STATIC=/home/gabriele/JPL/logger
 
 //No help, variable specified on the command line.
-UFW_LOGGER_JPL:UNINITIALIZED=true
-
-//No help, variable specified on the command line.
 USE_STACKTRACE_W_EXCEPTION_JPL:UNINITIALIZED=true
 
 
@@ -265,9 +262,9 @@ CMAKE_CACHEFILE_DIR:INTERNAL=/home/gabriele/JPL/logger/build
 //Major version of cmake used to create the current loaded cache
 CMAKE_CACHE_MAJOR_VERSION:INTERNAL=3
 //Minor version of cmake used to create the current loaded cache
-CMAKE_CACHE_MINOR_VERSION:INTERNAL=27
+CMAKE_CACHE_MINOR_VERSION:INTERNAL=28
 //Patch version of cmake used to create the current loaded cache
-CMAKE_CACHE_PATCH_VERSION:INTERNAL=4
+CMAKE_CACHE_PATCH_VERSION:INTERNAL=3
 //ADVANCED property for variable: CMAKE_COLOR_MAKEFILE
 CMAKE_COLOR_MAKEFILE-ADVANCED:INTERNAL=1
 //Path to CMake executable.
@@ -368,7 +365,7 @@ CMAKE_RANLIB-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_READELF
 CMAKE_READELF-ADVANCED:INTERNAL=1
 //Path to CMake installation.
-CMAKE_ROOT:INTERNAL=/usr/share/cmake-3.27
+CMAKE_ROOT:INTERNAL=/usr/share/cmake-3.28
 //ADVANCED property for variable: CMAKE_SHARED_LINKER_FLAGS
 CMAKE_SHARED_LINKER_FLAGS-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_SHARED_LINKER_FLAGS_DEBUG

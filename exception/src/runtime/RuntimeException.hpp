@@ -42,7 +42,7 @@ namespace jpl{
                     return *this;
                 }
                 
-                ~RuntimeExcepyion() {}
+                ~RuntimeException() {}
 
         };
     }

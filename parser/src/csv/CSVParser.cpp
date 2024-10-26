@@ -2,8 +2,9 @@
 
 jpl::_parser::_csv::CSVParser::CSVParser() : jpl::_parser::_csv::CSVParser(";") {}
 jpl::_parser::_csv::CSVParser::CSVParser(const char* separator) : separator(separator){
-    if(separator == nullptr)
-        throw new jpl::_exception::IllegalArgumentException("Char separator is nullptr");
+    if(separator == nullptr){
+        throw jpl::_exception::IllegalArgumentException("Char separator is nullptr");
+    }
     this->multiTable = false;
 }
 
@@ -137,4 +138,9 @@ void jpl::_parser::_csv::CSVParser::parseData(std::istream* is){
             }
         }
     }
+}
+
+jpl::_parser::_csv::CSVParser::~CSVParser(){
+    delete this->separator;
+    this->tables.clear();
 }

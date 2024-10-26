@@ -13,6 +13,8 @@ set(CMAKE_CXX_STANDARD 23)
 message("Compiling Utils v: " ${UTILS_VERSION_JPL})
 message("Compiling with Cxx v: " ${CMAKE_CXX_STANDARD})
 
+set(CMAKE_BUILD_TYPE Debug) 
+
 set(FIRST_CALL_ADD_LIBRARY_SH TRUE)
 set(FIRST_CALL_ADD_LIBRARY_ST TRUE)
 set(STRING_UTILS_CPP TRUE)

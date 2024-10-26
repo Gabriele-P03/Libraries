@@ -7,9 +7,12 @@ jpl::_utils::_collections::_list::LinkedList<jpl::_utils::_debug::Frame*>* jpl::
                     jpl::_utils::_collections::_list::LinkedList<Frame*> *frames = new jpl::_utils::_collections::_list::LinkedList<Frame*>();
                     void* buffer[maxSize]; 
                     //Retrieve the stacktrace 
+                    std::cout<<"x1";
                     int size = backtrace(buffer, maxSize);
+                    std::cout<<"x2";
                     //Translate symbols
                     char** c_c_buffer = backtrace_symbols(buffer, size);
+                    std::cout<<"x3";
                     //If it could not translate them, the vector is filled with size invalid frame
                     if(c_c_buffer == NULL){
                         for(size_t i = 0; i < size; i++)

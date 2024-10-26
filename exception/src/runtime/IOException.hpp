@@ -24,7 +24,7 @@ namespace jpl{
         class IOException : public RuntimeException{
 
             protected:
-                const unsigned int error_code;
+                unsigned int error_code;
                 std::string description; 
 
             public:
@@ -56,10 +56,12 @@ namespace jpl{
                 }
 
 
-                IOException(const IOException &a) : RuntimeException(a){}
+                IOException(const IOException &a) : IOException(a.error_code, std::string(a.description), std::string(a.msg)){}
 
                 IOException& operator= (const IOException& a){
                     RuntimeException::operator=(a);
+                    this->error_code = a.error_code;
+                    this->description = a.description;
                     return *this;
                 }
                 

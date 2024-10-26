@@ -60,6 +60,7 @@ namespace jpl{
 
                 IOException& operator= (const IOException& a){
                     RuntimeException::operator=(a);
+                    return *this;
                 }
                 
                 ~IOException() {}

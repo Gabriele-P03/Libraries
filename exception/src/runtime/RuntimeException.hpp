@@ -39,6 +39,7 @@ namespace jpl{
 
                 RuntimeException& operator= (const RuntimeException& a){
                     AbstractException::operator=(a);
+                    return *this;
                 }
                 
                 ~RuntimeExcepyion() {}

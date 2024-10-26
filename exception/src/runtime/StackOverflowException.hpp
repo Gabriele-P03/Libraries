@@ -33,6 +33,7 @@ namespace jpl{
 
                 StackOverflowException& operator= (const StackOverflowException& a){
                     RuntimeException::operator=(a);
+                    return *this;
                 }
                 
                 ~StackOverflowException() {}

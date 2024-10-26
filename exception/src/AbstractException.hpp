@@ -82,11 +82,18 @@
                     AbstractException(const AbstractException &a){
                         this->msg = a.msg;
                         this->type_ex = type_ex;
+                        #ifdef USE_STACKTRACE_W_EXCEPTION_JPL
+                            this->stacktrace = new _utils::_debug::Stacktrace(*a.stacktrace);
+                        #endif
                     }
 
                     AbstractException& operator= (const AbstractException& a){
                         this->msg = a.msg;
                         this->type_ex = type_ex;
+                        #ifdef USE_STACKTRACE_W_EXCEPTION_JPL
+                            this->stacktrace = new _utils::_debug::Stacktrace(*a.stacktrace);
+                        #endif
+                        return *this;
                     }
                     
                     
@@ -140,7 +147,9 @@
                     }
 
                     ~AbstractException(){
-
+                        #ifdef USE_STACKTRACE_W_EXCEPTION_JPL
+                            delete this->stacktrace;
+                        #endif
                     }
             };
         }

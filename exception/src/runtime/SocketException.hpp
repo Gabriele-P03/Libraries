@@ -63,6 +63,7 @@ namespace jpl{
 
                 SocketException& operator= (const SocketException& a){
                     RuntimeException::operator=(a);
+                    return *this;
                 }
                 
                 ~SocketException() {}

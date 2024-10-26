@@ -34,6 +34,7 @@ namespace jpl{
 
                 NullPointerException& operator= (const NullPointerException& a){
                     RuntimeException::operator=(a);
+                    return *this;
                 }
                 
                 ~NullPointerException() {}

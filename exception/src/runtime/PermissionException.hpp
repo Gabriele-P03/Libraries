@@ -31,6 +31,7 @@ namespace jpl{
 
                 PermissionException& operator= (const PermissionException& a){
                     RuntimeException::operator=(a);
+                    return *this;
                 }
                 
                 ~PermissionException() {}

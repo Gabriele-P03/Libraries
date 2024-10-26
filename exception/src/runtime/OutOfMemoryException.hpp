@@ -32,6 +32,7 @@ namespace jpl{
 
                 OutOfMemoryException& operator= (const OutOfMemoryException& a){
                     RuntimeException::operator=(a);
+                    return *this;
                 }
                 
                 ~OutOfMemoryException() {}

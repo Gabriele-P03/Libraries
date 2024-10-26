@@ -58,6 +58,7 @@ namespace jpl{
 
                 IndexOutOfBoundsException& operator= (const IndexOutOfBoundsException& a){
                     RuntimeException::operator=(a);
+                    return *this;
                 }
                 
                 ~IndexOutOfBoundsException() {}

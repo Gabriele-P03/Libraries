@@ -33,6 +33,7 @@ namespace jpl{
 
                 NotFoundException& operator= (const NotFoundException& a){
                     RuntimeException::operator=(a);
+                    return *this;
                 }
                 
                 ~NotFoundException() {}

@@ -33,12 +33,9 @@
         #ifndef USE_STACKTRACE_W_EXCEPTION_JPL
             #error "Exception auto-logging is available only through  USE_STACKTRACE_W_EXCEPTION_JPL macro. Define it!"
         #endif
-        #if !defined(LOGGER_WRAPPER_JPL) && !defined(LOGGER_JPL)
-            #error "Either Logger or LoggerWrapper must be included before Exception if you wanna auto-log 'em"
-        #endif 
         namespace jpl{
             namespace _logger{
-                void error(const std::string &msg);
+                extern void error(const std::string &msg);  //Defined building LoggerWrapper;
             }
         }
     #endif

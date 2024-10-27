@@ -7,7 +7,7 @@ using namespace _collections;
 
 
 void z(){
-throw new _exception::RuntimeException("Prova diu Prova diu Prova diu Prova diu Prova diu Prova diuProva diu");
+throw _exception::RuntimeException("Prova diu Prova diu Prova diu Prova diu Prova diu Prova diuProva diu");
 }
 
 void y(){

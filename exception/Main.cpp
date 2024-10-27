@@ -5,7 +5,7 @@
 
 void f(){
     
-    throw new jpl::_exception::IllegalStateException("Prova");
+    throw jpl::_exception::IllegalStateException("Prova");
 }
 
 int main(){

@@ -95,7 +95,7 @@
                         unsigned int _err = _error::_GetLastError();
                         switch (_err){
                             case 2:
-                                throw new _exception::FileNotFoundException(pathToFile.c_str());
+                                throw _exception::FileNotFoundException(pathToFile.c_str());
                             break;
 
                             #ifdef __linux__
@@ -103,13 +103,13 @@
                             #elif _WIN32
                                 case 5:
                             #endif
-                                throw new _exception::PermissionException(
+                                throw _exception::PermissionException(
                                     std::string("Permission Needed to open " + pathToFile).c_str() 
                                     );
                             break;
                             
                         default:
-                            throw new _exception::RuntimeException(_error::_GetLastErrorAsString(_err).c_str());
+                            throw _exception::RuntimeException(_error::_GetLastErrorAsString(_err).c_str());
                         
                         }
                     }
@@ -170,7 +170,7 @@
                  */
                 inline void readFile(std::fstream* file, char* &buffer, unsigned long &_size){
                     if(!file){
-                        throw new _exception::IllegalArgumentException("File has not been opened yet");
+                        throw _exception::IllegalArgumentException("File has not been opened yet");
                     }else{
                         //Store the length of the file in order to create the right sized buffer
                         file->seekg(0, file->end);
@@ -183,7 +183,7 @@
                         if(file->read(buffer, _size)){
                             buffer[_size] = '\0';
                         }else{
-                            throw new _exception::RuntimeException("File could not be fully read");
+                            throw _exception::RuntimeException("File could not be fully read");
                             _size = file->tellg();
                             buffer = (char*)realloc(buffer, _size);
                         }

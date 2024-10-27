@@ -10,7 +10,7 @@
  *  
  *  void foo(){
  *      if(!flag){
- *          throw new IllegalStateException()
+ *          throw IllegalStateException()
  *      }
  *  }
  * 

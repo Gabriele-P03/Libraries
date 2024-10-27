@@ -27,7 +27,7 @@
 
 <para>The foo() function must be called after have set flag as true, then:</para>
 
-<para>void foo(){ if(!flag){ throw new IllegalStateException() } }</para>
+<para>void foo(){ if(!flag){ throw IllegalStateException() } }</para>
 
 <para><formalpara><title>Date</title>
 

@@ -3974,7 +3974,7 @@ Detailed Description\par
 An IllegalStateException is thrown whenever any function is called at a bad time, i.e. wheter an another function had to be called before the one which threw this exception\par
 e.g.\par
 The foo() function must be called after have set flag as true, then:\par
-void foo()\{ if(!flag)\{ throw new IllegalStateException() \} \}\par
+void foo()\{ if(!flag)\{ throw IllegalStateException() \} \}\par
 {{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
 Date\par}\pard\plain \s81\li360\widctlpar\ql\adjustright \fs20\cgrid {\s17 \sa60 \sb30
 2023-04-22 \par

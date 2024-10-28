@@ -1,2 +1,0 @@
-/usr/bin/ar qc libloggerJPL.a CMakeFiles/loggerJPL_st.dir/src/Logger.cpp.o
-/usr/bin/ranlib libloggerJPL.a

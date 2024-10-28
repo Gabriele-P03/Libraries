@@ -1,1 +1,0 @@
-g++ -fPIC -shared -Wl,-soname,libloggerJPL.so.1.0.0 -o libloggerJPL.so.1.0.0 CMakeFiles/loggerJPL_sh.dir/src/Logger.cpp.o 

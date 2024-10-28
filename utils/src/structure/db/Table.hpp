@@ -66,6 +66,18 @@ namespace jpl{
                     void removeTuples(_list::ArrayList<Tuple*> tuples);
                     void removeTuplesIf(_functional::Predicate<Tuple*> predicate);
 
+                    /**
+                     * This getter is used as a read-only mode of tuple
+                     * @throw IndexOutOfBoundsException if i is gretaer or equals than 
+                     * @return the const pointer to the i-th tuple of this table
+                     */
+                    inline const Tuple* const getTuple(size_t i) const{
+                            if(i >= this->tuples->getSize())
+                                throw jpl::_exception::IndexOutOfBoundsException(this->tuples->getSize(), i);
+                            const jpl::_utils::_collections::Tuple* const tuple = this->tuples->get(i);
+                            return tuple;
+                    }
+
 
                     std::string getName() const noexcept{return this->name;}
                     bool isEditableTuple() const noexcept{return this->editableTuple;}

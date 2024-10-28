@@ -1,4 +1,0 @@
-/home/gabriele/JPL/logger/build/CMakeFiles/loggerJPL_sh.dir
-/home/gabriele/JPL/logger/build/CMakeFiles/loggerJPL_st.dir
-/home/gabriele/JPL/logger/build/CMakeFiles/edit_cache.dir
-/home/gabriele/JPL/logger/build/CMakeFiles/rebuild_cache.dir

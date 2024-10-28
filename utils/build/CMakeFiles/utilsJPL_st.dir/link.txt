@@ -1,2 +1,0 @@
-/usr/bin/ar qc libutilsJPL.a CMakeFiles/utilsJPL_st.dir/src/debug/stacktrace/wrapper/StacktraceWrapper.cpp.o CMakeFiles/utilsJPL_st.dir/src/debug/stacktrace/Stacktrace.cpp.o CMakeFiles/utilsJPL_st.dir/src/debug/Profiler.cpp.o CMakeFiles/utilsJPL_st.dir/src/StringUtils.cpp.o CMakeFiles/utilsJPL_st.dir/src/structure/db/Table.cpp.o CMakeFiles/utilsJPL_st.dir/src/structure/db/TableWrapper.cpp.o CMakeFiles/utilsJPL_st.dir/src/structure/db/columns/Column.cpp.o
-/usr/bin/ranlib libutilsJPL.a

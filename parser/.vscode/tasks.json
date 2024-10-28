@@ -7,6 +7,8 @@
             "args": [
                 "-ggdb",
                 "-std=c++23",
+                "-DAUTO_LOG_EXCEPTION_JPL",
+                "-DUSE_STACKTRACE_W_EXCEPTION_JPL",
                 "${workspaceFolder}/Main.cpp",
                 "${workspaceFolder}/src/csv/CSVParser.cpp",
                 "-lutilsJPL",

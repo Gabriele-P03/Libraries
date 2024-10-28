@@ -55,8 +55,9 @@ namespace jpl{
                     const char* const separator;
                     _utils::_collections::_list::LinkedList<_utils::_collections::Table*> tables;
                     bool multiTable;
+                    size_t size;
 
-                    void parseHeader(std::string header);
+                    void parseHeader(const std::string &header);
 
                     /**
                      * @param is 
@@ -65,6 +66,27 @@ namespace jpl{
                      * @throw CSVParsingException if any error during parsing occurs
                      */
                     void parseData(std::istream* is);
+
+                    /**
+                     * Check if there is at least one mandatory column
+                     * 
+                     * @param table
+                     * @param iStart index+1 of the last column read
+                     * 
+                     * @throw IllegalArgumentException if table is nullptr
+                     * @throw IndexOutOfBoundsException if iStart is greater or equals than table's columns size 
+                     * @throw CSVParsingException if a mandatory column is found
+                     */
+                    void checkMissingMandatoryColumns(_utils::_collections::Table* table, size_t iStart) const;
+
+                    /**
+                     * From iStart to tables' size, it calls checkMissingMandatoryColumns(Table*, size_t) on each i-th table
+                     * 
+                     * @param iStart
+                     * @throw CSVParsingException if the i-th table has a mandatory column
+                     * @throw IndexOutOfBoundsException if iStart is greater or equals than table's columns size
+                     */
+                    void checkMissingMandatoryColumnsPerTables(size_t iStart) const;
                 public:
 
                     /**
@@ -98,6 +120,23 @@ namespace jpl{
                     void setMultiTable(bool multiTable) noexcept{this->multiTable = multiTable;}
 
                     const char* const getSeparator() const noexcept {return this->separator;}
+
+                    
+                    /**
+                     * Write the given CSVParser's tables instance into os
+                     * 
+                     * @param os
+                     * @param csv 
+                     * 
+                     * @throw IllegalArgumentException if os is nullptr
+                     * @throw IllegalArgumentException if csv is nullptr
+                     */
+                    static void write(std::ostream* os, const CSVParser* const csv);
+
+                    /**
+                     * @return the amount of tuples cluster stored into the current CSV instance
+                     */
+                    inline size_t getSize() const noexcept {return this->size;}
 
                     ~CSVParser();
             };

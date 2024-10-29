@@ -117,28 +117,27 @@ void jpl::_parser::_csv::CSVParser::parseData(std::istream* is){
         }
         size_t endValue;
         jpl::_utils::_collections::_list::ArrayList<std::string>* values = new jpl::_utils::_collections::_list::ArrayList<std::string>(table->getColumnsSize());
+        
         jpl::_utils::_collections::Tuple* tuple = new jpl::_utils::_collections::Tuple(table->getTuplesSize(), values);
         table->addTuple(tuple);
         size_t j = 0;
-        bool flag = true;
-        do{
+        for(size_t n = 0; n < table->getColumnsSize(); n++){
             endValue = line.find(this->separator);
             if(endValue == std::string::npos){
-                flag = false;
                 endValue = line.size();
             }
             std::string value = line.substr(0, endValue);
-            if(flag){
-                line = line.erase(0, endValue+1);
-            }
             if(value.empty()){//Empty value, it checks if column is mandatory
                 jpl::_utils::_collections::AbstractColumn* col = table->getColumn(j);
                 if(col->isMandatory()){
                     throw jpl::_parser::_csv::_exception::CSVParsingException(col->getName() + " column is mandatory");
                 }
+                value = "";
+            }else{
+                line = line.erase(0, endValue+1);
             }
             jpl::_utils::_collections::TableWrapper::setSmartValue(table, table->getTuplesSize()-1, j++, value);
-        }while(flag);
+        }
         if(j != table->getColumnsSize()){   //Once line is completely parsed, it checks if there are any missing mandatory columns
             this->checkMissingMandatoryColumns(table, j);
         }
@@ -217,6 +216,7 @@ void jpl::_parser::_csv::CSVParser::write(std::ostream* os, const jpl::_parser::
                 os->write("\n", 1);
             }
         }
-        os->write("\n", 1);
+        if(i < csv->size-1)
+            os->write("\n", 1);
     }
 }

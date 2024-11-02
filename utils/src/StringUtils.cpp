@@ -1,6 +1,6 @@
 #include "StringUtils.hpp"
 
-jpl::_utils::_collections::_list::LinkedList<std::string>* jpl::_utils::_string::split(std::string src, std::regex regex){
+jpl::_utils::_collections::_list::LinkedList<std::string>* jpl::_utils::_string::split(const std::string &src, const std::regex& regex){
     jpl::_utils::_collections::_list::LinkedList<std::string>* vec = new jpl::_utils::_collections::_list::LinkedList<std::string>();
     auto word_begin = std::sregex_token_iterator(src.begin(), src.end(), regex, -1);
     auto word_end = std::sregex_token_iterator();
@@ -12,7 +12,7 @@ jpl::_utils::_collections::_list::LinkedList<std::string>* jpl::_utils::_string:
 }
 
 
-size_t jpl::_utils::_string::getIndexGroupOver(std::string src, std::regex o, std::regex c){
+size_t jpl::_utils::_string::getIndexGroupOver(std::string src, const std::regex &o, const std::regex &c){
     size_t i = 0, count = 0;
     do{
         jpl::_utils::_string::RegexMatch ms = jpl::_utils::_string::findFirstOf(src, o);

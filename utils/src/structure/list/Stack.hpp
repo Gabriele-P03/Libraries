@@ -177,7 +177,7 @@ namespace jpl{
                         virtual void clear() noexcept override{
                             for(unsigned long i = 0; i < this->size; i++)
                                 this->pop();
-                            this->max=0:
+                            this->max=0;
                             this->size=0;
                         }
                         /**

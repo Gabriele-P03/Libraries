@@ -24,6 +24,8 @@ namespace jpl{
              */
             static void parseHeaderAttribute(std::string &buffer, std::string nameAttribute, std::string &attributeOut);
 
+            static void parseHeaders(const RootElement* root);
+
             static void parseElement(std::string &buffer, Element* element, unsigned short tabs);
             static void parseAttributes(std::string buffer, Element* element);
 
@@ -32,9 +34,9 @@ namespace jpl{
              * @param name
              * @throw XMLValidationException if name does not respect XML Syntax
              */
-            void validateName(std::string name);
+            extern void validateName(const std::string &name);
 
-            RootElement* parse(std::string buffer);
+            RootElement* parse(std::istream &is);
         }
     }
 }

@@ -1,7 +1,11 @@
 #include "XMLUtils.hpp"
 
-jpl::_parser::_xml::RootElement* jpl::_parser::_xml::parse(std::string buffer){
+jpl::_parser::_xml::RootElement* jpl::_parser::_xml::parse(std::istream &is){
     //Parsing header
+    std::string buffer;
+    if(!std::getline(is, buffer)){
+        throw jpl::_exception::RuntimeException("It could not begin XML Header Parsing");
+    }
     size_t end = jpl::_utils::_string::getIndexGroupOver(buffer, std::regex("<"), std::regex(">"));
     std::string header = buffer.substr(0, end+1);
     if(header.find("<?xml ") != 0){
@@ -21,6 +25,8 @@ jpl::_parser::_xml::RootElement* jpl::_parser::_xml::parse(std::string buffer){
         throw jpl::_parser::_xml::_exception::XMLParsingException("Version " + version + " is not valid");
     }
     parseHeaderAttribute(header, "encoding", encoding);
+    //Now, let's parse the eventual DOCTYPE 
+    
 
     RootElement* root = new RootElement("unnamed", version, encoding);
     jpl::_parser::_xml::parseElement(buffer, root, 0);
@@ -114,7 +120,7 @@ static void jpl::_parser::_xml::parseAttributes(std::string buffer, Element* ele
     }
 }
 
-void jpl::_parser::_xml::validateName(std::string name){
+void jpl::_parser::_xml::validateName(const std::string &name){
     if(!jpl::_utils::_string::match(name, std::regex("^[A-Za-z0-9_.-]+$", std::regex::extended))){
         throw jpl::_parser::_xml::_exception::XMLValidationException("Name must contains only letters, digits, hyphens, underscores and periods: " + name);
     }

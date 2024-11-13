@@ -22,6 +22,11 @@ namespace jpl{
         
         namespace _xml{
 
+            enum DOCTYPE{
+                SYSTEM, 
+                PUBLIC
+            };
+
             class RootElement : public Element{
 
                 protected:
@@ -34,6 +39,8 @@ namespace jpl{
                      * The encoding used by this root element
                      */
                     std::string encoding;
+
+                    
                 
                 public:
 

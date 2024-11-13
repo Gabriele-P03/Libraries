@@ -23,8 +23,6 @@ namespace jpl{
         
         namespace _xml{
 
-            extern void validateName(std::string name);
-
             class Element{
 
                 protected:

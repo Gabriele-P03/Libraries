@@ -1,5 +1,5 @@
+#include "src/dtd/DTDUtils.hpp"
 #include <jpl/utils/FilesUtils.hpp>
-#include "src/csv/CSVParser.hpp"
 
 using namespace jpl;
 using namespace _utils;
@@ -10,40 +10,11 @@ using namespace _list;
 int main(){
 
     
-    std::ifstream in("/home/gabriele/JPL/parser/out/linux/test.csv");
+    std::ifstream in("/home/gabriele/JPL/parser/out/linux/test.dtd");
     if(!in.is_open())
         exit(-1);
-    
-    _csv::CSVParser csv = _csv::CSVParser(";");
-    Table* table1 = new Table("1", true, true);
-    Table* table2 = new Table("2", true, true);
-    
-    Column<std::string>* col11 = new Column<std::string>("nome", false);
-    Column<std::string>* col12 = new Column<std::string>("cognome", false);
-    Column<std::string>* col13 = new Column<std::string>("età", false);
-    Column<std::string>* col14 = new Column<std::string>("luogo", false);
-
-    Column<std::string>* col21 = new Column<std::string>("x", false);
-    Column<std::string>* col22 = new Column<std::string>("y", false);
-    Column<std::string>* col23 = new Column<std::string>("z", true);
-
-    table1->addColumn(col11);
-    table1->addColumn(col12);
-    table1->addColumn(col13);
-    table1->addColumn(col14);
-
-    table2->addColumn(col21);
-    table2->addColumn(col22);
-    table2->addColumn(col23);
-    csv.setMultiTable(true);
-    csv.addTable(table1);
-    csv.addTable(table2);
-    csv.parse(&in);
-
-    std::ofstream* os = new std::ofstream("test_out.csv");
-    _parser::_csv::CSVParser::write(os, &csv);
-    os->flush();
-    os->close();
+    const _dtd::DTD* dtd = _dtd::parse(in);
+    delete dtd;
 }
 
 

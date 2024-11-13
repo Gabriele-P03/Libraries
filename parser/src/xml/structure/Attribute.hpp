@@ -22,6 +22,8 @@ namespace jpl{
         
         namespace _xml{
 
+            extern void validateName(const std::string &namme);
+
             struct Attribute{
                 private:
 

@@ -166,7 +166,8 @@ namespace jpl{
                 return m;
             }
             inline bool startWith(const std::string& src, const std::regex &regex){
-                return findFirstOf(src, regex).pos == 0;
+                RegexMatch m = findFirstOf(src, regex);
+                return m.pos == 0 && m.length > 0;
             }
             inline bool endWith(const std::string& src, const std::regex &regex){
                 RegexMatch m = findLastOf(src, regex);

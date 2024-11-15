@@ -32,6 +32,9 @@ namespace jpl{
 
             constexpr const char* const ANY_TAG = "ANY";
             constexpr const char* const EMPTY_TAG = "EMPTY";
+            /**
+             * It represents the elements type that the current list is able to contain
+             */
             enum TYPE_LIST{
                 ANYTHING,        //The element can contain anything
                 EMPTY,      //The element must be empty
@@ -41,6 +44,9 @@ namespace jpl{
             
             constexpr const char* const ID_TAG = "ID" ;
 
+            /**
+             * It represents the set of value or type (in case of either ID or CDATA) that the current attribute is able to contain 
+             */
             enum ATTR_TYPE{
                 CDATA,          //Text value 
                 LIST_CHOICE,     //It is a list of element 
@@ -50,6 +56,10 @@ namespace jpl{
             constexpr const char* const REQ_VALUE_ATTR_TAG = "#REQUIRED";
             constexpr const char* const IMP_VALUE_ATTR_TAG = "#IMPLIED";
             constexpr const char* const FIX_VALUE_ATTR_TAG = "#FIXED";
+
+            /**
+             * It represents the modifier about the current attribute's value 
+             */
             enum ATTR_VALUE{
                 DEFAULT,        //The attribute has a default value (to use in case of null), which can be even a LIST_CHOICE
                 REQUIRED,       //The attribute is not null

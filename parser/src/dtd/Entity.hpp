@@ -3,6 +3,9 @@
  * 
  * This is the abstraction of a DTD Entity
  * 
+ * If the value contains a URL/URI - and therefore it is an EXTERNAL ENTITY - entity_type is SYSTEM, otherwise it
+ * is always INTERNAL
+ * 
  * @author Gabriele-P03
  */
 

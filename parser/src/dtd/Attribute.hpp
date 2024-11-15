@@ -3,6 +3,12 @@
  * 
  * DTD Attribute representation
  * 
+ * If the attribute contains a choices-list, the values linked list is referenced, otherwise it is nullptr.
+ * The attribute type - and therefore even if it contains values - is represented by ATTR_TYPE value, you can check it directly 
+ * via Attribute#hasList().
+ * 
+ * std::string value also contains the default (or fixed, in case of #FIXED attr_value) value
+ * 
  * Since the attribute must follow certain condition due to available values, here you are some exception that could be thrown  
  * 
  * ATTR_TYPE = LIST_CHOICE:
@@ -26,7 +32,14 @@
 
 namespace jpl{
     namespace _parser{
+                
+        namespace _xml{
+            extern void validateName(const std::string &name);
+        }
+        
         namespace _dtd{
+
+            
             
             class Attribute{
 

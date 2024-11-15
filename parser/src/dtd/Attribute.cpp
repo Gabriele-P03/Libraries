@@ -6,6 +6,7 @@ jpl::_parser::_dtd::Attribute::Attribute(const std::string &name, const ATTR_TYP
     if(this->name.empty()){
         throw _exception::IllegalArgumentException("An empty name is not valid for a DTD attribute");
     }
+    jpl::_parser::_xml::validateName(this->name);
     if(this->attr_type == ATTR_TYPE::LIST_CHOICE){
         if(this->values == nullptr){
             throw _exception::IllegalArgumentException(this->name + " attribute cannot have nullptr values list");

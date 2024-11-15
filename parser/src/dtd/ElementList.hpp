@@ -4,7 +4,6 @@
  * 
  * An element list represents the combination of children elements and cdata which are available for a certain element
  * 
- * An element list is composed by a LinkedList of elements - children -, a PRS_OP and a OCC_OP
  * 
  * @author Gabriele-P03
  */
